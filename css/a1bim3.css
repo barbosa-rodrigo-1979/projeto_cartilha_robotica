@@ -1,0 +1,758 @@
+/* ==================================================
+   a1bim3.css - Arquivo CSS unificado para Robótica 1º ano Bimestre 3
+   Inclui: cabeçalho, planos de aula, jogo, certificado, rodapé
+   Versão corrigida para garantir visual correto dos planos de aula
+   ================================================== */
+
+/* ========== VARIÁVEIS GLOBAIS (adicionado do modelo_menu_bim) ========== */
+:root {
+  --robot-green: #4a7c3f;
+  --robot-dark: #1e2a1a;
+  --robot-bg: #0d1f0b;
+  --robot-card: #2c3e2b;
+  --robot-gold: #ffb347;
+  --robot-glow: #ffcc44;
+  --robot-danger: #e74c3c;
+  --robot-text: #e9f5db;
+  --robot-text-claro: #ebf0eb;
+}
+
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bg-robotica {
+  background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: #e9f5db;
+  min-height: 100vh;
+}
+
+/* ========== CABEÇALHO ========== */
+.cabecalho-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  padding: 1rem 0;
+  border-bottom: 5px solid #9bbc7b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.cabecalho-rebelde {
+  border-bottom-color: #ffb347;
+}
+.cabecalho-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.logo-rb,
+.logo-gn {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 12px;
+}
+.titulo-principal {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.95rem;
+  letter-spacing: 2px;
+  color: #e9f5db;
+  background: linear-gradient(135deg, #1a2b17 0%, #2c3e2b 100%);
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 60px;
+  position: relative;
+  text-transform: uppercase;
+  border: 2px solid #ffb347;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffb347,
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 2px 2px 0 #3d5a2b;
+}
+.subtitulo-chiclete {
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.85rem;
+  color: #ffcc88;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+.selo-sucata {
+  background: #1e1e1e;
+  color: #ffcc44;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  border-left: 3px solid #ff9900;
+}
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .logo-rb,
+  .logo-gn {
+    max-height: 50px;
+  }
+}
+
+/* ========== ELEMENTOS COMUNS ========== */
+.projeto-header {
+  background: linear-gradient(90deg, #1e2a1a 0%, #2a3b24 100%);
+  border-left: 8px solid #ffb347;
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.projeto-header h2 {
+  font-size: 1.3rem;
+  margin: 0;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  color: #ffb347;
+}
+.badge-projeto {
+  background: #e74c3c;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+}
+.bg-robocard {
+  background: linear-gradient(145deg, #2c3e2b, #1a2b17);
+  border: 1px solid #ffb347;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-radius: 48px 24px 48px 24px;
+}
+.carta-texto {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #f0f7e6;
+  margin-bottom: 1rem;
+}
+.table-robotica {
+  background: rgba(30, 42, 26, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  color: #e9f5db;
+}
+.table-robotica th,
+.table-robotica td {
+  vertical-align: middle;
+  padding: 12px 8px;
+  border-color: #4a7c3f;
+}
+.table-robotica thead th {
+  background: #1e2a1a;
+  color: #ffb347;
+}
+.table-robotica tbody tr:hover {
+  background: rgba(74, 124, 63, 0.3);
+}
+
+/* ========== PLANOS DE AULA (ACCORDION) ========== */
+.accordion-item {
+  background: transparent;
+  border: none;
+  margin-bottom: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.accordion-button {
+  background: #627454;
+  color: #ffb347;
+  font-weight: bold;
+  font-family: "Chakra Petch", monospace;
+  padding: 16px 24px;
+  font-size: 1rem;
+  border: none;
+}
+.accordion-button:not(.collapsed) {
+  background: #7f9470;
+  color: #ffcc44;
+  box-shadow: none;
+}
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: #ffb347;
+}
+.accordion-body {
+  background: #0d1f0b;
+  padding: 24px;
+  border-top: 2px solid #ffb347;
+}
+.semana-card-completo {
+  background: #505e45;
+  border-radius: 24px;
+  padding: 20px;
+}
+.semana-card-completo h5 {
+  color: #ffb347;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-left: 4px solid #ffb347;
+  padding-left: 12px;
+}
+.semana-card-completo h5:first-of-type {
+  margin-top: 0;
+}
+.semana-card-completo ul,
+.semana-card-completo p {
+  margin-bottom: 16px;
+  line-height: 1.5;
+  color: #ebf0eb;
+}
+.check-concluido {
+  background: #1e2a1a;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.check-concluido span {
+  color: #ebf0eb;
+}
+.materiais-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.material-badge {
+  background: #2c3e2b;
+  padding: 6px 12px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 2px solid #ffb347;
+  color: #ebf0eb;
+}
+.tabela-criterios-semana {
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabela-criterios-semana thead {
+  background: #2c3e2b;
+  color: #ffb347;
+}
+.tabela-criterios-semana th,
+.tabela-criterios-semana td {
+  padding: 10px 12px;
+  border: 1px solid #4a7c3f;
+  vertical-align: middle;
+  color: #ebf0eb;
+}
+.tabela-criterios-semana tbody tr:hover {
+  background: #1e2a1a;
+}
+.minuto-item {
+  display: flex;
+  margin-bottom: 16px;
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  border-left: 4px solid #ffb347;
+}
+.minuto-tempo {
+  background: #2c3e2b;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  min-width: 100px;
+  text-align: center;
+  color: #ffb347;
+}
+.minuto-descricao {
+  padding: 10px 16px;
+  flex: 1;
+  line-height: 1.4;
+  color: #ebf0eb;
+}
+.frase-do-dia {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  border: 1px dashed #ffb347;
+  color: #ebf0eb;
+}
+.frase-do-dia i {
+  color: #ffb347;
+  margin-right: 8px;
+}
+
+/* ========== JOGO LOOP DASH ========== */
+.loopdash-pista-visual {
+  background: linear-gradient(135deg, #1a3a15, #0f2a0c);
+  border-radius: 24px;
+  padding: 16px;
+  border: 2px solid #ffb347;
+}
+.loopdash-grid {
+  display: grid;
+  gap: 6px;
+  background: #2c3e2b;
+  padding: 12px;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.loopdash-grid.fase1 {
+  grid-template-columns: repeat(8, 55px);
+}
+.loopdash-grid.fase2 {
+  grid-template-columns: repeat(5, 55px);
+}
+.loopdash-grid.fase3 {
+  grid-template-columns: repeat(6, 55px);
+}
+.loopdash-cell {
+  aspect-ratio: 1/1;
+  background: #1e2a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.2s;
+}
+.loopdash-cell.robot {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  animation: pulseRobot 0.8s infinite alternate;
+}
+.loopdash-cell.robot::after {
+  content: "🤖";
+  font-size: 1.8rem;
+}
+.loopdash-cell.target {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+.loopdash-cell.target::after {
+  content: "🏁";
+  animation: bounceFlag 0.5s infinite alternate;
+}
+.loopdash-cell.wall {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+.loopdash-cell.wall::after {
+  content: "🧱";
+}
+.loopdash-cell.path {
+  background: #4a7c3f;
+}
+.stat-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  border-left: 4px solid #ffb347;
+}
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+.algoritmo-builder {
+  background: linear-gradient(135deg, #0d1f0b, #1a2b17);
+  border-radius: 24px;
+  border: 2px dashed #ffb347;
+}
+.builder-header {
+  background: #2c3e2b;
+  padding: 12px 16px;
+  color: #ffb347;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.algoritmo-montado {
+  min-height: 120px;
+  padding: 16px;
+  background: #0a0f08;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cartao-montado {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 16px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 4px solid #ffb347;
+}
+.cartao-montado.repita-container {
+  background: #4a7c3f;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.repita-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.repita-contador-input {
+  background: #ffb347;
+  border-radius: 20px;
+  padding: 2px 8px;
+  width: 55px;
+  text-align: center;
+}
+.cartoes-prateleira {
+  background: linear-gradient(135deg, #1a2b17, #0d1f0b);
+  border-radius: 24px;
+  padding: 16px;
+}
+.cartoes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.cartao-comando {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #4a7c3f;
+  min-width: 100px;
+}
+.cartao-comando:hover {
+  transform: translateY(-4px);
+  border-color: #ffb347;
+}
+.cartao-comando.cartao-especial {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+}
+.btn-executar,
+.btn-resetar,
+.btn-dica,
+.btn-exemplo {
+  padding: 12px 24px;
+  border-radius: 60px;
+  font-weight: bold;
+  transition: 0.3s;
+  border: none;
+}
+.btn-executar {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+.btn-resetar {
+  background: #7f8c8d;
+  color: white;
+}
+.btn-dica {
+  background: #8e44ad;
+  color: white;
+}
+.btn-exemplo {
+  background: #2980b9;
+  color: white;
+}
+.mensagem-jogo {
+  background: #0a0f08;
+  border-radius: 20px;
+  padding: 16px;
+  border-left: 6px solid #ffb347;
+}
+.recordes-painel {
+  background: #0d1f0b;
+  border-radius: 20px;
+  padding: 12px;
+}
+.recorde-valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+.btn-phase {
+  background: #2c3e2b;
+  border: 2px solid #4a7c3f;
+  border-radius: 40px;
+  color: #e9f5db;
+  margin: 4px;
+  padding: 8px 16px;
+}
+.btn-phase.ativo {
+  background: #ffb347;
+  color: #1e2a1a;
+}
+@keyframes pulseRobot {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
+  }
+}
+@keyframes bounceFlag {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========== CERTIFICADO ========== */
+.certificado-modelo {
+  background: #0d1f0b !important;
+  border: 3px double #9bbc7b !important;
+  border-radius: 48px 24px 48px 24px;
+  text-align: center;
+  padding: 20px;
+}
+.nome-aluno-destaque {
+  font-size: 22px;
+  display: block;
+  margin: 15px 0;
+  color: #2c5e1f;
+  background: #d4b87a !important;
+  padding: 12px;
+  border-radius: 40px;
+}
+.cadastro-alunos {
+  background: #1e2a1a !important;
+  border-radius: 32px;
+  border-left: 5px solid #ffb347;
+}
+.lista-alunos li {
+  background: #2c3e2b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  color: #f0f0e0;
+}
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
+  font-weight: bold;
+  border-radius: 60px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+  padding: 8px 16px;
+}
+.btn-outline-warning {
+  border: 2px solid #ffb347;
+  color: #ffb347;
+  border-radius: 60px;
+  background: transparent;
+}
+@media print {
+  .certificado-impressao {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 3px solid #ffb347 !important;
+    border-radius: 48px 24px !important;
+    background: #fffef7 !important;
+  }
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+}
+
+/* ========== RODAPÉ ========== */
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  border-top: 5px solid #9bbc7b;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+.footer-rebelde {
+  border-top-color: #ffb347;
+}
+.footer-logo {
+  max-height: 70px;
+  border-radius: 16px;
+}
+.dev-nome {
+  font-size: 0.85rem;
+  color: #ebf0eb;
+}
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+}
+.dev-contato a:hover {
+  color: #ffb347;
+}
+.relatorio-bugs {
+  border-top: 1px dashed #ffb347;
+  padding-top: 0.8rem;
+  font-family: monospace;
+  color: #ffcc88;
+}
+
+/* ========== RESPONSIVIDADE GERAL ========== */
+@media (max-width: 768px) {
+  .loopdash-grid.fase1 {
+    grid-template-columns: repeat(8, 40px);
+  }
+  .loopdash-grid.fase2 {
+    grid-template-columns: repeat(5, 40px);
+  }
+  .loopdash-grid.fase3 {
+    grid-template-columns: repeat(6, 40px);
+  }
+  .stat-value,
+  .recorde-valor {
+    font-size: 1.2rem;
+  }
+  .cartao-comando {
+    min-width: 70px;
+    padding: 8px 10px;
+  }
+  .btn-executar,
+  .btn-resetar,
+  .btn-dica,
+  .btn-exemplo {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  .minuto-item {
+    flex-direction: column;
+  }
+  .minuto-tempo {
+    min-width: auto;
+    text-align: left;
+  }
+  .tabela-criterios-semana th,
+  .tabela-criterios-semana td {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+  }
+}
+/* ========== MENU GLASSMORPHISM (copiado do modelo_menu_bim) ========== */
+.menu-robomestre {
+  background: rgba(13, 31, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu-robomestre .nav-link {
+  color: var(--robot-text);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.menu-robomestre .nav-link i {
+  font-size: 1.1rem;
+  color: var(--robot-gold);
+  transition: transform 0.2s;
+}
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  text-shadow: 0 0 4px var(--robot-gold);
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+.menu-robomestre .nav-link:hover i {
+  transform: scale(1.1);
+  color: var(--robot-glow);
+}
+.menu-robomestre .nav-link.active {
+  color: var(--robot-glow);
+  background: rgba(255, 180, 71, 0.25);
+  text-shadow: 0 0 6px var(--robot-gold);
+  border-bottom: 2px solid var(--robot-gold);
+}
+.menu-robomestre .navbar-toggler {
+  border-color: var(--robot-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.menu-robomestre .navbar-brand {
+  color: var(--robot-gold);
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+}
+
+/* Responsividade do menu (do modelo_menu_bim) */
+@media (max-width: 768px) {
+  .menu-robomestre .navbar-collapse {
+    background: rgba(13, 31, 11, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    margin-top: 12px;
+    padding: 12px 0;
+    border: 1px solid var(--robot-gold);
+  }
+  .menu-robomestre .nav-link {
+    justify-content: center;
+    margin: 4px 12px;
+  }
+}

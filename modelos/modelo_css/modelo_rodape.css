@@ -1,0 +1,143 @@
+/* ==================================================
+   modelo_rodape.css - ESTILOS DO RODAPÉ REBELDE
+   Módulo específico para o rodapé robótico
+   ================================================== */
+
+/* ========== RODAPÉ ROBÓTICO ========== */
+/* ========== RODAPÉ (estilo unificado com cabeçalho) ========== */
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  border-top: 5px solid #9bbc7b;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-rebelde {
+  border-top-color: #ffb347;
+}
+
+.footer-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Logos do rodapé */
+.footer-logo {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Informações dos desenvolvedores */
+.dev-nome {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Chakra Petch", monospace;
+  color: #ebf0eb;
+}
+
+.dev-contato {
+  font-size: 0.8rem;
+}
+
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    text-shadow 0.2s;
+  font-family: monospace;
+}
+
+.dev-contato a:hover {
+  color: #ffb347;
+  text-decoration: underline;
+  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
+}
+
+/* Relatório de bugs */
+.relatorio-bugs {
+  border-top: 1px dashed #ffb347;
+  padding-top: 0.8rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffcc88;
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade do rodapé */
+@media (max-width: 768px) {
+  .footer-robotico {
+    font-size: 0.75rem;
+    padding: 1.5rem 0;
+  }
+  .footer-logo {
+    max-height: 50px;
+  }
+  .dev-nome {
+    font-size: 0.7rem;
+  }
+  .dev-contato {
+    font-size: 0.65rem;
+  }
+  .relatorio-bugs {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo {
+    max-height: 40px;
+  }
+  .dev-nome {
+    font-size: 0.6rem;
+  }
+  .dev-contato {
+    font-size: 0.55rem;
+  }
+  .relatorio-bugs {
+    font-size: 0.55rem;
+  }
+}
+
+/* ========== ANIMAÇÃO PARA ATUALIZAÇÃO DO CONTADOR ========== */
+@keyframes contadorPisca {
+  0%,
+  100% {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+
+  50% {
+    background-color: rgba(255, 180, 71, 0.5);
+    transform: scale(1.05);
+  }
+}
+
+#relatorioBugs.atualizando {
+  animation: contadorPisca 0.3s ease-in-out;
+}

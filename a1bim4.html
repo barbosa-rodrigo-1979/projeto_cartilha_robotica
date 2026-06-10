@@ -1,0 +1,2057 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 Robótica 1º Ano - Bimestre 4: Robôs Artistas e Grande Gala</title>
+  <!-- Bootstrap 5 + ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="css/a1bim4.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ==================== CABEÇALHO REBELDE (modelo_cabecalho.html) ==================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO 1º ANO — BIMESTRE 4
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ ROBÔS ARTISTAS, SAÚDE ROBÓTICA E O GRANDE FINAL! ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================================================
+   MENU GLASSMORPHISM 
+   ================================================== -->
+
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a1index.html">
+        <i class="bi bi-robot"></i> 1º Ano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="a1index.html">
+              <i class="bi bi-house-door-fill"></i> Principal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1index.html">
+              <i class="bi bi-house-door-fill"></i> 1° ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim1.html">
+              <i class="bi bi-1-circle-fill"></i> 1º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim2.html">
+              <i class="bi bi-2-circle-fill"></i> 2º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim3.html">
+              <i class="bi bi-3-circle-fill"></i> 3º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim4.html">
+              <i class="bi bi-4-circle-fill"></i> 4º bimestre
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- ==================== APRESENTAÇÃO DO BIMESTRE (modelo_apresentacao_bimestre.html adaptado) ==================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Com a caneca de chá de camomila (o ano letivo está acabando)
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          E aí, guerreiro ou guerreira da robótica, com a caneca agora de chá
+          de camomila (porque o ano letivo está acabando e você precisa
+          relaxar).
+        </p>
+        <p class="carta-texto mt-2">
+          Chegamos ao último bimestre. Você e seus alunos já são veteranos em
+          dar comandos, medir passos, classificar atributos, repetir loops e
+          tomar decisões com SE/ENTÃO/SENÃO. Se isso não é motivo para um
+          tapete vermelho, eu não sei o que é.
+        </p>
+        <p class="carta-texto mt-2">
+          Neste bimestre, a gente vai consolidar, criar e celebrar. Vamos
+          construir robôs que desenham (prepare o chão, porque caneta vai
+          rolar), aprender a cuidar da "saúde" do robô (pilhas, higiene),
+          construir um semáforo que ensina estados ligado/desligado, e fazer
+          trabalho em equipe com três robôs sincronizados.
+        </p>
+        <p class="carta-texto mt-2">
+          E o grande finale: uma Exposição de Robôs e a Grande Gala de
+          Robótica, com direito a certificado de "Doutor(a) em Desbugação"
+          (agora nível máximo). Os pais podem até filmar. As crianças vão se
+          sentir verdadeiras celebridades da programação.
+        </p>
+        <p class="carta-texto mt-2 fw-bold">
+          Ah, e tem a piada prometida sobre loop infinito e birra de criança
+          -- vou encaixar na semana 35, no semáforo. "SE a criança chorar no
+          parquinho, ENTÃO o loop de birra começa, SENÃO a gente brinca." Você
+          vai adorar.
+        </p>
+        <p class="carta-texto mt-2">
+          Agora respira fundo, ajusta a fantasia de robô (opcional, mas
+          recomendado) e vamos para as últimas 10 semanas de pura criação e
+          diversão.
+        </p>
+      </div>
+    </section>
+
+    <!-- MAPEAMENTO DE HABILIDADES (conteúdo do .docx) -->
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 🧭 MAPEAMENTO DE HABILIDADES --
+          BIMESTRE 4
+        </h2>
+        <div class="badge-projeto">BNCC + RCP-PR</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Descrição</th>
+              <th>Semana</th>
+              <th>Habilidade BNCC (e RCP-PR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Simular ações robóticas e localizar-se no espaço.</td>
+              <td>31</td>
+              <td>(EI03CO03) + (EF01MA12)</td>
+            </tr>
+            <tr>
+              <td>Produzir instruções de arrumação (algoritmo).</td>
+              <td>32</td>
+              <td>(EF01LP17) + (EI03CO02)</td>
+            </tr>
+            <tr>
+              <td>
+                Identificar hábitos de higiene do corpo e relacionados à
+                manutenção da saúde (pilhas, cuidados).
+              </td>
+              <td>33</td>
+              <td>(EF01CI03A) BNCC/RCP-PR</td>
+            </tr>
+            <tr>
+              <td>
+                Construir robô desenhista usando formas geométricas e decompor
+                o movimento.
+              </td>
+              <td>34</td>
+              <td>(EF01MA13) + (EF15CO01)</td>
+            </tr>
+            <tr>
+              <td>
+                Reconhecer dispositivos eletrônicos, estados ligado/desligado.
+              </td>
+              <td>35</td>
+              <td>(EI03CO07) + (EI03CO09)</td>
+            </tr>
+            <tr>
+              <td>Colaborar em equipe para programar robôs em sincronia.</td>
+              <td>36</td>
+              <td>(EF15CO09) + (EF01LP16)</td>
+            </tr>
+            <tr>
+              <td>Registrar e apresentar projetos.</td>
+              <td>37</td>
+              <td>(EF01LP18) + (EF15CO04)</td>
+            </tr>
+            <tr>
+              <td>Apresentar publicamente os aprendizados.</td>
+              <td>38</td>
+              <td>Síntese de todas as anteriores</td>
+            </tr>
+            <tr>
+              <td>Revisar conceitos com jogo de bingo.</td>
+              <td>39</td>
+              <td>(EF01MA01) + (EF15CO01)</td>
+            </tr>
+            <tr>
+              <td>Celebrar conquistas e refletir sobre o percurso.</td>
+              <td>40</td>
+              <td>(EI03CO09) + todas as socioemocionais</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PLANO SINTÉTICO (semanas 31 a 40) -->
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📅 PLANO ANUAL RESUMIDO --
+          BIMESTRE 4
+        </h2>
+        <div class="badge-projeto">Semanas 31 a 40</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Conceito Principal</th>
+              <th>Semana</th>
+              <th>Tema da Aula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Simular ações de um robô na sala.</td>
+              <td>31</td>
+              <td>Brincando de Robô na Vida Real</td>
+            </tr>
+            <tr>
+              <td>Criação de um algoritmo de arrumação.</td>
+              <td>32</td>
+              <td>O Quarto do Robô Bagunceiro</td>
+            </tr>
+            <tr>
+              <td>Cuidados com dispositivos (higiene, energia).</td>
+              <td>33</td>
+              <td>Saúde do Robô: Bateria e Manutenção</td>
+            </tr>
+            <tr>
+              <td>Robô que desenha com caneta e fita adesiva.</td>
+              <td>34</td>
+              <td>Robô Artista Desplugado</td>
+            </tr>
+            <tr>
+              <td>Estados (ligado/desligado, aberto/fechado).</td>
+              <td>35</td>
+              <td>Construindo um Semáforo para o Robô</td>
+            </tr>
+            <tr>
+              <td>Colaboração e programação coletiva.</td>
+              <td>36</td>
+              <td>O Desafio dos Três Robôs (Trabalho em Equipe)</td>
+            </tr>
+            <tr>
+              <td>Preparação de apresentação de projetos.</td>
+              <td>37</td>
+              <td>Exposição de Robôs da Turma</td>
+            </tr>
+            <tr>
+              <td>Apresentação final para outras turmas.</td>
+              <td>38</td>
+              <td>Grande Gala de Robótica</td>
+            </tr>
+            <tr>
+              <td>Revisão lúdica de todos os conceitos do ano.</td>
+              <td>39</td>
+              <td>Revisão Geral: Bingo dos Comandos</td>
+            </tr>
+            <tr>
+              <td>Celebração e entrega de certificados.</td>
+              <td>40</td>
+              <td>Certificação "Doutor(a) em Desbugação"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PLANOS DE AULA DETALHADOS (modelo_planos_aula.html adaptado) ==================== -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 📚 PLANOS DE AULA DETALHADOS --
+          BIMESTRE 4
+        </h2>
+        <div class="badge-projeto">
+          Prepare a bagunça organizada. Loop até a coordenação pedir pra
+          parar!
+        </div>
+      </div>
+      <div class="accordion" id="accordionAulas">
+        <div class="accordion" id="accordionAulas">
+          <!-- ==================== SEMANA 31 ==================== -->
+          <div class="accordion-item" data-semana="31">
+            <h2 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana31">
+                🤖 Semana 31 -- Brincando de Robô na Vida Real
+              </button>
+            </h2>
+            <div id="semana31" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between align-items-start flex-wrap">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="31" /><span>Marcar como concluída</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Simular o comportamento de um
+                      robô (movimentos robóticos, voz metálica, obediência a
+                      comandos) para consolidar a compreensão de algoritmos e
+                      sequências.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Hoje vamos virar robôs de
+                      verdade! Andar duro, falar 'BIP-BIP' e só obedecer a
+                      comandos. Quem desobedecer, vai ter a pilha trocada!"
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EI03CO03), (EF01MA12)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"><i class="bi bi-tag-fill"></i> Adesivos ou presilhas
+                      para identificar "robôs" e "programadores"</span>
+                    <span class="material-badge"><i class="bi bi-soundwave"></i> Aparelho de som
+                      (opcional – música eletrônica de fundo)</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Participa da transformação em robô com entusiasmo
+                            e mantém a pose robótica
+                          </td>
+                          <td>Ativação de Bateria Social</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Executa corretamente os comandos FRENTE, TRÁS,
+                            BIP, PARAR em sequência
+                          </td>
+                          <td>Precisão de Comando Robótico</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Ajuda o parceiro quando ele trava ou erra,
+                            corrigindo o algoritmo
+                          </td>
+                          <td>Capacidade de Desbugação em Dupla</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <strong>Total (convertido em BIPs)</strong>
+                          </td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Transformação em Robô</strong> – Peça que todos
+                      imitem um robô ligando: fazem barulho de "bip", esticam
+                      os braços, andam com passos duros. Você grita: "Robôs,
+                      liguem suas baterias!"
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Comandos Básicos Robóticos</strong> – Estabeleça
+                      4 comandos: "FRENTE" (1 passo duro), "TRÁS" (1 passo
+                      para trás), "BIP" (falar "bip" alto), "PARAR"
+                      (congelar). Pratique.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Dança Robótica em Sequência</strong> – Divida em
+                      duplas. Um programa o outro com sequência de 3 a 5
+                      comandos. Depois trocam.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Labirinto de Robôs</strong> – Use grid de fita
+                      crepe. Robôs no início, programadores dão comandos (só
+                      FRENTE, TRÁS, BIP, PARAR) para chegar ao final.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Revezamento</strong> – Cada dupla tem 1 minuto.
+                      A plateia conta comandos. Dupla com menos comandos
+                      vence.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Desligamento Robótico</strong> – "Robôs,
+                      desliguem!" (barulho de "beeeeep" e caem no chão de
+                      leve). Roda de conversa.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>TEA:</strong> Ofereça cartão de comandos com
+                      ícones para o programador apontar.
+                    </li>
+                    <li>
+                      <strong>TDAH:</strong> Coloque música eletrônica rápida;
+                      comandos em ritmo acelerado.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> O aluno imita o robô do
+                    filme <em>Wall-E</em> ou faz o barulho do R2-D2.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 32 ==================== -->
+          <div class="accordion-item" data-semana="32">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana32">
+                🧹 Semana 32 -- O Quarto do Robô Bagunceiro
+              </button>
+            </h2>
+            <div id="semana32" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="32" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Criar algoritmo de arrumação
+                      (instruções sequenciais) e executar em cenário simulado.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "O Robô Zé bagunçou o quarto!
+                      Vamos programar a arrumação passo a passo."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF01LP17), (EI03CO02)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">📦 Objetos espalhados (livros, lápis, brinquedos)</span><span
+                      class="material-badge">🏷️ Caixas identificadas</span><span class="material-badge">🃏 Cartões:
+                      PEGAR, COLOCAR EM, GUARDAR</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Identifica corretamente todos os objetos fora do
+                            lugar (mínimo 5)
+                          </td>
+                          <td>Índice de Bagunça Diagnosticada</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Escreve algoritmo de arrumação com sequência
+                            lógica (PEGAR → COLOCAR → GUARDAR)
+                          </td>
+                          <td>Qualidade do Algoritmo</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Executa a faxina sem bugs (zero erros) ou com
+                            apenas 1 erro corrigido
+                          </td>
+                          <td>Taxa de Bugs na Execução</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      Mostre a bagunça. "O robô precisa de um algoritmo de
+                      arrumação."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      Construa algoritmo coletivo: 1. PEGAR brinquedo; 2.
+                      COLOCAR na caixa; etc.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      Robô faxineiro voluntário segue o algoritmo. Se errar,
+                      gritam "BUG!".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      Grupos escrevem algoritmo de 3 passos para organizar uma
+                      área e executam.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Corrida da arrumação: todos os robôs executam ao mesmo
+                      tempo.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Registro: desenhe 3 passos para arrumar a mochila.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li><strong>TEA:</strong> cartões já ordenados.</li>
+                    <li>
+                      <strong>Def. física:</strong> robô pode ser colega que
+                      carrega objetos.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Criar um comando novo
+                    (ex: "SACUDIR", "DOBRAR") e usá-lo no algoritmo.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 33 ==================== -->
+          <div class="accordion-item" data-semana="33">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana33">
+                🩺 Semana 33 -- Saúde do Robô: Bateria e Manutenção
+              </button>
+            </h2>
+            <div id="semana33" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="33" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Relacionar cuidados com o corpo
+                      (higiene, alimentação) com cuidados com dispositivos
+                      eletrônicos.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Robôs também ficam doentes!
+                      Vamos aprender a cuidar do robô e de nós mesmos."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF01CI03A) BNCC/RCP-PR</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">🤖 Robô de brinquedo com partes destacáveis</span><span
+                      class="material-badge">🃏 Cartões: BATERIA CHEIA/FRACA, LIMPO/SUJO</span><span
+                      class="material-badge">🪥 Escova de dentes e pasta (analogia)</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Identifica o problema do robô doente (bateria
+                            fraca / sujeira) e sugere solução
+                          </td>
+                          <td>Diagnóstico Clínico Robótico</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Relaciona cuidados do robô com cuidados humanos
+                            (pelo menos 2 relações criativas)
+                          </td>
+                          <td>Analogia Humano-Robô</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            No check-up, responde com detalhe qual foi o
+                            último cuidado e como fez
+                          </td>
+                          <td>Procedimento de Check-up</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      Apareça com robô de brinquedo com pilha solta ou sujo.
+                      "O que ele tem?"
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      Diagnóstico: trocar pilhas, limpar. Relacione com
+                      cansaço humano.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      Compare hábitos: robô precisa de pilhas → humano precisa
+                      de comida; limpeza → escovar dentes.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      Jogo da manutenção: cada dupla recebe um problema e
+                      escolhe a solução.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Check-up robótico: você é médico, cada aluno traz robô
+                      imaginário e responde.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Registro: "Manual de Saúde do Robô" – desenhe duas
+                      dicas.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>TEA:</strong> checklist visual com símbolos.
+                    </li>
+                    <li>
+                      <strong>Def. intelectual:</strong> foque em pilha e
+                      limpeza.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Sugerir um "cuidado
+                    absurdo" (ex: dar café ao robô) e explicar por que não
+                    funciona.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 34 ==================== -->
+          <div class="accordion-item" data-semana="34">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana34">
+                🎨 Semana 34 -- Robô Artista Desplugado
+              </button>
+            </h2>
+            <div id="semana34" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="34" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Construir dispositivo simples
+                      (robô que desenha) usando sucata e movimento manual.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Vamos construir um robô que
+                      desenha sozinho! Ele vai tremelicar e fazer desenhos
+                      malucos."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF01MA13), (EF15CO01)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">🥤 Copos plásticos/rolos de papelão</span><span
+                      class="material-badge">✍️ Canetas hidrográficas (3 por robô)</span><span class="material-badge">📦
+                      Fita adesiva e elásticos</span><span class="material-badge">📰 Papel grande (jornal ou
+                      cartolina)</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Constrói o tripé com as 3 canetas de forma estável
+                            (com ou sem ajuda)
+                          </td>
+                          <td>Engenharia de Fixação</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            O robô desenha círculos/curvas visíveis e
+                            contínuas no papel
+                          </td>
+                          <td>Fluido Artístico Robótico</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Explica por que o robô fez círculo ("porque as
+                            canetas estão em volta e o copo gira")
+                          </td>
+                          <td>Compreensão do Movimento Circular</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      Mostre exemplo pronto (copo com 3 canetas em tripé).
+                      Empurrando, ele desenha círculos.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-20 min</span>
+                    <div class="minuto-descricao">
+                      Construção: cada dupla fixa 3 canetas ao redor do copo
+                      (pontas para baixo).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">20-30 min</span>
+                    <div class="minuto-descricao">
+                      Testes: papel grande no chão, empurre suavemente.
+                      Observe desenhos.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">30-40 min</span>
+                    <div class="minuto-descricao">
+                      Desafio: fazer caminho reto (impossível). Fale sobre
+                      decomposição.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">40-45 min</span>
+                    <div class="minuto-descricao">
+                      Galeria de Arte Robótica: expõem desenhos e dão
+                      estrelinhas.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Registro: "Meu Robô Artista" – colar desenho e escrever
+                      frase.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>Def. física:</strong> robô com alça para ser
+                      empurrado com antebraço ou boca.
+                    </li>
+                    <li>
+                      <strong>Sem motor:</strong> movimento manual é
+                      igualmente divertido.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Batizar o robô com nome
+                    de artista famoso (ex: "Van Gogh-3PO", "Frida
+                    Kahl-Ômega").
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 35 ==================== -->
+          <div class="accordion-item" data-semana="35">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana35">
+                🚦 Semana 35 -- Construindo um Semáforo para o Robô
+              </button>
+            </h2>
+            <div id="semana35" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="35" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Compreender estados e aplicar
+                      condicionais: SE vermelho ENTÃO para; SENÃO anda.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Vamos construir um semáforo
+                      de papelão e usar a lógica: SE vermelho, PARA; SE verde,
+                      ANDA."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EI03CO07), (EI03CO09)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">📦 Caixa de papelão pequena</span><span class="material-badge">🔴🟡🟢
+                      Círculos coloridos</span><span class="material-badge">🔦 Lanterna (opcional)</span><span
+                      class="material-badge">🤖 Robôs de brinquedo ou alunos-robôs</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Cola os círculos na ordem correta (vermelho,
+                            amarelo, verde) e faz alça funcional
+                          </td>
+                          <td>Construção Semafórica</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Parar/andar conforme a cor mostrada, com reação
+                            instantânea (erro máximo 1 vez)
+                          </td>
+                          <td>Tempo de Reação ao Semáforo</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Após escrever a condicional, lê ou explica com
+                            exemplo próprio
+                          </td>
+                          <td>Compreensão da Condicional</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      Conte a piada do loop infinito da birra.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      Construção do semáforo: cada dupla cola círculos na
+                      ordem.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      Regras: só anda no verde, para no vermelho. Pratique
+                      mostrando cores.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      Circuito de trânsito com 3 semáforos. Robôs percorrem,
+                      param no vermelho.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Escreva a condicional no quadro: "SE cor = vermelho
+                      ENTÃO parar SENÃO andar".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Registro: desenho do semáforo com legenda.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li><strong>TEA:</strong> use apenas verde/vermelho.</li>
+                    <li>
+                      <strong>Def. visual:</strong> semáforo com texturas
+                      (lixa = vermelho, feltro = verde) e sinal sonoro.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Criar uma quarta cor (ex:
+                    "roxo = dançar") e convencer um colega a obedecer.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 36 ==================== -->
+          <div class="accordion-item" data-semana="36">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana36">
+                💃 Semana 36 -- O Desafio dos Três Robôs (Trabalho em Equipe)
+              </button>
+            </h2>
+            <div id="semana36" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="36" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Desenvolver colaboração para
+                      programar três robôs simultaneamente em coreografia.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Vamos formar três robôs que
+                      dançam juntos! Se um errar, toda coreografia buga."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF15CO09), (EF01LP16)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">🎽 Lenços coloridos (times)</span><span class="material-badge">🎵
+                      Música animada</span><span class="material-badge">🃏 Cartões de comando grandes</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Os membros do mesmo grupo se movem sincronizados
+                            (mesmo ritmo) em pelo menos 2 movimentos
+                          </td>
+                          <td>Sincronia Intragrupo</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            O líder passa os comandos com clareza e repete
+                            quando necessário
+                          </td>
+                          <td>Liderança Programadora</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Os três grupos executam ao mesmo tempo sem
+                            colisões (ou com no máximo 1 colisão)
+                          </td>
+                          <td>Comunicação Intergrupos</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      Formação das equipes: 3 grupos, cada um será um robô
+                      coletivo.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      Planejamento da coreografia: cada grupo decide 3
+                      movimentos.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">Ensaio separado.</div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      Ensaio geral: todos executam ao mesmo tempo. Ajustes.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Apresentação para a turma. Plateia avalia sincronia.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Reflexão e registro: desenhe seu robô dançando.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>TEA:</strong> função específica (ex: segurar
+                      placa de início).
+                    </li>
+                    <li>
+                      <strong>Def. física:</strong> grupo pode se mover apenas
+                      com braços e cabeça.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Grupo inclui movimento
+                    "falha mecânica" (travar, fazer barulho de
+                    curto-circuito).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 37 ==================== -->
+          <div class="accordion-item" data-semana="37">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana37">
+                🖼️ Semana 37 -- Exposição de Robôs da Turma
+              </button>
+            </h2>
+            <div id="semana37" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="37" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Preparar e organizar exposição
+                      com projetos de robótica do ano.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Vamos montar uma grande
+                      exposição para mostrar para os outros e para os pais!"
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF01LP18), (EF15CO04)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">Mesas para exposição</span><span class="material-badge">🏷️ Etiquetas
+                      com nomes</span><span class="material-badge">📦 Projetos do ano (robôs de sucata, desenhos,
+                      etc.)</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Escolhe um projeto do ano para expor e justifica
+                            com motivo (ex: "porque foi o que mais gostei")
+                          </td>
+                          <td>Seleção da Obra-Prima</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Escreve nome do robô/projeto + frase criativa na
+                            etiqueta
+                          </td>
+                          <td>Produção da Etiqueta</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Fala sobre o projeto (nome, o que faz, comando
+                            usado) por 30 segundos com entusiasmo
+                          </td>
+                          <td>Discurso de 30 Segundos</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      Planejamento: definir local, cada aluno escolhe projeto.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-20 min</span>
+                    <div class="minuto-descricao">
+                      Produção de etiquetas com nome e frase explicativa.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">20-35 min</span>
+                    <div class="minuto-descricao">
+                      Montagem da exposição: organizar mesas em U.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Ensaio da visita guiada: 30 segundos sobre o projeto.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Produção de convites para pais e outra turma.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>Comunicação alternativa:</strong> aluno não
+                      verbal aponta enquanto colega lê.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Criar um "preço" para a
+                    entrada (ex: "pague com uma palma", "entregue um desenho
+                    de robô").
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 38 ==================== -->
+          <div class="accordion-item" data-semana="38">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana38">
+                🎩 Semana 38 -- Grande Gala de Robótica
+              </button>
+            </h2>
+            <div id="semana38" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="38" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Realizar evento de apresentação
+                      para comunidade escolar.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Hoje é o nosso grande dia!
+                      Vamos mostrar que somos programadores de verdade."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>Síntese de todas.</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">🎭 Tapete vermelho improvisado</span><span class="material-badge">🎵
+                      Música de entrada (tema de robô)</span><span class="material-badge">📜 Certificados</span><span
+                      class="material-badge">📸 Câmera</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Desfila com o robô/cartaz com postura confiante e
+                            interage com a plateia
+                          </td>
+                          <td>Estilo de Tapete Vermelho</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Explica seu projeto favorito em 1 minuto (começo,
+                            meio e fim)
+                          </td>
+                          <td>Discurso Relâmpago</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Participa da Dança do Loop acertando todos os
+                            movimentos ou com apenas 1 erro
+                          </td>
+                          <td>Participação na Dança</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      Abertura: "Bem-vindos à Grande Gala de Robótica!"
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      Desfile dos Robôs: cada aluno anda pelo tapete vermelho
+                      com seu robô/cartaz.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-30 min</span>
+                    <div class="minuto-descricao">
+                      Apresentações rápidas (1 minuto sobre projeto favorito).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">30-40 min</span>
+                    <div class="minuto-descricao">
+                      Momento ScratchJr: projeção de jogos criados.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">40-45 min</span>
+                    <div class="minuto-descricao">
+                      Dança do Loop Infinito: todos executam coreografia.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Entrega dos Certificados "Doutor(a) em Desbugação".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">50-55 min</span>
+                    <div class="minuto-descricao">
+                      Encerramento: discurso e foto.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>TEA:</strong> cantinho calmo ou desfile
+                      acompanhado.
+                    </li>
+                    <li>
+                      <strong>Def. física:</strong> cadeira de rodas enfeitada
+                      como veículo robótico.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i> <strong>Nota:</strong> Os
+                    certificados serão entregues na Semana 40.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 39 ==================== -->
+          <div class="accordion-item" data-semana="39">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana39">
+                🎲 Semana 39 -- Revisão Geral: Bingo dos Comandos
+              </button>
+            </h2>
+            <div id="semana39" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="39" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Revisar todos os conceitos do
+                      ano (algoritmo, loop, condicional) com bingo.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Vamos jogar Bingo dos
+                      Comandos! Quem completar a cartela grita 'BINGO
+                      ROBÓTICO!'"
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>(EF01MA01), (EF15CO01)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">🎫 Cartelas com imagens/palavras (sequência, loop,
+                      SE...ENTÃO, frente, trás, robô, bug, etc.)</span><span class="material-badge">🪙 Fichas para
+                      marcar</span><span class="material-badge">🎲 Saco com os termos</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Completa uma linha ou cartela inteira e sabe
+                            explicar o termo sorteado
+                          </td>
+                          <td>Memória Conceitual</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Dá pelo menos um exemplo de loop do cotidiano (ex:
+                            refrão de música, escovar dentes)
+                          </td>
+                          <td>Transferência de Aprendizado</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Participa da rodada bônus definindo um termo com
+                            suas palavras
+                          </td>
+                          <td>Autoavaliação Crítica</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-15 min</span>
+                    <div class="minuto-descricao">
+                      Preparação: cada aluno recebe cartela (ou desenha).
+                      Relembre termos.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-35 min</span>
+                    <div class="minuto-descricao">
+                      Partida de Bingo: sorteie termo, marcam. Primeiro a
+                      completar linha/cartela grita "BINGO!"
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Rodada bônus: "Defina o Termo" – aluno explica o termo
+                      sorteado.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Premiação: adesivos "Mestre da Revisão".
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>Dislexia:</strong> cartelas apenas com imagens.
+                    </li>
+                    <li>
+                      <strong>TDAH:</strong> cartelas menores (4 termos) e
+                      rodadas curtas.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase:</strong> "Bingo! Loop é repetir,
+                    condicional é escolher, e bug é para consertar!"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SEMANA 40 ==================== -->
+          <div class="accordion-item" data-semana="40">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana40">
+                🎓 Semana 40 -- Certificação "Doutor(a) em Desbugação" (Nível
+                Máster)
+              </button>
+            </h2>
+            <div id="semana40" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"><input type="checkbox" class="semana-check"
+                        data-semana="40" /><span>Marcar</span></label>
+                  </div>
+                  <ul>
+                    <li>
+                      <strong>Adulto:</strong> Celebrar fim do ano com
+                      certificação e reflexão.
+                    </li>
+                    <li>
+                      <strong>Criança:</strong> "Hoje vocês se formam em
+                      Robótica! Vamos receber o diploma e fazer o juramento de
+                      nunca ter medo de errar."
+                    </li>
+                  </ul>
+                  <h5>📚 Habilidades</h5>
+                  <p>Socioemocionais, (EI03CO09)</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge">📜 Diplomas impressos</span><span class="material-badge">🖊️
+                      Caneta</span><span class="material-badge">📸 Câmera</span><span class="material-badge">🍪
+                      Bolo/biscoitos (opcional)</span>
+                  </div>
+                  <h5>📊 Critérios Operacionais de Avaliação</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Desfila com o robô/cartaz com postura confiante e
+                            interage com a plateia
+                          </td>
+                          <td>Estilo de Tapete Vermelho</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Fala na roda da memória sobre o que aprendeu e de
+                            que mais gostou
+                          </td>
+                          <td>Reflexão Final</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Recebe o diploma com gratidão e participa do
+                            juramento
+                          </td>
+                          <td>Reação ao Certificado</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><strong>Total</strong></td>
+                          <td><strong>0-5 pts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      Roda da Memória: cada aluno fala o que aprendeu.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-20 min</span>
+                    <div class="minuto-descricao">
+                      Juramento do Programador: "Prometo nunca ter medo de
+                      errar..."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">20-35 min</span>
+                    <div class="minuto-descricao">
+                      Entrega dos Diplomas: chame cada aluno, aperte a mão,
+                      tire foto.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      Festa Robótica: biscoitos, música, dança do loop.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      Carta para o Futuro: desenho de um robô para o 2º ano.
+                      Abraço coletivo.
+                    </div>
+                  </div>
+                  <h5>♿ Adaptações</h5>
+                  <ul>
+                    <li>
+                      <strong>Inclusão total:</strong> todos recebem o mesmo
+                      diploma.
+                    </li>
+                  </ul>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Bônus (+1 BIP):</strong> Usar acessório robótico
+                    (chapéu de papel alumínio, antena) no desfile.
+                  </div>
+                  <div class="frase-do-dia mt-2">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Para encerrar:</strong> Professor(a) – você é um
+                    herói anônimo da cibernética escolar. Seus alunos agora
+                    sabem que programar é dar comandos com carinho. Agora
+                    desligue o computador e vá tomar um café. Você merece.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== JOGO DO BIMESTRE (VERSÃO REVISADA) ==================== -->
+    <section id="jogo-bimestre" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE: ROBÔ ARTISTA -
+          MANUTENÇÃO CRIATIVA
+        </h2>
+        <div class="badge-projeto">
+          Irreverente, inovador e cheio de BIP-BIP!
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p>
+          <strong>🤖 Contexto:</strong> O Robô Artista Zé está com problemas!
+          Ele precisa de manutenção (trocar pilha, limpar sensores) e depois
+          programar um desenho. Ajude-o clicando nos itens certos e escolhendo
+          comandos.
+        </p>
+
+        <div id="jogoRoboArtista" style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 20px;
+              justify-content: center;
+            ">
+          <!-- COLUDA ESQUERDA: SAÚDE DO ROBÔ -->
+          <div style="
+                flex: 1;
+                min-width: 250px;
+                background: #1e2a1a;
+                border-radius: 24px;
+                padding: 16px;
+                text-align: center;
+                border: 2px solid #ffb347;
+              ">
+            <h3><i class="bi bi-battery-charging"></i> Saúde do Robô</h3>
+            <div style="font-size: 5rem">🤖</div>
+            <div id="statusRoboNovo" style="
+                  background: #0a0f08;
+                  padding: 8px;
+                  border-radius: 40px;
+                  margin: 12px 0;
+                  font-family: monospace;
+                ">
+              🔋 Pilha: OK &nbsp;|&nbsp; 🧼 Limpeza: OK
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: center">
+              <button id="btnTrocarPilha" style="
+                    background: #ffb347;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 20px;
+                    font-weight: bold;
+                    cursor: pointer;
+                  ">
+                🔋 Trocar Pilha
+              </button>
+              <button id="btnLimparRobo" style="
+                    background: #ffb347;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 20px;
+                    font-weight: bold;
+                    cursor: pointer;
+                  ">
+                🧽 Limpar Robô
+              </button>
+            </div>
+            <div id="feedbackSaudeNovo" class="mt-2" style="font-style: italic; min-height: 50px"></div>
+          </div>
+
+          <!-- COLUNA DIREITA: PROGRAMAÇÃO DE ARTE -->
+          <div style="
+                flex: 1;
+                min-width: 300px;
+                background: #1e2a1a;
+                border-radius: 24px;
+                padding: 16px;
+                text-align: center;
+                border: 2px solid #ffb347;
+              ">
+            <h3><i class="bi bi-palette"></i> Programar Arte</h3>
+            <canvas id="canvasDesenhoNovo" width="250" height="250" style="
+                  border: 2px solid #ffb347;
+                  background: white;
+                  border-radius: 12px;
+                  margin-bottom: 12px;
+                "></canvas>
+            <div style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  justify-content: center;
+                ">
+              <button class="btn-comando-novo" data-comando="frente" style="
+                    background: #2c3e2b;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 16px;
+                    color: #ffb347;
+                    cursor: pointer;
+                  ">
+                ⬆️ Frente
+              </button>
+              <button class="btn-comando-novo" data-comando="tras" style="
+                    background: #2c3e2b;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 16px;
+                    color: #ffb347;
+                    cursor: pointer;
+                  ">
+                ⬇️ Trás
+              </button>
+              <button class="btn-comando-novo" data-comando="esquerda" style="
+                    background: #2c3e2b;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 16px;
+                    color: #ffb347;
+                    cursor: pointer;
+                  ">
+                ⬅️ Esquerda
+              </button>
+              <button class="btn-comando-novo" data-comando="direita" style="
+                    background: #2c3e2b;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 16px;
+                    color: #ffb347;
+                    cursor: pointer;
+                  ">
+                ➡️ Direita
+              </button>
+              <button class="btn-comando-novo" data-comando="limpar" style="
+                    background: #e74c3c;
+                    border: none;
+                    border-radius: 40px;
+                    padding: 8px 16px;
+                    color: white;
+                    cursor: pointer;
+                  ">
+                🗑️ Limpar Desenho
+              </button>
+            </div>
+            <div id="feedbackArteNovo" class="mt-2" style="min-height: 50px"></div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button id="btnResetJogoNovo" class="btn-robotico-ano2" style="
+                background: linear-gradient(95deg, #ffb347, #ff8c00);
+                border: none;
+                padding: 10px 24px;
+                border-radius: 60px;
+                font-weight: bold;
+                cursor: pointer;
+              ">
+            🔄 Reiniciar Jogo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CERTIFICADO (modelo_certificado.html adaptado) ==================== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 1º ANO
+          </h3>
+          <p class="lead">"Doutor(a) em Desbugação - Nível Máster"</p>
+        </div>
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>1º ANO - ROBÓTICA EDUCACIONAL</strong><br />Dominando os conceitos de:<br />🤖 Algoritmos e
+                  sequências<br />🔄 Loops e repetições<br />⚖️ Condicionais
+                  SE/ENTÃO/SENÃO<br />🎨 Robôs artistas e saúde robótica
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "Programar é dar comandos com carinho. E errar é só um bug
+                  esperando um abraço."
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 1.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn-robotico-ano2" disabled>
+                  🖨️ IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn-outline-warning" disabled>
+                  👁️ Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FECHAMENTO DO BIMESTRE (modelo_fechamento_bimestre.html adaptado) ==================== -->
+    <section id="adaptacoes-fechamento" class="mb-5">
+      <div class="card bg-light border-warning mt-4 shadow-sm card-fechamento-bimestre">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES E
+            INCLUSÃO -- EXEMPLOS PRÁTICOS PARA O BIMESTRE 4
+          </h5>
+          <h6 class="mt-3">📌 TEA (Transtorno do Espectro Autista)</h6>
+          <ul>
+            <li>
+              Gala com menos estímulos: Ofereça um "cantinho calmo" durante a
+              gala, com fones abafadores e um robô favorito.
+            </li>
+            <li>
+              Bingo visual: cartelas com imagens grandes e poucas opções (4 em
+              vez de 6).
+            </li>
+            <li>
+              Diploma individualizado: entregue em local mais reservado.
+            </li>
+          </ul>
+          <h6 class="mt-3">📌 TDAH</h6>
+          <ul>
+            <li>
+              Exposição com rodízio: divida a turma em pequenos grupos que se
+              revezam nas estações.
+            </li>
+            <li>
+              Bingo competitivo: use cronômetros e premie quem completar
+              primeiro.
+            </li>
+            <li>
+              Ensaio da coreografia: movimentos repetitivos ajudam a regular a
+              atenção.
+            </li>
+          </ul>
+          <h6 class="mt-3">📌 Deficiência Física (mobilidade reduzida)</h6>
+          <ul>
+            <li>Robô artista adaptado: base com rodas e alça longa.</li>
+            <li>Desfile na cadeira: enfeite a cadeira de rodas com luzes.</li>
+            <li>Bingo com ponteira de cabeça.</li>
+          </ul>
+          <h6 class="mt-3">📌 Deficiência Intelectual</h6>
+          <ul>
+            <li>
+              Revisão simplificada: no bingo, use apenas 4 termos: "frente",
+              "trás", "loop", "robô". Associe cada termo a um gesto.
+            </li>
+          </ul>
+          <p class="mb-0 mt-3 fst-italic">
+            “SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a
+            gente dança.”
+          </p>
+        </div>
+      </div>
+      <div class="bg-robocard p-3 rounded-4 mt-4 small">
+        <h5>
+          <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+        </h5>
+        <p>
+          BRASIL. Ministério da Educação.
+          <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC,
+          2018.<br />
+          PARANÁ. Secretaria de Estado da Educação.
+          <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
+            Iniciais</strong>. Curitiba: SEED/PR, 2018.<br />
+          BERS, M. U.
+          <strong>Beyond Computer Literacy: Supporting Youth's Positive Development
+            through Technology</strong>. In: Designing Digital Experiences for Positive Youth Development,
+          2012.<br />
+          PAPERT, S.
+          <strong>Mindstorms: Children, Computers, and Powerful Ideas</strong>. Basic Books, 1980.<br />
+          RESNICK, M.
+          <strong>Lifelong Kindergarten: Cultivating Creativity through Projects,
+            Passion, Peers, and Play</strong>. MIT Press, 2017.<br />
+          WARSCHAUER, M.
+          <strong>Tecnologia e inclusão social: a exclusão digital em
+            debate</strong>. São Paulo: Senac, 2006.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RODAPÉ REBELDE (modelo_rodape.html) ==================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a1bim4.js"></script>
+</body>
+
+</html>

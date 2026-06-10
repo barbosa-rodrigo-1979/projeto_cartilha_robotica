@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>
+    🤖 ROBOZADA 3000 | 3º Ano - Plano Anual Completo: Loop, Variável,
+    Depuração, Feira
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="modelo_css/modelo_index.css" />
+</head>
+
+<body class="bg-robotica">
+
+
+  <main class="container py-4">
+    <!-- INTRO COMPLETA -->
+    <section id="inicio" class="mb-5">
+      <div class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <p class="lead fw-bold text-gradient">
+              Ei, você aí, com a caneca de café já na segunda rodada e aquele
+              olhar de "será que loop é macarrão?".
+            </p>
+            <p>
+              Pode respirar fundo e dar um gole. Este material não é uma
+              apostila cinzenta. Isso aqui é um
+              <strong class="text-success">manual de sobrevivência para transformar sua sala de aula em
+                uma fábrica de repetições inteligentes</strong>, onde variáveis são bolsos mágicos e depurar é a maior
+              diversão.
+            </p>
+            <p>
+              <strong>Regra de platina:</strong> Se você não terminar a semana
+              com pelo menos uma história absurda pra contar no recreio, você
+              não seguiu o plano. Vamos destruir o tédio.
+            </p>
+            <p>
+              <strong>Regra de diamante:</strong> Se um aluno disser "não
+              errei nada", você responde: "então você não aprendeu nada hoje".
+            </p>
+            <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+              <i class="bi bi-bug-fill"></i> <strong>Caça aos bugs</strong> –
+              aqui o erro é o maior professor. Loop não é macarrão!
+            </div>
+          </div>
+          <div class="col-md-3 text-center">
+            <i class="bi bi-cup-straw display-1 text-warning flutuar"></i>
+            <i class="bi bi-robot display-1 text-success flutuar"></i>
+            <div class="card-bug-hunter p-2 mt-3">
+              <small><i class="bi bi-bug"></i> Caçador de Bugs Nível 3</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARTA DE ABERTURA -->
+    <section id="carta" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper"></i> 🧙‍♂️ CARTA DE ABERTURA PARA VOCÊ,
+          PROFESSOR
+        </h2>
+        <div class="badge-projeto">
+          Leia em voz alta (de preferência com um capacete de orelhas de robô
+          feito de caixa de pizza)
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <blockquote class="blockquote fs-5 fst-italic text-center">
+          <p>
+            "Repita comigo, e repita até seus alunos ouvirem do outro lado da
+            quadra:
+          </p>
+          <p>
+            <strong>LOOP NÃO É MACARRÃO!</strong><br />
+            <strong>VARIÁVEL NÃO É COISA DE VELHO!</strong><br />
+            <strong>DEPURAR NÃO É XINGAMENTO!</strong><br />
+            <strong>ROBÔ AUTORAL NÃO É BRINQUEDO DE RICO!</strong>"
+          </p>
+        </blockquote>
+        <p>
+          Você não é um mero entregador de conteúdo. Você é um AGITADOR DE
+          MENTES, um ARQUITETO DO CAOS PEDAGÓGICO e um ENGENHEIRO DE PEQUENOS
+          GÊNIOS.
+        </p>
+        <p>
+          Esquece o material que parece saído de um livro didático dos anos
+          90. Esquece a aula que começa com "abram o caderno na página 10".
+          Esquece o medo de errar.
+        </p>
+        <p>
+          <strong>Aqui, errar é combustível. Gritar é ferramenta. Bagunça
+            organizada é método.</strong>
+        </p>
+        <p>Neste manual, você vai encontrar:</p>
+        <ul>
+          <li>40 planos de aula (um para cada semana do ano)</li>
+          <li>
+            Minuto a minuto (porque tempo perdido é inimigo da inovação)
+          </li>
+          <li>Critérios operacionais (como avaliar sem teste chato)</li>
+          <li>
+            Adaptações para TODOS (TEA, TDAH, deficiência física, altas
+            habilidades)
+          </li>
+          <li>
+            Jogos por bimestre (descrições detalhadas para você criar ou
+            mandar a IA gerar)
+          </li>
+          <li>
+            Músicas, certificados, checklists, glossários (o pacote completo)
+          </li>
+          <li>
+            Tom extremo (porque aprender com tédio é crime contra a
+            humanidade)
+          </li>
+        </ul>
+        <p class="mt-3">
+          <strong>Agora aperte o cinto, coloca a música do Super Mario no talo e
+            vem comigo. O futuro da robótica educacional te chama. E ele está
+            PUT* DA CARA com material conservador. 🤖💥🎓</strong>
+        </p>
+      </div>
+    </section>
+    <!-- MAPA BNCC -->
+    <section id="mapa" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 📊 MAPEAMENTO COMPLETO DE HABILIDADES
+          BNCC E RCP-PR POR BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Do loop à variável: a tabela abaixo é o seu mapa do tesouro.
+        </div>
+      </div>
+
+      <!-- BIMESTRE 1 -->
+      <h3 class="text-warning mt-4 mb-3">🤖 BIMESTRE 1 - A DANÇA DO LOOP</h3>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered table-hover">
+          <thead style="background-color: #b1cf9a">
+            <tr>
+              <th>Como vamos usar</th>
+              <th>Componente</th>
+              <th>Habilidade</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Coreografia humana, labirinto de repetição</td>
+              <td>Matemática (EF03MA10)</td>
+              <td>Identificar regularidades em sequências</td>
+              <td>Aluno percebe que `repita 3 vezes` é um padrão</td>
+            </tr>
+            <tr>
+              <td>Construção de torre, desenho de polígonos</td>
+              <td>Matemática (EF03MA11)</td>
+              <td>Compreender ideia de repetição e progressão</td>
+              <td>Loop como estrutura que repete blocos</td>
+            </tr>
+            <tr>
+              <td>Escrita de comandos, manual do robô</td>
+              <td>LP (EF03LP13)</td>
+              <td>Ler e compreender textos instrucionais</td>
+              <td>Algoritmo como receita</td>
+            </tr>
+            <tr>
+              <td>Cartões de código, fita de algoritmo</td>
+              <td>LP (EF03LP18)</td>
+              <td>Produzir listas de ações</td>
+              <td>Sequenciar comandos em ordem</td>
+            </tr>
+            <tr>
+              <td>Vídeos, exemplos, construção de sucata</td>
+              <td>Ciências (EF03CI01)</td>
+              <td>Identificar artefatos do cotidiano</td>
+              <td>Robôs como solução de problemas</td>
+            </tr>
+            <tr>
+              <td>Scratch Jr, Code.org</td>
+              <td>CG4</td>
+              <td>Linguagens digitais</td>
+              <td>Primeiro contato com código</td>
+            </tr>
+            <tr>
+              <td>Todas as atividades</td>
+              <td>CG5</td>
+              <td>Pensamento computacional</td>
+              <td>Decomposição, abstração, algoritmo</td>
+            </tr>
+            <tr>
+              <td>Danças, labirintos, torres</td>
+              <td>RCP-PR (p.32-35)</td>
+              <td>Programação desplugada</td>
+              <td>Sem tela, com corpo e sucata</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BIMESTRE 2 -->
+      <h3 class="text-warning mt-5 mb-3">
+        🔢 BIMESTRE 2 - CONTADORES MÁGICOS
+      </h3>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered table-hover">
+          <thead style="background-color: #b1cf9a">
+            <tr>
+              <th>Como vamos usar</th>
+              <th>Componente</th>
+              <th>Habilidade</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prendedor na régua, placar do jogo</td>
+              <td>Matemática (EF03MA10)</td>
+              <td>Regularidades numéricas</td>
+              <td>Variável que aumenta/diminui</td>
+            </tr>
+            <tr>
+              <td>Corrida com velocidade variável</td>
+              <td>Matemática (EF03MA11)</td>
+              <td>Progressão aritmética</td>
+              <td>Incremento constante dentro do loop</td>
+            </tr>
+            <tr>
+              <td>Receita de bolo bugada</td>
+              <td>LP (EF03LP13)</td>
+              <td>Texto instrucional</td>
+              <td>Algoritmo com variável</td>
+            </tr>
+            <tr>
+              <td>Cartões de código com variável</td>
+              <td>LP (EF03LP18)</td>
+              <td>Listas de ações</td>
+              <td>Comandos com valor mutável</td>
+            </tr>
+            <tr>
+              <td>Construção do varal numérico</td>
+              <td>Ciências (EF03CI01)</td>
+              <td>Artefatos simples</td>
+              <td>Placar físico (prendedor + régua)</td>
+            </tr>
+            <tr>
+              <td>Desenhos, músicas, animações</td>
+              <td>CG4</td>
+              <td>Linguagens digitais</td>
+              <td>Scratch Jr com variável</td>
+            </tr>
+            <tr>
+              <td>Todas as atividades</td>
+              <td>CG5</td>
+              <td>Pensamento computacional</td>
+              <td>Variável como abstração de memória</td>
+            </tr>
+            <tr>
+              <td>Desafios digitais</td>
+              <td>RCP-PR (p.36-38)</td>
+              <td>Scratch Jr, variáveis simples</td>
+              <td>Primeira programação com memória</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- BIMESTRE 3 -->
+      <h3 class="text-warning mt-5 mb-3">
+        🐛 BIMESTRE 3 - DETETIVES DE BUGS
+      </h3>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered table-hover">
+          <thead style="background-color: #b1cf9a">
+            <tr>
+              <th>Como vamos usar</th>
+              <th>Componente</th>
+              <th>Habilidade</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Caça ao tesouro, pista de teste</td>
+              <td>Matemática (EF03MA22)</td>
+              <td>Localização e representação</td>
+              <td>Mapear erros no espaço/tempo</td>
+            </tr>
+            <tr>
+              <td>Receitas bugadas, manuais errados</td>
+              <td>LP (EF03LP13)</td>
+              <td>Texto instrucional</td>
+              <td>Identificar erro em receitas</td>
+            </tr>
+            <tr>
+              <td>Manual de montagem depurado</td>
+              <td>LP (EF03LP18)</td>
+              <td>Listas de ações</td>
+              <td>Reordenar etapas trocadas</td>
+            </tr>
+            <tr>
+              <td>Robôs de sucata com defeito</td>
+              <td>Ciências (EF03CI01)</td>
+              <td>Artefatos simples</td>
+              <td>Bugs físicos (roda quadrada, braço invertido)</td>
+            </tr>
+            <tr>
+              <td>Projetos bugados pré-carregados</td>
+              <td>CG4</td>
+              <td>Linguagens digitais</td>
+              <td>Depuração no Scratch Jr</td>
+            </tr>
+            <tr>
+              <td>Checklist, prontuário, caça ao erro</td>
+              <td>CG5</td>
+              <td>Pensamento computacional</td>
+              <td>Depuração sistemática</td>
+            </tr>
+            <tr>
+              <td>Grito "ACHEI!", competição de bugs</td>
+              <td>RCP-PR (p.39-41)</td>
+              <td>Depuração sistemática</td>
+              <td>Erro como oportunidade</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BIMESTRE 4 -->
+      <h3 class="text-warning mt-5 mb-3">
+        🚀 BIMESTRE 4 - PROJETO ROBÔ AUTORAL
+      </h3>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered table-hover">
+          <thead style="background-color: #b1cf9a">
+            <tr>
+              <th>Como vamos usar</th>
+              <th>Componente</th>
+              <th>Habilidade</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mapa da feira, pista de demonstração</td>
+              <td>Matemática (EF03MA22)</td>
+              <td>Localização</td>
+              <td>Posicionar robô na feira</td>
+            </tr>
+            <tr>
+              <td>Dança, entrega, repetição de ações</td>
+              <td>Matemática (EF03MA10)</td>
+              <td>Regularidades</td>
+              <td>Loop no robô autoral</td>
+            </tr>
+            <tr>
+              <td>Placar, velocidade, pontuação</td>
+              <td>Matemática (EF03MA11)</td>
+              <td>Progressão</td>
+              <td>Variável no protótipo</td>
+            </tr>
+            <tr>
+              <td>Folha A4 com instruções</td>
+              <td>LP (EF03LP13)</td>
+              <td>Texto instrucional</td>
+              <td>Manual do usuário</td>
+            </tr>
+            <tr>
+              <td>Fita de código permanente</td>
+              <td>LP (EF03LP18)</td>
+              <td>Listas de ações</td>
+              <td>Algoritmo colado no robô</td>
+            </tr>
+            <tr>
+              <td>Caixas, garrafas, tampinhas</td>
+              <td>Ciências (EF03CI01)</td>
+              <td>Artefatos simples</td>
+              <td>Protótipo de sucata</td>
+            </tr>
+            <tr>
+              <td>Vídeo, cartaz, slides</td>
+              <td>CG4</td>
+              <td>Linguagens digitais</td>
+              <td>Apresentação digital</td>
+            </tr>
+            <tr>
+              <td>Feira de robótica</td>
+              <td>CG5</td>
+              <td>Pensamento computacional</td>
+              <td>Integração total</td>
+            </tr>
+            <tr>
+              <td>Evento aberto com certificados</td>
+              <td>RCP-PR (p.42-45)</td>
+              <td>Autoria, feira, projeto integrador</td>
+              <td>Produto final para comunidade</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-2 fst-italic text-warning">
+        <i class="bi bi-info-circle"></i> *OBS: O RCP-PR alinha-se
+        completamente com a BNCC para os anos iniciais, aprofundando as
+        competências de tecnologia e computação.
+      </p>
+    </section>
+
+    <!-- PLANO ANUAL 40 SEMANAS -->
+    <section id="plano-anual" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-range"></i> 📅 PLANO ANUAL COMPLETO (40
+          SEMANAS SEM RESMO)
+        </h2>
+        <div class="badge-projeto">
+          Sem "segue padrão" - cada semana uma aventura diferente
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered table-robotica">
+          <thead style="background-color: #b1cf9a">
+            <tr>
+              <th>Atividade Monstro</th>
+              <th>Sem</th>
+              <th>Bim</th>
+              <th>Título da Aula (Clickbait Pedagógico)</th>
+              <th>Conceito Estrela</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Coreografia humana com `repita X vezes`</td>
+              <td>1</td>
+              <td>1</td>
+              <td>Loop Infinito: Vamos repetir até a diretora aparecer</td>
+              <td>Introdução ao loop</td>
+            </tr>
+            <tr>
+              <td>Labirinto humano com loops condicionais</td>
+              <td>2</td>
+              <td>1</td>
+              <td>Repetição é a mãe da paciência (e da depuração)</td>
+              <td>Padrões e sequências</td>
+            </tr>
+            <tr>
+              <td>Criação de coreografia com loop e desvio</td>
+              <td>3</td>
+              <td>1</td>
+              <td>Coreografia do Robô: Se você erra, nós dançamos juntos</td>
+              <td>Algoritmo de dança</td>
+            </tr>
+            <tr>
+              <td>Construção de torre seguindo algoritmo coletivo</td>
+              <td>4</td>
+              <td>1</td>
+              <td>Máquinas Humanas: A fábrica de repetição</td>
+              <td>Cooperação e loop</td>
+            </tr>
+            <tr>
+              <td>Coleta de objetos em tapete quadriculado</td>
+              <td>5</td>
+              <td>1</td>
+              <td>Robô do Chão: A invasão cartesiana</td>
+              <td>Coordenadas e loops</td>
+            </tr>
+            <tr>
+              <td>Caça ao erro com algoritmos impressos e gritos</td>
+              <td>6</td>
+              <td>1</td>
+              <td>Depuração no Grito: Caçada ao Loop Zumbi</td>
+              <td>Erros comuns de loop</td>
+            </tr>
+            <tr>
+              <td>Criação de casas com comandos loop</td>
+              <td>7</td>
+              <td>1</td>
+              <td>Mestre dos Magos: Tabuleiro das Repetições</td>
+              <td>Jogo de tabuleiro com loops</td>
+            </tr>
+            <tr>
+              <td>Construção de instrumento + partitura com loops</td>
+              <td>8</td>
+              <td>1</td>
+              <td>Cartão Musical: O Ritmo do Loop</td>
+              <td>Ritmo e repetição</td>
+            </tr>
+            <tr>
+              <td>Saída de labirinto usando apenas loops</td>
+              <td>9</td>
+              <td>1</td>
+              <td>Labirinto do Loop Infinito (Desafio Final)</td>
+              <td>Integração de loops</td>
+            </tr>
+            <tr>
+              <td>Jogo da memória + certificados "Mestre do Loop"</td>
+              <td>10</td>
+              <td>1</td>
+              <td>Loop e Memória: A Revisão do Mestre</td>
+              <td>Revisão geral e gamificada</td>
+            </tr>
+            <tr>
+              <td>Balde de bolinhas + copo etiquetado</td>
+              <td>11</td>
+              <td>2</td>
+              <td>Variável: O Bolso Mágico do Robô</td>
+              <td>Definição de variável</td>
+            </tr>
+            <tr>
+              <td>Coreografia contadora + tabela de previsão</td>
+              <td>12</td>
+              <td>2</td>
+              <td>Loop e Variável: A Dança do Incremento</td>
+              <td>Relação loop-variável</td>
+            </tr>
+            <tr>
+              <td>Jogo "Pegue o Queijo" com bombons</td>
+              <td>13</td>
+              <td>2</td>
+              <td>Caça ao Tesouro de Chocolate</td>
+              <td>Acumulação de pontos</td>
+            </tr>
+            <tr>
+              <td>Desenho de polígonos no Scratch Jr ou papel</td>
+              <td>14</td>
+              <td>2</td>
+              <td>O Robô Artista</td>
+              <td>Variável controlando tamanho/lados</td>
+            </tr>
+            <tr>
+              <td>Caça aos 5 loops infinitos + dramatização</td>
+              <td>15</td>
+              <td>2</td>
+              <td>Loop Infinito e Variável Descontrolada</td>
+              <td>Bugs de loop infinito</td>
+            </tr>
+            <tr>
+              <td>Construção de varal numérico + criação de jogo</td>
+              <td>16</td>
+              <td>2</td>
+              <td>Projeto: Placar do Jogo</td>
+              <td>Variável física (prendedor na régua)</td>
+            </tr>
+            <tr>
+              <td>Desafios Code.org Curso C + criação de cena</td>
+              <td>17</td>
+              <td>2</td>
+              <td>Programação Plugada: Code.org</td>
+              <td>Aplicação digital de loops e variáveis</td>
+            </tr>
+            <tr>
+              <td>Caça aos bugs no Scratch Jr + checklist</td>
+              <td>18</td>
+              <td>2</td>
+              <td>Depuração Digital: Scratch Jr</td>
+              <td>Bugs no ambiente digital</td>
+            </tr>
+            <tr>
+              <td>Piano online + partitura-loop</td>
+              <td>19</td>
+              <td>2</td>
+              <td>Máquina de Som com Variável</td>
+              <td>Variável controlando nota/volume</td>
+            </tr>
+            <tr>
+              <td>Corrida com variável de velocidade</td>
+              <td>20</td>
+              <td>2</td>
+              <td>Desafio Final: Corrida de Robôs</td>
+              <td>Integração loop + variável (velocidade)</td>
+            </tr>
+            <tr>
+              <td>Teatro de fantoches + caça aos bugs individuais</td>
+              <td>21</td>
+              <td>3</td>
+              <td>Bug ou Feature? Depurando com Bom Humor</td>
+              <td>Diferença entre erro e comportamento inesperado</td>
+            </tr>
+            <tr>
+              <td>Prontuário do detetive + competição</td>
+              <td>22</td>
+              <td>3</td>
+              <td>O Detetive de Bugs: Investigando o Loop Suspeito</td>
+              <td>Tipos de bug de loop (nanico, gigante, zumbi)</td>
+            </tr>
+            <tr>
+              <td>Criação coletiva da checklist + aplicação guiada</td>
+              <td>23</td>
+              <td>3</td>
+              <td>Checklist da Depuração: Passo a Passo do Detetive</td>
+              <td>Rotina sistemática de depuração</td>
+            </tr>
+            <tr>
+              <td>Robô com defeito (troca direita/esquerda, anda o dobro)</td>
+              <td>24</td>
+              <td>3</td>
+              <td>Jogo do Robô Avariado</td>
+              <td>Depuração em equipe com robô humano bugado</td>
+            </tr>
+            <tr>
+              <td>Criação de guia ilustrado para programadores iniciantes</td>
+              <td>25</td>
+              <td>3</td>
+              <td>Projeto: Manual do Detetive de Bugs</td>
+              <td>Texto instrucional e compartilhamento</td>
+            </tr>
+            <tr>
+              <td>
+                Caça a bugs em receitas culinárias e manuais de montagem
+              </td>
+              <td>26</td>
+              <td>3</td>
+              <td>Depurando o Mundo Real</td>
+              <td>Transferência para receitas, manuais, mapas</td>
+            </tr>
+            <tr>
+              <td>Caça ao tesouro com 5 pistas, cada uma com um bug</td>
+              <td>27</td>
+              <td>3</td>
+              <td>Caça ao Tesouro dos Bugs</td>
+              <td>Resolução de quebra-cabeça com pistas bugadas</td>
+            </tr>
+            <tr>
+              <td>Correção de algoritmos de anos anteriores com erros</td>
+              <td>28</td>
+              <td>3</td>
+              <td>Robô Arqueólogo</td>
+              <td>Depuração de algoritmos "antigos"</td>
+            </tr>
+            <tr>
+              <td>Conserto de robôs de papelão com defeitos físicos</td>
+              <td>29</td>
+              <td>3</td>
+              <td>Depuração com Sucata</td>
+              <td>Bugs físicos vs lógicos</td>
+            </tr>
+            <tr>
+              <td>Algoritmo com 3 bugs para encontrar e corrigir</td>
+              <td>30</td>
+              <td>3</td>
+              <td>Desafio Final: Depuração em Duas Rodas</td>
+              <td>Integração total (loop, variável, depuração)</td>
+            </tr>
+            <tr>
+              <td>Chuva de ideias em papel metro + esboço inicial</td>
+              <td>31</td>
+              <td>4</td>
+              <td>Brainstorm: O Que Meu Robô Vai Fazer?</td>
+              <td>Geração de ideias, escopo de projeto</td>
+            </tr>
+            <tr>
+              <td>Desenho em papel quadriculado + escrita do código</td>
+              <td>32</td>
+              <td>4</td>
+              <td>Esboço e Algoritmo: A Planta do Robô</td>
+              <td>Desenho técnico + algoritmo estruturado</td>
+            </tr>
+            <tr>
+              <td>Montagem da estrutura com caixas, garrafas, tampinhas</td>
+              <td>33</td>
+              <td>4</td>
+              <td>Construção Parte 1: Estrutura do Robô</td>
+              <td>Habilidades manuais, sucata criativa</td>
+            </tr>
+            <tr>
+              <td>Instalação do placar móvel + loop físico</td>
+              <td>34</td>
+              <td>4</td>
+              <td>Construção Parte 2: Mecanismos de Loop e Variável</td>
+              <td>Mecanismos físicos (prendedor, régua, roldana)</td>
+            </tr>
+            <tr>
+              <td>Fita de código com cartões + testes</td>
+              <td>35</td>
+              <td>4</td>
+              <td>Programação do Robô (Plugado ou Desplugado)</td>
+              <td>Tradução do algoritmo para cartões/digital</td>
+            </tr>
+            <tr>
+              <td>Batalha de robôs amigável + checklist</td>
+              <td>36</td>
+              <td>4</td>
+              <td>Testes e Depuração do Projeto</td>
+              <td>Identificação de bugs físicos e lógicos</td>
+            </tr>
+            <tr>
+              <td>Produção de cartazes + ensaio da apresentação</td>
+              <td>37</td>
+              <td>4</td>
+              <td>Preparação para a Feira de Robótica</td>
+              <td>Comunicação, cartazes, manuais</td>
+            </tr>
+            <tr>
+              <td>Apresentação para outra turma + ajustes</td>
+              <td>38</td>
+              <td>4</td>
+              <td>Feira de Robótica Ensaio Geral</td>
+              <td>Feedback com convidados internos</td>
+            </tr>
+            <tr>
+              <td>Evento aberto com pais, professores e gestão</td>
+              <td>39</td>
+              <td>4</td>
+              <td>Feira de Robótica - O Grande Dia</td>
+              <td>Apresentação para a comunidade</td>
+            </tr>
+            <tr>
+              <td>Roda de memórias + certificados + spoiler do 4º ano</td>
+              <td>40</td>
+              <td>4</td>
+              <td>Celebração e Reflexão: O Ano do Loop</td>
+              <td>Autoavaliação, fechamento emocional</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- CRITÉRIOS DE AVALIAÇÃO -->
+    <section id="avaliacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4">
+        <h3>🤖 CRITÉRIOS DE AVALIAÇÃO - ANO LETIVO COMPLETO</h3>
+        <p>
+          <em>(ou: "Como saber se seu pequeno programador merece um abraço, uma
+            palma ou um conserto emergencial")</em>
+        </p>
+        <div class="alert alert-warning">
+          <i class="bi bi-exclamation-triangle"></i> Nota importante antes de
+          começar: Ninguém tira nota vermelha aqui. No máximo, a gente declara
+          Estado de Bug Grave e conserta rindo. A avaliação é diagnóstica,
+          processual e absurdamente afetiva. O que vale é a tentativa, a
+          evolução e a cara de "EU ENTENDI" quando a luz acende.
+        </div>
+
+        <h4>🧠 Metodologia de Avaliação (o esqueleto invisível)</h4>
+        <p>Cada aula terá 3 níveis de sucesso robótico:</p>
+        <div class="table-responsive">
+          <table class="table tabela-niveis">
+            <thead>
+              <tr>
+                <th>O que significa</th>
+                <th>Nível</th>
+                <th>Código</th>
+                <th>Nome intuitivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="nivel-ninja">
+                <td>
+                  Executou sem erro, ajudou colegas, ainda deu palpite genial
+                </td>
+                <td>⭐⭐⭐</td>
+                <td>EXECUTADO</td>
+                <td>Robô Ninja</td>
+              </tr>
+              <tr class="nivel-aprendiz">
+                <td>Errou, mas corrigiu sozinho ou com ajuda mínima</td>
+                <td>⭐⭐</td>
+                <td>DEPURADO</td>
+                <td>Robô Aprendiz</td>
+              </tr>
+              <tr class="nivel-tontinho">
+                <td>
+                  Errou, precisou de ajuda, mas tentou (e isso já é vitória)
+                </td>
+                <td>⭐</td>
+                <td>EM BUG</td>
+                <td>Robô Tontinho</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Ninguém recebe <code>BUG TOTAL</code> a menos que tenha dormido
+          dentro do robô de papelão. Aí a gente conversa.
+        </p>
+
+        <h4 class="mt-4">📋 Critérios Específicos por Bimestre</h4>
+        <div class="row mt-3">
+          <div class="col-md-6 mb-3">
+            <div class="card bg-dark text-white border-warning h-100">
+              <div class="card-header bg-warning text-dark fw-bold">
+                Bimestre 1 - Loop
+              </div>
+              <div class="card-body">
+                <ul class="small">
+                  <li>⭐ Identifica padrões de repetição em sequências</li>
+                  <li>
+                    ⭐⭐ Executa comandos de loop em atividades desplugadas
+                  </li>
+                  <li>
+                    ⭐⭐⭐ Cria coreografias e algoritmos com loops de forma
+                    autônoma
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card bg-dark text-white border-warning h-100">
+              <div class="card-header bg-warning text-dark fw-bold">
+                Bimestre 2 - Variável
+              </div>
+              <div class="card-body">
+                <ul class="small">
+                  <li>
+                    ⭐ Compreende que variáveis armazenam valores que mudam
+                  </li>
+                  <li>
+                    ⭐⭐ Utiliza variáveis em jogos e contadores físicos
+                  </li>
+                  <li>
+                    ⭐⭐⭐ Cria projetos no Scratch Jr usando variáveis de
+                    forma criativa
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card bg-dark text-white border-warning h-100">
+              <div class="card-header bg-warning text-dark fw-bold">
+                Bimestre 3 - Depuração
+              </div>
+              <div class="card-body">
+                <ul class="small">
+                  <li>⭐ Identifica erros simples em algoritmos</li>
+                  <li>⭐⭐ Corrige bugs com auxílio de checklist</li>
+                  <li>⭐⭐⭐ Depura algoritmos complexos e ajuda colegas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card bg-dark text-white border-warning h-100">
+              <div class="card-header bg-warning text-dark fw-bold">
+                Bimestre 4 - Projeto Autoral
+              </div>
+              <div class="card-body">
+                <ul class="small">
+                  <li>⭐ Participa da construção do robô coletivo</li>
+                  <li>
+                    ⭐⭐ Contribui com ideias e executa partes do algoritmo
+                  </li>
+                  <li>
+                    ⭐⭐⭐ Apresenta o projeto na feira com domínio dos
+                    conceitos
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICAÇÃO -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 3º ANO
+          </h3>
+          <p class="lead">"MESTRE DO LOOP, VARIÁVEL E DEPURAÇÃO"</p>
+        </div>
+
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" style="
+                      font-size: 18px;
+                      display: block;
+                      margin: 10px 0;
+                      color: #2c5e1f;
+                      background: #fff0cc;
+                      padding: 8px;
+                      border-radius: 40px;
+                    ">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                  Dominando os conceitos de:<br />
+                  🔁 <strong>LOOP</strong> (repetição inteligente)<br />
+                  📦 <strong>VARIÁVEL</strong> (o bolso mágico do robô)<br />
+                  🐛 <strong>DEPURAÇÃO</strong> (caça aos bugs)<br />
+                  🤖 <strong>PROJETO AUTORAL</strong> (Robô de Sucata)
+                </p>
+                <hr style="border-color: #ffb347" />
+                <p style="font-size: 12px">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p style="font-size: 11px; font-style: italic">
+                  "Loop não é macarrão! Variável não é coisa de velho! Depurar
+                  não é xingamento!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 3.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label>
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 200px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+          por folha). As cores serão preservadas na impressão. Utilize papel
+          sulfite A4 e configure a impressão para "Colorido" e "Margens
+          padrão".
+        </div>
+      </div>
+    </section>
+
+    <!-- ENCERRAMENTO -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-4 rounded-4 text-center">
+          <h3>⚡ PARA ENCERRAR O ANO COM CHAVE DE OURO</h3>
+          <p>
+            Então, professor(a), como foi essa jornada de 40 semanas? Você
+            ainda está com a caneca de café? O material é seu. Pode raspar,
+            pode colar, pode errar. A robótica, assim como a infância, é um
+            eterno LOOP com variável de diversão.
+          </p>
+          <p>
+            <em>SE o robô não andar, ENTÃO a gente declara "Dia do Bug", SENÃO
+              a gente dança.<br />
+              SE uma criança chorar, ENTÃO a gente abraça e pergunta qual
+              comando erramos, SENÃO a gente celebra.</em>
+          </p>
+          <p>
+            <strong>Até a próxima aventura, comandante! O 4º ano te espera com
+              desafios ainda mais irados!</strong>
+          </p>
+          <div class="selo-sucata mt-3 d-inline-block">
+            🤖 BUGS ESMAGADOS: 3.141 🤖
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="modelo_js/modelo_index.js"></script>
+</body>
+
+</html>

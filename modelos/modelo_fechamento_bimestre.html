@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>🤖 Fechamento do Bimestre | 3º Ano | Loop Dash + Adaptações</title>
+    <!-- Bootstrap 5 + Icons + Fontes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS específico do modelo de fechamento -->
+    <link rel="stylesheet" href="modelo_css/modelo_fechamento_bimestre.css" />
+  </head>
+
+  <body class="bg-robotica">
+    <main class="container my-4">
+      <!-- ==================================================
+         ADAPTAÇÕES ESPECÍFICAS BIMESTRE 1
+         ================================================== -->
+      <section id="adaptacoes" class="mb-5">
+        <div class="card bg-light border-warning mt-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
+              ESPECÍFICAS BIMESTRE 1 (Caos Acessível para Todos)
+            </h5>
+
+            <h6 class="mt-3">📌 Para TEA (Transtorno do Espectro Autista)</h6>
+            <ul>
+              <li>
+                Use checklist visual com etapas (1. Ouvir, 2. Repetir, 3.
+                Colar).
+              </li>
+              <li>
+                Prefira ritmos musicais previsíveis para os loops (evite
+                barulhos abruptos).
+              </li>
+              <li>
+                Na caça ao tesouro (semana 5), ofereça um mapa simplificado e
+                sem obstáculos surpresa.
+              </li>
+              <li>Permita que o aluno use abafador de ruído se necessário.</li>
+            </ul>
+
+            <h6 class="mt-3">📌 Para TDAH (Déficit de Atenção)</h6>
+            <ul>
+              <li>
+                Timer explosivo: use cronômetro de 5-7 minutos para cada bloco e
+                um sino estridente para marcar a troca.
+              </li>
+              <li>
+                Hiperfoco recompensado: o aluno que terminar o algoritmo
+                primeiro pode ser o "líder do loop" do grupo.
+              </li>
+              <li>
+                Divida as atividades em partes curtas com recompensas imediatas
+                (adesivo a cada etapa concluída).
+              </li>
+            </ul>
+
+            <h6 class="mt-3">📌 Para Deficiência Física</h6>
+            <ul>
+              <li>
+                Comando por voz: o aluno pode ser o "programador-mor" e ditar os
+                comandos `repita` para os colegas executarem.
+              </li>
+              <li>
+                Para o labirinto humano (semana 2), o aluno pode ser o "leitor
+                do algoritmo" em vez de andar.
+              </li>
+              <li>
+                Use robôs de chão (tipo Beebot) em um tapete adaptado para
+                alunos com limitação motora nos membros superiores.
+              </li>
+            </ul>
+
+            <h6 class="mt-3">📌 Para Altas Habilidades</h6>
+            <ul>
+              <li>
+                Loopception (Loop aninhado): Desafie-os a criar `repita 3 vezes
+                { repita 2 vezes { pular } }`.
+              </li>
+              <li>
+                Tutor de robótica: Peça que criem um tutorial em vídeo
+                explicando o conceito de loop para alunos do 2º ano.
+              </li>
+              <li>
+                Desafio extra: criar um algoritmo que desenha um polígono de 12
+                lados (calcular o ângulo sozinho).
+              </li>
+            </ul>
+
+            <p class="mb-0 mt-3 fst-italic">
+              “SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a
+              gente dança.”
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================
+         JOGO DO BIMESTRE 1: LOOP DASH - VERSÃO CARTOONS
+         A CORRIDA DOS COMANDOS REPETIDOS (SEM DIGITAR CÓDIGO!)
+         ================================================== -->
+      <section id="jogo-loopdash" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE 1: LOOP DASH
+          </h2>
+          <div class="badge-projeto">
+            A Corrida dos Comandos Repetidos - Monte seu algoritmo com cartões!
+          </div>
+        </div>
+
+        <!-- Descrição do Jogo -->
+        <div class="bg-robocard p-4 rounded-4 mb-4">
+          <h4>
+            <i class="bi bi-info-circle-fill"></i> LOOP DASH - A CORRIDA DOS
+            COMANDOS REPETIDOS
+          </h4>
+          <p>
+            <strong>🤖 Contexto:</strong> Loop Dash é um jogo onde você controla
+            um robozinho que só pode se mover usando comandos de
+            <strong class="text-warning">REPITA</strong>. O objetivo é chegar ao
+            final da pista usando o MENOR número de cartões possível!
+          </p>
+          <p>
+            <strong>🎯 Público-alvo:</strong> Alunos do 3º ano (individual ou
+            duplas)
+          </p>
+          <p>
+            <strong>💡 Conceito estrela:</strong> Loop como otimização de código
+            (menos cartões = mais eficiência)
+          </p>
+
+          <h5 class="mt-3">
+            📜 Regras do Jogo (Versão CARTOONS - sem digitar!):
+          </h5>
+          <ol>
+            <li>
+              <strong>🏁 Pista de 3 fases:</strong> RETA → ZIGUE-ZAGUE →
+              OBSTÁCULOS
+            </li>
+            <li>
+              <strong>🎴 Monte seu algoritmo:</strong> Clique nos cartões de
+              comando para construir a sequência
+            </li>
+            <li>
+              <strong>🔁 Regra de ouro:</strong> Use o cartão
+              <strong class="text-success">REPITA</strong> para repetir ações -
+              NADA de comandos soltos!
+            </li>
+            <li>
+              <strong>🏆 Pontuação:</strong> Quem usar MENOS cartões vence!
+              (Menos linhas = mais pontos)
+            </li>
+            <li>
+              <strong>🐛 Bug e penalidade:</strong> Se o robô bater num
+              obstáculo, você tem que DEPURAR (trocar cartões)
+            </li>
+            <li>
+              <strong>🌟 Bônus criativo:</strong> Usar um REPITA dentro de outro
+              = título <strong>"Mestre do Loopception"</strong> + estrela
+              dourada!
+            </li>
+          </ol>
+        </div>
+
+        <!-- Área do Jogo Loop Dash - Versão Cartões -->
+        <div class="simulador-comandos p-4 rounded-4 text-center">
+          <h3 class="text-warning">
+            🤖 LOOP DASH – MONTE SEU ALGORITMO COM CARTOES! 🃏
+          </h3>
+
+          <!-- Indicador de Fase -->
+          <div class="mb-4">
+            <div class="btn-group flex-wrap" role="group">
+              <button
+                type="button"
+                class="btn btn-phase fase1-btn"
+                data-fase="1"
+              >
+                🏁 FASE 1: RETA <span class="badge bg-success">FÁCIL</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-phase fase2-btn"
+                data-fase="2"
+              >
+                🔄 FASE 2: ZIGUE-ZAGUE
+                <span class="badge bg-warning text-dark">MÉDIO</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-phase fase3-btn"
+                data-fase="3"
+              >
+                🧱 FASE 3: OBSTÁCULOS
+                <span class="badge bg-danger">DIFÍCIL</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Visualização da Pista -->
+          <div class="loopdash-pista-visual mb-4">
+            <div class="pista-label">
+              <i class="bi bi-map-fill"></i> PISTA ATUAL:
+              <span id="faseNomeAtual" class="text-warning">RETA</span>
+              <span id="faseIconeAtual">🏁</span>
+            </div>
+            <div id="loopdashGrid" class="loopdash-grid"></div>
+          </div>
+
+          <!-- Estatísticas do Jogo -->
+          <div class="row mt-3 justify-content-center g-2">
+            <div class="col-md-3 col-6">
+              <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-label">CARTOES USADOS</div>
+                <div class="stat-value" id="loopdashCartoes">0</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-label">MELHOR MARCA</div>
+                <div class="stat-value" id="loopdashMelhor">--</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-label">STATUS</div>
+                <div class="stat-value" id="loopdashStatus">PRONTO</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-label">BÔNUS</div>
+                <div class="stat-value" id="loopdashBonus">---</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÁREA DE MONTAGEM DO ALGORITMO -->
+          <div class="algoritmo-builder mt-4">
+            <div class="builder-header">
+              <i class="bi bi-grid-3x3-gap-fill"></i> SEU ALGORITMO (clique nos
+              cartões abaixo)
+              <button
+                class="btn-clear-algoritmo"
+                id="btnLimparAlgoritmo"
+                title="Limpar todos os cartões"
+              >
+                <i class="bi bi-trash3-fill"></i> LIMPAR TUDO
+              </button>
+            </div>
+            <div id="algoritmoMontado" class="algoritmo-montado">
+              <div class="placeholder-algoritmo" id="placeholderAlgoritmo">
+                🃏 Clique nos cartões abaixo para montar seu algoritmo...
+              </div>
+            </div>
+          </div>
+
+          <!-- PRATELEIRA DE CARTOES DE COMANDO -->
+          <div class="cartoes-prateleira mt-4">
+            <div class="cartoes-header">
+              <i class="bi bi-card-list"></i> CARTOES DE COMANDO (clique para
+              adicionar)
+              <span class="regra-destaque"
+                >🔁 REGRA DE OURO: Use REPITA para repetir ações!</span
+              >
+            </div>
+            <div class="cartoes-grid" id="cartoesGrid">
+              <div class="cartao-comando" data-comando="ande1">
+                <div class="cartao-icone">🚶</div>
+                <div class="cartao-texto">ANDE 1</div>
+                <div class="cartao-desc">1 passo pra frente</div>
+              </div>
+              <div class="cartao-comando" data-comando="ande2">
+                <div class="cartao-icone">🏃</div>
+                <div class="cartao-texto">ANDE 2</div>
+                <div class="cartao-desc">2 passos pra frente</div>
+              </div>
+              <div class="cartao-comando" data-comando="vireDireita">
+                <div class="cartao-icone">▶️</div>
+                <div class="cartao-texto">VIRE DIREITA</div>
+                <div class="cartao-desc">90° pra direita</div>
+              </div>
+              <div class="cartao-comando" data-comando="vireEsquerda">
+                <div class="cartao-icone">◀️</div>
+                <div class="cartao-texto">VIRE ESQUERDA</div>
+                <div class="cartao-desc">90° pra esquerda</div>
+              </div>
+              <div class="cartao-comando cartao-especial" data-comando="repita">
+                <div class="cartao-icone">🔄</div>
+                <div class="cartao-texto">REPITA</div>
+                <div class="cartao-desc">
+                  Repetir ações (clique e depois adicione comandos dentro)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Painel de Controles -->
+          <div class="botoes-painel mt-4">
+            <button class="btn-executar" id="btnExecutarLoopDash">
+              <i class="bi bi-play-fill"></i> EXECUTAR ROBÔ!
+            </button>
+            <button class="btn-resetar" id="btnResetLoopDash">
+              <i class="bi bi-arrow-repeat"></i> REINICIAR ROBÔ
+            </button>
+            <button class="btn-dica" id="btnDicaLoopDash">
+              <i class="bi bi-lightbulb-fill"></i> DICA MALUCA
+            </button>
+            <button class="btn-exemplo" id="btnExemploLoopDash">
+              <i class="bi bi-stars"></i> ALGORITMO EXEMPLO
+            </button>
+          </div>
+
+          <!-- Mensagem do Jogo -->
+          <div id="loopdashMensagem" class="mensagem-jogo mt-3">
+            <i class="bi bi-robot"></i>
+            <span
+              >🏁 Selecione uma fase e monte seu algoritmo clicando nos cartões!
+              Lembre-se: use REPITA para repetir ações!</span
+            >
+          </div>
+
+          <!-- Recordes por Fase -->
+          <div class="recordes-painel mt-4">
+            <div class="recordes-header">
+              <i class="bi bi-trophy-fill"></i> RECORDES DE CADA FASE (menos
+              cartões = melhor!)
+            </div>
+            <div class="recordes-grid">
+              <div class="recorde-card fase1-recorde">
+                <div class="recorde-fase">🏁 FASE 1 - RETA</div>
+                <div class="recorde-valor" id="recordeFase1">---</div>
+                <div class="recorde-unidade">cartões</div>
+              </div>
+              <div class="recorde-card fase2-recorde">
+                <div class="recorde-fase">🔄 FASE 2 - ZIGUE-ZAGUE</div>
+                <div class="recorde-valor" id="recordeFase2">---</div>
+                <div class="recorde-unidade">cartões</div>
+              </div>
+              <div class="recorde-card fase3-recorde">
+                <div class="recorde-fase">🧱 FASE 3 - OBSTÁCULOS</div>
+                <div class="recorde-valor" id="recordeFase3">---</div>
+                <div class="recorde-unidade">cartões</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legenda -->
+          <div class="legenda-pista mt-3">
+            <span class="legenda-item"
+              ><span class="badge-robot">🤖</span> ROBÔ</span
+            >
+            <span class="legenda-item"
+              ><span class="badge-flag">🏁</span> CHEGADA</span
+            >
+            <span class="legenda-item"
+              ><span class="badge-path">⬜</span> PISTA</span
+            >
+            <span class="legenda-item"
+              ><span class="badge-obstacle">🧱</span> OBSTÁCULO</span
+            >
+            <span class="legenda-item"
+              ><span class="badge-loop">🔄</span> REPITA (loop)</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================
+         REFERÊNCIAS BIBLIOGRÁFICAS
+         ================================================== -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="bg-robocard p-3 rounded-4 small">
+            <h5>
+              <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+            </h5>
+            <p>
+              BRASIL. Ministério da Educação.
+              <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC,
+              2018.<br />
+              PARANÁ. Secretaria de Estado da Educação.
+              <strong
+                >Referencial Curricular do Paraná: Ensino Fundamental Anos
+                Iniciais</strong
+              >. Curitiba: SEED/PR, 2018.<br />
+              RESNICK, M.
+              <strong
+                >Jardim de Infância para a Vida Toda: Como a Programação e a
+                Criatividade Transformam a Educação</strong
+              >. Porto Alegre: Penso, 2020.<br />
+              WING, J. M. Pensamento Computacional: Um Conceito Fundamental para
+              o Século XXI. <strong>Revista Brasileira de Computação</strong>,
+              Porto Alegre, v. 12, n. 2, p. 10-14, 2017.<br />
+              BERS, M. U.
+              <strong
+                >Beyond Computer Literacy: Supporting Children's Learning in
+                Robotics</strong
+              >. [S.l.]: MIT Press, 2022.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="modelo_js/modelo_fechamento_bimestre.js"></script>
+  </body>
+</html>

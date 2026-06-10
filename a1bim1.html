@@ -1,0 +1,2499 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 1º Ano - 1º Bimestre | Robótica Educacional | A Dança dos Comandos</title>
+  <!-- Bootstrap 5 + Icons + Fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS orquestrador -->
+  <link rel="stylesheet" href="css/a1bim1.css" />
+</head>
+
+<body class="bg-robotica">
+
+  <!-- ==================================================
+       CABEÇALHO ROBÓTICO REBELDE
+       ================================================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src='https://placehold.co/80x80?text=RB'">
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 1º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 1º BIMESTRE: A DANÇA DOS COMANDOS! ⚡<br>
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src='https://placehold.co/80x80?text=GN'">
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================================================
+   MENU GLASSMORPHISM 
+   ================================================== -->
+
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a1index.html">
+        <i class="bi bi-robot"></i> 1º Ano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="a1index.html">
+              <i class="bi bi-house-door-fill"></i> Principal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1index.html">
+              <i class="bi bi-house-door-fill"></i> 1° ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim1.html">
+              <i class="bi bi-1-circle-fill"></i> 1º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim2.html">
+              <i class="bi bi-2-circle-fill"></i> 2º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim3.html">
+              <i class="bi bi-3-circle-fill"></i> 3º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1bim4.html">
+              <i class="bi bi-4-circle-fill"></i> 4º bimestre
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- ==================================================
+         CARTA DE ABERTURA DO BIMESTRE
+         ================================================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Leia com um apito na boca e um capacete de papelão na cabeça
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          "Prestem atenção, pequenos programadores! Vocês estão prestes a entrar no mundo mágico da ROBÓTICA!
+          Hoje vocês vão aprender o comando mais PODEROSO da programação: o ALGORITMO! Repita comigo:
+          ALGORITMO É RECEITA! ALGORITMO É SEQUÊNCIA! ALGORITMO É PODER!"
+        </p>
+        <p class="carta-texto mt-3">
+          Professor, prepare-se para uma jornada de 10 semanas cheia de movimentos, danças, construções e muita
+          diversão!
+          Neste bimestre, vamos transformar sua sala em um LABORATÓRIO DE ROBÔS LOUCOS. Vamos pular, girar,
+          andar pra frente e pra trás, construir robôs de papelão, criar sanduíches malucos e muito mais!
+        </p>
+        <p class="carta-texto mt-3">
+          Nada de caderno parado. Nada de "copiar do quadro". Nada de tédio. Aqui, o corpo é o primeiro robô.
+          O chão é o primeiro tapete de programação. O grito é a primeira mensagem de depuração.
+        </p>
+        <p class="carta-texto mt-3 fw-bold">
+          Regra de ouro do bimestre: Se você não ouvir pelo menos um aluno gritar "ACHEI O BUG!" em todas as aulas,
+          você não está sendo barulhento o suficiente.
+        </p>
+        <p class="carta-texto mt-3">
+          Agora respira fundo, coloca uma música que tenha batida repetitiva e vamos nessa! 🎧🤖💥
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         MAPEAMENTO BIMESTRE 1 - HABILIDADES BNCC/RCP-PR
+         ================================================== -->
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 1 - A DANÇA DOS COMANDOS
+        </h2>
+        <div class="badge-projeto">
+          RCP-PR · Programação desplugada · Sequências e Algoritmos
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Habilidades BNCC (Matemática)</th>
+              <th>Habilidades BNCC (LP)</th>
+              <th>Habilidades BNCC (Outras)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Dança dos Comandos!</td>
+              <td>EI03CO02</td>
+              <td>EF01LP16</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Labirinto do Robô-Foca</td>
+              <td>EF01MA12</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>A Grande Corrida das Formas</td>
+              <td>EF01MA13, EF01MA09</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Construindo o Robô Zé de Papelão</td>
+              <td>EF01MA13</td>
+              <td>EF01LP17</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>O Robô Cozinheiro</td>
+              <td>EI03CO02</td>
+              <td>EF12LP03</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Missão: Pegar o Brinquedo</td>
+              <td>EF01MA12</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>A Hora da História Robotizada</td>
+              <td>-</td>
+              <td>EF01LP16, EF12LP07</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Dança dos Padrões</td>
+              <td>EF01MA09</td>
+              <td>-</td>
+              <td>EI03CO01</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Siga o Mestre Robô (Revisão)</td>
+              <td>EF01MA12</td>
+              <td>-</td>
+              <td>EI03CO01, EI03CO02</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Projeto: O Robô Artista</td>
+              <td colspan="3">Síntese de todas as habilidades</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- ==================================================
+         PLANO SINTÉTICO (Semanas 1 a 10)
+         ================================================== -->
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 1 - PLANO SINTÉTICO (Semanas 1 a 10)
+        </h2>
+        <div class="badge-projeto">10 semanas de pura criação e programação desplugada</div>
+      </div>
+
+      <!-- Barra de Progresso do Professor -->
+      <div class="progress-container mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span><i class="bi bi-robot"></i> Progresso do Bimestre (marque as aulas concluídas)</span>
+          <span id="progressoTexto">0/10</span>
+        </div>
+        <div class="progress" style="height: 30px; border-radius: 30px; background-color: #1e2a1a;">
+          <div id="barraProgresso" class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+            style="width: 0%; color: #1e2a1a; font-weight: bold; border-radius: 30px;">
+            0%
+          </div>
+        </div>
+        <div class="mt-2 text-center">
+          <button id="expandirTodosBtn" class="btn btn-sm btn-outline-warning me-2">
+            <i class="bi bi-arrows-expand"></i> Expandir Todos os Planos
+          </button>
+          <button id="recolherTodosBtn" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrows-collapse"></i> Recolher Todos
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabela Resumo do Bimestre -->
+      <div class="table-responsive mb-4">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Conceito Estrela</th>
+              <th>Atividade Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Dança dos Comandos!</td>
+              <td>Algoritmo como sequência finita de ações</td>
+              <td>Coreografia robótica em duplas</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Labirinto do Robô-Foca</td>
+              <td>Localização espacial (direita/esquerda)</td>
+              <td>Labirinto humano com comandos</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>A Grande Corrida das Formas</td>
+              <td>Classificação e seriação</td>
+              <td>Separação de figuras geométricas</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Construindo o Robô Zé de Papelão</td>
+              <td>Pensamento de design</td>
+              <td>Construção de robô com sucata</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>O Robô Cozinheiro</td>
+              <td>Ordem em sequência (algoritmo)</td>
+              <td>Montagem de sanduíche de papel</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Missão: Pegar o Brinquedo</td>
+              <td>Comandos de movimento com obstáculos</td>
+              <td>Programação em grid humano</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>A Hora da História Robotizada</td>
+              <td>Estrutura narrativa (começo/meio/fim)</td>
+              <td>Criação de história coletiva</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Dança dos Padrões</td>
+              <td>Padrões de repetição (loops)</td>
+              <td>Coreografia e sequências visuais</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Siga o Mestre Robô (Revisão)</td>
+              <td>Consolidação de conceitos</td>
+              <td>Circuito de estações</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Projeto: O Robô Artista</td>
+              <td>Projeto autoral</td>
+              <td>Construção de robô que desenha</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         INÍCIO DOS PLANOS DE AULA DETALHADOS (ACCORDION)
+         ================================================== -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS -- BIMESTRE 1
+        </h2>
+        <div class="badge-projeto">
+          Prepare a bagunça organizada. As primeiras 10 semanas são sobre construir a base!
+        </div>
+      </div>
+
+      <div class="accordion" id="accordionAulas">
+        <!-- ==================== SEMANA 1 ==================== -->
+        <div class="accordion-item" data-semana="1">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana1">
+              🕺 Semana 1 -- Missão: Dança dos Comandos!
+            </button>
+          </h2>
+          <div id="semana1" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="1" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Introduzir o conceito de algoritmo como uma sequência finita de ações. Desenvolver a capacidade de
+                  seguir e executar instruções em ordem.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Hoje vamos ensinar um robô dançarino! Vamos dar comandos para ele mexer braços, pernas e cabeça
+                    na ordem certa."</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EI03CO02), (EF01LP16).</p>
+
+                <h5>🧰 Materiais (Fáceis e baratos)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-music-note-beamed"></i> Playlist animada (QR Code no
+                    final)</span>
+                  <span class="material-badge"><i class="bi bi-robot"></i> Apenas o corpo!</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de comando (opcional)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Bagunça controlada e "Algoritmo do Tchau"</strong> - Sentem no chão. Pergunte: "Quem sabe o
+                    que faz um robô?" Anote as ideias no quadro. Depois, faça um combinado: <em>"Toda vez que eu disser
+                      'ALGORITMO', vamos todos bater palma e gritar 'RECEITA DA AÇÃO!'"</em> Dê o exemplo: peça que deem
+                    "tchau" (1: levantar a mão; 2: abrir os dedos; 3: mexer). Pronto, vocês acabaram de executar um
+                    algoritmo!
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aprendendo a Dança do Robô Desengonçado</strong> - Coloque uma música. Ensine uma sequência
+                    de 4 movimentos: (1) mão na cabeça; (2) mão no ombro; (3) mão no joelho; (4) pé no chão. Faça junto
+                    algumas vezes.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Eu programo, você dança (Duplas)</strong> - Divida em duplas. Um é o "programador" (diz a
+                    sequência), o outro é o "robô" (executa). O programador escolhe 3 movimentos da coreografia para o
+                    robô executar. Ex: "cabeça, joelho, pé".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Troca de papéis</strong> - As duplas trocam os papéis. Incentive o programador a variar a
+                    ordem dos movimentos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Roda de Conversa e o "Termômetro da Programação"</strong> - Sente no chão e converse: "Como
+                    foi dar comandos? Como foi ser robô? O robô acertou todos os comandos?".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação Lúdica</strong> - Cada aluno desenha o rosto de um robô (feliz, neutro, triste)
+                    conforme a quantidade de acertos da dupla.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA/TDAH:</strong> Use cartões de comandos (desenho de uma mão, pé, cabeça) para o
+                    programador entregar ao robô, evitando sobrecarga verbal.</li>
+                  <li><strong>Deficiência Física:</strong> Adapte os comandos para movimentos possíveis (piscar olhos,
+                    sorrir, franzir a testa). O "programador" pode tocar a parte do corpo que deseja que o robô mexa.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Precisa de repetição</td>
+                        <td>Executa 3 comandos em sequência</td>
+                        <td>Sim, sem hesitar</td>
+                        <td>Sim, com 1 erro</td>
+                      </tr>
+                      <tr>
+                        <td>Precisa de modelo</td>
+                        <td>Alterna papéis (programador/robô)</td>
+                        <td>Faz os dois com fluência</td>
+                        <td>Faz, mas confunde um pouco</td>
+                      </tr>
+                      <tr>
+                        <td>Fala "não sei" mas tenta</td>
+                        <td>Participa da roda de conversa</td>
+                        <td>Fala sobre acertos E bugs</td>
+                        <td>Fala só o que funcionou</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico no "Diário do Robô Aventureiro"</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô fazendo piscada dupla e mostrando o bíceps</li>
+                  <li>⭐⭐ → Robô com um parafuso solto na cabeça mas sorrindo</li>
+                  <li>⭐ → Robô com fumaça saindo da orelha e um balão: "BUGUEI, MAS TÔ AQUI"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Meu robô bugou, mas meu coração não."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 2 ==================== -->
+        <div class="accordion-item" data-semana="2">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana2">
+              🦭 Semana 2 -- Labirinto do Robô-Foca
+            </button>
+          </h2>
+          <div id="semana2" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="2" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Trabalhar a localização espacial e os conceitos de direita e esquerda a partir de um ponto de
+                  referência.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos ajudar o Robô-Foca, que só anda para frente, a encontrar o caminho para sua bolinha! Temos
+                    que dar os comandos certos!"</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01MA12).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-brush"></i> Giz ou fita crepe</span>
+                  <span class="material-badge"><i class="bi bi-circle"></i> Uma bolinha de papel ou bexiga</span>
+                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Venda (opcional)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aquecimento "Comandos Corporais"</strong> - Peça que todos fiquem em pé. Brinque de "Robô,
+                    dê um passo para a DIREITA!" (mostre). "Robô, dê um passo para a ESQUERDA!". Repita várias vezes.
+                    Use um avental ou prenda um adesivo no lado direito de todos para ajudar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construindo o Labirinto</strong> - No chão, desenhe com giz um caminho reto de 4 metros com
+                    curvas simples. Ou use fita crepe para delimitar as laterais. Cole a bolinha no final. Delimite um
+                    quadrado de 1m de lado para ser a "CASA" do Robô-Foca no início.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programando o Robô-Foca (Professor é Robô)</strong> - Explique que você será o Robô-Foca. As
+                    crianças darão comandos: "DIREITA", "ESQUERDA", "FRENTE". Use um passo de bebê (30 cm) como unidade.
+                    Se o comando for errado, o Robô-Foca pode bater no giz e você faz um barulho de "BEEP -- ERROU!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Operação Resgate (Grupos)</strong> - Divida em 3 grupos. Cada grupo tem 2 minutos para
+                    programar o Robô-Foca (que agora pode ser um voluntário) até a bolinha. O grupo que chegar mais
+                    perto em menos comandos vence.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>O "Diário do Robô Aventureiro"</strong> - Entregue uma folha com um quadriculado. Peça que
+                    desenhem o caminho que o robô fez usando setas (↑ para frente, → para direita, ← para esquerda).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Roda e Autoavaliação</strong> - "Vocês acham que o Robô-Foca aprendeu os caminhos? O que foi
+                    mais difícil?"
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA/TDAH:</strong> Para o aluno programador, use cartões com setas grandes. Cada vez que
+                    ele der um comando, ele entrega o cartão para o "robô".</li>
+                  <li><strong>Deficiência Física:</strong> Um aluno pode ser o "locutor" (dizer o comando) e outro pode
+                    ser o "braço" (movimentar o robô de verdade).</li>
+                  <li><strong>Inclusão de baixa visão:</strong> Use pisos táteis (ou cordas) para delimitar o labirinto
+                    e guias sonoros (ex: sininho para direita, chocalho para esquerda).</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Confunde 2+ vezes</td>
+                        <td>Usa direita/esquerda/frente</td>
+                        <td>Sem confusão</td>
+                        <td>Confunde 1 vez</td>
+                      </tr>
+                      <tr>
+                        <td>Não alcança, mas tenta</td>
+                        <td>Alcança a bolinha</td>
+                        <td>Sim, em até 6 comandos</td>
+                        <td>Sim, em mais comandos</td>
+                      </tr>
+                      <tr>
+                        <td>Acerta 1-2 setas</td>
+                        <td>Registro com setas</td>
+                        <td>Acerta todas as setas</td>
+                        <td>Acerta 3-4 setas</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Foca fazendo joia (🤙) com a nadadeira</li>
+                  <li>⭐⭐ → Foca com óculos de nerd e um mapa do lado</li>
+                  <li>⭐ → Foca dando de cara no giz com estrelinhas na cabeça</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Errei direita, esquerda, mas acertei a vontade de tentar."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 3 ==================== -->
+        <div class="accordion-item" data-semana="3">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana3">
+              🔺 Semana 3 -- A Grande Corrida das Formas
+            </button>
+          </h2>
+          <div id="semana3" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="3" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Desenvolver a habilidade de classificação e seriação, identificando atributos como cor, tamanho e
+                  forma.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos ajudar os robôs de formato geométrico a encontrar suas casas! Mas eles são muito
+                    bagunceiros e estão todos misturados!"</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01MA13), (EF01MA09).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-square"></i> Figuras geométricas (círculo, quadrado,
+                    triângulo, retângulo) em EVA ou cartolina</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Duas cores (azul e vermelho)</span>
+                  <span class="material-badge"><i class="bi bi-arrows-angle-expand"></i> Dois tamanhos (grande e
+                    pequeno)</span>
+                  <span class="material-badge"><i class="bi bi-box"></i> 4 caixas de sapato identificadas com as
+                    formas</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Siga o Robô Mestre"</strong> - Coloque uma música. Você faz um movimento (ex: braços para o
+                    alto, formando um círculo). As crianças copiam. Depois troque para uma forma de quadrado (braços
+                    retos para os lados). Traga o pensamento geométrico para o movimento.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentando os Robôs de Papel</strong> - Mostre as figuras geométricas. Diga: "Estes são os
+                    Robôs-Geometrix. Eles são superpoderosos, mas muito desorganizados. Precisamos separá-los por time:
+                    o time do círculo, o time do quadrado..."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20 min</span>
+                  <div class="minuto-descricao">
+                    <strong>1º Desafio -- Classificação Simples</strong> - Misture todas as figuras no centro da roda.
+                    Desafie a turma a colocar cada robô na sua caixa correspondente (forma).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-30 min</span>
+                  <div class="minuto-descricao">
+                    <strong>2º Desafio -- Classificação por Tamanho e Cor</strong> - Agora, dentro de cada caixa, peça
+                    que organizem do menor para o maior. Depois, peça que separem por cor.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construindo um Robô-Geometrix Humano</strong> - Divida a turma em 4 grupos. Cada grupo deve
+                    se deitar no chão e, juntos, formar uma das formas geométricas (um círculo, um quadrado). Tire uma
+                    foto de cima da "escultura robótica".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro e "Medalha dos Bugs Esmagados"</strong> - Entregue uma folha com as quatro formas.
+                    Peça que colem (ou desenhem) robôs pequenos em cada forma, respeitando um padrão que você definir
+                    (ex: "dentro do círculo, colem robôs vermelhos; dentro do quadrado, robôs azuis").
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TDAH:</strong> Atividades curtas e com mudança de comando ("agora, todos para a caixa do
+                    círculo!") mantêm o foco.</li>
+                  <li><strong>Deficiência Física:</strong> Use ímãs nas figuras e uma superfície metálica para que
+                    alunos com dificuldade motora possam deslizar as figuras sem precisar pegá-las.</li>
+                  <li><strong>Altas Habilidades:</strong> Desafie o aluno a criar uma regra de classificação nova (ex:
+                    "figuras que têm 4 cantos e as que têm 0 canto").</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Atributo parcial</td>
+                        <td>Classifica por cor/tamanho/forma</td>
+                        <td>2 atributos certos</td>
+                        <td>1 atributo certo</td>
+                      </tr>
+                      <tr>
+                        <td>Participa passivamente</td>
+                        <td>Forma humana geométrica</td>
+                        <td>Ajuda a formar + explica a forma</td>
+                        <td>Participa, mas não explica</td>
+                      </tr>
+                      <tr>
+                        <td>Completa com ajuda</td>
+                        <td>Completa padrão visual</td>
+                        <td>Completa 2 padrões</td>
+                        <td>Completa 1 padrão</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô com capuz de mago e uma fórmula no peito: "🔴+🔵=❤️"</li>
+                  <li>⭐⭐ → Robô com um olho maior que o outro e uma régua torta</li>
+                  <li>⭐ → Robô todo desmontado com legenda: "Estou em partes, mas inteiro de vontade"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Até formas erradas podem virar robôs lindos."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 4 ==================== -->
+        <div class="accordion-item" data-semana="4">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana4">
+              📦 Semana 4 -- Construindo o Robô Zé de Papelão
+            </button>
+          </h2>
+          <div id="semana4" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="4" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Estimular a criatividade e o pensamento de design (projetar antes de construir). Trabalhar
+                  coordenação motora e noção de encaixe.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos construir nosso próprio amigo robô, o Zé! Ele será nosso parceiro de aventuras pelo resto
+                    do ano."</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01MA13), (EF01LP17).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-box-seam"></i> Caixas de papelão de diferentes tamanhos
+                    (caixas de sapato, de leite, de remédio)</span>
+                  <span class="material-badge"><i class="bi bi-scissors"></i> Fita adesiva colorida, cola, tesoura sem
+                    ponta</span>
+                  <span class="material-badge"><i class="bi bi-grid"></i> Botões, tampinhas, palitos de picolé, papel
+                    alumínio, canetinhas</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"O Robô Zé Apareceu!"</strong> - Apareça com um robô já montado (pode ser um amontoado de
+                    caixas). Apresente: "Este é o Zé. Ele é nosso ajudante, mas ele está muito triste porque está
+                    sozinho."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento ("Projeto Robô")</strong> - Peça que cada aluno desenhe em uma folha o robô que
+                    ele quer construir. Onde será a cabeça? Os olhos serão de botão?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mão na Massa -- Construção</strong> - Distribua os materiais. Circule ajudando a fixar as
+                    caixas. Incentive o uso de fita adesiva para criar articulações (ex: braços que mexem).<br>
+                    <em>Momento do Abraço no Erro</em>: Se a cabeça cair, diga: "Olha um bug! Nosso Zé está com
+                    vertigem. Vamos colar de novo com mais fita?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Batismo dos Robôs</strong> - Cada aluno apresenta seu robô. Dá um nome para ele e diz uma
+                    característica especial (ex: "O meu se chama Comedor de Pipoca. Ele come 1000 pipocas por
+                    segundo!").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Arrumação Lúdica</strong> - "Robô Zé, dê o comando para guardar os materiais: primeiro,
+                    tesouras na caixa azul; segundo, sobras de papelão na lixeira reciclável; terceiro, sentem no
+                    lugar."
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Ofereça um robô já pré-montado para que o aluno foque apenas na
+                    personalização com adesivos e canetas, se a montagem for muito desafiadora.</li>
+                  <li><strong>Deficiência Física:</strong> Use materiais de encaixe (como blocos de montar) em vez de
+                    tesoura e cola. O aluno pode usar a boca ou a mão com apoio para encaixar.</li>
+                  <li><strong>TDAH:</strong> Estabeleça um cronômetro visível para cada etapa (5 min de planejamento, 20
+                    min de construção, etc.).</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Rabisco com formato</td>
+                        <td>Planejamento (desenho)</td>
+                        <td>Robô com 4+ partes</td>
+                        <td>Robô com 2-3 partes
+                      </tr>
+                      <tr>
+                        <td>Robô desmonta, mas cola de novo</td>
+                        <td>Construção</td>
+                        <td>Robô montado e em pé</td>
+                        <td>Robô montado, meio caído
+                      </tr>
+                      <tr>
+                        <td>Fala o nome</td>
+                        <td>Apresentação</td>
+                        <td>Nome + característica absurda</td>
+                        <td>Nome + característica simples
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Criança e robô tomando café de caneca furada</li>
+                  <li>⭐⭐ → Criança segurando a cabeça do robô que caiu</li>
+                  <li>⭐ → Criança abraçando um monte de caixa solta com sorriso</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Meu robô caiu 7 vezes. Na oitava, ele ficou em pé. Eu também."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 5 ==================== -->
+        <div class="accordion-item" data-semana="5">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana5">
+              🥪 Semana 5 -- O Robô Cozinheiro (ou Bagunceiro?)
+            </button>
+          </h2>
+          <div id="semana5" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="5" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Compreender a importância da ordem em uma sequência (algoritmo). Relacionar comandos de robô com
+                  instruções de uma receita.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos ensinar o robô a fazer um sanduíche. Mas cuidado: se a ordem for errada, ele pode colocar
+                    o queijo antes do pão!"</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EI03CO02), (EF12LP03).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-basket"></i> Pranchas de isopor (ou folhas de papel) com
+                    figuras de ingredientes de sanduíche (pão, queijo, presunto, alface)</span>
+                  <span class="material-badge"><i class="bi bi-emoji-smile"></i> Nenhum alimento real (para evitar
+                    bagunça e alergias)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Receita Maluca"</strong> - Pergunte: "Quem sabe fazer um sanduíche?". Anote os passos que
+                    eles falam no quadro, na ordem. Provavelmente vai sair "pão, manteiga, queijo..." -- está ótimo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Modelagem -- Você é o robô</strong> - Você é o robô cozinheiro. Coloque na mesa as figuras
+                    dos ingredientes. As crianças dão os comandos na ordem que acham certa. Você executa literalmente.
+                    Se eles disserem "passa manteiga" antes de "abrir o pão", rasgue a folha do pão sem abrir.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Corrida do Sanduíche Perfeito</strong> - Divida em duplas. Cada dupla recebe um conjunto de
+                    figuras. O desafio: colocar as figuras na ordem correta para fazer um sanduíche. A primeira dupla
+                    que finalizar, levanta a mão e "programa" você (o robô) para verificar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>O Robô Inventor</strong> - Desafie as duplas a criarem uma receita maluca (ex: "Sanduíche de
+                    Banana com Chocolate"). Eles devem desenhar os ingredientes e escrever (ou ditar) os comandos em
+                    ordem.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação das Receitas</strong> - Cada dupla apresenta seu robô e sua receita para a
+                    turma.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revisão e "Certificado de Ajudante de Cozinha"</strong> - Reforce: "Um algoritmo é uma
+                    receita. A ordem dos ingredientes (comandos) é super importante!"
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Use cartões de PECS (Picture Exchange Communication System) para o aluno
+                    montar a sequência visualmente.</li>
+                  <li><strong>Dislexia:</strong> Use apenas figuras grandes e bem definidas, sem texto. O foco é a
+                    sequência lógica, não a leitura.</li>
+                  <li><strong>Deficiência Intelectual:</strong> Ofereça uma sequência modelo já pronta (ex: uma imagem
+                    do sanduíche montado) para que o aluno apenas copie a ordem.</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2+ erros, mas ri do resultado</td>
+                        <td>Ordem do sanduíche</td>
+                        <td>Correta (ou criativa com sentido)</td>
+                        <td>Quase correta (1 erro)
+                      </tr>
+                      <tr>
+                        <td>1 etapa + criatividade</td>
+                        <td>Cria receita maluca</td>
+                        <td>3+ etapas em ordem</td>
+                        <td>2 etapas
+                      </tr>
+                      <tr>
+                        <td>Mostra com ajuda</td>
+                        <td>Apresenta para turma</td>
+                        <td>Fala claro + gestos</td>
+                        <td>Fala, mas baixo
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Sanduíche com olhos de parafuso e antena de palito</li>
+                  <li>⭐⭐ → Sanduíche mordido por um robô com pegadas</li>
+                  <li>⭐ → Sanduíche de cabeça pra baixo com legenda: "BUGOU, MAS TÁ GOSTOSO"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"O queijo veio antes do pão. Aprendi que ordem importa. E que erro também vira história."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 6 ==================== -->
+        <div class="accordion-item" data-semana="6">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana6">
+              🧸 Semana 6 -- Missão: Pegar o Brinquedo
+            </button>
+          </h2>
+          <div id="semana6" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="6" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Programar um robô (uma criança voluntária) com comandos de movimento para atingir um objetivo (pegar
+                  um brinquedo), lidando com obstáculos.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Nosso robô precisa pegar o urso de pelúcia lá no canto, mas tem uma cadeira no caminho! Vamos
+                    dar os comandos certos."</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01MA12).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Fita crepe para delimitar
+                    "xadrez" no chão (quadrados de 40x40 cm)</span>
+                  <span class="material-badge"><i class="bi bi-teddy"></i> Um brinquedo (urso, bola) em uma
+                    extremidade</span>
+                  <span class="material-badge"><i class="bi bi-chair"></i> Uma cadeira como obstáculo</span>
+                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Venda (opcional)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revisão de Comandos</strong> - Rápida dança dos comandos da semana 1: "Qual o comando para
+                    frente? (passo). Para a direita? (passo). Para a esquerda? (passo)."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentando o Tabuleiro Humano</strong> - Mostre o grid de fita crepe no chão. Explique:
+                    cada quadrado é um "passo de robô". Posicione um voluntário no início e o brinquedo no final.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Programa em Ação"</strong> - Um aluno é o programador, o voluntário é o robô (pode ser
+                    vendado para aumentar a imersão). O programador dá comandos: "2 passos para frente", "1 passo para
+                    direita". O robô anda nas linhas.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Adicionando Obstáculos</strong> - Coloque a cadeira. Agora o programador precisa desviar:
+                    "vai para esquerda, contorna, volta para direita".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Trabalho em Equipe -- "Programação Coletiva"</strong> - Divida a turma em dois times. Cada
+                    time programa um robô voluntário no mesmo tabuleiro. Quem chegar ao brinquedo com menos comandos
+                    vence.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro no "Mapa do Tesouro"</strong> - Entregue uma folha com o grid desenhado. Peça que
+                    desenhem o caminho do robô com setas.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TDAH:</strong> Faça o robô se mover rapidamente entre os comandos. Use um cronômetro para
+                    adicionar pressão positiva (ex: "consegue em 30 segundos?").</li>
+                  <li><strong>Deficiência Visual:</strong> O robô pode ser guiado por comandos sonoros (palmas, sino) ou
+                    táteis (toques nas costas indicando direção).</li>
+                  <li><strong>Deficiência Física:</strong> Alunos com mobilidade reduzida podem ser o "cérebro" que
+                    desenha o caminho no papel ou usa um aplicativo de voz para ditar os comandos.</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>9+ comandos ou não chegou</th>
+                        <th>Comandos até o brinquedo</th>
+                        <th>Até 5 comandos</th>
+                        <th>6-8 comandos</th>
+                      </tr>
+                      <tr>
+                        <td colspan="4"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="small text-muted mt-2"><i class="bi bi-info-circle"></i> Tabela em construção - versão
+                    completa disponível no material impresso.</p>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô no pódio com troféu de fita crepe</li>
+                  <li>⭐⭐ → Robô com curativo na canela e legenda: "Bati, mas segui"</li>
+                  <li>⭐ → Robô dançando no meio do labirinto sem saber onde vai</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"O brinquedo é legal. O caminho até ele é mais legal ainda."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 7 ==================== -->
+
+        <div class="accordion-item" data-semana="7">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana7">
+              📖 Semana 7 -- A Hora da História Robotizada
+            </button>
+          </h2>
+          <div id="semana7" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="7" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Integrar linguagem oral e escrita com sequências lógicas. Planejar uma narrativa com começo, meio e
+                  fim.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos contar uma história bem maluca, mas com um robô como personagem. A história precisa de um
+                    começo, um meio e um fim -- igual aos nossos algoritmos!"</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01LP16), (EF12LP07).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-robot"></i> Fantoches (ou desenhos) de um robô, um amigo
+                    e um vilão</span>
+                  <span class="material-badge"><i class="bi bi-mic"></i> Gravador de voz do celular (opcional)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Robô, Conte uma História"</strong> - Use um fantoche de robô. O Robô Zé (fantoche) começa
+                    uma história: "Era uma vez um robô... e aí?" Passe para um aluno continuar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Estrutura de Algoritmo da História</strong> - Desenhe no quadro três quadros: COMEÇO
+                    (personagem e lugar), MEIO (problema), FIM (solução). Diga: "Nosso algoritmo de história tem esses
+                    três passos!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação Coletiva</strong> - Escolha um tema (ex: "O Robô que Perdeu a Memória"). A turma
+                    decide juntos: COMEÇO, MEIO e FIM.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programando a História</strong> - Divida a turma em três grupos. Grupo 1 desenha o COMEÇO,
+                    Grupo 2 o MEIO, Grupo 3 o FIM.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação Robotizada</strong> - Os grupos colam os desenhos no mural na ordem correta
+                    (algoritmo visual). Um voluntário conta a história completa apontando para os desenhos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Reflexão</strong> - "Sem o começo, a história faria sentido? Sem o meio, ela seria muito
+                    curta. Nosso algoritmo tinha que estar completo!"
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Ofereça uma história pronta com cartões ilustrados. O aluno deve apenas
+                    colocar os cartões na ordem (começo, meio, fim).</li>
+                  <li><strong>Deficiência Auditiva:</strong> A história pode ser contada com LIBRAS ou usando imagens
+                    muito expressivas. O foco é a ordenação das imagens.</li>
+                  <li><strong>TDAH:</strong> Histórias curtas e com muitos elementos visuais (cores, personagens
+                    exagerados).</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Precisa de ajuda</td>
+                        <td>Identifica começo/meio/fim</td>
+                        <td>Sim, e explica</td>
+                        <td>Sim, mas confunde 1</td>
+                      </tr>
+                      <tr>
+                        <td>Balança a cabeça sim/não</td>
+                        <td>Contribui com ideia</td>
+                        <td>Ideia original</td>
+                        <td>Repete ideia de colega</td>
+                      </tr>
+                      <tr>
+                        <td>2+ erros</td>
+                        <td>Ordem dos desenhos no mural</td>
+                        <td>Correta</td>
+                        <td>1 erro</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô contando história com megafone de papelão</li>
+                  <li>⭐⭐ → Robô com o livro no lugar errado (começo no fim)</li>
+                  <li>⭐ → Robô dormindo sobre os desenhos com balão: "BUGUEI A NARRATIVA"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Se faltar o meio, o robô não volta pra casa. Se faltar a tentativa, a história não começa."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 8 ==================== -->
+
+        <div class="accordion-item" data-semana="8">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana8">
+              🎵 Semana 8 -- Dança dos Padrões (Loop Infinito)
+            </button>
+          </h2>
+          <div id="semana8" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="8" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Identificar, criar e continuar padrões de repetição (loops) em sequências de movimento, cor e som.
+                </p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Vamos aprender um segredo dos robôs: eles adoram repetir movimentos! Vamos criar uma dança que
+                    nunca acaba?"</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EI03CO01), (EF01MA09).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-music-note-beamed"></i> Colchonetes (opcional)</span>
+                  <span class="material-badge"><i class="bi bi-drum"></i> Instrumentos musicais simples (pandeiro,
+                    chocalho, tambor)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Batida do Robô"</strong> - Você faz uma sequência sonora: PÁU (pé no chão), PÁU, PIM
+                    (palma). Pergunte: "O que se repete? (o PÁU). Quantas vezes?".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Coreografia do Loop</strong> - Ensine uma coreografia de 2 movimentos que se repete 4 vezes:
+                    (1) braços para cima, (2) braços para baixo. Depois, adicione um terceiro movimento no final: (1)
+                    cima, (2) baixo, (3) rodar. Mostre como fica em loop.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>A Corrida dos Padrões (Duplas)</strong> - Dupla A cria um padrão de 2 movimentos. Dupla B
+                    deve imitar exatamente e depois continuar (adicionar mais um movimento ao padrão).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Padrões Visuais</strong> - Desenhe no quadro: Quadrado Vermelho, Círculo Azul, Quadrado
+                    Vermelho, Círculo Azul, ______? (Pergunte qual a próxima figura). Traga isso para o movimento: "Se
+                    os braços são o quadrado vermelho e as pernas são o círculo azul, como fica a dança?".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Música do Loop Infinito"</strong> - Com instrumentos, cada grupo cria um padrão sonoro de 3
+                    batidas e o repete em loop. Um grupo toca, o outro dança. Depois trocam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro e "Bônus"</strong> - Entregue uma folha com sequências de figuras incompletas (🔴,
+                    🔵, 🔴, __? ). Peça que completem. Quem terminar, ganha um adesivo de "Comando Executado".
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Use um metrônomo visual (um aplicativo que pisca na tela) para marcar o
+                    ritmo do padrão.</li>
+                  <li><strong>Deficiência Física:</strong> Padrões podem ser feitos apenas com piscar de olhos (piscar
+                    direito, esquerdo, direito, esquerdo) ou com movimentos da cabeça.</li>
+                  <li><strong>TDAH:</strong> Padrões curtos e rápidos. Mude o estímulo (som, depois movimento, depois
+                    visual) a cada 5 minutos.</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1 movimento, tenta</td>
+                        <th>Repete padrão de movimentos</th>
+                        <td>2 movimentos, 3+ ciclos</td>
+                        <td>2 movimentos, 2 ciclos</td>
+                      </tr>
+                      <tr>
+                        <td>Acerta com ajuda</td>
+                        <th>Completa sequência visual</th>
+                        <td>Acerta 2 sequências</td>
+                        <td>Acerta 1 sequência</td>
+                      </tr>
+                      <tr>
+                        <td>Tenta criar</td>
+                        <th>Cria padrão sonoro</th>
+                        <td>Cria e executa</td>
+                        <td>Cria, mas falha na execução</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô num círculo infinito de tanto dançar</li>
+                  <li>⭐⭐ → Robô tonto com vários "pés" desenhados repetindo</li>
+                  <li>⭐ → Robô parado com legenda: "MEU LOOP BUGOU, MAS TÔ REINICIANDO"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Repetir não é chato. É treino. E treino é fluxo."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 9 ==================== -->
+
+        <div class="accordion-item" data-semana="9">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana9">
+              🎮 Semana 9 -- Revisão e Brincadeira: "Siga o Mestre Robô"
+            </button>
+          </h2>
+          <div id="semana9" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="9" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Consolidar os conceitos de algoritmo, sequência, localização e padrões de forma lúdica e integrada.
+                </p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Hoje é dia de mostrar tudo o que aprendemos! Vamos brincar de seguir o mestre robô e desvendar
+                    os enigmas."</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>(EF01MA12), (EI03CO01), (EI03CO02).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões com comandos (setas, palmas,
+                    pernas)</span>
+                  <span class="material-badge"><i class="bi bi-cassette"></i> Fita crepe</span>
+                  <span class="material-badge"><i class="bi bi-hat-fedora"></i> Um "chapéu de robô" (feito de papel
+                    alumínio)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Escolhendo o Mestre Robô</strong> - Um aluno coloca o chapéu de robô. Ele é o "Mestre Robô".
+                    Ele escolhe um comando do cartão e faz um movimento. Todos devem imitar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Trilha da Revisão</strong> - Monte uma trilha de 4 estações no chão:<br>
+                    1. <strong>Estação Algoritmo:</strong> Dar 3 comandos para o robô (colega) fazer um sanduíche de
+                    brinquedo.<br>
+                    2. <strong>Estação Localização:</strong> Programar um robô (vendas) para pegar um cone no grid.<br>
+                    3. <strong>Estação Padrões:</strong> Completar uma sequência de movimentos (pulo, roda, pulo,
+                    ___?).<br>
+                    4. <strong>Estação Narrativa:</strong> Colocar em ordem as figuras de uma história do Robô Zé.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Circuito em Grupo</strong> - Divida em 4 grupos. Cada grupo começa em uma estação. A cada 5
+                    minutos, você toca um sino e os grupos rodam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Batalha dos Robôs</strong> - Juntam-se todos. Você dá um desafio: "Quem consegue dar o
+                    comando para ir do seu lugar até a janela usando apenas 4 passos?". Alunos voluntários mostram.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação com Polegares</strong> - "Quem se sente um programador nota 10 hoje?" (polegar
+                    para cima). "Quem ainda acha que precisa treinar?" (polegar para o lado). "Quem bugou?" (polegar
+                    para baixo, e risada).
+                  </div>
+                </div>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr class="table-dark">
+                        <th>Robô Tontinho (⭐)</th>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2 estações</td>
+                        <td><strong>Estações completadas</strong></td>
+                        <td>4 estações</td>
+                        <td>3 estações</td>
+                      </tr>
+                      <tr>
+                        <td>Tenta, mas erra</td>
+                        <td><strong>Comando válido na batalha final</strong></td>
+                        <td>Sim, sem hesitar</td>
+                        <td>Sim, com hesitação</td>
+                      </tr>
+                      <tr>
+                        <td>Diz "não sei" mas participa</td>
+                        <td><strong>Autoavaliação (polegares)</strong></td>
+                        <td>Reconhece acertos E bugs</td>
+                        <td>Reconhece só acertos</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>Inclusão Total:</strong> Adapte cada estação para diferentes ritmos. Uma estação pode ser
+                    mais visual, outra mais sonora, outra mais tátil. Todos passam por todas.</li>
+                </ul>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô com chapéu de formatura e diploma "PhD em Tentativa"</li>
+                  <li>⭐⭐ → Robô segurando uma ferramenta e um parafuso na boca</li>
+                  <li>⭐ → Robô com a cara no chão e um balão: "BUGUEI, MAS VOLTO AMANHÃ"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Quem nunca bugou que atire o primeiro parafuso."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 10 ==================== -->
+
+        <div class="accordion-item" data-semana="10">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana10">
+              🎨 Semana 10 -- Projeto 1: O Robô Artista
+            </button>
+          </h2>
+          <div id="semana10" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos (para o adulto)</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="10" />
+                    <span>Marcar semana como concluída</span>
+                  </label>
+                </div>
+                <p>Aplicar os conceitos do bimestre em um projeto autoral. Desenvolver autonomia e capacidade de
+                  resolver problemas abertos.</p>
+
+                <h5>🎯 Objetivos (para a criança)</h5>
+                <p><em>"Desafio final do bimestre: criar um robô que desenha! Pode ser um robô que faz carinhas, que
+                    escreve a letra inicial do nome, ou que desenha o sol."</em></p>
+
+                <h5>📚 Habilidades BNCC/RCP-PR</h5>
+                <p>Síntese de todas as habilidades trabalhadas no bimestre.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-palette"></i> Papel, canetas, lápis de cor</span>
+                  <span class="material-badge"><i class="bi bi-recycle"></i> Sucata (rolos de papel, tampinhas,
+                    elásticos)</span>
+                  <span class="material-badge"><i class="bi bi-scissors"></i> Cola, tesoura, fita adesiva</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto da Aula (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do Desafio</strong> - Mostre um "robô artista" simples que você preparou (ex:
+                    um rolo de papel com uma caneta presa na ponta). Mostre que, ao girar o rolo, ele faz um círculo no
+                    papel.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento</strong> - Cada aluno desenha seu projeto de robô artista. O que ele vai
+                    desenhar? Como ele vai funcionar? (Ex: "vai ter uma roda que gira e desenha um círculo").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção</strong> - Mãos à obra. Circule, incentive. Ajude a fixar as canetas. O
+                    importante é o processo, não o resultado final. Um robô que não funciona é uma oportunidade de
+                    "debugar": "Por que ele não desenhou? A caneta está encostada no papel? Falta peso?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Exposição Rápida</strong> - Cada aluno coloca seu robô na mesa e mostra o desenho que ele
+                    fez (ou o que ele *tentou* fazer, explicando o bug).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Certificado "Doutor(a) em Desbugação -- Nível 1"</strong> - Entregue um certificado simples
+                    para cada aluno, celebrando a conclusão do primeiro bimestre.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li><strong>Deficiência Física:</strong> O robô pode ser operado por um colega (que recebe comandos
+                    orais do aluno com dificuldade motora).</li>
+                  <li><strong>TEA/TDAH:</strong> Ofereça um modelo de robô pré-cortado com encaixes simples. O aluno
+                    foca apenas na decoração e na escolha da caneta.</li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Robô Ninja (⭐⭐⭐)</th>
+                        <th>Robô Aprendiz (⭐⭐)</th>
+                        <th>Robô Tontinho (⭐)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>Planejamento</th>
+                        <td>Desenho claro + funcionalidade</td>
+                        <td>Desenho compreensível</td>
+                        <td>Rabisco com ideia</td>
+                      </tr>
+                      <tr>
+                        <th>Construção</th>
+                        <td>Robô que tenta desenhar (mesmo rabisco)</td>
+                        <td>Robô montado, mas não desenha</td>
+                        <td>Robô desmonta, mas explica</td>
+                      </tr>
+                      <tr>
+                        <th>Explicação do bug</th>
+                        <td>Fala o que deu certo E o que errou</td>
+                        <td>Fala só o que deu certo</td>
+                        <td>Mostra o robô e sorri</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🎭 Registro lúdico</h5>
+                <ul>
+                  <li>⭐⭐⭐ → Robô pintando um quadro com a assinatura "Arte Robótica"</li>
+                  <li>⭐⭐ → Robô com tinta no nariz e um desenho rabiscado</li>
+                  <li>⭐ → Robô com a caneta quebrada e legenda: "BUGUEI, MAS TENTEI"</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Loop não é macarrão! Loop é repetição! Loop é poder! Agora vocês são Mestres!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    </div>
+    </section>
+    <!-- ==================================================
+         ADAPTAÇÕES E INCLUSÃO - ORIENTAÇÕES COMPLETAS
+         ================================================== -->
+
+    </div> <!-- FECHAMENTO DO ACCORDION -->
+    </section>
+
+    <!-- ==================================================
+         ADAPTAÇÕES E INCLUSÃO - CONTEÚDO COMPLETO DO DOCX
+         ================================================== -->
+    <section id="adaptacoes" class="mb-5">
+      <div class="card bg-light border-warning mt-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-universal-access-circle"></i> ♿ ORIENTAÇÕES PARA ADAPTAÇÕES E INCLUSÃO (EXEMPLOS PRÁTICOS)
+          </h5>
+          <p class="mb-3">A robótica é, por natureza, inclusiva. Você pode programar qualquer um para ser um robô, e
+            qualquer um pode ser um programador. Aqui vão 3 exemplos por necessidade de como adaptar as atividades.</p>
+
+          <!-- TEA -->
+          <h6 class="mt-3"><i class="bi bi-puzzle"></i> 📌 Para Estudantes com TEA (Transtorno do Espectro Autista)</h6>
+          <ul>
+            <li><strong>Antecipação visual:</strong> Antes de cada atividade, mostre uma "rotina de comandos" em uma
+              prancha com figuras (ex: 1º sentar, 2º ouvir, 3º programar, 4º guardar).</li>
+            <li><strong>Evite sobrecarga sensorial:</strong> Se a atividade envolve muitos barulhos (palmas,
+              instrumentos), ofereça abafadores de ouvido ou permita que o aluno assista de um local mais silencioso.
+            </li>
+            <li><strong>Comunicação alternativa:</strong> Use cartões de PECS para que o aluno "dê comandos" entregando
+              os cartões ao robô.</li>
+          </ul>
+
+          <!-- TDAH -->
+          <h6 class="mt-3"><i class="bi bi-lightning-charge"></i> 📌 Para Estudantes com TDAH (Transtorno de Déficit de
+            Atenção)</h6>
+          <ul>
+            <li><strong>Atividades curtas e segmentadas:</strong> Use um cronômetro visível ("vamos fazer isso por 5
+              minutos"). Divida a atividade principal em minidesafios.</li>
+            <li><strong>Movimento constante:</strong> Permita que o aluno seja o "robô" com mais frequência. O movimento
+              ajuda a regular a atenção.</li>
+            <li><strong>Feedback imediato:</strong> Após cada comando dado, o robô deve reagir de forma rápida e clara
+              ("BEEP -- certo!" ou "ERROU -- tente de novo").</li>
+          </ul>
+
+          <!-- Deficiência Física -->
+          <h6 class="mt-3"><i class="bi bi-person-wheelchair"></i> 📌 Para Estudantes com Deficiência Física (Mobilidade
+            Reduzida)</h6>
+          <ul>
+            <li><strong>Programador vocal:</strong> O aluno pode ditar os comandos para um colega (que age como
+              "interface de voz").</li>
+            <li><strong>Interfaces adaptadas:</strong> Use um tablet com aplicativos de comunicação (Proloquo2Go) ou um
+              switch (botão grande adaptado) para que o aluno possa selecionar comandos.</li>
+            <li><strong>Robô de mesa:</strong> Em vez de um robô que anda pelo chão, construa um "robô de mesa" com
+              peças de Lego que o aluno possa manipular com uma mão ou com a boca.</li>
+          </ul>
+
+          <!-- Altas Habilidades -->
+          <h6 class="mt-3"><i class="bi bi-stars"></i> 📌 Para Estudantes com Altas Habilidades</h6>
+          <ul>
+            <li><strong>Aprofundamento:</strong> Desafie-os a criar sequências mais complexas, com múltiplos loops
+              aninhados.</li>
+            <li><strong>Tutoria:</strong> Peça que ajudem colegas que estão com dificuldade, assumindo o papel de
+              "monitor de robótica".</li>
+            <li><strong>Projetos extras:</strong> Criação de um manual de comandos ilustrado para a turma, ou um vídeo
+              explicativo sobre algoritmos.</li>
+          </ul>
+
+          <!-- Deficiência Visual -->
+          <h6 class="mt-3"><i class="bi bi-eye-slash"></i> 📌 Para Estudantes com Deficiência Visual</h6>
+          <ul>
+            <li><strong>Pisos táteis:</strong> Use cordas ou EVA com textura para delimitar o labirinto.</li>
+            <li><strong>Guias sonoros:</strong> Sininho para direita, chocalho para esquerda, apito para frente.</li>
+            <li><strong>Comandos em braile ou áudio:</strong> Cartões com texturas ou gravações de voz.</li>
+          </ul>
+
+          <!-- Deficiência Auditiva -->
+          <h6 class="mt-3"><i class="bi bi-ear"></i> 📌 Para Estudantes com Deficiência Auditiva</h6>
+          <ul>
+            <li><strong>Comandos visuais:</strong> Use bandeirinhas ou cartões coloridos para cada comando.</li>
+            <li><strong>Luzes piscantes:</strong> Para marcar ritmo ou início/fim de atividade.</li>
+            <li><strong>Libras:</strong> Ensine os sinais básicos para DIREITA, ESQUERDA, FRENTE, ROBÔ.</li>
+          </ul>
+
+          <p class="mb-0 mt-3 fst-italic text-warning">
+            <i class="bi bi-chat-quote"></i> "SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a gente
+            dança."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         JOGO DO BIMESTRE: BUG BUSTERS - A REBELIÃO DOS COMANDOS
+         IRRIVERENTE, INOVADOR, COLORIDO - SIGA A PALETA DOS ARQUIVOS CSS
+         ================================================== -->
+    <section id="jogo-bugbusters" class="mb-5">
+      <div class="projeto-header" style="background: linear-gradient(135deg, #ffb347, #ff8c00, #e74c3c);">
+        <h2 style="color: #1e2a1a; text-shadow: none;">
+          <i class="bi bi-bug-fill"></i> 🐞 JOGO DO BIMESTRE: BUG BUSTERS - A REBELIÃO DOS COMANDOS!
+        </h2>
+        <div class="badge-projeto" style="background: #1e2a1a; color: #ffb347;">
+          🎮 O jogo mais bugado que você vai adorar debuggar!
+        </div>
+      </div>
+
+      <!-- Descrição Irreverente do Jogo -->
+      <div class="bg-robocard p-4 rounded-4 mb-4" style="background: linear-gradient(135deg, #2c3e2b, #1e2a1a);">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h4><i class="bi bi-emoji-laughing"></i> BUG BUSTERS - MANUAL DO CAOS PROGRAMADO</h4>
+            <p><strong>🤖 A HISTÓRIA:</strong> Os robôs da fábrica TECLADO PIRATA ficaram MALUCOS! Eles esqueceram todos
+              os comandos e agora só andam em círculos, esbarram em paredes e gritam "BEEP BEEP - BUGUEI!"</p>
+            <p><strong>🎯 SUA MISSÃO, PROGRAMADOR(A):</strong> Resgatar os robôs ensinando o ALGORITMO CERTO! Monte a
+              sequência de comandos usando os cartões e faça o robô chegar ao FINAL DA PISTA!</p>
+            <p><strong>💡 SEGREDO DOS MESTRES:</strong> Quanto MENOS cartões você usar, MAIOR sua pontuação! Use o
+              cartão REPITA para criar loops e ser um verdadeiro NINJA DA PROGRAMAÇÃO!</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <div style="font-size: 5rem;">🐞🤖💥</div>
+            <span class="badge bg-danger p-2">⚠️ BUG ALERT ⚠️</span>
+          </div>
+        </div>
+
+        <h5 class="mt-3 text-warning">📜 REGRAS DO CAOS (LEIA E GRITE):</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <ol>
+              <li><strong>🏁 3 FASES LOUCAS:</strong> RETA FÁCIL → ZIGUE-ZAGUE MÉDIO → OBSTÁCULOS DIFÍCIL</li>
+              <li><strong>🎴 MONTE SEU ALGORITMO:</strong> Clique nos cartões COLORIDOS e arrume a bagunça</li>
+              <li><strong>🔁 REGRA DE OURO:</strong> REPITA é seu melhor amigo! Use e abuse!</li>
+              <li><strong>🏆 SCORE:</strong> Menos cartões = Mais pontos = Herói da Programação</li>
+            </ol>
+          </div>
+          <div class="col-md-6">
+            <ol start="5">
+              <li><strong>🐛 BUG DETECTADO:</strong> Robô bateu? BUG! Depure (troque cartões) e tente de novo</li>
+              <li><strong>⭐ BÔNUS LOUCURA:</strong> REPITA dentro de REPITA = "MESTRE DO LOOPCEPTION" + ESTRELA</li>
+              <li><strong>🎉 VITÓRIA:</strong> Chegou na bandeirinha? COMEMORE! Grite "ACHEI O CAMINHO!"</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Área do Jogo - Interface Colorida -->
+      <div class="simulador-comandos p-4 rounded-4"
+        style="background: linear-gradient(135deg, #0d1f0b, #1a3a15); border: 3px solid #ffb347;">
+
+        <!-- CABEÇALHO DO JOGO -->
+        <div class="text-center mb-4">
+          <h3 style="font-family: 'Press Start 2P', cursive; color: #ffcc44; text-shadow: 3px 3px 0 #e74c3c;">
+            🎮 BUG BUSTERS 🎮
+          </h3>
+          <p class="text-warning">"Se o robô bugar, a gente debuga na base do grito!"</p>
+        </div>
+
+        <!-- SELETOR DE FASES -->
+        <div class="mb-4 text-center">
+          <div class="btn-group flex-wrap" role="group">
+            <button type="button" class="btn-phase fase1-btn" data-fase="1"
+              style="background: #27ae60; border: none; padding: 12px 24px; border-radius: 40px 0 0 40px;">
+              🏁 FASE 1: RETA <span class="badge bg-light text-dark">FÁCIL</span>
+            </button>
+            <button type="button" class="btn-phase fase2-btn" data-fase="2"
+              style="background: #f39c12; border: none; padding: 12px 24px;">
+              🔄 FASE 2: ZIGUE-ZAGUE <span class="badge bg-light text-dark">MÉDIO</span>
+            </button>
+            <button type="button" class="btn-phase fase3-btn" data-fase="3"
+              style="background: #e74c3c; border: none; padding: 12px 24px; border-radius: 0 40px 40px 0;">
+              🧱 FASE 3: OBSTÁCULOS <span class="badge bg-light text-dark">DIFÍCIL</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PISTA VISUAL -->
+        <div class="loopdash-pista-visual mb-4"
+          style="background: linear-gradient(135deg, #2c3e2b, #1a3a15); border: 3px solid #ffcc44;">
+          <div class="pista-label text-center mb-2">
+            <i class="bi bi-map-fill text-warning"></i>
+            <span class="text-warning">PISTA ATUAL:</span>
+            <span id="faseNomeAtual" style="color: #ffcc44; font-weight: bold;">RETA</span>
+            <span id="faseIconeAtual">🏁</span>
+          </div>
+          <div id="loopdashGrid" class="loopdash-grid" style="justify-content: center;"></div>
+        </div>
+
+        <!-- PLACAR DO JOGO -->
+        <div class="row mt-3 justify-content-center g-2">
+          <div class="col-md-3 col-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #1e2a1a, #e74c3c);">
+              <div class="stat-icon">📊</div>
+              <div class="stat-label">CARTOES USADOS</div>
+              <div class="stat-value" id="loopdashCartoes" style="font-size: 2rem;">0</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #1e2a1a, #f39c12);">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-label">RECORDE</div>
+              <div class="stat-value" id="loopdashMelhor" style="font-size: 1.5rem;">--</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #1e2a1a, #27ae60);">
+              <div class="stat-icon">🤖</div>
+              <div class="stat-label">STATUS</div>
+              <div class="stat-value" id="loopdashStatus" style="font-size: 1.2rem;">PRONTO</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #1e2a1a, #8e44ad);">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-label">BÔNUS</div>
+              <div class="stat-value" id="loopdashBonus" style="font-size: 1rem;">---</div>
+            </div>
+          </div>
+        </div>
+        <!-- CONSTRUTOR DE ALGORITMO -->
+        <div class="algoritmo-builder mt-4"
+          style="background: linear-gradient(135deg, #0d1f0b, #1a2b17); border: 3px solid #ff8c00;">
+          <div class="builder-header" style="background: #ff8c00; color: #1e2a1a;">
+            <i class="bi bi-grid-3x3-gap-fill"></i> 🧠 SEU ALGORITMO - A SEQUÊNCIA DA SALVAÇÃO
+            <button class="btn-clear-algoritmo" id="btnLimparAlgoritmo" style="background: #e74c3c;">
+              <i class="bi bi-trash3-fill"></i> LIMPAR TUDO
+            </button>
+          </div>
+          <div id="algoritmoMontado" class="algoritmo-montado" style="min-height: 150px; background: #0a0f08;">
+            <div class="placeholder-algoritmo text-center py-4">
+              🃏 CLIQUE NOS CARTOES ABAIXO PARA MONTAR SEU ALGORITMO!<br>
+              <small class="text-muted">Dica: Use REPITA para repetir comandos e economizar cartões!</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRATELEIRA DE CARTOES COLORIDOS -->
+        <div class="cartoes-prateleira mt-4" style="background: linear-gradient(135deg, #1a2b17, #0d1f0b);">
+          <div class="cartoes-header mb-3">
+            <i class="bi bi-card-list"></i> 🎴 CARTOES DE COMANDO (CLIQUE PARA ADICIONAR)
+            <span class="regra-destaque" style="background: #ffcc44; color: #1e2a1a;">🔁 REGRA DE OURO: USE
+              REPITA!</span>
+          </div>
+          <div class="cartoes-grid" id="cartoesGrid">
+            <!-- Cartão ANDE 1 -->
+            <div class="cartao-comando" data-comando="ande1"
+              style="background: linear-gradient(135deg, #27ae60, #1e6b3a);">
+              <div class="cartao-icone" style="font-size: 2.5rem;">🚶</div>
+              <div class="cartao-texto" style="color: #fff;">ANDE 1</div>
+              <div class="cartao-desc" style="color: #ccffcc;">1 passo pra frente</div>
+            </div>
+            <!-- Cartão ANDE 2 -->
+            <div class="cartao-comando" data-comando="ande2"
+              style="background: linear-gradient(135deg, #2ecc71, #27ae60);">
+              <div class="cartao-icone" style="font-size: 2.5rem;">🏃</div>
+              <div class="cartao-texto" style="color: #fff;">ANDE 2</div>
+              <div class="cartao-desc" style="color: #ccffcc;">2 passos pra frente</div>
+            </div>
+            <!-- Cartão VIRE DIREITA -->
+            <div class="cartao-comando" data-comando="vireDireita"
+              style="background: linear-gradient(135deg, #3498db, #2980b9);">
+              <div class="cartao-icone" style="font-size: 2.5rem;">▶️</div>
+              <div class="cartao-texto" style="color: #fff;">VIRE DIREITA</div>
+              <div class="cartao-desc" style="color: #ccddff;">90° pra direita</div>
+            </div>
+            <!-- Cartão VIRE ESQUERDA -->
+            <div class="cartao-comando" data-comando="vireEsquerda"
+              style="background: linear-gradient(135deg, #1abc9c, #16a085);">
+              <div class="cartao-icone" style="font-size: 2.5rem;">◀️</div>
+              <div class="cartao-texto" style="color: #fff;">VIRE ESQUERDA</div>
+              <div class="cartao-desc" style="color: #ccffdd;">90° pra esquerda</div>
+            </div>
+            <!-- Cartão REPITA - ESPECIAL -->
+            <div class="cartao-comando cartao-especial" data-comando="repita"
+              style="background: linear-gradient(135deg, #e74c3c, #c0392b); border: 2px solid #ffcc44;">
+              <div class="cartao-icone" style="font-size: 2.5rem;">🔄</div>
+              <div class="cartao-texto" style="color: #ffcc44;">REPITA</div>
+              <div class="cartao-desc" style="color: #ffdd99;">⭐ Repetir ações (clique e adicione comandos dentro)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTÕES DE AÇÃO -->
+        <div class="botoes-painel mt-4 text-center">
+          <button class="btn-executar" id="btnExecutarLoopDash"
+            style="background: linear-gradient(135deg, #2ecc71, #27ae60); padding: 12px 28px;">
+            <i class="bi bi-play-fill"></i> 🚀 EXECUTAR ROBÔ!
+          </button>
+          <button class="btn-resetar" id="btnResetLoopDash"
+            style="background: linear-gradient(135deg, #7f8c8d, #6c7a7a); padding: 12px 28px;">
+            <i class="bi bi-arrow-repeat"></i> 🔄 REINICIAR ROBÔ
+          </button>
+          <button class="btn-dica" id="btnDicaLoopDash"
+            style="background: linear-gradient(135deg, #8e44ad, #6c3483); padding: 12px 28px;">
+            <i class="bi bi-lightbulb-fill"></i> 💡 DICA MALUCA
+          </button>
+          <button class="btn-exemplo" id="btnExemploLoopDash"
+            style="background: linear-gradient(135deg, #2980b9, #1a6da0); padding: 12px 28px;">
+            <i class="bi bi-stars"></i> ⭐ ALGORITMO EXEMPLO
+          </button>
+        </div>
+
+        <!-- MENSAGEM DO JOGO -->
+        <div id="loopdashMensagem" class="mensagem-jogo mt-3"
+          style="background: #0a0f08; border-left: 6px solid #ffb347;">
+          <i class="bi bi-robot"></i>
+          <span>🤖 BUG BUSTERS ONLINE! Selecione a fase, monte seu algoritmo e clique em EXECUTAR! Use REPITA para ser
+            um MESTRE!</span>
+        </div>
+
+        <!-- RECORDES E LEGENDA -->
+        <div class="recordes-painel mt-4" style="background: #0d1f0b;">
+          <div class="recordes-header text-center text-warning mb-2">
+            <i class="bi bi-trophy-fill"></i> 🏆 RECORDES DE CADA FASE (menos cartões = melhor!)
+          </div>
+          <div class="recordes-grid">
+            <div class="recorde-card fase1-recorde" style="background: linear-gradient(135deg, #27ae60, #1e6b3a);">
+              <div class="recorde-fase">🏁 FASE 1 - RETA</div>
+              <div class="recorde-valor" id="recordeFase1">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+            <div class="recorde-card fase2-recorde" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+              <div class="recorde-fase">🔄 FASE 2 - ZIGUE-ZAGUE</div>
+              <div class="recorde-valor" id="recordeFase2">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+            <div class="recorde-card fase3-recorde" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+              <div class="recorde-fase">🧱 FASE 3 - OBSTÁCULOS</div>
+              <div class="recorde-valor" id="recordeFase3">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEGENDA DA PISTA -->
+        <div class="legenda-pista mt-3 text-center">
+          <span class="legenda-item mx-2"><span
+              style="background: #4a90e2; padding: 4px 8px; border-radius: 8px;">🤖</span> ROBÔ</span>
+          <span class="legenda-item mx-2"><span
+              style="background: #f39c12; padding: 4px 8px; border-radius: 8px;">🏁</span> CHEGADA</span>
+          <span class="legenda-item mx-2"><span
+              style="background: #4a7c3f; padding: 4px 8px; border-radius: 8px;">⬜</span> PISTA</span>
+          <span class="legenda-item mx-2"><span
+              style="background: #c0392b; padding: 4px 8px; border-radius: 8px;">🧱</span> OBSTÁCULO</span>
+          <span class="legenda-item mx-2"><span
+              style="background: #8e44ad; padding: 4px 8px; border-radius: 8px;">🔄</span> REPITA (LOOP)</span>
+        </div>
+      </div>
+    </section>
+    <!-- ==================================================
+         AVALIAÇÕES E RUBRICAS LÚDICAS - BIMESTRE 1
+         ================================================== -->
+    <section id="avaliacoes" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-clipboard-check"></i> 📋 AVALIAÇÕES E RUBRICAS LÚDICAS
+        </h2>
+        <div class="badge-projeto">
+          A avaliação não é um bicho de sete cabeças (nem um robô mal programado)
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Diário do Robô Aventureiro -->
+        <div class="col-md-6">
+          <div class="bg-robocard p-4 rounded-4 h-100">
+            <h4><i class="bi bi-journal-bookmark-fill text-warning"></i> 📓 O "Diário do Robô Aventureiro" (Portfólio)
+            </h4>
+            <p>Cada aluno terá um caderno ou pasta chamada <strong>"Diário do Robô Aventureiro"</strong>. Ao final de
+              cada semana, eles colam lá o registro da atividade (o desenho do caminho, a receita do sanduíche, a
+              história robotizada). No final do bimestre, você folheia o diário para ver a evolução.</p>
+            <div class="alert alert-warning mt-3">
+              <i class="bi bi-lightbulb"></i> <strong>DICA:</strong> Use um carimbo de "Robô Aprovado" para cada
+              atividade concluída!
+            </div>
+          </div>
+        </div>
+
+        <!-- Termômetro da Programação -->
+        <div class="col-md-6">
+          <div class="bg-robocard p-4 rounded-4 h-100">
+            <h4><i class="bi bi-thermometer-half text-warning"></i> 🌡️ O "Termômetro da Programação" (Autoavaliação
+              Coletiva)</h4>
+            <p>Um grande cartaz com um termômetro desenhado. Após cada aula, os alunos colocam um adesivo (ou desenham
+              uma bolinha) na altura correspondente:</p>
+            <ul>
+              <li><span class="badge bg-primary">🔵 Parte de baixo (azul)</span>: "Hoje eu buguei muito, mas aprendi
+                coisas novas."</li>
+              <li><span class="badge bg-warning text-dark">🟡 Parte do meio (amarelo)</span>: "Hoje eu acertei alguns
+                comandos, mas ainda me confundo."</li>
+              <li><span class="badge bg-danger">🔴 Parte de cima (vermelho)</span>: "Hoje eu fui um super programador!
+                Acertei quase tudo!"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rubrica de Avaliação do Professor -->
+      <div class="bg-robocard p-4 rounded-4 mt-4">
+        <h4><i class="bi bi-table text-warning"></i> 📊 Rubrica de Avaliação do Professor (Observação)</h4>
+        <div class="table-responsive">
+          <table class="table tabela-criterios-semana">
+            <thead>
+              <tr class="table-dark">
+                <th>Em desenvolvimento (1 ponto)</th>
+                <th>Critério</th>
+                <th>Excelente (3 pontos)</th>
+                <th>Bom (2 pontos)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Necessita de repetição para cada comando.</td>
+                <td><strong>Segue comandos</strong></td>
+                <td>Executa a sequência de 3 comandos sem erro.</td>
+                <td>Executa a sequência com 1 erro.</td>
+              </tr>
+              <tr>
+                <td>Dá comandos confusos ou não verbais.</td>
+                <td><strong>Dá comandos claros</strong></td>
+                <td>Dá comandos específicos (ex: "2 passos frente").</td>
+                <td>Dá comandos gerais (ex: "anda aí").</td>
+              </tr>
+              <tr>
+                <td>Não identifica repetição.</td>
+                <td><strong>Reconhece padrões</strong></td>
+                <td>Identifica e completa padrão complexo (4 itens).</td>
+                <td>Identifica padrão simples (2 itens).</td>
+              </tr>
+              <tr>
+                <td>Tem dificuldade de interagir.</td>
+                <td><strong>Trabalho em equipe</strong></td>
+                <td>Colabora, ouve e sugere ideias.</td>
+                <td>Colabora passivamente.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Registro Lúdico Resumo -->
+      <div class="bg-robocard p-4 rounded-4 mt-4">
+        <h4><i class="bi bi-emoji-laughing text-warning"></i> 🎭 Registro Lúdico - Resumo das Estrelas</h4>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="p-3" style="background: linear-gradient(135deg, #f1c40f, #f39c12); border-radius: 20px;">
+              <div style="font-size: 2rem;">⭐⭐⭐</div>
+              <strong>ROBÔ NINJA</strong>
+              <p class="mt-2 small">Robô fazendo piscada dupla e mostrando o bíceps</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3" style="background: linear-gradient(135deg, #95a5a6, #7f8c8d); border-radius: 20px;">
+              <div style="font-size: 2rem;">⭐⭐</div>
+              <strong>ROBÔ APRENDIZ</strong>
+              <p class="mt-2 small">Robô com um parafuso solto na cabeça mas sorrindo</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3" style="background: linear-gradient(135deg, #e74c3c, #c0392b); border-radius: 20px;">
+              <div style="font-size: 2rem;">⭐</div>
+              <strong>ROBÔ TONTINHO</strong>
+              <p class="mt-2 small">Robô com fumaça saindo da orelha e balão: "BUGUEI, MAS TÔ AQUI"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================================================
+         RECURSOS COMPLEMENTARES PARA O BIMESTRE 1
+         ================================================== -->
+    <section id="recursos" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-music-note-beamed"></i> 🎶 RECURSOS COMPLEMENTARES
+        </h2>
+        <div class="badge-projeto">
+          Músicas, templates e apps para turbinar suas aulas
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Músicas -->
+        <div class="col-md-6">
+          <div class="bg-robocard p-4 rounded-4 h-100">
+            <h4><i class="bi bi-headphones"></i> 🎵 Músicas para Algoritmos (Paródias)</h4>
+
+            <div class="mt-3 p-3" style="background: #1e2a1a; border-radius: 20px;">
+              <p class="text-warning mb-1"><strong>🎤 Paródia de "Asa Branca" (Luiz Gonzaga)</strong></p>
+              <p class="fst-italic mb-0">"Quando olhei o robô parado, / Não sabia o que fazer. / Dei um comando pra
+                direita, / E ele aprendeu a mexer. / Ô, meu robô, não bugue não, / Que o nosso algoritmo é a solução!"
+              </p>
+            </div>
+
+            <div class="mt-3 p-3" style="background: #1e2a1a; border-radius: 20px;">
+              <p class="text-warning mb-1"><strong>🎤 Paródia de "A Barata Diz que Tem" (Cantiga Popular)</strong></p>
+              <p class="fst-italic mb-0">"A Barata Tonta da Programação, / Ela errou o comando, fez rotação. / Em vez de
+                ir pra frente, foi pra trás, / Coitada da barata, não programa mais!"</p>
+            </div>
+
+            <div class="mt-3 p-3" style="background: #1e2a1a; border-radius: 20px;">
+              <p class="text-warning mb-1"><strong>🎤 QR Code para a playlist "Dança do Robô"</strong></p>
+              <p class="small mb-0">📱 <a href="#" style="color: #ffb347;">Clique aqui para a playlist no Spotify</a>
+                (código QR disponível no material impresso)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Templates e Apps -->
+        <div class="col-md-6">
+          <div class="bg-robocard p-4 rounded-4 h-100">
+            <h4><i class="bi bi-download"></i> 📥 Templates e Cartões (Faça você mesmo)</h4>
+            <ul>
+              <li><strong>Cartão de Comando Básico:</strong> Imprima círculos com: 🡑 (frente), 🡓 (trás), 🡐
+                (esquerda), 🡒 (direita), ✋ (pausa/parar), 🔁 (repetir)</li>
+              <li><strong>Certificado "Doutor(a) em Desbugação":</strong> PDF com robô desenhado e espaço para o nome do
+                aluno</li>
+            </ul>
+
+            <h4 class="mt-3"><i class="bi bi-phone"></i> 📱 Apps Grátis para Casa (Apoio Familiar)</h4>
+            <ul>
+              <li><strong>ScratchJr:</strong> Ideal para começar a programar por blocos</li>
+              <li><strong>Lightbot: Code Hour:</strong> Ensina sequência e procedimentos</li>
+            </ul>
+            <p class="small text-muted mt-2">QR Codes para download disponíveis no material impresso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         CERTIFICADO DE CONCLUSÃO DO BIMESTRE
+         ================================================== -->
+    <section id="certificado" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE CONCLUSÃO - 1º ANO
+          </h3>
+          <p class="lead">"MESTRE DOS COMANDOS E ALGORITMOS"</p>
+        </div>
+
+        <div class="row g-4 align-items-start">
+          <!-- COLUNA ESQUERDA: PRÉ-VISUALIZAÇÃO -->
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o <strong>1º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                  Dominando os conceitos de:<br />
+                  🔁 <strong>ALGORITMO</strong> (sequência de ações)<br />
+                  🤖 <strong>COMANDOS</strong> (frente, direita, esquerda)<br />
+                  🐛 <strong>DEPURAÇÃO</strong> (caça aos bugs)
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "Se você pensou, ENTÃO programou; SENÃO, programe de novo!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 1.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+
+          <!-- COLUNA DIREITA: CADASTRO DE ALUNOS -->
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label>
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                  <li class="text-muted text-center">Carregando...</li>
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em uma nova janela com layout otimizado para
+          A4 (3x2 = 6 certificados por folha).
+        </div>
+      </div>
+    </section>
+    <!-- ==================================================
+         REFERÊNCIAS BIBLIOGRÁFICAS (FORMATO ABNT)
+         ================================================== -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-3 rounded-4 small">
+          <h5>
+            <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+          </h5>
+          <p>
+            BRASIL. <strong>Base Nacional Comum Curricular (BNCC)</strong>. Brasília: MEC, 2018. Disponível em:
+            http://basenacionalcomum.mec.gov.br/. Acesso em: [data de acesso].<br /><br />
+            BRASIL. Ministério da Educação. <strong>Computação: complemento à BNCC</strong>. Brasília: MEC, 2022.
+            Disponível em: https://www.gov.br/mec/pt-br/escolas-conectadas/BNCCComputaoCompletodiagramado.pdf. Acesso
+            em: [data de acesso].<br /><br />
+            PARANÁ. Secretaria de Estado da Educação. <strong>Currículo de Referência do Paraná (RCP-PR)</strong>.
+            Curitiba: SEED/PR, 2018.<br /><br />
+            CIEB (Centro de Inovação para a Educação Brasileira). <strong>Currículo de Referência em Tecnologia e
+              Computação</strong>. São Paulo: CIEB, 2019. Disponível em: https://curriculo.cieb.net.br/. Acesso em:
+            [data de acesso].<br /><br />
+            PAPERT, Seymour. <strong>Mindstorms: Crianças, Computadores e Aprendizagens Poderosas</strong>. Porto
+            Alegre: Artmed, 2008.<br /><br />
+            RESNICK, Mitchel. <strong>Jardim de Infância para a Vida Toda: Por uma Aprendizagem Criativa, Mão na Massa e
+              Relevante para Todos</strong>. Porto Alegre: Penso, 2020.<br /><br />
+            RODRIGUES, E. G. et al. Robótica Educacional no Incentivo de Alunos do Primeiro Ano do Ensino Fundamental.
+            In: <strong>Anais do Workshop de Informática na Escola (WIE)</strong>, 2023.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================
+         FRASE DE ENCERRAMENTO DO BIMESTRE
+         ================================================== -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-4 rounded-4 text-center"
+          style="background: linear-gradient(135deg, #ffb347, #ff8c00);">
+          <h4 style="color: #1e2a1a; font-family: 'Press Start 2P', cursive;">⚡ PARA ENCERRAR O BIMESTRE COM CHAVE DE
+            OURO (E MUITO RISO) ⚡</h4>
+          <p style="color: #1e2a1a; font-size: 1.1rem;" class="mt-3">
+            Então, professor(a), como foi essa primeira leva? Você ainda está com a caneca de café? Tomara que esteja
+            com uma caneta na mão, rabiscando ideias nas laterais. O material é seu. Pode rasgar, pode colar, pode
+            errar. A robótica, assim como a infância, é um eterno SE... ENTÃO... SENÃO.
+          </p>
+          <p style="color: #1e2a1a; font-style: italic;">
+            <strong>SE</strong> o robô não andar, <strong>ENTÃO</strong> a gente declara "Dia do Bug",
+            <strong>SENÃO</strong> a gente dança.<br />
+            <strong>SE</strong> uma criança chorar, <strong>ENTÃO</strong> a gente abraça e pergunta qual comando
+            erramos, <strong>SENÃO</strong> a gente celebra.
+          </p>
+          <p style="color: #1e2a1a;">
+            No próximo bimestre, a gente vai para o segundo nível. Mas, por enquanto, respire. Você acabou de plantar
+            uma semente poderosa. E, acredite, daqui a alguns anos, essa turma não vai só apertar botões -- eles vão
+            <strong>construir</strong> os botões.
+          </p>
+          <p class="mt-3 fw-bold" style="color: #1e2a1a;">
+            Até a próxima aventura, comandante! 🚀🤖💥
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================================================
+       RODAPÉ REBELDE
+       ================================================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src='https://placehold.co/80x80?text=RB'">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src='https://placehold.co/80x80?text=GN'">
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de SENÃO e uma dedicação que só aparece quando o
+              prazo já passou por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a1bim1.js"></script>
+</body>
+
+</html>

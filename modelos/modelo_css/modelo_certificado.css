@@ -1,0 +1,424 @@
+/* ==================================================
+   MODELO_CERTIFICADO.CSS – ATUALIZADO PADRÃO a1bim2.css
+   Para uso com modelo_certificado.html
+   Inclui reset, tema, pré-visualização, cadastro,
+   botões e impressão A4 (3x2 certificados)
+   ================================================== */
+
+/* ========== PARTE 01/09 – RESET E TEMA PRINCIPAL ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bg-robotica {
+  background: linear-gradient(145deg, #1a3f1a 0%, #0e2a0e 100%);
+  font-family: "Inter", "Chakra Petch", "Courier New", monospace;
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+.bg-robocard {
+  background: rgba(20, 30, 15, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 48px 24px 48px 24px;
+  border: 1px solid rgba(255, 180, 71, 0.3);
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* ========== PARTE 02/09 – MODELO DO CERTIFICADO (conforme a1bim2.css) ========== */
+.certificado-preview {
+  background: transparent;
+}
+
+.certificado-modelo {
+  font-family: "Courier New", "Press Start 2P", monospace;
+  background: #0d1f0b !important;
+  border: 3px double rgba(155, 188, 123, 0.9) !important;
+  border-radius: 48px 24px 48px 24px !important;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.certificado-modelo h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+  color: #ffb347;
+  margin-bottom: 1rem;
+}
+
+.nome-aluno-destaque {
+  font-size: 22px;
+  display: block;
+  margin: 15px 0;
+  color: #2c5e1f;
+  background: #d4b87a !important;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.certificado-modelo p {
+  color: #e9f5db;
+  line-height: 1.4;
+}
+
+.certificado-modelo .data-rodape,
+.certificado-modelo .assinatura-engracada {
+  color: #e9f5db;
+  font-size: 0.8rem;
+}
+
+.linha-certificado {
+  border-color: #ffb347;
+  margin: 15px 0;
+}
+
+/* ========== PARTE 03/09 – CADASTRO DE ALUNOS (conforme a1bim2.css) ========== */
+.cadastro-alunos {
+  background: #1e2a1a !important;
+  border-radius: 32px;
+  border-left: 5px solid #ffb347;
+}
+
+.cadastro-alunos h4,
+.cadastro-alunos h5 {
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+}
+
+.lista-alunos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-alunos li {
+  background: #2c3e2b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ebf0eb;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lista-alunos li:hover {
+  background: #3a5538;
+  transform: translateX(5px);
+}
+
+.btn-selecionar-aluno {
+  background: #ffb34720;
+  border: 1px solid #ffb347;
+  color: #ffb347;
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-selecionar-aluno:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+  transform: scale(1.05);
+}
+
+/* ========== PARTE 04/09 – BOTÕES (conforme a1bim2.css) ========== */
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: all 0.3s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+}
+
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ffb347;
+  background: linear-gradient(95deg, #ffa01e, #ff7000);
+  color: white;
+}
+
+.btn-robotico-ano2:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline-warning {
+  border: 2px solid #ffb347;
+  color: #ffb347;
+  border-radius: 60px;
+  font-weight: bold;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-outline-warning:hover:not(:disabled) {
+  background: #ffb347;
+  color: #1e2a1a;
+}
+
+/* ========== PARTE 05/09 – CORES DE TEXTO (conforme a1bim2.css) ========== */
+.text-center.mb-4,
+.text-center.mb-4 h3,
+.text-center.mb-4 .lead,
+.certificado-preview > .text-muted.mt-2.small,
+footer .small.text-muted {
+  color: #ebf0eb !important;
+}
+
+/* ========== PARTE 06/09 – ANIMAÇÕES TEMÁTICAS ========== */
+@keyframes loopInfinitoAnim {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loop-infinito-icon {
+  animation: loopInfinitoAnim 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes piscaVariavel {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+    background-color: #ffb347;
+  }
+}
+
+.variavel-destacada {
+  animation: piscaVariavel 1s ease-in-out infinite;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+@keyframes bugVibracao {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(2px) rotate(1deg);
+  }
+}
+
+.bug-detectado {
+  animation: bugVibracao 0.2s ease-in-out 3;
+  background-color: #e74c3c20;
+  border-left: 3px solid #e74c3c;
+  padding-left: 0.5rem;
+}
+
+/* ========== PARTE 07/09 – RESPONSIVIDADE ========== */
+@media (max-width: 992px) {
+  .certificado-modelo {
+    padding: 1rem !important;
+  }
+  .certificado-modelo h3 {
+    font-size: 0.7rem;
+  }
+  .nome-aluno-destaque {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-robocard {
+    padding: 1rem !important;
+  }
+  .certificado-modelo {
+    border-radius: 32px 16px 32px 16px !important;
+  }
+  .certificado-modelo p,
+  .certificado-modelo .data-rodape {
+    font-size: 0.7rem;
+  }
+  .assinatura-engracada {
+    font-size: 0.6rem;
+  }
+  .btn-robotico-ano2 {
+    font-size: 0.55rem;
+    padding: 6px 12px;
+  }
+  .cadastro-alunos h4,
+  .cadastro-alunos h5 {
+    font-size: 0.7rem;
+  }
+  .lista-alunos li {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .certificado-modelo {
+    padding: 0.8rem !important;
+  }
+  .nome-aluno-destaque {
+    font-size: 16px;
+  }
+  .btn-robotico-ano2,
+  .btn-outline-warning {
+    width: 100%;
+    text-align: center;
+  }
+  .cadastro-alunos .row .col-md-4,
+  .cadastro-alunos .row .col-md-8 {
+    margin-bottom: 8px;
+  }
+}
+
+/* ========== PARTE 08/09 – IMPRESSÃO A4 (6 por folha) ========== */
+@media print {
+  body.bg-robotica {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bg-robocard {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .cadastro-alunos,
+  .btn-robotico-ano2,
+  .btn-outline-warning,
+  .alert-info,
+  .text-muted,
+  footer,
+  .certificado-preview > .text-muted,
+  .certificado-preview > p:last-child {
+    display: none !important;
+  }
+
+  .certificado-modelo {
+    background: #fffef7 !important;
+    border: 3px solid #ffb347 !important;
+    box-shadow: none !important;
+    border-radius: 20px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .certificado-modelo h3 {
+    color: #ffb347 !important;
+  }
+
+  .nome-aluno-destaque {
+    color: #2c5e1f !important;
+    background: #d4b87a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .linha-certificado {
+    border-color: #ffb347 !important;
+  }
+
+  .data-rodape,
+  .assinatura-engracada {
+    color: #4a6e2c !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 1.2cm;
+  }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .certificado-impressao {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 3px solid #ffb347;
+    border-radius: 20px;
+    padding: 15px;
+    background: #fffef7;
+  }
+}
+
+/* ========== PARTE 09/09 – UTILITÁRIOS EXTRAS ========== */
+.text-gradient {
+  background: linear-gradient(135deg, #ffb347, #ffe0a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.flutuar {
+  animation: flutuarSuave 3s ease-in-out infinite;
+}
+
+@keyframes flutuarSuave {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.lista-alunos::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lista-alunos::-webkit-scrollbar-track {
+  background: #2c3e2b;
+  border-radius: 10px;
+}
+
+.lista-alunos::-webkit-scrollbar-thumb {
+  background: #ffb347;
+  border-radius: 10px;
+}
+
+/* DICA DE IMPRESSÃO (estilo consistente) */
+.alert-info {
+  background-color: #1e2a1a;
+  border-color: #ffb347;
+  color: #e9f5db;
+}
+
+.alert-info a {
+  color: #ffb347;
+}

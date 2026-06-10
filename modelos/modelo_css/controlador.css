@@ -1,0 +1,43 @@
+/* ==================================================
+   CONTROLADOR.CSS
+   Arquivo central que gerencia as importações de todos os estilos
+   Projeto: Template Base - Robótica Educacional
+   
+   ATENÇÃO: Este arquivo é APENAS um ORQUESTRADOR.
+   Nenhuma regra CSS de estilo deve ser adicionada aqui.
+   Apenas importações de módulos.
+   ================================================== */
+
+/* ------------------------------------------------
+   ORDEM DE IMPORTAÇÃO (Importante! Não alterar)
+   1. base.css - Reset, variáveis, tipografia, cabeçalho e rodapé
+   2. components.css - Cards, acordeão, botões, componentes gerais
+   3. animations.css - Keyframes e animações
+   4. game.css - Estilos específicos do jogo Robozito
+   5. print.css - Estilos de impressão (certificados e checklists)
+   6. modelo_index.css - Template Base
+   7. modelo_fechamento_bimestre.css - Loop Dash + Adaptações
+   8. modelo_apresentacao_bimestre.css - Apresentação do bimestre
+   9. modelo_planos_aula.css - Planos de aula detalhados
+   10. modelo_certificado.css - Certificados
+   11. modelo_cabecalho.css - Cabeçalho rebelde
+   12. modelo_rodape.css - Rodapé rebelde (NOVO)
+   13. a2bim1.css - Estilos do 2º ano / 1º bimestre
+   ------------------------------------------------ */
+
+/* Importações dos módulos existentes */
+@import url("modelo_index.css");
+@import url("modelo_fechamento_bimestre.css");
+@import url("modelo_apresentacao_bimestre.css");
+@import url("modelo_planos_aula.css");
+@import url("modelo_certificado.css");
+
+/* Importações dos módulos de cabeçalho e rodapé */
+@import url("modelo_cabecalho.css");
+@import url("modelo_rodape.css");
+
+
+/* ==================================================
+   FIM DO CONTROLADOR.CSS - APENAS IMPORTACOES
+   NENHUMA REGRA CSS DE ESTILO DEVE SER ADICIONADA ABAIXO
+   ================================================== */

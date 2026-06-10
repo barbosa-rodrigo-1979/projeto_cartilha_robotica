@@ -1,0 +1,8 @@
+/* ==================================================
+   controlador.css - ORQUESTRADOR CSS
+   Apenas importa os módulos CSS necessários
+   SEM lógica de negócio, SEM estilos diretos
+   ================================================== */
+
+@import url("a1index.css");
+@import url("a1index.css");
