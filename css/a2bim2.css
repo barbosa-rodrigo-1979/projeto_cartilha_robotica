@@ -1,0 +1,1561 @@
+/* ==================================================
+   a2bim2.css – PARTE 1
+   BASE, CABEÇALHO, MENU (sem interferência no #fechamento)
+   ================================================== */
+
+/* ========== VARIÁVEIS GLOBAIS ========== */
+:root {
+  --robot-green: #4a7c3f;
+  --robot-dark: #1e2a1a;
+  --robot-bg: #0d1f0b;
+  --robot-card: #2c3e2b;
+  --robot-gold: #ffb347;
+  --robot-glow: #ffcc44;
+  --robot-danger: #e74c3c;
+  --robot-text: #e9f5db;
+  --robot-text-claro: #ebf0eb;
+}
+
+/* ========== RESET E BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bg-robotica {
+  background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
+  font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+  color: var(--robot-text);
+  min-height: 100vh;
+}
+
+/* ========== CABEÇALHO ROBÓTICO ========== */
+.cabecalho-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  padding: 1rem 0;
+  border-bottom: 5px solid #9bbc7b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.cabecalho-rebelde {
+  border-bottom-color: #ffb347;
+}
+.cabecalho-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.logo-rb,
+.logo-gn {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 12px;
+}
+.logo-rb:hover,
+.logo-gn:hover {
+  transform: scale(1.05);
+}
+.titulo-principal {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.95rem;
+  letter-spacing: 2px;
+  color: #e9f5db;
+  background: linear-gradient(135deg, #1a2b17 0%, #2c3e2b 100%);
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 60px;
+  position: relative;
+  text-transform: uppercase;
+  border: 2px solid #ffb347;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffb347,
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  text-shadow: 2px 2px 0 #3d5a2b;
+  backdrop-filter: blur(2px);
+  white-space: nowrap;
+}
+.titulo-principal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  width: 60%;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 220, 150, 0.6) 0px,
+    rgba(255, 220, 150, 0.6) 8px,
+    rgba(200, 170, 100, 0.4) 8px,
+    rgba(200, 170, 100, 0.4) 16px
+  );
+  border-radius: 20px;
+  filter: blur(1px);
+  pointer-events: none;
+}
+.titulo-principal::after {
+  content: "⬤";
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+.titulo-principal .parafuso-esquerda {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+.titulo-principal:hover {
+  transform: translateY(-2px);
+  border-color: #ffcc44;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffcc44,
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
+}
+.glitch-text {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 1px;
+}
+.subtitulo-chiclete {
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.85rem;
+  color: #ffcc88;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #1a2b17;
+}
+.selo-sucata {
+  background: #1e1e1e;
+  color: #ffcc44;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  border-left: 3px solid #ff9900;
+  letter-spacing: 1px;
+}
+
+/* ========== MENU GLASSMORPHISM ========== */
+.menu-robomestre {
+  background: rgba(13, 31, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+.menu-robomestre .nav-link {
+  color: var(--robot-text);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.menu-robomestre .nav-link i {
+  font-size: 1.1rem;
+  color: var(--robot-gold);
+  transition: transform 0.2s;
+}
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  text-shadow: 0 0 4px var(--robot-gold);
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+.menu-robomestre .nav-link:hover i {
+  transform: scale(1.1);
+  color: var(--robot-glow);
+}
+.menu-robomestre .nav-link.active {
+  color: var(--robot-glow);
+  background: rgba(255, 180, 71, 0.25);
+  text-shadow: 0 0 6px var(--robot-gold);
+  border-bottom: 2px solid var(--robot-gold);
+}
+.menu-robomestre .navbar-toggler {
+  border-color: var(--robot-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.menu-robomestre .navbar-brand {
+  color: var(--robot-gold);
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+}
+
+/* ========== CARDS GLOBAIS ========== */
+.bg-robocard {
+  background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
+  border: 1px solid var(--robot-gold);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+.text-gradient {
+  background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.alert-warning {
+  background-color: rgba(255, 180, 71, 0.2) !important;
+  border-color: var(--robot-gold) !important;
+  color: var(--robot-text-claro) !important;
+}
+/* ==================================================
+   a2bim2.css – PARTE 2
+   APRESENTAÇÃO, TABELAS, PLANOS DE AULA (mantido original)
+   ================================================== */
+
+.projeto-header {
+  background: linear-gradient(90deg, var(--robot-dark) 0%, #2a3b24 100%);
+  border-left: 8px solid var(--robot-gold);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.projeto-header h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--robot-gold);
+  text-shadow: 2px 2px 0 #1e2a1a;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+.badge-projeto {
+  background: var(--robot-danger);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0 #8b1a1a;
+}
+.carta-container {
+  position: relative;
+  overflow: hidden;
+}
+.carta-container::before {
+  content: "📜";
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 5rem;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.carta-texto {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  text-align: justify;
+  font-weight: 500;
+  color: #f0f7e6;
+}
+.table-robotica {
+  background: rgba(30, 42, 26, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  color: var(--robot-text);
+}
+.table-robotica th,
+.table-robotica td {
+  vertical-align: middle;
+  padding: 12px 8px;
+  border-color: #4a7c3f;
+}
+.table-robotica thead th {
+  background: var(--robot-dark);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.table-robotica tbody tr:hover {
+  background: rgba(74, 124, 63, 0.3);
+  transition: 0.2s;
+}
+.table-responsive {
+  border-radius: 20px;
+  overflow-x: auto;
+}
+#plano-sintetico .table-robotica td:first-child {
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.2);
+}
+.container {
+  max-width: 1400px;
+}
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 2px var(--robot-gold);
+  }
+  100% {
+    text-shadow: 0 0 8px var(--robot-glow);
+  }
+}
+.projeto-header h2 i {
+  animation: glowPulse 1.5s ease-in-out infinite alternate;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--robot-dark);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--robot-gold);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--robot-glow);
+}
+.btn-robot {
+  background: var(--robot-gold);
+  border: none;
+  color: var(--robot-dark);
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 40px;
+  transition: all 0.2s;
+}
+.btn-robot:hover {
+  background: var(--robot-glow);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(255, 180, 71, 0.4);
+}
+
+/* ========== PLANOS DE AULA (accordion) ========== */
+.accordion-item {
+  background: transparent;
+  border: none;
+  margin-bottom: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.accordion-header {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+}
+.accordion-button {
+  background: #627454;
+  color: #ffb347;
+  font-weight: bold;
+  font-family: "Chakra Petch", monospace;
+  border: none;
+  border-radius: 0;
+  padding: 16px 24px;
+  font-size: 1rem;
+}
+.accordion-button:not(.collapsed) {
+  background: #7f9470;
+  color: #ffcc44;
+  box-shadow: none;
+}
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: #ffb347;
+}
+.accordion-body {
+  background: #0d1f0b;
+  padding: 24px;
+  border-top: 2px solid #ffb347;
+}
+.semana-card-completo {
+  background: #505e45;
+  border-radius: 24px;
+  padding: 20px;
+}
+.semana-card-completo h5 {
+  color: #ffb347;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-left: 4px solid #ffb347;
+  padding-left: 12px;
+}
+.check-concluido {
+  background: #1e2a1a;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.check-concluido:hover {
+  background: #2c3e2b;
+}
+.check-concluido input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ffb347;
+}
+.materiais-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.material-badge {
+  background: #2c3e2b;
+  padding: 6px 12px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 2px solid #ffb347;
+  color: #ebf0eb;
+}
+.minuto-item {
+  display: flex;
+  margin-bottom: 16px;
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  border-left: 4px solid #ffb347;
+}
+.minuto-tempo {
+  background: #2c3e2b;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  min-width: 100px;
+  text-align: center;
+  color: #ffb347;
+}
+.minuto-descricao {
+  padding: 10px 16px;
+  flex: 1;
+  line-height: 1.4;
+  color: #ebf0eb;
+}
+.frase-do-dia {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  border: 1px dashed #ffb347;
+  color: #ebf0eb;
+}
+.frase-do-dia i {
+  color: #ffb347;
+  margin-right: 8px;
+}
+p.text-muted.mt-2.small,
+p.small.text-muted,
+li,
+p,
+.check-concluido span {
+  color: #ebf0eb;
+}
+/* ==================================================
+   a2bim2.css – PARTE 3
+   JOGO "OPERAÇÃO RESGATE" E CERTIFICADO
+   ================================================== */
+
+.painel-jogo {
+  background: linear-gradient(145deg, #1e2a1a, #0d1f0b);
+  border-radius: 32px;
+  border: 1px solid #ffb347;
+}
+.btn-conectivo {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.8rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 60px;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+.btn-e {
+  background: #2c5e1f;
+  color: #e9f5db;
+  border-bottom: 4px solid #ffb347;
+}
+.btn-e:hover {
+  background: #3e7a2c;
+  transform: scale(1.02);
+}
+.btn-ou {
+  background: #c99400;
+  color: #1e2a1a;
+  border-bottom: 4px solid #e9f5db;
+}
+.btn-ou:hover {
+  background: #ffaa22;
+  transform: scale(1.02);
+}
+.pergunta-card {
+  background: #2c3e2b;
+  border-left: 8px solid #ffb347;
+}
+#feedback {
+  border-radius: 20px;
+  font-weight: bold;
+}
+#feedback.acerto {
+  background: #1e6b3a;
+  color: white;
+  border-left: 6px solid #2ecc71;
+}
+#feedback.erro {
+  background: #6b1a1a;
+  color: white;
+  border-left: 6px solid #e74c3c;
+}
+
+/* ========== CERTIFICADO ========== */
+.certificado-preview {
+  background: transparent;
+}
+.certificado-modelo {
+  font-family: "Courier New", "Press Start 2P", monospace;
+  background: #0d1f0b !important;
+  border: 3px double rgba(155, 188, 123, 0.9) !important;
+  border-radius: 48px 24px 48px 24px !important;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1.5rem;
+}
+.certificado-modelo h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+  color: #ffb347;
+  margin-bottom: 1rem;
+}
+.nome-aluno-destaque {
+  font-size: 22px;
+  display: block;
+  margin: 15px 0;
+  color: #2c5e1f;
+  background: #d4b87a !important;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: bold;
+  word-break: break-word;
+}
+.certificado-modelo p {
+  color: #e9f5db;
+  line-height: 1.4;
+}
+.certificado-modelo .data-rodape,
+.certificado-modelo .assinatura-engracada {
+  color: #e9f5db;
+  font-size: 0.8rem;
+}
+.linha-certificado {
+  border-color: #ffb347;
+  margin: 15px 0;
+}
+.cadastro-alunos {
+  background: #1e2a1a !important;
+  border-radius: 32px;
+  border-left: 5px solid #ffb347;
+}
+.cadastro-alunos h4,
+.cadastro-alunos h5 {
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+}
+.lista-alunos {
+  list-style: none;
+  padding-left: 0;
+}
+.lista-alunos li {
+  background: #2c3e2b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ebf0eb;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.lista-alunos li:hover {
+  background: #3a5538;
+  transform: translateX(5px);
+}
+.btn-selecionar-aluno {
+  background: #ffb34720;
+  border: 1px solid #ffb347;
+  color: #ffb347;
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+.btn-selecionar-aluno:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+  transform: scale(1.05);
+}
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: all 0.3s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+}
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ffb347;
+  background: linear-gradient(95deg, #ffa01e, #ff7000);
+  color: white;
+}
+.btn-robotico-ano2:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-outline-warning {
+  border: 2px solid #ffb347;
+  color: #ffb347;
+  border-radius: 60px;
+  font-weight: bold;
+  background: transparent;
+  transition: all 0.2s;
+}
+.btn-outline-warning:hover:not(:disabled) {
+  background: #ffb347;
+  color: #1e2a1a;
+}
+.text-center.mb-4,
+.text-center.mb-4 h3,
+.text-center.mb-4 .lead,
+.certificado-preview > .text-muted.mt-2.small,
+footer .small.text-muted {
+  color: #ebf0eb !important;
+}
+@keyframes loopInfinitoAnim {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loop-infinito-icon {
+  animation: loopInfinitoAnim 2s linear infinite;
+  display: inline-block;
+}
+@keyframes piscaVariavel {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+    background-color: #ffb347;
+  }
+}
+.variavel-destacada {
+  animation: piscaVariavel 1s ease-in-out infinite;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+@keyframes bugVibracao {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(2px) rotate(1deg);
+  }
+}
+.bug-detectado {
+  animation: bugVibracao 0.2s ease-in-out 3;
+  background-color: #e74c3c20;
+  border-left: 3px solid #e74c3c;
+  padding-left: 0.5rem;
+}
+@media (max-width: 992px) {
+  .certificado-modelo {
+    padding: 1rem !important;
+  }
+  .certificado-modelo h3 {
+    font-size: 0.7rem;
+  }
+  .nome-aluno-destaque {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .bg-robocard {
+    padding: 1rem !important;
+  }
+  .certificado-modelo {
+    border-radius: 32px 16px 32px 16px !important;
+  }
+  .certificado-modelo p,
+  .certificado-modelo .data-rodape {
+    font-size: 0.7rem;
+  }
+  .assinatura-engracada {
+    font-size: 0.6rem;
+  }
+  .btn-robotico-ano2 {
+    font-size: 0.55rem;
+    padding: 6px 12px;
+  }
+  .cadastro-alunos h4,
+  .cadastro-alunos h5 {
+    font-size: 0.7rem;
+  }
+  .lista-alunos li {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 576px) {
+  .certificado-modelo {
+    padding: 0.8rem !important;
+  }
+  .nome-aluno-destaque {
+    font-size: 16px;
+  }
+  .btn-robotico-ano2,
+  .btn-outline-warning {
+    width: 100%;
+    text-align: center;
+  }
+  .cadastro-alunos .row .col-md-4,
+  .cadastro-alunos .row .col-md-8 {
+    margin-bottom: 8px;
+  }
+}
+@media print {
+  body.bg-robotica {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+  .bg-robocard {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .cadastro-alunos,
+  .btn-robotico-ano2,
+  .btn-outline-warning,
+  .alert-info,
+  .text-muted,
+  footer,
+  .certificado-preview > .text-muted,
+  .certificado-preview > p:last-child {
+    display: none !important;
+  }
+  .certificado-modelo {
+    background: #fffef7 !important;
+    border: 3px solid #ffb347 !important;
+    box-shadow: none !important;
+    border-radius: 20px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .certificado-modelo h3 {
+    color: #ffb347 !important;
+  }
+  .nome-aluno-destaque {
+    color: #2c5e1f !important;
+    background: #d4b87a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .linha-certificado {
+    border-color: #ffb347 !important;
+  }
+  .data-rodape,
+  .assinatura-engracada {
+    color: #4a6e2c !important;
+  }
+  @page {
+    size: A4;
+    margin: 1.2cm;
+  }
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  .certificado-impressao {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 3px solid #ffb347;
+    border-radius: 20px;
+    padding: 15px;
+    background: #fffef7;
+  }
+}
+.text-gradient {
+  background: linear-gradient(135deg, #ffb347, #ffe0a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.flutuar {
+  animation: flutuarSuave 3s ease-in-out infinite;
+}
+@keyframes flutuarSuave {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.lista-alunos::-webkit-scrollbar {
+  width: 6px;
+}
+.lista-alunos::-webkit-scrollbar-track {
+  background: #2c3e2b;
+  border-radius: 10px;
+}
+.lista-alunos::-webkit-scrollbar-thumb {
+  background: #ffb347;
+  border-radius: 10px;
+}
+.alert-info {
+  background-color: #1e2a1a;
+  border-color: #ffb347;
+  color: #e9f5db;
+}
+.alert-info a {
+  color: #ffb347;
+}
+/* ==================================================
+   a2bim2.css – PARTE 4 (opcional – Loop Dash)
+   Mantido exatamente como no original (sem conflitos com #fechamento)
+   ================================================== */
+
+.loopdash-pista-visual {
+  background: linear-gradient(135deg, #1a3a15, #0f2a0c);
+  border-radius: 24px;
+  padding: 16px;
+  border: 2px solid #ffb347;
+}
+.pista-label {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #e9f5db;
+}
+.loopdash-grid {
+  display: grid;
+  gap: 6px;
+  background: #2c3e2b;
+  padding: 12px;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.loopdash-grid.fase1 {
+  grid-template-columns: repeat(8, 55px);
+}
+.loopdash-grid.fase2 {
+  grid-template-columns: repeat(5, 55px);
+}
+.loopdash-grid.fase3 {
+  grid-template-columns: repeat(6, 55px);
+}
+.loopdash-cell {
+  aspect-ratio: 1 / 1;
+  background: #1e2a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.2s ease;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.loopdash-cell.robot {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.6);
+  animation: pulseRobot 0.8s ease-in-out infinite alternate;
+}
+.loopdash-cell.robot::after {
+  content: "🤖";
+  font-size: 1.8rem;
+}
+.loopdash-cell.target {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+.loopdash-cell.target::after {
+  content: "🏁";
+  font-size: 1.6rem;
+  animation: bounceFlag 0.5s ease-in-out infinite alternate;
+}
+.loopdash-cell.wall {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+.loopdash-cell.wall::after {
+  content: "🧱";
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
+.loopdash-cell.path {
+  background: #4a7c3f;
+}
+.loopdash-cell.visited {
+  background: #2c5e1f;
+  animation: fadeStep 0.3s ease-out;
+}
+.stat-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  border-left: 4px solid #ffb347;
+}
+.stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: #9bbc7b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+.algoritmo-builder {
+  background: linear-gradient(135deg, #0d1f0b, #1a2b17);
+  border-radius: 24px;
+  border: 2px dashed #ffb347;
+  overflow: hidden;
+}
+.builder-header {
+  background: #2c3e2b;
+  padding: 12px 16px;
+  color: #ffb347;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+.btn-clear-algoritmo {
+  background: #e74c3c;
+  border: none;
+  border-radius: 40px;
+  padding: 6px 14px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.btn-clear-algoritmo:hover {
+  background: #c0392b;
+  transform: scale(1.02);
+}
+.algoritmo-montado {
+  min-height: 120px;
+  padding: 16px;
+  background: #0a0f08;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.placeholder-algoritmo {
+  color: #6b8c5c;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+.cartao-montado {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 16px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 4px solid #ffb347;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.cartao-montado:hover {
+  transform: translateY(-2px);
+  background: #3a5a35;
+}
+.cartao-montado .cartao-remove {
+  width: 20px;
+  height: 20px;
+  background: #e74c3c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+  margin-left: 4px;
+}
+.cartao-montado.repita-container {
+  background: linear-gradient(135deg, #4a7c3f, #2c5e1f);
+  border-left: 4px solid #ffcc44;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 150px;
+}
+.repita-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.repita-contador-input {
+  background: #ffb347;
+  border: none;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-weight: bold;
+  font-family: monospace;
+}
+.repita-filhos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px;
+  background: #1a2b17;
+  border-radius: 12px;
+  width: 100%;
+}
+.cartoes-prateleira {
+  background: linear-gradient(135deg, #1a2b17, #0d1f0b);
+  border-radius: 24px;
+  padding: 16px;
+}
+.cartoes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #ffb347;
+  font-weight: bold;
+}
+.regra-destaque {
+  background: #e74c3c;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  color: white;
+}
+.cartoes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.cartao-comando {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid #4a7c3f;
+  min-width: 100px;
+}
+.cartao-comando:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #ffb347;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.cartao-comando.cartao-especial {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  border-color: #ffcc44;
+}
+.cartao-icone {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+.cartao-texto {
+  font-weight: bold;
+  color: #ffb347;
+  font-size: 0.8rem;
+}
+.cartao-desc {
+  font-size: 0.6rem;
+  color: #9bbc7b;
+}
+.botoes-painel {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-executar,
+.btn-resetar,
+.btn-dica,
+.btn-exemplo {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 60px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+  font-family: "Chakra Petch", monospace;
+}
+.btn-executar {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  box-shadow: 0 4px 0 #1e6b3a;
+}
+.btn-executar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1e6b3a;
+}
+.btn-resetar {
+  background: linear-gradient(135deg, #7f8c8d, #6c7a7a);
+  color: white;
+}
+.btn-dica {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  color: white;
+}
+.btn-exemplo {
+  background: linear-gradient(135deg, #2980b9, #1a6da0);
+  color: white;
+}
+.mensagem-jogo {
+  background: #0a0f08;
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  border-left: 6px solid #ffb347;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.mensagem-jogo.sucesso {
+  background: #1e6b3a;
+  border-left-color: #2ecc71;
+}
+.mensagem-jogo.erro {
+  background: #6b1a1a;
+  border-left-color: #e74c3c;
+}
+.recordes-painel {
+  background: #0d1f0b;
+  border-radius: 20px;
+  padding: 12px;
+}
+.recordes-header {
+  text-align: center;
+  color: #ffb347;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.recordes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.recorde-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  min-width: 100px;
+}
+.recorde-fase {
+  font-size: 0.7rem;
+  color: #9bbc7b;
+}
+.recorde-valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+.legenda-pista {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+}
+.legenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-group .btn-phase {
+  background: #2c3e2b;
+  border: 2px solid #4a7c3f;
+  padding: 10px 20px;
+  border-radius: 40px;
+  color: #e9f5db;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin: 4px;
+}
+.btn-group .btn-phase:hover,
+.btn-group .btn-phase.ativo {
+  background: #ffb347;
+  color: #1e2a1a;
+  border-color: #ffcc44;
+}
+.fase1-btn.ativo {
+  background: #27ae60;
+  color: white;
+}
+.fase2-btn.ativo {
+  background: #f39c12;
+  color: #1e2a1a;
+}
+.fase3-btn.ativo {
+  background: #e74c3c;
+  color: white;
+}
+@keyframes pulseRobot {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
+  }
+}
+@keyframes bounceFlag {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes fadeStep {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (max-width: 768px) {
+  .loopdash-grid.fase1 {
+    grid-template-columns: repeat(8, 40px);
+    gap: 4px;
+  }
+  .loopdash-grid.fase2 {
+    grid-template-columns: repeat(5, 40px);
+    gap: 4px;
+  }
+  .loopdash-grid.fase3 {
+    grid-template-columns: repeat(6, 40px);
+    gap: 4px;
+  }
+  .loopdash-cell {
+    font-size: 1.2rem;
+  }
+  .loopdash-cell.robot::after {
+    font-size: 1.3rem;
+  }
+  .loopdash-cell.target::after {
+    font-size: 1.2rem;
+  }
+  .cartao-comando {
+    min-width: 70px;
+    padding: 8px 10px;
+  }
+  .cartao-icone {
+    font-size: 1.3rem;
+  }
+  .cartao-texto {
+    font-size: 0.6rem;
+  }
+  .stat-value {
+    font-size: 1.2rem;
+  }
+  .recorde-valor {
+    font-size: 1.2rem;
+  }
+  .btn-executar,
+  .btn-resetar,
+  .btn-dica,
+  .btn-exemplo {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  .projeto-header h2 {
+    font-size: 0.9rem;
+  }
+  .titulo-principal {
+    font-size: 0.9rem;
+  }
+}
+/* ==================================================
+   a2bim2.css – PARTE 5
+   RODAPÉ, ANIMAÇÕES, MEDIA QUERIES GERAIS
+   ================================================== */
+
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  border-top: 5px solid #9bbc7b;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+.footer-rebelde {
+  border-top-color: #ffb347;
+}
+.footer-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.footer-logo {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+}
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+.dev-nome {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Chakra Petch", monospace;
+  color: #ebf0eb;
+}
+.dev-contato {
+  font-size: 0.8rem;
+}
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    text-shadow 0.2s;
+  font-family: monospace;
+}
+.dev-contato a:hover {
+  color: #ffb347;
+  text-decoration: underline;
+  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
+}
+.relatorio-bugs {
+  border-top: 1px dashed #ffb347;
+  padding-top: 0.8rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffcc88;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 768px) {
+  .footer-robotico {
+    font-size: 0.75rem;
+    padding: 1.5rem 0;
+  }
+  .footer-logo {
+    max-height: 50px;
+  }
+  .dev-nome {
+    font-size: 0.7rem;
+  }
+  .dev-contato {
+    font-size: 0.65rem;
+  }
+  .relatorio-bugs {
+    font-size: 0.65rem;
+  }
+  .cabecalho-robotico,
+  .cabecalho-rebelde {
+    background: #0c140b !important;
+    background-image: repeating-linear-gradient(
+      45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px
+    ) !important;
+    border-bottom-color: #ffb347 !important;
+  }
+}
+@media (max-width: 480px) {
+  .footer-logo {
+    max-height: 40px;
+  }
+  .dev-nome {
+    font-size: 0.6rem;
+  }
+  .dev-contato {
+    font-size: 0.55rem;
+  }
+  .relatorio-bugs {
+    font-size: 0.55rem;
+  }
+}
+@keyframes contadorPisca {
+  0%,
+  100% {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(255, 180, 71, 0.5);
+    transform: scale(1.05);
+  }
+}
+#relatorioBugs.atualizando {
+  animation: contadorPisca 0.3s ease-in-out;
+}
+.cabecalho-robotico,
+.cabecalho-rebelde {
+  background: #0c140b !important;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  ) !important;
+  border-bottom-color: #ffb347 !important;
+}
+/* ========== ESTILOS DO FECHAMENTO IGUAL AO MODELO ========== */
+.card.bg-light.border-warning {
+  background-color: #2c3e2b !important;
+  color: #2c3e2b; /* não afeta elementos internos, pois eles serão sobrescritos */
+  border-color: #ffb347 !important;
+}
+
+.card.bg-light.border-warning .card-title {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.card.bg-light.border-warning h6 {
+  color: #ebf0eb;
+  font-weight: bold;
+}
+
+.card.bg-light.border-warning li {
+  color: #ebf0eb;
+}
+
+.card.bg-light.border-warning p {
+  color: #ebf0eb;
+}
+
+/* Opcional: garantir que as tabelas internas também tenham texto claro */
+.card.bg-light.border-warning .table td,
+.card.bg-light.border-warning .table th,
+.card.bg-light.border-warning .table {
+  color: #ebf0eb;
+  background-color: transparent;
+}

@@ -1,0 +1,2224 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>2º Ano | 2º Bimestre - Lógica Binária Emocionante</title>
+  <!-- Bootstrap 5 + ícones + fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS exclusivo do bimestre 2 do 2º ano -->
+  <link rel="stylesheet" href="css/a2bim2.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- CABEÇALHO REBELDE (igual ao modelo_cabecalho.html, adaptado para 2º ano / 2º bimestre) -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 2º BIMESTRE: O MARCO ZERO DA LÓGICA BINÁRIA EMOCIONANTE ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU GLASSMORPHISM (exatamente o modelo_menu_bim.html) -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a2index.html"><i class="bi bi-robot"></i> 2º Ano</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2index.html"><i class="bi bi-house-door-fill"></i> 2° ano</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="a2bim1.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="a2bim2.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim3.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim4.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- ==================================================
+       APRESENTAÇÃO DO BIMESTRE (carta, mapeamento, plano sintético)
+       Conteúdo 100% extraído do ano2_bimestre_2.docx
+  ================================================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🤖 CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          "QUANDO a aula começar, ENTÃO a gente aprende; SENÃO, a gente dorme,
+          mas QUANDO o robô apitar, a gente acorda!"
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          Querido(a) professor(a) de robótica de mentira que funciona de
+          verdade,
+        </p>
+        <p class="carta-texto mt-2">
+          Vamos combinar: lógica, computação e conectivos lógicos no 2º ano
+          não precisam ser chatos. Na verdade, eles pedem pra ser divertidos,
+          desplugados, sonoros, visuais e um pouquinho paranoicos.
+        </p>
+        <p class="carta-texto mt-2">Neste bimestre, a gente vai:</p>
+        <ul>
+          <li>
+            Programar robôs humanos com eventos sonoros e visuais (`QUANDO
+            bater palmas, PULE`);
+          </li>
+          <li>
+            Misturar condições e eventos (`SE estiver perto da parede ENTÃO
+            grite "AI!"`);
+          </li>
+          <li>
+            Encarar a tabela verdade no chão com E e OU (e brigar pra ver quem
+            acerta);
+          </li>
+          <li>
+            Investigar um mistério real com pegadas, pelos e pistas falsas
+            (`E` vs `OU` nos seus limites emocionais).
+          </li>
+        </ul>
+        <p class="carta-texto mt-2">
+          Tudo isso com muito barulho, cartolina, lupa de papelão e robôs que
+          travam se você piscar no segundo errado.
+        </p>
+        <p class="carta-texto mt-2">
+          Bem-vindo ao bimestre em que o pensamento computacional vê sangue
+          nos olhos e o certificado final vem com uma mancha de café
+          imaginária na camisa.
+        </p>
+        <p class="carta-texto mt-2">
+          Prepare o pandeiro, o apito e a paciência.
+        </p>
+        <p class="carta-texto mt-2 fw-bold">Que o caos organizado comece.</p>
+        <p class="carta-texto mt-2">
+          Equipe Robô Zé 2.0 (agora com laço borboleta e senso de humor)
+        </p>
+      </div>
+    </section>
+
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE</h2>
+        <div class="badge-projeto">Habilidades BNCC / RCP-PR</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Habilidades BNCC / RCP-PR (Outras)</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Habilidades BNCC (Matemática)</th>
+              <th>Habilidades BNCC (Língua Portuguesa)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                RCP-PR: EF02CO01, EF02CO02 (criação e simulação de algoritmos)
+              </td>
+              <td>11</td>
+              <td>
+                Apresentando Eventos: QUANDO bater palmas, o robô assusta
+              </td>
+              <td>EF02MA11 (eventos e sequências)</td>
+              <td>EF02LP09 (leitura de instruções)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO03 (diferentes máquinas executam diferentes
+                instruções)
+              </td>
+              <td>12</td>
+              <td>QUANDO + SE: Juntando evento e condição</td>
+              <td>EF02MA11; EF02MA12</td>
+              <td>EF02LP10 (interpretação e execução de comandos)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO04 (diferença entre hardware e software,
+                aplicada ao robô humano)
+              </td>
+              <td>13</td>
+              <td>Projeto Rápido: Robô da Sala de Aula</td>
+              <td>EF02MA12 (tomada de decisão)</td>
+              <td>EF02LP10 (criação de regras)</td>
+            </tr>
+            <tr>
+              <td>RCP-PR: EF02CO02 (algoritmos com repetições simples)</td>
+              <td>14</td>
+              <td>Múltiplos Eventos em Sequência: A Coreografia dos Robôs</td>
+              <td>EF02MA11 (sequências e padrões)</td>
+              <td>EF02LP09 (execução de comandos sequenciais)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO01 (comparar modelos e identificar atributos
+                essenciais)
+              </td>
+              <td>15</td>
+              <td>Introdução ao E: Tudo Verdade</td>
+              <td>EF02MA11 (lógica com conectivos)</td>
+              <td>EF02LP10 (formulação de frases condicionais)</td>
+            </tr>
+            <tr>
+              <td>RCP-PR: EF02CO02 (simulação de algoritmos com decisões)</td>
+              <td>16</td>
+              <td>Introdução ao OU: Basta Um</td>
+              <td>EF02MA11; EF02MA12</td>
+              <td>EF02LP10 (transformação de frases)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO03; EF02CO04 (diferenciação de hardware/software
+                + execução de instruções)
+              </td>
+              <td>17</td>
+              <td>Misturando E e OU: O Robô Decisor Avançado</td>
+              <td>EF02MA11; EF02MA12</td>
+              <td>EF02LP10 (análise de regras complexas)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO01; EF02CO02 (algoritmos de decisão com E e OU)
+              </td>
+              <td>18</td>
+              <td>
+                Projeto Robô Detetive Parte 1: O Mistério do Brinquedo Sumido
+              </td>
+              <td>EF02MA11; EF02MA12</td>
+              <td>EF02LP10 (leitura e interpretação de pistas)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO02; EF02CO03 (algoritmos aninhados com SE, SENÃO
+                SE)
+              </td>
+              <td>19</td>
+              <td>Projeto Robô Detetive Parte 2: Algoritmo de Solução</td>
+              <td>EF02MA12</td>
+              <td>EF02LP10 (escrita de algoritmo condicional)</td>
+            </tr>
+            <tr>
+              <td>
+                RCP-PR: EF02CO01 a EF02CO06 (integração de todas as
+                habilidades)
+              </td>
+              <td>20</td>
+              <td>Feira dos Eventos: Avaliação do Bimestre</td>
+              <td>EF02MA11; EF02MA12</td>
+              <td>EF02LP09; EF02LP10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📌 BIMESTRE -- PLANO
+          SINTÉTICO
+        </h2>
+        <div class="badge-projeto">10 semanas de pura lógica emocionante</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Atividade Principal</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Conceito Central</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Orquestra de robôs reagindo a instrumentos; mural dos eventos.
+              </td>
+              <td>11</td>
+              <td>Apresentando Eventos: QUANDO...</td>
+              <td>
+                Diferenciar SE (condição verdadeira/falsa) de QUANDO (evento
+                externo).
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Robô guarda‑costas: anda livre, no apito verifica distância.
+              </td>
+              <td>12</td>
+              <td>QUANDO + SE</td>
+              <td>Combinar evento disparador com condição de contexto.</td>
+            </tr>
+            <tr>
+              <td>
+                Cartaz com 5 regras "QUANDO professor fizer X, SE Y, ENTÃO Z".
+              </td>
+              <td>13</td>
+              <td>Robô da Sala de Aula</td>
+              <td>
+                Criar robô humano com regras coletivas de eventos e
+                condicionais.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Coreografia coletiva com 3 eventos (apito → gira, etc.) +
+                evento falso "BOLA!".
+              </td>
+              <td>14</td>
+              <td>Coreografia dos Robôs</td>
+              <td>
+                Responder a sequências de múltiplos eventos; memória de
+                trabalho.
+              </td>
+            </tr>
+            <tr>
+              <td>Jogo das duas condições; tabela verdade no chão.</td>
+              <td>15</td>
+              <td>Introdução ao E</td>
+              <td>Conjunção exige duas condições verdadeiras.</td>
+            </tr>
+            <tr>
+              <td>Mercado com OU: pagar com dinheiro OU cartão.</td>
+              <td>16</td>
+              <td>Introdução ao OU</td>
+              <td>Disjunção exige pelo menos uma condição verdadeira.</td>
+            </tr>
+            <tr>
+              <td>Criação de regras para o recreio; jogo dos parênteses.</td>
+              <td>17</td>
+              <td>Misturando E e OU</td>
+              <td>Combinar E e OU com parênteses lúdicos.</td>
+            </tr>
+            <tr>
+              <td>
+                Investigação em grupo: "Pegada grande E tem pelos → Cão".
+              </td>
+              <td>18</td>
+              <td>Robô Detetive -- Parte 1</td>
+              <td>
+                Aplicar E e OU para analisar pistas e eliminar suspeitos.
+              </td>
+            </tr>
+            <tr>
+              <td>Fluxograma SE → SENÃO SE → SENÃO; teste com pistas.</td>
+              <td>19</td>
+              <td>Robô Detetive -- Parte 2</td>
+              <td>Escrever algoritmo condicional aninhado.</td>
+            </tr>
+            <tr>
+              <td>Cada grupo apresenta robô detetive; desafio surpresa.</td>
+              <td>20</td>
+              <td>Feira dos Eventos -- Avaliação</td>
+              <td>Apresentar projeto combinando eventos, E e OU.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================================================
+       PLANOS DE AULA DETALHADOS (accordion - semanas 11 a 20)
+       Conteúdo integral do DOCX (cada semana com seus detalhes)
+  ================================================== -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS --
+          BIMESTRE 2
+        </h2>
+        <div class="badge-projeto">
+          Prepare a bagunça organizada. Eventos, condicionais, E/OU e muito
+          caos!
+        </div>
+      </div>
+      <div class="accordion" id="accordionAulas">
+        <!-- Semana 11 -->
+        <div class="accordion-item" data-semana="11">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana11">
+              🔊 Semana 11 -- Apresentando Eventos: "QUANDO bater palmas, o
+              robô assusta"
+            </button>
+          </h2>
+          <div id="semana11" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido"><input type="checkbox" class="semana-check"
+                      data-semana="11" /><span>Marcar como concluída</span></label>
+                </div>
+                <ul>
+                  <li>
+                    Diferenciar `SE` (condição verdadeira/falsa) de `QUANDO`
+                    (evento externo pontual).
+                  </li>
+                  <li>
+                    Executar ações em resposta a eventos sonoros e visuais com
+                    até 2s de latência.
+                  </li>
+                </ul>
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Conceito de evento como gatilho externo (som, luz, gesto).
+                  Fluxo `QUANDO [evento] → [ação]`. Comparação inicial com
+                  `SE`.
+                </p>
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11. Língua Portuguesa: EF02LP09. RCP-PR:
+                  EF02CO01, EF02CO02.
+                </p>
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge">Apito, pandeiro, chocalho</span><span class="material-badge">Lanterna,
+                    vuvuzela de brinquedo</span><span class="material-badge">Cartões de ícone orelha/olho</span><span
+                    class="material-badge">Papel picado, mural</span>
+                </div>
+                <h5>⏱️ Minuto a minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Despertador maluco"</strong> – "ROBÔ
+                    ACORDA!" todos bipam; "ROBÔ DORME" roncam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>História "Robô Zé e a festa surpresa"</strong> –
+                    QUANDO ouvir "SURPRESA!" confete. Quem jogar sem gatilho
+                    recolhe com língua imaginária.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo "Orquestra de robôs"</strong> – 4 grupos
+                    reagem a instrumentos diferentes. Erro → grito "LAG!" e
+                    giram como drone perdido.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Eventos visuais – Lanterna mágica</strong> –
+                    QUANDO acende piscam, QUANDO apaga bocejam. Cores:
+                    vermelho congela, azul dança anos 80.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mural dos eventos</strong> – Desenhar `QUANDO
+                    [evento] → [ação]`. Regra do caos: evento "QUANDO eu
+                    quiser sorvete" → adesivo "Robô Egoísta".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Passaporte do Evento</strong> – Carimbo para quem
+                    reagiu a 3 eventos diferentes.
+                  </div>
+                </div>
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    Deficiência auditiva: eventos visuais (cartão vermelho,
+                    lanterna pisca, vibração).
+                  </li>
+                  <li>TDAH: eventos rápidos (máx 3s entre eles).</li>
+                  <li>
+                    Autismo: eventos fixos (ex: sempre apito = gira); fones de
+                    proteção.
+                  </li>
+                </ul>
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong> "QUANDO a aula começa, ENTÃO
+                  a alegria loopa!"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 12 -->
+        <!-- ==================== SEMANA 12 ==================== -->
+        <div class="accordion-item" data-semana="12">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana12">
+              🔗 Semana 12 -- QUANDO + SE: Juntando evento e condição
+            </button>
+          </h2>
+          <div id="semana12" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="12" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>Combinar evento (`QUANDO`) com condição (`SE`).</li>
+                  <li>
+                    Executar a verificação da condição apenas após a
+                    ocorrência do evento.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Estrutura: `QUANDO evento → SE condição → ENTÃO ação A;
+                  SENÃO ação B`.<br />
+                  Hierarquia: evento dispara, condição é testada, ação é
+                  escolhida.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11, EF02MA12.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO03 (identificar que máquinas diferentes
+                  executam conjuntos próprios de instruções).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões EVENTO (laranja)
+                    e CONDIÇÃO (azul)</span>
+                  <span class="material-badge"><i class="bi bi-pin-map-fill"></i> Adesivos de posição
+                    (perto da janela, perto da mesa)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito, lanterna,
+                    chocalho, buzina de palhaço</span>
+                  <span class="material-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Fita crepe para
+                    demarcar zonas no chão</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Evento surpresa"</strong> – QUANDO
+                    professor diz "AGORA", param e olham. SE estão sorrindo →
+                    ponto imaginário; SENÃO → perdem parafuso. Três parafusos
+                    perdidos = "Robô Depressivo" (cara triste robótica).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Modelagem no quadro</strong> – Seta: EVENTO
+                    (palma) → verifica CONDIÇÃO (perto da parede?) → SIM/NÃO →
+                    ação. Exemplo absurdo: "QUANDO buzina, SE for sexta‑feira,
+                    ENTÃO dê mortal; SENÃO, assobie."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo "Robô guarda‑costas"</strong> – Crianças
+                    andam livres. QUANDO apitar, verificam: SE a menos de 1m
+                    de alguém → abraça; SENÃO → levanta mão. Abraço antes do
+                    apito = "grude proibido" → dança música do robô triste.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Grid com evento e condição</strong> – Duas zonas
+                    (azul/vermelha). QUANDO "MUDA!", SE na zona azul → anda 2
+                    casas direita; SENÃO → esquerda. Errar direção → anda 1
+                    pra trás e grita "RECALCULANDO".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desenho de fluxograma duplo</strong> – Folha com
+                    EVENTO (desenho), losango (SE), duas ações. Desafio:
+                    "QUANDO mãe chama, SE já escovou os dentes → sorri; SENÃO
+                    → corre".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação oral</strong> – "O que foi mais
+                    fácil? O que travou seu cérebro?" Quem disser "tudo fácil"
+                    ganha "Robô Metido" e dá um piscada de olho só.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> tapete tátil com
+                    texturas diferentes; evento obrigatoriamente sonoro.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> reduzir tempo entre evento e ação
+                    para 1s.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> usar sempre o mesmo evento (ex:
+                    apito) para evitar sobrecarga sensorial.
+                  </li>
+                  <li>
+                    <strong>Disfasia:</strong> ações apenas com gestos
+                    (apontar, pular, girar), sem fala obrigatória.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais (rubrica de eventos)</h5>
+                <ul>
+                  <li>
+                    Só verifica `SE` depois do evento; testar antes = "ERRO
+                    404" e congela 3s.
+                  </li>
+                  <li>
+                    Hesitação &gt;1s = perde parafuso e fala "recalculando".
+                  </li>
+                  <li>No grid: anda 2 casas certas após "MUDA!" = OK.</li>
+                  <li>
+                    Fluxograma original com `SE` e duas ações diferentes.
+                  </li>
+                  <li>
+                    Se travar, ganha selo "Robô em loop infinito" e repete
+                    ação anterior 3x.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Evento é o empurrão, condição é a escolha. QUANDO
+                    apitar, SE estiver perto, ENTÃO abrace!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 13 -->
+        <!-- ==================== SEMANA 13 ==================== -->
+        <div class="accordion-item" data-semana="13">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana13">
+              🤖 Semana 13 -- Projeto Rápido: Robô da Sala de Aula
+            </button>
+          </h2>
+          <div id="semana13" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="13" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Criar um "robô humano" coletivo com regras baseadas em
+                    eventos/condicionais.
+                  </li>
+                  <li>
+                    Produzir um cartaz com as 5 regras finais, que serão
+                    seguidas durante a semana.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Autoria de algoritmos para o cotidiano escolar.<br />
+                  Documentação de regras em linguagem mista (texto + desenho).
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO04 (diferenciar componentes físicos --
+                  hardware -- e programas -- software -- aplicado ao robô
+                  humano).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-image"></i> Cartolina, canetas
+                    coloridas, fita crepe</span>
+                  <span class="material-badge"><i class="bi bi-person-fill"></i> Jaleco branco e gravata
+                    borboleta para o "Cientista Maluco"</span>
+                  <span class="material-badge"><i class="bi bi-robot"></i> Adesivos de robô</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Robô imitador"</strong> – QUANDO professor
+                    coçar nariz → todos coçam; QUANDO piscar → piscam. Coçar
+                    sem gatilho = "Robô Coçador" (só pode coçar por 5s).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Brainstorm de eventos</strong> – Listar eventos do
+                    professor: tossir, bater palmas, falar "silêncio",
+                    apontar, bocejar, roncar, fazer careta.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criar condicionais absurdas</strong> – Ex: "QUANDO
+                    professor bocejar, SE estiver de pé → oferece café
+                    imaginário; SENÃO → pergunta 'dormiu bem?'". Turma vota na
+                    melhor regra absurda.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Produção do cartaz</strong> – Escrever as 5 regras
+                    finais. Regra de ouro: não pode ter "SE o professor
+                    quiser" (isso é trapaça).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste ao vivo</strong> – Professor simula eventos.
+                    Se turma errar, param e consertam o cartaz com caneta
+                    vermelha (fazendo som de impressora falhando).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Fechamento</strong> – "Durante a semana,
+                    reagiremos a essas regras. Acertou → ponto robótico. Errou
+                    → paga um parafuso imaginário."
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> professor levanta
+                    cartão com ícone do evento.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> recompensa imediata (adesivo de
+                    robô) a cada regra acertada.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> máximo de 3 regras no cartaz;
+                    evitar eventos imprevisíveis.
+                  </li>
+                  <li>
+                    <strong>Baixa mobilidade:</strong> ações sentado (piscar,
+                    mexer a boca, bater palmas baixinho).
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>Sugerir evento+condição absurdo e novo = 1 nível.</li>
+                  <li>
+                    Regra no cartaz com `QUANDO` + `SE` + `ENTÃO` legível =
+                    OK.
+                  </li>
+                  <li>Teste ao vivo: acertar 3 de 4 eventos.</li>
+                  <li>
+                    Auto‑correção: apontar erro no cartaz e sugerir correção.
+                  </li>
+                  <li>
+                    Durante a semana: reagir a pelo menos 2 regras em horários
+                    aleatórios.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Regras coletivas são algoritmos que a gente dança junto!
+                    SE todo mundo obedece, ENTÃO a sala vira um robô
+                    gigante!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 14 -->
+        <!-- ==================== SEMANA 14 ==================== -->
+        <div class="accordion-item" data-semana="14">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana14">
+              💃 Semana 14 -- Múltiplos Eventos em Sequência: A Coreografia
+              dos Robôs
+            </button>
+          </h2>
+          <div id="semana14" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="14" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Responder a eventos em sequência, mantendo memória de
+                    trabalho ativa.
+                  </li>
+                  <li>
+                    Criar e executar uma coreografia com pelo menos 3 eventos
+                    diferentes.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Algoritmos com repetições simples (iterações definidas).<br />
+                  Eventos em sequência e discriminação de evento falso.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11.<br />
+                  RCP-PR: EF02CO02 (criar e simular algoritmos com repetições
+                  simples).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito, pandeiro,
+                    chocalho, sino, berrante de vaqueiro</span>
+                  <span class="material-badge"><i class="bi bi-card-image"></i> Placas com símbolos de
+                    cada evento</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Alongamento robótico</strong> – Sequência inicial:
+                    apito→gira; palma→pula; sino→agacha. Devagar, depois
+                    super‑rápido. Erro → imita robô emperrado.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Treinamento em duplas</strong> – Uma criança
+                    maestro, outra robô. Maestro toca 3 eventos em ordem
+                    aleatória. Se robô errar 2x, trocam e maestro grita
+                    "REPROGRAMADO".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Coreografia coletiva</strong> – Professor cria
+                    sequência no quadro (ex: apito, palma, palma, sino,
+                    apito). Todos executam. Aumentar velocidade até alguém
+                    errar → vira "Robô Lagartixa" e repete devagar com língua
+                    pra fora.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio "Robô distraído"</strong> – Adicionar
+                    evento falso "BOLA!" que não significa nada. Quem reagir a
+                    "BOLA" perde 1 ponto imaginário. 3 pontos perdidos → dança
+                    a coreografia errada de propósito.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação de música‑robô</strong> – Grupos criam
+                    sequência de 6 eventos. Apresentam para a turma, que
+                    executa. Se turma errar mais de 3x, grupo criador veste
+                    chapéu de robô (caixa de papelão) e rege de novo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Selo da Coreografia Robótica</strong> – Cada grupo
+                    recebe adesivo se pelo menos 3 pessoas palmares
+                    ritmicamente. Palmas isoladas não contam.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> eventos visuais
+                    (placas levantadas; sequência com cores).
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> reduzir para 2 eventos; recompensa
+                    imediata.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> manter mesma ordem de eventos
+                    toda rodada; evitar evento falso.
+                  </li>
+                  <li>
+                    <strong>Coordenação motora:</strong> ações sentado (bater
+                    palmas, levantar braço, piscar).
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>Executar sequência de 3 eventos com 80% de acerto.</li>
+                  <li>Ignorar completamente "BOLA!".</li>
+                  <li>
+                    Grupo criador: sequência de 6 eventos que turma execute
+                    sem errar mais de 1 vez.
+                  </li>
+                  <li>Acompanhar coreografia em velocidade acelerada.</li>
+                  <li>Selo da Coreografia: pelo menos 3 palmas rítmicas.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Coreografia robótica é algoritmo em movimento! QUANDO o
+                    apito tocar, ENTÃO gire; SENÃO, congele!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 15 -->
+        <!-- ==================== SEMANA 15 ==================== -->
+        <div class="accordion-item" data-semana="15">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana15">
+              🔗 Semana 15 -- Introdução ao E: Tudo Verdade
+            </button>
+          </h2>
+          <div id="semana15" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="15" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender que o conectivo `E` exige que ambas as
+                    condições sejam verdadeiras.
+                  </li>
+                  <li>
+                    Identificar situações cotidianas com dupla exigência.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Tabela verdade do `E` (conjunção).<br />
+                  Construção de frases condicionais com `E`.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO01 (comparar modelos e identificar atributos
+                  essenciais).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões "E" (verde
+                    escuro)</span>
+                  <span class="material-badge"><i class="bi bi-box-seam"></i> Duas caixas: "Condição 1"
+                    e "Condição 2"</span>
+                  <span class="material-badge"><i class="bi bi-images"></i> Figuras: guarda‑chuva, sol,
+                    dinheiro, loja aberta, brigadeiro, fome</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Robô exigente"</strong> – "SE tênis E de
+                    pé → passo." "SE cabelo azul E olhos verdes → pula"
+                    (ninguém pula). Explicar: `E` é chato igual vovó que pede
+                    "arrume o quarto E escove os dentes".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>História "Robô Zé quer sorvete"</strong> – Ele só
+                    compra SE tiver dinheiro E sorveteria aberta. Montar
+                    tabela verdade no chão com cartões SIM/NÃO. Erro → Zé faz
+                    cara de robô triste.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo das duas condições</strong> – Professor
+                    mostra: "está chovendo?" e "tenho guarda‑chuva?".
+                    Pergunta: "SE chovendo E guarda‑chuva → saio?" Turma
+                    responde com cartões. Erro → dança da chuva (tremer igual
+                    robô molhado).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção de frases com E</strong> – Em duplas,
+                    escrever 3 frases. Ex: "SE for sábado E fizer sol, ENTÃO
+                    vou à praia." Frase proibida: "SE chover E fizer sol"
+                    (arco‑íris é trapaça).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do labirinto com E</strong> – Grid com
+                    buraco (1) e água (2). Regra: "SE buraco E água na mesma
+                    casa → pula; SENÃO, desvia." Se pular sem os dois, cai no
+                    buraco imaginário e tem que enxugar o pé.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação semáforo</strong> – Verde
+                    (entendeu), amarelo (confuso), vermelho (não entendeu).
+                    Quem colocar amarelo precisa dar um exemplo do que travou.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TDAH:</strong> fichas coloridas; levantar a azul E
+                    a vermelha juntas.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> caixas com texturas;
+                    condições em braille ou alto relevo.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> usar mesmas condições todos os
+                    dias (ex: "fome E brigadeiro").
+                  </li>
+                  <li>
+                    <strong>Dislexia:</strong> tabela verdade com símbolos
+                    (☀️, 🌧️, ☔).
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Posicionar cartões SIM/NÃO corretamente em 3 situações com
+                    E.
+                  </li>
+                  <li>Escrever frase `SE (A) E (B) ENTÃO ação` original.</li>
+                  <li>
+                    No labirinto, só pular quando buraco E água na mesma casa.
+                  </li>
+                  <li>Semáforo honesto com exemplo concreto.</li>
+                  <li>
+                    Explicar por que não pula em "SE cabelo azul E olhos
+                    verdes".
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"E exige tudo, ou não vale nada! Duas condições
+                    verdadeiras, senão o robô buga!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 16 -->
+        <!-- ==================== SEMANA 16 ==================== -->
+        <div class="accordion-item" data-semana="16">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana16">
+              🔀 Semana 16 -- Introdução ao OU: Basta Um
+            </button>
+          </h2>
+          <div id="semana16" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="16" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender que o conectivo `OU` exige pelo menos uma
+                    condição verdadeira.
+                  </li>
+                  <li>Diferenciar `E` de `OU` na prática.</li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Tabela verdade do `OU` (disjunção).<br />
+                  Comparação entre `E` e `OU`.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11, EF02MA12.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO02 (simulação de algoritmos com decisões).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões "OU"
+                    (laranja)</span>
+                  <span class="material-badge"><i class="bi bi-dice-6-fill"></i> Dados, moedas, fichas
+                    de "dinheiro de mentira" com a cara do Robô Zé</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo rápido "SE camisa branca OU tênis preto"</strong>
+                    – Quem tiver pelo menos uma característica anda até a
+                    parede. Mostrar que `OU` é mais fácil que `E`. Quem ficar
+                    parado tendo uma delas é "Robô Dormindo" e boceja.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Tabela verdade do OU</strong> – Mesmas condições
+                    da semana passada. Pergunta: "SE chovendo OU tenho
+                    guarda‑chuva → saio?" Pegadinha: mesmo sem guarda‑chuva,
+                    se não estiver chovendo, sai.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo "Mercado com OU"</strong> – Para comprar
+                    biscoito: precisa de dinheiro OU cartão de crédito.
+                    Simular com fichas. Tentar pagar com os dois → máquina
+                    explode (professor faz barulho e joga confete).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Comparação E vs OU</strong> – Quadro com duas
+                    colunas. Situação: "Posso ir ao parque SE (fizer sol E não
+                    tiver lição) OU (se for feriado)." Analisar. Confundir →
+                    ganha apelido "Robô da Confusão".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Fluxograma com OU</strong> – Desenhar árvore de
+                    decisão para "escolher lanche": SE tem pizza OU tem pastel
+                    → compro; SENÃO → choro. Sem `OU` → ganha X vermelho.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação em duplas</strong> – Um fala condição
+                    com `E`, o outro converte para `OU` e vê se faz sentido
+                    (geralmente não). Dupla que disser "ficou boba" ganha
+                    ponto.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> cartões com "OU"
+                    grande; professor faz gesto de "ou" (mãos abertas).
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> rodada curta (30s por dupla);
+                    recompensa a cada conversão correta.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> exemplos muito concretos (SE tem
+                    leite OU suco → pode beber).
+                  </li>
+                  <li>
+                    <strong>Ansiedade:</strong> dupla pode escrever resposta
+                    em vez de falar em público.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Anda até a parede se tiver pelo menos uma característica.
+                  </li>
+                  <li>Tabela verdade do OU: acerta 2 situações.</li>
+                  <li>
+                    Transformar frase `E` em `OU` e avaliar se "ficou boba".
+                  </li>
+                  <li>
+                    Compra biscoito com dinheiro OU cartão, sem precisar dos
+                    dois.
+                  </li>
+                  <li>Desenha fluxograma de `OU` para situação cotidiana.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"OU basta um, E precisa de dois! No OU, uma alegria já é
+                    festa!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Semana 17 -->
+        <!-- ==================== SEMANA 17 ==================== -->
+        <div class="accordion-item" data-semana="17">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana17">
+              🧠 Semana 17 -- Misturando E e OU: O Robô Decisor Avançado
+            </button>
+          </h2>
+          <div id="semana17" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="17" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Combinar `E` e `OU` na mesma regra, respeitando
+                    agrupamentos.
+                  </li>
+                  <li>Usar parênteses imaginários de forma lúdica.</li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Expressões lógicas com mais de um conectivo.<br />
+                  Hierarquia: parênteses definem agrupamento.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11, EF02MA12.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO03 (diferentes máquinas executam diferentes
+                  instruções); EF02CO04 (hardware vs software).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-brackets"></i> Cartões com `( )`
+                    (parênteses de papel)</span>
+                  <span class="material-badge"><i class="bi bi-cloud-sun"></i> Gráfico de clima na
+                    parede (sol, chuva, nuvem, neblina, granizo,
+                    meteoro)</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revisão em coro</strong> – "E exige tudo; OU basta
+                    um!" Cantar como torcida organizada.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Contação "Robô Zé no parque de diversões"</strong>
+                    – Regra: (altura &gt;1,20m E não ter medo de altura) OU
+                    (estar acompanhado de adulto). Desenhar no quadro com
+                    parênteses gigantes. Erro → ganha "vomitaço imaginário".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo dos parênteses</strong> – Professor diz
+                    condição comprida. Crianças levantam placa `E` ou `OU` nos
+                    momentos certos. Ex: "SE (pizza E sorvete) OU (fome)" →
+                    primeiro `E`, depois `OU`. Erro → som "tempo esgotado".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação de regras para o recreio</strong> – Grupos
+                    criam 2 regras usando `E` e `OU`. Ex: "SE sino tocou E
+                    professora liberou, OU todo mundo já terminou lanche →
+                    podemos correr." Outro grupo executa.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aplicação no grid</strong> – Três condições no
+                    chão (cartões com figuras). Robô só anda SE (cartão1 E
+                    cartão2) OU cartão3. Testar 4 combinações. Errar 2 → vira
+                    "GPS louco" e volta à largada.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação sonora</strong> – Bip longo
+                    (entendeu), bip curto agudo (confuso), bip intermitente
+                    (difícil). Som errado → professor pede "traduz para
+                    humano".
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> parênteses em alto
+                    relevo; condições em braille.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> usar apenas (A E B) OU C, sem mais
+                    de 3 elementos.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> repetir mesma regra do parque em
+                    todas as rodadas.
+                  </li>
+                  <li>
+                    <strong>Dislexia:</strong> parênteses vermelhos, E azul,
+                    OU laranja.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Levanta placa `E` ou `OU` no momento certo da expressão.
+                  </li>
+                  <li>
+                    Grupo criador elabora regra com `E` e `OU` que outro grupo
+                    executa corretamente em até 2 tentativas.
+                  </li>
+                  <li>
+                    No grid: acerta 3 de 4 combinações de `(A E B) OU C`.
+                  </li>
+                  <li>Reescreve regra com desenhos e parênteses.</li>
+                  <li>Autoavaliação sonora honesta.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Parênteses são os abraços da lógica! (E vem antes do OU)
+                    ou o robô pifa!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 18 ==================== -->
+        <div class="accordion-item" data-semana="18">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana18">
+              🕵️ Semana 18 -- Projeto Robô Detetive -- Parte 1: O Mistério do
+              Brinquedo Sumido
+            </button>
+          </h2>
+          <div id="semana18" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="18" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Aplicar `E` e `OU` para analisar pistas e eliminar
+                    suspeitos.
+                  </li>
+                  <li>
+                    Trabalhar em equipe na coleta e interpretação de
+                    evidências.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Algoritmos de decisão com múltiplas condições.<br />
+                  Investigação como metáfora para pensamento computacional.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11, EF02MA12.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO01 (criar e comparar modelos de objetos,
+                  identificando atributos essenciais); EF02CO02 (simular
+                  algoritmos de decisão).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-envelope-paper"></i> Envelopes com pistas
+                    impressas</span>
+                  <span class="material-badge"><i class="bi bi-person-lines-fill"></i> Cartaz de
+                    suspeitos: Robô Zé, Gato, Cachorro, Pássaro, ET de
+                    brinquedo</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupa de papelão, algema
+                    imaginária</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões de
+                    eliminação</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ambientação</strong> – Professor entra de chapéu,
+                    gravata borboleta e bigode falso. "Houve um crime na sala
+                    de robótica! O controle do Robô Zé desapareceu." Som de
+                    suspense.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação dos suspeitos</strong> – Mostrar
+                    características: tamanho da pata, cor, alimentação, medo
+                    de água, gosto por queijo. ET não tem pata (pista falsa).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Primeira pista</strong> – Envelope 1: "A pegada é
+                    grande." Eliminar suspeitos sem pata grande. Se deixar um
+                    sem pata grande, professor cola "cola de elefante"
+                    imaginária no dedo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Segunda pista (OU)</strong> – "Pegada tem pelos OU
+                    foi perto da mesa de doces." Manter suspeitos que atendem
+                    pelo menos uma condição. Erro → adesivo "Robô sem OU" e
+                    lupa torta.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Terceira pista (E)</strong> – "O suspeito tem pelo
+                    curto E não gosta de água." Cruzar informações. Erro →
+                    grupo vizinho faz "bip bip de chacota".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Conclusão do dia</strong> – Cada grupo faz
+                    hipótese (quem roubou?). Quem adivinhar antes da pista 3
+                    perde ponto de "detetive paciente". Se insistir, ganha
+                    algema imaginária e só fala apontando.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> pistas em braille ou
+                    áudio gravado; suspeitos com texturas.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> pistas em cartões coloridos com
+                    números; cada pista = 5min máximo.
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> reduzir para 2 suspeitos; pistas
+                    em ordem fixa.
+                  </li>
+                  <li>
+                    <strong>Dislexia:</strong> usar ícones (🐾🐘 para pata
+                    grande, 🧶 para pelo).
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Elimina suspeitos corretamente com pista 1 ("pegada
+                    grande").
+                  </li>
+                  <li>
+                    Mantém suspeitos que atendem pelo menos uma condição na
+                    pista 2 (OU).
+                  </li>
+                  <li>
+                    Mantém suspeitos com pelo curto E que não gostam de água
+                    (pista 3).
+                  </li>
+                  <li>Hipótese fundamentada com "porque" e duas pistas.</li>
+                  <li>
+                    Não adivinha culpado antes da pista 3 = controle de
+                    impulso.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"No mistério, E aperta o cerco, OU abre caminho. Qual
+                    será o culpado?"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 19 ==================== -->
+        <div class="accordion-item" data-semana="19">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana19">
+              🗺️ Semana 19 -- Projeto Robô Detetive -- Parte 2: Algoritmo de
+              Solução
+            </button>
+          </h2>
+          <div id="semana19" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="19" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Escrever algoritmo condicional aninhado (`SE`, `SENÃO SE`,
+                    `SENÃO`).
+                  </li>
+                  <li>Testar o algoritmo com as pistas coletadas.</li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Algoritmos com `SE` aninhado (estruturas de decisão com
+                  múltiplas alternativas).<br />
+                  Depuração (debugging) e refinamento.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA12.<br />
+                  Língua Portuguesa: EF02LP10.<br />
+                  RCP-PR: EF02CO02 (algoritmos com repetições simples e
+                  análise de precisão); EF02CO03 (instruções de máquina).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-diagram-3"></i> Folhas de fluxograma
+                    gigantes (papel pardo)</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões "CULPADO" e
+                    "INOCENTE"</span>
+                  <span class="material-badge"><i class="bi bi-person-badge"></i> Algemas de papel,
+                    chapéu de delegado</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Relembrar as pistas</strong> – Colar as três
+                    pistas no quadro com ímãs. Quem não lembrar toma um
+                    "choque de memória" (estalo de dedos).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção coletiva do algoritmo</strong> – "SE
+                    pegada grande, ENTÃO... SENÃO, SE pegada pequena,
+                    ENTÃO..." Montar árvore de decisão. Quem contribuir com
+                    `SE` ou `SENÃO SE` ganha ponto de "detetive lógico".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Cada grupo escreve seu algoritmo</strong> – Usar
+                    frases ou desenhos. Regra: deve ser executável por outro
+                    grupo. Se não for, devolvem com adesivo "precisa de
+                    depuração".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aplicação às pistas</strong> – Simular com cartões
+                    dos suspeitos. Se chegar a dois suspeitos, professor grita
+                    "ROBÔ INDECISO" e aluno joga moeda.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revelação</strong> – Professor diz o culpado
+                    (escolher um coerente com as pistas). Quem errou, explica
+                    uma pista extra hipotética que mudaria o resultado.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Discussão final</strong> – "O `E` e o `OU`
+                    ajudaram a descobrir?" Quem disser "mais ou menos" ganha
+                    "Robô Talvez".
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> algoritmo em blocos
+                    de EVA com texturas.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> algoritmo de apenas 3 linhas (SE →
+                    SENÃO SE → SENÃO).
+                  </li>
+                  <li>
+                    <strong>Autismo:</strong> usar mesmos suspeitos da semana
+                    anterior; sem surpresas.
+                  </li>
+                  <li>
+                    <strong>Baixa escrita:</strong> desenhar setas e carinhas
+                    felizes/tristes.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Contribui com pelo menos uma pergunta `SE` ou `SENÃO SE`
+                    na árvore coletiva.
+                  </li>
+                  <li>
+                    Algoritmo com 3 linhas de `SE / SENÃO SE / SENÃO` que
+                    outro grupo consegue executar.
+                  </li>
+                  <li>
+                    Simulação com cartões chega a um único suspeito (ou
+                    nenhum).
+                  </li>
+                  <li>
+                    Compara com outro grupo e encontra divergência lógica.
+                  </li>
+                  <li>
+                    Se culpado revelado for diferente do seu, explica pista
+                    extra hipotética.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE o robô pensa, SENÃO SE ele duvida, SENÃO... ele
+                    chora. Algoritmo é a mente do detetive!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== SEMANA 20 ==================== -->
+        <div class="accordion-item" data-semana="20">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana20">
+              🎉 Semana 20 -- Feira dos Eventos -- Avaliação do Bimestre
+            </button>
+          </h2>
+          <div id="semana20" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="20" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Apresentar projeto final combinando eventos, condicionais,
+                    `E` e `OU`.
+                  </li>
+                  <li>Celebrar com certificados e dança final.</li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Integração de todos os conceitos do bimestre.<br />
+                  Auto‑avaliação e feedback estruturado.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Matemática: EF02MA11, EF02MA12.<br />
+                  Língua Portuguesa: EF02LP09, EF02LP10.<br />
+                  RCP-PR: EF02CO01 a EF02CO06 (integração de pensamento
+                  computacional, algoritmos, hardware/software, cultura
+                  digital).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-image"></i> Projetos dos alunos
+                    (cartazes, robôs de papelão, fluxogramas)</span>
+                  <span class="material-badge"><i class="bi bi-trophy-fill"></i> Certificados "Mestre do
+                    Evento e da Conjunção"</span>
+                  <span class="material-badge"><i class="bi bi-cake2"></i> Biscoitos em formato de robô
+                    (ou bolacha cream cracker desenhada)</span>
+                </div>
+
+                <h5>⏱️ Detalhamento minuto a minuto (50 min):</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura</strong> – QUANDO professor tocar
+                    pandeiro, feira começa. Se não reagir, é "Robô Desligado"
+                    e dá um bip pra religar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Rodada 1 de apresentações</strong> – Metade da
+                    turma apresenta projeto (algoritmo detetive ou robô
+                    reativo). A outra metade dá feedback com gestos de robô:
+                    👍👍 (arrasou), 👍 (bom), dedo girando (melhorável). 3
+                    dedos girando = pausa dramática.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Rodada 2 (troca)</strong> – Mesmo esquema. Atraso
+                    &gt;30s na troca → perde parafuso de ouro imaginário.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Correção coletiva -- desafio surpresa</strong> –
+                    "SE eu bater palmas E apontar para a janela, o que seu
+                    robô faz?" Resposta em ≤5s. Demora → contagem "5,4,3,2,1
+                    FIM!" e perde parafuso.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Entrega dos certificados</strong> – Ler nomes.
+                    Cada um sobe e recebe "Certificado de Detetive de Eventos
+                    Nível 2". Comemorar com um bip robótico (nada de
+                    gritaria). Gritar "uhuuu" = repetir com braço rígido.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Dança final com eventos</strong> – QUANDO música
+                    tocar → dancem; SE música rápida → dancem rápido; QUANDO
+                    eu parar → congelem. Congelar na música rápida → "bip de
+                    falha" e reinicia dança sozinho. Depois: biscoitos.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Mobilidade reduzida:</strong> apresentação
+                    sentado; dança só com braços e expressões.
+                  </li>
+                  <li>
+                    <strong>Ansiedade:</strong> apresentar para o professor
+                    apenas, não para toda a turma.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> feedback visual com
+                    placas (👍👍, 👍, dedo girando).
+                  </li>
+                  <li>
+                    <strong>Seletividade alimentar:</strong> biscoitos podem
+                    ser substituídos por frutas ou adesivos.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios operacionais</h5>
+                <ul>
+                  <li>
+                    Projeto contém `QUANDO`, `SE com E` e `SE com OU` = OK.
+                    Incompleto ganha adesivo e adiciona na hora.
+                  </li>
+                  <li>
+                    Feedback com gestos de robô: pelo menos 3 dedos girando =
+                    pausa dramática.
+                  </li>
+                  <li>
+                    Responde ao desafio surpresa `SE (palma E apontar janela)
+                    ENTÃO ?` em ≤5s.
+                  </li>
+                  <li>
+                    Recebe certificado comemora com bip robótico, sem
+                    gritaria.
+                  </li>
+                  <li>
+                    Dança final: reage a `QUANDO música para → congela` E `SE
+                    música rápida → dança rápido` sem confundir.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"QUANDO a feira acaba, ENTÃO a festa começa. E se
+                    aprendeu, OU comemora, OU já quer mais!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+     JOGO DO BIMESTRE - Operação Resgate: E ou OU?
+     Versão clara, divertida e educativa para o 2º ano
+     ================================================== -->
+    <section id="jogo-bimestre" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-joystick"></i> 🎮 JOGO DO BIMESTRE: Operação Resgate
+          – E ou OU?
+        </h2>
+        <div class="badge-projeto">
+          Ajude o Robô Zé a escapar usando E (exige tudo) ou OU (basta um)!
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="row g-4">
+          <!-- Área do jogo -->
+          <div class="col-lg-7">
+            <div class="painel-jogo p-3">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="vidas">
+                  <i class="bi bi-heart-fill text-danger"></i> Vidas:
+                  <span id="vidasRestantes">3</span>
+                </div>
+                <div class="pontos">
+                  <i class="bi bi-star-fill text-warning"></i> Pontos:
+                  <span id="pontuacao">0</span>
+                </div>
+              </div>
+
+              <div id="perguntaContainer" class="text-center my-4">
+                <div class="pergunta-card p-3 rounded-4" style="background: #1e2a1a">
+                  <p id="perguntaTexto" class="fs-5 fw-bold mb-3">
+                    Carregando...
+                  </p>
+                  <div class="opcoes d-flex justify-content-center gap-3 flex-wrap">
+                    <button id="btnE" class="btn-conectivo btn-e">
+                      🔗 E (tudo verdade)
+                    </button>
+                    <button id="btnOU" class="btn-conectivo btn-ou">
+                      🔀 OU (basta um)
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="feedback" class="alert mt-3" style="display: none"></div>
+              <div id="gameResultado" class="text-center fw-bold mt-2"></div>
+              <button id="resetJogo" class="btn btn-warning mt-3 w-100">
+                🔄 Reiniciar Jogo
+              </button>
+            </div>
+          </div>
+
+          <!-- Explicação rápida -->
+          <div class="col-lg-5">
+            <div class="dica-box p-3 rounded-4" style="background: #2c3e2b">
+              <h5><i class="bi bi-lightbulb-fill"></i> Como jogar?</h5>
+              <p>
+                Leia a frase e decida se a situação exige
+                <strong class="text-warning">as duas coisas ao mesmo tempo (E)</strong>
+                ou se
+                <strong class="text-warning">basta apenas uma delas (OU)</strong>.
+              </p>
+              <hr />
+              <p>
+                <strong>Exemplo:</strong><br />
+                "Para comer o biscoito, preciso ter dinheiro ______
+                cartão."<br />
+                Se você puder pagar com qualquer um dos dois →
+                <strong class="text-success">OU</strong>.
+              </p>
+              <p>
+                <strong>Outro exemplo:</strong><br />
+                "Para ganhar o selo, preciso acertar a pergunta ______ pular a
+                coreografia."<br />
+                Se as duas são obrigatórias →
+                <strong class="text-success">E</strong>.
+              </p>
+              <div class="alert alert-info mt-2 small">
+                <i class="bi bi-robot"></i> A cada erro você perde uma vida.
+                Se errar 3 vezes, o robô trava e o jogo reinicia.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+       CERTIFICADO (igual ao modelo_certificado.html adaptado)
+  ================================================== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 2º ANO
+          </h3>
+          <p class="lead">
+            "MESTRE DOS EVENTOS, CONDICIONAIS E CONECTIVOS E/OU"
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>2º ANO - ROBÓTICA EDUCACIONAL</strong><br />Dominando os conceitos de:<br />⚡ QUANDO
+                  (eventos)<br />🔁 SE (condicionais)<br />🔗 E / OU
+                  (conectivos lógicos)<br />🕵️ Projeto Robô Detetive
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">RobôMestres do Paraná • 2026</p>
+                <p class="assinatura-engracada">
+                  "QUANDO você pensa, ENTÃO programa; E se errar, OU aprende,
+                  OU ri – e as duas coisas são boas."
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 2.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <input type="text" id="nomeAluno" class="form-control" placeholder="Nome do aluno" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista
+                  <span id="contadorAlunos" class="badge bg-warning">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button><button id="btnPreviewAluno"
+                  class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info mt-4 small">
+          <i class="bi bi-info-circle-fill"></i> Dica: imprima os certificados
+          em papel A4, modo colorido. Cada folha terá 6 certificados.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+       FECHAMENTO DO BIMESTRE (adaptações, rubrica, referências)
+  ================================================== -->
+
+    <section id="fechamento" class="mb-5">
+      <div class="card bg-light border-warning mt-4 shadow-sm">
+        <div class="card-body">
+          <h6>
+            <i class="bi bi-universal-access-circle"></i> 🔧 ORIENTAÇÕES PARA
+            ADAPTAÇÕES E INCLUSÃO (EXEMPLOS PRÁTICOS)
+          </h6>
+          <div class="table-responsive">
+            <table class="table table-bordered mt-2">
+              <thead>
+                <tr>
+                  <th>Necessidade</th>
+                  <th>Adaptação</th>
+                  <th>Exemplo prático (semana 11)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Deficiência auditiva</td>
+                  <td>Eventos visuais + vibração</td>
+                  <td>
+                    Cartão vermelho sobe = apito; lanterna pisca = palma;
+                    celular vibra = SURPRESA!
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deficiência visual</td>
+                  <td>Eventos sonoros + texturas</td>
+                  <td>Tapete tátil; cartões com alto relevo</td>
+                </tr>
+                <tr>
+                  <td>TDAH</td>
+                  <td>Eventos curtos e ritmo rápido</td>
+                  <td>
+                    Máx 3s entre eventos; resposta em até 1s; recompensa
+                    imediata
+                  </td>
+                </tr>
+                <tr>
+                  <td>Autismo</td>
+                  <td>Previsibilidade e redução sensorial</td>
+                  <td>
+                    Evento único fixo (sempre apito); evitar falso alarme;
+                    fones de proteção
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dislexia</td>
+                  <td>Ícones e cores no lugar de texto</td>
+                  <td>Tabela verdade com ☀️🌧️☔; cartões com desenhos</td>
+                </tr>
+                <tr>
+                  <td>Disfasia</td>
+                  <td>Ações não‑verbais</td>
+                  <td>Responder com gestos (apontar, pular)</td>
+                </tr>
+                <tr>
+                  <td>Baixa mobilidade</td>
+                  <td>Ações sentado</td>
+                  <td>Piscar, bocejar, levantar braço</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="mt-4">
+            📊 RUBRICA DE AVALIAÇÃO -- 2º BIMESTRE (versão irreverente)
+          </h6>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Critério</th>
+                  <th>Parafuso de papel (precisa de cola)</th>
+                  <th>Parafuso de plástico (ok)</th>
+                  <th>Parafuso de ouro (arrasou)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Eventos (`QUANDO`)</td>
+                  <td>Reage a 1 evento isolado com ajuda</td>
+                  <td>Reage a 2‑3 eventos em contexto guiado</td>
+                  <td>Cria coreografia com eventos e ensina colegas</td>
+                </tr>
+                <tr>
+                  <td>Condicionais (`SE`)</td>
+                  <td>Confunde `SE` com `QUANDO`</td>
+                  <td>Usa `SE` simples em frases prontas</td>
+                  <td>Cria exemplos novos com `SE` e explica diferença</td>
+                </tr>
+                <tr>
+                  <td>Conectivos (`E`/`OU`)</td>
+                  <td>Identifica `E` ou `OU` quando destacados</td>
+                  <td>Usa `E` e `OU` em frases prontas</td>
+                  <td>
+                    Cria exemplos novos com `E` e `OU` e explica diferença
+                  </td>
+                </tr>
+                <tr>
+                  <td>Projeto Detetive</td>
+                  <td>Contribui com pistas mas se perde no algoritmo</td>
+                  <td>Aplica no projeto com ajuda pontual</td>
+                  <td>Lidera a investigação e aponta pistas extras</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 class="mt-4">📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)</h6>
+          <p>
+            BRASIL. Ministério da Educação. Base Nacional Comum Curricular.
+            Brasília: MEC, 2018.<br />
+            BRASIL. BNCC Computação: complemento à BNCC. Brasília: MEC,
+            2022.<br />
+            PARANÁ. Referencial Curricular do Paraná: Educação Digital e
+            Computação – Volume 2. Curitiba: SEED, 2025.<br />
+            BRACKMANN, Christian P. BNCC Computação -- Habilidades por
+            ano/etapa. Disponível em: https://www.computacional.com.br/bncc/
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ (igual ao modelo_rodape.html) -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="dev-nome">
+            💀 Desenvolvido na base do ódio, litros de café e condicionais
+            malucas por Rodrigo Barbosa.
+          </div>
+          <div class="dev-contato mt-1">
+            <i class="bi bi-envelope-paper"></i>
+            <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="dev-nome">
+            ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+            SENÃO e uma dedicação que só aparece quando o prazo já passou por
+            Gisele Nunes.
+          </div>
+          <div class="dev-contato mt-1">
+            <i class="bi bi-envelope-paper"></i>
+            <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a2bim2.js"></script>
+</body>
+
+</html>

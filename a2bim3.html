@@ -1,0 +1,2161 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>
+    3º BIMESTRE - O Robô vai para a tela (e aprende a ser pixel) | 2º Ano
+  </title>
+  <!-- Bootstrap 5 + ícones + fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS exclusivo do bimestre 3 -->
+  <link rel="stylesheet" href="css/a2bim3.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ==================== CABEÇALHO (modelo_cabecalho.html) ==================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 3º BIMESTRE: O ROBÔ VAI PARA A TELA (E APRENDE A SER PIXEL)
+            ⚡<br /><span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU GLASSMORPHISM (exatamente o modelo_menu_bim.html) -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a2index.html"><i class="bi bi-robot"></i> 2º Ano</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2index.html"><i class="bi bi-house-door-fill"></i> 2° ano</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="a2bim1.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim2.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="a2bim3.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim4.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- ==================== APRESENTAÇÃO DO BIMESTRE ==================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          ScratchJr, blocos visuais, REPITA e depuração lúdica
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          <strong>Grito de guerra atualizado:</strong>
+          <em>"REPITA 3 VEZES: SE o código rodar, ENTÃO a gente comemora;
+            SENÃO, a gente debugga -- E SE NÃO DEBUGGAR, A GENTE CHORA NO
+            CHUVEIRO!"</em>
+          🚿🤖
+        </p>
+        <p class="carta-texto mt-3">
+          🧠 <strong>VISÃO GERAL DO BIMESTRE (VERSÃO 2.0 -- TURBINADA)</strong><br />Esqueça o robô que só anda. Agora
+          ele pula, desvia, toma
+          decisões e até manda áudio de zap (simulado). Vamos usar ScratchJr
+          (tablet/PC) para criar jogos condicionais, labirintos com loop e
+          coreografias robóticas. Serão 10 semanas de pura insanidade
+          pedagógica: cada erro vira um "bug de estimação", cada acerto vira
+          um selo digital (virtual ou de papel).<br />Preparado? SE sim, ENTÃO
+          prossiga; SENÃO, RESET!
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== MAPEAMENTO ==================== -->
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 3 - O ROBÔ VAI
+          PARA A TELA
+        </h2>
+        <div class="badge-projeto">
+          RCP-PR · ScratchJr · Eventos, Loops e Condicionais
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>RCP-PR</th>
+              <th>Bimestre</th>
+              <th>Tema Radical</th>
+              <th>Habilidades BNCC</th>
+              <th>Competências Gerais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Algoritmos visuais, eventos, repetição e depuração no
+                ScratchJr
+              </td>
+              <td>3º</td>
+              <td>O Robô vai para a tela (e aprende a ser pixel)</td>
+              <td>EF02LP09, EF02LP10, EF02MA11, EF02MA01</td>
+              <td>
+                CG4 (linguagens digitais), CG5 (pensamento computacional)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PLANO SINTÉTICO ==================== -->
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 3 - PLANO
+          SINTÉTICO (Semanas 21 a 30)
+        </h2>
+        <div class="badge-projeto">
+          10 semanas de pura programação visual e caos controlado
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Conceito Estrela</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>21</td>
+              <td>
+                "Conhecendo o ScratchJr: o gato que anda (e ainda não sabe que
+                é um robô)"
+              </td>
+              <td>
+                Introdução aos blocos básicos (INICIAR, MOVER, GIRAR, FALAR)
+              </td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>
+                "Eventos no ScratchJr: quando tocar na tela, o gato pula -- e
+                se agitar, ele dança forró"
+              </td>
+              <td>Blocos de evento (QUANDO TOCAR, QUANDO AGITAR)</td>
+            </tr>
+            <tr>
+              <td>23</td>
+              <td>
+                "Simulando SE no ScratchJr: o gato desvia de obstáculos (e
+                aprende a bufar)"
+              </td>
+              <td>ESPERAR ATÉ para simular condicional</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>
+                "Introdução ao REPITA (loop) -- fazer a mesma coisa várias
+                vezes (tipo viver em série)"
+              </td>
+              <td>REPITA para desenhar polígonos</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>
+                "REPITA + SE: o loop condicional (ou como ensinar o gato a não
+                bater na parede 100 vezes)"
+              </td>
+              <td>Loop condicional com ESPERAR ATÉ e PARAR</td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td>
+                "Projeto: coreografia de robôs com loop e eventos (ou o dia em
+                que a sala virou um TikTok robótico)"
+              </td>
+              <td>Integração de loops e eventos (dança)</td>
+            </tr>
+            <tr>
+              <td>27</td>
+              <td>
+                "Depuração lúdica -- parte 1: o robô está mentindo (e a gente
+                vai mostrar o erro na cara dele)"
+              </td>
+              <td>Caça‑bugs em algoritmos desplugados</td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>
+                "Depuração digital -- parte 2: bugs no ScratchJr (ou o gato
+                que teletransportava para fora da tela)"
+              </td>
+              <td>Depuração em programas ScratchJr defeituosos</td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>
+                "Projeto final -- meu primeiro jogo condicional (com tesouro,
+                monstro e muito drama)"
+              </td>
+              <td>Planejamento e início da programação do jogo</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>
+                "Feira de jogos condicionais -- avaliação do bimestre (com
+                tapete vermelho e direito ao voto popular)"
+              </td>
+              <td>Apresentação dos jogos, votação e certificados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PLANOS DE AULA DETALHADOS (COMPLETOS, SEM RESUMO) ==================== -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS --
+          BIMESTRE 3
+        </h2>
+        <div class="badge-projeto">
+          ScratchJr, eventos, loops e depuração na veia!
+        </div>
+      </div>
+      <div class="accordion" id="accordionAulas">
+        <!-- SEMANA 21 -->
+        <div class="accordion-item" data-semana="21">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana21">
+              📅 SEMANA 21 -- "Conhecendo o ScratchJr: o gato que anda (e
+              ainda não sabe que é um robô)"
+            </button>
+          </h2>
+          <div id="semana21" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="21" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Instalar e abrir o ScratchJr (mesmo que o tablet do avô
+                    trave 3 vezes).
+                  </li>
+                  <li>
+                    Identificar blocos básicos: INICIAR (bandeira), MOVER,
+                    GIRAR, FALAR.
+                  </li>
+                  <li>Criar a primeira sequência de comandos sem chorar.</li>
+                </ul>
+
+                <h5>📚 Habilidades (BNCC + RCP-PR)</h5>
+                <p>
+                  EF02LP09, EF02LP10, RCP-PR (autoria de algoritmos com
+                  eventos).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets (ou PCs com
+                    emulador)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Projetor + caixa de
+                    som</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões de blocos
+                    (A5)</span>
+                  <span class="material-badge"><i class="bi bi-bug-fill"></i> Ovo de plástico com "Bug
+                    de Estimação"</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Byte ligado"</strong> -- Todos imitam um
+                    robô ligando, fazem som de "bip" e dizem: "REPITA 3 VEZES:
+                    bip, bip, bip!".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Demonstração bombástica</strong> -- Professor
+                    projeta e cria: INICIAR → MOVER 5 → GIRAR → FALAR "Sou um
+                    gato pixel". Se o gato sumir, finge que era
+                    "teletransporte".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mão na massa -- missão "Maçã no canto"</strong> --
+                    Cada dupla deve fazer o gato encostar na maçã (ícone de
+                    comida). Orientação: só MOVER e GIRAR. Permitido xingar
+                    baixinho o bloco que não encaixa.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio "Gato Falante 2.0"</strong> -- Adicionar
+                    bloco FALAR com a frase "Olá, humano frágil". Quem
+                    conseguir grita "VITÓRIA PIXEL!".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro desplugado</strong> -- Alunos sem tablet
+                    montam a sequência no chão com cartões e simulam com o
+                    corpo (anda 5 passos, gira, fala "Olá").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação-relâmpago</strong> -- Carimbo "Primeiro
+                    programa" + Entrega do "Bug de Estimação" (ovo de plástico
+                    com desenho). Quem errou ganha um "Atestado de Bug Vivo"
+                    (vale desenhar um erro).
+                  </div>
+                </div>
+
+                <h5>🎖️ Critérios operacionais -- "Gato nível 1 a 3"</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>🤖 Nível 2 (fez sozinho)</th>
+                        <th>👾 Nível 3 (ajudou outros)</th>
+                        <th>🦾 Nível 1 (fez com ajuda)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Abriu sozinho, sem travar</td>
+                        <td>Ensina colega a encontrar ícone</td>
+                        <td>Precisou de auxílio técnico</td>
+                      </tr>
+                      <tr>
+                        <td>Gato chegou perto da maçã</td>
+                        <td>Gato encostou na maçã + falou "Olá"</td>
+                        <td>Montou 2 blocos, gato saiu do lugar</td>
+                      </tr>
+                      <tr>
+                        <td>Sequência de cartões correta</td>
+                        <td>Criou variação (ex: gato que dança)</td>
+                        <td>Simulou com corpo, mas errou ordem</td>
+                      </tr>
+                      <tr>
+                        <td>Ganha "Mestre dos Blocos"</td>
+                        <td>Ganha "Professor Robô"</td>
+                        <td>Ganha "Aprendiz"</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Momento irreverente:</strong> Professor entrega um
+                  QR code que leva a um vídeo do gato do professor imitando o
+                  aluno. Se errar, o QR code mostra um gato caindo da mesa.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 22 -->
+        <div class="accordion-item" data-semana="22">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana22">
+              📅 SEMANA 22 -- "Eventos no ScratchJr: quando tocar na tela, o
+              gato pula -- e se agitar, ele dança forró"
+            </button>
+          </h2>
+          <div id="semana22" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="22" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>Usar blocos de evento: QUANDO TOCAR, QUANDO AGITAR.</li>
+                  <li>
+                    Criar interatividade com o usuário (a criança vira deus do
+                    tablet).
+                  </li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>RCP-PR (Eventos), EF02MA11.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets com ScratchJr (ou
+                    PCs com aceleração simulada via mouse)</span>
+                  <span class="material-badge"><i class="bi bi-music-note-beamed"></i> Caixa de som para
+                    tocar "Forró do Robô"</span>
+                  <span class="material-badge"><i class="bi bi-stars"></i> Adesivos de "TREMOR" (formato
+                    de tablet tremendo)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Agite o robô"</strong> -- Todos agitam os
+                    tablets (com cuidado) e gritam "TREMOR TECTÔNICO!". Quem
+                    derrubar ganha palmas.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Demo chocante</strong> -- Professor programa:
+                    QUANDO AGITAR → MOVER 10 → GIRAR 360. Agita o tablet -- o
+                    gato dá um "pião". Crianças imitam o giro.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio 1 -- Pulo do gato</strong> -- QUANDO TOCAR
+                    → MOVER 10 → ESPERAR 0.5 → MOVER -10. Gato deve pular e
+                    voltar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio 2 -- Duplo evento</strong> -- Combinar
+                    QUANDO TOCAR (muda de cor) e QUANDO AGITAR (fala "Au au
+                    digital"). Quem fizer os dois ao mesmo tempo ganha um
+                    "Selo do Caos Controlado".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Cartaz coletivo dos eventos</strong> -- Cada aluno
+                    desenha um evento (tocar, agitar, enviar mensagem) e cola
+                    num mural. Os mais criativos viram "ícones oficiais".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação -- Selo do TREMOR</strong> -- Quem
+                    conseguiu dois eventos diferentes ganha adesivo. Quem fez
+                    três (ex: tocar+agitar+mensagem) ganha "Mestre do
+                    Multievento" e pode programar o ventilador da sala
+                    (brincadeira).
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>Mobilidade reduzida</strong> -- Usar QUANDO ENVIAR
+                    MENSAGEM em vez de agitar; um colega agita o tablet por
+                    ele.
+                  </li>
+                  <li>
+                    <strong>Hipersensibilidade auditiva</strong> -- Substituir
+                    sons por vibração (ligar modo "acessibilidade" do tablet).
+                  </li>
+                  <li>
+                    <strong>Dislexia</strong> -- Blocos com cores e ícones
+                    grandes; professor repete comandos em voz alta.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios operacionais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>2 tiques (dois eventos)</th>
+                        <th>3 tiques (evento surpresa)</th>
+                        <th>1 tique (evento simples)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pulou e voltou ao lugar</td>
+                        <td>Pulou, miou e mudou de cor</td>
+                        <td>Usar QUANDO TOCAR -- pulou 1 vez</td>
+                      </tr>
+                      <tr>
+                        <td>Giro + fala</td>
+                        <td>
+                          Agitou e o gato desenhou um círculo (simulado)
+                        </td>
+                        <td>Usar QUANDO AGITAR -- falou "Au"</td>
+                      </tr>
+                      <tr>
+                        <td>Funcionaram simultâneos</td>
+                        <td>
+                          Criou terceiro evento (ex: tocar em outro
+                          personagem)
+                        </td>
+                        <td>Funcionou um de cada vez</td>
+                      </tr>
+                      <tr>
+                        <td>Desenhou + explicou</td>
+                        <td>Achou evento novo no cartaz</td>
+                        <td>Contribuiu com 1 desenho</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Irreverência extra:</strong> Quem agitar o tablet
+                  forte demais e derrubar (sem quebrar) ganha o "Troféu
+                  Terremoto Criativo" -- um abraço coletivo e um capacete de
+                  papel de alumínio.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 23 -->
+        <div class="accordion-item" data-semana="23">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana23">
+              📅 SEMANA 23 -- "Simulando SE no ScratchJr: o gato desvia de
+              obstáculos (e aprende a bufar)"
+            </button>
+          </h2>
+          <div id="semana23" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="23" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>Usar o bloco ESPERAR ATÉ para simular uma condição.</li>
+                  <li>
+                    Criar um programa onde o gato anda até encontrar um
+                    obstáculo (borda) e vira.
+                  </li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>RCP-PR (Condicional simulada), EF02MA01.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões laranjas com
+                    ESPERAR ATÉ</span>
+                  <span class="material-badge"><i class="bi bi-circle"></i> Semáforo condicional
+                    (círculos de papel vermelho, amarelo, verde)</span>
+                  <span class="material-badge"><i class="bi bi-border-width"></i> Fita adesiva no chão
+                    para simular borda</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Esperar até"</strong> -- Professor:
+                    "ESPEREM ATÉ eu bater palmas, ENTÃO pulem". Bate palmas.
+                    Alunos pulam. Repete com "ESPEREM ATÉ eu tossir" -- caos
+                    garantido.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação ácida</strong> -- "No ScratchJr, o
+                    ESPERAR ATÉ é tipo aquele amigo que só faz algo quando
+                    você grita. Ex: 'ESPERAR ATÉ tocar na borda' → daí vira."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> -- Montar no tablet:
+                    INICIAR → REPITA 100 → MOVER 1 → ESPERAR ATÉ tocar na
+                    borda → GIRAR 180. Testar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste e risada</strong> -- Ver o gato bater na
+                    parede e virar. Quem rir mais alto ganha um "Diploma de
+                    Humor Digital".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio extra -- obstáculo vivo</strong> --
+                    Adicionar um segundo personagem (ex: cachorro). ESPERAR
+                    ATÉ tocar no cachorro → FALAR "Oi, rival".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação com semáforo</strong> -- Cada aluno
+                    levanta cartão: verde (conseguiu), amarelo (quase),
+                    vermelho (travou). Quem está vermelho recebe ajuda
+                    imediata.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Autismo (TEA)</strong> -- Usar apenas um obstáculo
+                    por vez; evitar surpresas sonoras.
+                  </li>
+                  <li>
+                    <strong>Deficiência intelectual</strong> -- Professor
+                    fornece modelo de blocos já encaixados; aluno só clica em
+                    "executar".
+                  </li>
+                  <li>
+                    <strong>Baixa visão</strong> -- Aumentar contraste da
+                    borda; usar fita colorida de alto relevo no chão.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Debugou com ajuda</th>
+                        <th>Debugou sozinho e explicou</th>
+                        <th>Bug detectado (não funcionou)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Gato virou, mas às vezes erra</td>
+                        <td>Gato vira sempre e mia</td>
+                        <td>Gato travou ou passou direto</td>
+                      </tr>
+                      <tr>
+                        <td>Toca e fala "Oi"</td>
+                        <td>Toca, fala e muda de cor</td>
+                        <td>Não tocou ou travou</td>
+                      </tr>
+                      <tr>
+                        <td>Fluxo correto com setas</td>
+                        <td>Fluxo com condicional e legenda</td>
+                        <td>Desenho incompreensível</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Inovação:</strong> Mini semáforo de papel para cada
+                  aluno -- eles mesmos avaliam se o código está "verde"
+                  (funciona), "amarelo" (quase) ou "vermelho" (bugado). Quem
+                  fica vermelho tem direito a um "help da lupa".
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 24 -->
+        <div class="accordion-item" data-semana="24">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana24">
+              📅 SEMANA 24 -- "Introdução ao REPITA (loop) -- fazer a mesma
+              coisa várias vezes (tipo viver em série)"
+            </button>
+          </h2>
+          <div id="semana24" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="24" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender repetição para evitar escrever o mesmo bloco
+                    30 vezes.
+                  </li>
+                  <li>Usar REPITA para desenhar polígonos.</li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>EF02MA11, RCP-PR (autoria com loops).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-grid-3x3"></i> Folhas quadriculadas,
+                    lápis de cor</span>
+                  <span class="material-badge"><i class="bi bi-music-note"></i> Música do loop (batida
+                    eletrônica de 120 BPM)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual repetitivo</strong> -- "REPITA 3 VEZES:
+                    bata palmas, grite 'ROBÔ', pule."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Demonstração sem vs com loop</strong> -- Desenhar
+                    um quadrado na lousa com 4 MOVER+GIRAR. Depois com REPITA
+                    4. Alunos aplaudem a preguiça eficiente.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Prática -- quadrado</strong> -- Usar REPITA 4 →
+                    MOVER 5 → GIRAR 90.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do hexágono</strong> -- REPITA 6 com
+                    ângulo 60°. Quem acertar sem ajuda vira "Geômetra Robô".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Música do loop</strong> -- Criar batida: REPITA 10
+                    (palma, palma, estalo). Grupo que sincronizar ganha
+                    biscoito.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação -- Parafuso do Loop Infinito</strong> --
+                    Certificado em espiral.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>TDAH</strong> -- Usar timer visual (ampulheta)
+                    para cada repetição.
+                  </li>
+                  <li>
+                    <strong>Surdez</strong> -- Música do loop substituída por
+                    luzes (piscar da lanterna do tablet).
+                  </li>
+                  <li>
+                    <strong>Deficiência motora fina</strong> -- Usar blocos
+                    grandes ou auxílio do colega para arrastar no tablet.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Loop funcional (quadrado)</th>
+                        <th>Loop elegante (hexágono + música)</th>
+                        <th>Loop manco (repete menos de 2)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Quadrado perfeito</td>
+                        <td>Quadrado com velocidade variada</td>
+                        <td>Usou REPITA, mas ângulo errado</td>
+                      </tr>
+                      <tr>
+                        <td>Hexágono com 60°</td>
+                        <td>Criou polígono de 8 lados</td>
+                        <td>Tentou, mas bugou</td>
+                      </tr>
+                      <tr>
+                        <td>Sequência rítmica correta</td>
+                        <td>Criou e ensinou música para outro</td>
+                        <td>Repetiu palma 2x</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Irreverência:</strong> Se o aluno fizer um círculo
+                  com REPITA 36 e GIRAR 10, ganha "Título Honorário de
+                  Polígono Humano" -- uma medalha de papel com um π desenhado
+                  torto.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 25 -->
+        <div class="accordion-item" data-semana="25">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana25">
+              📅 SEMANA 25 -- "REPITA + SE: o loop condicional (ou como
+              ensinar o gato a não bater na parede 100 vezes)"
+            </button>
+          </h2>
+          <div id="semana25" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="25" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Combinar REPITA com ESPERAR ATÉ (condicional dentro do
+                    loop).
+                  </li>
+                  <li>
+                    Criar programa que repete até uma condição (ex: tocar na
+                    maçã).
+                  </li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>RCP-PR (algoritmos com repetição e decisão), EF02MA10.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-grid-3x3"></i> Grid físico no chão (fita
+                    crepe)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone"></i> Apito para "condição de
+                    parada" (versão humana)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Repita até"</strong> -- "REPITA ATÉ eu
+                    falar 'PARE': batam palmas." Professor fala depois de 3 a
+                    10 segundos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Demo no ScratchJr</strong> -- Usar REPITA 999 + SE
+                    (simulado) para interromper com PARAR. Mostrar labirinto
+                    simples (gato → maçã).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação do labirinto</strong> -- REPITA 100 →
+                    MOVER 1 → ESPERAR ATÉ tocar na maçã → PARAR.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste e ajuste</strong> -- Se o gato não chegar,
+                    aumentar REPITA para 200 ou diminuir distância.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro</strong> -- Desenhar fluxo do loop com
+                    decisão (seta de volta).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação</strong> -- Quem mostrar o gato
+                    chegando à maçã ganha "Parafuso de Loop Condicional".
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Baixa visão</strong> -- Aumentar contraste da
+                    maçã; usar borda grossa no palco.
+                  </li>
+                  <li>
+                    <strong>Dislexia</strong> -- Dizer em voz alta: "Repete,
+                    anda, se tocou na maçã para, senão anda de novo".
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Oferecer labirinto com apenas um
+                    caminho possível e sem surpresas.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Teseu programador</th>
+                        <th>Minotauro perdido</th>
+                        <th>Ariadne ajuda</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Usou PARAR ao tocar na maçã</td>
+                        <td>Loop infinito ou parou longe</td>
+                        <td>Chegou, mas usou REPITA 999</td>
+                      </tr>
+                      <tr>
+                        <td>Criou dois obstáculos e dois SE</td>
+                        <td>Não encaixou SE</td>
+                        <td>Usou ESPERAR ATÉ com borda</td>
+                      </tr>
+                      <tr>
+                        <td>Fluxo com loop e duas decisões</td>
+                        <td>Fluxo sem decisão</td>
+                        <td>Fluxo com uma decisão</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Bug premiado:</strong> O aluno que fizer o gato
+                  enterrar a maçã ao invés de comer ganha o "Troféu Inversão
+                  Criativa" e uma chance de corrigir em vídeo.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 26 -->
+        <div class="accordion-item" data-semana="26">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana26">
+              📅 SEMANA 26 -- "Projeto: coreografia de robôs com loop e
+              eventos (ou o dia em que a sala virou um TikTok robótico)"
+            </button>
+          </h2>
+          <div id="semana26" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="26" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Integrar loops, eventos e condicionais em uma dança de
+                    robôs (primeiro no ScratchJr, depois com corpo).
+                  </li>
+                  <li>Trabalhar em grupos e apresentar coreografia.</li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>EF02MA11, RCP-PR (autoria).</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-drum"></i> Pandeiro, apito</span>
+                  <span class="material-badge"><i class="bi bi-camera"></i> Câmera do professor</span>
+                  <span class="material-badge"><i class="bi bi-grid"></i> Colchonetes (para cair com
+                    estilo)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Dança do loop"</strong> -- REPITA 3
+                    (levanta braço, abaixa, gira).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento em grupo</strong> -- Cada grupo
+                    escolhe 2 eventos (som) e define loop. Ex: REPITA 10 → SE
+                    ouvir apito, pule; SENÃO, ande.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação opcional</strong> -- Ou diretamente na
+                    vida real (robô humano). Grupos treinam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação</strong> -- Cada grupo mostra
+                    coreografia. Turma avalia com palmas e risadas.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Gravação de vídeo</strong> -- Professor filma para
+                    postar (com autorização) ou só para assistir depois.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação</strong> -- "O que foi mais difícil:
+                    coordenar o loop com os eventos?" Quem reclamar ganha
+                    pirulito.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Cadeirante</strong> -- Eventos com palmas da
+                    cabeça, movimentos de braço.
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Evitar sons altos; usar cartões de
+                    silêncio.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual</strong> -- Comandos táteis
+                    (toque no ombro para virar, etc.).
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Dança sincronizada</th>
+                        <th>Dança com surpresa</th>
+                        <th>Dança descoordenada</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Loop de 4 movimentos</td>
+                        <td>Loop com mudança de ritmo</td>
+                        <td>Repetiu 2 movimentos</td>
+                      </tr>
+                      <tr>
+                        <td>Reagiu a 2 sons</td>
+                        <td>Criou sinal de "pause"</td>
+                        <td>Reagiu a 1 som</td>
+                      </tr>
+                      <tr>
+                        <td>Grupo explicou blocos</td>
+                        <td>Grupo legendou os movimentos</td>
+                        <td>Grupo participou</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Selo coletivo:</strong> "Robô Dançarino" -- um pixel
+                  com tênis de break.<br />
+                  <strong>Irreverência máxima:</strong> Melhor grupo ganha
+                  direito de programar o professor por 2 minutos (ex: "REPITA
+                  5 VEZES: pule e diga 'sou um robô'"). O professor obedece --
+                  e se recusar, paga um picolé.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 27 -->
+        <div class="accordion-item" data-semana="27">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana27">
+              📅 SEMANA 27 -- "Depuração lúdica -- parte 1: o robô está
+              mentindo (e a gente vai mostrar o erro na cara dele)"
+            </button>
+          </h2>
+          <div id="semana27" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="27" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Identificar erros em algoritmos simples (sequência,
+                    condicional, loop).
+                  </li>
+                  <li>Corrigir bugs de forma colaborativa e humorada.</li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>RCP-PR (Depuração), EF02LP09.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões com algoritmos
+                    errados (impressos)</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupa de brinquedo, capas de
+                    detetive (avental de TNT preto)</span>
+                  <span class="material-badge"><i class="bi bi-chalkboard"></i> Quadro branco e
+                    marcadores</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Caça-bugs"</strong> -- Todos imitam
+                    caçador com binóculos. "SE você encontrar um erro, ENTÃO
+                    grite BUG!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Exemplo no quadro</strong> -- Algoritmo para comer
+                    cereal: 1. Pegar colher 2. Derramar leite 3. Pegar cereal
+                    (erro: ordem). Alunos apontam. Corrigem.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Atividade em duplas</strong> -- Cada dupla recebe
+                    cartão com 2-3 bugs. Circulam erros e reescrevem.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Correção coletiva</strong> -- Socializar bugs.
+                    Quem achou mais ganha "Lupa de Ouro" (com brilhos).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo "Robô teimoso"</strong> -- Um aluno é robô e
+                    executa algoritmo errado (cômico). Outros gritam "DEBUG" e
+                    mostram correto.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro</strong> -- Desenhar um bug engraçado
+                    (ex: robô tomando banho de cereal).
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Déficit de atenção</strong> -- Usar relógio grande
+                    para cada etapa; pausas de 1 min.
+                  </li>
+                  <li>
+                    <strong>Deficiência intelectual</strong> -- Fornecer
+                    cartões com apenas 1 bug por vez.
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Usar cartões visuais com símbolos
+                    claros e evitar gritos muito altos.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Caçador experiente</th>
+                        <th>Mestre dos Bugs</th>
+                        <th>Caçador iniciante</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Achou 2 bugs</td>
+                        <td>Achou 3 bugs e explicou</td>
+                        <td>Achou 1 bug</td>
+                      </tr>
+                      <tr>
+                        <td>Reescreveu sozinho</td>
+                        <td>Criou algoritmo semelhante sem bugs</td>
+                        <td>Reescreveu com ajuda</td>
+                      </tr>
+                      <tr>
+                        <td>Participou como robô</td>
+                        <td>Participou como debugger</td>
+                        <td>Observou e riu</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Lupa de Ouro:</strong> O vencedor pode usar uma capa
+                  de detetive na próxima aula e tem o direito de apontar o
+                  dedo na cara do professor se encontrar um erro real.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 28 -->
+        <div class="accordion-item" data-semana="28">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana28">
+              📅 SEMANA 28 -- "Depuração digital -- parte 2: bugs no ScratchJr
+              (ou o gato que teletransportava para fora da tela)"
+            </button>
+          </h2>
+          <div id="semana28" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="28" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Encontrar e corrigir bugs em programas ScratchJr
+                    pré-defeituosos.
+                  </li>
+                  <li>
+                    Entender a importância de testar e ajustar (e não chorar).
+                  </li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>RCP-PR (Depuração digital), EF02MA11.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets com 3 programas-bug
+                    (compartilhados por Airdrop ou QR code)</span>
+                  <span class="material-badge"><i class="bi bi-card-checklist"></i> Folha de "Checklist
+                    de Bugs" (impressa)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Robô bugado"</strong> -- Professor faz
+                    robô que anda em círculos sem parar. Alunos gritam "LOOP
+                    INFINITO!!".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programa 1 -- ordem errada</strong> -- Gato devia
+                    falar "Olá" e depois andar, mas anda antes. Alunos
+                    identificam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programa 2 -- condição impossível</strong> --
+                    ESPERAR ATÉ tocar na borda com gato no centro. Programa
+                    trava. Sugerem mover o gato para perto da borda.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programa 3 -- loop infinito</strong> -- REPITA 999
+                    sem PARAR. Alunos sugerem trocar número ou adicionar SE.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio em duplas</strong> -- Dupla A cria
+                    programa com 1 bug escondido. Dupla B encontra e corrige.
+                    Depois trocam.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação</strong> -- Certificado "Caça-Bugs Nível
+                    1" (com lupa colorida).
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Baixa coordenação motora</strong> -- Fornecer
+                    programa já aberto; aluno só clica em "executar" e aponta
+                    bug.
+                  </li>
+                  <li>
+                    <strong>Ansiedade</strong> -- Tempo extra (5 min) para
+                    cada programa.
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Mostrar um bug por vez, com
+                    cartões visuais e sem pressão de tempo.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Bug capturado</th>
+                        <th>Bug corrigido e documentado</th>
+                        <th>Bug sobreviveu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Percebeu, mas errou correção</td>
+                        <td>Trocou blocos e testou</td>
+                        <td>Não percebeu</td>
+                      </tr>
+                      <tr>
+                        <td>Sugeriu condição verdadeira</td>
+                        <td>Mudou condição e explicou</td>
+                        <td>Achou que tablet travou</td>
+                      </tr>
+                      <tr>
+                        <td>Apertou botão vermelho para parar</td>
+                        <td>Trocou REPITA 999 por 10 + PARAR</td>
+                        <td>Deixou gato girando eternamente</td>
+                      </tr>
+                      <tr>
+                        <td>Criou bug simples (ordem)</td>
+                        <td>Criou bug com condicional falsa</td>
+                        <td>Não conseguiu</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Certificado intermediário:</strong> "Caça-Bugs Nível
+                  1 -- já pode usar lupa colorida e fazer cara de detetive".
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 29 -->
+        <div class="accordion-item" data-semana="29">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana29">
+              📅 SEMANA 29 -- "Projeto final -- meu primeiro jogo condicional
+              (com tesouro, monstro e muito drama)"
+            </button>
+          </h2>
+          <div id="semana29" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="29" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Projetar e programar um pequeno jogo no ScratchJr com
+                    evento, loop e condicional.
+                  </li>
+                  <li>
+                    Apresentar para colegas e receber feedback (de preferência
+                    positivo).
+                  </li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>Todas do bimestre.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-brush"></i> Papel A3 para rascunho,
+                    canetinhas</span>
+                  <span class="material-badge"><i class="bi bi-gem"></i> Adesivos de "Tesouro"</span>
+                  <span class="material-badge"><i class="bi bi-star"></i> Cartela de votação para a
+                    feira (próxima semana)</span>
+                </div>
+
+                <h5>
+                  ⏱️ Minuto a Minuto (aula dupla? -- 50 min, então hoje
+                  planejamento)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Grito do projeto</strong> -- "REPITA 2 VEZES: MEU
+                    JOGO, MEU JOGO!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mostrar exemplos reais</strong> -- Professor exibe
+                    jogo simples: gato pega estrela, desvia de monstro. Usa SE
+                    tocar no monstro → FALAR "Perdeu" e PARAR.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento em duplas</strong> -- Desenhar
+                    cenário no papel e definir: personagem, objetivo
+                    (tesouro), obstáculo, regras condicionais (pelo menos 1
+                    SE).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Esboço do algoritmo</strong> -- Escrever em
+                    português: "INICIAR → REPITA ATÉ achar tesouro → SE tocar
+                    no monstro ENTÃO 'Game over' SENÃO andar".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Início da programação</strong> -- Arrastar blocos
+                    no tablet. Professor circula com carimbo de "Vai dar
+                    certo".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Salvar e encerrar</strong> -- Salvar projeto com
+                    nome da dupla + gritar "AMANHÃ (OU SEMANA QUE VEM)
+                    TERMINAMOS!"
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Duplas mistas</strong> -- Aluno com mais
+                    habilidade programa, o outro desenha e narra.
+                  </li>
+                  <li>
+                    <strong>Tempo limitado</strong> -- Fornecer modelo de jogo
+                    pronto para apenas modificar cores e textos.
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Oferecer um cenário pré-desenhado
+                    e um personagem fixo para reduzir sobrecarga de escolhas.
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Jogo no papel + blocos escritos</th>
+                        <th>Jogo parcialmente no tablet</th>
+                        <th>Jogo no papel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Personagem + obstáculo + tesouro</td>
+                        <td>Cenário colorido com regras</td>
+                        <td>Só um personagem</td>
+                      </tr>
+                      <tr>
+                        <td>Sequência em português</td>
+                        <td>Usa "REPITA", "SE", "ENTÃO"</td>
+                        <td>Frase solta</td>
+                      </tr>
+                      <tr>
+                        <td>1 condicional clara</td>
+                        <td>2 condicionais (perde e ganha)</td>
+                        <td>1 condicional vaga</td>
+                      </tr>
+                      <tr>
+                        <td>Colocou 3 blocos</td>
+                        <td>Colocou 5+ blocos e testou</td>
+                        <td>Não iniciou</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Grito de guerra personalizado:</strong> Cada dupla
+                  inventa seu grito. Exemplo: "REPITA 3 VEZES: TESOURO,
+                  MONSTRO, DEBUG!" -- ganha adesivo extra.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMANA 30 -->
+        <div class="accordion-item" data-semana="30">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana30">
+              📅 SEMANA 30 -- "Feira de jogos condicionais -- avaliação do
+              bimestre (com tapete vermelho e direito ao voto popular)"
+            </button>
+          </h2>
+          <div id="semana30" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="30" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>Finalizar e apresentar os jogos para a turma.</li>
+                  <li>Avaliar o aprendizado com votação e certificados.</li>
+                </ul>
+
+                <h5>📚 Habilidades</h5>
+                <p>Todas do bimestre.</p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-tablet"></i> Tablets</span>
+                  <span class="material-badge"><i class="bi bi-projector"></i> Projetor</span>
+                  <span class="material-badge"><i class="bi bi-music-note"></i> Som de fanfarra (baixar
+                    do YouTube)</span>
+                  <span class="material-badge"><i class="bi bi-trophy"></i> Adesivos redondos para
+                    votação (3 por aluno)</span>
+                  <span class="material-badge"><i class="bi bi-award"></i> Certificados impressos</span>
+                  <span class="material-badge"><i class="bi bi-carpet"></i> Tapete vermelho (pode ser
+                    EVA ou papel crepom)</span>
+                </div>
+
+                <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura com fanfarra</strong> -- "QUANDO eu tocar
+                    a trombeta imaginária, a feira começa!" (professor faz som
+                    com a boca).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Rodada 1 de apresentações</strong> -- Metade das
+                    duplas mostra jogo no projetor (ou mostrando para um
+                    grupo). 1 minuto por jogo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Rodada 2</strong> -- Outra metade.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Votação divertida</strong> -- Cada aluno recebe 3
+                    adesivos e cola no tablet do jogo favorito (não pode votar
+                    no próprio). Categorias: "Jogo mais criativo", "Bug mais
+                    engraçado", "Condicional mais esperta".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Entrega dos certificados</strong> -- "Mestre do
+                    ScratchJr -- Nível 3" para todos. Destaque para os
+                    vencedores de cada categoria.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Dança final com loops</strong> -- REPITA 10 (pula,
+                    gira, bate palma). Comer biscoitos (ou frutas) enquanto
+                    dança.
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações</h5>
+                <ul>
+                  <li>
+                    <strong>Ansiedade de apresentação</strong> -- Permitir
+                    gravar vídeo do jogo e exibir sem falar.
+                  </li>
+                  <li>
+                    <strong>Mobilidade</strong> -- Dança pode ser apenas com
+                    braços.
+                  </li>
+                  <li>
+                    <strong>TEA</strong> -- Oferecer um espaço tranquilo para
+                    apresentar apenas para o professor, se preferir.
+                  </li>
+                </ul>
+
+                <h5>
+                  🏆 Categorias da votação (cada uma com certificado próprio)
+                </h5>
+                <ul>
+                  <li>
+                    🎮 Jogo mais criativo (cenário doido, personagem
+                    inusitado)
+                  </li>
+                  <li>
+                    🐛 Bug mais engraçado (ex: gato que atravessa parede e vai
+                    parar na Lua)
+                  </li>
+                  <li>
+                    🧠 Condicional mais esperta (ex: se tocar no monstro, o
+                    monstro vira amigo e dança)
+                  </li>
+                  <li>
+                    📢 Melhor grito de guerra (votado em assembleia relâmpago
+                    -- 2 minutos)
+                  </li>
+                </ul>
+
+                <h5>🎖️ Critérios finais</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Prata (funciona)</th>
+                        <th>Ouro (funciona + criativo)</th>
+                        <th>Bronze (participou)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funciona, mas sem REPITA ou SE</td>
+                        <td>Usa loop, evento e condicional</td>
+                        <td>Bugs graves, trava</td>
+                      </tr>
+                      <tr>
+                        <td>Explicou regras em 1 min</td>
+                        <td>Explicou e mostrou bug corrigido</td>
+                        <td>Mostrou sem explicar</td>
+                      </tr>
+                      <tr>
+                        <td>Recebeu 3+ adesivos</td>
+                        <td>Ganhou em alguma categoria</td>
+                        <td>Recebeu 1 adesivo</td>
+                      </tr>
+                      <tr>
+                        <td>"Aprendi o que é loop"</td>
+                        <td>"Meu bug favorito foi... e corrigi assim"</td>
+                        <td>"Gostei"</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Certificado modelo para imprimir:</strong><br />
+                  CERTIFICADO DE MESTRE DO SCRATCHJR -- NÍVEL 3<br />
+                  Outorgado a: _______________________<br />
+                  Por ter dominado eventos, REPITA, e condicionais digitais,
+                  além de caçar bugs com lupa de ouro e rir dos próprios
+                  erros.<br />
+                  "REPITA 3 VEZES: parabéns! PARABÉNS! PARABÉNS!"<br />
+                  Ass: Robô Zé 2.0 (com tela de tablet na barriga)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== JOGO DO BIMESTRE ==================== -->
+    <section id="jogo-loopdash" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE: SCRATCH JR -
+          CAÇA BLOCOS
+        </h2>
+        <div class="badge-projeto">
+          Monte o algoritmo do gato, desvie de bugs e ganhe o selo “Mestre da
+          Tela”!
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h4>
+          <i class="bi bi-info-circle-fill"></i> 🐱 CAÇA BLOCOS — O DESAFIO DO
+          SCRATCHJR
+        </h4>
+        <p>
+          <strong>🤖 Contexto:</strong> O gato do ScratchJr ficou louco e
+          bagunçou todos os blocos de comando. Você precisa organizar o
+          algoritmo <strong>correto</strong> para ele pegar o tesouro sem
+          bater nos monstros! Use
+          <strong>eventos, loops e condicionais</strong>.
+        </p>
+        <p>
+          <strong>🎯 Público-alvo:</strong> Alunos do 2º ano (individual ou
+          duplas).
+        </p>
+        <p>
+          <strong>💡 Conceito estrela:</strong> Depuração visual e lógica de
+          programação no estilo ScratchJr.
+        </p>
+        <h5 class="mt-3">📜 Regras do Jogo:</h5>
+        <ol>
+          <li>
+            <strong>🏁 Fases:</strong> 3 fases com dificuldade crescente.
+          </li>
+          <li>
+            <strong>🃏 Monte seu algoritmo:</strong> Arraste os blocos
+            (cartões) para a área de montagem.
+          </li>
+          <li>
+            <strong>🔁 Use o loop REPITA</strong> e o condicional “ESPERAR
+            ATÉ” para desviar de obstáculos.
+          </li>
+          <li>
+            <strong>🐛 Se errar, o gato grita "BUG!" e você perde uma vida.</strong>
+            Depure trocando os blocos.
+          </li>
+          <li>
+            <strong>🌟 Bônus criativo:</strong> Se usar um loop aninhado
+            (REPITA dentro de REPITA), ganha estrela dourada.
+          </li>
+        </ol>
+      </div>
+
+      <div class="simulador-comandos p-4 rounded-4 text-center">
+        <h3 class="text-warning">🐱 SCRATCH JR — CAÇA BLOCOS 🧩</h3>
+        <div class="mb-4">
+          <div class="btn-group flex-wrap" role="group">
+            <button type="button" class="btn-phase" data-fase="1">
+              🏁 FASE 1: LINHA RETA
+            </button>
+            <button type="button" class="btn-phase" data-fase="2">
+              🔄 FASE 2: ZIGUE-ZAGUE
+            </button>
+            <button type="button" class="btn-phase" data-fase="3">
+              🧱 FASE 3: OBSTÁCULOS + MONSTRO
+            </button>
+          </div>
+        </div>
+        <div class="loopdash-pista-visual mb-4">
+          <div class="pista-label">
+            <i class="bi bi-map-fill"></i> PISTA ATUAL:
+            <span id="faseNomeAtual" class="text-warning">LINHA RETA</span>
+            <span id="faseIconeAtual">🏁</span>
+          </div>
+          <div id="loopdashGrid" class="loopdash-grid"></div>
+        </div>
+        <div class="row mt-3 justify-content-center g-2">
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-label">BLOCOS USADOS</div>
+              <div class="stat-value" id="loopdashCartoes">0</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-label">MELHOR MARCA</div>
+              <div class="stat-value" id="loopdashMelhor">--</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">🤖</div>
+              <div class="stat-label">STATUS</div>
+              <div class="stat-value" id="loopdashStatus">PRONTO</div>
+            </div>
+          </div>
+        </div>
+        <div class="algoritmo-builder mt-4">
+          <div class="builder-header">
+            <i class="bi bi-grid-3x3-gap-fill"></i> SEU ALGORITMO (clique nos
+            blocos)
+            <button class="btn-clear-algoritmo" id="btnLimparAlgoritmo">
+              <i class="bi bi-trash3-fill"></i> LIMPAR TUDO
+            </button>
+          </div>
+          <div id="algoritmoMontado" class="algoritmo-montado">
+            <div class="placeholder-algoritmo">
+              🧩 Clique nos blocos dos cartões abaixo...
+            </div>
+          </div>
+        </div>
+        <div class="cartoes-prateleira mt-4">
+          <div class="cartoes-header">
+            <i class="bi bi-card-list"></i> BLOCOS (clique para adicionar)
+            <span class="regra-destaque">🔁 Use REPITA para repetir ações!</span>
+          </div>
+          <div class="cartoes-grid" id="cartoesGrid">
+            <div class="cartao-comando" data-comando="ande1">
+              <div class="cartao-icone">🚶</div>
+              <div class="cartao-texto">ANDE 1</div>
+            </div>
+            <div class="cartao-comando" data-comando="ande2">
+              <div class="cartao-icone">🏃</div>
+              <div class="cartao-texto">ANDE 2</div>
+            </div>
+            <div class="cartao-comando" data-comando="vireDireita">
+              <div class="cartao-icone">▶️</div>
+              <div class="cartao-texto">VIRE DIREITA</div>
+            </div>
+            <div class="cartao-comando" data-comando="vireEsquerda">
+              <div class="cartao-icone">◀️</div>
+              <div class="cartao-texto">VIRE ESQUERDA</div>
+            </div>
+            <div class="cartao-comando cartao-especial" data-comando="repita">
+              <div class="cartao-icone">🔄</div>
+              <div class="cartao-texto">REPITA</div>
+            </div>
+            <div class="cartao-comando" data-comando="esperarAteBorda">
+              <div class="cartao-icone">⏳</div>
+              <div class="cartao-texto">ESPERAR ATÉ PAREDE</div>
+            </div>
+          </div>
+        </div>
+        <div class="botoes-painel mt-4">
+          <button class="btn-executar" id="btnExecutarLoopDash">
+            <i class="bi bi-play-fill"></i> EXECUTAR GATO!
+          </button>
+          <button class="btn-resetar" id="btnResetLoopDash">
+            <i class="bi bi-arrow-repeat"></i> REINICIAR
+          </button>
+          <button class="btn-dica" id="btnDicaLoopDash">
+            <i class="bi bi-lightbulb-fill"></i> DICA MALUCA
+          </button>
+          <button class="btn-exemplo" id="btnExemploLoopDash">
+            <i class="bi bi-stars"></i> EXEMPLO PRONTO
+          </button>
+        </div>
+        <div id="loopdashMensagem" class="mensagem-jogo mt-3">
+          <i class="bi bi-robot"></i>
+          <span>🏁 Clique nos blocos, monte seu algoritmo e execute o gato!</span>
+        </div>
+        <div class="legenda-pista mt-3">
+          <span class="legenda-item"><span class="badge-robot">🐱</span> GATO</span>
+          <span class="legenda-item"><span class="badge-flag">🏁</span> TESOURO</span>
+          <span class="legenda-item"><span class="badge-obstacle">🧱</span> MONSTRO/BLOCO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CERTIFICADO ==================== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 3º BIMESTRE
+          </h3>
+          <p class="lead">"MESTRE DO SCRATCHJR — NÍVEL 3"</p>
+        </div>
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>3º BIMESTRE - ROBÓTICA EDUCACIONAL</strong><br />
+                  Dominando: 🔁 REPITA, 📦 EVENTOS, 🐛 DEPURAÇÃO DIGITAL, 🤖
+                  PROJETO AUTORAL
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "REPITA 3 VEZES: PARABÉNS! PARABÉNS! PARABÉNS!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 2.0 (com tela na barriga)</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label><input type="text" id="nomeAluno"
+                    class="form-control" placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button><button id="btnPreviewAluno"
+                  class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info mt-4 mb-0 small">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          nova janela com layout A4 (3x2 por folha).
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FECHAMENTO DO BIMESTRE (adaptaçõees + referências) ==================== -->
+    <section id="adaptacoes" class="mb-5">
+      <div class="card bg-light border-warning mt-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
+            ESPECÍFICAS BIMESTRE 3 (Caos Acessível para Todos)
+          </h5>
+          <h6 class="mt-3">📌 Para TEA</h6>
+          <ul>
+            <li>
+              Usar apenas um obstáculo por vez; evitar surpresas sonoras.
+            </li>
+            <li>Fornecer checklist visual com ícones dos blocos.</li>
+          </ul>
+          <h6 class="mt-3">📌 Para TDAH</h6>
+          <ul>
+            <li>
+              Timer de 5 min para cada desafio; recompensa imediata (adesivo).
+            </li>
+            <li>Dividir a tela em zonas coloridas.</li>
+          </ul>
+          <h6 class="mt-3">📌 Deficiência física</h6>
+          <ul>
+            <li>
+              Usar QUANDO ENVIAR MENSAGEM em vez de agitar; colega ajuda.
+            </li>
+            <li>Comandos de voz (Ok Google, arrasta bloco).</li>
+          </ul>
+          <h6 class="mt-3">📌 Altas habilidades</h6>
+          <ul>
+            <li>
+              Criar loop aninhado (REPITA dentro de REPITA) e ensinar colegas.
+            </li>
+            <li>
+              Desafio extra: jogo com dois personagens e condicional dupla.
+            </li>
+          </ul>
+          <p class="mb-0 mt-3 fst-italic">
+            “SE o robô não pular, ENTÃO a gente debugga; SENÃO a gente dança.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-3 rounded-4 small">
+          <h5>
+            <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+          </h5>
+          <p>
+            FLANNERY, K. B. et al. ScratchJr: programação para crianças
+            pequenas. In: Anais da IDC '13. ACM, 2013.<br />RESNICK, M. Jardim
+            de Infância para Toda a Vida. Porto Alegre: Penso, 2022.<br />WING,
+            J. M. Pensamento Computacional. Communications of the ACM, v.49,
+            n.3, 2006.<br />BRASIL. BNCC. MEC, 2017.<br />PARANÁ. Robótica
+            Paraná. SEED-PR, 2023.<br />BELL, T.; WITTEN, I. H.; FELLOWS, M.
+            Computação Desplugada. SBC, 2022.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relatorio-bugs" id="relatorioBugs"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a2bim3.js"></script>
+</body>
+
+</html>

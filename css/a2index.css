@@ -1,0 +1,374 @@
+/* =============================================
+   a2index.css – Estilos IDÊNTICOS aos modelos fornecidos
+   (modelo_index.css, modelo_cabecalho.css, modelo_menu_bim.css, 
+    modelo_rodape.css, modelo_certificado.css)
+   Adaptado apenas os nomes de classes e cores para manter consistência
+   ============================================= */
+
+/* ----- RESET E FUNDO (bg-robotica dos anexos) ----- */
+body.bg-robotica {
+  background: linear-gradient(145deg, #1a2a1f 0%, #0e1a0c 100%);
+  font-family: "Inter", "Chakra Petch", sans-serif;
+  min-height: 100vh;
+  color: #f0f0e0;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----- TIPOGRAFIA LÚDICA (igual aos anexos) ----- */
+h1,
+h2,
+h3,
+h4,
+.lead,
+.badge-projeto {
+  font-family: "Press Start 2P", "Chakra Petch", monospace;
+  letter-spacing: 1px;
+}
+h2 {
+  font-size: 1.6rem;
+  text-shadow: 3px 3px 0 #2c5e1f;
+}
+
+/* ----- CARDS (bg-robocard) – idêntico aos anexos ----- */
+.bg-robocard {
+  background: rgba(30, 40, 25, 0.85);
+  backdrop-filter: blur(4px);
+  border: 2px solid #ffb347;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+  border-radius: 1rem !important;
+}
+
+/* ----- CABEÇALHO (modelo_cabecalho) ----- */
+.cabecalho-robotico {
+  background: linear-gradient(135deg, #2c2c2c, #1a1f1a);
+  border-bottom: 6px solid #ffb347;
+  padding: 1rem 0;
+}
+.logo-rb,
+.logo-gn {
+  max-width: 80px;
+  border-radius: 50%;
+  border: 3px solid #ffb347;
+  transition: 0.3s;
+}
+.titulo-principal {
+  font-size: 1.8rem;
+  color: #ffde9e;
+  margin: 0;
+  font-family: "Press Start 2P", monospace;
+}
+.glitch-text {
+  animation: glitch 1.5s infinite;
+}
+@keyframes glitch {
+  0% {
+    text-shadow:
+      -2px 0 red,
+      2px 0 blue;
+  }
+  50% {
+    text-shadow:
+      2px 0 red,
+      -2px 0 blue;
+  }
+  100% {
+    text-shadow:
+      -2px 0 red,
+      2px 0 blue;
+  }
+}
+.subtitulo-chiclete {
+  font-size: 0.8rem;
+  background: #ffb34720;
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 60px;
+  margin-top: 0.5rem;
+}
+.selo-sucata {
+  background: #5a3e1b;
+  color: #ffde9e;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.parafuso-esquerda {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+/* ----- MENU GLASSMORPHISM (modelo_menu_bim) ----- */
+.menu-robomestre {
+  background: rgba(10, 20, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid #ffb347;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.menu-robomestre .nav-link {
+  color: #ffde9e;
+  font-weight: bold;
+  margin: 0 0.5rem;
+  transition: 0.2s;
+  border-radius: 40px;
+  padding: 0.5rem 1.2rem;
+}
+.menu-robomestre .nav-link:hover,
+.menu-robomestre .nav-link.active {
+  background: #ffb347;
+  color: #1a2a1f;
+  transform: scale(1.05);
+}
+
+/* ----- TABELAS (modelo_index) ----- */
+.table-robotica {
+  background: #2a3524;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #f0f0e0;
+}
+.table-robotica th,
+.table-robotica td {
+  border-color: #ffb347;
+  padding: 12px;
+  vertical-align: middle;
+}
+.table-robotica thead th {
+  background-color: #b1cf9a;
+  color: #1a2a1f;
+  font-weight: bold;
+}
+
+/* ----- CERTIFICADO (modelo_certificado + estilos inline) ----- */
+.certificado-preview {
+  background: #fef7e0;
+  border-radius: 32px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.certificado-modelo {
+  background: #fff9ef;
+  border: 8px double #ffb347;
+  border-radius: 24px;
+  color: #2c5e1f;
+  font-family: "Chakra Petch", monospace;
+}
+.certificado-modelo h3 {
+  color: #ff8c00;
+  font-weight: bold;
+}
+.nome-aluno-destaque,
+#previewNomeAluno {
+  font-size: 18px;
+  display: block;
+  margin: 10px 0;
+  color: #2c5e1f;
+  background: #fff0cc;
+  padding: 8px;
+  border-radius: 40px;
+  text-align: center;
+}
+.linha-certificado,
+.certificado-modelo hr {
+  border-top: 3px dashed #ffb347;
+  margin: 0.5rem 0;
+}
+.data-rodape {
+  font-size: 12px;
+}
+.assinatura-engracada {
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* ----- LISTA DE ALUNOS (modelo_index) ----- */
+.lista-alunos li {
+  background: #2c3e2a;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 8px solid #ffb347;
+  font-weight: 500;
+}
+.lista-alunos button {
+  background: #ffb347;
+  border: none;
+  border-radius: 30px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  color: #1a2a1f;
+}
+.cadastro-alunos {
+  background-color: #212529 !important;
+}
+
+/* ----- BOTÕES (btn-robotico-ano2) ----- */
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  font-weight: bold;
+  color: #1a2a1f;
+  padding: 10px 20px;
+  border-radius: 60px;
+  transition: 0.2s;
+}
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+.btn-robotico-ano2:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ----- AVALIAÇÃO (tabela de níveis e cards) ----- */
+.tabela-niveis td,
+.tabela-niveis th {
+  padding: 12px;
+  border: 1px solid #ffb347;
+}
+.nivel-ninja {
+  background: #c5a02830;
+}
+.nivel-aprendiz {
+  background: #4a6a2f30;
+}
+.nivel-tontinho {
+  background: #8b5a2b30;
+}
+
+/* cards dos bimestres */
+.card.bg-dark.text-white.border-warning {
+  background-color: #212529 !important;
+  border: 1px solid #ffb347;
+}
+.card-header.bg-warning {
+  background-color: #ffb347 !important;
+  color: #1a2a1f !important;
+}
+
+/* ----- RODAPÉ (modelo_rodape) ----- */
+.footer-robotico {
+  background: #0e1a0c;
+  border-top: 6px solid #ffb347;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+.footer-logo {
+  max-width: 70px;
+  border-radius: 50%;
+  border: 2px solid #ffb347;
+}
+.dev-nome {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #ffde9e;
+}
+.dev-contato a {
+  color: #ffb347;
+  text-decoration: none;
+}
+.relatorio-bugs {
+  height: 0;
+}
+
+/* ----- ANIMAÇÕES E EXTRAS ----- */
+.flutuar {
+  animation: flutuar 2s ease-in-out infinite;
+}
+@keyframes flutuar {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.card-bug-hunter {
+  background: #2c2c1c;
+  border-radius: 30px;
+  font-family: monospace;
+}
+.projeto-header {
+  background: #1f2e1a;
+  padding: 0.8rem;
+  border-radius: 60px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.badge-projeto {
+  background: #ffb347;
+  color: #1a2a1f;
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 40px;
+}
+.text-gradient {
+  background: linear-gradient(135deg, #ffde9e, #ffb347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ----- RESPONSIVIDADE (como nos modelos) ----- */
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 1.2rem;
+  }
+  .certificado-modelo {
+    padding: 1rem !important;
+  }
+  .menu-robomestre .nav-link {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  .projeto-header {
+    padding: 0.5rem;
+  }
+}
+
+/* ----- ESTILOS DE IMPRESSÃO PARA CERTIFICADOS (garantir qualidade) ----- */
+@media print {
+  body.bg-robotica {
+    background: white;
+  }
+  .cabecalho-robotico,
+  .menu-robomestre,
+  .footer-robotico,
+  .btn-robotico-ano2,
+  .cadastro-alunos,
+  .alert,
+  .projeto-header {
+    display: none !important;
+  }
+  .certificado-preview,
+  .certificado-modelo {
+    box-shadow: none;
+    border: 2px solid #ffb347;
+    margin: 0;
+    padding: 0.5rem;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .certificado-modelo {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

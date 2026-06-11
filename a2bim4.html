@@ -1,0 +1,3457 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 2º Ano - 4º Bimestre | Cidade dos Condicionais</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS exclusivo do bimestre -->
+  <link rel="stylesheet" href="css/a1bim4.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ==================== CABEÇALHO (modelo_cabecalho.html) ==================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 4º BIMESTRE: CIDADE DOS CONDICIONAIS – ONDE OS ROBÔS TOMAM
+            CONTA (E AINDA SALVAM O TRÂNSITO) ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MENU GLASSMORPHISM (modelo_menu_bim.html) ==================== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a2index.html"><i class="bi bi-robot"></i> 2º Ano</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2index.html"><i class="bi bi-house-door-fill"></i> 2° ano</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="a2bim1.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim2.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2bim3.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="a2bim4.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- ==================== APRESENTAÇÃO DO BIMESTRE (modelo_apresentacao_bimestre.html adaptado com conteúdo DOCX) ==================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Leia com um apito na boca e um capacete de papelão na cabeça
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          "Prestem atenção, seres humanos de sete anos de idade! Vocês estão
+          prestes a construir a CIDADE DOS CONDICIONAIS – uma maquete gigante
+          onde os robôs de papelão tomam conta e ainda salvam o trânsito. Só
+          que sem usar carro de verdade e sem multar o professor (ainda). Hoje
+          vocês vão aprender os comandos mais PODEROSOS da programação: SE,
+          ENTÃO, SENÃO, QUANDO, E, OU e até loops infinitos (de propósito ou
+          por bug)!
+        </p>
+        <p class="carta-texto mt-3">
+          Professor, se seus alunos não saírem da primeira aula colando caixas
+          de leite com fita crepe e gritando 'SE colar, ENTÃO segura', você
+          não fez direito.
+        </p>
+        <p class="carta-texto mt-3">
+          Neste bimestre, vamos transformar sua sala em um CAOS URBANO
+          CONTROLADO. Vamos construir uma cidade anárquica, programar robôs
+          birrentos, fazer semáforos que piscam errado, e até certificar os
+          alunos como Mestres do SE-ENTÃO-SENÃO.
+        </p>
+        <p class="carta-texto mt-3">
+          Nada de caderno parado. Nada de 'copiar do quadro'. Nada de tédio.
+          Aqui, o grid é no chão, os cartões são condicionais, e o grito
+          'ACHEI O BUG!' é a música de fundo.
+        </p>
+        <p class="carta-texto mt-3 fw-bold">
+          Regra de ouro do bimestre: SE a cidade funcionar, ENTÃO a gente
+          festeja; SENÃO, a gente debugga. E SE der looping, a gente reinicia,
+          PORQUE robô que não aprendeu ainda vai virar enfeite de mesa!
+        </p>
+        <p class="carta-texto mt-3">
+          Agora respira fundo, pega a fita crepe e vamos nessa! 🎧🤖💥
+        </p>
+      </div>
+    </section>
+
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 4 – CIDADE DOS
+          CONDICIONAIS
+        </h2>
+        <div class="badge-projeto">
+          RCP-PR · Condicionais, eventos, loops e caos urbano
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>RCP-PR</th>
+              <th>Bimestre</th>
+              <th>Tema Radical</th>
+              <th>Habilidades BNCC (Matemática)</th>
+              <th>Habilidades BNCC (LP)</th>
+              <th>Competências Gerais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Autoria com eventos e condicionais, resolução de problemas
+                complexos
+              </td>
+              <td>4º</td>
+              <td>Cidade dos Condicionais</td>
+              <td>
+                EF02MA01 (localização em malha), EF02MA11 (sequências e
+                padrões)
+              </td>
+              <td>
+                EF02LP09 (compreensão de comandos), EF02LP10 (produção de
+                instruções)
+              </td>
+              <td>
+                CG4 (linguagens digitais), CG5 (pensamento computacional), CG6
+                (trabalho em equipe)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 4 - PLANO
+          SINTÉTICO (Semanas 31 a 40)
+        </h2>
+        <div class="badge-projeto">
+          10 semanas de condicionais, caos e certificação
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Atividade-Monstro</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Conceito Estrela</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Planejamento e mapa da cidade em grid</td>
+              <td>31</td>
+              <td>
+                Projeto Cidade: como evitar que o robô caia no buraco da
+                minhoca
+              </td>
+              <td>Grid, localização, planejamento</td>
+            </tr>
+            <tr>
+              <td>Construção com recicláveis e fita crepe</td>
+              <td>32</td>
+              <td>
+                Construção da cidade parte 1 – o dia em que a caixa de sapato
+                virou arranha-céu
+              </td>
+              <td>Educação Maker, trabalho colaborativo</td>
+            </tr>
+            <tr>
+              <td>Criação de cartões condicionais e sinalização</td>
+              <td>33</td>
+              <td>
+                Sinalização e cartões – como ensinar um pedaço de papelão a
+                ler
+              </td>
+              <td>SE, ENTÃO, SENÃO, QUANDO</td>
+            </tr>
+            <tr>
+              <td>Simulação 1 – trânsito caótico</td>
+              <td>34</td>
+              <td>
+                O robô no trânsito (ou como um semáforo mal feito quase
+                iniciou uma guerra)
+              </td>
+              <td>Condicionais simples, conflitos</td>
+            </tr>
+            <tr>
+              <td>Adição de eventos externos (luz, som, pânico)</td>
+              <td>35</td>
+              <td>Eventos externos: luz, som e pânico controlado</td>
+              <td>Eventos assíncronos, prioridade</td>
+            </tr>
+            <tr>
+              <td>
+                Programação do robô de papelão com condicionais múltiplas
+              </td>
+              <td>36</td>
+              <td>
+                Programando o robô de papelão com SE, ENTÃO, SENÃO, E, OU
+              </td>
+              <td>Estruturas compostas, revisão</td>
+            </tr>
+            <tr>
+              <td>Preparação para a feira – convites, ensaios</td>
+              <td>37</td>
+              <td>
+                Preparação para a feira de robótica: convites, ensaios e
+                dramas de última hora
+              </td>
+              <td>Comunicação, roteiro, ansiedade</td>
+            </tr>
+            <tr>
+              <td>Feira de robótica para famílias</td>
+              <td>38</td>
+              <td>
+                Feira de robótica – o dia em que os robôs viraram estrelas
+              </td>
+              <td>Apresentação, feedback positivo</td>
+            </tr>
+            <tr>
+              <td>Avaliação lúdica e certificados parte 1</td>
+              <td>39</td>
+              <td>Teste do Robô Mestre</td>
+              <td>Avaliação individual, metacognição</td>
+            </tr>
+            <tr>
+              <td>Festa de encerramento e futuro da robótica</td>
+              <td>40</td>
+              <td>Festa de encerramento – o último bip do ano</td>
+              <td>Celebração, projeção de futuro</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PLANOS DE AULA (modelo_planos_aula.html adaptado com semanas 31-40 do DOCX) ==================== -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS – 4º
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Prepare a bagunça organizada. Condicionais até a coordenação pedir
+          pra parar!
+        </div>
+      </div>
+      <div class="accordion" id="accordionAulas">
+        <!-- SEMANA 31 -->
+        <div class="accordion-item" data-semana="31">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana31">
+              🗺️ Semana 31 -- Projeto Cidade: planejamento e mapa (ou como
+              evitar que o robô caia no buraco da minhoca)
+            </button>
+          </h2>
+          <div id="semana31" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="31" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Planejar coletivamente a maquete da cidade usando grid 8×8
+                    (ou 10×10 para turmas superdotadas no caos).
+                  </li>
+                  <li>
+                    Desenhar um mapa em papel quadriculado com ruas, casas,
+                    semáforos, obstáculos e pelo menos um elemento surpresa
+                    (ex: "lago de geleia de uva" ou "estátua que cospe
+                    glitter").
+                  </li>
+                  <li>
+                    Distribuir tarefas em grupos com líder de obstáculo,
+                    fiscal de alinhamento e um "ministro do caos" (que pode
+                    vetar ideias muito sensatas).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Localização em malha, trabalho colaborativo, regras iniciais
+                  de condicionais, elaboração de mapa temático.
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  EF02MA01, EF02LP10, competência socioemocional "saber perder
+                  o semáforo sem chorar" + resistência à fita crepe mal
+                  colada.
+                </p>
+
+                <h5>🧰 Materiais (versão reciclagem anárquica)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-grid"></i> Papel quadriculado gigante (A3
+                    colados com fita crepe)</span>
+                  <span class="material-badge"><i class="bi bi-marker-tip"></i> Canetinhas, lápis de
+                    cor, caneta vermelha</span>
+                  <span class="material-badge"><i class="bi bi-postcard"></i> Post-its coloridos
+                    (amarelos, verdes, vermelhos)</span>
+                  <span class="material-badge"><i class="bi bi-building"></i> Imagens de cidades
+                    bizarras (Dubai, Veneza, rua de paralelepípedo da
+                    avó)</span>
+                  <span class="material-badge"><i class="bi bi-dice-6"></i> Um dado de 6 lados para
+                    sorteios de decisões</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Caos Quantificado)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Prefeitura não dorme acorda pro ritual"</td>
+                        <td>Participação no ritual inicial</td>
+                        <td>
+                          Aluno imitou robô com som de engrenagem enferrujada?
+                          Ganha 1 parafuso de ouro. Som de "beep" sem emoção =
+                          meio parafuso.
+                        </td>
+                        <td>C-31.1</td>
+                      </tr>
+                      <tr>
+                        <td>"Índice de churume criativo"</td>
+                        <td>Qualidade das sugestões no brainstorm</td>
+                        <td>
+                          Cada ideia de obstáculo verdadeiramente absurda vale
+                          2 pontos extras. "Buraco normal" = 0,5 ponto de
+                          tédio.
+                        </td>
+                        <td>C-31.2</td>
+                      </tr>
+                      <tr>
+                        <td>"Grid não quadriculou, não valeu"</td>
+                        <td>Precisão do desenho em malha</td>
+                        <td>
+                          Contar quantas ruas estão alinhadas com o grid.
+                          Meta: 95% de alinhamento. Abaixo de 80%? Grupo refaz
+                          o desenho com régua e sem choro.
+                        </td>
+                        <td>C-31.3</td>
+                      </tr>
+                      <tr>
+                        <td>"Coeficiente de cola interbairros"</td>
+                        <td>Conexão física entre grids dos grupos</td>
+                        <td>
+                          Teste com uma tampinha de garrafa: se ela passar
+                          pela fenda (espaço &gt;1 cm), nota máxima. Espaço de
+                          2 cm vira "fenda espaço-temporal" e grupo perde 1
+                          ponto de conexão.
+                        </td>
+                        <td>C-31.4</td>
+                      </tr>
+                      <tr>
+                        <td>"Regra de ouro (ou de alumínio amassado)"</td>
+                        <td>Criação das 5 regras iniciais</td>
+                        <td>
+                          Cada regra deve ser testável em voz alta: "SE X
+                          ENTÃO Y" claro. Regra confusa = multa simbólica de 1
+                          tampinha para o fundo comum.
+                        </td>
+                        <td>C-31.5</td>
+                      </tr>
+                      <tr>
+                        <td>"Registro do caos edição de arte"</td>
+                        <td>Desenho da parte favorita + frase condicional</td>
+                        <td>
+                          O desenho final TEM que ter um robô fazendo algo
+                          errado (bônus se tiver balão de fala com "SENÃO" ou
+                          "loop"). Se o erro for lógico (ex: robô parado no
+                          verde), ganha selo "Bug Pro".
+                        </td>
+                        <td>C-31.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>💥 CRITÉRIO SURPRESA:</strong> O aluno que encontrar
+                  o primeiro erro lógico no mapa (ex: semáforo dentro de um
+                  buraco, ou ponte que não leva a lugar nenhum) ganha o título
+                  de "Caçador de Bugs Sênior" e um adesivo de olho de robô que
+                  pisca (termocrômico, se possível).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (50 min com cronômetro de
+                  celular + apito de juiz)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Prefeito robô":</strong> Professor veste
+                    faixa de papel alumínio. Grita: *"SE você é cidadão, ENTÃO
+                    obedeça às regras escritas no post-it amarelo; SENÃO, vire
+                    robô selvagem e ande de costas por 5 segundos."* Alunos
+                    repetem o grito em eco (quem errar o eco paga 1 "bip de
+                    vergonha").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Brainstorm da cidade:</strong> "O que não pode
+                    faltar?" Crianças sugerem: escola, parque, semáforo,
+                    ponte, buraco, lago, loja de sorvete, e um prédio torto.
+                    Regra de ouro: toda sugestão precisa de um SE implícito
+                    (ex: "SE a loja de sorvete estiver aberta, ENTÃO o robô
+                    pode comprar, SENÃO ele passa reto"). As 3 ideias mais
+                    absurdas ganham "selo criatividade tóxica".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desenho do grid em grupos:</strong> Em grupos de
+                    4, cada grupo fica responsável por um bairro (8×8). Usar
+                    papel quadriculado. Definir exatamente onde ficam os
+                    obstáculos. Cada obstáculo ganha um cartão de aviso
+                    provisório. Quem fizer um obstáculo sem desenhar o
+                    SE/ENTÃO ao lado ganha multa de 1 post-it vermelho.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Primeira montagem dos grids:</strong> Colar grids
+                    lado a lado no chão (ou mesa grande). Ver o mapa completo.
+                    Ajustar conexões entre bairros: se um bairro termina em
+                    rua e o outro em muro, o grupo dona do muro ganha uma
+                    "multa simbólica" (post-it vermelho na testa por 10
+                    segundos).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Definição das regras iniciais (escrita
+                      coletiva):</strong>
+                    O que cada coisa significa? Ex: "SE o robô chegar no
+                    semáforo vermelho, ENTÃO pare; SENÃO, ande." Escrever as
+                    primeiras 5 regras em um cartaz com letra garrafal. Toda
+                    regra deve ser testada mentalmente: se dois alunos
+                    discordarem, faz-se um "duelo de lógica" (argumentação de
+                    30 segundos o perde tem que imitar robô chorão).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro visual:</strong> Cada aluno desenha sua
+                    parte favorita da cidade e escreve um SE... ENTÃO... do
+                    desenho (ex: "SE o robô passar na ponte, ENTÃO ele vai
+                    vibrar"). Colar no mural com título "Mapa do Caos
+                    Controlado Aqui o bug é feature".
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (para TODAS as semanas versão
+                  ninguém fica de fora)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física / mobilidade reduzida:</strong>
+                    usar peças de encaixe (blocos, velcro, Lego) em vez de
+                    desenho. O aluno pode "construir" o grid fisicamente.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> dividir a atividade em mini-metas
+                    de 8 minutos (alarme auditivo suave). Cada meta completada
+                    rende um "adesivo de foco" (selo de robô focado).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> usar texturas (lixa
+                    para rua, algodão para nuvem, EVA para prédio). Mapa
+                    tátil. Alunos podem ditar regras e usar caneta de alto
+                    relevo.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> acrescentar regra
+                    extra: "SE o grupo terminar antes, ENTÃO deve criar um
+                    loop de fiscalização (REPITA 3 vezes a verificação do
+                    grid)". Ou criar uma rua de mão dupla com condicional
+                    dupla (E/OU).
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> oferecer roteiro visual com passos
+                    numerados e pictogramas. Transições sinalizadas por cartão
+                    amarelo na mesa. Evitar apitos altos usar campainha suave.
+                    Disponibilizar um "cantinho silencioso" para regulação.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE a gente colocar uma ponte de palito, ENTÃO o robô
+                    pode despencar; SENÃO, ele atravessa o rio de papel crepom
+                    vamos projetar o caos urbano com método e muita fita
+                    crepe."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 32 -->
+        <div class="accordion-item" data-semana="32">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana32">
+              🏗️ Semana 32 -- Construção da cidade parte 1: estruturas (ou o
+              dia em que a caixa de sapato virou arranha-céu)
+            </button>
+          </h2>
+          <div id="semana32" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="32" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Construir os elementos da cidade com materiais recicláveis
+                    — proibido comprar nada novo (vale até tampa de
+                    desodorante).
+                  </li>
+                  <li>
+                    Trabalhar em equipe respeitando o mapa planejado (ou seja,
+                    não inventar um vulcão do nada, a menos que o grupo ganhe
+                    autorização do "Ministério do Caos").
+                  </li>
+                  <li>
+                    Testar a robustez das construções: se o semáforo cair com
+                    um espirro, ele foi mal programado (colado).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Educação Maker, trabalho colaborativo, resistência a
+                  frustração com fita crepe que não gruda, conceitos de
+                  engenharia de sucata.
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Competências gerais (trabalho colaborativo) + EF02MA01 +
+                  Educação Maker + resistência a frustração com fita crepe que
+                  não gruda.
+                </p>
+
+                <h5>
+                  🧰 Materiais (guerra dos recicláveis — vale até usar a
+                  criatividade)
+                </h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-box"></i> Caixas de sapato, caixas de
+                    leite, rolos de papel</span>
+                  <span class="material-badge"><i class="bi bi-cup-straw"></i> Tampinhas, palitos,
+                    garrafas PET pequenas</span>
+                  <span class="material-badge"><i class="bi bi-scissors"></i> Cola quente (SÓ COM
+                    SUPERVISÃO DO PROFESSOR) + tesoura sem ponta + fita
+                    crepe</span>
+                  <span class="material-badge"><i class="bi bi-brush"></i> Tinta guache (opcional, mas
+                    recomendada para ficar bonito na feira e esconder as
+                    imperfeições)</span>
+                  <span class="material-badge"><i class="bi bi-map"></i> O mapa da semana passada — não
+                    vale esquecer em casa (multa simbólica: 1 rodinha de robô
+                    imaginário)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Semana da Gambiarra
+                  Elegante)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Martelada sincronizada ou o robô desaba"</td>
+                        <td>Execução correta do ritual "Operário robô"</td>
+                        <td>
+                          Os 3 gestos (martelar, serrar, colar) têm que ter
+                          coordenação de grupo. Grupo desafinado paga 1 roda
+                          de imaginário (rodar 1 vez no lugar imitando
+                          engrenagem).
+                        </td>
+                        <td>C-32.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Taxa de reciclagem insana — quanto mais lixo, mais
+                          nota"
+                        </td>
+                        <td>Uso criativo de materiais recicláveis</td>
+                        <td>
+                          Caixa de leite virada prédio? Rolo de papel virou
+                          túnel? +1 ponto por cada item reciclado inusitado
+                          (ex: tampa de desodorante virou radar).
+                        </td>
+                        <td>C-32.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Fita crepe não segurou, não valeu — reforça aí,
+                          engenheiro"
+                        </td>
+                        <td>Robustez das construções</td>
+                        <td>
+                          Teste de resistência: sacudir a mesa suavemente. Se
+                          o semáforo cair, grupo precisa "rebobinar" (reforçar
+                          com fita). Se cair 2 vezes, grupo ganha um "selo
+                          frágil" (e direito a refazer com supervisão).
+                        </td>
+                        <td>C-32.3</td>
+                      </tr>
+                      <tr>
+                        <td>"Posicionamento X-ô — o GPS do caos"</td>
+                        <td>
+                          Colocação dos elementos no grid conforme o mapa
+                        </td>
+                        <td>
+                          Cada elemento fora do lugar previsto (diferença
+                          &gt;2 cm) = 1 ponto de "desalinhamento cósmico". No
+                          final, grupo com menos pontos ganha um passe livre
+                          (pode ignorar uma regra na simulação).
+                        </td>
+                        <td>C-32.4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Grito de guerra decibelímetro versão alga marinha"
+                        </td>
+                        <td>Entonação e energia no grito final</td>
+                        <td>
+                          Medir o grito final em unidades "alga ebuliente"
+                          (escala subjetiva do professor). Quem gritar mais
+                          alto (sem destruir a laringe) ganha um apito de robô
+                          (apito de plástico com adesivo).
+                        </td>
+                        <td>C-32.5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🧠 CRITÉRIO BÔNUS "GAMBIARRA ELEGANTE":</strong>
+                  Grupo que improvisar solução engenhosa (ex: palito +
+                  elástico virando mastro de semáforo retrátil) ganha o selo
+                  "MacGyver Robótico" e dispensa um erro futuro (ou ganha
+                  ponto extra no bimestre).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com alarme para cada troca
+                  de fase + musiquinha de obra)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Operário robô":</strong> Professor lidera:
+                    *"REPITA 3 VEZES COM GESTO: martelar (punho fechado),
+                    serrar (mão serrando), colar (mãos juntas). SE você errar
+                    o gesto, ENTÃO refaz; SENÃO, ganha um ponto de 'sincronia
+                    industrial'."* Quem errar a sequência paga 1 roda de
+                    imaginário (girar no lugar).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Distribuição das tarefas (com sorteio
+                      dramático):</strong>
+                    Cada grupo sorteia um "tipo de construção" (prédios,
+                    semáforos, pontes, obstáculos). Grupo de obstáculos tem o
+                    privilégio de criar dois elementos malignos (ex: "chão
+                    escorregadio", "ventoinha que empurra o robô", "cachorro
+                    invisível que late").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mão na massa — construção frenética:</strong>
+                    Professor circula, ajuda a cortar e colar. Regra de ouro:
+                    cada grupo deve produzir no mínimo 5 unidades do seu
+                    elemento. Semáforos: tampinha de garrafa com bolinhas de
+                    papel colorido. Prédios: caixas empilhadas com janelas
+                    desenhadas. Vale improvisar com canudos, palitos e até
+                    macarrão.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Posicionamento na cidade (teste de encaixe):</strong>
+                    Colocar os elementos no grid (sem colar ainda, só apoiar).
+                    Um aluno de cada grupo guia um robô de teste (um dedo)
+                    para ver se o robô consegue passar. SE o dedo não passar,
+                    ENTÃO o grupo precisa reposicionar ou reduzir o tamanho.
+                    SE o dedo passar voando, ENTÃO o grupo ganha 1 ponto de
+                    "aerodinâmica inútil".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Guardar e organizar:</strong> Organizar os
+                    elementos em caixas etiquetadas por grupo. Grito coletivo:
+                    *"SE a cidade estiver pronta, ENTÃO amanhã programamos;
+                    SENÃO, continuamos com mais fita crepe!"* e todos batem
+                    palmas uma vez (quem bater duas paga multa de 1 "bip de
+                    ansiedade").
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 32 versão canteiro de obras
+                  para todos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> usar ventosas ou
+                    velcro para fixar elementos no grid; evita tesoura e cola.
+                    Aluno pode ditar posicionamento.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> cada grupo tem um cronômetro visual
+                    (ampulheta de 5 minutos). A cada ampulheta, troca-se de
+                    tarefa dentro do grupo (um corta, outro cola, outro
+                    posiciona).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> elementos com
+                    texturas contrastantes (lixa para chão áspero, EVA liso
+                    para pista). Semáforos com relevo (bolinha para vermelho,
+                    círculo para verde).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> desafio extra —
+                    construir um prédio giratório (com palito e rolo) que muda
+                    de posição SE um robô chegar perto, usando elástico como
+                    mecanismo.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> checklist visual de etapas (desenho
+                    → corte → colagem → posicionamento). Transição avisada com
+                    2 min de antecedência e cartão amarelo.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE a caixa de sapato virar prédio, ENTÃO o robô tem que
+                    desviar; SENÃO, ele atravessa parede — mãos à obra,
+                    engenheiros sem diploma, mas com muita fita crepe!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 33 -->
+        <div class="accordion-item" data-semana="33">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana33">
+              📋 Semana 33 -- Sinalização e cartões (ou como ensinar um pedaço
+              de papelão a ler)
+            </button>
+          </h2>
+          <div id="semana33" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="33" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Criar cartões de condicionais e eventos com ilustração e
+                    texto legível (nada de letra de médico, por favor).
+                  </li>
+                  <li>
+                    Finalizar a montagem da cidade com sinalização vertical
+                    (cartões em pé, presos em palitos de churrasco).
+                  </li>
+                  <li>
+                    Ensinar o conceito de "evento assíncrono" — algo que pode
+                    acontecer a qualquer momento, tipo a diretora entrar na
+                    sala.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Produção de instruções, eventos e condicionais, design
+                  gráfico nível criança + resistência a cartões que caem com o
+                  vento.
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  EF02LP10 (produção de instruções), RCP-PR (eventos e
+                  condicionais), design gráfico nível criança + resistência a
+                  cartões que caem com o vento.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartolina colorida
+                    (cortada em retângulos 10×15 cm)</span>
+                  <span class="material-badge"><i class="bi bi-marker-tip"></i> Canetas grossas (preta,
+                    vermelha, verde)</span>
+                  <span class="material-badge"><i class="bi bi-egg-fried"></i> Palitos de churrasco
+                    (para os cartões ficarem em pé) e fita crepe (muita)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito, lanterna,
+                    pandeiro (para testes de evento) + opcional: chocalho e
+                    sino de bicicleta</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Sinalização para
+                  robôs desatentos)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Memória de robô velho — beep de vergonha"</td>
+                        <td>Revisão do conceito de cartão</td>
+                        <td>
+                          Aluno que errar o conceito faz 3 "beep beep" e tenta
+                          de novo. SE acertar na segunda, ganha meio ponto de
+                          resiliência.
+                        </td>
+                        <td>C-33.1</td>
+                      </tr>
+                      <tr>
+                        <td>"Caligrafia de médico robô — ninguém entende"</td>
+                        <td>Legibilidade dos cartões</td>
+                        <td>
+                          Se outra criança não conseguir ler a letra do cartão
+                          (distância de 1 metro) = cartão reprovado. Letra
+                          caprichada ganha "Prêmio Caligrafia Robótica".
+                        </td>
+                        <td>C-33.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Ilustração nível 5 anos (com atestado de
+                          criatividade)"
+                        </td>
+                        <td>Desenho correspondente à regra</td>
+                        <td>
+                          Ilustração deve corresponder exatamente à regra. "SE
+                          buraco ENTÃO pular" tem que ter robô pulando.
+                          Ilustração genérica (um sol) = "não valeu, amigão",
+                          devolver para refazer.
+                        </td>
+                        <td>C-33.3</td>
+                      </tr>
+                      <tr>
+                        <td>"Cola fantasma vai pro chão rapidinho"</td>
+                        <td>Fixação correta dos cartões</td>
+                        <td>
+                          Cartão caindo durante simulação = multa de 2
+                          segundos de congelamento para o grupo dono, que
+                          precisa consertar com fita crepe dupla.
+                        </td>
+                        <td>C-33.4</td>
+                      </tr>
+                      <tr>
+                        <td>"Maskaraço — o retorno do papelão"</td>
+                        <td>Qualidade da máscara de robô</td>
+                        <td>
+                          Máscara precisa ter: olhos de latinha, antena de
+                          palito, e pelo menos um parafuso desenhado. Máscara
+                          pelada (só a caixa) = "robô sem alma" — grupo ganha
+                          missão extra de enfeitar.
+                        </td>
+                        <td>C-33.5</td>
+                      </tr>
+                      <tr>
+                        <td>"Teste drive caótico — a primeira batida"</td>
+                        <td>Desempenho no teste rápido</td>
+                        <td>
+                          Robô que ignora cartão visível (ex: passa direto no
+                          vermelho) ativa "modo rebelde". Aluno tem 1 chance
+                          de explicar por que aconteceu (ex: "o semáforo
+                          estava piscando"). Se for mentira, perde ponto de
+                          honestidade robótica.
+                        </td>
+                        <td>C-33.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🎭 CRITÉRIO TEATRAL:</strong> Melhor "robô ator"
+                  (criança que faz robô com mais personalidade — andar rígido,
+                  sons de motor, sistema operacional inventado) ganha Oscar
+                  Robótico da semana (troféu de papel alumínio).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a "carteiro
+                  robô" e entregas dramáticas)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revisão relâmpago:</strong> "O que é um cartão de
+                    condicional?" Mostrar exemplo físico. Quem errar (ex:
+                    dizer que é uma carta de amor) tem que fazer 3 "beep beep"
+                    e tentar de novo. SE acertar na segunda, ganha meio ponto
+                    de resiliência.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação coletiva das 8 regras-mãe:</strong>
+                    Professor dita as regras, alunos ajudam a redigir. Regras
+                    oficiais: 1. SE semáforo vermelho → pare; 2. SE verde →
+                    ande; 3. QUANDO ouvir apito → pare 3 seg; 4. SE ponte →
+                    ande devagar; 5. SE buraco → pule; 6. SE água → desvie; 7.
+                    SE atrasado e sem obstáculo → corra; 8. SENÃO (das
+                    anteriores) → ande normal. Regra bônus: SE dois robôs
+                    colidirem → ambos voltam uma casa E pagam multa imaginária
+                    de 1 "bip triste".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Produção dos cartões em grupo:</strong> Cada grupo
+                    fica responsável por 2 cartões: escrever a regra em letra
+                    legível (se não for legível, grupo ganha "cartão
+                    censurado" e reescreve) e ilustrar (desenho deve
+                    representar a ação). Fixar com fita crepe no local
+                    correspondente da cidade.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Preparação dos robôs (crianças ou carrinhos):</strong>
+                    Cada grupo define seu robô. Se for criança, usará máscara
+                    de robô (caixa de papelão com olhos de latinha e antena de
+                    palito). SE for carrinho, será controlado por comandos
+                    falados ou controle remoto imaginário (aluno vira o
+                    controle). Regra de ouro: todo robô deve ter nome e
+                    personalidade (ex: Robô Teimoso, Robô Apressado, Robô Que
+                    Só Anda pra Trás).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste rápido do robô em um trecho crítico:</strong>
+                    Um robô voluntário percorre 4 quadras da cidade para ver
+                    se os cartões estão legíveis e se as regras são
+                    compreensíveis. SE o robô errar por culpa do cartão
+                    (ilegível ou mal posicionado), o grupo dono do cartão
+                    ganha um "post-it de reparo" e precisa refazer na hora.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Organização final:</strong> Guardar tudo em ordem.
+                    Grito de guerra específico: *"PRÓXIMA SEMANA: O TRÂNSITO
+                    VAI PEGAR E NÃO ADIANTA CHORAR, SENÃO O ROBÔ PERDE A
+                    VEZ!"*
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 33 versão comunicação
+                  universal)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> cartões em braille ou
+                    alto relevo (cola quente para fazer letra). Ilustrações
+                    táteis (lixa para "buraco", algodão para "nuvem").
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> produção dos cartões com timer de 5
+                    min e música tema ("Rock do Robô"). Cada cartão completo
+                    ganha um selo sonoro (palma do professor).
+                  </li>
+                  <li>
+                    <strong>Deficiência intelectual:</strong> reduzir número
+                    de regras para 4 (as mais básicas). Oferecer cartões
+                    semi-preenchidos (completar ação).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> criar cartão extra com
+                    operador lógico OU ou E, além de evento surpresa (ex:
+                    QUANDO lanterna piscar 2 vezes → robô dance).
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> usar cartões de exemplo
+                    plastificados e sequência fixa de cores para cada tipo de
+                    regra (fundo amarelo = SE/ENTÃO, azul = QUANDO). Evitar
+                    surpresas na ordem.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE o cartão estiver vermelho, ENTÃO o robô para; QUANDO
+                    o carteiro chegar (um aluno com chapéu), ELE entrega a
+                    regra — a cidade ganha vida, e os robôs ganham medo (do
+                    SENÃO)."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 34 -->
+        <div class="accordion-item" data-semana="34">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana34">
+              🚦 Semana 34 -- Simulação 1: o robô no trânsito (ou como um
+              semáforo mal feito quase iniciou uma guerra)
+            </button>
+          </h2>
+          <div id="semana34" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="34" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Executar simulação em tempo real com vários robôs
+                    circulando (caos controlado).
+                  </li>
+                  <li>
+                    Identificar conflitos (dois robôs querendo o mesmo lugar,
+                    regras contraditórias, falta de SENÃO).
+                  </li>
+                  <li>
+                    Documentar bugs em um "Relatório de Falhas" coletivo (com
+                    direito a desenhos e xingamentos educados).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Resolução de problemas em grupo, localização em malha,
+                  educação no trânsito (versão robô) + resiliência a colisões
+                  fingidas.
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  RCP-PR (resolução de problemas em grupo), EF02MA01, educação
+                  no trânsito (versão robô) + resiliência a colisões fingidas.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-building"></i> Cidade montada (com todos
+                    os cartões e obstáculos — nada de "esqueci o semáforo em
+                    casa")</span>
+                  <span class="material-badge"><i class="bi bi-robot"></i> Robôs (crianças com máscara
+                    ou carrinhos)</span>
+                  <span class="material-badge"><i class="bi bi-hourglass-split"></i> Cronômetro (ou
+                    ampulheta de 2 minutos)</span>
+                  <span class="material-badge"><i class="bi bi-postcard"></i> Placas de "Multa" (post-it
+                    vermelho) e "Parabéns" (post-it verde)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Um apito de juiz
+                    (para parar a simulação a qualquer momento — professor
+                    pode apitar por qualquer motivo, inclusive "porque
+                    sim")</span>
+                  <span class="material-badge"><i class="bi bi-clipboard"></i> Prancheta para anotações
+                    de bugs (pode ser um papelão com elástico)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Primeiro acidente de
+                  trânsito programado)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Buzinasso medidor de estresse ou criatividade
+                          sonora"
+                        </td>
+                        <td>Participação no ritual "Hora do rush"</td>
+                        <td>
+                          Fazer buzina com a boca E gesto de volante (mãos
+                          girando). Quem fizer sem sorrir ganha +1 "cara de
+                          robô sério". Quem fizer com sorriso irônico ganha +2
+                          "humor ácido".
+                        </td>
+                        <td>C-34.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Coeficiente de leitura de placa — olhou, obedeceu;
+                          não olhou, bateu"
+                        </td>
+                        <td>Consulta aos cartões antes da ação</td>
+                        <td>
+                          Cada vez que o robô age sem olhar para o cartão = 1
+                          ponto de "imprudência mecânica". No final, quem
+                          tiver menos imprudência ganha "Motorista Exemplar".
+                        </td>
+                        <td>C-34.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Índice de colisão evitável — o caos como
+                          aprendizado"
+                        </td>
+                        <td>Capacidade de desviar de outros robôs</td>
+                        <td>
+                          Colisão frontal = 5 pontos de dano virtual. Colisão
+                          traseira = 3 pontos. Quem causar o maior
+                          "engarrafamento" (&gt;3 robôs parados) vira "Fiscal
+                          de Trânsito" na rodada seguinte (ganha apito e pode
+                          multar os outros).
+                        </td>
+                        <td>C-34.3</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Destino final (não o filme) — qual robô sobreviveu
+                          ao trânsito?"
+                        </td>
+                        <td>Chegada ao ponto combinado</td>
+                        <td>
+                          Chegou ao destino? Ganha 1 selo "Entregador Uber
+                          Robô". Chegou e respeitou todas as regras? 5
+                          estrelas douradas. Chegou mas atropelou pedestre
+                          imaginário? Perde o selo e ganha "Carteira
+                          Suspensa".
+                        </td>
+                        <td>C-34.4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Debugger humano — a torcida organizada dos
+                          programadores"
+                        </td>
+                        <td>Identificação e nomeação correta dos bugs</td>
+                        <td>
+                          Cada bug apontado corretamente na roda de conversa =
+                          1 ponto de "pensamento computacional na veia". Grupo
+                          que identificar bug que ninguém viu ganha bônus
+                          "Olho de Águia Robótica".
+                        </td>
+                        <td>C-34.5</td>
+                      </tr>
+                      <tr>
+                        <td>"Cartógrafo do caos versão testemunha ocular"</td>
+                        <td>Registro do desenho + regra escrita</td>
+                        <td>
+                          Desenho final tem que mostrar exatamente o bug que
+                          aconteceu (ou a cena mais caótica). Se a regra
+                          escrita for uma melhoria real (e não "proibir
+                          tudo"), ganha bônus "Patente Robótica" (adesivo de
+                          lâmpada).
+                        </td>
+                        <td>C-34.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>⚡ CRITÉRIO RELÂMPAGO:</strong> Se durante a
+                  simulação um aluno gritar "PERAÍ, ISSO É UM LOOP INFINITO" e
+                  realmente identificar uma repetição sem saída (ex: robô
+                  andando em círculo por causa de cartão mal posicionado),
+                  ganha na hora o Cinto de Utilidades do Programador (cinto de
+                  papel com ferramentas desenhadas).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a
+                  "engarrafamento teatral" e buzinaço)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Hora do rush":</strong> Todos fazem sons
+                    de buzina com a boca (variados: "bip bip", "fom fom",
+                    "éééé", "bi-bi-bi-bi"). Professor grita: *"QUANDO eu
+                    apitar, todos os robôs começam a andar! SE alguém buzinar
+                    falso, ENTÃO perde a vez!"*
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação da simulação:</strong> Cada grupo
+                    posiciona seu robô em ponto de partida (sorteado).
+                    Objetivo: chegar a um destino (praça central, escola, loja
+                    de sorvete) seguindo regras dos cartões. Regra extra: SE
+                    dois robôs chegarem juntos, quem respeitou mais regras
+                    ganha (empate decidido no par ou ímpar robótico).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-30 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Simulação frenética:</strong> Todos os robôs andam
+                    ao mesmo tempo (lentamente, proibido correr — se correr,
+                    multa instantânea de 2 segundos congelado). Professor
+                    apita início. Observa e anota conflitos. A cada 5 min,
+                    professor grita "CONGELA!" e todos param. Quem se mexer
+                    paga multa de 1 segundo parado (ou 1 "bip de
+                    desobediência").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Roda de conversa "O Grande Debate dos Bugs":</strong>
+                    "O que deu errado?" Listar no quadro os bugs. Ex: "Robô A
+                    ignorou vermelho porque cartão estava torto", "Dois robôs
+                    bateram porque SENÃO não estava claro". Cada bug
+                    identificado ganha 1 ponto para o grupo que o apontou (não
+                    para o culpado).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Propostas de correção:</strong> Crianças sugerem
+                    novas regras ou ajustes nos cartões. Escrever propostas em
+                    post-its amarelos e colar perto do cartão problemático. As
+                    3 melhores sugestões ganham "Selo Engenheiro de Trânsito".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro individual:</strong> Cada aluno desenha
+                    um momento da simulação (pode ser o bug mais engraçado) e
+                    escreve uma regra que deveria ser seguida ou uma regra
+                    nova. Colar no mural "Lições do Trânsito — Aprendemos com
+                    o caos".
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 34 versão trânsito para
+                  todos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> robôs controlados por
+                    colega (voz/toque). Aluno com mobilidade reduzida atua
+                    como "programador" que dá comandos verbais.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> simulação com pistas visuais
+                    coloridas no chão (fitas adesivas). Intervalos de
+                    congelamento a cada 3 minutos (mais frequentes).
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> usar bandeiras
+                    coloridas (vermelha = para, verde = vai). Apito
+                    substituído por flash de lanterna.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> desafio de otimização
+                    de rota — qual robô chega primeiro com menos passos? Pode
+                    criar atalho condicional (SE nenhum obstáculo, ENTÃO
+                    atalho liberado).
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> roteiro social da simulação com
+                    fotos. Evitar apitos altos — usar sino suave. Aluno pode
+                    optar por ser "fiscal de regras" em vez de robô.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE o robô respeitar o semáforo, ENTÃO ganha ponto;
+                    SENÃO, leva multa (imaginária) e não adianta chorar,
+                    porque o juiz é o professor e ele tem apito."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 35 -->
+        <div class="accordion-item" data-semana="35">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana35">
+              💡 Semana 35 -- Simulação 2: adicionando eventos externos (luz,
+              som e pânico controlado)
+            </button>
+          </h2>
+          <div id="semana35" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="35" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Incorporar eventos disparados pelo professor (luz, som,
+                    apito, pandeiro, chocalho — quanto mais barulho, melhor).
+                  </li>
+                  <li>
+                    Programar reações rápidas dos robôs e testar a prioridade
+                    de eventos (o que acontece se dois eventos ocorrerem ao
+                    mesmo tempo? Explosão lógica?).
+                  </li>
+                  <li>
+                    Diferenciar evento de condicional: evento é "acontece a
+                    qualquer momento, sem aviso (ou com aviso fake)",
+                    condicional é "se X, então Y".
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Eventos, concorrência, leitura de comandos escritos, Teoria
+                  do Caos aplicada à sala de aula.
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  RCP-PR (eventos, concorrência), EF02LP09 (leitura de
+                  comandos escritos), Teoria do Caos aplicada à sala de aula.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-lightbulb"></i> Lanterna potente (LED —
+                    testar antes para não queimar a retina do professor)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito, pandeiro,
+                    chocalho, sino de bicicleta (quanto mais barulho, mais
+                    histeria)</span>
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Placas de "EVENTO"
+                    (cartão vermelho com a palavra) para o professor mostrar
+                    antes de disparar (ou não mostrar, para teste
+                    surpresa)</span>
+                  <span class="material-badge"><i class="bi bi-tape"></i> Fita crepe colorida para
+                    demarcar "zona de evento" (opcional)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Eventos externos —
+                  ou quando a luz apaga e o robô continua andando)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Sinal de fumaça real — o teste do reflexo
+                          pavloviano"
+                        </td>
+                        <td>Reação ao ritual surpresa</td>
+                        <td>
+                          Professor grita "FOGO!" sem aviso. Quem demorar
+                          &gt;2 seg para correr à base paga 1 "taxa de robô
+                          lento" (um pulo). Quem correr antes do grito
+                          (ansioso) ganha "Sensor de fumaça hiperativo".
+                        </td>
+                        <td>C-35.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Velocidade de criação de evento — a Copa do Mundo
+                          da programação"
+                        </td>
+                        <td>Tempo e qualidade dos novos cartões</td>
+                        <td>
+                          Quem terminar os 3 cartões em &lt;5 min ganha título
+                          "Compilador Turbo". Cartão com erro de português ou
+                          lógica = 1 "bug de sintaxe" (corrige na hora).
+                        </td>
+                        <td>C-35.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Reflexo de mosquito — a arte de virar sem cair"
+                        </td>
+                        <td>Precisão na reação aos eventos no treinamento</td>
+                        <td>
+                          Apito 1 vez = virar direita; 2 vezes = esquerda.
+                          Errou? Anotar "falha no firmware" e tentar de novo.
+                          Quem acertar de primeira todas as vezes ganha
+                          "Reflexo de mosquito ninja".
+                        </td>
+                        <td>C-35.3</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Robô multitarefa — o limite do hardware humano"
+                        </td>
+                        <td>Reação a eventos simultâneos</td>
+                        <td>
+                          Evento duplo (lanterna acesa E apito ao mesmo
+                          tempo). Robô que processar os dois corretamente
+                          (parar E virar) ganha "Processador Dual-Core do
+                          dia". Robô que travar (não fizer nada) ganha "Tela
+                          azul da morte" e precisa reiniciar com 3 batidas na
+                          cabeça.
+                        </td>
+                        <td>C-35.4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Relatório caótico — será que ele entendeu mesmo?"
+                        </td>
+                        <td>Escrita do relato</td>
+                        <td>
+                          Frase precisa ter sentido lógico. Ex: "QUANDO a luz
+                          acende, ele deve dançar" não vale (a menos que regra
+                          seja essa). "QUANDO a luz acende, ele deve parar"
+                          vale. Frase criativa e correta ganha "Relatório de
+                          Qualidade".
+                        </td>
+                        <td>C-35.5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🔦 CRITÉRIO "LUZ APAGADA":</strong> Se algum robô,
+                  durante evento de lanterna acesa, continuar andando e ainda
+                  explicar *"mas eu pensei que era para correr mais rápido"*
+                  esse aluno ganha selo "Teimoso Robótico" e missão especial:
+                  ensinar a regra para um colega que errou (vira "monitor de
+                  evento").
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a "sinal de
+                  fumaça fake" e histeria medida)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Sinal de fumaça":</strong> Professor:
+                    *"QUANDO eu gritar 'FOGO!', todos correm para a base (um
+                    círculo no chão). SE você demorar mais de 3 segundos,
+                    ENTÃO vira 'robô em chamas' (tem que girar 3 vezes e fazer
+                    'fumaça' com a boca)."* Testar 2 vezes.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação de novos cartões de evento:</strong> Em
+                    duplas, criar 3 cartões de evento para hoje: 1. QUANDO
+                    lanterna acesa → pare; 2. QUANDO apito 1 vez → robô vire à
+                    direita; 3. QUANDO apito 2 vezes → vire à esquerda. Bônus:
+                    cartão extra QUANDO pandeiro → robô dance 2 passos (pode
+                    ser charme).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Treinamento de reação a eventos (sem trânsito):</strong>
+                    Robôs ficam parados no grid vazio. Professor dispara
+                    eventos aleatórios (lanterna, apito 1, apito 2). SE o robô
+                    errar a reação, repete até acertar (ou até o grupo cansar
+                    e pedir "reboot"). Registrar erros como "falha no
+                    firmware".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Simulação completa com trânsito + eventos:</strong>
+                    Mesma dinâmica da semana passada, mas agora professor
+                    dispara eventos a cada 30-60 segundos, sem aviso prévio
+                    (só mostra placa "EVENTO" antes de disparar). Observar:
+                    robôs param no meio da rua, viram de repente, colidem
+                    mais? Anotar o caos em tempo real.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Debate "Eventos Simultâneos":</strong> "Qual
+                    evento foi mais difícil de seguir?" "O que aconteceria se
+                    dois eventos acontecessem ao mesmo tempo?" (Ex: lanterna
+                    acesa + apito 1 — o robô deve parar E virar? Prioridade?).
+                    Crianças propõem regra de prioridade: evento de luz tem
+                    prioridade sobre som (porque a luz é mais rápida que o
+                    som, né?).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Registro escrito:</strong> Cada aluno escreve um
+                    pequeno relato: *"Hoje, meu robô aprendeu que QUANDO a luz
+                    acende, ele deve ______. E SE a luz apagar, ele ______."*
+                    Frases lidas em voz alta (as melhores ganham "Menção
+                    Honrosa Escritor Robótico").
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 35 eventos sensoriais
+                  respeitosos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência visual:</strong> eventos de luz
+                    substituídos por toque no ombro (professor toca = evento
+                    de parada). Apitos mantidos.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> reduzir frequência de eventos para
+                    1 a cada 90 segundos. Usar sinal visual prévio (cartão
+                    amarelo) antes do evento.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> eventos de som
+                    substituídos por vibração no chão (bater pé) ou luz
+                    piscante (lanterna colorida).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> criar evento
+                    encadeado: QUANDO apito 3 vezes → ative modo "dança" E
+                    depois volte ao normal. Testar com cronômetro.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> agenda visual dos eventos antes da
+                    simulação (desenhos). Durante simulação, professor aponta
+                    para o desenho correspondente antes de disparar.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"QUANDO a lanterna acender, ENTÃO todos os robôs param;
+                    SE a luz apagar, ENTÃO eles andam no escuro — isso é
+                    evento, não mágica. E QUANDO o pandeiro tocar, todos
+                    dançam (sim, robôs dançam e não, não vale pular só de um
+                    pé)."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 36 -->
+        <div class="accordion-item" data-semana="36">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana36">
+              🤖 Semana 36 -- Programando o robô de papelão com condicionais
+              múltiplas (revisão total)
+            </button>
+          </h2>
+          <div id="semana36" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="36" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Revisar todas as estruturas: SE→ENTÃO→SENÃO, eventos, E,
+                    OU, loops.
+                  </li>
+                  <li>
+                    Aplicar em um robô de papelão individual (cada aluno faz o
+                    seu — sim, mais um pra coleção).
+                  </li>
+                  <li>
+                    Ensinar a depurar o próprio código (cartões) através de
+                    teste em duplas.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Síntese do ano (todas as habilidades anteriores) +
+                  meta-aprendizagem (aprender a aprender com os erros e com os
+                  bugs dos outros).
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Síntese do ano (todas as habilidades anteriores) +
+                  meta-aprendizagem (aprender a aprender com os erros e com os
+                  bugs dos outros).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-box"></i> Caixas pequenas (de leite ou
+                    remédio) — uma por aluno</span>
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartões coloridos em
+                    branco (cortados em tamanho padrão)</span>
+                  <span class="material-badge"><i class="bi bi-stars"></i> Adesivos, canetas coloridas,
+                    olhos móveis (opcional, mas obrigatório para o
+                    charme)</span>
+                  <span class="material-badge"><i class="bi bi-tape"></i> Fita crepe extra (nunca é
+                    demais)</span>
+                  <span class="material-badge"><i class="bi bi-passport"></i> Um "passaporte do
+                    programador" impresso (papel com espaços para
+                    carimbos)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Robô de papelão e
+                  condicionais múltiplas)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Resposta de arquivo — o coro dos programadores"
+                        </td>
+                        <td>
+                          Participação e acerto nas perguntas de revisão
+                        </td>
+                        <td>
+                          Todos ganham 1 ponto se acertarem em coro. Se alguém
+                          errar, todos fazem 1 "beep de vergonha" e professor
+                          repete. Quem nunca errou ganha "Arquivo Robótico"
+                          (memória perfeita).
+                        </td>
+                        <td>C-36.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Decoração nível RoboCop ou o minimalismo robótico"
+                        </td>
+                        <td>Personalização do robô</td>
+                        <td>
+                          Robô precisa ter: nome escrito, olhos, antena, e
+                          pelo menos 1 adesivo de "botão". Robô careca (sem
+                          antena) = -1 ponto de estilo. Robô com olhos de
+                          tamanhos diferentes = +1 "personalidade excêntrica".
+                        </td>
+                        <td>C-36.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Criatividade condicional — não vale copiar do
+                          colega"
+                        </td>
+                        <td>Qualidade e originalidade das regras</td>
+                        <td>
+                          Regras têm que ser testáveis e originais. "SE pedra,
+                          ENTÃO pare" é básico demais (0,5 ponto). "SE a cor
+                          do chão for azul e o colega estiver sorrindo, ENTÃO
+                          dance" é criativo (2 pontos).
+                        </td>
+                        <td>C-36.3</td>
+                      </tr>
+                      <tr>
+                        <td>"Teste de fogo cruzado — amigo ou inimigo?"</td>
+                        <td>Funcionamento prático das regras</td>
+                        <td>
+                          No teste em duplas, colega tem que conseguir
+                          executar sem ajuda. Se não conseguir, criador
+                          reprograma na hora e ganha 1 ponto de "depuração ao
+                          vivo" se consertar em &lt;1 min.
+                        </td>
+                        <td>C-36.4</td>
+                      </tr>
+                      <tr>
+                        <td>"Empresta e roda — o test-drive sem seguro"</td>
+                        <td>Capacidade de interpretar regras alheias</td>
+                        <td>
+                          Troca de robôs: pegar robô de outro e seguir regras.
+                          Se errar, pode perguntar 1 vez. Se errar de novo,
+                          dono programa colega por 10 segundos. Quem acertar
+                          todas de primeira ganha "Tradutor Universal de
+                          Robôs".
+                        </td>
+                        <td>C-36.5</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Passaporte explicado — o visto para a certificação"
+                        </td>
+                        <td>Defesa oral da regra</td>
+                        <td>
+                          Avaliação com professor: explicar regra em até 30
+                          segundos. Se explicar com clareza e der exemplo,
+                          ganha carimbo "Professor Robô". Se gaguejar mas
+                          conseguir, ganha "Robô em treinamento".
+                        </td>
+                        <td>C-36.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🤝 CRITÉRIO COLABORATIVO:</strong> Aluno que
+                  voluntariamente ajudar um colega com dificuldade sem ser
+                  solicitado ganha o Selo "SENÃO Solidário" (porque quando um
+                  falha, o outro ajuda) e vira "monitor robô" por uma semana
+                  (crachá especial).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a concentração
+                  extrema e troca de robôs)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Revisão rápida":</strong> Perguntas em
+                    coro: "O que faz o SENÃO?" (Resposta: "Executa se a
+                    condição do SE for falsa"). "O que faz o E?" ("As duas têm
+                    que ser verdade"). "O que faz o OU?" ("Pelo menos uma é
+                    verdade"). Quem errar faz 1 "beep de vergonha" e turma
+                    corrige.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção do robô pessoal:</strong> Cada aluno
+                    decora sua caixa: olhos, antena, boca de led (desenhada).
+                    Escreve o nome do robô em uma placa. O robô precisa ter
+                    uma "porta de acesso" (abertura) para guardar os cartões.
+                    Quem fizer o robô mais feio (propositadamente) ganha
+                    prêmio "Estética caótica".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação do robô (2 cartões obrigatórios):</strong>
+                    Aluno cola (ou encaixa) 2 cartões nas costas do robô com
+                    regras que ele mesmo cria. Exemplos criativos: "SE a cor
+                    do chão for azul, ENTÃO dance 2 passos; SENÃO, ande reto".
+                    "QUANDO alguém bater palmas, robô gire". "SE tiver um
+                    colega à frente E ele estiver parado, ENTÃO desvie".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste em duplas (troca de robôs):</strong> Robôs
+                    são colocados em grid pequeno (fita crepe no chão, 4×4).
+                    Duplas testam as regras um do outro. SE o robô não
+                    executar a regra, criador tem que "reprogramar" na hora
+                    (ajustar cartão ou explicar melhor).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Troca de robôs "Desafio do Estranho":</strong>
+                    Cada aluno pega robô de um colega (sorteio) e deve seguir
+                    as regras dele. Se não entender, pode perguntar 1 vez. Se
+                    errar de novo, dono do robô ganha direito de "programar o
+                    colega" por 10 segundos (dar comandos verbais).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Avaliação "Passaporte do Programador":</strong>
+                    Cada aluno apresenta seu robô para o professor, explica
+                    uma das regras e demonstra funcionamento. Quem explica com
+                    clareza e ainda dá um exemplo ganha carimbo no passaporte.
+                    Acumular 3 carimbos = certificado extra no final.
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 36 programação para todos
+                  os estilos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> robô pode ser
+                    controlado por colega com comandos de voz. Aluno com
+                    limitação motora atua como "engenheiro de software"
+                    (escreve cartões e dá instruções).
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> dividir programação em 2
+                    mini-etapas com pausa de 1 min para "movimento livre".
+                    Usar timer visual.
+                  </li>
+                  <li>
+                    <strong>Deficiência intelectual:</strong> oferecer cartões
+                    pré-prontos com lacunas (ex: "SE ______, ENTÃO ______").
+                    Reduzir para 1 cartão.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> criar loop
+                    condicional: REPITA 3 vezes (SE obstáculo, ENTÃO pule;
+                    SENÃO, ande). Testar com obstáculos móveis.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> disponibilizar exemplo físico de
+                    robô já montado. Troca de robôs avisada com 2 min de
+                    antecedência.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE você tiver dois cartões, ENTÃO use E ou OU; SENÃO,
+                    programe um de cada vez — revisão geral antes da prova
+                    final. E QUANDO o robô errar, a culpa é sua (mas a gente
+                    conserta junto)."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 37 -->
+        <div class="accordion-item" data-semana="37">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana37">
+              🎭 Semana 37 -- Preparação para a feira de robótica: convites,
+              ensaios e dramas de última hora
+            </button>
+          </h2>
+          <div id="semana37" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="37" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Organizar a apresentação para os pais/outras turmas (com
+                    convites físicos — nada de WhatsApp, é analógico).
+                  </li>
+                  <li>
+                    Ensaio geral com plateia simulada (colegas fazem perguntas
+                    difíceis nível "Enem dos robôs").
+                  </li>
+                  <li>
+                    Produzir um roteiro mínimo por grupo: quem fala, quem
+                    opera o robô, quem explica as regras.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Competências gerais (comunicação, trabalho em equipe),
+                  produção de textos instrucionais, gestão de ansiedade (e de
+                  pais curiosos).
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Competências gerais (comunicação, trabalho em equipe),
+                  EF02LP10 (produção de textos instrucionais), gestão de
+                  ansiedade (e de pais curiosos).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-envelope"></i> Cartolina para fazer
+                    convites (cada criança leva um para casa — papel firme,
+                    não use papel de rascunho)</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Canetas coloridas, glitter
+                    (se tiver coragem e pia para limpar)</span>
+                  <span class="material-badge"><i class="bi bi-list-check"></i> Lista de apresentações
+                    (cronograma) com horários dramáticos</span>
+                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro e placa de
+                    "3...2...1... JÁ!"</span>
+                  <span class="material-badge"><i class="bi bi-mic"></i> Microfone de brinquedo (ou cone
+                    de papel) para amplificar a voz</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Preparação para a
+                  feira — ou o ensaio geral do apocalipse)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Câmera, sorriso robótico — o Oscar de melhor
+                          expressão"
+                        </td>
+                        <td>Participação e criatividade na foto</td>
+                        <td>
+                          Pose tem que ter cara de robô (sem sorriso humano) e
+                          gesto de "joinha metálica" (polegar duro). Quem rir
+                          paga 1 "piscada de led" (piscar rápido). Melhor pose
+                          ganha "Capa da Revista Robótica".
+                        </td>
+                        <td>C-37.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Convide com classe (ou sem) — o marketing
+                          condicional"
+                        </td>
+                        <td>Qualidade estética e textual do convite</td>
+                        <td>
+                          Frase obrigatória do template + ilustração. Convite
+                          sem desenho de robô = "robô invisível" — precisa
+                          refazer na hora. Convite com desenho de robô e
+                          cidade ganha "Design Gráfico Nível Master".
+                        </td>
+                        <td>C-37.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Distribuição democrática de papéis ou o socialismo
+                          robótico"
+                        </td>
+                        <td>Divisão justa de tarefas no grupo</td>
+                        <td>
+                          Um aluno não pode acumular 2 funções principais
+                          (robô + apresentador) a menos que grupo tenha só 2
+                          pessoas. Se grupo fizer "um faz tudo e outros
+                          coçam", professor aplica "rodízio forçado" (troca
+                          funções na hora).
+                        </td>
+                        <td>C-37.3</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Ensaio geral com plateia hostil — o teste de fogo
+                          real"
+                        </td>
+                        <td>Desempenho na simulação da feira</td>
+                        <td>
+                          Plateia pode fazer perguntas difíceis (ex: "E SE o
+                          semáforo quebrar?"). Apresentador que responder
+                          corretamente ganha "Escudo Anti-Bug". Pergunta mais
+                          criativa da plateia ganha "Selo Detonador de
+                          Apresentadores".
+                        </td>
+                        <td>C-37.4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Feedback nível Shark Tank — vai melhorar ou vai
+                          chorar?"
+                        </td>
+                        <td>Incorporação do feedback do professor</td>
+                        <td>
+                          Professor deu 3 sugestões de melhoria. Aluno que
+                          aplicar pelo menos 2 ganha bônus "Aprendiz
+                          Relâmpago". Se ignorar todas, ganha "Modo Teimoso" e
+                          precisa justificar por escrito.
+                        </td>
+                        <td>C-37.5</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Entrega ninja — o discurso de vendas condicional"
+                        </td>
+                        <td>
+                          Criatividade na argumentação para entregar o convite
+                        </td>
+                        <td>
+                          Cada aluno deve convencer (de mentirinha) o
+                          professor a aceitar o convite com frase criativa.
+                          Ex: "SE você vier, ENTÃO verá robôs dançando; SENÃO,
+                          eles vão ficar tristes e piscar devagar". Frase mais
+                          criativa ganha "Vendedor Robótico do Ano".
+                        </td>
+                        <td>C-37.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>📢 CRITÉRIO DE COMUNICAÇÃO:</strong> Aluno que falar
+                  mais alto e claro durante o ensaio (medido por "ser ouvido
+                  no fundo da sala sem berrar") ganha Megafone Robótico
+                  Virtual (cone de papel decorado) e direito a abrir a feira
+                  no dia seguinte.
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a "ensaio com
+                  plateia hostil" e crise de última hora)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Câmera, ação!":</strong> Todos posam para
+                    foto (cada um com seu robô). A pose deve ser
+                    exageradamente dramática (mão no queixo, olhar de robô
+                    malvado, pé levantado). Professor tira 3 fotos — a melhor
+                    será impressa para o mural "Elenco Robótico".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Produção dos convites:</strong> Cada aluno produz
+                    um convite para a família. Frase obrigatória no template:
+                    *"Você está convidado para a Feira de Robótica do 2º ano.
+                    SE você vier, ENTÃO verá robôs que decidem; SENÃO, perderá
+                    a diversão (e eu fico triste bip)."* Ilustrar com robô e
+                    cidade.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Distribuição dos papéis (sorteio dramático):</strong>
+                    Dentro de cada grupo, decidir: (1) Robô (quem vai atuar),
+                    (2) Programador (quem lê os cartões e dá instruções), (3)
+                    Apresentador (explica regras para plateia). Aluno pode
+                    acumular duas funções só se houver número ímpar — mas
+                    precisa usar capa diferente.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ensaio geral com plateia simulada:</strong> Metade
+                    da turma é plateia (faz perguntas difíceis tipo "E SE o
+                    robô encontrar um dinossauro?"). A outra metade apresenta.
+                    Cada grupo tem 3 minutos para mostrar: o robô, uma regra
+                    principal, e um evento. Plateia pode gritar "BUG!" se algo
+                    der errado. Professor dá feedback imediato (positivo e
+                    construtivo — nada de "você é um zero").
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ajustes finos:</strong> O que precisa melhorar?
+                    (Ex: falar mais alto, não correr com o robô, segurar o
+                    cartão de forma visível, não rir durante a fala séria).
+                    Cada grupo anota 1 melhoria em um post-it e cola no robô
+                    (como um lembrete).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Entrega dos convites:</strong> Cada aluno leva um
+                    convite para casa (colocar na mochila com cuidado — nada
+                    de amassar). Grito final: *"FEIRA NA PRÓXIMA SEMANA! SE
+                    faltar, ENTÃO eu vou te cobrar; SENÃO, teremos bolo (de
+                    verdade)!"*
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 37 ensaio para todos os
+                  palcos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> aluno pode ser
+                    apresentador ou programador — não precisa se locomover.
+                    Usar microfone (cone de papel) para amplificar voz.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> ensaio com tempos mais curtos (2
+                    min por grupo) e pausas ativas de 30 seg (alongamento
+                    robótico).
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> convites com
+                    pictogramas. Durante ensaio, usar cartões de sinalização
+                    (verde = ótimo, amarelo = ajuste, vermelho = refazer).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> incluir no roteiro
+                    demonstração de loop ou de E/OU. Ganha ponto extra e
+                    destaque na feira.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> roteiro social do ensaio com passo a
+                    passo (entrada, fala, demonstração, saída). Ensaio com
+                    baixo barulho (evitar apitos). Cantinho silencioso
+                    disponível.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE a sua mãe vier na feira, ENTÃO mostre o robô; SENÃO,
+                    grave um vídeo — vamos ensaiar para não bugar na hora H. E
+                    QUANDO o pai perguntar 'pra que serve isso?', você
+                    responde com um SE... ENTÃO... e ainda faz um bip de
+                    confiança."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 38 -->
+        <div class="accordion-item" data-semana="38">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana38">
+              🎪 Semana 38 -- Feira de robótica: apresentação para as famílias
+              (ou o dia em que os robôs viraram estrelas)
+            </button>
+          </h2>
+          <div id="semana38" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="38" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Apresentar os projetos para a comunidade escolar (pais,
+                    outros professores, gestão — sim, até o diretor pode
+                    aparecer).
+                  </li>
+                  <li>
+                    Celebrar o aprendizado do ano com orgulho, diversão e
+                    muitos beeps.
+                  </li>
+                  <li>
+                    Coletar feedback positivo dos visitantes (em post-its
+                    coloridos — os amarelos são para elogios, os verdes para
+                    sugestões fofas).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Todas as habilidades do ano — síntese em ação, sob pressão
+                  (e sob o olhar dos pais).
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Todas as habilidades do ano — síntese em ação, sob pressão
+                  (e sob o olhar dos pais).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-building"></i> Cidade montada (e bem
+                    fixada com fita crepe extra para emergências)</span>
+                  <span class="material-badge"><i class="bi bi-robot"></i> Robôs de papelão (cada um com
+                    seus cartões — nada de "esqueci em casa")</span>
+                  <span class="material-badge"><i class="bi bi-camera"></i> Câmera para fotos (ou
+                    celular do professor com bateria cheia)</span>
+                  <span class="material-badge"><i class="bi bi-award"></i> Certificados finais
+                    (impressos em papel cartão — os pais adoram)</span>
+                  <span class="material-badge"><i class="bi bi-postcard"></i> Post-its para feedback dos
+                    pais (ex: "O que você achou mais incrível?")</span>
+                  <span class="material-badge"><i class="bi bi-cake"></i> Bandeja de doces (opcional,
+                    mas recomendado — aumenta o público em 300%)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Feira de robótica —
+                  ou o Oscar dos condicionais)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Mestre de cerimônias metálico ou o show de stand-up
+                          robótico"
+                        </td>
+                        <td>Clareza e confiança na abertura</td>
+                        <td>
+                          Professor (ou aluno líder) tem que falar a
+                          frase-chave sem improviso e sem gaguejar. Perfeição
+                          = "Discurso Robótico". Se errar, pode repetir com
+                          direito a "reboot" (tossir e recomeçar).
+                        </td>
+                        <td>C-38.1</td>
+                      </tr>
+                      <tr>
+                        <td>"Apresentação relâmpago — não vale enrolar"</td>
+                        <td>
+                          Cumprimento do tempo e clareza da demonstração
+                        </td>
+                        <td>
+                          Cada grupo tem 3 minutos. Passou do tempo? Professor
+                          apita e corta (com educação). Conteúdo bom dentro do
+                          tempo = 3 parafusos. Apressado e confuso = 1
+                          parafuso (mas ainda vale). Grupo que terminar antes
+                          e responder perguntas ganha bônus "Eficiência
+                          Energética".
+                        </td>
+                        <td>C-38.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Robô não travou, tá valendo — ou o teste de
+                          estresse em público"
+                        </td>
+                        <td>Funcionamento do robô durante a apresentação</td>
+                        <td>
+                          Robô executou a regra principal sem erros? Ganha
+                          "Hardware Confiável". Errou mas aluno corrigiu na
+                          hora (ex: "Ops, esqueci de ler o cartão — agora
+                          vai") ganha "Debug ao Vivo — palmas para a
+                          honestidade".
+                        </td>
+                        <td>C-38.3</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "FAQ de Perguntas Embaraçosas ou o atendimento ao
+                          público"
+                        </td>
+                        <td>Qualidade das respostas às perguntas dos pais</td>
+                        <td>
+                          Pai pergunta "E SE o robô ignorar o semáforo?" Aluno
+                          tem que responder usando SE e ENTÃO. Se conseguir,
+                          ganha "Relacionamento com o Cliente". Se responder
+                          com exemplo engraçado (ex: "ENTÃO ele leva multa e
+                          fica de castigo"), ganha bônus "Senso de humor
+                          robótico".
+                        </td>
+                        <td>C-38.4</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Plateia engajômetro — o termômetro do sucesso"
+                        </td>
+                        <td>Engajamento da audiência</td>
+                        <td>
+                          Reação da audiência: pais aplaudiram? Riam? Fizeram
+                          perguntas genuínas? Medida subjetiva do professor:
+                          "teve clima de feira mesmo" (nota 10) ou "parecia
+                          velório" (nota 5). Se algum pai chorar de emoção,
+                          nota máxima automática.
+                        </td>
+                        <td>C-38.5</td>
+                      </tr>
+                      <tr>
+                        <td>"Grito de guerra final — o teste de união"</td>
+                        <td>Execução coletiva do grito final</td>
+                        <td>
+                          Grito final: "SE a gente aprendeu, ENTÃO a gente é
+                          fera! SENÃO... AH, A GENTE APRENDEU SIM!" Tem que
+                          ser em coro e no ritmo. Fora do ritmo = "descompasso
+                          robótico" mas vale tentar de novo. Grupo que gritar
+                          mais alto ganha "Coral de Robôs Desregulados"
+                          (troféu simbólico de papel alumínio).
+                        </td>
+                        <td>C-38.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🎉 CRITÉRIO SURPRESA PARA PAIS:</strong> O
+                  pai/responsável que fizer a pergunta mais criativa (ex: "SE
+                  o robô encontrar um dinossauro, ENTÃO o que ele faz?") ganha
+                  certificado especial "Cidadão Honorário da Cidade dos
+                  Condicionais" para levar para casa. Professor anota nome e
+                  entrega no final.
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (essa aula pode ser de 1h a
+                  1h30; adaptado para 50 min se necessário — mas feira merece
+                  mais tempo)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura estrelada:</strong> Professor dá
+                    boas-vindas. Frase-chave: *"SE vocês estão aqui, ENTÃO
+                    preparem-se para ver robôs inteligentes; SENÃO, vocês
+                    estão no lugar errado mas vamos fingir que não."* Todos
+                    aplaudem (e alguns pais riem nervosamente).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-20 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Primeira rodada de apresentações:</strong> Metade
+                    da turma apresenta enquanto a outra metade e os pais
+                    circulam. Cada grupo tem 3 minutos para mostrar a regra
+                    principal e um evento. Cronômetro visível (projetor ou
+                    celular). Professor faz fotos (e vídeos para o grupo do
+                    WhatsApp).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Segunda rodada (troca):</strong> A outra metade
+                    apresenta. Pais podem se movimentar livremente (mas sem
+                    atrapalhar os robôs). Regra para pais: podem fazer
+                    perguntas, mas não podem tocar nos robôs (a não ser que a
+                    criança autorize — e mesmo assim, com cuidado).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Momento de perguntas e feedback interativo:</strong>
+                    Pais e colegas perguntam: "O que acontece SE o robô
+                    ignorar o semáforo?" Alunos explicam com propriedade. Pais
+                    escrevem post-its de elogio (ex: "Adorei o robô
+                    dançarino", "Meu filho agora quer ser engenheiro") e colam
+                    no mural "Glórias Robóticas".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Encerramento triunfal:</strong> Agradecimentos,
+                    foto da turma toda com os robôs (pose combinada: todos
+                    fazem bip com a boca). Grito final: *"SE a gente aprendeu,
+                    ENTÃO a gente é fera! SENÃO... AH, A GENTE APRENDEU SIM!"*
+                    (em coro, duas vezes — a segunda mais alto). Entrega de
+                    certificados (ou será na semana 39? Mantenha para semana
+                    39, mas entregue um lembrete "pré-certificado").
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 38 feira para todos os
+                  públicos)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> garantir que cidade e
+                    robôs estejam em altura acessível (mesas baixas). Aluno
+                    pode apresentar sentado.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> grupos apresentam em intervalos
+                    curtos; entre apresentações, pausa de 30 seg com música
+                    calma (ou som de ventilador).
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> disponibilizar
+                    folha com comandos principais para pais lerem. Aluno pode
+                    usar gestos ampliados.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> aluno pode fazer
+                    apresentação extra (1 min) sobre "como melhorar a cidade
+                    no próximo ano".
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> oferecer abafadores de ruído se
+                    barulho for intenso. Cantinho silencioso com almofadas
+                    para retirada, se necessário.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE a plateia aplaudir, ENTÃO o robô dança; SENÃO, ele
+                    conta uma piada — hoje é o grande dia. QUANDO o pai
+                    filmar, todos fazem joinha e não esquecem de piscar o
+                    led."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 39 -->
+        <div class="accordion-item" data-semana="39">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana39">
+              🧠 Semana 39 -- Avaliação final e certificados parte 1: o teste
+              do robô mestre
+            </button>
+          </h2>
+          <div id="semana39" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="39" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Realizar uma avaliação lúdica individual (oral ou com
+                    cartões) — sem prova escrita traumática (nada de gabarito,
+                    só diversão lógica).
+                  </li>
+                  <li>
+                    Distribuir os certificados personalizados (nomes, selos,
+                    carimbos e muito glitter).
+                  </li>
+                  <li>
+                    Autoavaliação do aluno sobre o que aprendeu (com direito a
+                    desenho e frase condicional).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Consolidação de todas as habilidades do ano + metacognição
+                  (pensar sobre o próprio aprendizado e sobre os bugs que
+                  ainda persistem).
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Consolidação de todas as habilidades do ano + metacognição
+                  (pensar sobre o próprio aprendizado e sobre os bugs que
+                  ainda persistem).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartões com perguntas
+                    (8 a 10, variadas desde "o que é SE" até "crie um loop com
+                    duas condições")</span>
+                  <span class="material-badge"><i class="bi bi-award"></i> Selos e certificados
+                    impressos (um por aluno, com campo para nome, data e
+                    carimbo do caos)</span>
+                  <span class="material-badge"><i class="bi bi-candy"></i> Balas ou brindes (opcional,
+                    mas aumenta a festa em 500%)</span>
+                  <span class="material-badge"><i class="bi bi-music-note"></i> Música ambiente (tema de
+                    robô — pode ser instrumental de super-herói ou a música do
+                    fim do ano)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Teste do robô mestre
+                  — ou a avaliação que ninguém tem medo)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          "Postura de campeão ou a engrenagem mais afinada"
+                        </td>
+                        <td>Participação no ritual inicial</td>
+                        <td>
+                          Sentar em círculo fazendo "barulho de engrenagem"
+                          (clicar língua). Quem fizer o som mais realista
+                          ganha +1 ponto de "espírito robótico".
+                        </td>
+                        <td>C-39.1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Resposta em tempo real ou o show de talentos
+                          lógicos"
+                        </td>
+                        <td>Precisão e criatividade nas respostas orais</td>
+                        <td>
+                          Cada resposta certa = 1 selo. Resposta errada mas
+                          criativa = meio selo. Ao final, quem acumular mais
+                          selos ganha "Mestre do Saber Condicional".
+                        </td>
+                        <td>C-39.2</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Prova prática sem choro — o debug em tempo real"
+                        </td>
+                        <td>Capacidade de resolver situação-problema</td>
+                        <td>
+                          Prova prática: aluno programa robô-humano. Se robô
+                          executar corretamente = "Código compilado". Se errar
+                          mas aluno explicar onde errou = "Depuração honesta"
+                          (nota máxima também).
+                        </td>
+                        <td>C-39.3</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Autoavaliação sincera — o espelho do programador"
+                        </td>
+                        <td>Reflexão sobre a própria aprendizagem</td>
+                        <td>
+                          Autoavaliação desenhada: tem que ter desenho de robô
+                          favorito E frase "aprendi que SE... ENTÃO...". Frase
+                          com exemplo concreto = "Sabedoria Robótica". Frase
+                          "aprendi nada" = aluno reflete 1 min em silêncio e
+                          tenta de novo.
+                        </td>
+                        <td>C-39.4</td>
+                      </tr>
+                      <tr>
+                        <td>"Protocolo de entrega — o tapete vermelho"</td>
+                        <td>Reação ao receber o certificado</td>
+                        <td>
+                          Ao receber, aluno deve fazer gesto robótico (piscar
+                          alternado, bip, saudação metálica, andar robótico).
+                          Quem fizer o gesto mais elaborado ganha "Formatura
+                          com Honras — o showman robótico".
+                        </td>
+                        <td>C-39.5</td>
+                      </tr>
+                      <tr>
+                        <td>"Coral desafinado — o karaokê condicional"</td>
+                        <td>Participação e entusiasmo na música final</td>
+                        <td>
+                          Cantar letra do bimestre. Quem errar a letra mas
+                          continuar cantando com entusiasmo ganha "Voz de Robô
+                          Desregulado" (prêmio de consolação positivo). Turma
+                          toda ganha pontos extras se cantar em uníssono.
+                        </td>
+                        <td>C-39.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🏅 CRITÉRIO EXTRA "ROBÔ MASTER":</strong> Aluno que
+                  acertar todas as perguntas orais E resolver prova prática
+                  perfeitamente E ainda ajudar um colega que travou (sem ser
+                  solicitado) ganha Certificado de Platina "Mestre dos
+                  Mestres" com adesivo holográfico (sim, compre os adesivos —
+                  eles são baratos e fazem a festa). Nome do aluno entra no
+                  "Hall da Fama Robótica" (cartaz na sala).
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com direito a "roda do
+                  conhecimento" e suspense)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ritual "Último desafio":</strong> "SE você estiver
+                    pronto, ENTÃO sente-se em círculo; SENÃO, fique em pé e
+                    balance os braços como robô até ficar pronto." Todos
+                    sentam. Professor toca um sino (ou faz bip alto).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Ronda de perguntas orais:</strong> Professor faz
+                    uma pergunta a cada aluno (rodízio rápido — quem demorar
+                    mais de 5 segundos pode pedir "dica de vida"). Exemplos:
+                    "Me dê um exemplo de QUANDO fora da robótica" ("Quando a
+                    mãe chama, eu vou"). "Complete: SE chover, ENTÃO ______;
+                    SENÃO, ______". "O que o SENÃO faz?" "O que acontece se
+                    você usar E?" Cada resposta certa = 1 ponto. Resposta
+                    errada mas criativa = 0,5 ponto.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Prova prática individual:</strong> Cada aluno
+                    recebe um cartão com uma situação-problema e deve
+                    programar um robô-humano (pode ser o colega do lado ou o
+                    próprio professor) para resolver. Ex: "O robô quer chegar
+                    à escola. SE houver um buraco, o que ele faz? E SE houver
+                    um semáforo vermelho?" Aluno dá comandos verbais.
+                    Professor observa se a lógica está correta (e se o
+                    robô-humano não faz charme).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação desenhada:</strong> Cada aluno
+                    desenha seu robô favorito do ano (pode ser o próprio ou o
+                    de um colega) e escreve uma coisa que aprendeu. Frase
+                    obrigatória: "Aprendi que SE ______, ENTÃO ______."
+                    Exemplo: "Aprendi que SE o robô não obedece, ENTÃO a gente
+                    precisa debuggar." Os melhores desenhos vão para o mural
+                    "Legado Robótico".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Entrega dos certificados (cerimônia):</strong>
+                    Chamada nominal. Cada aluno sobe, recebe o certificado das
+                    mãos do professor, faz um gesto robótico (piscar
+                    alternado, bip, saudação metálica, andar robótico) e volta
+                    ao lugar. Aplausos para cada um (se possível, com palmas
+                    sincronizadas).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Música final (ensaio para a festa):</strong>
+                    Cantar a música do bimestre (letra abaixo) todos juntos.
+                    Ensaio da coreografia: a cada SE, bater palma; a cada
+                    ENTÃO, piscar; a cada SENÃO, balançar a cabeça. Treinar 2
+                    vezes.
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 39 avaliação sem medo)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física/limitação motora:</strong>
+                    perguntas orais respondidas com pranchas de comunicação
+                    (sim/não com movimentos de cabeça). Prova prática com robô
+                    de brinquedo controlado por voz.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> ronda de perguntas em ritmo
+                    acelerado (máx 5 seg para resposta). Prova prática com
+                    distratores mínimos (sala mais silenciosa).
+                  </li>
+                  <li>
+                    <strong>Deficiência intelectual:</strong> perguntas mais
+                    simples (apenas SE/ENTÃO). Oferecer opções múltiplas
+                    visuais (cartões com figuras). Certificado de "Aprendiz
+                    Robô" para todos.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> incluir perguntas
+                    extras sobre loop e operadores lógicos; prova prática com
+                    dois obstáculos encadeados.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> ronda de perguntas pode ser feita
+                    individualmente em canto sem plateia. Fornecer tempo extra
+                    e cartões com pergunta escrita.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE você acertar todas as perguntas, ENTÃO ganha o
+                    certificado de ouro; SENÃO, ganha prata — mas todo mundo
+                    leva para casa (até o robô mais teimoso). E QUANDO você
+                    receber o diploma, faça um bip de alegria (nada de
+                    'ahuahuahua')."</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SEMANA 40 -->
+        <div class="accordion-item" data-semana="40">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana40">
+              🎉 Semana 40 -- Festa de encerramento: o futuro da robótica (ou
+              o último bip do ano)
+            </button>
+          </h2>
+          <div id="semana40" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="40" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Celebrar as conquistas do ano com alegria compartilhada (e
+                    muitos doces).
+                  </li>
+                  <li>
+                    Refletir sobre o que aprenderam e como aplicar fora da
+                    sala (na vida real — tipo "SE a fila do mercado estiver
+                    grande, ENTÃO vou para outro caixa").
+                  </li>
+                  <li>
+                    Despedida do Robô Zé 2.0 (personagem do ano) com uma carta
+                    emocionante e uma última dança.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Competências socioemocionais (gratidão, celebração,
+                  despedida) + projeção de futuro (com otimismo robótico).
+                </p>
+
+                <h5>📋 Habilidades BNCC</h5>
+                <p>
+                  Competências socioemocionais (gratidão, celebração,
+                  despedida) + projeção de futuro (com otimismo robótico).
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-gift"></i> Caixa misteriosa (para
+                    brindes) — pode conter lápis, borrachas, adesivos de robô,
+                    pirulitos</span>
+                  <span class="material-badge"><i class="bi bi-cake"></i> Biscoitos, suco (ou frutas) —
+                    verificar alergias antes (nada de "SE for alérgico, ENTÃO
+                    passa mal")</span>
+                  <span class="material-badge"><i class="bi bi-envelope-paper"></i> Uma carta do Robô Zé
+                    2.0 (impressa em papel amarelado, com fonte de máquina de
+                    escrever, e alguns erros de digitação de propósito)</span>
+                  <span class="material-badge"><i class="bi bi-map"></i> Caça ao tesouro condicional:
+                    pistas escritas em cartões (8 pistas escondidas pela
+                    sala)</span>
+                  <span class="material-badge"><i class="bi bi-soundwave"></i> Som (caixinha de música
+                    ou playlist de robôs — pode incluir sons de computador
+                    antigo)</span>
+                </div>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação (Festa de
+                  encerramento — ou o melhor dia do ano)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nome Irreverente</th>
+                        <th>O que avaliar</th>
+                        <th>Método de medição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <ul>
+                          <li>
+                            <strong>"Olho seco ou olho molhado? o termômetro
+                              emocional"</strong>
+                            – Reação afetiva à despedida: medir lágrimas
+                            imaginárias. Quem fizer cara de "vou chorar mas
+                            vou disfarçar" ganha "Coração Programável". Quem
+                            realmente chorar (ou fingir muito bem) ganha
+                            "Sensibilidade Robótica". Quem rir da carta ganha
+                            "Robô Sem Sentimentos (e tudo bem)".
+                          </li>
+                          <li>
+                            <strong>"Memória de elefante robô ou o baú das
+                              recordações"</strong>
+                            – Roda de memórias: aluno tem que falar momento
+                            específico (não vale "gostei de tudo"). "Não
+                            lembro" = perde vez, mas pode pedir ajuda à turma.
+                            Quem lembrar de momento que ninguém mais lembrou
+                            ganha "Arquivo Histórico Robótico".
+                          </li>
+                          <li>
+                            <strong>"Caça ao tesouro lógico — o Indiana Jones dos
+                              condicionais"</strong>
+                            – Resolução correta das pistas: cada pista
+                            corretamente interpretada = 1 prêmio (balinha ou
+                            adesivo). Se criança tentar pular etapas,
+                            professor pode aplicar "SENÃO: volta pro início".
+                            Primeiro grupo a chegar ao tesouro final ganha
+                            "Caçadores de Bugs de Elite".
+                          </li>
+                          <li>
+                            <strong>"Etiqueta de robô à mesa ou o código de conduta
+                              alimentar"</strong>
+                            – Comportamento social durante o lanche: comer sem
+                            fazer bagunça? +1 "Robô educado". Derramar suco?
+                            -1 "Vazamento hidráulico". Dividir biscoito com
+                            colega que não tem? +2 "Compartilhamento de
+                            memória" (e um aplauso).
+                          </li>
+                          <li>
+                            <strong>"Dança dos sensores — o teste final de
+                              reflexos"</strong>
+                            – Execução da coreografia: QUANDO música tocar =
+                            dançar; SE apitar = congelar; QUANDO acabar =
+                            gritar "ROBÔ!". Errar uma transição = 1 "pas de
+                            robot". Acertar todas = "Ballet Mecatrônico".
+                            Coreografia mais sincronizada do grupo ganha
+                            "Esquadrão Dançante Robótico".
+                          </li>
+                          <li>
+                            <strong>"Foto oficial sem zueira (ou com) — o retrato
+                              da programação"</strong>
+                            – Criatividade e participação na foto final: todo
+                            mundo tem que segurar o próprio robô. Grupo que
+                            fizer a pose mais criativa (ex: todos em formato
+                            de letras S e E) ganha "Frame Inesquecível". Foto
+                            será impressa e colada no mural do ano que vem.
+                          </li>
+                          <li>
+                            <strong>"Grito eterno — última vez (ou será que
+                              não?)"</strong>
+                            – Entonação e emoção no grito final: "SE UM DIA
+                            VOCÊS PROGRAMAREM O MUNDO, FAÇAM COM AMOR E COM
+                            SENÃO!" Tem que ecoar. Medidor de decibéis
+                            imaginário. Quem gritar mais alto ganha título
+                            póstumo de "Robô Zé 2.0, o Original" e adesivo
+                            dourado.
+                          </li>
+                        </ul>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-2">
+                  <strong>🎁 CRITÉRIO BÔNUS SUPREMO "CAIXA MISTERIOSA":</strong>
+                  Aluno que, durante a festa, fizer uma pergunta ou comentário
+                  usando SE/ENTÃO/SENÃO sem ser solicitado (ex: "SE a gente
+                  tiver robótica no 3º ano, ENTÃO eu vou fazer um robô voador;
+                  SENÃO, eu faço em casa") ganha uma caixa surpresa (lápis com
+                  robô, adesivo ou pirulito). Professor deve ter algumas
+                  caixinhas à mão.
+                </p>
+
+                <h5>
+                  ⏱️ Detalhamento minuto a minuto (com lágrimas e risadas e
+                  bolo)
+                </h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mensagem final do Robô Zé:</strong> Professor lê a
+                    carta (com voz de robô grave se possível). Conteúdo:
+                    *"Queridos programadores, vocês me ensinaram a decidir.
+                    Aprendi que SE a bateria acaba, ENTÃO é hora de descansar.
+                    Agora vou viajar para outros anos. Lembrem-se: na vida,
+                    sempre há um SENÃO, e tudo bem. Bip."*
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Roda de memórias (condicional emocional):</strong>
+                    Cada aluno fala um momento favorito do ano usando SE ou
+                    QUANDO. Ex: "QUANDO o robô caiu no buraco, eu ri muito".
+                    "SE não tivesse acontecido a colisão, não teríamos
+                    aprendido o SENÃO". Professor registra as falas em um
+                    cartaz "Memórias com Condicionais".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Caça ao tesouro condicional:</strong> Esconder
+                    pequenos prêmios (balas, adesivos, miniaturas) pela sala.
+                    Pistas em cartões com SE e ENTÃO. Ex: "SE você for até a
+                    estante de livros, ENTÃO procure embaixo do vaso de
+                    planta". Cada pista leva a outra. O tesouro final é um baú
+                    com brigadeiros (ou brindes maiores).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Confraternização — biscoitos e suco:</strong>
+                    Distribuir comes e bebes. Regra robótica: só pode comer
+                    depois de dizer uma regra que aprendeu. Ex: "SE tiver
+                    biscoito, ENTÃO eu como; SENÃO, tomo suco". Quem esquecer
+                    a regra paga 1 "bip de gula" e espera a vez.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Dança da formatura (coreografia de eventos):</strong>
+                    Coreografia final: QUANDO a música tocar, dance; SE o
+                    professor apitar, congele; QUANDO a música parar, todos
+                    gritem "ROBÔ!" Repetir 3 vezes, acelerando. Quem errar a
+                    transição tem que fazer um "bip de vergonha" (mas continua
+                    na dança).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Encerramento e foto eterna:</strong> Foto oficial
+                    da turma com todos os robôs de papelão (cada aluno segura
+                    o seu). Grito final eterno (decorado): *"SE UM DIA VOCÊS
+                    PROGRAMAREM O MUNDO, FAÇAM COM AMOR E COM SENÃO!"* ecoado
+                    por toda a turma (três vezes, cada vez mais alto). Abraços
+                    coletivos (ou beeps coletivos).
+                  </div>
+                </div>
+
+                <h5>
+                  ♿ Adaptações e inclusão (semana 40 festa para todos os
+                  corações)
+                </h5>
+                <ul>
+                  <li>
+                    <strong>Deficiência física:</strong> caça ao tesouro com
+                    pistas em altura acessível (mesa baixa) e ajuda de colega.
+                    Dança substituída por movimentos de braço sentado.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> pausas a cada 8 min para movimento
+                    livre. Caça ao tesouro com pistas curtas (máximo 5).
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> carta do Robô Zé
+                    entregue escrita. Dança usa sinais visuais (bandeira verde
+                    = dançar, vermelha = congelar).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> aluno pode escrever
+                    carta de resposta para o Robô Zé usando condicionais.
+                    Opcional: criar pista extra para caça ao tesouro.
+                  </li>
+                  <li>
+                    <strong>TEA:</strong> agenda visual da festa (com
+                    horários). Evitar barulhos altos — usar música calma.
+                    Cantinho de descanso disponível.
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"SE este ano foi incrível, ENTÃO vamos comer bolo; SENÃO,
+                    comemos do mesmo jeito porque toda programação merece
+                    celebração (mesmo com bugs). E QUANDO o Robô Zé 2.0
+                    partir, a gente chora um pouquinho (mas esconde a lágrima
+                    com um bip)."</em>
+                </div>
+
+                <h5>
+                  🎶 MÚSICA FINAL DO ANO (VERSÃO 2.0 MAIS CONDICIONAIS E MAIS
+                  BIP)
+                </h5>
+                <div class="bg-dark p-3 rounded-4 mt-3">
+                  <p class="mb-1">
+                    <em>(Melodia: "Parabéns pra Você", mas com ritmo de marcha
+                      robótica)</em>
+                  </p>
+                  <p class="mb-0">
+                    SE você programou, ENTÃO você é o tal (bip!)<br />
+                    SENÃO, também aprendeu, e isso é fenomenal (bip bip!)<br />
+                    QUANDO o robô decidiu, o mundo pôde mudar<br />
+                    REPITA com alegria: vou programar, vou programar!
+                  </p>
+                  <p class="mt-2 mb-0">
+                    <strong>(Refrão mais rápido)</strong><br />
+                    Parabéns, programador,<br />
+                    Você é um vencedor!<br />
+                    Do SE ao SENÃO, do QUANDO ao loop,<br />
+                    A robótica é puro amor!<br />
+                    SENÃO... repete o refrão!
+                  </p>
+                  <p class="mt-2 mb-0">(beep beep beep — som de desligar)</p>
+                </div>
+
+                <h5 class="mt-4">
+                  📊 RUBRICA FINAL DO ANO (PARA O PROFESSOR — AVALIAÇÃO GERAL
+                  COM INDICADORES MALUCOS)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Parafuso de papel (iniciante)</th>
+                        <th>Critério (versão resumida)</th>
+                        <th>Parafuso de ouro (muito bom)</th>
+                        <th>Parafuso de plástico (médio)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Usa sozinho, mas com erros</td>
+                        <td>Domínio dos condicionais básicos</td>
+                        <td>Ensina colegas sem ser solicitado</td>
+                        <td>Compreende SE→ENTÃO→SENÃO com ajuda</td>
+                      </tr>
+                      <tr>
+                        <td>Reage a 1 evento (só som ou só luz)</td>
+                        <td>Eventos externos</td>
+                        <td>Cria eventos novos (ex: QUANDO tosse)</td>
+                        <td>Usa eventos QUANDO fornecidos</td>
+                      </tr>
+                      <tr>
+                        <td>Confunde E com OU</td>
+                        <td>Operadores lógicos</td>
+                        <td>Cria regras com E ou OU naturalmente</td>
+                        <td>Aplica E/OU quando lembrado</td>
+                      </tr>
+                      <tr>
+                        <td>Precisa de comando explícito para parar</td>
+                        <td>Estruturas de repetição</td>
+                        <td>Utiliza loops (REPITA) com condicional</td>
+                        <td>Executa loop simples (ex: repetir 3 vezes)</td>
+                      </tr>
+                      <tr>
+                        <td>Colabora, mas só quando chamado</td>
+                        <td>Trabalho colaborativo</td>
+                        <td>Lidera e organiza o grupo</td>
+                        <td>Participa com estímulo do professor</td>
+                      </tr>
+                      <tr>
+                        <td>Segue regras existentes (sem iniciativa)</td>
+                        <td>Autonomia e criatividade</td>
+                        <td>Cria regras adicionais não exigidas</td>
+                        <td>Contribui com elementos planejados</td>
+                      </tr>
+                      <tr>
+                        <td>Só percebe bugs quando apontados</td>
+                        <td>Pensamento computacional</td>
+                        <td>Identifica bugs complexos</td>
+                        <td>Acha bugs óbvios</td>
+                      </tr>
+                      <tr>
+                        <td>Precisa de ajuda para transferir</td>
+                        <td>Transferência de aprendizagem</td>
+                        <td>
+                          Explica utilidade dos conceitos fora da escola
+                        </td>
+                        <td>Dá exemplo do cotidiano</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== JOGO DO BIMESTRE ==================== (criação original baseada na descrição do DOCX) -->
+    <section id="jogo-condicional" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE: CIDADE DOS
+          CONDICIONAIS – O SEMÁFORO MALUCO
+        </h2>
+        <div class="badge-projeto">
+          Programe o trânsito usando SE, ENTÃO e SENÃO antes que o caos tome
+          conta!
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p>
+          <strong>🤖 Contexto:</strong> Você é o controlador de tráfego da
+          Cidade dos Condicionais. Um cruzamento caótico precisa de regras
+          lógicas. Monte blocos de condicionais para dizer o que cada robô
+          deve fazer.
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="jogo-painel">
+              <h5>📋 CENÁRIO</h5>
+              <div id="cruzamento" class="cruzamento-grid">
+                <!-- grid dinâmico via JS -->
+              </div>
+              <div id="statusJogo" class="alert alert-warning mt-2">
+                Clique nos blocos para montar a regra!
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h5>🧩 MONTE SUA REGRA</h5>
+            <div class="blocos-container">
+              <div class="bloco-condicional" data-tipo="se">SE</div>
+              <div class="bloco-condicional" data-tipo="entao">ENTÃO</div>
+              <div class="bloco-condicional" data-tipo="senao">SENÃO</div>
+              <div class="bloco-condicional" data-tipo="quando">QUANDO</div>
+              <div class="bloco-condicional" data-tipo="e">E</div>
+              <div class="bloco-condicional" data-tipo="ou">OU</div>
+              <div class="bloco-condicional" data-tipo="semaf_verde">
+                semáforo verde
+              </div>
+              <div class="bloco-condicional" data-tipo="semaf_vermelho">
+                semáforo vermelho
+              </div>
+              <div class="bloco-condicional" data-tipo="andar">andar</div>
+              <div class="bloco-condicional" data-tipo="parar">parar</div>
+              <div class="bloco-condicional" data-tipo="buzinar">buzinar</div>
+            </div>
+            <div class="area-regra mt-3 p-2 bg-dark rounded">
+              <strong>Sua regra:</strong>
+              <div id="regraMontada" class="text-warning"></div>
+            </div>
+            <div class="mt-3">
+              <button id="btnTestarRegra" class="btn btn-robotico-ano2">
+                TESTAR REGRA 🚦
+              </button>
+              <button id="btnLimparRegra" class="btn btn-outline-warning ms-2">
+                LIMPAR
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h5>🏆 RECORDES DE LÓGICA</h5>
+          <span id="pontuacaoJogo" class="badge bg-warning text-dark">Regras acertadas: 0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CERTIFICADO (modelo_certificado.html adaptado) ==================== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 2º ANO
+          </h3>
+          <p class="lead">"MESTRE DO SE-ENTÃO-SENÃO"</p>
+        </div>
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>2º ANO - ROBÓTICA EDUCACIONAL - 4º BIMESTRE</strong><br />Dominando os conceitos de:<br />🔁
+                  Condicionais (SE,
+                  ENTÃO, SENÃO, QUANDO)<br />📦 Operadores lógicos (E, OU)<br />🤖
+                  Programação de robôs em maquete<br />🐛 Depuração coletiva
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "SE a cidade funcionou, ENTÃO a gente festejou; SENÃO, a
+                  gente debugou!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 2.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label><input type="text" id="nomeAluno"
+                    class="form-control" placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button><button id="btnPreviewAluno"
+                  class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FECHAMENTO DO BIMESTRE (modelo_fechamento_bimestre.html adaptado) ==================== -->
+    <section id="adaptacoes" class="mb-5">
+      <div class="card border-warning mt-4 shadow-sm" style="background-color: #2c3e2b">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
+            ESPECÍFICAS – BIMESTRE 4 (Caos acessível para todos)
+          </h5>
+          <h6 class="mt-3">📌 Para TEA</h6>
+          <ul>
+            <li>
+              Use roteiro visual com pictogramas e transições sinalizadas por
+              cartão amarelo.
+            </li>
+            <li>
+              Evite apitos altos – use campainha suave. Disponibilize cantinho
+              silencioso.
+            </li>
+          </ul>
+          <h6>📌 Para TDAH</h6>
+          <ul>
+            <li>
+              Divida atividades em mini-metas de 8 minutos (alarme auditivo
+              suave).
+            </li>
+            <li>Cada meta rende adesivo de foco.</li>
+          </ul>
+          <h6>📌 Para Deficiência Física</h6>
+          <ul>
+            <li>
+              Use peças de encaixe (blocos, velcro, Lego) para construção do
+              grid.
+            </li>
+            <li>Aluno pode atuar como programador por voz.</li>
+          </ul>
+          <h6>📌 Para Altas Habilidades</h6>
+          <ul>
+            <li>
+              Desafio extra: loop de fiscalização (REPITA 3 vezes a
+              verificação do grid).
+            </li>
+            <li>Rua de mão dupla com condicional dupla (E/OU).</li>
+          </ul>
+          <p class="mb-0 mt-3 fst-italic">
+            “SE a cidade funcionar, ENTÃO a gente festeja; SENÃO, a gente
+            debugga.”
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-3 rounded-4 small">
+          <h5>
+            <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+          </h5>
+          <p>
+            BRASIL. Ministério da Educação.
+            <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC,
+            2018.<br />PARANÁ. Secretaria de Estado da Educação.
+            <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
+              Iniciais</strong>. Curitiba: SEED/PR, 2018.<br />BERS, Marina Umaschi.
+            <strong>Programar e Brincar: Aprendizagem Criativa com Robótica
+              Educacional</strong>. Porto Alegre: Penso, 2019.<br />PAPERT, Seymour.
+            <strong>Logo: Computadores e Educação</strong>. São Paulo:
+            Brasiliense, 1985.<br />RESNICK, Mitchel.
+            <strong>Jardim de Infância para a Vida Toda</strong>. Porto
+            Alegre: Penso, 2020.<br />WING, Jeannette. Pensamento
+            Computacional.
+            <strong>Revista Brasileira de Informática na Educação</strong>,
+            v.24, n.2, p.1-10, 2016.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== RODAPÉ (modelo_rodape.html) ==================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a2bim4.js"></script>
+</body>
+
+</html>
