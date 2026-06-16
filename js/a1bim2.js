@@ -51,7 +51,7 @@
       {
         fase: 3,
         pergunta:
-          "Qual é o erro nesta sequência? [↑ ↑ → ← ↑] Deveria chegar ao tesouro.",
+          "Qual é o erro nesta sequência? [→ → → → ←] Deveria chegar ao tesouro.",
         imagem: "🐛",
         opcoes: [
           "A última seta deveria ser →",
@@ -64,10 +64,10 @@
       },
       {
         fase: 3,
-        pergunta: "Qual é o erro? [→ → ← ↑] O robô quer ir para a DIREITA.",
+        pergunta: "Qual é o erro? [→ → ↑ →] O robô quer ir para a DIREITA.",
         imagem: "🐞",
         opcoes: [
-          "A terceira seta (←) está errada",
+          "A terceira seta (↑) está errada",
           "A primeira seta está errada",
           "Falta uma seta",
         ],

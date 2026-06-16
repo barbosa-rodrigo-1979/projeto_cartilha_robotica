@@ -1,0 +1,2527 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 3º Ano – Bimestre 3 | Detetives de Bugs</title>
+  <!-- Bootstrap 5 + ícones + fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS unificado do bimestre 3 -->
+  <link rel="stylesheet" href="css/a3bim3.css" />
+</head>
+
+<body class="bg-robotica">
+
+  <!-- ==================== CABEÇALHO (modelo_cabecalho.html) ==================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src='https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 3º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 3º BIMESTRE: DETETIVES DE BUGS – DEPURAÇÃO SISTEMÁTICA ONDE O ERRO VIRA COMBUSTÍVEL ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="logo-gn"
+            onerror="this.src='https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MENU (modelo_menu_bim.html) ==================== -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="#">
+          <i class="bi bi-robot"></i> 3º Ano
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboBim"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboBim">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="bi bi-house-door-fill"></i> Principal</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3index.html"
+                ><i class="bi bi-1-circle-fill"></i> 3º ano</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim1.html"
+                ><i class="bi bi-1-circle-fill"></i> 1º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim2.html"
+                ><i class="bi bi-2-circle-fill"></i> 2º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="a3bim3.html"
+                ><i class="bi bi-3-circle-fill"></i> 3º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim4.html"
+                ><i class="bi bi-4-circle-fill"></i> 4º bimestre</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <main class="container my-4">
+
+    <!-- ==================== APRESENTAÇÃO DO BIMESTRE ==================== -->
+    <section id="apresentacao" class="mb-5">
+      <!-- CARTA DE ABERTURA -->
+      <div class="projeto-header">
+        <h2><i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO BIMESTRE 3</h2>
+        <div class="badge-projeto">Leia com uma lupa de brinquedo no olho, sotaque de detetive e um charuto de chocolate
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">"Prenda a respiração, parceiro. O caso está ficando complicado. As ruas da programação
+          estão cheias de bugs – loops que não terminam, variáveis que somem, robôs que andam pra trás. Você vai
+          precisar de uma boa lupa, um checklist na mão e a coragem de gritar 'ACHEI!' no meio da sala. Isso aqui é
+          DEPURAÇÃO. E aqui, errar não é vergonha – é PISTA."</p>
+        <p class="carta-texto mt-3">Professor, respira fundo. Seu aluno já domina loops e variáveis. Ele escreve
+          algoritmos como um poeta escreve versos. Mas tem um problema: ele acha que programar é ACERTAR DE PRIMEIRA.
+          Nós vamos destruir essa ilusão agora. Programar é 10% escrever código e 90% CONSERTAR O QUE QUEBROU. Neste
+          bimestre, seu aluno vai virar um DETETIVE DE ELITE.</p>
+        <p class="carta-texto mt-3">Regras de Ouro do Bimestre: 🥇 Se você não ouvir um aluno gritar "ACHEI O BUG!" pelo
+          menos cinco vezes por aula, você não está incentivando a depuração corretamente. 💎 Se um aluno disser "não
+          errei nada", você pergunta: "então você não aprendeu nada hoje?"</p>
+        <p class="carta-texto mt-3 fw-bold">Agora prepare a lupa, o checklist, o prontuário e os robôs de sucata com
+          defeito. A caçada vai começar. 🐛🔍🕵️‍♂️</p>
+      </div>
+
+      <!-- MAPEAMENTO BIMESTRE 3 -->
+      <div class="projeto-header mt-5">
+        <h2><i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 3 – DETETIVES DE BUGS</h2>
+        <div class="badge-projeto">RCP-PR · Depuração sistemática e refinamento (p.39-41)</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Competências Gerais</th>
+              <th>RCP-PR</th>
+              <th>Bimestre</th>
+              <th>Tema Radical</th>
+              <th>Habilidades BNCC (Matemática)</th>
+              <th>Habilidades BNCC (LP)</th>
+              <th>Habilidades BNCC (Ciências/Complemento)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CG4 (Linguagens digitais), CG5 (Pensamento computacional)</td>
+              <td>Depuração sistemática, refinamento (p.39-41)</td>
+              <td>3º</td>
+              <td>Detetives de Bugs</td>
+              <td>EF03MA22, EF03MA10, EF03MA11</td>
+              <td>EF03LP13, EF03LP18, EF03LP16, EF03LP21</td>
+              <td>EF03CI01, COMP-PC01, COMP-PC02, COMP-PC03</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PLANO SINTÉTICO BIMESTRE 3 -->
+      <div class="projeto-header mt-5">
+        <h2><i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 3 – PLANO SINTÉTICO (Semanas 21 a 30)</h2>
+        <div class="badge-projeto">10 semanas de caça aos bugs</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Conceito Estrela</th>
+              <th>Atividade-Monstro</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Diferença entre erro acidental e comportamento inesperado</td>
+              <td>Teatro de fantoches + caça aos bugs individuais</td>
+              <td>21</td>
+              <td>Bug ou Feature? Depurando com Bom Humor</td>
+            </tr>
+            <tr>
+              <td>Tipos de bug de loop (nanico, gigante, zumbi)</td>
+              <td>Prontuário do detetive + competição "Bug mais rápido"</td>
+              <td>22</td>
+              <td>O Detetive de Bugs: Investigando o Loop Suspeito</td>
+            </tr>
+            <tr>
+              <td>Rotina sistemática de depuração</td>
+              <td>Criação coletiva da checklist + aplicação guiada</td>
+              <td>23</td>
+              <td>Checklist da Depuração: Passo a Passo do Detetive</td>
+            </tr>
+            <tr>
+              <td>Depuração em equipe com robô humano bugado</td>
+              <td>Robô com defeito (troca direita/esquerda, anda o dobro)</td>
+              <td>24</td>
+              <td>Jogo do Robô Avariado</td>
+            </tr>
+            <tr>
+              <td>Texto instrucional e compartilhamento</td>
+              <td>Criação de guia ilustrado para programadores iniciantes</td>
+              <td>25</td>
+              <td>Projeto: Manual do Detetive de Bugs</td>
+            </tr>
+            <tr>
+              <td>Transferência para receitas, manuais, mapas</td>
+              <td>Caça a bugs em receitas culinárias e manuais de montagem</td>
+              <td>26</td>
+              <td>Depurando o Mundo Real</td>
+            </tr>
+            <tr>
+              <td>Resolução de quebra-cabeça com pistas bugadas</td>
+              <td>Caça ao tesouro com 5 pistas, cada uma com um bug</td>
+              <td>27</td>
+              <td>Caça ao Tesouro dos Bugs</td>
+            </tr>
+            <tr>
+              <td>Depuração de algoritmos "antigos"</td>
+              <td>Correção de algoritmos de anos anteriores com erros</td>
+              <td>28</td>
+              <td>Robô Arqueólogo</td>
+            </tr>
+            <tr>
+              <td>Bugs físicos vs lógicos</td>
+              <td>Conserto de robôs de sucata com defeitos físicos</td>
+              <td>29</td>
+              <td>Depuração com Sucata</td>
+            </tr>
+            <tr>
+              <td>Integração total (loop, variável, depuração)</td>
+              <td>Algoritmo com 3 bugs para encontrar e corrigir</td>
+              <td>30</td>
+              <td>Desafio Final: Depuração em Duas Rodas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PLANOS DE AULA DETALHADOS ==================== -->
+    <section id="planos" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS – BIMESTRE 3</h2>
+        <div class="badge-projeto">Prepare a lupa, o checklist e o grito "ACHEI!"</div>
+      </div>
+      <div class="accordion" id="accordionAulas">
+
+        <!-- ==================== SEMANA 21 ==================== -->
+        <div class="accordion-item" data-semana="21">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana21">
+              🐞 Semana 21 – Bug ou Feature? Depurando com Bom Humor
+            </button>
+          </h2>
+          <div id="semana21" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="21" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão</td>
+                        <td>Compreender que bugs são erros normais no processo de programação (não são vergonha).</td>
+                      </tr>
+                      <tr>
+                        <td>Análise</td>
+                        <td>Diferenciar erro acidental de "feature" (comportamento inesperado mas engraçado ou útil).
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Atitude/Valorização</td>
+                        <td>Desenvolver uma atitude positiva diante dos erros ("errar é humano, depurar é divino").</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Definição de bug (erro no algoritmo que impede o funcionamento correto). Definição de feature
+                  (comportamento inesperado que pode ser reaproveitado). Definição de depuração (processo de encontrar e
+                  corrigir bugs). Atitude positiva frente ao erro (cultura de aprendizado).</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções (depuração)</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (O Kit do Detetive Iniciante)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupa de brinquedo (1 por dupla) – fazer com
+                    papelão + papel celofane</span>
+                  <span class="material-badge"><i class="bi bi-robot"></i> Fantoche "Detetive Bugs" (1 para o professor)
+                    – luva velha + botões + lupa desenhada</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões com algoritmos bugados (3 versões
+                    por dupla) – impressos ou escritos à mão</span>
+                  <span class="material-badge"><i class="bi bi-bug-fill"></i> Adesivos de inseto (ou carimbo de
+                    joaninha) – 1 por aluno</span>
+                  <span class="material-badge"><i class="bi bi-bell"></i> Sino ou apito (1) – qualquer objeto que faça
+                    barulho (pote com moedas)</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Encontra o bug em pelo menos 2 dos 3 algoritmos da folha</td>
+                        <td>Identificação de Erros</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Classifica corretamente o bug como "erro" ou "feature" (e justifica)</td>
+                        <td>Classificação</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Ajuda um colega a encontrar um bug que ele não viu (sem dar a resposta pronta)</td>
+                        <td>Depuração Social</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min – A HORA DO SHOW)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao"><strong>"O INSPETOR BUGS APARECE" (Teatro de fantoches
+                      explosivo)</strong> – Professor coloca o fantoche "Detetive Bugs" na mão, usa voz esganiçada de
+                    detetive durão dos anos 50, sotaque de filme noir: "Bom dia, soldados! Recebi um relatório do
+                    quartel-general: há BUGS à solta nesta sala. BUGS não são insetos nojentos. BUGS são ERROS no
+                    código. E eles estão em TODO LUGAR. Preparados para caçá-los?" Alunos gritam "SIM, DETETIVE!"
+                    Professor distribui as lupas de brinquedo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao"><strong>"O QUE É UM BUG? (E O QUE É UMA FEATURE?)" –
+                      Dramatizações</strong><br>Professor faz 3 encenações curtas:<br>1. Bug de loop infinito: "Meu
+                    algoritmo diz: 'repita até você cansar: pule'." Começa a pular sem parar, finge desmaiar de
+                    cansaço.<br>2. Bug de variável: Mostra carteira com balas: "dinheiro = 10; repita 5 vezes: comprar
+                    bala; dinheiro = dinheiro + 1" (dinheiro aumenta em vez de diminuir). Pergunta: "O robô ficou
+                    bilionário comprando bala. BUG ou FEATURE?"<br>3. Feature (não bug): "Meu robô devia desenhar um
+                    quadrado, mas desenhou um círculo. Não era o que eu queria, mas é bonito." Conclusão: "Bug atrapalha
+                    o objetivo. Feature é erro que funciona como algo novo e às vezes é até legal."</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">15-30 min</span>
+                  <div class="minuto-descricao"><strong>"CAÇA AOS BUGS INDIVIDUAL (COM LUPA DE
+                      VERDADE)"</strong><br>Cada dupla recebe 3 cartões com algoritmos curtos (5-6 linhas cada), cada um
+                    com 1 bug (ou nenhum).<br><strong>Exemplo 1 – Bug de variável:</strong> "passos = 0; repita 5 vezes:
+                    ande 1 passo; passos = passos - 1" → Bug: `passos = passos - 1` (diminui em vez de
+                    aumentar).<br><strong>Exemplo 2 – Algoritmo correto (sem bug):</strong> "desenhar triângulo
+                    equilátero: repita 3 vezes: ande 2; vire 120 graus".<br><strong>Exemplo 3 – Bug de loop
+                      nanico:</strong> "desenhar quadrado: repita 3 vezes: ande 2; vire 90 graus" → Bug: `repita 3
+                    vezes` (precisava de 4).<br>Procedimento: Alunos usam a lupa de brinquedo para "investigar".
+                    Circulam o erro no cartão. Escrevem a correção no verso. Quando encontram o bug, tocam o sino/apito
+                    e gritam "ACHEI!".</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-45 min</span>
+                  <div class="minuto-descricao"><strong>"DEPURAÇÃO COOPERATIVA (AJUDA O COLEGA)"</strong><br>Duplas
+                    trocam cartões (sem olhar a correção do verso). Cada um tenta encontrar o bug do outro. Se discordam
+                    (um achou bug, o outro acha que está certo), discutem educadamente e chegam a um consenso. Professor
+                    circula. Quando um grupo encontra um bug difícil, toca o sino e o grupo ganha adesivo "Buster de
+                    Bugs". Regra de ouro: não dar a resposta pronta. Fazer perguntas: "O que esse algoritmo deveria
+                    fazer? O que ele está fazendo de diferente? Olha a variável... ela está aumentando ou diminuindo?"
+                  </div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao"><strong>"RODA DO DETETIVE (O QUE APRENDEMOS?)"</strong><br>Roda de
+                    conversa: cada aluno compartilha o bug mais engraçado que viu: "A variável tava diminuindo!", "O
+                    loop tinha 3 mas precisava de 4!", "Não tinha bug nenhum e eu fiquei procurando!" Fantoche Detetive
+                    Bugs conclui: "Errar é humano, depurar é DIVINO. Quem nunca errou, nunca programou de verdade. Vocês
+                    estão prontos para o próximo nível?" Entregas: Adesivo "APRENDIZ DE DETETIVE" para todos. Anúncio da
+                    próxima semana: "Vamos CLASSIFICAR BUGS! Loop nanico, gigante e zumbi. Tragam suas lupas e seus
+                    gritos."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 21</h5>
+                <ul>
+                  <li><strong>TEA (Transtorno do Espectro Autista):</strong> Antes da aula, mostrar uma "previsão
+                    visual" (sequência de imagens: fantoche → encenações → cartões → roda). Evitar gritos repentinos;
+                    combinar um sinal visual (luz piscando) para indicar descoberta de bug. Oferecer fones redutores de
+                    ruído durante a parte de gritos.</li>
+                  <li><strong>TDAH (Déficit de Atenção):</strong> Dividir os 50 min em blocos com recompensas imediatas
+                    (adesivo a cada bug encontrado). Usar o sino como marcador de tempo (cada 10 min, um toque).
+                    Permitir que o aluno se levante e "ande como detetive" enquanto procura bugs.</li>
+                  <li><strong>Deficiência Física (motora):</strong> Cartões ampliados (tamanho A5 ou A4) para facilitar
+                    manuseio. Aluno pode ditar a correção para um colega escrever. Lupa com cabo longo ou suporte de
+                    mesa.</li>
+                  <li><strong>Altas Habilidades/Superdotação:</strong> Oferecer um quarto cartão bônus com bug mais
+                    complexo (loop aninhado). Desafio extra: criar uma "feature" a partir do bug (transformar o erro em
+                    algo útil). Convidar o aluno para ser "assistente do detetive" e ajudar colegas.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 21 – Música de entrada (cantar junto no início da
+                    aula):</strong>
+                  <em>🎵 (Ritmo de marcha ou rap)<br>
+                    Eu sou detetive, caçador de bug<br>
+                    Com minha lupa e um algoritmo à mão<br>
+                    Se o robô errar, eu vou depurar<br>
+                    Erro não é problema, é SOLUÇÃO! 🐛🔍💥</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 22 ==================== -->
+        <div class="accordion-item" data-semana="22">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana22">
+              🔍 Semana 22 – O Detetive de Bugs: Investigando o Loop Suspeito
+            </button>
+          </h2>
+          <div id="semana22" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="22" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Aplicação</td>
+                        <td>Identificar bugs de lógica em loops (contagem errada, condição de parada incorreta).</td>
+                      </tr>
+                      <tr>
+                        <td>Análise</td>
+                        <td>Classificar tipos de bugs de loop (nanico, gigante, zumbi).</td>
+                      </tr>
+                      <tr>
+                        <td>Criação</td>
+                        <td>Documentar bugs em um "prontuário" (como um verdadeiro investigador).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Loop nanico: repete MENOS vezes que devia (ex: <code>repita 3</code> para desenhar quadrado). Loop
+                  gigante: repete MAIS vezes que devia (ex: <code>repita 10</code> para pentear cabelo → fica careca).
+                  Loop zumbi (infinito): nunca termina (condição de parada nunca é alcançada). Documentação de bugs:
+                  prontuário do detetive (arquivo de casos).</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreender a ideia de repetição em padrões</td>
+                        <td>EF03MA11</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Investigador de Loops)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-journal"></i> "Prontuário do Detetive" (folha com tabela
+                    para preencher)</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Algoritmos impressos – 3 por aluno (um de
+                    cada tipo de bug)</span>
+                  <span class="material-badge"><i class="bi bi-stamp"></i> Carimbos de "BUG" (ou carimbo de joaninha, ou
+                    desenhado à mão)</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupa (do kit anterior)</span>
+                  <span class="material-badge"><i class="bi bi-bell"></i> Sino ou campainha</span>
+                  <span class="material-badge"><i class="bi bi-person-arms-up"></i> Cartazes dos 3 monstros (robô anão,
+                    robô gigante, robô esqueleto zumbi)</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Classifica corretamente os 3 tipos de bug de loop (nanico, gigante, zumbi)</td>
+                        <td>Identificação de Tipos</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Documenta corretamente o bug (tipo, local, correção) no formulário</td>
+                        <td>Preenchimento do Prontuário</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Cria um bug novo e original (ex: loop que começa no número errado) para o arquivo da turma
+                        </td>
+                        <td>Criação de Bug</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"MINI-AULA: OS 3 LOOP MONSTROS" (Com cartazes
+                      exagerados)</strong><br>Professor apresenta 3 tipos com NOMES ENGRAÇADOS e DESENHOS NO
+                    QUADRO:<br>• 🤏 LOOP NANICO: forma aberta, ação incompleta (ex: `repita 3` para desenhar quadrado
+                    precisava 4) – desenho de robô anão.<br>• 🦍 LOOP GIGANTE: desperdício, repetição desnecessária (ex:
+                    `repita 10` para pentear cabelo, precisava 5) – desenho de robô gigante.<br>• 🧟 LOOP ZUMBI: robô
+                    trava, nunca para (ex: `repita até x=10: x = x - 1` com x começando em 0) – desenho de robô
+                    esqueleto.<br><strong>Dramatização rápida:</strong> Nanico: professor faz 3 polichinelos e para no
+                    meio, "Ahhh, faltou um!" Gigante: faz 10 polichinelos e cai de cansado, "Já chega, né?!" Zumbi:
+                    começa a pular e não para, "Socorro, não consigo parar!"</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"PRONTUÁRIO DO DETETIVE (PREENCHENDO CASOS)"</strong><br>Cada
+                    aluno recebe 3 algoritmos (1 de cada tipo de bug) e 1 folha de prontuário. Modelo do
+                    Prontuário:<br>PRONTUÁRIO DO DETETIVE - 3º ANO<br>Detetive: _______ Data: ___/___/______<br>CASO Nº:
+                    001<br>ALGORITMO SUSPEITO: <code>repita 3 vezes: ande 2; vire 90 graus</code><br>TIPO DO BUG: (X)
+                    Loop nanico ( ) Loop gigante ( ) Zumbi ( ) Variável ( ) Ordem ( ) Sintaxe<br>LOCALIZAÇÃO: linha 1 -
+                    "repita 3 vezes"<br>CORREÇÃO: trocar "repita 3 vezes" por "repita 4 vezes"<br>Assinatura do
+                    detetive: _______<br>Os 3 algoritmos da semana:<br>- Caso 001: `repita 3: ande 2; vire 90`
+                    (quadrado) → Nanico, correção `repita 4`<br>- Caso 002: `repita 10: penteie o cabelo` (só precisa
+                    5x) → Gigante, correção `repita 5`<br>- Caso 003: `repita até x=10: x = x - 1` (x começa em 0) →
+                    Zumbi, correção `x = x + 1`<br>Alunos preenchem os 3 casos no prontuário.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"JOGO DO BUG MAIS RÁPIDO (COMPETIÇÃO POR
+                      EQUIPES)"</strong><br>Como funciona: Duplas competem contra o relógio. Professor projeta 5
+                    algoritmos no quadro (cada um por 1-2 minutos). Duplas escrevem em uma folha: tipo do bug +
+                    correção. Ao final de cada rodada, mostram respostas. Pontuação: 1 ponto por acerto. Dupla com mais
+                    pontos ganha selo "DETETIVE RELÂMPAGO". Exemplo de rodada:<br>1. `repita 2: ande 1` (triângulo
+                    precisava 3) → Loop nanico<br>2. `repita 100: escove os dentes` → Loop gigante<br>3. `repita até
+                    fim: pule` (sem condição de parada) → Loop zumbi</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"ARQUIVO DE BUGS DA TURMA (CRIAÇÃO COLETIVA)"</strong><br>Cada
+                    dupla cria um "bug novo" (inventa um algoritmo com erro criativo – nanico, gigante ou zumbi).
+                    Escreve no prontuário como se fosse um caso arquivado. Trocam entre duplas. A dupla adversária
+                    resolve o bug (encontra e corrige). Os melhores bugs vão para o mural "ARQUIVO DE BUGS DO 3º ANO".
+                    Exemplo de criação de aluno: "Loop para comer 3 fatias de pizza, mas o algoritmo repete 8 vezes – o
+                    robô comeu até passar mal!" (Loop gigante). Anúncio da próxima semana: "Semana que vem: Vamos criar
+                    uma CHECKLIST DE DEPURAÇÃO para não deixar nenhum bug escapar."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 22</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Usar cartazes com cores diferentes para cada tipo de loop (azul=nanico,
+                    vermelho=gigante, preto=zumbi). Permitir respostas por apontamento em vez de escrita. Evitar
+                    buzina/sino alto; usar luz colorida.</li>
+                  <li><strong>TDAH:</strong> Competição "Bug mais rápido" com pausas a cada 2 algoritmos para respirar.
+                    Recompensa imediata (adesivo) a cada acerto. Professor circula e dá toques no ombro para manter
+                    foco.</li>
+                  <li><strong>Deficiência Física:</strong> Prontuário em folha grande com espaços ampliados. Carimbo de
+                    bug com cabo longo. Aluno pode ditar respostas.</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio: criar um bug que é ao mesmo tempo nanico E zumbi
+                    (loop aninhado). Criar um "caso arquivado" com 2 bugs no mesmo algoritmo.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 22:</strong>
+                  <em>"Nanico é pequeno, gigante exagera, zumbi não para. Com a lupa certa, a gente extermina!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 23 ==================== -->
+        <div class="accordion-item" data-semana="23">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana23">
+              ✅ Semana 23 – Checklist da Depuração: Passo a Passo do Detetive
+            </button>
+          </h2>
+          <div id="semana23" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="23" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Criação</td>
+                        <td>Desenvolver uma rotina sistemática para depurar algoritmos.</td>
+                      </tr>
+                      <tr>
+                        <td>Síntese</td>
+                        <td>Criar e aplicar uma checklist de depuração (em grupo).</td>
+                      </tr>
+                      <tr>
+                        <td>Aplicação</td>
+                        <td>Colaborar na correção de bugs em equipe usando a checklist.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Checklist de depuração (5 passos do detetive). Rotina sistemática de verificação. Pensamento
+                  computacional aplicado à depuração.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identificar regularidades em sequências</td>
+                        <td>EF03MA10</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Decompor problemas em partes menores</td>
+                        <td>COMP-PC02</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Detetive Organizado)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-poster"></i> Pôster da "Checklist do Detetive" (cores
+                    vibrantes, para afixar na parede)</span>
+                  <span class="material-badge"><i class="bi bi-files"></i> Cópias pequenas da checklist (plastificadas,
+                    1 por aluno)</span>
+                  <span class="material-badge"><i class="bi bi-code-square"></i> Algoritmo com 5 bugs (impresso, para
+                    aplicar a checklist)</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Canetas coloridas (vermelha, azul, verde,
+                    amarela)</span>
+                  <span class="material-badge"><i class="bi bi-hourglass-split"></i> Cronômetro (ou ampulheta de 5
+                    minutos)</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Contribui com pelo menos 1 item para a checklist coletiva (escrito no quadro)</td>
+                        <td>Criação da Checklist</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Usa a checklist para encontrar pelo menos 4 dos 5 bugs no algoritmo de prática</td>
+                        <td>Aplicação Correta</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Completa o desafio do cronômetro (encontrar 3 bugs em 5 minutos) dentro do tempo</td>
+                        <td>Velocidade</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"CRIAÇÃO COLETIVA DA CHECKLIST (O QUE
+                      VERIFICAR?)"</strong><br>Professor no quadro pergunta: "O que vocês verificam quando um algoritmo
+                    não funciona?" Anota as respostas dos alunos e organiza em 5 passos principais, guiando com
+                    perguntas:<br>1. 🔢 As variáveis começam com o valor certo? (ex: `pontos = 0` mas deveria ser
+                    `1`)<br>2. 🔁 O loop repete o número correto de vezes? (nanico ou gigante?)<br>3. ♾️ O loop pode
+                    terminar? (zumbi escondido?)<br>4. 📍 A ordem dos comandos está correta? (andar antes de
+                    virar)<br>5. ✍️ A sintaxe (palavras mágicas) está certa? (ex: `repita 4` sem `vezes`)<br>Transferir
+                    para um cartaz colorido e afixar na parede da sala (ficará o bimestre inteiro!).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"APLICAÇÃO DA CHECKLIST (ALGORITMO BUGADO)"</strong><br>Cada
+                    dupla recebe um algoritmo com 5 bugs. Exemplo do algoritmo bugado (dança do
+                    robô):<br><code>ALGORITMO: DANÇA DO ROBÔ (Deveria: andar 1,2,3,4,5 passos)<br>passos = 1<br>repita 5 vezes:<br>  ande passos<br>  vire à direita<br>  passos = passos - 1<br>repita 2:<br>  balance os braços</code><br>Os
+                    5 bugs para encontrar:<br>1. `passos = passos - 1` (deveria aumentar: `passos + 1`)<br>2. (não é bug
+                    isolado, mas `ande passos` está correto)<br>3. `vire à direita` a cada passo? (deveria virar só no
+                    final)<br>4. `passos = passos - 1` (diminui – deveria aumentar)<br>5. `repita 2` sem `vezes`
+                    (sintaxe errada)<br>Alunos usam a checklist (impressa) para marcar os bugs encontrados. Cada item da
+                    checklist é uma pergunta que guia a investigação.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"DEPURAÇÃO GUIADA NO QUADRO (TODOS JUNTOS)"</strong><br>Um
+                    voluntário vai ao quadro. Com ajuda da turma, aplica a checklist item por item no algoritmo bugado.
+                    Corrigem o algoritmo juntos, linha por linha. Professor: "Seguir a checklist evita se perder. É como
+                    uma receita de bolo. Primeiro os ingredientes, depois o forno." Registro no quadro:<br>CHECKLIST
+                    APLICADA:<br>□ Variáveis? passos começa em 1 → OK, mas queremos aumentar? → BUG<br>□ Loop? repita 5
+                    vezes → OK<br>□ Loop infinito? passos -1 faz diminuir → vai parar? Sim, mas não é o desejado →
+                    BUG<br>□ Ordem? virar a cada passo? → BUG<br>□ Sintaxe? "repita 2" → BUG (falta "vezes")</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"DESAFIO DO CRONÔMETRO (DEPURAÇÃO RÁPIDA)"</strong><br>Cada
+                    dupla recebe um NOVO algoritmo (diferente do anterior). Têm 5 minutos no cronômetro para encontrar e
+                    corrigir 3 bugs. Quando terminarem, levantam a mão (ou gritam "FEITO!"). Quem terminar primeiro e
+                    acertar tudo → "Checklist de Ouro" (adesivo especial). Quem não terminar leva o algoritmo para casa
+                    como lição.<br>Exemplo do algoritmo do desafio (SOMA DE NÚMEROS, deveria somar
+                    1+2+3+4+5):<br><code>total = 0<br>repita 5:<br>  total = total + 1<br>repita total:<br>  ande</code><br>Bugs:
+                    (1) `repita 5` sem `vezes`, (2) `total + 1` fixo (deveria somar o contador), (3) loop aninhado
+                    desnecessário.<br>Anúncio da próxima semana: "Semana que vem: Vamos jogar o JOGO DO ROBÔ AVARIADO.
+                    Vocês vão dar comandos para um robô que tem defeito de fábrica. Tragam vendas para os olhos!"</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 23</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Checklist visual com ícones grandes e cores (verde=certo, vermelho=bug).
+                    Sequência fixa (sempre os 5 passos na mesma ordem). Oferecer fones para o Desafio do Cronômetro.
+                  </li>
+                  <li><strong>TDAH:</strong> Cronômetro VISUAL (ampulheta) em vez de sonoro. Dividir os 5 min em 5
+                    blocos de 1 min (um passo por minuto). Recompensa a cada bug encontrado (não só no final).</li>
+                  <li><strong>Deficiência Física:</strong> Checklist plastificada pode ser manipulada com apoio de mesa.
+                    Aluno pode apontar os bugs no algoritmo e o colega escreve. Cronômetro com alerta visual (luz
+                    piscando).</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio: criar uma checklist para DEPURAÇÃO FÍSICA (robôs de
+                    sucata). Encontrar bugs que NÃO estão na checklist e propor novos passos.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 23 – "O Juramento do Detetive" (todos repetem no início da
+                    aula):</strong>
+                  <em>"Juro solenemente depurar cada algoritmo com a paciência de um monge, a lupa de um detetive e o
+                    grito de um papagaio. Nenhum bug escapará dos meus olhos. Nenhuma variável ficará sem verificação.
+                    EU SOU UM DETETIVE DE BUGS!" (Todos batem a mão na mesa ao final.) 👊</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 24 ==================== -->
+        <div class="accordion-item" data-semana="24">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana24">
+              🤖 Semana 24 – Jogo do Robô Avariado: Depuração em Equipe
+            </button>
+          </h2>
+          <div id="semana24" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="24" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Aplicação</td>
+                        <td>Cooperar para depurar um robô (humano) que executa comandos errados (bug de hardware).</td>
+                      </tr>
+                      <tr>
+                        <td>Síntese</td>
+                        <td>Aplicar a checklist em tempo real (enquanto o robô anda).</td>
+                      </tr>
+                      <tr>
+                        <td>Colaboração</td>
+                        <td>Desenvolver comunicação clara sob pressão (e gritos organizados).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Depuração em tempo real (hardware com defeito). Adaptação a bugs físicos (troca direita/esquerda,
+                  anda o dobro, eco). Trabalho em equipe e comunicação precisa.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identificar artefatos simples do cotidiano e suas funções</td>
+                        <td>EF03CI01</td>
+                      </tr>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Consertador de Robôs Avariados)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Venda para os olhos (tira de tecido
+                    escuro ou máscara de dormir) – 1 por equipe</span>
+                  <span class="material-badge"><i class="bi bi-cubes"></i> Obstáculos (cadeiras, cones, caixas, livros,
+                    mochilas) – vários</span>
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartões de comando (opcional: setas,
+                    números, palavra "repita") – 1 conjunto</span>
+                  <span class="material-badge"><i class="bi bi-megaphone"></i> Apito – 1</span>
+                  <span class="material-badge"><i class="bi bi-check2-square"></i> Checklist de depuração (impressa, da
+                    semana 23) – 1 por equipe</span>
+                  <span class="material-badge"><i class="bi bi-incognito"></i> Cartões de bug secreto (descrição do
+                    defeito) – 1 por robô</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identifica qual é o bug do robô em até 3 tentativas</td>
+                        <td>Descoberta do Bug</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Adapta os comandos para contornar o bug e chegar ao final do percurso</td>
+                        <td>Adaptação</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Todos os membros participam da depuração e comunicação (ninguém fica de fora)</td>
+                        <td>Trabalho em Equipe</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"APRESENTAÇÃO DO JOGO (O ROBÔ QUE VEIO COM DEFEITO DE
+                      FÁBRICA)"</strong><br>Professor com voz de locutor de programa de robótica: "Cada equipe terá um
+                    robô (aluno vendado) com um BUG DE FÁBRICA. Pode ser: troca direita por esquerda, anda o dobro do
+                    comando, ou só escuta comandos repetidos duas vezes." Os outros dois alunos são programadores.
+                    Recebem um algoritmo padrão (correto) para ir do ponto A ao ponto B (percurso de 5 metros com 2
+                    obstáculos). Desafio: como o robô tem bug, os programadores precisam depurar os comandos NA HORA,
+                    enquanto o robô anda. Demonstração rápida (professor + voluntário): professor faz de robô com bug de
+                    inversão – diz "Vire à direita" e o robô vira à esquerda. "Viu? Agora nós precisamos mandar 'vire à
+                    esquerda' para ele ir para a direita!"</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"PREPARAÇÃO E ATRIBUIÇÃO DE BUGS (CADA ROBÔ TEM UM
+                      DEFEITO)"</strong><br>Dividir a turma em equipes de 3 alunos. Cada equipe sorteia um bug (o
+                    professor entrega um cartão secreto para o robô):<br>• Bug 1 – "ESPELHO MALUCO": se ouvir "vire à
+                    direita", vira à esquerda.<br>• Bug 2 – "PASSOS DE GIGANTE": se ouvir "ande 1", anda 2 passos.<br>•
+                    Bug 3 – "PAPAGAIO TRAVADO": só obedece se o comando for dito duas vezes (eco).<br>Robô (vendado)
+                    memoriza seu bug. Programadores NÃO SABEM qual é – precisam descobrir testando. Setup do percurso:
+                    [INÍCIO] → (cadeira) → (livro) → [CHEGADA] (5 metros, 2 obstáculos para desviar).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"EXECUÇÃO E DEPURAÇÃO (O CAOS CONTROLADO)"</strong><br>Regras do
+                    jogo:<br>1. Robô vendado no início da pista.<br>2. Programadores dão comandos em voz alta: "ande 1",
+                    "vire à direita", etc.<br>3. Observam o comportamento do robô e identificam o bug.<br>4. Ajustam os
+                    comandos seguintes para contornar o bug (ex: para andar 1 passo, mandam "ande 0.5" ou adaptam
+                    contagem).<br>5. Tempo máximo: 10 minutos para chegar ao final.<br>6. Se não conseguir, o grupo pode
+                    pedir uma dica (professor revela o bug).<br>Papel do professor: circular, observar, não dar
+                    respostas prontas, fazer perguntas como "O que o robô fez diferente do que vocês mandaram? Que
+                    padrão vocês estão percebendo?" Exemplo de diálogo: "Ande 1!" → robô anda 2 passos. "Ué, ele andou o
+                    dobro! Será que é o bug do dobro? Vamos testar de novo!"</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"RODA DOS BUGS DESCOBERTOS (O QUE APRENDEMOS?)"</strong><br>Cada
+                    equipe compartilha: "Qual era o bug do nosso robô? Como a gente descobriu? Como a gente se adaptou?"
+                    Discussão final conduzida pelo professor: "Na programação real, às vezes o bug não está no código,
+                    mas no HARDWARE (o robô físico). Por isso a gente TESTA antes de confiar." Perguntas reflexivas: "O
+                    que foi mais difícil: descobrir o bug ou se adaptar a ele? Como a checklist ajudou (ou poderia
+                    ajudar) nesse processo? Se o robô tivesse DOIS bugs ao mesmo tempo, como vocês fariam?" Entregas:
+                    Certificado "EQUIPE DE DEPURAÇÃO DE ELITE" para todos. Adesivo "DOMADOR DE ROBÔS AVARIADOS". Anúncio
+                    da próxima semana: "Semana que vem: Vamos criar um MANUAL DO DETETIVE DE BUGS para ensinar os alunos
+                    do 2º ano. Tragam canetinhas e criatividade."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 24</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Antecipar todas as regras visualmente (cartaz com os 3 tipos de bug e seus
+                    efeitos). Evitar gritos; usar sinais combinados (luz piscando para indicar início/fim). Permitir que
+                    o aluno com TEA seja o "coordenador da depuração" (não o robô vendado, para evitar estresse
+                    sensorial).</li>
+                  <li><strong>TDAH:</strong> Mudar os papéis a cada 5 minutos (robô → programador → observador). Usar
+                    cronômetro VISUAL (ampulheta grande) para cada rodada. Recompensa imediata (adesivo) a cada
+                    obstáculo superado.</li>
+                  <li><strong>Deficiência Física (motora):</strong> Aluno com dificuldade de locomoção pode ser o
+                    "programador chefe" (dá comandos verbais). Robô pode ser empurrado em cadeira de rodas (adaptar
+                    comandos: "empurre 1 vez"). Percurso adaptado (sem obstáculos altos, espaço livre).</li>
+                  <li><strong>Deficiência Visual:</strong> Aluno com DV pode ser o robô (já está vendado – a venda não é
+                    necessária). Comandos verbais são o principal canal. Obstáculos com texturas diferentes (tapete,
+                    papelão, tecido) para feedback tátil.</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio: criar um QUARTO BUG (ex: "robô que anda para trás") e
+                    testar com a equipe. Ser o robô com DOIS bugs simultâneos (ex: espelho + dobro). Documentar a
+                    estratégia de depuração em um "relatório de campo".</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 24 – "O Grito de Guerra do Robô Avariado" (todos gritam antes
+                    de começar):</strong>
+                  <em>"Robô bugado, robô teimoso, vamos te consertar! Comando errado? A gente adapta! Direita ou
+                    esquerda? A gente se vira! BUG, BUG, BUG... VAI PRO INFERNO, BUG!" 🔧🤖💥</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 25 ==================== -->
+        <div class="accordion-item" data-semana="25">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana25">
+              📘 Semana 25 – Projeto: Manual do Detetive de Bugs
+            </button>
+          </h2>
+          <div id="semana25" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="25" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Criação</th>
+                        <td>Produzir um guia ilustrado com dicas de depuração (texto instrucional).</td>
+                      </tr>
+                      <tr>
+                        <td>Aplicação</th>
+                        <td>Aplicar conhecimentos de linguagem clara e ilustração didática.</td>
+                      </tr>
+                      <tr>
+                        <td>Comunicação</th>
+                        <td>Compartilhar o guia com alunos do 2º ano (ou famílias na feira).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Texto instrucional (características: verbos no imperativo, sequência lógica, linguagem clara).
+                  Linguagem clara e acessível para crianças menores. Ilustração didática (setas, balões, ícones).
+                  Compartilhamento e feedback.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Produzir textos com coesão sequencial</td>
+                        <td>EF03LP21</td>
+                      </tr>
+                      <tr>
+                        <td>Reconhecer padrões e repetições em algoritmos</td>
+                        <td>COMP-PC03</td>
+                      </tr>
+                      <tr>
+                        <td>Pensamento computacional, criatividade e resolução de problemas</td>
+                        <td>Competência Geral 5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Editor de Manuais)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-card-image"></i> Cartolinas (meio A4 ou A4) – 1 por
+                    aluno</span>
+                  <span class="material-badge"><i class="bi bi-marker-tip"></i> Canetinhas coloridas – 1 conjunto por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-pencil"></i> Lápis de cor / giz de cera – 1 conjunto por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-journal"></i> Revistas velhas para recorte – 1 pilha para
+                    a turma</span>
+                  <span class="material-badge"><i class="bi bi-stapler"></i> Grampeador – 1 para o professor</span>
+                  <span class="material-badge"><i class="bi bi-file-post"></i> Exemplo de manual (professor faz
+                    antecipadamente) – 1</span>
+                  <span class="material-badge"><i class="bi bi-scissors"></i> Tesoura com ponta redonda – 1 por
+                    dupla</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Inclui todos os itens obrigatórios (o que é bug, 3 tipos de bug, checklist, 1 exemplo)</td>
+                        <td>Conteúdo Completo</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Usa desenhos, setas, balões de diálogo para explicar os conceitos (legível para um aluno de
+                          2º ano)</td>
+                        <td>Clareza Visual</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>O guia é compreendido por um colega (ou por um aluno convidado do 2º ano) sem explicação
+                          adicional</td>
+                        <td>Compartilhamento</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"DEFINIÇÃO DO GUIA (O QUE VAI TER?)"</strong><br>Professor
+                    mostra um exemplo de manual pronto (feito por ele ou por aluno de ano anterior). "Hoje vamos criar o
+                    MANUAL DO DETETIVE DE BUGS para os alunos do 2º ano. Eles não sabem o que é bug, loop, variável.
+                    Vocês vão ensinar." Conteúdo obrigatório (escrito no quadro):<br>• Capa: título "Manual do Detetive
+                    de Bugs" + autor + desenho<br>• Página 1: O que é um bug? (com desenho de inseto ou erro)<br>•
+                    Página 2: Os 3 tipos de bug de loop (nanico, gigante, zumbi) com desenhos<br>• Página 3: A checklist
+                    de depuração (5 itens, pode ser em tópicos)<br>• Página 4: Exemplo prático (algoritmo com bug +
+                    correção)<br>• Contracapa: frase "Errar é humano, depurar é divino" + assinatura<br>Formato
+                    sugerido: folha A4 dobrada ao meio (livreto de 4 páginas) ou 2 folhas grampeadas (8 páginas).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-30 min</span>
+                  <div class="minuto-descricao"><strong>"PRODUÇÃO INDIVIDUAL (MÃO NA MASSA)"</strong><br>Cada aluno cria
+                    seu próprio manual (pode ser em duplas conforme ritmo da turma). Etapas com cronômetro:<br>• 2 min –
+                    Planejamento: esboçar onde vai cada coisa (lápis)<br>• 5 min – Capa: título grande, desenho do
+                    Detetive Bugs<br>• 5 min – Página 1: definir bug + desenho de inseto<br>• 5 min – Página 2: desenhar
+                    robô anão, gigante, zumbi<br>• 5 min – Página 3: escrever 5 itens da checklist com ícones<br>• 5 min
+                    – Página 4: algoritmo bugado + correção<br>• 3 min – Revisão: ler em voz alta para si
+                    mesmo<br>Professor circula, auxilia com ortografia (palavras como "depuração", "algoritmo"), layout
+                    e ideias criativas (personagens, balões de diálogo). Exemplo de página 1:<br>🔍 O QUE É UM
+                    BUG?<br>Bug é um ERRO no algoritmo. Ele faz o robô fazer algo ERRADO.<br>[desenho de robô confuso
+                    com interrogação na cabeça]<br>"BUG não é vergonha. BUG é PISTA!" – Detetive Bugs</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-45 min</span>
+                  <div class="minuto-descricao"><strong>"COMPARTILHAMENTO EM DUPLAS (TESTE DE
+                      USABILIDADE)"</strong><br>Dinâmica:<br>1. Trocam manuais entre duplas.<br>2. Cada aluno lê o
+                    manual do colega SEM pedir explicação (teste se está claro).<br>3. Depois, responde: "O manual do
+                    colega está claro? Faltou alguma dica? O que você não entendeu?"<br>Formulário de feedback (para o
+                    leitor preencher):<br>FEEDBACK DO LEITOR<br>Manual do colega: _______________<br>✅ Eu entendi
+                    tudo!<br>⚠️ Não entendi a parte de...<br>💡 Sugestão de melhoria: _______________<br>Assinatura do
+                    leitor: _______________<br>Melhorias: cada aluno pode fazer melhorias com base no feedback (escrever
+                    algo a mais, redesenhar). Professor seleciona 3 manuais para: copiar e distribuir para o 2º ano,
+                    expor na feira de robótica, enviar para as famílias (orgulho máximo).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao"><strong>"EXPOSIÇÃO DOS MANUAIS (MURAL DO DETETIVE)"</strong><br>Montagem
+                    do mural: todos os manuais pendurados em um varal (barbante + prendedores) ou presos na parede com
+                    fita crepe. Professor tira fotos. Premiação especial:<br>🏆 "MELHOR ILUSTRAÇÃO DE BUG" – desenho
+                    mais criativo (ex: bug com olhos de inseto, loop zumbi com caveira)<br>🏆 "MANUAL MAIS CLARO" –
+                    texto mais fácil de entender<br>🏆 "DICA MAIS ENGRAÇADA" – exemplo mais divertido<br>Anúncio da
+                    próxima semana: "Semana que vem: Vamos DEPURAR O MUNDO REAL! Receitas de bolo, manuais de montagem,
+                    mapas. Tudo pode ter bug."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 25</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Oferecer modelo pré-impresso com espaços para preencher (em vez de criar do
+                    zero). Usar fontes grandes e contraste alto. Evitar muitos elementos visuais na mesma página.</li>
+                  <li><strong>TDAH:</strong> Dividir a produção em etapas curtas com recompensa visual (riscar a etapa
+                    concluída). Usar cronômetro para cada etapa (pressão positiva). Permitir que o aluno faça um manual
+                    DIGITAL (se houver tablet/computador).</li>
+                  <li><strong>Deficiência Física (motora):</strong> Oferecer modelos pré-impressos para recortar e colar
+                    (em vez de desenhar). Aluno pode ditar o texto e o professor/colega escreve. Usar carimbos ou
+                    adesivos prontos para ilustrar.</li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Folhas com linhas grossas e alto contraste.
+                    Permitir uso de lupas ou tablets com zoom. Manual em formato ampliado (A3).</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio: criar um manual BILÍNGUE (português e inglês para
+                    termos técnicos). Criar uma VERSÃO INTERATIVA (com abas, pop-ups, QR code para vídeo). Incluir um
+                    "BUG ENIGMA" para o leitor resolver sozinho.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 25 – "O Juramento do Editor":</strong>
+                  <em>"Um bom manual é como um bom algoritmo: claro, passo a passo e sem bugs. Hoje eu vou ensinar o
+                    mundo a depurar!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 26 ==================== -->
+        <div class="accordion-item" data-semana="26">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana26">
+              🍰 Semana 26 – Depurando o Mundo Real
+            </button>
+          </h2>
+          <div id="semana26" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="26" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Aplicação</th>
+                        <td>Transferir conceitos de depuração para situações do cotidiano (fora do computador).</td>
+                      </tr>
+                      <tr>
+                        <td>Análise</th>
+                        <td>Identificar erros lógicos em textos não computacionais (receitas, manuais, instruções).</td>
+                      </tr>
+                      <tr>
+                        <td>Criação</td>
+                        <td>Reescrever instruções corretamente.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Transferência de conceitos (depuração não é só para códigos). Depuração de instruções cotidianas.
+                  Pensamento crítico sobre instruções escritas.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identificar e reproduzir textos injuntivos instrucionais (receitas, manuais)</td>
+                        <td>EF03LP16</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar artefatos simples do cotidiano e suas funções</td>
+                        <td>EF03CI01</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Detetive do Mundo Real)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-cake"></i> Receitas culinárias com erros propositais
+                    (impressas, 3 versões diferentes)</span>
+                  <span class="material-badge"><i class="bi bi-tools"></i> Manual de montagem de brinquedo com etapas
+                    trocadas (1 por dupla, pode ser fotocópia)</span>
+                  <span class="material-badge"><i class="bi bi-map"></i> Mapa da escola com erros (ex: "biblioteca" no
+                    lugar da "sala de informática")</span>
+                  <span class="material-badge"><i class="bi bi-pen"></i> Canetas vermelhas (1 por aluno)</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupas de brinquedo (do kit anterior)</span>
+                  <span class="material-badge"><i class="bi bi-clipboard"></i> Pranchetas (opcional, para apoiar a
+                    escrita)</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Encontra todos os bugs na receita (mínimo 3 bugs) e explica por que são bugs</td>
+                        <td>Identificação em Receitas</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Reordena corretamente as etapas do manual de montagem (ordem lógica)</td>
+                        <td>Correção de Manual</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Compartilha o bug mais absurdo que encontrou com a turma</td>
+                        <td>Apresentação</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"O BOLO QUE EXPLODIU" (Conto dramático)</strong><br>Professor
+                    com voz de locutor de programa policial: "Minha avó, coitada, seguiu uma receita que dizia 'leve ao
+                    forno a -10°C'. O bolo CONGELOU! Isso é um BUG na receita. Um bug GRAVÍSSIMO." "Erros em instruções
+                    não acontecem só com robôs, mas com receitas, manuais, até mapas. Hoje vocês vão ser detetives do
+                    MUNDO REAL." Pergunta provocadora: "Quem aqui já seguiu uma instrução que deu errado? O que
+                    aconteceu?" (Alunos compartilham experiências – 2-3 minutos).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"CAÇA AOS BUGS NA RECEITA (O BOLO DESASTRADO)"</strong><br>Cada
+                    dupla recebe uma receita com 3 bugs (ou mais). Exemplo de receita bugada:<br>RECEITA DO SANDUÍCHE
+                    MALUCO<br>1. Pegue duas fatias de pão.<br>2. Adicione o queijo (sem tirar da embalagem). ← BUG
+                    1<br>3. Leve ao micro-ondas por 0 minutos. ← BUG 2<br>4. Repita 10 vezes: coma um pedaço ← BUG 3
+                    (mesmo se não tiver sanduíche)<br>5. Sirva gelado (mas não tem geladeira). ← BUG 4<br>Os 4 bugs
+                    identificáveis:<br>1. Queijo na embalagem (não dá pra comer)<br>2. Tempo 0 minutos (não aquece
+                    nada)<br>3. Repetir 10 vezes para comer algo que não existe (loop gigante desnecessário)<br>4.
+                    "Sirva gelado" sem ter gelado (instrução impossível)<br>Procedimento: alunos marcam com caneta
+                    vermelha cada bug e escrevem a versão corrigida no verso.<br>Versão corrigida (exemplo):<br>1. Pegue
+                    duas fatias de pão.<br>2. Tire o queijo da embalagem e coloque sobre o pão.<br>3. Leve ao
+                    micro-ondas por 30 segundos.<br>4. Coma o sanduíche (uma vez só).<br>5. Sirva quente.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"DEPURAÇÃO DE MANUAL DE MONTAGEM (A CASA QUE VEIO
+                      DESMONTADA)"</strong><br>Fornecem um manual de montagem de uma casinha de papel (ou de um
+                    brinquedo simples) com etapas trocadas.<br>Exemplo do manual bugado:<br>INSTRUÇÕES PARA MONTAR A
+                    CASINHA (MONTAGEM EM PAPEL)<br>1. Cole o telhado. ← BUG (ordem)<br>2. Monte as paredes. ← BUG
+                    (telhado antes das paredes não fica em pé)<br>3. Coloque a porta.<br>4. Pinte as janelas (antes de
+                    montar). ← Pode ser ok, mas é estranho<br>Atividade:<br>1. Alunos reordenam as etapas (numeram de 1
+                    a 4 na ordem correta)<br>2. Escrevem um novo manual no verso<br>Ordem correta:<br>1. Monte as
+                    paredes.<br>2. Cole o telhado.<br>3. Coloque a porta.<br>4. Pinte as janelas (depois de montar é
+                    mais fácil).<br>Variação: Para grupos mais avançados, usar um manual de montagem de móvel (ex:
+                    prateleira, cadeira) com 5-6 etapas.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"COMPARTILHAMENTO E REFLEXÃO (O BUG MAIS
+                      ABSURDO)"</strong><br>Roda de conversa: Cada dupla apresenta o bug mais absurdo que
+                    encontrou:<br>"Na receita, o micro-ondas era 0 minutos!" "O manual mandava colar o telhado no chão!"
+                    "O mapa botava a biblioteca onde é o banheiro!"<br>Professor conclui: "Programar não é só sobre
+                    computadores. TODO LUGAR com instruções tem chance de bug. Vocês são detetives profissionais do
+                    mundo real."<br>Pergunta final (para casa ou reflexão): "Encontrem um bug em casa hoje! Pode ser na
+                    receita da janta, no manual do videogame, nas instruções do dever de casa. Tragam na próxima
+                    aula!"<br>Anúncio da próxima semana: "Semana que vem: CAÇA AO TESOURO DOS BUGS! Vamos resolver
+                    pistas com bugs escondidos. O tesouro é... CHOCOLATE (de novo, porque vocês merecem)."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 26</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Receitas e manuais com layout limpo (pouca informação por linha). Usar cores
+                    diferentes para cada tipo de bug (azul=ordem, vermelho=impossível, amarelo=desnecessário). Oferecer
+                    versão com símbolos (🚫 para bug, ✅ para correção).</li>
+                  <li><strong>TDAH:</strong> Cada atividade (receita, manual, mapa) em uma folha separada (não
+                    acumular). Pausa de 1 min entre cada atividade para "resetar o cérebro". Usar cronômetro visual para
+                    cada etapa.</li>
+                  <li><strong>Deficiência Física:</strong> Receitas e manuais em folha ampliada (A3) para facilitar
+                    leitura e marcação. Aluno pode ditar os bugs e correções. Caneta vermelha com pegada ergonômica.
+                  </li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Fontes ampliadas (mínimo 16pt). Alto contraste
+                    (papel amarelo com texto preto). Lupas de mesa ou tablets com zoom.</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio: criar uma receita com 5 bugs para o colega depurar.
+                    Escrever um manual de montagem de um robô de sucata com erros propositais. Comparar diferentes tipos
+                    de bug entre receita, manual e mapa (criar uma taxonomia).</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 26 – "O Juramento do Detetive do Mundo Real" (todos
+                    repetem):</strong>
+                  <em>"Juro solenemente desconfiar de toda receita que diz 'leve ao forno a -10°C'. Juro questionar
+                    manuais que mandam colar o telhado antes das paredes. E juro, acima de tudo, que NENHUMA INSTRUÇÃO
+                    ESCAPARÁ DA MINHA LUPA!" (Todos fingem colocar uma lupa no olho e fazem "Hmmmm..." investigativo.)
+                    🔍</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 27 ==================== -->
+        <div class="accordion-item" data-semana="27">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana27">
+              🏴‍☠️ Semana 27 – Caça ao Tesouro dos Bugs
+            </button>
+          </h2>
+          <div id="semana27" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="27" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Resolução de problemas</td>
+                        <td>Resolver um quebra-cabeça com 5 pistas, cada uma contendo um bug a ser corrigido para
+                          avançar.</td>
+                      </tr>
+                      <tr>
+                        <td>Análise</td>
+                        <td>Identificar e corrigir diferentes tipos de bugs (loop, variável, ordem, sintaxe) em pistas
+                          sucessivas.</td>
+                      </tr>
+                      <tr>
+                        <td>Colaboração</td>
+                        <td>Trabalhar em equipe sob pressão de tempo (competição saudável) para chegar ao tesouro
+                          primeiro.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Resolução de problemas com múltiplos bugs encadeados. Tipos de bug misturados (loop, variável, ordem,
+                  sintaxe). Trabalho colaborativo sob pressão. Recompensa tangível (chocolate) como incentivo.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Utilizar unidades de medida de comprimento e localização</td>
+                        <td>EF03MA22</td>
+                      </tr>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Decompor problemas em partes menores</td>
+                        <td>COMP-PC02</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Caçador de Tesouros)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-pin-map"></i> 5 pistas impressas (cada uma com um bug) –
+                    1 conjunto por equipe</span>
+                  <span class="material-badge"><i class="bi bi-chocolate"></i> Tesouro final: chocolate (ou outro
+                    prêmio) – 1 por aluno vencedor</span>
+                  <span class="material-badge"><i class="bi bi-hourglass-split"></i> Cronômetro (para marcar o tempo de
+                    cada equipe)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Folhas de correção (para anotar as
+                    respostas)</span>
+                  <span class="material-badge"><i class="bi bi-trophy"></i> Certificado "Caçador de Tesouros de
+                    Elite"</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Resolve todas as 5 pistas (corrige todos os bugs) corretamente</td>
+                        <td>Precisão na Depuração</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Termina o percurso entre os 3 primeiros lugares (ou dentro do tempo limite de 20 min)</td>
+                        <td>Velocidade</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Trabalha em equipe sem conflitos, dividindo as tarefas (um lê, outro escreve, outro confere)
+                        </td>
+                        <td>Colaboração</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"APRESENTAÇÃO DA CAÇADA (O TESOURO ESTÁ PERDIDO... CHEIO DE
+                      BUGS)"</strong><br>Professor com chapéu de pirata ou usando tapa-olho de brinquedo: "Caros
+                    detetives, recebemos um mapa do tesouro! Mas ele está CHEIO DE BUGS. Cada pista tem um erro. Vocês
+                    precisam DEPURAR a pista para descobrir onde está a PRÓXIMA pista. No final, o tesouro: CHOCOLATE!
+                    (ou outro prêmio). A primeira equipe que chegar ao final, com todas as pistas corretas, vence!"
+                    Divide a turma em equipes de 3-4 alunos. Cada equipe recebe o envelope com a Pista 1. Explica-se que
+                    as pistas estão escondidas pela sala (ou escola) – após corrigir o bug da pista atual, eles
+                    descobrem a localização da próxima pista.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-40 min</span>
+                  <div class="minuto-descricao"><strong>"CORRIDA CONTRA O RELÓGIO (AS 5 PISTAS
+                      BUGADAS)"</strong><br><strong>Pista 1 (Bug de loop nanico):</strong> "O próximo passo está a 3
+                    passos à frente. Mas o algoritmo diz: repita 2 vezes: ande 1." → Alunos devem corrigir para "repita
+                    3 vezes" e andar 3 passos até o local indicado (ex: perto da estante de livros).<br><strong>Pista 2
+                      (Bug de variável):</strong> "Vá até a sala onde a temperatura é 25°C, mas a variável está com
+                    30°C. Onde é?" → Mapa da escola com local marcado com número errado. Corrigir e ir até a sala de
+                    informática (ou outro local).<br><strong>Pista 3 (Bug de ordem):</strong> Instruções: "Vire à
+                    esquerda, ande 2, vire à direita, ande 1" → A ordem está trocada. Corrigir e ir até o
+                    pátio.<br><strong>Pista 4 (Bug de sintaxe):</strong> "repita 4: pule" (falta a palavra "vezes") →
+                    Corrigir para "repita 4 vezes" e pular 4 vezes no lugar indicado (ex: perto da mesa do
+                    professor).<br><strong>Pista 5 (Bug de loop zumbi):</strong> "repita até chegar ao tesouro: ande 1"
+                    (sem condição de parada real) → Adicionar condição (ex: "repita 10 vezes") e andar até o baú do
+                    tesouro (caixa decorada com chocolate).<br>O professor circula, verifica se as correções estão
+                    certas antes de autorizar a ida à próxima pista. Cada equipe tem um cronômetro interno (o professor
+                    anota o tempo de chegada).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"PREMIAÇÃO E RODA DE REFLEXÃO"</strong><br>Todas as equipes que
+                    chegam ao tesouro ganham chocolate (ou prêmio simbólico). A equipe vencedora (mais rápida) ganha
+                    certificado "Caçador de Tesouros de Elite". Roda de conversa: "Qual foi a pista mais difícil? Por
+                    quê?" "Como vocês se organizaram na equipe?" "O que aconteceria se vocês não tivessem corrigido um
+                    bug?" Professor conclui: "Na programação real, um bug pode te levar para o lugar errado. Por isso a
+                    gente DEPURA antes de sair correndo. Hoje vocês foram caçadores de tesouros e detetives ao mesmo
+                    tempo. Parabéns!" Anúncio da próxima semana: "Semana que vem: Vamos ser ARQUEÓLOGOS! Vamos depurar
+                    algoritmos ANTIGOS (de anos anteriores). Tragam seus chapéus de explorador."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 27</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Fornecer um mapa visual simplificado com os locais marcados por cores.
+                    Evitar barulho excessivo durante a competição. Permitir que o aluno use fones se necessário. As
+                    pistas podem ser lidas em voz alta pelo professor.</li>
+                  <li><strong>TDAH:</strong> Dividir a caçada em etapas bem definidas, com recompensa imediata a cada
+                    pista resolvida (adesivo). Usar cronômetro visual (ampulheta grande) para cada pista. Permitir
+                    pausas curtas entre as pistas.</li>
+                  <li><strong>Deficiência Física (motora):</strong> As pistas podem ser resolvidas na própria sala (sem
+                    deslocamento), com o professor anunciando os locais. Aluno pode ditar as correções para o colega
+                    anotar. Tesouro entregue na carteira.</li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Pistas em fonte ampliada (20pt) e alto
+                    contraste. Descrever os locais verbalmente. Tesouro com sininho para localização por som.</li>
+                  <li><strong>Altas Habilidades:</strong> Criar uma PISTA BÔNUS (6ª pista) com bug duplo para os mais
+                    rápidos. Desafio extra: os alunos criam uma pista bugada para o professor resolver.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 27 – "Canção do Caçador de Tesouros" (cantar antes de
+                    começar):</strong>
+                  <em>🎵 "Vou caçar o tesouro, vou depurar o bug / Com minha equipe forte, ninguém vai me segurar /
+                    Pista errada? Corrijo logo / Bug no caminho? Eu esmago com o pé! / CHOCOLATE, LÁ VOU EU!" 🍫🐛</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 28 ==================== -->
+        <div class="accordion-item" data-semana="28">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana28">
+              🏛️ Semana 28 – Robô Arqueólogo: Depurando Algoritmos Antigos
+            </button>
+          </h2>
+          <div id="semana28" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="28" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th< /tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Análise</td>
+                        <td>Identificar erros em algoritmos de anos anteriores (códigos "antigos" com bugs clássicos).
+                          </td< /tr>
+                      <tr>
+                        <td>Aplicação</td>
+                        <td>Restaurar (corrigir) algoritmos históricos para que funcionem corretamente.</td< /tr>
+                      <tr>
+                        <td>Valorização</td>
+                        <td>Compreender que a depuração é uma habilidade que se aplica a qualquer código, mesmo antigo.
+                          </td< /tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Análise de algoritmos legados (simulando códigos antigos). Identificação de bugs comuns em
+                  programação desplugada. Restauração e validação de funcionalidade. Pensamento computacional
+                  retrospectivo.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreender a ideia de repetição em padrões</td>
+                        <td>EF03MA11</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Reconhecer padrões e repetições em algoritmos</td>
+                        <td>COMP-PC03</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Arqueólogo de Códigos)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-archive"></i> "Pergaminhos antigos" (algoritmos impressos
+                    em papel envelhecido/café) – 3 versões por dupla</span>
+                  <span class="material-badge"><i class="bi bi-loupe"></i> Lupa (do kit anterior)</span>
+                  <span class="material-badge"><i class="bi bi-pencil"></i> Caneta "tinteiro" (azul ou preta) para
+                    anotar correções</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Folha de registro arqueológico
+                    (prontuário adaptado)</span>
+                  <span class="material-badge"><i class="bi bi-trophy"></i> Selo "Arqueólogo de Códigos"</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Encontra todos os bugs em pelo menos 2 dos 3 algoritmos antigos</td>
+                        <td>Identificação Histórica</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Corrige os algoritmos de modo que eles executem a tarefa original pretendida</td>
+                        <td>Restauração Funcional</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Registra as descobertas na "Ficha Arqueológica" (local do bug, tipo, correção)</td>
+                        <td>Documentação</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"A DESCOBERTA DO SÍTIO ARQUEOLÓGICO (APRESENTAÇÃO
+                      TEMÁTICA)"</strong><br>Professor vestindo um chapéu de explorador (ou usando uma bússola de
+                    brinquedo): "Caros detetives, hoje mudamos de profissão: seremos ARQUEÓLOGOS DE CÓDIGOS. Escavamos
+                    um sítio antigo e encontramos pergaminhos com algoritmos escritos por alunos do passado (do 2º ano,
+                    ano passado). Eles estão CHEIOS DE BUGS. Nossa missão: restaurar esses códigos para que funcionem
+                    como deveriam." Mostra um exemplo de "pergaminho" (papel envelhecido) com um algoritmo bugado.
+                    Explica que cada dupla receberá 3 algoritmos antigos para depurar.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"ESCAVAÇÃO INDIVIDUAL (DEPURAÇÃO DOS
+                      PERGAMINHOS)"</strong><br>Cada dupla recebe 3 algoritmos antigos (diferentes).
+                    Exemplos:<br><strong>Pergaminho 1 (escada bugada – do ano passado):</strong> "degrau = 1; repita 5
+                    vezes: ande degrau; vire à direita; ande 1; vire à esquerda; degrau = degrau - 1" (deveria desenhar
+                    escada com degraus crescentes). Bugs: variável diminuindo (deveria aumentar), ordem de viradas
+                    errada.<br><strong>Pergaminho 2 (soma de números – do 1º bimestre):</strong> "soma = 1; contador =
+                    1; repita 4 vezes: soma = soma + contador; contador = contador - 1; mostrar soma" (deveria somar 1 a
+                    5). Bugs: soma começa em 1 (deveria 0), repita 4 (deveria 5), contador diminuindo (deveria
+                    +1).<br><strong>Pergaminho 3 (desenho de quadrado – do 2º ano):</strong> "repita 3 vezes: ande 3;
+                    vire 90 graus" (deveria desenhar quadrado). Bug: loop nanico (3 em vez de 4).<br>Alunos usam a lupa,
+                    marcam os bugs com caneta vermelha e escrevem a correção ao lado. Preenchem a "Ficha Arqueológica"
+                    com localização do bug, tipo e correção.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"MUSEU DOS ALGORITMOS RESTAURADOS (COMPARTILHAMENTO E
+                      VALIDAÇÃO)"</strong><br>Cada dupla escolhe 1 dos 3 pergaminhos para apresentar à turma. Explicam:
+                    "Qual era o bug? Como corrigimos? O algoritmo restaurado faz o quê?" Professor (ou outro grupo)
+                    valida se a correção está correta e se o algoritmo agora cumpre sua função original. Os pergaminhos
+                    corrigidos são afixados em um mural "MUSEU DE ALGORITMOS RESTAURADOS". Os melhores trabalhos ganham
+                    selo "Arqueólogo de Códigos". Discussão: "Por que é importante saber depurar algoritmos antigos? O
+                    que aprendemos com os erros do passado?"</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"DESAFIO EXTRA: O CÓDIGO MAIS ANTIGO
+                      (OPCIONAL)"</strong><br>Professor revela um "pergaminho ultra-antigo" (simulando código de alunos
+                    de anos anteriores ainda mais remotos) com 4 ou 5 bugs complexos. As duplas que terminarem mais
+                    rápido podem tentar restaurá-lo. A primeira dupla que corrigir todos os bugs ganha um adesivo
+                    "Mestre Arqueólogo". Ao final, roda de conversa sobre a experiência: "O que foi mais difícil em
+                    restaurar códigos antigos? Como saber o que o algoritmo deveria fazer?" Anúncio da próxima semana:
+                    "Semana que vem: Vamos consertar ROBÔS DE SUCATA com defeitos FÍSICOS! Rodas quadradas, braços
+                    invertidos... trazendo a depuração para o mundo real dos objetos."</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 28</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Pergaminhos com layout limpo, cada bug destacado por cor (ex: círculo
+                    vermelho ao redor da linha errada). Instruções escritas passo a passo. Evitar barulho excessivo.
+                  </li>
+                  <li><strong>TDAH:</strong> Dividir os 3 pergaminhos em etapas com recompensa a cada um concluído. Usar
+                    cronômetro visual de 5 minutos por pergaminho. Professor circula dando reforço positivo.</li>
+                  <li><strong>Deficiência Física (motora):</strong> Pergaminhos em folhas A3 para facilitar manuseio.
+                    Aluno pode ditar as correções. Caneta com pegada grossa.</li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Pergaminhos com fonte ampliada (18pt) e alto
+                    contraste. Descrição verbal dos algoritmos. Lupa eletrônica.</li>
+                  <li><strong>Altas Habilidades:</strong> Criar um "pergaminho falso" (com bugs intencionais) para os
+                    colegas depurarem. Comparar a evolução dos tipos de bug entre diferentes anos.</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 28 – "O Hino do Arqueólogo de Códigos":</strong>
+                  <em>"Pergaminho antigo, cheio de error / Com minha lupa, vou te restaurar / Loop que falta, variável
+                    ao contrário / Depuro, conserto, viro um arqueólogo vário!" 🏛️📜</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 29 ==================== -->
+        <div class="accordion-item" data-semana="29">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana29">
+              🔧 Semana 29 – Depuração com Sucata: Consertando Robôs com Defeitos Físicos
+            </button>
+          </h2>
+          <div id="semana29" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="29" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Aplicação</td>
+                        <td>Transferir conceitos de depuração para o mundo físico (hardware com defeito).</td>
+                      </tr>
+                      <tr>
+                        <td>Síntese</td>
+                        <td>Aplicar a checklist de inspeção física para identificar e corrigir defeitos em robôs de
+                          sucata.</td>
+                      </tr>
+                      <tr>
+                        <td>Criação</td>
+                        <td>Criar soluções criativas para consertar defeitos estruturais (rodas quadradas, braços
+                          invertidos, etc.) usando materiais simples.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Bugs físicos vs lógicos. Inspeção de hardware com checklist específica. Reparo criativo com materiais
+                  recicláveis (fita adesiva, papelão, cola, elásticos). Teste funcional e validação. Relação entre
+                  defeito físico e erro de algoritmo.</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identificar artefatos simples do cotidiano e suas funções</td>
+                        <td>EF03CI01</td>
+                      </tr>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais (checklist)</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções (depuração física)</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Hospital da Sucata)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-cpu"></i> Robôs de sucata pré-montados (caixas de sapato,
+                    garrafas PET, tampinhas, palitos, etc.) com defeitos propositais – 1 por grupo</span>
+                  <span class="material-badge"><i class="bi bi-clipboard-check"></i> Checklist de Inspeção Física
+                    (impressa) – 1 por grupo</span>
+                  <span class="material-badge"><i class="bi bi-tools"></i> Ferramentas: fita adesiva, cola quente (sob
+                    supervisão), tesoura, elásticos, palitos de picolé, papelão extra</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Folha de registro de reparos (prontuário
+                    adaptado para hardware)</span>
+                  <span class="material-badge"><i class="bi bi-stethoscope"></i> Adesivos "Engenheiro de Sucata"</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Completa a checklist de inspeção identificando pelo menos 3 dos 4 defeitos físicos do robô
+                        </td>
+                        <td>Inspeção Diagnóstica</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Executa pelo menos 2 reparos criativos que resolvem os defeitos (ex: endireitar braço,
+                          substituir roda)</td>
+                        <td>Conserto Funcional</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>O robô restaurado executa o algoritmo de teste (ex: andar 3 passos, girar braço) sem falhas
+                        </td>
+                        <td>Validação Final</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"HOSPITAL DA SUCATA – OS ROBÔS CHEGARAM AVARIADOS"
+                      (Apresentação)</strong><br>Professor com jaleco branco (ou avental) e estetoscópio de brinquedo:
+                    "Emergência! O Hospital da Sucata recebeu vários robôs com DEFEITOS FÍSICOS. Eles foram mal
+                    programados ou sofreram acidentes. Temos robô com roda QUADRADA, braço INVERTIDO, cabeça SOLTA e
+                    perna TORTA. Nossa missão: diagnosticar e CONSERTAR!" Mostra um robô de exemplo com defeitos
+                    visíveis. Explica que cada grupo receberá um robô doente, uma checklist de inspeção (física) e
+                    ferramentas para o conserto. A checklist tem itens como: "O robô fica em pé sozinho? As rodas são
+                    redondas e giram? Os braços se movem na direção certa? As juntas estão firmes? A cabeça está reta?"
+                  </div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"INSPEÇÃO E DIAGNÓSTICO (CHECKLIST FÍSICA)"</strong><br>Cada
+                    grupo recebe um robô de sucata com 3-4 defeitos propositais. Exemplos de defeitos:<br>• Roda
+                    quadrada (usar caixa de leite como roda) – não gira direito.<br>• Braço colado ao contrário
+                    (movimento para dentro em vez de para fora).<br>• Cabeça presa com elástico frouxo (balança e
+                    cai).<br>• Perna mais curta (robô manca).<br>• Junta colada com fita adesiva velha
+                    (solta).<br>Alunos preenchem a "Checklist de Inspeção Física" (modelo fornecido) marcando ✅ ou ❌
+                    para cada item e anotando os defeitos encontrados. Em seguida, discutem em grupo as possíveis
+                    soluções de reparo (usando materiais disponíveis). Professor circula, orienta perguntas: "O que
+                    impede o robô de andar? Como podemos deixar a roda mais redonda? Como fixar a cabeça sem colar de
+                    vez?"</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"CIRURGIA CRIATIVA (REPARO DOS DEFEITOS)"</strong><br>Alunos
+                    colocam a mão na massa: usam fita adesiva para reforçar juntas, substituem rodas quadradas por
+                    tampinhas redondas, invertem braços para a posição correta, ajustam cabeça com elásticos novos ou
+                    palitos de picolé para estrutura. Professor supervisiona o uso de cola quente (apenas o professor
+                    aplica). Cada grupo registra os reparos realizados na "Ficha de Reparo" (o que fizeram e por quê).
+                    Ao final, testam se o robô agora cumpre os requisitos básicos: ficar em pé, andar (se tiver rodas),
+                    mover braços na direção certa. Os grupos que terminam podem enfeitar o robô com adesivos ou desenhos
+                    (recompensa criativa).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"TESTE FUNCIONAL E DESFILE DOS ROBÔS
+                      RESTAURADOS"</strong><br>Professor define um "algoritmo de teste" simples para todos os robôs (ex:
+                    "ande 3 passos, gire o braço direito, pare"). Cada grupo apresenta seu robô restaurado, mostra o que
+                    foi consertado e executa o algoritmo de teste. A turma aplaude e avalia se o robô passou no teste.
+                    Professor entrega adesivos "Engenheiro de Sucata" para todos os participantes. Roda de reflexão:
+                    "Qual a diferença entre depurar um algoritmo e consertar um robô físico? O que foi mais difícil?
+                    Como vocês se sentiram ao ver o robô funcionando depois do conserto?" Conclusão: "Bugs podem estar
+                    no código ou no hardware. O importante é ter ferramentas (checklist, observação, criatividade) para
+                    resolver qualquer tipo de defeito." Anúncio da próxima semana (Desafio Final): "Semana que vem: O
+                    GRANDE DESAFIO FINAL! Um algoritmo com 3 bugs para depurar em duplas, com cronômetro e prêmios.
+                    Serão coroados os MESTRES DA DEPURAÇÃO do 3º ano!"</div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 29</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Checklist visual com ícones grandes e apenas 4 itens (simplificada).
+                    Oferecer luva de borracha para manipular o robô se o aluno não quiser contato direto. Ambiente com
+                    menos estímulos sonoros.</li>
+                  <li><strong>TDAH:</strong> Dividir a atividade em etapas curtas (inspeção 5 min, planejamento 5 min,
+                    reparo 10 min, teste 5 min) com recompensa a cada etapa. Usar cronômetro visual.</li>
+                  <li><strong>Deficiência Física (motora):</strong> Robôs com peças maiores e mais fáceis de manusear.
+                    Aluno pode ditar as ações de reparo para um colega. Fita adesiva de fácil rasgamento.</li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Robôs com texturas contrastantes (ex: braço
+                    liso, cabeça rugosa). Checklist em braille ou áudio. Professor descreve os defeitos verbalmente.
+                  </li>
+                  <li><strong>Altas Habilidades:</strong> Desafio extra: projetar um robô com DOIS defeitos simultâneos
+                    e criar um plano de reparo detalhado. Documentar o processo em um "manual de engenharia reversa".
+                  </li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 29 – "O Hino do Engenheiro de Sucata":</strong>
+                  <em>"Roda quadrada, braço virado, cabeça solta, parafuso quebrado / Com fita adesiva e muito carinho,
+                    seu robô doente vai ficar sadio! / Depurar é consertar, no código ou no papelão / Hospital da
+                    sucata, mão na massa, coração!" 🔧🤖❤️</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== SEMANA 30 ==================== -->
+        <div class="accordion-item" data-semana="30">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana30">
+              🏆 Semana 30 – Desafio Final: Depuração em Duas Rodas
+            </button>
+          </h2>
+          <div id="semana30" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="30" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Nível Cognitivo (Bloom)</th>
+                        <th>Objetivo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Síntese</th>
+                        <td>Integrar depuração sistemática em um projeto com loop e variável (revisão dos 2 bimestres
+                          anteriores).</td>
+                      <tr>
+                        <td>Análise</td>
+                        <td>Resolver desafio que envolve identificar 3 bugs em um mesmo algoritmo (soma de 1 a 5).</td>
+                      </tr>
+                      <tr>
+                        <td>Valorização</td>
+                        <td>Celebrar o fim do bimestre com competição de depuração e certificados "Mestre da Depuração".
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>Integração total (loop, variável, depuração). Competição de depuração (individual/duplas). Revisão
+                  dos tipos de bug (nanico, gigante, zumbi, variável, ordem, sintaxe).</p>
+
+                <h5>📖 Habilidades BNCC e RCP-PR</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Código</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Utilizar unidades de medida de comprimento e localização</td>
+                        <td>EF03MA22</td>
+                      </tr>
+                      <tr>
+                        <td>Ler e compreender textos instrucionais</td>
+                        <td>EF03LP13</td>
+                      </tr>
+                      <tr>
+                        <td>Escrever listas de ações em ordem sequencial</td>
+                        <td>EF03LP18</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar artefatos simples do cotidiano</td>
+                        <td>EF03CI01</td>
+                      </tr>
+                      <tr>
+                        <td>Identificar e corrigir erros em sequências de instruções</td>
+                        <td>COMP-PC01</td>
+                      </tr>
+                      <tr>
+                        <td>Decompor problemas em partes menores</td>
+                        <td>COMP-PC02</td>
+                      </tr>
+                      <tr>
+                        <td>Reconhecer padrões e repetições</td>
+                        <td>COMP-PC03</td>
+                      </tr>
+                      <tr>
+                        <td>Depuração sistemática e refinamento</td>
+                        <td>RCP-PR (p.39-41)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>🧰 Materiais (Kit do Desafio Final)</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-file-code"></i> Algoritmo impresso com 3 bugs (o mesmo
+                    para todos) – 1 versão por dupla</span>
+                  <span class="material-badge"><i class="bi bi-hourglass"></i> Cronômetro (barulhento)</span>
+                  <span class="material-badge"><i class="bi bi-gift"></i> Prêmios: adesivos especiais, certificados,
+                    chocolate</span>
+                  <span class="material-badge"><i class="bi bi-box"></i> Caixa "Bug Busters" (caixa de sapato decorada
+                    com lupas e insetos)</span>
+                  <span class="material-badge"><i class="bi bi-check2-square"></i> Checklist de depuração (para
+                    consulta)</span>
+                  <span class="material-badge"><i class="bi bi-journal"></i> Prontuário do Detetive (para documentar os
+                    bugs)</span>
+                  <span class="material-badge"><i class="bi bi-megaphone"></i> Apito final (para encerrar o bimestre com
+                    estilo)</span>
+                </div>
+
+                <h5>📊 Critérios Operacionais de Avaliação – Semana 30 (Desafio Final)</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descritor</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Encontra e corrige os 3 bugs entre os 3 primeiros da turma (ou dentro do tempo limite de 15
+                          min)</td>
+                        <td>Velocidade de Depuração</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Todos os bugs são corrigidos corretamente (sem introduzir novos erros)</td>
+                        <td>Precisão</td>
+                        <td>0-2 pts</td>
+                      </tr>
+                      <tr>
+                        <td>Registra os bugs e correções no "Prontuário do Detetive" (entrega ao professor)</td>
+                        <td>Documentação</td>
+                        <td>0-1 pt</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total (fecha o bimestre)</strong></td>
+                        <td><strong>0-5 pts</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min – A GRANDE FINAL)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"APRESENTAÇÃO DO DESAFIO FINAL (O ALGORITMO MAIS BUGADO DA
+                      HISTÓRIA)"</strong><br>Professor com voz de locutor de final de campeonato, luzes apagadas (ou
+                    meia luz), suspense: "Vocês passaram 10 semanas caçando bugs. Caçaram loops nanicos, gigantes,
+                    zumbis. Depuraram receitas de bolo, manuais, robôs de sucata. Agora, o DESAFIO FINAL: um algoritmo
+                    com 3 BUGS ESCONDIDOS." Mostra o algoritmo no quadro (ou entrega
+                    impresso):<br><code>PROGRAMA PARA SOMAR OS NÚMEROS DE 1 A 5 E MOSTRAR O RESULTADO<br>soma = 1<br>contador = 1<br>repita 4 vezes:<br>    soma = soma + contador<br>    contador = contador - 1<br>mostrar soma</code><br>Explica:
+                    "Esse algoritmo devia somar 1+2+3+4+5 e mostrar 15. Mas tem 3 BUGS. Quem encontrar e corrigir os
+                    três primeiro, em dupla, será o MESTRE DEPURADOR do 3º ano." Entrega a folha do desafio para cada
+                    dupla.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"DEPURAÇÃO EM DUPLAS (SILÊNCIO, POR FAVOR... OU NÃO, GRITEM
+                      'ACHEI!' À VONTADE)"</strong><br>Regras do desafio: cada dupla recebe a folha com o algoritmo. Têm
+                    15 minutos no cronômetro. Devem: (1) Encontrar os 3 bugs; (2) Escrever a correção (pode ser no
+                    verso); (3) Preencher o Prontuário do Detetive (tipo, local, correção).<br><strong>OS 3 BUGS
+                      (resposta esperada):</strong><br>1. <code>soma = 1</code> (deveria ser 0, para começar a soma do
+                    zero).<br>2. <code>repita 4 vezes</code> (deveria ser 5 vezes, para somar os números de 1 a
+                    5).<br>3. <code>contador = contador - 1</code> (deveria ser +1, para incrementar o
+                    contador).<br>Professor circula, não dá respostas, apenas incentiva: "Olhem a variável soma. Olhem a
+                    direção do incremento do contador. Olhem a quantidade de repetições." Quando a dupla termina,
+                    levanta a mão (ou grita "FEITO!"). O professor verifica rapidamente. Se estiver correto, anota o
+                    tempo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"CORREÇÃO COLETIVA NO QUADRO (TODOS APRENDEM COM OS ERROS DE
+                      TODOS)"</strong><br>Professor pede voluntários de diferentes duplas para ir ao quadro e escrever
+                    as correções. Cada voluntário explica: "Eu encontrei o bug 1 aqui... Corrigi assim..." Turma vota na
+                    correção mais COMPLETA e MAIS ELEGANTE (menos linhas, mais clara). Professor revela os 3 bugs e a
+                    correção esperada (mas aceita variações criativas que funcionem). Registro no
+                    quadro:<br><code>ALGORITMO CORRIGIDO:<br>soma = 0 (corrigido: antes estava 1)<br>contador = 1<br>repita 5 vezes: (corrigido: antes era 4)<br>    soma = soma + contador<br>    contador = contador + 1 (corrigido: antes era -1)<br>mostrar soma</code><br>Resultado
+                    esperado: soma = 15.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"PREMIAÇÃO E ENCERRAMENTO DO BIMESTRE (VOCÊS SÃO DETETIVES DE
+                      ELITE)"</strong><br>Categorias de premiação (com muita festa):<br>🥇 MESTRE DEPURADOR – Dupla mais
+                    rápida e precisa (todos os 3 bugs corretos): Certificado de Ouro + chocolate + adesivo
+                    especial.<br>🧠 DEPURADOR CRIATIVO – Correção inusitada que funcionou (diferente da esperada):
+                    Certificado + adesivo "Criativo".<br>🔍 DETETIVE DE ELITE – Quem identificou um bug que ninguém mais
+                    viu (ex: bug extra além dos 3): Certificado + lupa dourada de papel.<br>📢 EQUIPE MAIS BARULHENTA –
+                    Gritou "ACHEI!" mais vezes (sim, porque gritar também é habilidade): Certificado + apito.<br>🎯
+                    TODOS OS PARTICIPANTES – Certificado "MESTRE DA DEPURAÇÃO NÍVEL 3".<br>Roda de conversa final do
+                    bimestre: "Qual foi o bug mais difícil que você resolveu nestas 10 semanas?" Alunos
+                    compartilham.<br>Anúncio do próximo bimestre (o GRANDE FINAL DO ANO): "No bimestre 4, vocês serão
+                    CRIADORES! Não vão só DEPURAR – vão CONSTRUIR. Vão criar o próprio ROBÔ AUTORAL e apresentar na
+                    FEIRA DE ROBÓTICA. Tragam caixas de sapato, garrafas PET, tampinhas, e MUITA CRIATIVIDADE."<br>Apito
+                    final. Grito coletivo: "SOMOS MESTRES DA DEPURAÇÃO! BUGS, TREMBAM!" 🐛🔍💥<br>Professor entrega os
+                    certificados e tira foto da turma com os robôs consertados (semana 29) e os manuais (semana 25).
+                  </div>
+                </div>
+
+                <h5>♿ Adaptações e Inclusão – Semana 30</h5>
+                <ul>
+                  <li><strong>TEA:</strong> Desafio em ambiente calmo (sem gritos excessivos – combinar um sinal
+                    visual). Algoritmo impresso em fonte grande e com espaçamento amplo. Oferecer checklist visual dos 3
+                    tipos de bug para consulta.</li>
+                  <li><strong>TDAH:</strong> Dividir os 15 min em 3 blocos de 5 min (um bug por bloco). Recompensa
+                    imediata a cada bug encontrado (adesivo). Permitir pausa de 1 min entre blocos.</li>
+                  <li><strong>Deficiência Física (motora):</strong> Algoritmo em folha A3 para facilitar manuseio. Aluno
+                    pode ditar as correções. Prontuário com espaços grandes.</li>
+                  <li><strong>Deficiência Visual (baixa visão):</strong> Algoritmo em fonte ampliada (20pt) e alto
+                    contraste. Descrição verbal do algoritmo. Lupas ou tablets com zoom.</li>
+                  <li><strong>Altas Habilidades:</strong> Desafio extra: encontrar um 4º bug (ex: variável não
+                    reiniciada, ou falta de um comando). Criar um algoritmo com 5 bugs para o professor resolver.
+                    Escrever uma "análise forense" do algoritmo (documentação detalhada).</li>
+                </ul>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>🎲 Bônus Irreverente da Semana 30 – Grito final do bimestre:</strong>
+                  <em>"Loop não é macarrão! Variável não é coisa de velho! Depurar não é xingamento! E nós somos MESTRES
+                    DA DEPURAÇÃO! BUGS, TREMBAM!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== JOGO DO BIMESTRE: B.U.G.S. ==================== -->
+    <section id="jogo" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE 3: B.U.G.S. – Batalha Ultra Geral de Supressão</h2>
+        <div class="badge-projeto">Depure os bugs e torne-se um Mestre da Depuração!</div>
+      </div>
+      <div class="bugs-game-container">
+        <div class="bugs-stats">
+          <div class="bugs-card">
+            <div class="label">🏆 PONTUAÇÃO</div>
+            <div class="value" id="bugsPontuacao">0</div>
+          </div>
+          <div class="bugs-card">
+            <div class="label">🐛 BUGS RESOLVIDOS</div>
+            <div class="value" id="bugsResolvidos">0/5</div>
+          </div>
+          <div class="bugs-card">
+            <div class="label">📊 MÉDIA POR BUG</div>
+            <div class="value" id="bugsMedia">0</div>
+          </div>
+        </div>
+        <div id="bugsGrid" class="bugs-grid"></div>
+        <div id="bugsMensagem" class="mensagem-jogo mt-3"><i class="bi bi-robot"></i> Clique em "DEPURAR" em cada bug e
+          digite a correção correta!</div>
+        <div class="text-center mt-3"><button id="btnResetBugsGame" class="btn-bugs-reset"><i
+              class="bi bi-arrow-repeat"></i> RESETAR PROGRESSO</button></div>
+      </div>
+    </section>
+
+    <!-- ==================== CERTIFICADO ==================== -->
+    <section id="certificado" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3><i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE CONCLUSÃO – 3º BIMESTRE</h3>
+          <p class="lead">"MESTRE DA DEPURAÇÃO – DETETIVE DE ELITE"</p>
+        </div>
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p><strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO
+                  ALUNO]</strong>
+                <p>concluiu com êxito o <strong>3º BIMESTRE – DETETIVES DE BUGS</strong><br>Dominando:<br>🔍 LOOP NANICO
+                  | 🦍 LOOP GIGANTE | 🧟 LOOP ZUMBI | 🐛 DEPURAÇÃO SISTEMÁTICA</p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">RobôMestres do Paraná • <span id="previewData">2026</span></p>
+                <p class="assinatura-engracada">"Errar não é vergonha – é PISTA. Depurar é DIVINO."</p>
+                <div class="mt-2"><span class="badge bg-warning text-dark">🔍 Ass: Detetive Bugs</span></div>
+              </div>
+              <p class="text-muted mt-2 small"><i class="bi bi-eye"></i> Visualização ao selecionar aluno</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4><i class="bi bi-person-plus-fill"></i> Cadastro de Alunos</h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8"><label class="form-label text-warning">Nome do Aluno(a)</label><input type="text"
+                    id="nomeAluno" class="form-control" placeholder="Digite o nome do pequeno programador" /></div>
+                <div class="col-md-4"><button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">🤖
+                    Adicionar</button></div>
+              </div>
+              <div class="mt-4">
+                <h5>📋 Lista de Programadores <span id="contadorAlunos" class="badge bg-warning text-dark">0</span></h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height:220px; overflow-y:auto"></ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap"><button id="btnImprimirCertificados" class="btn-robotico-ano2"
+                  disabled><i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button><button
+                  id="btnPreviewAluno" class="btn btn-outline-warning" disabled><i class="bi bi-eye"></i>
+                  Pré-visualizar</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info mt-4 mb-0 small"><i class="bi bi-info-circle-fill"></i> <strong>Dica de
+            impressão:</strong> Os certificados serão gerados em nova janela com layout otimizado para A4 (3x2 por
+          folha).</div>
+      </div>
+    </section>
+
+    <!-- ==================== FECHAMENTO DO BIMESTRE ==================== -->
+    <section id="fechamento" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-book-half"></i> 📚 FECHAMENTO DO BIMESTRE – ADAPTAÇÕES, RUBRICA, REFERÊNCIAS</h2>
+        <div class="badge-projeto">Tudo o que você precisa para aplicar o bimestre</div>
+      </div>
+
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h5><i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES ESPECÍFICAS BIMESTRE 3</h5>
+        <h6>TEA</h6>
+        <ul>
+          <li>Antecipação visual com sequência de imagens.</li>
+          <li>Evitar gritos repentinos; usar sinal visual (luz piscando).</li>
+          <li>Oferecer fones redutores de ruído.</li>
+        </ul>
+        <h6>TDAH</h6>
+        <ul>
+          <li>Blocos curtos de 7-10 min com recompensa imediata.</li>
+          <li>Cronômetro visual (ampulheta).</li>
+          <li>Permitir movimento durante a investigação.</li>
+        </ul>
+        <h6>Deficiência Física</h6>
+        <ul>
+          <li>Materiais ampliados (A3), canetas ergonômicas.</li>
+          <li>Aluno pode ditar as correções.</li>
+          <li>Percurso adaptado para o robô avariado.</li>
+        </ul>
+        <h6>Deficiência Visual</h6>
+        <ul>
+          <li>Fontes ampliadas (mínimo 18pt) e alto contraste.</li>
+          <li>Descrição verbal de imagens.</li>
+          <li>Lupas eletrônicas ou tablets com zoom.</li>
+        </ul>
+        <h6>Altas Habilidades</h6>
+        <ul>
+          <li>Desafios extras (loop aninhado, criar bugs para os colegas).</li>
+          <li>Papel de "assistente do detetive" ou "criador de bugs".</li>
+        </ul>
+      </div>
+
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h5><i class="bi bi-clipboard-check"></i> 📋 RUBRICA DE AVALIAÇÃO – BIMESTRE 3 (0 a 50 pontos)</h5>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Semana</th>
+                <th>Descritor</th>
+                <th>Pontos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>21</td>
+                <td>Encontra bugs + classifica + ajuda colega</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>Classifica 3 tipos + documenta + cria bug novo</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>Contribui com checklist + aplica + desafio cronômetro</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>24</td>
+                <td>Descobre bug do robô + adapta comandos + trabalho em equipe</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>Conteúdo completo do manual + clareza visual + compartilhamento</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>26</td>
+                <td>Identifica bugs na receita + corrige manual + apresenta</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>27</td>
+                <td>Resolve pistas + velocidade + trabalho em equipe</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>Encontra bugs em algoritmos antigos + corrige + valida</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>29</td>
+                <td>Inspeção física + conserto criativo + teste funcional</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>30</td>
+                <td>Velocidade + precisão + documentação</td>
+                <td>5</td>
+              </tr>
+              <tr class="table-active">
+                <td colspan="2"><strong>TOTAL</strong></td>
+                <td><strong>50</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Conversão:</strong> 45-50 = A (Excelente) | 35-44 = B (Bom) | 25-34 = C (Satisfatório) | 15-24 = D
+          (Insatisfatório) | 0-14 = E (Não atingido)</p>
+      </div>
+
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h5><i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)</h5>
+        <p>BRASIL. Ministério da Educação. <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC, 2018.<br />
+          PARANÁ. Secretaria de Estado da Educação. <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
+            Iniciais</strong>. Curitiba: SEED/PR, 2018.<br />
+          RESNICK, M. <strong>Jardim de Infância para a Vida Toda</strong>. Porto Alegre: Penso, 2020.<br />
+          WING, J. M. Pensamento Computacional: Um Conceito Fundamental para o Século XXI. <strong>Revista Brasileira de
+            Computação</strong>, v. 12, n. 2, p. 10-14, 2017.<br />
+          BERS, M. U. <strong>Beyond Computer Literacy: Supporting Children's Learning in Robotics</strong>. MIT Press,
+          2022.<br />
+          BRACKMANN, C. <strong>Pensamento Computacional na Educação Básica</strong>. Penso, 2021.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RODAPÉ (modelo_rodape.html) ==================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start"><img src="imagens/logo_rb.png"
+              alt="Rodrigo Barbosa" class="footer-logo" onerror="this.src='https://placehold.co/80x80?text=RB'" /></div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end"><img src="imagens/logo_gn.png"
+              alt="Gisele Nunes" class="footer-logo" onerror="this.src='https://placehold.co/80x80?text=GN'" /></div>
+        </div>
+      </div>
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">💀 Desenvolvido na base do ódio, litros de café e condicionais malucas por Rodrigo
+              Barbosa.</div>
+            <div class="dev-contato mt-1"><i class="bi bi-envelope-paper"></i> <a
+                href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">✨ Desenvolvido com o mínimo de esforço possível, o máximo de SENÃO e uma dedicação que
+              só aparece quando o prazo já passou por Gisele Nunes.</div>
+            <div class="dev-contato mt-1"><i class="bi bi-envelope-paper"></i> <a
+                href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="relatorio-bugs" id="relatorioBugs"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a3bim3.js"></script>
+</body>
+
+</html>

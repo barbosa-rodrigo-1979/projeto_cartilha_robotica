@@ -1,1014 +1,1401 @@
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>
-    🤖 ROBOZADA 3000 | 2º Ano - Plano Anual Completo: Condicionais, Eventos,
-    Loops, Projetos
-  </title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="css/a2index.css" />
-</head>
-
-<body class="bg-robotica">
-  <!-- CABEÇALHO REBELDE (exatamente igual ao modelo_cabecalho.html) -->
-  <header class="cabecalho-robotico cabecalho-rebelde">
-    <div class="container">
-      <div class="row align-items-center justify-content-between g-2">
-        <div class="col-auto">
-          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
-            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-        </div>
-        <div class="col text-center">
-          <h1 class="titulo-principal glitch-text">
-            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
-            <span class="parafuso-esquerda">⬤</span>
-          </h1>
-          <div class="subtitulo-chiclete">
-            ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
-            ISSO; SENÃO… AGUENTA ⚡<br />
-            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>🤖 2º ANO – Robótica: SE/ENTÃO/SENÃO | RobôMestres</title>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Nosso CSS consolidado -->
+    <link rel="stylesheet" href="css/a2index.css" />
+  </head>
+  <body class="bg-robotica">
+    <!-- ==================== CABEÇALHO (exato do modelo_cabecalho.html) ==================== -->
+    <header class="cabecalho-robotico cabecalho-rebelde">
+      <div class="container">
+        <div class="row align-items-center justify-content-between g-2">
+          <div class="col-auto">
+            <img
+              src="imagens/logo_rb.png"
+              alt="Logo Rodrigo Barbosa"
+              class="logo-rb"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+            />
           </div>
-        </div>
-        <div class="col-auto">
-          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
-            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- MENU GLASSMORPHISM (idêntico ao modelo_menu_bim.html) -->
-  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-lg-none" href="a2index.html"><i class="bi bi-robot"></i> 2º Ano</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navRoboBim">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link " href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="a2index.html"><i class="bi bi-house-door-fill"></i> 2° ano</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim1.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim2.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim3.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim4.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container py-4">
-    <!-- INTRO (idêntica ao modelo_index.html, texto adaptado) -->
-    <section id="inicio" class="mb-5">
-      <div class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden">
-        <div class="row align-items-center">
-          <div class="col-md-9">
-            <p class="lead fw-bold text-gradient">
-              Ei, você aí, com a caneca de café já na segunda rodada e aquele
-              olhar de "será que condicional é coisa de programador maluco?".
-            </p>
-            <p>
-              Pode respirar fundo e dar um gole. Este material não é uma
-              apostila cinzenta. Isso aqui é um
-              <strong class="text-success">manual de sobrevivência para transformar sua sala de aula em
-                uma fábrica de decisões inteligentes</strong>, onde SE/ENTÃO vira dança, QUANDO vira festa e SENÃO vira
-              oportunidade de errar com estilo.
-            </p>
-            <p>
-              <strong>Regra de platina:</strong> Se você não terminar a semana
-              com pelo menos uma história absurda pra contar no recreio, você
-              não seguiu o plano. Vamos destruir o tédio.
-            </p>
-            <p>
-              <strong>Regra de diamante:</strong> Se um aluno disser "não
-              errei nada", você responde: "então você não aprendeu nada hoje".
-            </p>
-            <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
-              <i class="bi bi-bug-fill"></i> <strong>Caça aos bugs</strong> –
-              aqui o erro é o maior professor. Condicional não é chute!
+          <div class="col text-center">
+            <h1 class="titulo-principal glitch-text">
+              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+              <span class="parafuso-esquerda">⬤</span>
+            </h1>
+            <div class="subtitulo-chiclete">
+              ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
+              ISSO; SENÃO… AGUENTA ⚡<br />
+              <span class="selo-sucata mt-2 d-inline-block"
+                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
+              >
             </div>
           </div>
-          <div class="col-md-3 text-center">
-            <i class="bi bi-cup-straw display-1 text-warning flutuar"></i>
-            <i class="bi bi-robot display-1 text-success flutuar"></i>
-            <div class="card-bug-hunter p-2 mt-3">
-              <small><i class="bi bi-bug"></i> Caçador de Bugs Nível 2</small>
-            </div>
+          <div class="col-auto">
+            <img
+              src="imagens/logo_gn.png"
+              alt="Logo Gisele Nunes"
+              class="logo-gn"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+            />
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- CARTA DE ABERTURA (idêntica ao modelo_index.html, texto adaptado) -->
-    <section id="carta" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-envelope-paper"></i> 🧙‍♂️ CARTA DE ABERTURA PARA VOCÊ,
-          PROFESSOR
-        </h2>
-        <div class="badge-projeto">
-          Leia em voz alta (de preferência com um chapéu de robô feito de
-          caixa de pizza)
+    <!-- ==================== MENU BIMESTRAL (exato do modelo_menu_bim.html) ==================== -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="a2index.html"
+          ><i class="bi bi-robot"></i> 2º Ano</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboBim"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboBim">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="bi bi-house-door-fill"></i> Principal</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="a2index.html"
+                ><i class="bi bi-house-door-fill"></i> 2° ano</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim1.html"
+                ><i class="bi bi-1-circle-fill"></i> 1º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim2.html"
+                ><i class="bi bi-2-circle-fill"></i> 2º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim3.html"
+                ><i class="bi bi-3-circle-fill"></i> 3º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim4.html"
+                ><i class="bi bi-4-circle-fill"></i> 4º bimestre</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="bg-robocard p-4 rounded-4">
-        <blockquote class="blockquote fs-5 fst-italic text-center">
+    </nav>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL (substituído pelo ano2_index.docx) ==================== -->
+    <main class="container py-4">
+      <!-- SEÇÃO: PANORAMA DO ANO LETIVO + TEXTO DE ABERTURA -->
+      <section id="panorama" class="mb-5">
+        <div class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg">
+          <h2 class="text-warning mb-3">📘 PANORAMA DO ANO LETIVO 2º ANO</h2>
+          <p class="lead fw-bold">
+            "SOBREVIVA AO CAOS PROGRAMADO (E AINDA SAIA RINDO)"
+          </p>
+          <hr />
+          <h3 class="text-warning">
+            🔧 TEXTO DE ABERTURA
+            <span class="badge bg-secondary"
+              >extremamente irônico e irreverente</span
+            >
+          </h3>
           <p>
-            "Repita comigo, e repita até seus alunos ouvirem do outro lado da
-            quadra:
+            Se você chegou até aqui sem travar, parabéns – seu cérebro já está
+            melhor programado que muito software de banco.
           </p>
           <p>
-            <strong>SE NÃO CHOVER, ENTÃO VAMOS PARA QUADRA!</strong><br /><strong>SENÃO, VAMOS PROGRAMAR DEBAIXO DA
-              MESA!</strong><br /><strong>QUANDO O APITO TOCAR, TODOS CONGELAM!</strong><br /><strong>REPITA 3 VEZES: EU
-              SOU UM ROBÔ APRENDIZ!</strong>"
+            Este documento é o mapa da mina para um ano letivo onde robôs de
+            caixa de sapato vão aprender a tomar decisões (mais que muito adulto
+            em fila de banco), crianças vão programar umas às outras (com
+            vingança e glória) e o tédio vai pro espaço (literalmente, porque
+            aqui não sobra espaço pra ele).
           </p>
-        </blockquote>
-        <p>
-          Você não é um mero entregador de conteúdo. Você é um AGITADOR DE
-          MENTES, um ARQUITETO DO CAOS PEDAGÓGICO e um ENGENHEIRO DE PEQUENOS
-          GÊNIOS.
-        </p>
-        <p>
-          Esquece o material que parece saído de um livro didático dos anos
-          90. Esquece a aula que começa com "abram o caderno na página 10".
-          Esquece o medo de errar.
-        </p>
-        <p>
-          <strong>Aqui, errar é combustível. Gritar é ferramenta. Bagunça
-            organizada é método.</strong>
-        </p>
-        <p>Neste manual, você vai encontrar:</p>
-        <ul>
-          <li>40 planos de aula (um para cada semana do ano)</li>
-          <li>
-            Minuto a minuto (porque tempo perdido é inimigo da inovação)
-          </li>
-          <li>Critérios operacionais (como avaliar sem teste chato)</li>
-          <li>
-            Adaptações para TODOS (TEA, TDAH, deficiência física, altas
-            habilidades)
-          </li>
-          <li>
-            Jogos por bimestre (descrições detalhadas para você criar ou
-            mandar a IA gerar)
-          </li>
-          <li>
-            Músicas, certificados, checklists, glossários (o pacote completo)
-          </li>
-          <li>
-            Tom extremo (porque aprender com tédio é crime contra a
-            humanidade)
-          </li>
-        </ul>
-        <p class="mt-3">
-          <strong>Agora aperte o cinto, coloca a música do Super Mario no talo e
-            vem comigo. O futuro da robótica educacional te chama. E ele está
-            PUT* DA CARA com material conservador. 🤖💥🎓</strong>
-        </p>
-      </div>
-    </section>
-
-    <!-- MAPA BNCC – ESTRUTURA IGUAL AO MODELO_INDEX (com tabelas por bimestre) -->
-    <section id="mapa" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-map-fill"></i> 📊 MAPEAMENTO COMPLETO DE HABILIDADES
-          BNCC E RCP-PR POR BIMESTRE – 2º ANO
-        </h2>
-        <div class="badge-projeto">
-          Do SE→ENTÃO à cidade dos condicionais: a tabela abaixo é o seu mapa
-          do tesouro.
+          <p>
+            A ideia é simples: <strong>SE</strong> você seguir esse plano,
+            <strong>ENTÃO</strong> seus alunos vão dominar lógica, eventos e
+            condicionais sem chorar (talvez você chore de rir).
+            <strong>SENÃO</strong>, o Robô Zé 3.0 vai te sequestrar e te forçar
+            a debuggar planos de aula ruins por toda a eternidade.
+          </p>
+          <div
+            class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning"
+          >
+            <i class="bi bi-robot"></i> Preparado? Então aperte os parafusos,
+            ligue o modo "reboot" e mergulhe no caos pedagogicamente organizado
+            que você sempre sonhou. 🤖💥
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- BIMESTRE 1 -->
-      <h3 class="text-warning mt-4 mb-3">
-        🤖 BIMESTRE 1 - SE ENTÃO SENÃO (PLANO B)
-      </h3>
-      <div class="table-responsive">
-        <table class="table table-robotica table-bordered table-hover">
-          <thead style="background-color: #b1cf9a">
-            <tr>
-              <th>Como vamos usar</th>
-              <th>Componente</th>
-              <th>Habilidade</th>
-              <th>Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Grid de fita crepe, cartões de comando</td>
-              <td>Matemática (EF02MA01)</td>
-              <td>Localizar-se e movimentar-se</td>
-              <td>Robô criança anda em malha quadriculada</td>
-            </tr>
-            <tr>
-              <td>Padrão "SE buraco ENTÃO pule"</td>
-              <td>Matemática (EF02MA11)</td>
-              <td>Identificar sequências e padrões</td>
-              <td>Condicional como padrão de decisão</td>
-            </tr>
-            <tr>
-              <td>Leitura coletiva de cartões SE/ENTÃO/SENÃO</td>
-              <td>Língua Portuguesa (EF02LP09)</td>
-              <td>Compreender comandos escritos</td>
-              <td>Alfabetização de algoritmos</td>
-            </tr>
-            <tr>
-              <td>Escrita/desenho de algoritmos com setas</td>
-              <td>Língua Portuguesa (EF02LP10)</td>
-              <td>Produzir instruções escritas</td>
-              <td>Autoria de pequenos programas</td>
-            </tr>
-            <tr>
-              <td>
-                "Quando a professora apitar, SE perto da parede, ENTÃO pule"
-              </td>
-              <td>RCP-PR (Tecnologia)</td>
-              <td>Autoria de algoritmos com eventos e condicionais</td>
-              <td>Eventos simples</td>
-            </tr>
-            <tr>
-              <td>Jogo das consequências engraçadas</td>
-              <td>RCP-PR (Raciocínio Lógico)</td>
-              <td>Identificar relações de causa-efeito</td>
-              <td>SE isso ENTÃO aquilo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- BIMESTRE 2 -->
-      <h3 class="text-warning mt-5 mb-3">
-        🎬 BIMESTRE 2 - QUANDO O EVENTO ACONTECE (E/OU)
-      </h3>
-      <div class="table-responsive">
-        <table class="table table-robotica table-bordered table-hover">
-          <thead style="background-color: #b1cf9a">
-            <tr>
-              <th>Como vamos usar</th>
-              <th>Componente</th>
-              <th>Habilidade</th>
-              <th>Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Jogo "Quando o botão for apertado, então acenda a luz"</td>
-              <td>Matemática (EF02MA11)</td>
-              <td>Padrões e sequências</td>
-              <td>Evento como disparador</td>
-            </tr>
-            <tr>
-              <td>Tabela verdade no chão com E/OU</td>
-              <td>RCP-PR (Raciocínio Lógico)</td>
-              <td>Operadores lógicos</td>
-              <td>Combinação de condições</td>
-            </tr>
-            <tr>
-              <td>Mistério "Robô Detetive" com pistas condicionais</td>
-              <td>Língua Portuguesa (EF02LP10)</td>
-              <td>Produção de instruções</td>
-              <td>Algoritmo narrativo</td>
-            </tr>
-            <tr>
-              <td>Construção de painel de eventos (sol/chuvoso)</td>
-              <td>Ciências (EF02CI04)</td>
-              <td>Identificar fenômenos naturais</td>
-              <td>Eventos do mundo real</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- BIMESTRE 3 -->
-      <h3 class="text-warning mt-5 mb-3">
-        📱 BIMESTRE 3 - SCRATCH JR + DEPURAÇÃO
-      </h3>
-      <div class="table-responsive">
-        <table class="table table-robotica table-bordered table-hover">
-          <thead style="background-color: #b1cf9a">
-            <tr>
-              <th>Como vamos usar</th>
-              <th>Componente</th>
-              <th>Habilidade</th>
-              <th>Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Blocos visuais no ScratchJr</td>
-              <td>RCP-PR (Tecnologia)</td>
-              <td>Programação em blocos</td>
-              <td>Condicionais visuais</td>
-            </tr>
-            <tr>
-              <td>Loop REPITA com condicional dentro</td>
-              <td>Matemática (EF02MA11)</td>
-              <td>Repetição e padrões</td>
-              <td>Estruturas aninhadas</td>
-            </tr>
-            <tr>
-              <td>Caça aos bugs nos projetos</td>
-              <td>RCP-PR (Pensamento Computacional)</td>
-              <td>Depuração sistemática</td>
-              <td>Erro como oportunidade</td>
-            </tr>
-            <tr>
-              <td>Criação de pequenos jogos condicionais</td>
-              <td>Arte (EF15AR25)</td>
-              <td>Criação digital</td>
-              <td>Expressão artística com código</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- BIMESTRE 4 -->
-      <h3 class="text-warning mt-5 mb-3">
-        🏙️ BIMESTRE 4 - CIDADE DOS CONDICIONAIS
-      </h3>
-      <div class="table-responsive">
-        <table class="table table-robotica table-bordered table-hover">
-          <thead style="background-color: #b1cf9a">
-            <tr>
-              <th>Como vamos usar</th>
-              <th>Componente</th>
-              <th>Habilidade</th>
-              <th>Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Maquete urbana com ruas e semáforos</td>
-              <td>Geografia (EF02GE10)</td>
-              <td>Espaço urbano</td>
-              <td>Aplicação de condicionais no trânsito</td>
-            </tr>
-            <tr>
-              <td>Simulação de trânsito com SE/ENTÃO/SENÃO</td>
-              <td>RCP-PR (Tecnologia)</td>
-              <td>Projeto integrador</td>
-              <td>Tomada de decisão em grupo</td>
-            </tr>
-            <tr>
-              <td>Feira de robótica para famílias</td>
-              <td>Língua Portuguesa (EF02LP26)</td>
-              <td>Apresentação oral</td>
-              <td>Comunicação de projetos</td>
-            </tr>
-            <tr>
-              <td>Certificação "Mestre do Se-Então-Senão"</td>
-              <td>Todas as áreas</td>
-              <td>Síntese dos conceitos</td>
-              <td>Avaliação final lúdica</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="mt-2 fst-italic text-warning">
-        <i class="bi bi-info-circle"></i> *OBS: O RCP-PR alinha-se
-        completamente com a BNCC para os anos iniciais, aprofundando as
-        competências de tecnologia e computação.
-      </p>
-    </section>
-
-    <!-- PLANO ANUAL COMPLETO (40 SEMANAS) – mesma estrutura do modelo_index -->
-    <section id="plano-anual" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-calendar-range"></i> 📅 PLANO ANUAL COMPLETO (40
-          SEMANAS SEM RESMO) – 2º ANO
-        </h2>
-        <div class="badge-projeto">
-          Sem "segue padrão" - cada semana uma aventura diferente com
-          condicionais
+      <!-- ==================== CARTA DE ABERTURA (Robô Zé) ==================== -->
+      <section id="carta" class="mb-5">
+        <div class="projeto-header">
+          <h2><i class="bi bi-envelope-paper"></i> 📬 CARTA DE ABERTURA</h2>
+          <div class="badge-projeto">
+            para ler na primeira aula, com voz de robô com pilha fraca
+          </div>
         </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-sm table-bordered table-robotica">
-          <thead style="background-color: #b1cf9a">
-            <tr>
-              <th>Atividade Monstro</th>
-              <th>Sem</th>
-              <th>Bim</th>
-              <th>Título da Aula (Clickbait Pedagógico)</th>
-              <th>Conceito Estrela</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                Coreografia "SE eu levantar a mão, ENTÃO todo mundo gira"
-              </td>
-              <td>1</td>
-              <td>1</td>
-              <td>Se você fizer isso, então aquilo acontece</td>
-              <td>Introdução ao SE→ENTÃO</td>
-            </tr>
-            <tr>
-              <td>Labirinto humano com cartões SE/ENTÃO</td>
-              <td>2</td>
-              <td>1</td>
-              <td>Decisões de robô: o caminho da verdade</td>
-              <td>Condicional simples</td>
-            </tr>
-            <tr>
-              <td>Jogo do "SENÃO" (plano B)</td>
-              <td>3</td>
-              <td>1</td>
-              <td>E se der errado? SENÃO salvando o dia</td>
-              <td>SENÃO como alternativa</td>
-            </tr>
-            <tr>
-              <td>Obstáculos no grid: SE buraco ENTÃO desvia</td>
-              <td>4</td>
-              <td>1</td>
-              <td>Robô espertinho: desviando de problemas</td>
-              <td>Condicional com obstáculo</td>
-            </tr>
-            <tr>
-              <td>Projeto "Robô do Lanche" (biscoito vs cenoura)</td>
-              <td>5</td>
-              <td>1</td>
-              <td>Se for biscoito, eu como; senão, dou para o amigo</td>
-              <td>Decisão com consequências</td>
-            </tr>
-            <tr>
-              <td>Revisão com dança dos condicionais</td>
-              <td>6</td>
-              <td>1</td>
-              <td>Avaliação: dançando o SE-ENTÃO-SENÃO</td>
-              <td>Revisão gamificada</td>
-            </tr>
-            <tr>
-              <td>Jogo de tabuleiro humano com dados condicionais</td>
-              <td>7</td>
-              <td>1</td>
-              <td>Tabuleiro das Decisões</td>
-              <td>Aplicação em jogo</td>
-            </tr>
-            <tr>
-              <td>Construção de máscara de robô com comandos</td>
-              <td>8</td>
-              <td>1</td>
-              <td>Eu sou um robô condicional</td>
-              <td>Identidade e código</td>
-            </tr>
-            <tr>
-              <td>Desafio final do bimestre: circuito de decisões</td>
-              <td>9</td>
-              <td>1</td>
-              <td>O grande desafio do SE-ENTÃO</td>
-              <td>Integração</td>
-            </tr>
-            <tr>
-              <td>Certificado "Aprendiz do SE-ENTÃO"</td>
-              <td>10</td>
-              <td>1</td>
-              <td>Parabéns, você tomou a decisão certa!</td>
-              <td>Celebração</td>
-            </tr>
-            <tr>
-              <td>Introdução ao QUANDO: "Quando o apito tocar, congele"</td>
-              <td>11</td>
-              <td>2</td>
-              <td>O robô que escuta o mundo</td>
-              <td>Eventos externos</td>
-            </tr>
-            <tr>
-              <td>Combinação QUANDO + SE</td>
-              <td>12</td>
-              <td>2</td>
-              <td>Quando acontecer isso, SE você estiver perto...</td>
-              <td>Evento + condicional</td>
-            </tr>
-            <tr>
-              <td>Operador E: "SE sol E vento, ENTÃO pule"</td>
-              <td>13</td>
-              <td>2</td>
-              <td>Duas condições ao mesmo tempo</td>
-              <td>Operador lógico E</td>
-            </tr>
-            <tr>
-              <td>Operador OU: "SE chuva OU frio, ENTÃO fique dentro"</td>
-              <td>14</td>
-              <td>2</td>
-              <td>Ou isso ou aquilo: escolha do robô</td>
-              <td>Operador lógico OU</td>
-            </tr>
-            <tr>
-              <td>Tabela verdade no chão com bambolês</td>
-              <td>15</td>
-              <td>2</td>
-              <td>Verdade ou mentira? A tabela da discórdia</td>
-              <td>Tabela verdade</td>
-            </tr>
-            <tr>
-              <td>Projeto "Robô Detetive" com pistas</td>
-              <td>16</td>
-              <td>2</td>
-              <td>Quem roubou o parafuso? Investigação condicional</td>
-              <td>Projeto integrador</td>
-            </tr>
-            <tr>
-              <td>Jogo digital (Code.org) com eventos</td>
-              <td>17</td>
-              <td>2</td>
-              <td>Programação plugada: salvando o mundo com QUANDO</td>
-              <td>Digital</td>
-            </tr>
-            <tr>
-              <td>Depuração de algoritmos com eventos trocados</td>
-              <td>18</td>
-              <td>2</td>
-              <td>Caça ao bug do evento fantasma</td>
-              <td>Depuração</td>
-            </tr>
-            <tr>
-              <td>Criação de história em quadrinhos condicional</td>
-              <td>19</td>
-              <td>2</td>
-              <td>HQ: SE o herói fizer isso, ENTÃO...</td>
-              <td>Narrativa e código</td>
-            </tr>
-            <tr>
-              <td>Desafio final: parque de diversões condicional</td>
-              <td>20</td>
-              <td>2</td>
-              <td>Brinquedos que decidem sozinhos</td>
-              <td>Integração</td>
-            </tr>
-            <tr>
-              <td>Introdução ao ScratchJr: blocos de início</td>
-              <td>21</td>
-              <td>3</td>
-              <td>Robô na tela: seu primeiro pixel</td>
-              <td>Ambiente visual</td>
-            </tr>
-            <tr>
-              <td>Bloco SE no ScratchJr</td>
-              <td>22</td>
-              <td>3</td>
-              <td>Se o gato encostar no rato, então...</td>
-              <td>Condicional digital</td>
-            </tr>
-            <tr>
-              <td>Loop REPITA com condicional dentro</td>
-              <td>23</td>
-              <td>3</td>
-              <td>Repita até aprender: loops espertos</td>
-              <td>Loop + condicional</td>
-            </tr>
-            <tr>
-              <td>ESPERAR ATÉ (simulação de condicional)</td>
-              <td>24</td>
-              <td>3</td>
-              <td>Espere até o robô decidir</td>
-              <td>Condicional temporal</td>
-            </tr>
-            <tr>
-              <td>Criação de jogo simples: pegar frutas</td>
-              <td>25</td>
-              <td>3</td>
-              <td>Jogo do robô coletor</td>
-              <td>Projeto digital</td>
-            </tr>
-            <tr>
-              <td>Depuração no ScratchJr (projetos bugados)</td>
-              <td>26</td>
-              <td>3</td>
-              <td>Detetive de pixels: ache o erro</td>
-              <td>Depuração visual</td>
-            </tr>
-            <tr>
-              <td>Compartilhamento de projetos entre duplas</td>
-              <td>27</td>
-              <td>3</td>
-              <td>Code review no fundamental</td>
-              <td>Colaboração</td>
-            </tr>
-            <tr>
-              <td>Desafio: criar animação com condicionais</td>
-              <td>28</td>
-              <td>3</td>
-              <td>Desenho animado que reage a cliques</td>
-              <td>Criatividade</td>
-            </tr>
-            <tr>
-              <td>Jogo da memória condicional no papel</td>
-              <td>29</td>
-              <td>3</td>
-              <td>Memorize os comandos</td>
-              <td>Revisão</td>
-            </tr>
-            <tr>
-              <td>Avaliação bimestral: portfólio digital</td>
-              <td>30</td>
-              <td>3</td>
-              <td>Mostre seu melhor projeto</td>
-              <td>Autoavaliação</td>
-            </tr>
-            <tr>
-              <td>Brainstorm da Cidade dos Condicionais</td>
-              <td>31</td>
-              <td>4</td>
-              <td>Como seria uma cidade que só obedece a SE-ENTÃO?</td>
-              <td>Ideias</td>
-            </tr>
-            <tr>
-              <td>Planta baixa da cidade em papel metro</td>
-              <td>32</td>
-              <td>4</td>
-              <td>Desenhe as ruas e semáforos</td>
-              <td>Espacialização</td>
-            </tr>
-            <tr>
-              <td>Construção de maquete com caixas e tampinhas</td>
-              <td>33</td>
-              <td>4</td>
-              <td>Mão na massa: a cidade ganha forma</td>
-              <td>Construção</td>
-            </tr>
-            <tr>
-              <td>Regras de trânsito como condicionais</td>
-              <td>34</td>
-              <td>4</td>
-              <td>SE o sinal estiver vermelho, ENTÃO pare</td>
-              <td>Aplicação real</td>
-            </tr>
-            <tr>
-              <td>Simulação com robôs humanos na maquete</td>
-              <td>35</td>
-              <td>4</td>
-              <td>Crianças viram carros que obedecem a condicionais</td>
-              <td>Corporificação</td>
-            </tr>
-            <tr>
-              <td>Testes e depuração das regras</td>
-              <td>36</td>
-              <td>4</td>
-              <td>E se o pedestre aparecer? SENÃO...</td>
-              <td>Ajustes</td>
-            </tr>
-            <tr>
-              <td>Preparação da feira: cartazes e convites</td>
-              <td>37</td>
-              <td>4</td>
-              <td>Divulgação para as famílias</td>
-              <td>Comunicação</td>
-            </tr>
-            <tr>
-              <td>Ensaio geral com outra turma</td>
-              <td>38</td>
-              <td>4</td>
-              <td>Feedback antes do grande dia</td>
-              <td>Treino</td>
-            </tr>
-            <tr>
-              <td>Feira de Robótica – apresentação para a comunidade</td>
-              <td>39</td>
-              <td>4</td>
-              <td>A Cidade dos Condicionais em ação!</td>
-              <td>Evento final</td>
-            </tr>
-            <tr>
-              <td>Cerimônia de certificação e encerramento</td>
-              <td>40</td>
-              <td>4</td>
-              <td>Parabéns, Mestre do SE-ENTÃO-SENÃO!</td>
-              <td>Celebração</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <div class="bg-robocard p-4 rounded-4">
+          <div class="mb-3">
+            <span class="badge bg-warning text-dark mb-2"
+              >Assunto: Recrutamento de Agentes Secretos da Programação</span
+            >
+            <p>
+              <strong>Para:</strong> A turma mais irada do 2º ano<br />
+              <strong>De:</strong> Comando Central do Robô Zé 3.0
+            </p>
+          </div>
+          <blockquote class="blockquote fst-italic">
+            <p>PIP‑PIP‑PIP! Atenção, recrutas!</p>
+            <p>
+              Esqueçam o que vocês sabiam sobre "robotês". O Robô Zé estava
+              aposentado, tomando óleo de motor e vendo novela, mas um perigo
+              terrível ameaça a galáxia: o <strong>Tédio</strong>. Sim, o Tédio
+              com T maiúsculo. Ele quer fazer as mentes de vocês ficarem
+              quadradas e sem criatividade. E tem só uma coisa que derrota o
+              Tédio: a <strong>Lógica</strong>.
+            </p>
+            <p>
+              Neste ano, vocês não serão alunos. Vocês serão
+              <strong
+                >Programadores, Engenheiros de Robôs de Caixa de Sapato e
+                Caçadores de Bugs</strong
+              >. Nossa missão: criar robôs que tomam decisões. Não qualquer
+              decisão – decisões importantes, como "cenoura ou biscoito?".
+            </p>
+            <p>
+              Para isso, vamos aprender a linguagem mais poderosa do universo:
+              <strong>SE → ENTÃO → SENÃO</strong>. Depois vamos adicionar
+              <strong>QUANDO, E, OU e REPITA</strong>. E tudo isso sem tela (ou
+              com tela, quando o tablet do avô aguentar).
+            </p>
+            <p>
+              <strong>Regra número 1:</strong> Errar é permitido. Na verdade,
+              errar é sagrado – é quando os bugs aparecem pra gente caçar e se
+              divertir.
+            </p>
+            <p>
+              <strong>Regra número 2:</strong> Se você não estiver se
+              divertindo, a culpa não é do robô, é sua. Tá programado errado.
+              Debuga aí, rapaz.
+            </p>
+            <p>
+              Preparados? Então apertem os cintos, porque o ano vai ser uma
+              montanha‑russa de lógica, parafusos e gargalhadas.
+            </p>
+            <p><strong>BIP‑BIP! Mãos ao alto! Vamos nessa!</strong></p>
+            <footer class="blockquote-footer mt-2">
+              Comandante Zé
+              <cite title="Fonte"
+                >(um robô muito engraçado, mas de programação duvidosa)</cite
+              >
+            </footer>
+          </blockquote>
+        </div>
+      </section>
 
-    <!-- CRITÉRIOS DE AVALIAÇÃO (mesma estrutura do modelo_index: tabela de níveis + cards por bimestre) -->
-    <section id="avaliacao" class="mb-5">
-      <div class="bg-robocard p-4 rounded-4">
-        <h3>🤖 CRITÉRIOS DE AVALIAÇÃO - ANO LETIVO COMPLETO – 2º ANO</h3>
-        <p>
-          <em>(ou: "Classificando o nível de parafuso do seu pequeno
-            programador")</em>
-        </p>
-        <div class="alert alert-warning">
-          <i class="bi bi-exclamation-triangle"></i> Ninguém tira nota
-          vermelha. No máximo, a gente declara "Parafuso Solto" e conserta
-          rindo.
+      <!-- ==================== MAPEAMENTO COMPLETO DE HABILIDADES ==================== -->
+      <section id="mapa-habilidades" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-map-fill"></i> 🧩 MAPEAMENTO COMPLETO DE HABILIDADES
+            BNCC E RCP-PR POR BIMESTRE
+          </h2>
+          <div class="badge-projeto">
+            Legenda: (M)=Matemática, (LP)=Língua Portuguesa, (C)=Computação
+            (Complemento BNCC / RCP‑PR)
+          </div>
         </div>
 
-        <h4>🧠 Metodologia de Avaliação (o esqueleto invisível)</h4>
-        <p>Cada aula terá 3 níveis de sucesso robótico:</p>
+        <!-- 1º BIMESTRE -->
+        <h3 class="text-warning mt-4 mb-3">
+          1º BIMESTRE – "Robô Zé sai da aposentadoria"
+        </h3>
         <div class="table-responsive">
-          <table class="table tabela-niveis">
+          <table class="table table-robotica table-bordered">
             <thead>
               <tr>
-                <th>O que significa</th>
-                <th>Nível</th>
+                <th>Semanas</th>
                 <th>Código</th>
-                <th>Nome intuitivo</th>
+                <th>Descrição resumida</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="nivel-ninja">
-                <td>
-                  Executou sem erro, ajudou colegas, ainda deu palpite genial
-                </td>
-                <td>⭐⭐⭐</td>
-                <td>EXECUTADO</td>
-                <td>Robô Ninja</td>
+              <tr>
+                <td>1, 6, 8</td>
+                <td>EF02MA01</td>
+                <td>Localização e movimentação em malha</td>
               </tr>
-              <tr class="nivel-aprendiz">
-                <td>Errou, mas corrigiu sozinho ou com ajuda mínima</td>
-                <td>⭐⭐</td>
-                <td>DEPURADO</td>
-                <td>Robô Aprendiz</td>
+              <tr>
+                <td>5</td>
+                <td>EF02MA04</td>
+                <td>Contagem e sequências</td>
               </tr>
-              <tr class="nivel-tontinho">
-                <td>
-                  Errou, precisou de ajuda, mas tentou (e isso já é vitória)
-                </td>
-                <td>⭐</td>
-                <td>EM BUG</td>
-                <td>Robô Tontinho</td>
+              <tr>
+                <td>2, 3, 4, 5, 7, 9</td>
+                <td>EF02MA11</td>
+                <td>Regularidades e padrões</td>
+              </tr>
+              <tr>
+                <td>1, 2, 6</td>
+                <td>EF02LP09</td>
+                <td>Compreensão de comandos escritos</td>
+              </tr>
+              <tr>
+                <td>2, 3, 4, 5, 7, 8, 9, 10</td>
+                <td>EF02LP10</td>
+                <td>Produção de instruções</td>
+              </tr>
+              <tr>
+                <td>1, 3</td>
+                <td>EF02CO01</td>
+                <td>Criar e executar algoritmos simples</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>EF02CO03</td>
+                <td>Execução sequencial de algoritmos</td>
+              </tr>
+              <tr>
+                <td>4, 6, 8</td>
+                <td>EF02CO04</td>
+                <td>Estruturas SE/ENTÃO/SENÃO</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>EF02CO06</td>
+                <td>Depuração (corrigir erros)</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>EF02CO07</td>
+                <td>Trabalho colaborativo</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>EF02CO09</td>
+                <td>Antecipar resultados</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>EF02CO10</td>
+                <td>Planejar projeto desplugado</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>EF02CO11</td>
+                <td>Executar algoritmo físico</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>EF02CO12</td>
+                <td>Combinar múltiplas condicionais</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>EF02CO13</td>
+                <td>Comunicar funcionamento do algoritmo</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p>
-          Ninguém recebe <code>BUG TOTAL</code> a menos que tenha dormido
-          dentro do robô de papelão. Aí a gente conversa.
-        </p>
 
-        <h4 class="mt-4">📋 Critérios Específicos por Bimestre</h4>
-        <div class="row mt-3">
-          <div class="col-md-6 mb-3">
-            <div class="card bg-dark text-white border-warning h-100">
-              <div class="card-header bg-warning text-dark fw-bold">
-                Bimestre 1 - SE → ENTÃO → SENÃO
-              </div>
-              <div class="card-body">
-                <ul class="small">
-                  <li>⭐ Identifica situações que exigem decisão (SE)</li>
-                  <li>
-                    ⭐⭐ Executa comandos condicionais em atividades
-                    desplugadas
-                  </li>
-                  <li>
-                    ⭐⭐⭐ Cria pequenos algoritmos com SE/ENTÃO/SENÃO de
-                    forma autônoma
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="card bg-dark text-white border-warning h-100">
-              <div class="card-header bg-warning text-dark fw-bold">
-                Bimestre 2 - QUANDO + E/OU
-              </div>
-              <div class="card-body">
-                <ul class="small">
-                  <li>
-                    ⭐ Compreende que eventos externos disparam ações (QUANDO)
-                  </li>
-                  <li>
-                    ⭐⭐ Utiliza os operadores E/OU para combinar condições
-                  </li>
-                  <li>
-                    ⭐⭐⭐ Cria projetos com múltiplos eventos e condições
-                    lógicas
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="card bg-dark text-white border-warning h-100">
-              <div class="card-header bg-warning text-dark fw-bold">
-                Bimestre 3 - ScratchJr + Depuração
-              </div>
-              <div class="card-body">
-                <ul class="small">
-                  <li>⭐ Identifica blocos condicionais no ScratchJr</li>
-                  <li>⭐⭐ Cria pequenos jogos usando SE e REPITA</li>
-                  <li>
-                    ⭐⭐⭐ Depura projetos com checklist e ajuda colegas
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="card bg-dark text-white border-warning h-100">
-              <div class="card-header bg-warning text-dark fw-bold">
-                Bimestre 4 - Projeto Cidade dos Condicionais
-              </div>
-              <div class="card-body">
-                <ul class="small">
-                  <li>⭐ Participa da construção da maquete coletiva</li>
-                  <li>
-                    ⭐⭐ Contribui com ideias e executa simulações com
-                    condicionais
-                  </li>
-                  <li>
-                    ⭐⭐⭐ Apresenta o projeto na feira com domínio dos
-                    conceitos
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <!-- 2º BIMESTRE -->
+        <h3 class="text-warning mt-5 mb-3">
+          2º BIMESTRE – "Eventos, E e OU: o caos sonoro"
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Semanas</th>
+                <th>Código</th>
+                <th>Descrição resumida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11,12,14,15,16,17,18,20</td>
+                <td>EF02MA11</td>
+                <td>Eventos e sequências</td>
+              </tr>
+              <tr>
+                <td>12,13,16,17,18,19,20</td>
+                <td>EF02MA12</td>
+                <td>Tomada de decisão</td>
+              </tr>
+              <tr>
+                <td>11,14,20</td>
+                <td>EF02LP09</td>
+                <td>Leitura de instruções</td>
+              </tr>
+              <tr>
+                <td>12,13,14,15,16,17,18,19,20</td>
+                <td>EF02LP10</td>
+                <td>Interpretação/execução/criação de regras</td>
+              </tr>
+              <tr>
+                <td>15,18</td>
+                <td>EF02CO01</td>
+                <td>Comparar modelos, identificar atributos</td>
+              </tr>
+              <tr>
+                <td>11,14,16,18,19</td>
+                <td>EF02CO02</td>
+                <td>Simular algoritmos com decisões</td>
+              </tr>
+              <tr>
+                <td>12,17,19</td>
+                <td>EF02CO03</td>
+                <td>Diferentes máquinas executam instruções</td>
+              </tr>
+              <tr>
+                <td>13,17</td>
+                <td>EF02CO04</td>
+                <td>Diferenciar hardware/software (robô humano)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3º BIMESTRE -->
+        <h3 class="text-warning mt-5 mb-3">
+          3º BIMESTRE – "ScratchJr: o gato que virou robô"
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Semanas</th>
+                <th>Código</th>
+                <th>Descrição resumida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>23</td>
+                <td>EF02MA01</td>
+                <td>Localização no palco</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>EF02MA10</td>
+                <td>Noção de distância</td>
+              </tr>
+              <tr>
+                <td>22,24,26,28</td>
+                <td>EF02MA11</td>
+                <td>Padrões de repetição</td>
+              </tr>
+              <tr>
+                <td>21,27</td>
+                <td>EF02LP09</td>
+                <td>Compreensão de comandos icônicos</td>
+              </tr>
+              <tr>
+                <td>21,24,26,27,28,29,30</td>
+                <td>EF02LP10</td>
+                <td>Produção de instruções</td>
+              </tr>
+              <tr>
+                <td>21 a 30</td>
+                <td>RCP-PR (Tecnologia)</td>
+                <td>Autoria com eventos e loops</td>
+              </tr>
+              <tr>
+                <td>27,28</td>
+                <td>RCP-PR (Depuração)</td>
+                <td>Caça‑bugs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 4º BIMESTRE -->
+        <h3 class="text-warning mt-5 mb-3">
+          4º BIMESTRE – "Cidade dos Condicionais: o grande finale"
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Semanas</th>
+                <th>Código</th>
+                <th>Descrição resumida</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>31,32,34</td>
+                <td>EF02MA01</td>
+                <td>Localização em grid</td>
+              </tr>
+              <tr>
+                <td>31,34,35,36,37,38,39,40</td>
+                <td>EF02MA11</td>
+                <td>Sequências e padrões</td>
+              </tr>
+              <tr>
+                <td>31,37,38,39,40</td>
+                <td>EF02LP09</td>
+                <td>Compreensão de comandos</td>
+              </tr>
+              <tr>
+                <td>31,33,36,37,38,39,40</td>
+                <td>EF02LP10</td>
+                <td>Produção de instruções</td>
+              </tr>
+              <tr>
+                <td>31 a 40</td>
+                <td>RCP-PR (Eventos/Condicionais)</td>
+                <td>Autoria, simulação, resolução de problemas</td>
+              </tr>
+              <tr>
+                <td>34,35,36,37,38</td>
+                <td>RCP-PR (Raciocínio Lógico)</td>
+                <td>Análise de situações complexas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== PLANO ANUAL COMPLETO (40 SEMANAS) ==================== -->
+      <section id="plano-anual" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-calendar-range"></i> 📆 PLANO ANUAL COMPLETO (40
+            SEMANAS SEM ENROLAÇÃO)
+          </h2>
+          <div class="badge-projeto">
+            Cada semana = 1 aula de 50 min. Para detalhes completos, consulte os
+            planos de aula originais por bimestre.
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CERTIFICADO (idêntico ao modelo_certificado.html, já incluso no a2index original) -->
-    <section id="certificacao" class="mb-5">
-      <div class="bg-robocard p-4 rounded-4">
-        <div class="text-center mb-4">
-          <h3>
-            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
-            CONCLUSÃO – 2º ANO
-          </h3>
-          <p class="lead">
-            "MESTRE DO SE-ENTÃO-SENÃO, DO QUANDO E DO REPITA"
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered table-robotica">
+            <thead>
+              <tr>
+                <th>Conceito Central</th>
+                <th>Semana</th>
+                <th>Título da Aula</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 1º Bimestre -->
+              <tr>
+                <td>Sequência lógica, comandos motores (F/E/D/T)</td>
+                <td>1</td>
+                <td>Robô Zé não morreu, estava em bateria</td>
+              </tr>
+              <tr>
+                <td>Causa‑efeito (condição → ação)</td>
+                <td>2</td>
+                <td>Apresentando o SE → ENTÃO (calma, SENÃO ainda não)</td>
+              </tr>
+              <tr>
+                <td>Automatização de resposta condicional</td>
+                <td>3</td>
+                <td>Reforço muscular: o treino hardcore do SE</td>
+              </tr>
+              <tr>
+                <td>Estrutura completa SE/ENTÃO/SENÃO</td>
+                <td>4</td>
+                <td>O Plano B da vida: CHEGOU O SENÃO</td>
+              </tr>
+              <tr>
+                <td>Aplicação do SENÃO em jogos de tabuleiro</td>
+                <td>5</td>
+                <td>Jogo dos dois caminhos: tabuleiro da perdição</td>
+              </tr>
+              <tr>
+                <td>Imprevistos e início da depuração</td>
+                <td>6</td>
+                <td>Robô vendado e o buraco invisível</td>
+              </tr>
+              <tr>
+                <td>Planejamento colaborativo (condição binária)</td>
+                <td>7</td>
+                <td>Projeto Robô Decisor: planejamento</td>
+              </tr>
+              <tr>
+                <td>Execução e teste do algoritmo</td>
+                <td>8</td>
+                <td>Projeto Robô Decisor: teste de mesa e bifurcação no Y</td>
+              </tr>
+              <tr>
+                <td>Combinação de duas condicionais</td>
+                <td>9</td>
+                <td>Projeto Robô Decisor: duas condições, uma loucura</td>
+              </tr>
+              <tr>
+                <td>Apresentação e comunicação do projeto</td>
+                <td>10</td>
+                <td>Feira dos Robôs Decisores: o julgamento final</td>
+              </tr>
+
+              <!-- 2º Bimestre -->
+              <tr>
+                <td>Diferença entre SE (condição) e QUANDO (evento)</td>
+                <td>11</td>
+                <td>
+                  Apresentando eventos: QUANDO bater palmas, o robô assusta
+                </td>
+              </tr>
+              <tr>
+                <td>Evento dispara, condição é testada</td>
+                <td>12</td>
+                <td>QUANDO + SE: juntando evento e condição</td>
+              </tr>
+              <tr>
+                <td>Criar regras coletivas com QUANDO + SE</td>
+                <td>13</td>
+                <td>Projeto rápido: Robô da Sala de Aula</td>
+              </tr>
+              <tr>
+                <td>Responder a sequências de eventos</td>
+                <td>14</td>
+                <td>Múltiplos eventos em sequência: a coreografia dos robôs</td>
+              </tr>
+              <tr>
+                <td>Conjunção: ambas condições verdadeiras</td>
+                <td>15</td>
+                <td>Introdução ao E: tudo verdade</td>
+              </tr>
+              <tr>
+                <td>Disjunção: pelo menos uma verdadeira</td>
+                <td>16</td>
+                <td>Introdução ao OU: basta um</td>
+              </tr>
+              <tr>
+                <td>Combinação com parênteses lúdicos</td>
+                <td>17</td>
+                <td>Misturando E e OU: o robô decisor avançado</td>
+              </tr>
+              <tr>
+                <td>Aplicar E e OU para eliminar suspeitos</td>
+                <td>18</td>
+                <td>Projeto Robô Detetive Parte 1 (Mistério)</td>
+              </tr>
+              <tr>
+                <td>Algoritmo SE → SENÃO SE → SENÃO</td>
+                <td>19</td>
+                <td>Projeto Robô Detetive Parte 2 (Algoritmo)</td>
+              </tr>
+              <tr>
+                <td>Integração de eventos, E, OU</td>
+                <td>20</td>
+                <td>Feira dos Eventos – Avaliação do bimestre</td>
+              </tr>
+
+              <!-- 3º Bimestre -->
+              <tr>
+                <td>Blocos mover, girar, falar</td>
+                <td>21</td>
+                <td>Conhecendo o ScratchJr: o gato que anda</td>
+              </tr>
+              <tr>
+                <td>Interatividade com toque e aceleração</td>
+                <td>22</td>
+                <td>Eventos no ScratchJr: QUANDO tocar/agitar</td>
+              </tr>
+              <tr>
+                <td>Bloco `ESPERAR ATÉ` como condicional</td>
+                <td>23</td>
+                <td>Simulando SE no ScratchJr: desviar de obstáculos</td>
+              </tr>
+              <tr>
+                <td>Loop para desenhar polígonos</td>
+                <td>24</td>
+                <td>Introdução ao REPITA: fazer a mesma coisa várias vezes</td>
+              </tr>
+              <tr>
+                <td>Loop até encontrar condição de parada</td>
+                <td>25</td>
+                <td>REPITA + SE: o loop condicional</td>
+              </tr>
+              <tr>
+                <td>Integrar loops, eventos e condicionais (dança)</td>
+                <td>26</td>
+                <td>Coreografia de robôs com loop e eventos</td>
+              </tr>
+              <tr>
+                <td>Identificar erros em algoritmos físicos</td>
+                <td>27</td>
+                <td>Depuração lúdica Parte 1 (robô mentindo)</td>
+              </tr>
+              <tr>
+                <td>Corrigir programas pré‑defeituosos</td>
+                <td>28</td>
+                <td>Depuração digital Parte 2 (bugs no ScratchJr)</td>
+              </tr>
+              <tr>
+                <td>Projeto final: jogo com tesouro e monstro</td>
+                <td>29</td>
+                <td>Meu primeiro jogo condicional</td>
+              </tr>
+              <tr>
+                <td>Apresentação, votação e certificados</td>
+                <td>30</td>
+                <td>Feira de Jogos Condicionais – Avaliação</td>
+              </tr>
+
+              <!-- 4º Bimestre -->
+              <tr>
+                <td>Grid 8×8, distribuição de obstáculos e regras</td>
+                <td>31</td>
+                <td>Planejamento e mapa da cidade</td>
+              </tr>
+              <tr>
+                <td>Materiais recicláveis, prédios, semáforos</td>
+                <td>32</td>
+                <td>Construção da cidade parte 1 (estruturas)</td>
+              </tr>
+              <tr>
+                <td>Produção de cartões com SE/ENTÃO/SENÃO/QUANDO</td>
+                <td>33</td>
+                <td>Sinalização e cartões</td>
+              </tr>
+              <tr>
+                <td>Execução coletiva, identificação de conflitos</td>
+                <td>34</td>
+                <td>Simulação 1: o robô no trânsito</td>
+              </tr>
+              <tr>
+                <td>Reação a eventos imprevisíveis</td>
+                <td>35</td>
+                <td>Simulação 2: eventos externos (luz, som)</td>
+              </tr>
+              <tr>
+                <td>Revisão total: cada aluno programa seu robô</td>
+                <td>36</td>
+                <td>Programando o robô de papelão</td>
+              </tr>
+              <tr>
+                <td>Convites, ensaios, distribuição de papéis</td>
+                <td>37</td>
+                <td>Preparação para a Feira de Robótica</td>
+              </tr>
+              <tr>
+                <td>Demonstração para a comunidade</td>
+                <td>38</td>
+                <td>Feira de Robótica – apresentação para famílias</td>
+              </tr>
+              <tr>
+                <td>Teste oral/prático + autoavaliação</td>
+                <td>39</td>
+                <td>Avaliação final e certificados</td>
+              </tr>
+              <tr>
+                <td>Caça ao tesouro condicional, música, despedida</td>
+                <td>40</td>
+                <td>Festa de encerramento – o futuro da robótica</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== CRITÉRIOS DE AVALIAÇÃO ==================== -->
+      <section id="avaliacao" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4">
+          <h3>📊 CRITÉRIOS DE AVALIAÇÃO – ANO LETIVO COMPLETO</h3>
+          <p class="fst-italic">
+            "Do parafuso enferrujado ao ouro reluzente (sem precisar de solda)"
           </p>
-        </div>
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-6">
-            <div class="certificado-preview p-3 text-center">
-              <div class="certificado-modelo p-4" id="previewCertificado">
-                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
-                <p>Certificamos que</p>
-                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
-                <p>
-                  concluiu com êxito o
-                  <strong>2º ANO – ROBÓTICA EDUCACIONAL</strong><br />Dominando os conceitos de:<br />🔀
-                  <strong>SE → ENTÃO → SENÃO</strong><br />🎬
-                  <strong>QUANDO</strong><br />🔁 <strong>REPITA</strong><br />🔍 <strong>E / OU</strong><br />🤖
-                  <strong>PROJETO AUTORAL</strong>
-                </p>
-                <hr class="linha-certificado" />
-                <p class="data-rodape">
-                  RobôMestres do Paraná • <span id="previewData">2026</span>
-                </p>
-                <p class="assinatura-engracada">
-                  "SE não chove, ENTÃO vamos programar; SENÃO, programamos do
-                  mesmo jeito!"
-                </p>
-                <div class="mt-2">
-                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 2.0</span>
+          <p>
+            A avaliação aqui não é sobre "acertou ou errou" – é sobre evoluir,
+            se divertir e aprender a debuggar a própria cabeça. Usamos uma
+            rubrica de parafusos (inspirada no Robô Zé):
+          </p>
+          <ul>
+            <li>
+              🔩 <strong>Enferrujado (Iniciante):</strong> ainda precisa de
+              ajuda, mas tenta – e tentar já é meio caminho.
+            </li>
+            <li>
+              🔩 <strong>Apertado (Em progresso):</strong> executa com autonomia
+              em contextos familiares, às vezes trava, mas desatraca sozinho.
+            </li>
+            <li>
+              🔩 <strong>De Ouro (Mestre):</strong> executa, explica, cria
+              exemplos novos e ajuda os colegas – além de rir dos próprios bugs.
+            </li>
+          </ul>
+
+          <h4 class="mt-4">Critérios Gerais (valem para o ano todo)</h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead>
+                <tr>
+                  <th>De Ouro</th>
+                  <th>Critério</th>
+                  <th>O que significa</th>
+                  <th>Enferrujado</th>
+                  <th>Apertado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cria exemplos novos e ensina</td>
+                  <td>Compreensão do SE/ENTÃO</td>
+                  <td>Entende causa‑efeito</td>
+                  <td>Com ajuda de cartões</td>
+                  <td>Executa sozinho em situações simples</td>
+                </tr>
+                <tr>
+                  <td>Usa em situações novas (desenhos, histórias)</td>
+                  <td>Uso do SENÃO</td>
+                  <td>Diferencia "plano A" e "plano B"</td>
+                  <td>Confunde com ENTÃO às vezes</td>
+                  <td>Usa corretamente em jogos</td>
+                </tr>
+                <tr>
+                  <td>Cria coreografia com eventos e ensina</td>
+                  <td>Eventos (QUANDO)</td>
+                  <td>Reage a gatilhos externos</td>
+                  <td>Reage a 1 evento isolado com ajuda</td>
+                  <td>Reage a 2‑3 eventos em contexto guiado</td>
+                </tr>
+                <tr>
+                  <td>Cria exemplos novos e explica a diferença</td>
+                  <td>Operadores lógicos (E / OU)</td>
+                  <td>Diferencia conjunção de disjunção</td>
+                  <td>Identifica quando destacado</td>
+                  <td>Usa em frases prontas</td>
+                </tr>
+                <tr>
+                  <td>Usa loop com condicional (REPITA ATÉ)</td>
+                  <td>Loop (REPITA)</td>
+                  <td>Repete ações sem escrever tudo 30x</td>
+                  <td>Executa loop pronto</td>
+                  <td>Cria loop para quadrado</td>
+                </tr>
+                <tr>
+                  <td>
+                    Corrige bugs complexos e cria bugs de propósito para os
+                    colegas
+                  </td>
+                  <td>Depuração (Caça‑bugs)</td>
+                  <td>Encontra e corrige erros</td>
+                  <td>Só percebe bugs com ajuda</td>
+                  <td>Identifica erros óbvios</td>
+                </tr>
+                <tr>
+                  <td>Lidera e organiza o grupo espontaneamente</td>
+                  <td>Trabalho colaborativo</td>
+                  <td>Participa e ajuda o grupo</td>
+                  <td>Participa se chamado</td>
+                  <td>Participa ativamente na maioria</td>
+                </tr>
+                <tr>
+                  <td>
+                    Explica, demonstra, responde perguntas e sugere melhorias
+                  </td>
+                  <td>Comunicação do projeto</td>
+                  <td>Explica o que fez</td>
+                  <td>Mostra o robô, mas precisa de ajuda para explicar</td>
+                  <td>Explica a lógica, mas trava em perguntas inesperadas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert alert-info mt-3">
+            <i class="bi bi-info-circle"></i>
+            <strong>Observação importante:</strong> Ninguém termina o ano como
+            "Enferrujado" se mostrou esforço e diversão. A ideia é celebrar o
+            progresso. Se a criança se divertiu e aprendeu uma coisa nova, ela
+            já é 🔩 De Ouro no coração do professor.
+          </div>
+
+          <h4 class="mt-4">
+            Critérios Específicos por Bimestre (o "raio-X do caos")
+          </h4>
+          <div class="accordion" id="accordionBim">
+            <!-- 1º BIMESTRE -->
+            <div class="accordion-item bg-dark text-white border-warning">
+              <h2 class="accordion-header" id="heading1">
+                <button
+                  class="accordion-button bg-dark text-warning"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse1"
+                >
+                  1º BIMESTRE – Algoritmos e SE/ENTÃO/SENÃO
+                </button>
+              </h2>
+              <div
+                id="collapse1"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionBim"
+              >
+                <div class="accordion-body">
+                  <div class="table-responsive">
+                    <table class="table table-robotica table-sm">
+                      <thead>
+                        <tr>
+                          <th>De Ouro</th>
+                          <th>Conquista</th>
+                          <th>Código</th>
+                          <th>Enferrujado</th>
+                          <th>Apertado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>5 de 5 comandos + bip de comemoração</td>
+                          <td>Executar comandos motores</td>
+                          <td>SE‑Motor‑01</td>
+                          <td>2 de 5 comandos sem sair do grid</td>
+                          <td>3 de 5 comandos sem sair do grid</td>
+                        </tr>
+                        <tr>
+                          <td>Dá exemplo engraçado ou surpreendente</td>
+                          <td>Dar exemplo de SE→ENTÃO</td>
+                          <td>SE‑Causa‑04</td>
+                          <td>Dá exemplo oral com ajuda</td>
+                          <td>Executa corretamente no jogo musical</td>
+                        </tr>
+                        <tr>
+                          <td>5 acertos em 1 minuto (&lt;2s)</td>
+                          <td>Automatizar resposta condicional</td>
+                          <td>SE‑Automacao‑07</td>
+                          <td>Reações em &gt;2s</td>
+                          <td>3 acertos em 1 minuto</td>
+                        </tr>
+                        <tr>
+                          <td>Escreve exemplo com duas possibilidades</td>
+                          <td>Escrever algoritmo com SENÃO</td>
+                          <td>SE‑AutoriaSenao‑12</td>
+                          <td>Dita com ajuda</td>
+                          <td>Escreve exemplo simples (ex: fila do lanche)</td>
+                        </tr>
+                        <tr>
+                          <td>Corrige sozinho e explica o motivo</td>
+                          <td>Depurar regra injusta</td>
+                          <td>SE‑Ajuste‑14</td>
+                          <td>Precisa de ajuda para identificar erro</td>
+                          <td>
+                            Identifica erro, mas precisa ajuda para corrigir
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <p class="text-muted mt-2 small">
-                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
-              </p>
+            </div>
+            <!-- 2º BIMESTRE -->
+            <div class="accordion-item bg-dark text-white border-warning">
+              <h2 class="accordion-header" id="heading2">
+                <button
+                  class="accordion-button collapsed bg-dark text-warning"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse2"
+                >
+                  2º BIMESTRE – Eventos, E e OU
+                </button>
+              </h2>
+              <div
+                id="collapse2"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionBim"
+              >
+                <div class="accordion-body">
+                  <div class="table-responsive">
+                    <table class="table table-robotica table-sm">
+                      <thead>
+                        <tr>
+                          <th>De Ouro</th>
+                          <th>Conquista</th>
+                          <th>Código</th>
+                          <th>Enferrujado</th>
+                          <th>Apertado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cria coreografia com 3 eventos e ensina</td>
+                          <td>Reagir a eventos (QUANDO)</td>
+                          <td>EV‑Reacao‑11</td>
+                          <td>Reage a 1 evento com ajuda</td>
+                          <td>Reage a 2 eventos diferentes</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Cria regra nova (ex: QUANDO mãe chama, SE já escovou
+                            os dentes...)
+                          </td>
+                          <td>Combinar QUANDO + SE</td>
+                          <td>EV‑Cond‑12</td>
+                          <td>Só testa condição após evento com ajuda</td>
+                          <td>Executa corretamente no grid</td>
+                        </tr>
+                        <tr>
+                          <td>Cria frase original com E e explica</td>
+                          <td>Usar E (conjunção)</td>
+                          <td>LOG‑E‑15</td>
+                          <td>Acerta 1 de 3 situações</td>
+                          <td>Acerta 2 de 3 situações</td>
+                        </tr>
+                        <tr>
+                          <td>Cria frase original com OU e compara com E</td>
+                          <td>Usar OU (disjunção)</td>
+                          <td>LOG‑OU‑16</td>
+                          <td>Acerta 1 de 3 situações</td>
+                          <td>Acerta 2 de 3 situações</td>
+                        </tr>
+                        <tr>
+                          <td>Cria regra para o recreio com E e OU</td>
+                          <td>Misturar E e OU com parênteses</td>
+                          <td>LOG‑Misto‑17</td>
+                          <td>Levanta placa errada</td>
+                          <td>Acerta (A E B) OU C no grid</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 3º BIMESTRE -->
+            <div class="accordion-item bg-dark text-white border-warning">
+              <h2 class="accordion-header" id="heading3">
+                <button
+                  class="accordion-button collapsed bg-dark text-warning"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse3"
+                >
+                  3º BIMESTRE – ScratchJr, REPITA e depuração digital
+                </button>
+              </h2>
+              <div
+                id="collapse3"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionBim"
+              >
+                <div class="accordion-body">
+                  <div class="table-responsive">
+                    <table class="table table-robotica table-sm">
+                      <thead>
+                        <tr>
+                          <th>De Ouro</th>
+                          <th>Conquista</th>
+                          <th>Código</th>
+                          <th>Enferrujado</th>
+                          <th>Apertado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Gato encosta e fala "Olá"</td>
+                          <td>Primeiro programa no ScratchJr</td>
+                          <td>SCRATCH‑01</td>
+                          <td>Monta 2 blocos com ajuda</td>
+                          <td>Gato encosta na maçã</td>
+                        </tr>
+                        <tr>
+                          <td>Cria terceiro evento (ex: mensagem)</td>
+                          <td>Usar eventos (tocar/agitar)</td>
+                          <td>SCRATCH‑EV</td>
+                          <td>Reage a 1 evento</td>
+                          <td>Reage a 2 eventos simultâneos</td>
+                        </tr>
+                        <tr>
+                          <td>Gato vira, mia e muda de cor</td>
+                          <td>Simular SE com ESPERAR ATÉ</td>
+                          <td>SCRATCH‑SE</td>
+                          <td>Gato vira às vezes</td>
+                          <td>Gato vira sempre e mia</td>
+                        </tr>
+                        <tr>
+                          <td>Hexágono ou polígono de 8 lados com música</td>
+                          <td>Loop (REPITA) para polígono</td>
+                          <td>SCRATCH‑LOOP</td>
+                          <td>Usa REPITA, mas ângulo errado</td>
+                          <td>Quadrado perfeito</td>
+                        </tr>
+                        <tr>
+                          <td>Usa PARAR na condição certa</td>
+                          <td>Loop condicional (REPITA ATÉ)</td>
+                          <td>SCRATCH‑LOOPSE</td>
+                          <td>Loop infinito ou para longe</td>
+                          <td>Gato chega à maçã com REPITA 999</td>
+                        </tr>
+                        <tr>
+                          <td>Corrige e documenta o erro</td>
+                          <td>Caça-bugs digital</td>
+                          <td>DEBUG‑02</td>
+                          <td>Percebe o bug, mas erra correção</td>
+                          <td>Corrige e testa</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 4º BIMESTRE -->
+            <div class="accordion-item bg-dark text-white border-warning">
+              <h2 class="accordion-header" id="heading4">
+                <button
+                  class="accordion-button collapsed bg-dark text-warning"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse4"
+                >
+                  4º BIMESTRE – Cidade dos Condicionais (projeto integrador)
+                </button>
+              </h2>
+              <div
+                id="collapse4"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionBim"
+              >
+                <div class="accordion-body">
+                  <div class="table-responsive">
+                    <table class="table table-robotica table-sm">
+                      <thead>
+                        <tr>
+                          <th>De Ouro</th>
+                          <th>Conquista</th>
+                          <th>Código</th>
+                          <th>Enferrujado</th>
+                          <th>Apertado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Lidera o planejamento e conecta bairros</td>
+                          <td>Planejamento da cidade</td>
+                          <td>CIDADE‑01</td>
+                          <td>Sugere obstáculo, mas sem alinhamento</td>
+                          <td>Desenha grid com ruas alinhadas</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Cria elemento com mecanismo (ex: semáforo que pisca)
+                          </td>
+                          <td>Construção dos elementos</td>
+                          <td>CIDADE‑02</td>
+                          <td>Usa materiais, mas frágil</td>
+                          <td>Estrutura resistente ao teste de mesa</td>
+                        </tr>
+                        <tr>
+                          <td>Regra criativa com E ou OU e ilustração</td>
+                          <td>Cartões de regras</td>
+                          <td>CIDADE‑03</td>
+                          <td>Escreve regra com ajuda</td>
+                          <td>Regra legível e testável</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Desvia, respeita eventos e ainda ajuda colegas
+                          </td>
+                          <td>Simulação de trânsito</td>
+                          <td>CIDADE‑04</td>
+                          <td>Colide sem perceber</td>
+                          <td>Evita colisões básicas</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Processa eventos simultâneos e explica prioridade
+                          </td>
+                          <td>Eventos externos (luz/som)</td>
+                          <td>CIDADE‑05</td>
+                          <td>Reage a 1 evento com atraso</td>
+                          <td>Reage a 2 eventos diferentes</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Responde perguntas inesperadas e sugere melhoria
+                          </td>
+                          <td>Apresentação na feira</td>
+                          <td>CIDADE‑06</td>
+                          <td>Mostra o robô, mas trava nas perguntas</td>
+                          <td>
+                            Explica e demonstra, responde perguntas simples
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
-              <h4>
-                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
-              </h4>
-              <div class="row g-3 align-items-end">
-                <div class="col-md-8">
-                  <label class="form-label text-warning">Nome do Aluno(a)</label>
-                  <input type="text" id="nomeAluno" class="form-control"
-                    placeholder="Digite o nome do pequeno programador" />
+        </div>
+      </section>
+
+      <!-- ==================== SEÇÃO DE CERTIFICADO (conforme modelo) ==================== -->
+      <section id="certificacao" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4 shadow-lg">
+          <div class="text-center mb-4">
+            <h3>
+              <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+              CONCLUSÃO - 2º ANO
+            </h3>
+            <p class="lead">"MESTRE DO SE/ENTÃO/SENÃO, EVENTOS E LÓGICA"</p>
+          </div>
+
+          <div class="row g-4 align-items-start">
+            <!-- COLUNA ESQUERDA: PRÉ-VISUALIZAÇÃO DO CERTIFICADO -->
+            <div class="col-lg-6">
+              <div class="certificado-preview p-3 text-center">
+                <div class="certificado-modelo p-4" id="previewCertificado">
+                  <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                  <p>Certificamos que</p>
+                  <strong id="previewNomeAluno" class="nome-aluno-destaque"
+                    >[NOME DO ALUNO]</strong
+                  >
+                  <p>
+                    concluiu com êxito o
+                    <strong>2º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                    Dominando os conceitos de:<br />
+                    🔁 <strong>SE → ENTÃO → SENÃO</strong> (decisões
+                    binárias)<br />
+                    🎲 <strong>EVENTOS</strong> (QUANDO algo acontece)<br />
+                    🧠 <strong>E / OU</strong> (conjunções lógicas)<br />
+                    🐛 <strong>DEPURAÇÃO</strong> (caça aos bugs)<br />
+                    🤖 <strong>CIDADE DOS CONDICIONAIS</strong> (projeto
+                    integrador)
+                  </p>
+                  <hr class="linha-certificado" />
+                  <p class="data-rodape">
+                    RobôMestres do Paraná • <span id="previewData">2026</span>
+                  </p>
+                  <p class="assinatura-engracada">
+                    "SE aprendeu, ENTÃO merece; SENÃO… tente de novo, mas se
+                    divertindo!"
+                  </p>
+                  <div class="mt-2">
+                    <span class="badge bg-warning text-dark"
+                      >🔧 Ass: Robô Zé 3.0</span
+                    >
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
-                    🤖 Adicionar
+                <p class="text-muted mt-2 small">
+                  <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+                </p>
+              </div>
+            </div>
+
+            <!-- COLUNA DIREITA: CADASTRO DE ALUNOS E IMPRESSÃO -->
+            <div class="col-lg-6">
+              <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+                <h4>
+                  <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+                </h4>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <label class="form-label text-warning"
+                      >Nome do Aluno(a)</label
+                    >
+                    <input
+                      type="text"
+                      id="nomeAluno"
+                      class="form-control"
+                      placeholder="Digite o nome do pequeno programador"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      id="btnAdicionar"
+                      class="btn btn-warning w-100 fw-bold"
+                    >
+                      🤖 Adicionar
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <h5>
+                    📋 Lista de Programadores
+                    <span id="contadorAlunos" class="badge bg-warning text-dark"
+                      >0</span
+                    >
+                  </h5>
+                  <ul
+                    id="listaAlunos"
+                    class="lista-alunos list-unstyled"
+                    style="max-height: 220px; overflow-y: auto"
+                  ></ul>
+                </div>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <button
+                    id="btnImprimirCertificados"
+                    class="btn-robotico-ano2"
+                    disabled
+                  >
+                    <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                  </button>
+                  <button
+                    id="btnPreviewAluno"
+                    class="btn-outline-warning"
+                    disabled
+                  >
+                    <i class="bi bi-eye"></i> Pré-visualizar
                   </button>
                 </div>
               </div>
-              <div class="mt-4">
-                <h5>
-                  📋 Lista de Programadores
-                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
-                </h5>
-                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
-                </ul>
-              </div>
-              <div class="mt-3 d-flex gap-2 flex-wrap">
-                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
-                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
-                </button>
-                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
-                  <i class="bi bi-eye"></i> Pré-visualizar
-                </button>
-              </div>
             </div>
           </div>
-        </div>
-        <div class="alert alert-info mt-4 mb-0 small">
-          <i class="bi bi-info-circle-fill"></i>
-          <strong>Dica de impressão:</strong> Os certificados serão gerados em
-          uma nova janela com layout A4 (3x2 = 6 por folha). Configure para
-          colorido e margens padrão.
-        </div>
-      </div>
-    </section>
 
-    <!-- ENCERRAMENTO (idêntico ao modelo_index) -->
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="bg-robocard p-4 rounded-4 text-center">
-          <h3>⚡ PARA ENCERRAR O ANO COM CHAVE DE OURO</h3>
-          <p>
-            Então, professor(a), como foi essa jornada de 40 semanas? Você
-            ainda está com a caneca de café? O material é seu. Pode raspar,
-            pode colar, pode errar. A robótica, assim como a infância, é um
-            eterno SE-ENTÃO-SENÃO com variável de diversão.
+          <div class="alert alert-info mt-4 mb-0 small" role="alert">
+            <i class="bi bi-info-circle-fill"></i>
+            <strong>Dica de impressão:</strong> Os certificados serão gerados em
+            nova janela com layout otimizado para A4 (3x2 = 6 por folha). Cores
+            preservadas.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TEXTO DE ENCERRAMENTO ==================== -->
+      <section id="encerramento" class="mb-5">
+        <div class="bg-robocard p-4 p-md-5 rounded-4 text-center shadow-lg">
+          <h3>
+            🔚 TEXTO DE ENCERRAMENTO
+            <span class="badge bg-secondary"
+              >extremamente irônico e irreverente</span
+            >
+          </h3>
+          <p class="lead fw-bold mt-3">
+            "SE você chegou até aqui, ENTÃO seu cérebro não fundiu – o que já é
+            um milagre da engenharia pedagógica."
           </p>
           <p>
-            <em>SE o robô não andar, ENTÃO a gente declara "Dia do Bug", SENÃO
-              a gente dança.<br />SE uma criança chorar, ENTÃO a gente abraça
-              e pergunta qual comando erramos, SENÃO a gente celebra.</em>
+            Parabéns, professor(a) destemido(a). Você sobreviveu a 40 semanas de
+            robôs que não obedeciam, cartões que caíam no meio da simulação,
+            pais que perguntavam "pra que serve isso?" e alunos que programaram
+            o colega a pular na hora do lanche.
           </p>
           <p>
-            <strong>Até a próxima aventura, comandante! O 3º ano te espera com
-              desafios ainda mais irados!</strong>
+            Você ensinou lógica, eventos, condicionais, loops e depuração sem
+            perder o senso de humor (ou perdendo, mas recuperando com café).
+            Mais importante: você mostrou que errar é parte do jogo, que o SENÃO
+            não é um fracasso, é só um plano B, e que uma caixa de sapato com
+            olhos de latinha pode tomar decisões mais sensatas que muito adulto
+            em reunião de condomínio.
           </p>
+          <p>
+            Agora, antes de planejar o 3º ano (onde vamos falar de variáveis,
+            sensores de verdade e programação em blocos), tire um tempo para:
+          </p>
+          <ul class="list-unstyled">
+            <li>🍪 <strong>Comer o biscoito que sobrou da feira.</strong></li>
+            <li>😂 <strong>Rir dos vídeos dos robôs travando.</strong></li>
+            <li>
+              🤖 <strong>Dar um abraço no Robô Zé 3.0</strong> (ele existe no
+              seu coração e na pasta de documentos).
+            </li>
+          </ul>
+          <p>
+            <strong>SENÃO...</strong> bom, SENÃO você vai debuggar esse
+            relaxamento e voltar para o planejamento. Mas a gente sabe que você
+            merece o descanso.
+          </p>
+          <p class="mt-4"><strong>Bip‑bip! Até o ano que vem. 🤖💥</strong></p>
           <div class="selo-sucata mt-3 d-inline-block">
-            🤖 BUGS ESMAGADOS: 2.718 🤖
+            BUGS ESMAGADOS: INFINITOS ☕
           </div>
         </div>
-      </div>
-    </div>
-  </main>
+      </section>
+    </main>
+    <!-- FIM DO CONTEÚDO PRINCIPAL -->
 
-  <!-- RODAPÉ (idêntico ao modelo_rodape.html) -->
-  <footer class="footer-robotico footer-rebelde">
-    <div class="container">
-      <div class="row align-items-center mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="d-flex justify-content-center justify-content-md-start">
-            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="d-flex justify-content-center justify-content-md-end">
-            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-start mb-4">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="text-center text-md-start">
-            <div class="dev-nome">
-              💀 Desenvolvido na base do ódio, litros de café e condicionais
-              malucas por Rodrigo Barbosa.
+    <!-- ==================== RODAPÉ REBELDE (exato do modelo_rodape.html) ==================== -->
+    <footer class="footer-robotico footer-rebelde">
+      <div class="container">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img
+                src="imagens/logo_rb.png"
+                alt="Rodrigo Barbosa"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+              />
             </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end">
+              <img
+                src="imagens/logo_gn.png"
+                alt="Gisele Nunes"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+              />
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="text-center text-md-end">
-            <div class="dev-nome">
-              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
-              SENÃO e uma dedicação que só aparece quando o prazo já passou
-              por Gisele Nunes.
-            </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="relatorio-bugs"></div>
-    </div>
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/a2index.js"></script>
-</body>
+        <div class="row align-items-start mb-4">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="text-center text-md-start">
+              <div class="dev-nome">
+                💀 Desenvolvido na base do ódio, litros de café e condicionais
+                malucas por Rodrigo Barbosa.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
+                  >barbosa.rodrigo.1979@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center text-md-end">
+              <div class="dev-nome">
+                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+                SENÃO e uma dedicação que só aparece quando o prazo já passou
+                por Gisele Nunes.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="relatorio-bugs"></div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/a2index.js"></script>
+  </body>
 </html>

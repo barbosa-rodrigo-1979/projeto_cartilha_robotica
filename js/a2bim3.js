@@ -1,7 +1,6 @@
 // ==================================================
 // a2bim3.js - SCRIPT UNIFICADO PARA 3º BIMESTRE - 2º ANO
-// Módulos: menu, cabeçalho, rodapé, planos de aula, certificado, jogo Loop Dash
-// Baseado nos anexos e nas especificações do documento .docx
+// CORRIGIDO: Novo jogo com eventos, loops, condicionais e falar
 // ==================================================
 
 (function () {
@@ -332,499 +331,324 @@
     },
   };
 
-  // ==================== MÓDULO JOGO LOOP DASH (fechamento bimestre) ====================
-  const JogoModule = {
-    inicializado: false,
-    faseAtual: 1,
-    cartoesAlgoritmo: [],
-    posicaoRobo: { x: 0, y: 0, direcao: 1 },
-    recordes: { 1: null, 2: null, 3: null },
-    pistas: {
-      1: {
-        nome: "LINHA RETA 🏁",
-        grid: [["🚶", "⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "🏁"]],
-        inicio: { x: 0, y: 0 },
-        tamanho: { linhas: 1, colunas: 8 },
-      },
-      2: {
-        nome: "ZIGUE-ZAGUE 🔄",
-        grid: [
-          ["🚶", "⬜", "⬜", "⬜", "🏁"],
-          ["⬜", "🧱", "⬜", "🧱", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "🧱", "⬜", "🧱", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜"],
-        ],
-        inicio: { x: 0, y: 0 },
-        tamanho: { linhas: 5, colunas: 5 },
-      },
-      3: {
-        nome: "OBSTÁCULOS + MONSTRO 🧱",
-        grid: [
-          ["🚶", "⬜", "🧱", "⬜", "⬜", "🏁"],
-          ["⬜", "🧱", "⬜", "🧱", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "🧱", "⬜", "⬜"],
-          ["🧱", "⬜", "🧱", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "🧱", "⬜"],
-          ["⬜", "🧱", "⬜", "⬜", "⬜", "⬜"],
-        ],
-        inicio: { x: 0, y: 0 },
-        tamanho: { linhas: 6, colunas: 6 },
-      },
-    },
-    elementos: {},
-    init() {
-      if (!document.getElementById("loopdashGrid")) return;
-      this.carregarRecordes();
-      this.capturarElementos();
-      this.configurarEventos();
-      this.carregarFase(1);
-      this.inicializado = true;
-      console.log("🎮 [JogoModule] LOOP DASH inicializado");
-    },
-    capturarElementos() {
-      this.elementos = {
-        grid: document.getElementById("loopdashGrid"),
-        cartoesUsados: document.getElementById("loopdashCartoes"),
-        melhorMarca: document.getElementById("loopdashMelhor"),
-        status: document.getElementById("loopdashStatus"),
-        algoritmoMontado: document.getElementById("algoritmoMontado"),
-        mensagem: document.getElementById("loopdashMensagem"),
-        faseNomeAtual: document.getElementById("faseNomeAtual"),
-        faseIconeAtual: document.getElementById("faseIconeAtual"),
-      };
-    },
-    carregarFase(fase) {
-      this.faseAtual = fase;
-      this.limparAlgoritmo();
-      this.resetarRobo();
-      document
-        .querySelectorAll(".btn-phase")
-        .forEach((btn) => btn.classList.remove("ativo"));
-      const btnAtivo = document.querySelector(
-        `.btn-phase[data-fase="${fase}"]`,
-      );
-      if (btnAtivo) btnAtivo.classList.add("ativo");
-      if (this.elementos.faseNomeAtual)
-        this.elementos.faseNomeAtual.textContent = this.pistas[fase].nome;
-      const icones = { 1: "🏁", 2: "🔄", 3: "🧱" };
-      if (this.elementos.faseIconeAtual)
-        this.elementos.faseIconeAtual.textContent = icones[fase];
-      this.desenharGrid();
-      this.atualizarRecordeDisplay();
-      this.mostrarMensagem(
-        `🏁 FASE ${fase}: ${this.pistas[fase].nome} selecionada! Monte seu algoritmo com os blocos.`,
-      );
-    },
-    desenharGrid() {
-      const pista = this.pistas[this.faseAtual];
-      if (!this.elementos.grid) return;
-      this.elementos.grid.className = `loopdash-grid fase${this.faseAtual}`;
-      this.elementos.grid.innerHTML = "";
-      for (let l = 0; l < pista.tamanho.linhas; l++) {
-        for (let c = 0; c < pista.tamanho.colunas; c++) {
-          const celula = pista.grid[l]?.[c] || "⬜";
-          const cellDiv = document.createElement("div");
-          cellDiv.className = "loopdash-cell";
-          if (celula === "🧱") cellDiv.classList.add("wall");
-          else if (celula === "🏁") cellDiv.classList.add("target");
-          if (this.posicaoRobo.x === l && this.posicaoRobo.y === c)
-            cellDiv.classList.add("robot");
-          else if (celula === "⬜" || celula === "🚶")
-            cellDiv.classList.add("path");
-          this.elementos.grid.appendChild(cellDiv);
+  // ==================== JOGO ESTÚDIO SCRATCHJR (VERSÃO COMPLETA COM LOOPS E CONDICIONAIS EXPLÍCITOS) ====================
+  const ScratchJrGame = (function () {
+    // Configuração do palco 5x5
+    let posRobo = { x: 2, y: 0, direcao: 1 }; // 0:cima,1:dir,2:baixo,3:esq
+    const objetivo = { x: 4, y: 4 };
+    const obstaculos = [
+      { x: 1, y: 2 },
+      { x: 2, y: 2 },
+      { x: 3, y: 2 },
+      { x: 4, y: 1 },
+      { x: 4, y: 2 },
+    ];
+    const gridSize = 5;
+    let programa = [];
+    let executando = false;
+    const posInicial = { x: 2, y: 0, direcao: 1 };
+    let elementos = {};
+
+    function obterCelula(x, y) {
+      if (x === posRobo.x && y === posRobo.y) return "🤖";
+      if (x === objetivo.x && y === objetivo.y) return "⭐";
+      if (obstaculos.some((obs) => obs.x === x && obs.y === y)) return "🧱";
+      return "⬜";
+    }
+
+    function desenharPalco() {
+      const container = elementos.palco;
+      if (!container) return;
+      container.innerHTML = "";
+      for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+          const celula = document.createElement("div");
+          celula.classList.add("celula-palco");
+          celula.textContent = obterCelula(i, j);
+          container.appendChild(celula);
         }
       }
-    },
-    resetarRobo() {
-      const pista = this.pistas[this.faseAtual];
-      this.posicaoRobo = { x: pista.inicio.x, y: pista.inicio.y, direcao: 1 };
-      this.desenharGrid();
-      if (this.elementos.status) this.elementos.status.textContent = "PRONTO";
-    },
-    adicionarCartao(comando) {
-      let cartaoObj = { comando: comando, filhos: [], contador: 3 };
-      if (comando === "repita") cartaoObj.filhos = [];
-      this.cartoesAlgoritmo.push(cartaoObj);
-      this.renderizarAlgoritmo();
-      this.atualizarContadorCartoes();
-    },
-    getNomeComando(comando) {
-      const nomes = {
-        ande1: "ANDE 1",
-        ande2: "ANDE 2",
-        vireDireita: "VIRE DIREITA",
-        vireEsquerda: "VIRE ESQUERDA",
-        repita: "REPITA",
-        esperarAteBorda: "ESPERAR ATÉ PAREDE",
-      };
-      return nomes[comando] || comando;
-    },
-    getIconeComando(comando) {
-      const icones = {
-        ande1: "🚶",
-        ande2: "🏃",
-        vireDireita: "▶️",
-        vireEsquerda: "◀️",
-        repita: "🔄",
-        esperarAteBorda: "⏳",
-      };
-      return icones[comando] || "❓";
-    },
-    renderizarAlgoritmo() {
-      if (!this.elementos.algoritmoMontado) return;
-      this.elementos.algoritmoMontado.innerHTML = "";
-      if (this.cartoesAlgoritmo.length === 0) {
-        this.elementos.algoritmoMontado.innerHTML =
-          '<div class="placeholder-algoritmo">🧩 Arraste os blocos dos cartões abaixo...</div>';
+    }
+
+    function renderizarScript() {
+      const container = elementos.listaScript;
+      if (!container) return;
+      if (programa.length === 0) {
+        container.innerHTML =
+          '<span class="text-muted">Nenhum bloco adicionado. Clique nos blocos abaixo.</span>';
         return;
       }
-      this.cartoesAlgoritmo.forEach((cartao, idx) => {
-        const cartaoDiv = this.criarCartaoElemento(cartao, idx);
-        this.elementos.algoritmoMontado.appendChild(cartaoDiv);
-      });
-    },
-    criarCartaoElemento(cartao, idx) {
-      const div = document.createElement("div");
-      div.className = "cartao-montado";
-      if (cartao.comando === "repita") {
-        div.classList.add("repita-container");
-        const header = document.createElement("div");
-        header.className = "repita-header";
-        header.innerHTML = `<span class="cartao-icone">🔄</span><span class="cartao-texto">REPITA</span><input type="number" class="repita-contador-input" value="${cartao.contador}" min="1" max="10" style="width:55px;border-radius:20px;"><span>vezes</span><span class="cartao-remove" data-idx="${idx}">✖️</span>`;
-        const filhosDiv = document.createElement("div");
-        filhosDiv.className = "repita-filhos";
-        const btnAdd = document.createElement("button");
-        btnAdd.innerHTML = "+ adicionar comando";
-        btnAdd.style.cssText =
-          "background:#ffb347;border:none;border-radius:20px;padding:4px 8px;font-size:0.7rem;cursor:pointer;margin-bottom:8px;";
-        btnAdd.addEventListener("click", (e) => {
-          this.mostrarSelecaoComandoParaRepita(cartao);
-        });
-        filhosDiv.appendChild(btnAdd);
-        if (cartao.filhos && cartao.filhos.length) {
-          cartao.filhos.forEach((filho, fIdx) => {
-            const filhoDiv = this.criarCartaoElemento(filho, fIdx);
-            filhosDiv.appendChild(filhoDiv);
-          });
+      container.innerHTML = "";
+      programa.forEach((cmd, idx) => {
+        const span = document.createElement("span");
+        span.classList.add("badge", "bg-secondary", "me-2", "mb-1", "p-2");
+        span.style.fontSize = "0.8rem";
+        let texto = "";
+        if (cmd.tipo === "evento")
+          texto =
+            cmd.acao === "quandoTocar" ? "📱 QUANDO TOCAR" : "🌀 QUANDO AGITAR";
+        else if (cmd.tipo === "mov") {
+          if (cmd.acao === "andar") texto = "🚶 ANDAR 1";
+          else if (cmd.acao === "girarDir") texto = "🔄 GIRAR DIREITA";
+          else if (cmd.acao === "girarEsq") texto = "🔄 GIRAR ESQUERDA";
+          else if (cmd.acao === "falhar") texto = '💬 FALAR "Oi!"';
+        } else if (cmd.tipo === "loop") {
+          let acaoTexto = "";
+          if (cmd.acao === "andar") acaoTexto = "ANDAR";
+          else if (cmd.acao === "girarDir") acaoTexto = "GIRAR DIR";
+          else if (cmd.acao === "girarEsq") acaoTexto = "GIRAR ESQ";
+          else if (cmd.acao === "falhar") acaoTexto = 'FALAR "Oi!"';
+          texto = `🔁 REPETIR ${cmd.vezes} VEZES (${acaoTexto})`;
+        } else if (cmd.tipo === "condicional") {
+          let entaoAcao = cmd.entao?.acao || "?";
+          let senaoAcao = cmd.senao?.acao || "?";
+          if (entaoAcao === "falhar") entaoAcao = "FALAR";
+          if (senaoAcao === "falhar") senaoAcao = "FALAR";
+          texto = `🤔 SE parede → ${entaoAcao} SENÃO ${senaoAcao}`;
         }
-        div.appendChild(header);
-        div.appendChild(filhosDiv);
-        const inputContador = header.querySelector(".repita-contador-input");
-        if (inputContador)
-          inputContador.addEventListener("change", (e) => {
-            cartao.contador = parseInt(e.target.value) || 3;
-            this.atualizarContadorCartoes();
-          });
-      } else {
-        div.innerHTML = `<span class="cartao-icone">${this.getIconeComando(cartao.comando)}</span><span class="cartao-texto">${this.getNomeComando(cartao.comando)}</span><span class="cartao-remove" data-idx="${idx}">✖️</span>`;
+        span.textContent = texto;
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "✖";
+        removeBtn.classList.add("btn", "btn-sm", "btn-danger", "ms-2");
+        removeBtn.onclick = () => {
+          programa.splice(idx, 1);
+          renderizarScript();
+        };
+        span.appendChild(removeBtn);
+        container.appendChild(span);
+      });
+    }
+
+    function adicionarComando(cmdObj) {
+      programa.push(cmdObj);
+      renderizarScript();
+    }
+
+    function limparScript() {
+      programa = [];
+      renderizarScript();
+      mostrarMsg("Script limpo! Monte um novo programa.", "info");
+    }
+
+    function resetRobo() {
+      posRobo = { ...posInicial };
+      desenharPalco();
+      mostrarMsg("Robô reiniciado na posição inicial.", "info");
+    }
+
+    async function executarComandoBasico(cmd) {
+      if (cmd.tipo === "mov") {
+        if (cmd.acao === "andar") {
+          let nx = posRobo.x,
+            ny = posRobo.y;
+          if (posRobo.direcao === 0) nx--;
+          else if (posRobo.direcao === 1) ny++;
+          else if (posRobo.direcao === 2) nx++;
+          else ny--;
+          if (nx < 0 || nx >= gridSize || ny < 0 || ny >= gridSize)
+            throw new Error("Robô bateu na borda do palco!");
+          if (obstaculos.some((obs) => obs.x === nx && obs.y === ny))
+            throw new Error("Robô bateu em um obstáculo!");
+          posRobo.x = nx;
+          posRobo.y = ny;
+        } else if (cmd.acao === "girarDir") {
+          posRobo.direcao = (posRobo.direcao + 1) % 4;
+        } else if (cmd.acao === "girarEsq") {
+          posRobo.direcao = (posRobo.direcao + 3) % 4;
+        } else if (cmd.acao === "falhar") {
+          mostrarMsg("Robô diz: Oi! 🤖", "info");
+          await delay(400);
+        }
+        desenharPalco();
+        await delay(300);
+      } else if (cmd.tipo === "evento") {
+        mostrarMsg(
+          `✨ Evento: ${cmd.acao === "quandoTocar" ? "Toque na tela" : "Agitação"} disparado!`,
+          "info",
+        );
+        await delay(400);
       }
-      const removeBtn = div.querySelector(".cartao-remove");
-      if (removeBtn)
-        removeBtn.addEventListener("click", () => {
-          this.removerCartao(parseInt(removeBtn.getAttribute("data-idx")));
-        });
-      return div;
-    },
-    mostrarSelecaoComandoParaRepita(cartaoRepita) {
-      const comandos = [
-        { comando: "ande1", nome: "ANDE 1" },
-        { comando: "ande2", nome: "ANDE 2" },
-        { comando: "vireDireita", nome: "VIRE DIREITA" },
-        { comando: "vireEsquerda", nome: "VIRE ESQUERDA" },
-        { comando: "esperarAteBorda", nome: "ESPERAR ATÉ PAREDE" },
-      ];
-      let modalHtml = `<div id="modalComando" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:9999;"><div style="background:#1e2a1a;padding:24px;border-radius:24px;border:3px solid #ffb347;"><h3 style="color:#ffb347;">🔄 Adicionar comando ao REPITA</h3><div style="display:flex;flex-wrap:wrap;gap:12px;margin:20px 0;">`;
-      comandos.forEach((cmd) => {
-        modalHtml += `<button class="btn-selecionar-cmd" data-comando="${cmd.comando}" style="background:#2c3e2b;border:2px solid #4a7c3f;border-radius:16px;padding:12px;cursor:pointer;"><div style="font-size:2rem;">${this.getIconeComando(cmd.comando)}</div><div style="color:#ffb347;">${cmd.nome}</div></button>`;
-      });
-      modalHtml += `</div><button id="btnFecharModal" style="background:#e74c3c;border:none;border-radius:40px;padding:8px 20px;color:white;cursor:pointer;">FECHAR</button></div></div>`;
-      document.body.insertAdjacentHTML("beforeend", modalHtml);
-      const modal = document.getElementById("modalComando");
-      document.querySelectorAll(".btn-selecionar-cmd").forEach((btn) =>
-        btn.addEventListener("click", () => {
-          const comando = btn.getAttribute("data-comando");
-          cartaoRepita.filhos.push({ comando: comando, filhos: [] });
-          this.renderizarAlgoritmo();
-          if (modal) modal.remove();
-          this.atualizarContadorCartoes();
-        }),
-      );
-      const btnFechar = document.getElementById("btnFecharModal");
-      if (btnFechar)
-        btnFechar.addEventListener("click", () => {
-          if (modal) modal.remove();
-        });
-    },
-    removerCartao(idx) {
-      if (this.cartoesAlgoritmo[idx]) this.cartoesAlgoritmo.splice(idx, 1);
-      this.renderizarAlgoritmo();
-      this.atualizarContadorCartoes();
-    },
-    limparAlgoritmo() {
-      this.cartoesAlgoritmo = [];
-      this.renderizarAlgoritmo();
-      this.atualizarContadorCartoes();
-      this.mostrarMensagem("🧹 Algoritmo limpo!");
-    },
-    atualizarContadorCartoes() {
-      const contar = (arr) => {
-        let t = 0;
-        for (let item of arr) {
-          t++;
-          if (item.comando === "repita" && item.filhos)
-            t += contar(item.filhos);
-        }
-        return t;
-      };
-      const total = contar(this.cartoesAlgoritmo);
-      if (this.elementos.cartoesUsados)
-        this.elementos.cartoesUsados.textContent = total;
-    },
-    async executarAlgoritmo() {
-      if (this.cartoesAlgoritmo.length === 0) {
-        this.mostrarMensagem("⚠️ Monte um algoritmo primeiro!", "erro");
+      return true;
+    }
+
+    function temParedeFrente() {
+      let nx = posRobo.x,
+        ny = posRobo.y;
+      if (posRobo.direcao === 0) nx--;
+      else if (posRobo.direcao === 1) ny++;
+      else if (posRobo.direcao === 2) nx++;
+      else ny--;
+      if (nx < 0 || nx >= gridSize || ny < 0 || ny >= gridSize) return true;
+      return obstaculos.some((obs) => obs.x === nx && obs.y === ny);
+    }
+
+    async function executarPrograma() {
+      if (executando) {
+        mostrarMsg("Já está executando... aguarde.", "info");
         return;
       }
-      this.resetarRobo();
-      this.mostrarMensagem("🤖 Executando algoritmo...");
-      if (this.elementos.status)
-        this.elementos.status.textContent = "EXECUTANDO...";
-      let sucesso = true,
-        erroMsg = "";
-      try {
-        for (const comando of this.cartoesAlgoritmo) {
-          const resultado = await this.executarComando(comando);
-          if (!resultado.sucesso) {
-            sucesso = false;
-            erroMsg = resultado.erro;
+      if (programa.length === 0) {
+        mostrarMsg("⚠️ Nenhum bloco no programa! Adicione blocos.", "erro");
+        return;
+      }
+      executando = true;
+      resetRobo();
+      let idx = 0;
+      let sucesso = true;
+      let erroMsg = "";
+
+      while (idx < programa.length && sucesso) {
+        const cmd = programa[idx];
+        try {
+          if (cmd.tipo === "mov" || cmd.tipo === "evento") {
+            await executarComandoBasico(cmd);
+            idx++;
+          } else if (cmd.tipo === "loop") {
+            // Loop com ação embutida: repete a mesma ação N vezes
+            const acaoLoop = { tipo: "mov", acao: cmd.acao };
+            for (let i = 0; i < cmd.vezes; i++) {
+              await executarComandoBasico(acaoLoop);
+              desenharPalco();
+              await delay(200);
+              if (posRobo.x === objetivo.x && posRobo.y === objetivo.y) break;
+            }
+            idx++;
+          } else if (cmd.tipo === "condicional") {
+            const condVal =
+              cmd.condicao === "paredeFrente" ? temParedeFrente() : false;
+            const comandoExec = condVal ? cmd.entao : cmd.senao;
+            if (comandoExec) await executarComandoBasico(comandoExec);
+            idx++;
+          } else {
+            throw new Error(`Comando desconhecido: ${cmd.tipo}`);
+          }
+
+          if (posRobo.x === objetivo.x && posRobo.y === objetivo.y) {
+            mostrarMsg("🎉 PARABÉNS! O robô pegou a estrela!", "sucesso");
+            document.dispatchEvent(new CustomEvent("robo:vitoria"));
             break;
           }
+        } catch (err) {
+          sucesso = false;
+          erroMsg = err.message;
+          break;
         }
-      } catch (e) {
-        sucesso = false;
-        erroMsg = e.message;
       }
-      const chegou = this.verificarChegada();
-      if (sucesso && chegou) {
-        const total = parseInt(
-          this.elementos.cartoesUsados?.textContent || "0",
-        );
-        const recordeAtual = this.recordes[this.faseAtual];
-        if (!recordeAtual || total < recordeAtual) {
-          this.recordes[this.faseAtual] = total;
-          this.salvarRecordes();
-          this.atualizarRecordeDisplay();
-          this.mostrarMensagem(
-            `🎉 PARABÉNS! Completou a FASE ${this.faseAtual} com ${total} blocos! NOVO RECORDE! 🏆`,
-            "sucesso",
-          );
-        } else
-          this.mostrarMensagem(
-            `🎉 PARABÉNS! Completou a FASE ${this.faseAtual} com ${total} blocos!`,
-            "sucesso",
-          );
-        if (this.elementos.status)
-          this.elementos.status.textContent = "VITÓRIA! 🏆";
-        document.dispatchEvent(new CustomEvent("robo:vitoria"));
-      } else {
-        document.dispatchEvent(
-          new CustomEvent("robo:bug", {
-            detail: { incremento: 1, mensagem: erroMsg },
-          }),
-        );
-        this.mostrarMensagem(
-          `🐛 BUG! ${erroMsg || "O gato não conseguiu completar."} Use a dica para depurar.`,
+
+      if (sucesso && posRobo.x === objetivo.x && posRobo.y === objetivo.y) {
+        // já mostrou
+      } else if (sucesso) {
+        mostrarMsg(
+          "⚠️ O robô não chegou na estrela. Tente outros blocos!",
           "erro",
         );
-        if (this.elementos.status)
-          this.elementos.status.textContent = "BUGOU! 💥";
+        document.dispatchEvent(
+          new CustomEvent("robo:bug", { detail: { incremento: 1 } }),
+        );
+      } else {
+        mostrarMsg(`🐛 BUG! ${erroMsg}`, "erro");
+        document.dispatchEvent(
+          new CustomEvent("robo:bug", { detail: { incremento: 1 } }),
+        );
       }
-    },
-    async executarComando(comandoObj) {
-      const comando = comandoObj.comando;
-      if (comando === "repita") {
-        const vezes = comandoObj.contador || 3;
-        for (let i = 0; i < vezes; i++) {
-          for (const filho of comandoObj.filhos || []) {
-            const res = await this.executarComando(filho);
-            if (!res.sucesso) return res;
-            await this.delay(250);
-            this.desenharGrid();
-          }
-        }
-        return { sucesso: true };
-      }
-      const pista = this.pistas[this.faseAtual];
-      let novoX = this.posicaoRobo.x,
-        novoY = this.posicaoRobo.y;
-      switch (comando) {
-        case "ande1":
-          if (this.posicaoRobo.direcao === 0) novoX--;
-          else if (this.posicaoRobo.direcao === 1) novoY++;
-          else if (this.posicaoRobo.direcao === 2) novoX++;
-          else if (this.posicaoRobo.direcao === 3) novoY--;
-          break;
-        case "ande2":
-          if (this.posicaoRobo.direcao === 0) novoX -= 2;
-          else if (this.posicaoRobo.direcao === 1) novoY += 2;
-          else if (this.posicaoRobo.direcao === 2) novoX += 2;
-          else if (this.posicaoRobo.direcao === 3) novoY -= 2;
-          break;
-        case "vireDireita":
-          this.posicaoRobo.direcao = (this.posicaoRobo.direcao + 1) % 4;
-          return { sucesso: true };
-        case "vireEsquerda":
-          this.posicaoRobo.direcao = (this.posicaoRobo.direcao - 1 + 4) % 4;
-          return { sucesso: true };
-        case "esperarAteBorda":
-          if (
-            pista.grid[this.posicaoRobo.x][this.posicaoRobo.y + 1] === "🧱" ||
-            this.posicaoRobo.y + 1 >= pista.tamanho.colunas
-          )
-            return { sucesso: true };
-          else
-            return {
-              sucesso: false,
-              erro: "O gato não está encostado na parede!",
-            };
-        default:
-          return { sucesso: false, erro: "Comando desconhecido" };
-      }
-      if (
-        novoX < 0 ||
-        novoX >= pista.tamanho.linhas ||
-        novoY < 0 ||
-        novoY >= pista.tamanho.colunas
-      )
-        return { sucesso: false, erro: "O gato saiu da pista!" };
-      if (pista.grid[novoX]?.[novoY] === "🧱")
-        return {
-          sucesso: false,
-          erro: "O gato bateu em um obstáculo/monstro! 🧱",
-        };
-      this.posicaoRobo.x = novoX;
-      this.posicaoRobo.y = novoY;
-      await this.delay(250);
-      this.desenharGrid();
-      return { sucesso: true };
-    },
-    verificarChegada() {
-      return (
-        this.pistas[this.faseAtual].grid[this.posicaoRobo.x]?.[
-          this.posicaoRobo.y
-        ] === "🏁"
+      executando = false;
+    }
+
+    function carregarExemplo() {
+      limparScript();
+      programa.push(
+        { tipo: "mov", acao: "andar" },
+        { tipo: "mov", acao: "andar" },
+        {
+          tipo: "condicional",
+          condicao: "paredeFrente",
+          entao: { tipo: "mov", acao: "girarDir" },
+          senao: { tipo: "mov", acao: "andar" },
+        },
+        { tipo: "loop", vezes: 3, acao: "andar" },
+        { tipo: "mov", acao: "falhar" },
       );
-    },
-    delay(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
-    mostrarDica() {
-      const dicas = {
-        1: "💡 Use REPITA 7 vezes com ANDE 1 para percorrer a reta!",
-        2: "💡 Use REPITA dentro de REPITA para o zigue-zague!",
-        3: "💡 Use ESPERAR ATÉ PAREDE para virar nos obstáculos!",
-      };
-      this.mostrarMensagem(
-        dicas[this.faseAtual] ||
-          "💡 Tente combinar REPITA com comandos de movimento!",
+      renderizarScript();
+      mostrarMsg(
+        "Exemplo carregado! Execute para ver o robô se mover.",
         "info",
       );
-    },
-    carregarExemplo() {
-      this.limparAlgoritmo();
-      if (this.faseAtual === 1)
-        this.cartoesAlgoritmo.push({
-          comando: "repita",
-          contador: 7,
-          filhos: [{ comando: "ande1", filhos: [] }],
-        });
-      else if (this.faseAtual === 2)
-        this.cartoesAlgoritmo.push({
-          comando: "repita",
-          contador: 2,
-          filhos: [
-            { comando: "ande2", filhos: [] },
-            { comando: "vireDireita", filhos: [] },
-            { comando: "ande2", filhos: [] },
-            { comando: "vireEsquerda", filhos: [] },
-          ],
-        });
-      else
-        this.cartoesAlgoritmo.push(
-          { comando: "ande1", filhos: [] },
-          { comando: "vireDireita", filhos: [] },
-          { comando: "ande1", filhos: [] },
-        );
-      this.renderizarAlgoritmo();
-      this.atualizarContadorCartoes();
-      this.mostrarMensagem(
-        `📋 Exemplo carregado para a FASE ${this.faseAtual}! Clique em EXECUTAR.`,
-      );
-    },
-    carregarRecordes() {
-      try {
-        const saved = localStorage.getItem("loopdash_recordes_bim3");
-        if (saved) this.recordes = JSON.parse(saved);
-      } catch (e) {}
-    },
-    salvarRecordes() {
-      localStorage.setItem(
-        "loopdash_recordes_bim3",
-        JSON.stringify(this.recordes),
-      );
-    },
-    atualizarRecordeDisplay() {
-      const melhor = Math.min(
-        ...[this.recordes[1], this.recordes[2], this.recordes[3]].filter(
-          (v) => v !== null,
-        ),
-      );
-      if (this.elementos.melhorMarca)
-        this.elementos.melhorMarca.textContent =
-          melhor !== Infinity ? melhor : "--";
-    },
-    mostrarMensagem(texto, tipo = "info") {
-      if (!this.elementos.mensagem) return;
-      this.elementos.mensagem.innerHTML = `<i class="bi bi-robot"></i> ${texto}`;
-      this.elementos.mensagem.className = `mensagem-jogo ${tipo === "erro" ? "erro" : tipo === "sucesso" ? "sucesso" : ""}`;
+    }
+
+    function mostrarMsg(texto, tipo) {
+      const msgDiv = document.getElementById("msgExecucao");
+      if (!msgDiv) return;
+      msgDiv.innerHTML = `<i class="bi bi-robot"></i> ${texto}`;
+      msgDiv.className = `alert ${tipo === "erro" ? "alert-danger" : tipo === "sucesso" ? "alert-success" : "alert-warning"} mt-3 py-2 small`;
       setTimeout(() => {
-        if (this.elementos.mensagem && tipo !== "erro")
-          this.elementos.mensagem.className = "mensagem-jogo";
+        if (msgDiv) msgDiv.className = "alert alert-warning mt-3 py-2 small";
       }, 4000);
-    },
-    configurarEventos() {
-      document
-        .querySelectorAll(".btn-phase")
-        .forEach((btn) =>
-          btn.addEventListener("click", () =>
-            this.carregarFase(parseInt(btn.getAttribute("data-fase"))),
-          ),
+    }
+
+    function delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function init() {
+      elementos.palco = document.getElementById("scratchPalco");
+      elementos.listaScript = document.getElementById("listaScriptScratch");
+      if (!elementos.palco) {
+        console.error(
+          "Elemento scratchPalco não encontrado. Verifique o HTML.",
         );
+        return;
+      }
+      desenharPalco();
+
+      // Eventos dos blocos normais
+      document.querySelectorAll(".bloco-comando").forEach((bloco) => {
+        bloco.addEventListener("click", (e) => {
+          const cmdAttr = bloco.getAttribute("data-comando");
+          if (cmdAttr) {
+            try {
+              const cmd = JSON.parse(cmdAttr);
+              adicionarComando(cmd);
+            } catch (e) {
+              console.error("Erro ao parsear comando", e);
+            }
+          }
+        });
+      });
+
+      // Botão para adicionar loop customizado
+      const btnAddCustom = document.getElementById("btnAddLoopCustom");
+      if (btnAddCustom) {
+        btnAddCustom.addEventListener("click", () => {
+          const vezes = parseInt(
+            document.getElementById("loopVezesCustom")?.value || 2,
+          );
+          const acao = document.getElementById("loopAcaoCustom")?.value;
+          if (acao) {
+            adicionarComando({ tipo: "loop", vezes: vezes, acao: acao });
+          }
+        });
+      }
+
       document
-        .querySelectorAll(".cartao-comando")
-        .forEach((cartao) =>
-          cartao.addEventListener("click", () =>
-            this.adicionarCartao(cartao.getAttribute("data-comando")),
-          ),
-        );
+        .getElementById("btnLimparScript")
+        ?.addEventListener("click", limparScript);
       document
-        .getElementById("btnLimparAlgoritmo")
-        ?.addEventListener("click", () => this.limparAlgoritmo());
+        .getElementById("btnExecutarScript")
+        ?.addEventListener("click", executarPrograma);
       document
-        .getElementById("btnExecutarLoopDash")
-        ?.addEventListener("click", () => this.executarAlgoritmo());
+        .getElementById("btnResetRobo")
+        ?.addEventListener("click", resetRobo);
       document
-        .getElementById("btnResetLoopDash")
-        ?.addEventListener("click", () => this.resetarRobo());
-      document
-        .getElementById("btnDicaLoopDash")
-        ?.addEventListener("click", () => this.mostrarDica());
-      document
-        .getElementById("btnExemploLoopDash")
-        ?.addEventListener("click", () => this.carregarExemplo());
-    },
-  };
+        .getElementById("btnExemploScript")
+        ?.addEventListener("click", carregarExemplo);
+
+      console.log(
+        "🎮 Estúdio ScratchJr inicializado (com loops e condicionais explícitos)",
+      );
+    }
+
+    return { init };
+  })();
 
   // ==================== INICIALIZAÇÃO GERAL ====================
   function initAll() {
@@ -832,17 +656,20 @@
     RodapeModule.init();
     PlanosAulaModule.init();
     CertificadoModule.init();
-    JogoModule.init();
+    ScratchJrGame.init(); // <-- substitiu o antigo JogoModule
+
     window.CabecalhoModule = CabecalhoModule;
     window.RodapeModule = RodapeModule;
     window.PlanosAulaModule = PlanosAulaModule;
     window.CertificadoModule = CertificadoModule;
-    window.JogoModule = JogoModule;
+    window.ScratchJrGame = ScratchJrGame;
+
     console.log(
-      "%c🚀 TODOS OS MÓDULOS INICIALIZADOS - 3º BIMESTRE",
+      "%c🚀 TODOS OS MÓDULOS INICIALIZADOS - 3º BIMESTRE (JOGO CORRIGIDO)",
       "color:#ffb347;font-size:16px;font-weight:bold",
     );
   }
+
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", initAll);
   else initAll();

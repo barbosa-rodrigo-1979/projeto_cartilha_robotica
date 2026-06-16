@@ -1,9 +1,11 @@
 /* ==================================================
-   a2bim3.css - ESTILOS UNIFICADOS PARA 3º BIMESTRE - 2º ANO
-   CORRIGIDO conforme modelo_planos_aula.css (seção de aulas)
+   a3bim4.css – TODOS OS ESTILOS UNIFICADOS
+   (modelo_menu_bim.css + modelo_cabecalho.css + modelo_rodape.css
+    + modelo_planos_aula.css + modelo_certificado.css
+    + modelo_fechamento_bimestre.css + modelo_apresentacao_bimestre.css)
    ================================================== */
 
-/* ========== VARIÁVEIS GLOBAIS ========== */
+/* ---------- VARIÁVEIS GLOBAIS ---------- */
 :root {
   --robot-green: #4a7c3f;
   --robot-dark: #1e2a1a;
@@ -16,7 +18,7 @@
   --robot-text-claro: #ebf0eb;
 }
 
-/* ========== RESET E BASE ========== */
+/* ---------- RESET E BASE ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -33,22 +35,22 @@ body.bg-robotica {
 /* ========== CABEÇALHO ROBÓTICO ========== */
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
+
 .cabecalho-rebelde {
   border-bottom-color: #ffb347;
 }
+
 .cabecalho-rebelde::before {
   content: "⚠️ BUG ZONE ⚠️";
   position: absolute;
@@ -60,6 +62,7 @@ body.bg-robotica {
   white-space: nowrap;
   pointer-events: none;
 }
+
 .logo-rb,
 .logo-gn {
   max-height: 70px;
@@ -68,10 +71,12 @@ body.bg-robotica {
   transition: transform 0.2s ease;
   border-radius: 12px;
 }
+
 .logo-rb:hover,
 .logo-gn:hover {
   transform: scale(1.05);
 }
+
 .titulo-principal {
   font-family: "Press Start 2P", cursive;
   font-size: 1.95rem;
@@ -84,15 +89,13 @@ body.bg-robotica {
   position: relative;
   text-transform: uppercase;
   border: 2px solid #ffb347;
-  box-shadow:
-    0 0 0 2px #1a2b17,
-    0 0 0 4px #ffb347,
-    0 4px 15px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px #1a2b17, 0 0 0 4px #ffb347, 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
   text-shadow: 2px 2px 0 #3d5a2b;
   backdrop-filter: blur(2px);
   white-space: nowrap;
 }
+
 .titulo-principal::before {
   content: "";
   position: absolute;
@@ -100,17 +103,16 @@ body.bg-robotica {
   left: 20%;
   width: 60%;
   height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
   border-radius: 20px;
   filter: blur(1px);
   pointer-events: none;
 }
+
 .titulo-principal::after {
   content: "⬤";
   position: absolute;
@@ -121,6 +123,7 @@ body.bg-robotica {
   text-shadow: 0 0 3px #000;
   pointer-events: none;
 }
+
 .titulo-principal .parafuso-esquerda {
   position: absolute;
   bottom: -6px;
@@ -130,21 +133,19 @@ body.bg-robotica {
   text-shadow: 0 0 3px #000;
   pointer-events: none;
 }
+
 .titulo-principal:hover {
   transform: translateY(-2px);
   border-color: #ffcc44;
-  box-shadow:
-    0 0 0 2px #1a2b17,
-    0 0 0 4px #ffcc44,
-    0 6px 20px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px #1a2b17, 0 0 0 4px #ffcc44, 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
 }
+
 .glitch-text {
   font-family: "Press Start 2P", monospace;
   letter-spacing: 1px;
-  animation: pulseGlitch 2s infinite alternate;
 }
+
 .subtitulo-chiclete {
   font-family: "Chakra Petch", monospace;
   font-size: 0.85rem;
@@ -154,6 +155,7 @@ body.bg-robotica {
   letter-spacing: 1px;
   text-shadow: 1px 1px 0 #1a2b17;
 }
+
 .selo-sucata {
   background: #1e1e1e;
   color: #ffcc44;
@@ -164,13 +166,16 @@ body.bg-robotica {
   border-left: 3px solid #ff9900;
   letter-spacing: 1px;
 }
-/* ========== MENU GLASSMORPHISM ========== */
+
+/* ---------- MENU GLASSMORPHISM ---------- */
 .menu-robomestre {
   background: rgba(13, 31, 11, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 2px solid var(--robot-gold);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
+
 .menu-robomestre .nav-link {
   color: var(--robot-text);
   font-family: "Chakra Petch", monospace;
@@ -183,79 +188,88 @@ body.bg-robotica {
   align-items: center;
   gap: 8px;
 }
+
 .menu-robomestre .nav-link i {
   font-size: 1.1rem;
   color: var(--robot-gold);
   transition: transform 0.2s;
 }
+
 .menu-robomestre .nav-link:hover {
   color: var(--robot-gold);
   text-shadow: 0 0 4px var(--robot-gold);
   background: rgba(255, 180, 71, 0.15);
   transform: translateY(-2px);
 }
+
 .menu-robomestre .nav-link:hover i {
   transform: scale(1.1);
   color: var(--robot-glow);
 }
+
 .menu-robomestre .nav-link.active {
   color: var(--robot-glow);
   background: rgba(255, 180, 71, 0.25);
   text-shadow: 0 0 6px var(--robot-gold);
   border-bottom: 2px solid var(--robot-gold);
 }
+
 .menu-robomestre .navbar-toggler {
   border-color: var(--robot-gold);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .menu-robomestre .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+
 .menu-robomestre .navbar-brand {
   color: var(--robot-gold);
   font-family: "Press Start 2P", cursive;
   font-size: 0.9rem;
 }
 
-/* ========== CARDS GLOBAIS ========== */
+/* ---------- CARDS GLOBAIS ---------- */
 .bg-robocard {
   background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
   border: 1px solid var(--robot-gold);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
 }
+
 .text-gradient {
   background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 .alert-warning {
   background-color: rgba(255, 180, 71, 0.2) !important;
   border-color: var(--robot-gold) !important;
   color: var(--robot-text-claro) !important;
 }
 
-/* ========== RODAPÉ ROBÓTICO ========== */
+/* ---------- RODAPÉ ROBÓTICO ---------- */
 .footer-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   border-top: 5px solid #9bbc7b;
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
   padding: 2rem 0 1rem;
   margin-top: 3rem;
 }
+
 .footer-rebelde {
   border-top-color: #ffb347;
-  position: relative;
-  overflow: hidden;
 }
+
 .footer-rebelde::before {
   content: "⚠️ BUG ZONE ⚠️";
   position: absolute;
@@ -267,6 +281,7 @@ body.bg-robotica {
   white-space: nowrap;
   pointer-events: none;
 }
+
 .footer-logo {
   max-height: 70px;
   width: auto;
@@ -274,9 +289,11 @@ body.bg-robotica {
   transition: transform 0.2s ease;
   border-radius: 16px;
 }
+
 .footer-logo:hover {
   transform: scale(1.05);
 }
+
 .dev-nome {
   font-size: 0.85rem;
   font-weight: 500;
@@ -284,22 +301,24 @@ body.bg-robotica {
   font-family: "Chakra Petch", monospace;
   color: #ebf0eb;
 }
+
 .dev-contato {
   font-size: 0.8rem;
 }
+
 .dev-contato a {
   color: #ebf0eb;
   text-decoration: none;
-  transition:
-    color 0.2s,
-    text-shadow 0.2s;
+  transition: color 0.2s, text-shadow 0.2s;
   font-family: monospace;
 }
+
 .dev-contato a:hover {
   color: #ffb347;
   text-decoration: underline;
   text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
 }
+
 .relatorio-bugs {
   border-top: 1px dashed #ffb347;
   padding-top: 0.8rem;
@@ -308,21 +327,37 @@ body.bg-robotica {
   color: #ffcc88;
   letter-spacing: 0.5px;
 }
-@keyframes contadorPisca {
-  0%,
-  100% {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    background-color: rgba(255, 180, 71, 0.5);
-    transform: scale(1.05);
-  }
+
+/* ========== PLANOS DE AULA (modelo_planos_aula.css) ========== */
+.projeto-header {
+  background: linear-gradient(135deg, #1a2b17, #0d1f0b);
+  border-radius: 30px;
+  padding: 12px 24px;
+  margin-bottom: 20px;
+  border-left: 8px solid #ffb347;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-#relatorioBugs.atualizando {
-  animation: contadorPisca 0.3s ease-in-out;
+
+.projeto-header h2 {
+  font-size: 1.3rem;
+  margin: 0;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  color: #ffb347;
 }
-/* ========== PLANOS DE AULA (accordion) ========== */
+
+.badge-projeto {
+  background: #e74c3c;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
 .accordion-item {
   background: transparent;
   border: none;
@@ -364,7 +399,6 @@ body.bg-robotica {
   border-top: 2px solid #ffb347;
 }
 
-/* Card completo da semana */
 .semana-card-completo {
   background: #505e45;
   border-radius: 24px;
@@ -391,7 +425,6 @@ body.bg-robotica {
   line-height: 1.5;
 }
 
-/* Checkbox de concluído */
 .check-concluido {
   background: #1e2a1a;
   padding: 4px 12px;
@@ -415,7 +448,6 @@ body.bg-robotica {
   accent-color: #ffb347;
 }
 
-/* Materiais container */
 .materiais-container {
   display: flex;
   flex-wrap: wrap;
@@ -439,13 +471,11 @@ body.bg-robotica {
   font-size: 0.9rem;
 }
 
-/* Tabela de critérios */
 .tabela-criterios-semana {
   background: #0a0f08;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 16px;
-  width: 100%;
 }
 
 .tabela-criterios-semana thead {
@@ -468,7 +498,6 @@ body.bg-robotica {
   background: #1e2a1a;
 }
 
-/* Minuto a minuto */
 .minuto-item {
   display: flex;
   margin-bottom: 16px;
@@ -496,7 +525,6 @@ body.bg-robotica {
   color: #ebf0eb;
 }
 
-/* Frase do dia */
 .frase-do-dia {
   background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
   border-radius: 20px;
@@ -513,90 +541,235 @@ body.bg-robotica {
   margin-right: 8px;
 }
 
-/* Responsividade para a seção de aulas */
-@media (max-width: 768px) {
-  .accordion-button {
-    font-size: 0.8rem;
-    padding: 12px 16px;
-  }
-  .minuto-item {
-    flex-direction: column;
-  }
-  .minuto-tempo {
-    min-width: auto;
-    text-align: left;
-  }
-  .semana-card-completo {
-    padding: 12px;
-  }
-  .tabela-criterios-semana th,
-  .tabela-criterios-semana td {
-    font-size: 0.7rem;
-    padding: 6px 8px;
-  }
-  .material-badge {
-    font-size: 0.65rem;
-  }
-  .check-concluido {
-    margin-top: 8px;
-  }
+/* ========== CERTIFICADO ========== */
+.certificado-preview {
+  background: transparent;
 }
 
-/* Ajustes para tabelas responsivas */
-.table-responsive {
-  margin-bottom: 16px;
+.certificado-modelo {
+  font-family: "Courier New", "Press Start 2P", monospace;
+  background: #0d1f0b !important;
+  border: 3px double rgba(155, 188, 123, 0.9) !important;
+  border-radius: 48px 24px 48px 24px !important;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1.5rem;
 }
-/* ========== APRESENTAÇÃO DO BIMESTRE (cabeçalhos, cartas, tabelas) ========== */
-.projeto-header {
-  background: linear-gradient(90deg, var(--robot-dark) 0%, #2a3b24 100%);
-  border-left: 8px solid var(--robot-gold);
-  border-radius: 20px;
-  padding: 12px 20px;
-  margin-bottom: 20px;
+
+.certificado-modelo h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+  color: #ffb347;
+  margin-bottom: 1rem;
+}
+
+.nome-aluno-destaque {
+  font-size: 22px;
+  display: block;
+  margin: 15px 0;
+  color: #2c5e1f;
+  background: #d4b87a !important;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.certificado-modelo p {
+  color: #e9f5db;
+  line-height: 1.4;
+}
+
+.linha-certificado {
+  border-color: #ffb347;
+  margin: 15px 0;
+}
+
+.cadastro-alunos {
+  background: #1e2a1a !important;
+  border-radius: 32px;
+  border-left: 5px solid #ffb347;
+}
+
+.cadastro-alunos h4,
+.cadastro-alunos h5 {
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+}
+
+.lista-alunos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-alunos li {
+  background: #2c3e2b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  color: #ebf0eb;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
-.projeto-header h2 {
-  font-family: "Press Start 2P", monospace;
-  font-size: 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--robot-gold);
-  text-shadow: 2px 2px 0 #1e2a1a;
-  margin: 0;
-}
-
-.badge-projeto {
-  background: var(--robot-danger);
-  color: white;
-  padding: 6px 14px;
+.btn-selecionar-aluno {
+  background: #ffb34720;
+  border: 1px solid #ffb347;
+  color: #ffb347;
   border-radius: 40px;
-  font-size: 0.7rem;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
   font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 2px 0 #8b1a1a;
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: all 0.3s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
 }
 
-.carta-container {
-  position: relative;
-  overflow: hidden;
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ffb347;
+  background: linear-gradient(95deg, #ffa01e, #ff7000);
+  color: white;
 }
 
-.carta-container::before {
-  content: "📜";
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  font-size: 5rem;
-  opacity: 0.08;
-  pointer-events: none;
+.btn-outline-warning {
+  border: 2px solid #ffb347;
+  color: #ffb347;
+  border-radius: 60px;
+  font-weight: bold;
+  background: transparent;
+  transition: all 0.2s;
 }
 
+/* ========== FECHAMENTO BIMESTRE (LOOP DASH) ========== */
+.loopdash-pista-visual {
+  background: linear-gradient(135deg, #1a3a15, #0f2a0c);
+  border-radius: 24px;
+  padding: 16px;
+  border: 2px solid #ffb347;
+}
+
+.loopdash-grid {
+  display: grid;
+  gap: 6px;
+  background: #2c3e2b;
+  padding: 12px;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.loopdash-grid.fase1 {
+  grid-template-columns: repeat(8, 55px);
+}
+
+.loopdash-grid.fase2 {
+  grid-template-columns: repeat(5, 55px);
+}
+
+.loopdash-grid.fase3 {
+  grid-template-columns: repeat(6, 55px);
+}
+
+.loopdash-cell {
+  aspect-ratio: 1 / 1;
+  background: #1e2a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.loopdash-cell.robot {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.6);
+  animation: pulseRobot 0.8s ease-in-out infinite alternate;
+}
+
+.loopdash-cell.robot::after {
+  content: "🤖";
+  font-size: 1.8rem;
+}
+
+.loopdash-cell.target {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.loopdash-cell.target::after {
+  content: "🏁";
+  font-size: 1.6rem;
+  animation: bounceFlag 0.5s ease-in-out infinite alternate;
+}
+
+.loopdash-cell.wall {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.loopdash-cell.wall::after {
+  content: "🧱";
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
+
+.loopdash-cell.path {
+  background: #4a7c3f;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  border-left: 4px solid #ffb347;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+
+/* Animações */
+@keyframes pulseRobot {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  }
+
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
+  }
+}
+
+@keyframes bounceFlag {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========== APRESENTAÇÃO BIMESTRE ========== */
 .carta-texto {
   font-size: 1.05rem;
   line-height: 1.5;
@@ -615,7 +788,6 @@ body.bg-robotica {
 
 .table-robotica th,
 .table-robotica td {
-  vertical-align: middle;
   padding: 12px 8px;
   border-color: #4a7c3f;
 }
@@ -629,484 +801,238 @@ body.bg-robotica {
   font-size: 0.8rem;
 }
 
-.table-robotica tbody tr:hover {
-  background: rgba(74, 124, 63, 0.3);
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
-  .projeto-header h2 {
-    font-size: 1rem;
+  .titulo-principal {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    white-space: normal;
   }
-  .table-robotica th,
-  .table-robotica td {
-    font-size: 0.7rem;
-    padding: 8px 4px;
+
+  .logo-rb,
+  .logo-gn {
+    max-height: 50px;
+  }
+
+  .menu-robomestre .navbar-collapse {
+    background: rgba(13, 31, 11, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    margin-top: 12px;
+    padding: 12px 0;
+    border: 1px solid var(--robot-gold);
+  }
+
+  .footer-logo {
+    max-height: 50px;
+  }
+
+  .loopdash-grid.fase1 {
+    grid-template-columns: repeat(8, 40px);
+    gap: 4px;
+  }
+
+  .loopdash-grid.fase2 {
+    grid-template-columns: repeat(5, 40px);
+  }
+
+  .loopdash-grid.fase3 {
+    grid-template-columns: repeat(6, 40px);
   }
 }
 
-/* ========== CERTIFICADO ========== */
-.certificado-modelo {
-  font-family: "Courier New", "Press Start 2P", monospace;
-  background: #0d1f0b !important;
-  border: 3px double rgba(155, 188, 123, 0.9) !important;
-  border-radius: 48px 24px 48px 24px !important;
-  text-align: center;
-  padding: 1.5rem;
+@media (max-width: 480px) {
+  .titulo-principal {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logo-rb,
+  .logo-gn {
+    max-height: 40px;
+  }
 }
 
-.certificado-modelo h3 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.9rem;
-  color: #ffb347;
+/* Demais ajustes de cor (conforme solicitado nos anexos) */
+p.text-muted.mt-2.small,
+p.small.text-muted {
+  color: #ebf0eb !important;
 }
 
-.nome-aluno-destaque {
-  font-size: 22px;
-  display: block;
-  margin: 15px 0;
-  color: #2c5e1f;
-  background: #d4b87a !important;
-  padding: 12px;
-  border-radius: 40px;
-  font-weight: bold;
-}
-
-.cadastro-alunos {
-  background: #1e2a1a !important;
-  border-radius: 32px;
-  border-left: 5px solid #ffb347;
-}
-
-.cadastro-alunos h4,
-.cadastro-alunos h5 {
-  color: #ffb347;
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.8rem;
-}
-
-.lista-alunos li {
-  background: #2c3e2b;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+li {
   color: #ebf0eb;
 }
 
-.btn-robotico-ano2 {
-  background: linear-gradient(95deg, #ffb347, #ff8c00);
-  border: none;
-  color: #1e2a1a;
-  font-weight: bold;
-  padding: 8px 20px;
-  border-radius: 60px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.65rem;
+p {
+  color: #ebf0eb;
 }
 
-.btn-robotico-ano2:hover:not(:disabled) {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px #ffb347;
+.check-concluido span {
+  color: #ebf0eb;
 }
 
-.btn-outline-warning {
-  border: 2px solid #ffb347;
-  color: #ffb347;
-  border-radius: 60px;
-  background: transparent;
-}
-
-@media print {
-  .cadastro-alunos,
-  .btn-robotico-ano2,
-  .alert-info,
-  footer {
-    display: none !important;
-  }
-  .certificado-modelo {
-    background: #fffef7 !important;
-    border: 3px solid #ffb347 !important;
-    break-inside: avoid;
-  }
-  @page {
-    size: A4;
-    margin: 1.2cm;
-  }
-  .print-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-  }
-}
-
-/* Estilos para o novo jogo ScratchJr */
-.palco-grid {
-  background: #1e2a1a;
-  border-radius: 20px;
-  padding: 12px;
-  border: 2px solid #ffb347;
-}
-.celula-palco {
-  aspect-ratio: 1/1;
-  background: #2c3e2b;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-.area-script {
-  background: #0a0f08;
-  border-radius: 20px;
-  min-height: 120px;
-  padding: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  border: 2px dashed #ffb347;
-}
-.bloco-script {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border-radius: 40px;
-  padding: 8px 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffb347;
-  font-family: "Chakra Petch", monospace;
-  font-weight: bold;
-  border-left: 4px solid #ffb347;
-}
-.bloco-script .remover-bloco {
-  background: #e74c3c;
-  border: none;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-  padding: 2px 8px;
-}
-.placeholder-script {
-  color: #7f8c8d;
-  text-align: center;
-  width: 100%;
-  font-style: italic;
-}
-.legenda-palco {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  font-size: 0.8rem;
-}
-.emoji-legenda {
-  font-size: 1.2rem;
-  margin-right: 4px;
-}
-.btn-phase.ativo {
-  background: #ffb347;
-  color: #1e2a1a;
-  border-color: #ffb347;
-  box-shadow: 0 0 12px #ffb347;
-}
-
-/* ========== ADAPTAÇÕES ========== */
 .card.bg-light.border-warning {
   background-color: #2c3e2b !important;
-  color: #2c3e2b;
 }
 
-.card.bg-light.border-warning .card-title {
+.card.bg-light.border-warning .card-title,
+.card.bg-light.border-warning h6 {
   color: #e67e22;
-  font-weight: bold;
 }
 
-.card.bg-light.border-warning h6,
 .card.bg-light.border-warning li,
 .card.bg-light.border-warning p {
   color: #ebf0eb;
 }
 
-/* ========== ANIMAÇÕES COMPLEMENTARES ========== */
-@keyframes pulseGlitch {
-  0% {
-    text-shadow:
-      2px 0 0 #ffb347,
-      -2px 0 0 #4a7c3f;
-  }
-  100% {
-    text-shadow:
-      -2px 0 0 #ffb347,
-      2px 0 0 #4a7c3f;
-  }
+.card-fechamento-bimestre {
+  background-color: #2c3e2b !important;
+  border: 1px solid var(--robot-gold);
 }
 
-@keyframes pulseRobot {
-  0% {
-    transform: scale(0.98);
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
-  }
-  100% {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
-  }
+.card-fechamento-bimestre .card-body {
+  color: var(--robot-text-claro);
 }
 
-@keyframes bounceFlag {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-5px);
-  }
+/* ========== ESTILOS EXTRAS PARA O JOGO ROBÔ ESTOQUE ========== */
+.cartao-comando-jogo {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid #4a7c3f;
+  min-width: 100px;
 }
 
-/* ========== SCROLLBAR TEMÁTICA ========== */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+.cartao-comando-jogo:hover {
+  transform: translateY(-4px);
+  border-color: #ffb347;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--robot-dark);
-  border-radius: 10px;
+.cartao-comando-jogo.loop-card {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  border-color: #ffcc44;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--robot-gold);
-  border-radius: 10px;
+.cartao-icone {
+  font-size: 2rem;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--robot-glow);
-}
-
-/* ========== UTILITÁRIOS GERAIS ========== */
-p,
-li,
-.text-muted,
-.small.text-muted {
-  color: #ebf0eb;
-}
-
-code {
-  background: #1e2a1a;
-  padding: 2px 6px;
-  border-radius: 8px;
+.cartao-texto {
+  font-weight: bold;
   color: #ffb347;
-  font-family: monospace;
 }
 
-.text-warning {
-  color: #ffb347 !important;
+.cartao-desc {
+  font-size: 0.7rem;
+  color: #9bbc7b;
 }
 
-.bg-warning {
-  background-color: #ffb347 !important;
-}
-/* Jogo Labirinto */
-.palco-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 55px);
-  gap: 4px;
-  background: #1e2a1a;
+.comando-item {
+  background: #2c3e2b;
+  border-left: 4px solid #ffb347;
   border-radius: 16px;
-  padding: 12px;
-  justify-content: center;
-}
-.celula-palco {
-  aspect-ratio: 1 / 1;
-  background: #2c3e2b;
-  border-radius: 12px;
-  display: flex;
+  padding: 6px 12px;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-.lista-script {
-  min-height: 80px;
-  background: #0a0f08;
-  border-radius: 20px;
-  padding: 8px;
-  display: flex;
-  flex-wrap: wrap;
   gap: 8px;
+  margin: 4px;
 }
-.bloco-comando {
-  background: #2c3e2b;
-  border-left: 4px solid #ffb347;
-  padding: 8px 16px;
-  border-radius: 40px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.1s;
-  color: #ffb347;
+
+.remover-comando:hover {
+  opacity: 0.7;
 }
-.bloco-comando:hover {
-  transform: scale(1.02);
-  background: #3e5a3a;
-}
-.bloco-comando.especial {
-  border-left-color: #e67e22;
-  background: #4a3e2b;
-}
-/* Estúdio ScratchJr - novos estilos */
-.palco-grid.grid-5x5 {
-  display: grid;
-  grid-template-columns: repeat(5, 60px);
-  gap: 6px;
-  justify-content: center;
-}
-.celula-palco {
-  aspect-ratio: 1/1;
-  background: #2c3e2b;
+
+.caixa-esteira {
+  width: 55px;
+  height: 55px;
+  background: #ffb347;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  box-shadow: inset 0 0 0 1px #4a7c3f;
+  margin: 0 4px;
+  font-size: 1.8rem;
+  transition: all 0.2s;
 }
-.blocos-categorias {
-  background: #0a0f08;
-  border-radius: 24px;
-  padding: 12px;
-  margin-top: 16px;
-}
-.categoria {
-  border-bottom: 1px dashed #4a7c3f;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-}
-.categoria:last-child {
-  border-bottom: none;
-}
-.bloco-comando {
-  background: #2c3e2b;
-  border-left: 4px solid #ffb347;
-  padding: 6px 14px;
-  border-radius: 40px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.1s;
-  color: #ffb347;
-  font-size: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.bloco-comando.evento {
-  border-left-color: #3498db;
-}
-.bloco-comando.especial {
-  border-left-color: #e67e22;
-  background: #3e2a1f;
-}
-.bloco-comando:hover {
-  transform: scale(1.02);
-  background: #3e5a3a;
-  color: #ffcc66;
-}
-.lista-script {
-  min-height: 100px;
-  background: #0a0f08;
-  border-radius: 20px;
-  padding: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-@media (max-width: 768px) {
-  .palco-grid.grid-5x5 {
-    grid-template-columns: repeat(5, 45px);
-    gap: 4px;
+
+@media (max-width: 576px) {
+  .caixa-esteira {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
   }
-  .celula-palco {
-    font-size: 24px;
+
+  .cartao-comando-jogo {
+    padding: 8px 10px;
+    min-width: 70px;
   }
-  .bloco-comando {
+
+  .cartao-icone {
+    font-size: 1.3rem;
+  }
+
+  .cartao-texto {
     font-size: 0.7rem;
-    padding: 4px 10px;
   }
 }
-/* Estúdio ScratchJr - versão completa */
-.palco-grid.grid-5x5 {
-  display: grid;
-  grid-template-columns: repeat(5, 60px);
-  gap: 6px;
-  justify-content: center;
-}
-.celula-palco {
-  aspect-ratio: 1/1;
-  background: #2c3e2b;
+
+/* ========== MECANISMOS FÍSICOS DO JOGO ========== */
+.ruler-container {
+  position: relative;
+  background: #d4b87a;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  box-shadow: inset 0 0 0 1px #4a7c3f;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.blocos-categorias {
-  background: #0a0f08;
-  border-radius: 24px;
-  padding: 12px;
-  margin-top: 16px;
-}
-.categoria {
-  border-bottom: 1px dashed #4a7c3f;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-}
-.categoria:last-child {
-  border-bottom: none;
-}
-.bloco-comando {
-  background: #2c3e2b;
-  border-left: 4px solid #ffb347;
-  padding: 6px 14px;
-  border-radius: 40px;
-  cursor: pointer;
+
+.ruler-marks {
+  font-size: 0.7rem;
   font-weight: bold;
-  transition: 0.1s;
-  color: #ffb347;
-  font-size: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  color: #2c3e2b;
+  top: -6px;
 }
-.bloco-comando.evento {
-  border-left-color: #3498db;
+
+#clothespin {
+  position: absolute;
+  width: 20px;
+  height: 28px;
+  background: #e74c3c;
+  border-radius: 4px 4px 12px 12px;
+  transition: left 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  cursor: default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-.bloco-comando.especial {
-  border-left-color: #e67e22;
-  background: #3e2a1f;
+
+#clothespin::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 4px;
+  width: 12px;
+  height: 6px;
+  background: #c0392b;
+  border-radius: 2px;
 }
-.bloco-comando:hover {
-  transform: scale(1.02);
-  background: #3e5a3a;
-  color: #ffcc66;
-}
-.lista-script {
-  min-height: 100px;
-  background: #0a0f08;
-  border-radius: 20px;
-  padding: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-@media (max-width: 768px) {
-  .palco-grid.grid-5x5 {
-    grid-template-columns: repeat(5, 45px);
-    gap: 4px;
+
+@keyframes girarDisco {
+  0% {
+    transform: rotate(0deg);
   }
-  .celula-palco {
-    font-size: 24px;
+
+  100% {
+    transform: rotate(360deg);
   }
-  .bloco-comando {
-    font-size: 0.7rem;
-    padding: 4px 10px;
-  }
+}
+
+#loopDisc {
+  transition: box-shadow 0.1s;
+  cursor: default;
+}
+
+#loopDisc:active {
+  transform: scale(0.98);
 }

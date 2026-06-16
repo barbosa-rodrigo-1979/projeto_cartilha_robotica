@@ -1,0 +1,943 @@
+/* ==================================================
+   a3bim1.css
+   União fiel de todos os modelos CSS dos anexos.
+   Inclui:
+   - modelo_cabecalho.css
+   - modelo_menu_bim.css
+   - modelo_planos_aula.css
+   - modelo_rodape.css
+   - modelo_certificado.css
+   - modelo_fechamento_bimestre.css
+   - modelo_apresentacao_bimestre.css
+   + estilos específicos para o Jogo REPITA COMIGO
+   ================================================== */
+
+/* ========== VARIÁVEIS GLOBAIS ========== */
+:root {
+  --robot-green: #4a7c3f;
+  --robot-dark: #1e2a1a;
+  --robot-bg: #0d1f0b;
+  --robot-card: #2c3e2b;
+  --robot-gold: #ffb347;
+  --robot-glow: #ffcc44;
+  --robot-danger: #e74c3c;
+  --robot-text: #e9f5db;
+  --robot-text-claro: #ebf0eb;
+}
+
+/* ========== RESET E BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bg-robotica {
+  background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
+  font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+  color: var(--robot-text);
+  min-height: 100vh;
+}
+
+/* ========== CABEÇALHO ROBÓTICO (modelo_cabecalho.css) ========== */
+.bg-robotica {
+  background: linear-gradient(145deg, #1a2b17 0%, #2c3e2b 100%);
+  min-height: 100vh;
+  color: #f0f3e8;
+  font-family: "Inter", "Chakra Petch", monospace;
+}
+
+.cabecalho-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  padding: 1rem 0;
+  border-bottom: 5px solid #9bbc7b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-rebelde {
+  border-bottom-color: #ffb347;
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.logo-rb,
+.logo-gn {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 12px;
+}
+
+.logo-rb:hover,
+.logo-gn:hover {
+  transform: scale(1.05);
+}
+
+.titulo-principal {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.95rem;
+  letter-spacing: 2px;
+  color: #e9f5db;
+  background: linear-gradient(135deg, #1a2b17 0%, #2c3e2b 100%);
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 60px;
+  position: relative;
+  text-transform: uppercase;
+  border: 2px solid #ffb347;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffb347,
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  text-shadow: 2px 2px 0 #3d5a2b;
+  backdrop-filter: blur(2px);
+  white-space: nowrap;
+}
+
+.titulo-principal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  width: 60%;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 220, 150, 0.6) 0px,
+    rgba(255, 220, 150, 0.6) 8px,
+    rgba(200, 170, 100, 0.4) 8px,
+    rgba(200, 170, 100, 0.4) 16px
+  );
+  border-radius: 20px;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.titulo-principal::after {
+  content: "⬤";
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal .parafuso-esquerda {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal:hover {
+  transform: translateY(-2px);
+  border-color: #ffcc44;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffcc44,
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
+}
+
+.glitch-text {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 1px;
+}
+
+.subtitulo-chiclete {
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.85rem;
+  color: #ffcc88;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #1a2b17;
+}
+
+.selo-sucata {
+  background: #1e1e1e;
+  color: #ffcc44;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  border-left: 3px solid #ff9900;
+  letter-spacing: 1px;
+}
+
+/* ========== MENU GLASSMORPHISM (modelo_menu_bim.css) ========== */
+.menu-robomestre {
+  background: rgba(13, 31, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu-robomestre .nav-link {
+  color: var(--robot-text);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-robomestre .nav-link i {
+  font-size: 1.1rem;
+  color: var(--robot-gold);
+  transition: transform 0.2s;
+}
+
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  text-shadow: 0 0 4px var(--robot-gold);
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+
+.menu-robomestre .nav-link:hover i {
+  transform: scale(1.1);
+  color: var(--robot-glow);
+}
+
+.menu-robomestre .nav-link.active {
+  color: var(--robot-glow);
+  background: rgba(255, 180, 71, 0.25);
+  text-shadow: 0 0 6px var(--robot-gold);
+  border-bottom: 2px solid var(--robot-gold);
+}
+
+.menu-robomestre .navbar-toggler {
+  border-color: var(--robot-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.menu-robomestre .navbar-brand {
+  color: var(--robot-gold);
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+}
+
+/* ========== CARDS GLOBAIS (bg-robocard) ========== */
+.bg-robocard {
+  background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
+  border: 1px solid var(--robot-gold);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  color: #ebf0eb; /* <-- COR ADICIONADA PARA O TEXTO */
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.alert-warning {
+  background-color: rgba(255, 180, 71, 0.2) !important;
+  border-color: var(--robot-gold) !important;
+  color: var(--robot-text-claro) !important;
+}
+
+/* ========== PROJETO HEADER (modelo_apresentacao_bimestre) ========== */
+.projeto-header {
+  background: linear-gradient(90deg, var(--robot-dark) 0%, #2a3b24 100%);
+  border-left: 8px solid var(--robot-gold);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.projeto-header h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--robot-gold);
+  text-shadow: 2px 2px 0 #1e2a1a;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+.badge-projeto {
+  background: var(--robot-danger);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0 #8b1a1a;
+}
+
+/* ========== TABELAS ROBÓTICAS ========== */
+.table-robotica {
+  background: rgba(30, 42, 26, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  color: var(--robot-text);
+}
+
+.table-robotica th,
+.table-robotica td {
+  vertical-align: middle;
+  padding: 12px 8px;
+  border-color: #4a7c3f;
+}
+
+.table-robotica thead th {
+  background: var(--robot-dark);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table-robotica tbody tr:hover {
+  background: rgba(74, 124, 63, 0.3);
+  transition: 0.2s;
+}
+
+/* ========== PLANOS DE AULA (modelo_planos_aula.css) ========== */
+.accordion-item {
+  background: transparent;
+  border: none;
+  margin-bottom: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-header {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+}
+
+.accordion-button {
+  background: #627454;
+  color: #ffb347;
+  font-weight: bold;
+  font-family: "Chakra Petch", monospace;
+  border: none;
+  border-radius: 0;
+  padding: 16px 24px;
+  font-size: 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+  background: #7f9470;
+  color: #ffcc44;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: #ffb347;
+}
+
+.accordion-body {
+  background: #0d1f0b;
+  padding: 24px;
+  border-top: 2px solid #ffb347;
+}
+
+.semana-card-completo {
+  background: #505e45;
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.semana-card-completo h5 {
+  color: #ffb347;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-left: 4px solid #ffb347;
+  padding-left: 12px;
+}
+
+.semana-card-completo h5:first-of-type {
+  margin-top: 0;
+}
+
+.semana-card-completo ul,
+.semana-card-completo p {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.check-concluido {
+  background: #1e2a1a;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.check-concluido:hover {
+  background: #2c3e2b;
+}
+
+.check-concluido input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ffb347;
+}
+
+.materiais-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.material-badge {
+  background: #2c3e2b;
+  padding: 6px 12px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 2px solid #ffb347;
+  color: #ebf0eb;
+}
+
+.material-badge i {
+  font-size: 0.9rem;
+}
+
+.tabela-criterios-semana {
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.tabela-criterios-semana thead {
+  background: #2c3e2b;
+  color: #ffb347;
+}
+
+.tabela-criterios-semana th,
+.tabela-criterios-semana td {
+  padding: 10px 12px;
+  border-color: #4a7c3f;
+  vertical-align: middle;
+}
+
+.tabela-criterios-semana td {
+  color: #ebf0eb;
+}
+
+.tabela-criterios-semana tbody tr:hover {
+  background: #1e2a1a;
+}
+
+.minuto-item {
+  display: flex;
+  margin-bottom: 16px;
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  border-left: 4px solid #ffb347;
+}
+
+.minuto-tempo {
+  background: #2c3e2b;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  min-width: 100px;
+  text-align: center;
+  color: #ffb347;
+}
+
+.minuto-descricao {
+  padding: 10px 16px;
+  flex: 1;
+  line-height: 1.4;
+  color: #ebf0eb;
+}
+
+.frase-do-dia {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  border: 1px dashed #ffb347;
+  color: #ebf0eb;
+}
+
+.frase-do-dia i {
+  color: #ffb347;
+  margin-right: 8px;
+}
+
+code {
+  background: #1e2a1a;
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: #ffb347;
+  font-family: monospace;
+}
+
+/* ========== RODAPÉ (modelo_rodape.css) ========== */
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2a3b24 0px,
+    #2a3b24 2px,
+    #1b2a18 2px,
+    #1b2a18 8px
+  );
+  border-top: 5px solid #9bbc7b;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-rebelde {
+  border-top-color: #ffb347;
+}
+
+.footer-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.footer-logo {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.dev-nome {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Chakra Petch", monospace;
+  color: #ebf0eb;
+}
+
+.dev-contato {
+  font-size: 0.8rem;
+}
+
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    text-shadow 0.2s;
+  font-family: monospace;
+}
+
+.dev-contato a:hover {
+  color: #ffb347;
+  text-decoration: underline;
+  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
+}
+
+.relatorio-bugs {
+  border-top: 1px dashed #ffb347;
+  padding-top: 0.8rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffcc88;
+  letter-spacing: 0.5px;
+}
+
+/* ========== CERTIFICADO (modelo_certificado.css) ========== */
+.certificado-preview {
+  background: transparent;
+}
+
+.certificado-modelo {
+  font-family: "Courier New", "Press Start 2P", monospace;
+  background: #0d1f0b !important;
+  border: 3px double rgba(155, 188, 123, 0.9) !important;
+  border-radius: 48px 24px 48px 24px !important;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.certificado-modelo h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+  color: #ffb347;
+  margin-bottom: 1rem;
+}
+
+.nome-aluno-destaque {
+  font-size: 22px;
+  display: block;
+  margin: 15px 0;
+  color: #2c5e1f;
+  background: #d4b87a !important;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.certificado-modelo p {
+  color: #e9f5db;
+  line-height: 1.4;
+}
+
+.certificado-modelo .data-rodape,
+.certificado-modelo .assinatura-engracada {
+  color: #e9f5db;
+  font-size: 0.8rem;
+}
+
+.linha-certificado {
+  border-color: #ffb347;
+  margin: 15px 0;
+}
+
+.cadastro-alunos {
+  background: #1e2a1a !important;
+  border-radius: 32px;
+  border-left: 5px solid #ffb347;
+}
+
+.cadastro-alunos h4,
+.cadastro-alunos h5 {
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+}
+
+.lista-alunos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-alunos li {
+  background: #2c3e2b;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ebf0eb;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lista-alunos li:hover {
+  background: #3a5538;
+  transform: translateX(5px);
+}
+
+.btn-selecionar-aluno {
+  background: #ffb34720;
+  border: 1px solid #ffb347;
+  color: #ffb347;
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-selecionar-aluno:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+  transform: scale(1.05);
+}
+
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: all 0.3s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+}
+
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ffb347;
+  background: linear-gradient(95deg, #ffa01e, #ff7000);
+  color: white;
+}
+
+.btn-robotico-ano2:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline-warning {
+  border: 2px solid #ffb347;
+  color: #ffb347;
+  border-radius: 60px;
+  font-weight: bold;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-outline-warning:hover:not(:disabled) {
+  background: #ffb347;
+  color: #1e2a1a;
+}
+
+/* ========== FECHAMENTO (modelo_fechamento_bimestre.css) ========== */
+.card.bg-light.border-warning {
+  background-color: #2c3e2b !important;
+  color: #2c3e2b;
+}
+
+.card.bg-light.border-warning .card-title {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.card.bg-light.border-warning h6 {
+  color: #ebf0eb;
+  font-weight: bold;
+}
+
+.card.bg-light.border-warning li {
+  color: #ebf0eb;
+}
+
+.card.bg-light.border-warning p {
+  color: #ebf0eb;
+}
+
+/* ========== JOGO REPITA COMIGO (estilos específicos) ========== */
+/* ========== ESTILOS DO JOGO REPITA COMIGO (VERSÃO REVISADA) ========== */
+#jogoRepitaComigo .desafio-card {
+  background: linear-gradient(145deg, #1e2a1a, #0a0f08);
+  border-left: 6px solid #ffb347;
+  border-radius: 16px;
+}
+
+#jogoRepitaComigo .algoritmo-card {
+  background: linear-gradient(145deg, #0a0f08, #1e2a1a);
+  border-right: 6px solid #ffb347;
+  border-radius: 16px;
+}
+
+.cartao-cmd {
+  background: #2c3e2b;
+  border: 2px solid #ffb347;
+  border-radius: 60px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #ffb347;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cartao-cmd:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 180, 71, 0.3);
+}
+
+.cartao-cmd.especial {
+  background: #8e44ad;
+  border-color: #ffcc44;
+  color: #ffcc44;
+}
+
+.cartao-cmd.especial:hover {
+  background: #a569c9;
+  color: #fff;
+}
+
+.cartao-cmd.especial.btn-loop-ativo {
+  background: #e67e22;
+  border-color: #f1c40f;
+  color: #fff;
+  animation: pulseLoop 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLoop {
+  0% {
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(241, 196, 15, 0.8);
+  }
+}
+
+.btn-executar-jogo {
+  background: linear-gradient(95deg, #2ecc71, #27ae60);
+  border: none;
+  border-radius: 60px;
+  padding: 10px 28px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-executar-jogo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+}
+
+.btn-proximo-jogo {
+  background: linear-gradient(95deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 60px;
+  padding: 10px 28px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-proximo-jogo:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-proximo-jogo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#areaAlgoritmo {
+  background: #0a0f08;
+  border: 1px dashed #ffb347;
+  font-size: 0.9rem;
+  color: #ebf0eb; /* <-- COR ALTERADA de #e9f5db para #ebf0eb */
+  min-height: 100px;
+  border-radius: 8px;
+}
+
+.loop-container {
+  border: 2px solid #ffb347;
+  border-radius: 12px;
+  background: #1a2b17;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.loop-container .btn-remover-loop {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.loop-container .btn-remover-loop:hover {
+  opacity: 1;
+}
+
+#statusLoop .badge {
+  font-size: 0.8rem;
+  padding: 8px 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cartao-cmd {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+  .btn-executar-jogo,
+  .btn-proximo-jogo {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+  #areaAlgoritmo {
+    min-height: 80px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cartao-cmd {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+  }
+  .btn-executar-jogo,
+  .btn-proximo-jogo {
+    padding: 4px 12px;
+    font-size: 0.65rem;
+  }
+}
+
+#areaAlgoritmo .text-muted {
+  color: #ebf0eb !important;
+}

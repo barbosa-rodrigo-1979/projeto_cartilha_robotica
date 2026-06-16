@@ -1,396 +1,1007 @@
 // ==================================================
-// a2bim4.js – LÓGICA COMPLETA PARA 2º ANO - 4º BIMESTRE
-// União dos módulos: cabeçalho, menu, planos de aula, certificado, fechamento (Loop Dash) + jogo condicional
+// CONSTRUTOR DE CONDICIONAIS - 2º ANO 4º BIMESTRE
+// PARTE 1: CONFIGURAÇÕES E CONSTANTES
 // ==================================================
 
-(function () {
-  "use strict";
+const CONFIG = {
+  gridSize: 6,
+  niveis: [
+    {
+      id: 1,
+      missao:
+        "Faça o Robô <strong>ZIG</strong> chegar ao <strong>BAÚ</strong>!",
+      dica: "💡 Use SE... ENTÃO... SENÃO com a condição correta",
+      robo: {
+        nome: "ZIG",
+        personalidade: '"Sou teimoso, me programe direito!"',
+        emoji: "🤖",
+      },
+      inicio: { linha: 0, coluna: 0 },
+      destino: { linha: 5, coluna: 5 },
+      obstaculos: [
+        [2, 2],
+        [3, 3],
+        [1, 4],
+      ],
+      solucao: ["se", "verde", "entao", "andar", "senao", "parar"],
+    },
+    {
+      id: 2,
+      missao:
+        "Faça o Robô <strong>PIP</strong> desviar do <strong>BURACO</strong>!",
+      dica: "💡 Use SE... ENTÃO... SENÃO com E/OU para duas condições",
+      robo: {
+        nome: "PIP",
+        personalidade: '"Sou medroso, me proteja!"',
+        emoji: "🤖",
+      },
+      inicio: { linha: 0, coluna: 3 },
+      destino: { linha: 5, coluna: 3 },
+      obstaculos: [
+        [2, 3],
+        [3, 2],
+        [3, 4],
+      ],
+      solucao: ["se", "buraco", "entao", "pular", "senao", "andar"],
+    },
+    {
+      id: 3,
+      missao:
+        "Faça o Robô <strong>BIP</strong> passar pelo <strong>SEMÁFORO</strong>!",
+      dica: "💡 Use SE... ENTÃO... SENÃO e REPITA para repetir ações",
+      robo: {
+        nome: "BIP",
+        personalidade: '"Adoro repetir, sou um loop vivo!"',
+        emoji: "🤖",
+      },
+      inicio: { linha: 0, coluna: 1 },
+      destino: { linha: 5, coluna: 4 },
+      obstaculos: [
+        [1, 1],
+        [2, 1],
+        [3, 1],
+        [4, 1],
+      ],
+      solucao: [
+        "repita",
+        "3",
+        "se",
+        "vermelho",
+        "entao",
+        "parar",
+        "senao",
+        "andar",
+      ],
+    },
+    {
+      id: 4,
+      missao:
+        "Faça o Robô <strong>ZAP</strong> coletar o <strong>TESOURO</strong>!",
+      dica: "💡 Use condicionais aninhados: SE dentro de SE",
+      robo: {
+        nome: "ZAP",
+        personalidade: '"Sou curioso, quero explorar tudo!"',
+        emoji: "🤖",
+      },
+      inicio: { linha: 0, coluna: 0 },
+      destino: { linha: 5, coluna: 0 },
+      obstaculos: [
+        [1, 0],
+        [2, 0],
+        [3, 1],
+        [4, 1],
+      ],
+      solucao: [
+        "se",
+        "buraco",
+        "entao",
+        "se",
+        "verde",
+        "entao",
+        "pular",
+        "senao",
+        "parar",
+      ],
+    },
+    {
+      id: 5,
+      missao:
+        "Faça o Robô <strong>BEEP</strong> vencer o <strong>LABIRINTO</strong>!",
+      dica: "💡 Combine E, OU e REPITA para criar um programa poderoso",
+      robo: {
+        nome: "BEEP",
+        personalidade: '"Sou inteligente, mas preciso de boas instruções!"',
+        emoji: "🤖",
+      },
+      inicio: { linha: 0, coluna: 0 },
+      destino: { linha: 5, coluna: 5 },
+      obstaculos: [
+        [1, 1],
+        [1, 2],
+        [2, 2],
+        [3, 2],
+        [3, 3],
+        [4, 3],
+      ],
+      solucao: [
+        "repita",
+        "5",
+        "se",
+        "verde",
+        "e",
+        "buraco",
+        "entao",
+        "virar",
+        "senao",
+        "andar",
+      ],
+    },
+  ],
+  comandos: {
+    se: "SE",
+    entao: "ENTÃO",
+    senao: "SENÃO",
+    repita: "REPITA",
+    verde: "🟢 VERDE",
+    vermelho: "🔴 VERMELHO",
+    buraco: "🕳️ BURACO",
+    e: "E",
+    ou: "OU",
+    andar: "🚶 ANDAR",
+    parar: "✋ PARAR",
+    pular: "⬆️ PULAR",
+    virar: "🔄 VIRAR",
+  },
+  acoesValidas: ["andar", "parar", "pular", "virar"],
+  condicoesValidas: ["verde", "vermelho", "buraco"],
+};
+// ==================================================
+// PARTE 2: ESTADO E DOM REFS
+// ==================================================
 
-  // ---------- MÓDULO CABEÇALHO ----------
-  const CabecalhoModule = {
-    contadorBugs: 0,
-    inicializado: false,
-    contadorElement: null,
-    relatorioElement: null,
+// Estado do jogo
+let state = {
+  nivelAtual: 0,
+  programa: [],
+  posicaoRobo: { linha: 0, coluna: 0 },
+  estrelas: 0,
+  acertos: 0,
+  bugs: 0,
+  executando: false,
+  historico: [],
+  celulas: [],
+};
 
-    init() {
-      if (this.inicializado) return;
-      this.contadorElement = document.getElementById("contadorBugsHeader");
-      this.relatorioElement = document.querySelector(".relatorio-bugs");
-      if (this.contadorElement) {
-        this.contadorBugs = this.carregarContador();
-        this.atualizarDisplayContador();
-      }
-      this.configurarEventos();
-      this.inicializado = true;
-      console.log("✅ [CabecalhoModule] inicializado");
-    },
-    carregarContador() {
-      try {
-        return parseInt(localStorage.getItem("cabecalho_contador_bugs")) || 0;
-      } catch (e) {
-        return 0;
-      }
-    },
-    salvarContador() {
-      try {
-        localStorage.setItem("cabecalho_contador_bugs", this.contadorBugs);
-      } catch (e) {}
-    },
-    atualizarDisplayContador() {
-      if (this.contadorElement)
-        this.contadorElement.innerHTML = `🤯 ${this.contadorBugs}`;
-      if (this.relatorioElement)
-        this.relatorioElement.innerText = this.contadorBugs;
-    },
-    incrementarBugs(inc = 1) {
-      this.contadorBugs += inc;
-      this.atualizarDisplayContador();
-      this.salvarContador();
-      this.animarContador();
-      return this.contadorBugs;
-    },
-    resetarBugs() {
-      this.contadorBugs = 0;
-      this.atualizarDisplayContador();
-      this.salvarContador();
-      return this.contadorBugs;
-    },
-    getContadorBugs() {
-      return this.contadorBugs;
-    },
-    animarContador() {
-      if (this.contadorElement) {
-        this.contadorElement.style.animation = "piscaLed 0.3s ease-in-out";
-        setTimeout(() => {
-          if (this.contadorElement) this.contadorElement.style.animation = "";
-        }, 300);
-      }
-    },
-    configurarEventos() {
-      document.addEventListener("robo:bug", (e) => {
-        this.incrementarBugs(e.detail?.incremento || 1);
-      });
-      document.addEventListener("robo:resetBugs", () => {
-        this.resetarBugs();
-      });
-    },
+// Referências DOM
+let DOM = {};
+// ==================================================
+// PARTE 3: INICIALIZAÇÃO E EVENTOS
+// ==================================================
+
+function init() {
+  console.log("🧩 Construtor de Condicionais - Iniciando...");
+
+  // Capturar elementos DOM
+  DOM = {
+    gridContainer: document.getElementById("gridContainer"),
+    roboTabuleiro: document.getElementById("roboTabuleiro"),
+    destinoTabuleiro: document.getElementById("destinoTabuleiro"),
+    obstaculoTabuleiro: document.getElementById("obstaculoTabuleiro"),
+    missaoTexto: document.getElementById("missaoTexto"),
+    missaoDica: document.getElementById("missaoDica"),
+    roboNome: document.getElementById("roboNome"),
+    roboPersonalidade: document.getElementById("roboPersonalidade"),
+    linhaMontagem: document.getElementById("linhaMontagem"),
+    estrelasJogo: document.getElementById("estrelasJogo"),
+    nivelJogo: document.getElementById("nivelJogo"),
+    contadorBugsJogo: document.getElementById("contadorBugsJogo"),
+    contadorAcertosJogo: document.getElementById("contadorAcertosJogo"),
+    historicoProgramas: document.getElementById("historicoProgramas"),
+    btnExecutar: document.getElementById("btnExecutarPrograma"),
+    btnLimpar: document.getElementById("btnLimparPrograma"),
+    btnDica: document.getElementById("btnDicaPrograma"),
   };
 
-  // ---------- MÓDULO MENU (highlight active) ----------
-  function highlightCurrentPage() {
-    const currentPath =
-      window.location.pathname.split("/").pop() || "a2bim4.html";
-    document.querySelectorAll(".menu-robomestre .nav-link").forEach((link) => {
-      if (link.getAttribute("href") === currentPath)
-        link.classList.add("active");
-      else link.classList.remove("active");
+  // Carregar estado salvo
+  carregarEstado();
+
+  // Configurar eventos
+  configurarEventos();
+
+  // Carregar nível
+  carregarNivel(0);
+
+  console.log("✅ Construtor de Condicionais - Pronto!");
+}
+
+function configurarEventos() {
+  // Blocos de programa
+  document.querySelectorAll(".bloco-programa").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (state.executando) return;
+      adicionarBloco(btn.dataset.tipo);
     });
+  });
+
+  // Botões principais
+  DOM.btnExecutar.addEventListener("click", executarPrograma);
+  DOM.btnLimpar.addEventListener("click", limparPrograma);
+  DOM.btnDica.addEventListener("click", mostrarDica);
+
+  // Teclado
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !state.executando) executarPrograma();
+    if ((e.key === "c" || e.key === "C") && !state.executando) limparPrograma();
+    if (e.key === "Delete" || e.key === "Backspace") removerUltimoBloco();
+  });
+}
+// ==================================================
+// PARTE 4: GERENCIAMENTO DE NÍVEL E GRID
+// ==================================================
+
+function carregarNivel(index) {
+  const nivel = CONFIG.niveis[index];
+  if (!nivel) {
+    // Fim do jogo!
+    DOM.missaoTexto.innerHTML =
+      "🎉 PARABÉNS! Você concluiu todos os níveis! 🎉";
+    DOM.missaoDica.textContent = "🌟 Você é um Mestre dos Condicionais!";
+    return;
   }
 
-  // ---------- MÓDULO PLANOS DE AULA (checkboxes, progresso) ----------
-  const PlanosAulaModule = {
-    STORAGE_KEY: "planoAula_Concluidas_2ano_bim4",
-    init() {
-      if (!document.getElementById("accordionAulas")) return;
-      this.checkboxes = document.querySelectorAll(".semana-check");
-      this.carregarProgresso();
-      this.checkboxes.forEach((cb) =>
-        cb.addEventListener("change", (e) => this.salvarProgresso()),
-      );
-    },
-    salvarProgresso() {
-      const concluidas = {};
-      this.checkboxes.forEach((cb) => {
-        const semana = cb.dataset.semana;
-        if (semana) concluidas[semana] = cb.checked;
-      });
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(concluidas));
-    },
-    carregarProgresso() {
-      const salvo = localStorage.getItem(this.STORAGE_KEY);
-      if (salvo) {
-        const concluidas = JSON.parse(salvo);
-        this.checkboxes.forEach((cb) => {
-          const semana = cb.dataset.semana;
-          if (semana && concluidas[semana]) cb.checked = true;
-        });
-      }
-    },
-  };
+  state.nivelAtual = index;
+  state.posicaoRobo = { ...nivel.inicio };
+  state.programa = [];
 
-  // ---------- MÓDULO CERTIFICADO ----------
-  const CertificadoModule = {
-    alunos: [],
-    STORAGE_KEY: "robozada_certificados_ano2_bim4",
-    init() {
-      if (!document.getElementById("listaAlunos")) return;
-      this.elementos = {
-        inputNome: document.getElementById("nomeAluno"),
-        btnAdicionar: document.getElementById("btnAdicionar"),
-        listaAlunos: document.getElementById("listaAlunos"),
-        contadorAlunos: document.getElementById("contadorAlunos"),
-        btnImprimirTodos: document.getElementById("btnImprimirCertificados"),
-        btnPreviewAluno: document.getElementById("btnPreviewAluno"),
-        previewNome: document.getElementById("previewNomeAluno"),
-        previewData: document.getElementById("previewData"),
-      };
-      this.carregarAlunos();
-      this.atualizarLista();
-      this.configurarEventos();
-      this.atualizarPreviewData();
-    },
-    carregarAlunos() {
-      const salvos = localStorage.getItem(this.STORAGE_KEY);
-      if (salvos) this.alunos = JSON.parse(salvos);
-      if (!this.alunos.length)
-        this.alunos = ["ANA BEATRIZ", "LUCAS MARTINS", "MARIA CLARA"];
-      this.salvarAlunos();
-    },
-    salvarAlunos() {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.alunos));
-    },
-    atualizarLista() {
-      const ul = this.elementos.listaAlunos;
-      if (!ul) return;
-      if (this.alunos.length === 0) {
-        ul.innerHTML = '<li class="text-muted">Nenhum aluno cadastrado</li>';
-        this.elementos.contadorAlunos.textContent = "0";
-        return;
-      }
-      ul.innerHTML = "";
-      this.alunos.forEach((aluno, idx) => {
-        const li = document.createElement("li");
-        li.className = "d-flex justify-content-between align-items-center";
-        li.innerHTML = `<span><i class="bi bi-robot"></i> ${this.escapeHtml(aluno)}</span>
-                        <div class="btn-group gap-1">
-                          <button class="btn-selecionar-aluno btn btn-sm btn-outline-warning" data-nome="${this.escapeHtml(aluno)}"><i class="bi bi-eye"></i></button>
-                          <button class="btn-remover-aluno btn btn-sm btn-danger" data-index="${idx}"><i class="bi bi-trash"></i></button>
-                        </div>`;
-        ul.appendChild(li);
-      });
-      document.querySelectorAll(".btn-selecionar-aluno").forEach((btn) =>
-        btn.addEventListener("click", (e) => {
-          this.selecionarAlunoPreview(btn.dataset.nome);
-        }),
-      );
-      document.querySelectorAll(".btn-remover-aluno").forEach((btn) =>
-        btn.addEventListener("click", (e) => {
-          this.removerAluno(parseInt(btn.dataset.index));
-        }),
-      );
-      this.elementos.contadorAlunos.textContent = this.alunos.length;
-      this.atualizarEstadoBotoes();
-    },
-    selecionarAlunoPreview(nome) {
-      if (this.elementos.previewNome)
-        this.elementos.previewNome.textContent = nome;
-      this.atualizarEstadoBotoes();
-    },
-    removerAluno(idx) {
-      if (confirm("Remover aluno?")) {
-        this.alunos.splice(idx, 1);
-        this.salvarAlunos();
-        this.atualizarLista();
-        if (
-          this.elementos.previewNome &&
-          this.elementos.previewNome.textContent === this.alunos[idx]
-        )
-          this.elementos.previewNome.textContent = "[NOME DO ALUNO]";
-      }
-    },
-    adicionarAluno() {
-      let nome = this.elementos.inputNome.value.trim().toUpperCase();
-      if (!nome) return;
-      if (this.alunos.includes(nome)) {
-        alert("Aluno já cadastrado!");
-        return;
-      }
-      this.alunos.push(nome);
-      this.salvarAlunos();
-      this.atualizarLista();
-      this.elementos.inputNome.value = "";
-    },
-    imprimirTodos() {
-      if (!this.alunos.length) return;
-      const data = new Date().toLocaleDateString("pt-BR");
-      let cards = "";
-      this.alunos.forEach((nome) => {
-        cards += `<div class="certificado-impressao" style="border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:20px; text-align:center; background:#fffef7; break-inside:avoid; margin-bottom:15px;">
-                    <h3 style="color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.7rem;">🏆 CERTIFICADO DE MESTRE DO SE-ENTÃO-SENÃO</h3>
-                    <p>Certificamos que</p>
-                    <strong style="font-size:1rem; display:block; margin:10px 0; background:#fff0cc; padding:6px; border-radius:40px;">${this.escapeHtml(nome)}</strong>
-                    <p>concluiu o <strong>2º ANO - ROBÓTICA EDUCACIONAL - 4º BIMESTRE</strong><br>🔁 Condicionais | 📦 E/OU | 🤖 Cidade dos Condicionais</p>
-                    <hr><p>RobôMestres do Paraná • ${data}</p>
-                    <p style="font-size:0.6rem;">"SE a cidade funcionou, ENTÃO festejamos; SENÃO, debugamos!"</p>
-                    <div>🤖 Ass: Robô Zé 2.0</div>
-                  </div>`;
-      });
-      const win = window.open("", "_blank");
-      win.document.write(
-        `<html><head><title>Certificados</title><style>body{font-family:monospace; padding:20px;} .print-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:15px;} @media print{@page{size:A4; margin:1cm;}}</style></head><body><div class="print-grid">${cards}</div><script>window.onload=function(){window.print();setTimeout(function(){window.close();},500);};<\/script></body></html>`,
-      );
-    },
-    previewAluno() {
-      const nome = this.elementos.previewNome?.textContent;
-      if (!nome || nome === "[NOME DO ALUNO]") {
-        alert("Selecione um aluno na lista!");
-        return;
-      }
-      this.gerarCertificadoUnico(nome);
-    },
-    gerarCertificadoUnico(nome) {
-      const data = new Date().toLocaleDateString("pt-BR");
-      const html = this._gerarHtmlCertificado(nome, data);
-      const win = window.open("", "_blank");
-      win.document.write(html);
-      win.document.close();
-    },
-    _gerarHtmlCertificado(nome, data) {
-      return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Certificado ${nome}</title><style>body{font-family:monospace; display:flex; justify-content:center; align-items:center; min-height:100vh;} .certificado{border:3px solid #ffb347; border-radius:48px 24px; padding:30px; max-width:600px; text-align:center; background:#fffef7;} .nome{font-size:22px; background:#fff0cc; padding:12px; border-radius:40px; display:block; margin:15px 0;}</style></head><body><div class="certificado"><h3>🤖 CERTIFICADO ROBÔMESTRES</h3><p>Certificamos que</p><strong class="nome">${this.escapeHtml(nome)}</strong><p>concluiu o 2º ANO - ROBÓTICA EDUCACIONAL - 4º BIMESTRE<br>Dominando condicionais e a Cidade dos Condicionais.</p><hr><p>RobôMestres do Paraná • ${data}</p><p>"SE a cidade funcionou, ENTÃO festejamos; SENÃO, debugamos!"</p><div>🤖 Ass: Robô Zé 2.0</div></div><script>window.onload=function(){window.print();setTimeout(function(){window.close();},500);};<\/script></body></html>`;
-    },
-    atualizarPreviewData() {
-      if (this.elementos.previewData)
-        this.elementos.previewData.textContent = new Date().toLocaleDateString(
-          "pt-BR",
-        );
-    },
-    atualizarEstadoBotoes() {
-      if (this.elementos.btnImprimirTodos)
-        this.elementos.btnImprimirTodos.disabled = this.alunos.length === 0;
-      if (this.elementos.btnPreviewAluno)
-        this.elementos.btnPreviewAluno.disabled =
-          !this.elementos.previewNome ||
-          this.elementos.previewNome.textContent === "[NOME DO ALUNO]";
-    },
-    configurarEventos() {
-      if (this.elementos.btnAdicionar)
-        this.elementos.btnAdicionar.addEventListener("click", () =>
-          this.adicionarAluno(),
-        );
-      if (this.elementos.btnImprimirTodos)
-        this.elementos.btnImprimirTodos.addEventListener("click", () =>
-          this.imprimirTodos(),
-        );
-      if (this.elementos.btnPreviewAluno)
-        this.elementos.btnPreviewAluno.addEventListener("click", () =>
-          this.previewAluno(),
-        );
-    },
-    escapeHtml(t) {
-      return t.replace(/[&<>]/g, function (m) {
-        if (m === "&") return "&amp;";
-        if (m === "<") return "&lt;";
-        if (m === ">") return "&gt;";
-        return m;
-      });
-    },
-  };
+  // Atualizar UI
+  DOM.missaoTexto.innerHTML = nivel.missao;
+  DOM.missaoDica.textContent = nivel.dica;
+  DOM.roboNome.textContent = `${nivel.robo.emoji} ${nivel.robo.nome}`;
+  DOM.roboPersonalidade.textContent = nivel.robo.personalidade;
+  DOM.nivelJogo.textContent = index + 1;
 
-  // ---------- MÓDULO JOGO DO BIMESTRE: CIDADE DOS CONDICIONAIS ----------
-  const JogoCondicionalModule = {
-    regraAtual: [],
-    pontuacao: 0,
-    init() {
-      if (!document.getElementById("cruzamento")) return;
-      this.desenharCruzamento();
-      document.querySelectorAll(".bloco-condicional").forEach((bloco) => {
-        bloco.addEventListener("click", () =>
-          this.adicionarBloco(bloco.dataset.tipo),
-        );
-      });
-      document
-        .getElementById("btnTestarRegra")
-        ?.addEventListener("click", () => this.testarRegra());
-      document
-        .getElementById("btnLimparRegra")
-        ?.addEventListener("click", () => this.limparRegra());
-      this.atualizarPontuacao();
-    },
-    desenharCruzamento() {
-      const grid = document.getElementById("cruzamento");
-      if (!grid) return;
-      grid.innerHTML = `<div>🚦 VERMELHO</div><div>🚶 ROBÔ A</div><div>🏁 DESTINO</div><div>🚦 VERDE</div><div>🚶 ROBÔ B</div><div>⚠️ CRUZAMENTO</div>`;
-    },
-    adicionarBloco(tipo) {
-      const textoMap = {
-        se: "SE",
-        entao: "ENTÃO",
-        senao: "SENÃO",
-        quando: "QUANDO",
-        e: "E",
-        ou: "OU",
-        semaf_verde: "semáforo verde",
-        semaf_vermelho: "semáforo vermelho",
-        andar: "andar",
-        parar: "parar",
-        buzinar: "buzinar",
-      };
-      this.regraAtual.push(textoMap[tipo] || tipo);
-      this.atualizarDisplayRegra();
-    },
-    limparRegra() {
-      this.regraAtual = [];
-      this.atualizarDisplayRegra();
-      document.getElementById("statusJogo").innerHTML =
-        "Regra limpa. Monte uma nova!";
-    },
-    atualizarDisplayRegra() {
-      const div = document.getElementById("regraMontada");
-      if (div)
-        div.innerHTML = this.regraAtual.join(" ") || "❓ Nenhuma regra montada";
-    },
-    testarRegra() {
-      const regraStr = this.regraAtual.join(" ").toLowerCase();
-      let acertou = false;
-      if (
-        regraStr.includes("se") &&
-        regraStr.includes("então") &&
-        (regraStr.includes("semáforo vermelho") ||
-          regraStr.includes("semáforo verde"))
-      )
-        acertou = true;
-      if (acertou) {
-        this.pontuacao++;
-        document.getElementById("statusJogo").innerHTML =
-          "✅ REGRA CORRETA! O trânsito fluiu perfeitamente! +1 ponto";
-        document.dispatchEvent(new CustomEvent("robo:vitoria"));
+  // Gerar grid
+  gerarGrid(nivel);
+  atualizarPosicoes();
+  atualizarMontagem();
+  atualizarEstatisticas();
+}
+
+function gerarGrid(nivel) {
+  const grid = DOM.gridContainer;
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  state.celulas = [];
+
+  for (let l = 0; l < CONFIG.gridSize; l++) {
+    for (let c = 0; c < CONFIG.gridSize; c++) {
+      const cell = document.createElement("div");
+      cell.className = "grid-cell";
+      cell.dataset.linha = l;
+      cell.dataset.coluna = c;
+
+      // Verificar se é obstáculo
+      const isObstaculo = nivel.obstaculos.some(
+        ([ol, oc]) => ol === l && oc === c,
+      );
+      if (isObstaculo) {
+        cell.classList.add("obstaculo");
+        cell.textContent = "🧱";
+      }
+
+      // Verificar se é destino
+      if (nivel.destino.linha === l && nivel.destino.coluna === c) {
+        cell.classList.add("destino");
+      }
+
+      // Verificar se é início
+      if (nivel.inicio.linha === l && nivel.inicio.coluna === c) {
+        cell.classList.add("caminho");
+      }
+
+      grid.appendChild(cell);
+      state.celulas.push({ linha: l, coluna: c, element: cell });
+    }
+  }
+
+  // Posicionar destino
+  const destinoEl = DOM.destinoTabuleiro;
+  if (destinoEl) {
+    const cellSize = 100 / CONFIG.gridSize;
+    destinoEl.style.left = `${nivel.destino.coluna * cellSize + cellSize / 2 - 20}%`;
+    destinoEl.style.top = `${nivel.destino.linha * cellSize + cellSize / 2 - 20}%`;
+  }
+
+  // Posicionar obstáculos (ícone flutuante no primeiro obstáculo)
+  if (nivel.obstaculos.length > 0) {
+    const obsEl = DOM.obstaculoTabuleiro;
+    if (obsEl) {
+      const [ol, oc] = nivel.obstaculos[0];
+      const cellSize = 100 / CONFIG.gridSize;
+      obsEl.style.left = `${oc * cellSize + cellSize / 2 - 16}%`;
+      obsEl.style.top = `${ol * cellSize + cellSize / 2 - 16}%`;
+    }
+  }
+}
+// ==================================================
+// PARTE 5: POSIÇÃO DO ROBÔ
+// ==================================================
+
+function atualizarPosicoes() {
+  const roboEl = DOM.roboTabuleiro;
+  if (!roboEl) return;
+
+  const cellSize = 100 / CONFIG.gridSize;
+  const { linha, coluna } = state.posicaoRobo;
+
+  roboEl.style.left = `${coluna * cellSize + cellSize / 2 - 24}%`;
+  roboEl.style.top = `${linha * cellSize + cellSize / 2 - 24}%`;
+
+  // Verificar se chegou ao destino
+  const nivel = CONFIG.niveis[state.nivelAtual];
+  if (
+    nivel &&
+    linha === nivel.destino.linha &&
+    coluna === nivel.destino.coluna
+  ) {
+    // Chegou ao destino!
+    state.estrelas += 3;
+    state.acertos++;
+    atualizarEstatisticas();
+
+    // Efeito de vitória
+    roboEl.style.animation = "roboPula 0.8s ease-in-out";
+    setTimeout(() => {
+      roboEl.style.animation = "";
+      // Próximo nível após delay
+      if (state.nivelAtual < CONFIG.niveis.length - 1) {
+        setTimeout(() => {
+          carregarNivel(state.nivelAtual + 1);
+        }, 500);
       } else {
-        document.getElementById("statusJogo").innerHTML =
-          "❌ REGRA INCORRETA! O caos tomou conta. Tente usar SE... ENTÃO... com semáforo.";
-        document.dispatchEvent(
-          new CustomEvent("robo:bug", {
-            detail: { incremento: 1, mensagem: "Regra mal formulada" },
-          }),
-        );
+        DOM.missaoTexto.innerHTML =
+          "🎉 PARABÉNS! Você é um Mestre dos Condicionais! 🎉";
+        DOM.missaoDica.textContent = "🌟 Todos os níveis concluídos!";
       }
-      this.atualizarPontuacao();
-      this.limparRegra();
-    },
-    atualizarPontuacao() {
-      const span = document.getElementById("pontuacaoJogo");
-      if (span) span.innerText = `Regras acertadas: ${this.pontuacao}`;
-    },
-  };
+    }, 1000);
+  }
+}
+// ==================================================
+// PARTE 6: MONTAGEM DO PROGRAMA
+// ==================================================
 
-  // ---------- MÓDULO FECHAMENTO (Loop Dash - versão simplificada para manter integridade) ----------
-  // Mantido conforme anexo, mas sem duplicar o jogo principal.
-  // Como o HTML já tem referência ao Loop Dash, incluímos a estrutura básica.
-  const FechamentoModule = {
-    init() {
-      console.log("FechamentoModule (Loop Dash) - carregado");
-      // Funções originais podem ser adicionadas se necessário; para evitar redundância, mantemos apenas o essencial.
-    },
-  };
+function adicionarBloco(tipo) {
+  if (state.executando) return;
 
-  // ---------- INICIALIZAÇÃO GERAL ----------
-  document.addEventListener("DOMContentLoaded", () => {
-    CabecalhoModule.init();
-    highlightCurrentPage();
-    PlanosAulaModule.init();
-    CertificadoModule.init();
-    JogoCondicionalModule.init();
-    FechamentoModule.init();
-    console.log("🚀 a2bim4.js completamente carregado");
+  const termo = CONFIG.comandos[tipo];
+  if (!termo) return;
+
+  // Validações semânticas
+  if (state.programa.length === 0 && !["se", "repita"].includes(tipo)) {
+    mostrarFeedback("⚠️ O programa deve começar com SE ou REPITA!", "erro");
+    return;
+  }
+
+  // Verificar se é um número para REPITA
+  if (tipo === "repita") {
+    const num = prompt("Quantas vezes repetir? (1-9)", "3");
+    if (num && !isNaN(num) && parseInt(num) > 0 && parseInt(num) <= 9) {
+      state.programa.push({
+        tipo: "repita",
+        valor: parseInt(num),
+        texto: `REPITA ${num}`,
+      });
+    } else {
+      return;
+    }
+  } else {
+    // Verificar se REPITA já está aberto
+    const repitaAberto = state.programa.some(
+      (b) => b.tipo === "repita" && !b.fechado,
+    );
+    if (repitaAberto && !["se", "entao", "senao", "e", "ou"].includes(tipo)) {
+      mostrarFeedback("⚠️ Dentro de REPITA, use SE, ENTÃO ou SENÃO!", "erro");
+      return;
+    }
+
+    state.programa.push({ tipo, texto: termo });
+  }
+
+  atualizarMontagem();
+  mostrarFeedback(`➕ ${termo} adicionado`, "info");
+}
+
+function removerUltimoBloco() {
+  if (state.executando || state.programa.length === 0) return;
+  const removido = state.programa.pop();
+  atualizarMontagem();
+  mostrarFeedback(
+    `🗑️ Removido: ${removido.texto || CONFIG.comandos[removido.tipo]}`,
+    "info",
+  );
+}
+
+function atualizarMontagem() {
+  const linha = DOM.linhaMontagem;
+  if (!linha) return;
+
+  if (state.programa.length === 0) {
+    linha.innerHTML =
+      '<span class="placeholder-programa">⬅️ Clique nos blocos para montar seu programa</span>';
+    return;
+  }
+
+  linha.innerHTML = state.programa
+    .map((bloco, index) => {
+      const texto = bloco.texto || CONFIG.comandos[bloco.tipo] || bloco.tipo;
+      return `<span class="bloco-montado" data-index="${index}">
+      ${texto}
+      <button class="btn-remover-bloco" data-index="${index}" title="Remover">✕</button>
+    </span>`;
+    })
+    .join("");
+
+  // Eventos de remoção
+  linha.querySelectorAll(".btn-remover-bloco").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const index = parseInt(btn.dataset.index);
+      if (!isNaN(index) && index >= 0 && index < state.programa.length) {
+        state.programa.splice(index, 1);
+        atualizarMontagem();
+      }
+    });
   });
-})();
+}
+// ==================================================
+// PARTE 7: INTERPRETADOR - AÇÕES
+// ==================================================
+
+function executarAcao(tipo, pos, nivel) {
+  const novaPos = { ...pos };
+
+  if (tipo === "andar") {
+    novaPos.coluna = Math.min(novaPos.coluna + 1, CONFIG.gridSize - 1);
+    const isObstaculo = nivel.obstaculos.some(
+      ([ol, oc]) => ol === novaPos.linha && oc === novaPos.coluna,
+    );
+    if (isObstaculo) {
+      return { pos: pos, parou: true, erro: "Bateu em um obstáculo!" };
+    }
+  } else if (tipo === "pular") {
+    novaPos.coluna = Math.min(novaPos.coluna + 2, CONFIG.gridSize - 1);
+    const isObstaculo = nivel.obstaculos.some(
+      ([ol, oc]) => ol === novaPos.linha && oc === novaPos.coluna,
+    );
+    if (isObstaculo) {
+      return { pos: pos, parou: true, erro: "Pulou em cima de um obstáculo!" };
+    }
+  } else if (tipo === "virar") {
+    novaPos.linha = Math.min(novaPos.linha + 1, CONFIG.gridSize - 1);
+    const isObstaculo = nivel.obstaculos.some(
+      ([ol, oc]) => ol === novaPos.linha && oc === novaPos.coluna,
+    );
+    if (isObstaculo) {
+      return { pos: pos, parou: true, erro: "Virou em um obstáculo!" };
+    }
+  } else if (tipo === "parar") {
+    return { pos: novaPos };
+  }
+
+  if (novaPos.linha >= CONFIG.gridSize || novaPos.coluna >= CONFIG.gridSize) {
+    return { pos: pos, parou: true, erro: "Saiu do grid!" };
+  }
+
+  return { pos: novaPos };
+}
+// ==================================================
+// PARTE 8: INTERPRETADOR - PRINCIPAL
+// ==================================================
+
+function interpretarPrograma(programa, posicaoInicial) {
+  const nivel = CONFIG.niveis[state.nivelAtual];
+  let posAtual = { ...posicaoInicial };
+  let i = 0;
+  let passos = 0;
+  const maxPassos = 50;
+
+  while (i < programa.length && passos < maxPassos) {
+    const bloco = programa[i];
+    passos++;
+
+    // REPITA
+    if (bloco.tipo === "repita") {
+      const repitaMax = bloco.valor || 3;
+      let internos = [];
+      let j = i + 1;
+      let profundidade = 0;
+
+      while (j < programa.length) {
+        if (programa[j].tipo === "repita") profundidade++;
+        if (programa[j].tipo === "fim_repita") {
+          if (profundidade === 0) break;
+          profundidade--;
+        }
+        internos.push(programa[j]);
+        j++;
+      }
+
+      for (let r = 0; r < repitaMax; r++) {
+        const resultado = interpretarInterno(internos, posAtual);
+        posAtual = resultado.pos;
+        if (resultado.parou) return { pos: posAtual, parou: true };
+        if (resultado.sucesso)
+          return { pos: posAtual, parou: true, sucesso: true };
+      }
+
+      i = j + 1;
+      continue;
+    }
+
+    // SE
+    if (bloco.tipo === "se") {
+      // Encontrar ENTÃO e SENÃO
+      let entaoIndex = -1;
+      let senaoIndex = -1;
+      let profundidade = 0;
+
+      for (let k = i + 1; k < programa.length; k++) {
+        if (programa[k].tipo === "se") profundidade++;
+        if (programa[k].tipo === "entao" && profundidade === 0) {
+          entaoIndex = k;
+          break;
+        }
+        if (programa[k].tipo === "senao" && profundidade === 0) {
+          senaoIndex = k;
+          break;
+        }
+      }
+
+      if (entaoIndex === -1) {
+        return { pos: posAtual, erro: "SE sem ENTÃO", parou: true };
+      }
+
+      // Avaliar condição
+      let condicao = null;
+      let operador = null;
+      let condicao2 = null;
+
+      let k = i + 1;
+      if (
+        k < programa.length &&
+        CONFIG.condicoesValidas.includes(programa[k].tipo)
+      ) {
+        condicao = programa[k].tipo;
+        k++;
+
+        if (
+          k < programa.length &&
+          (programa[k].tipo === "e" || programa[k].tipo === "ou")
+        ) {
+          operador = programa[k].tipo;
+          k++;
+          if (
+            k < programa.length &&
+            CONFIG.condicoesValidas.includes(programa[k].tipo)
+          ) {
+            condicao2 = programa[k].tipo;
+          }
+        }
+      }
+
+      // Determinar se condição é verdadeira
+      let condicaoVerdadeira = avaliarCondicao(condicao, posAtual, nivel);
+
+      // Aplicar operador E/OU
+      if (condicao2 !== null && operador) {
+        let condicao2Verdadeira = avaliarCondicao(condicao2, posAtual, nivel);
+        if (operador === "e") {
+          condicaoVerdadeira = condicaoVerdadeira && condicao2Verdadeira;
+        } else if (operador === "ou") {
+          condicaoVerdadeira = condicaoVerdadeira || condicao2Verdadeira;
+        }
+      }
+
+      // Executar ENTÃO ou SENÃO
+      if (condicaoVerdadeira) {
+        i = entaoIndex + 1;
+        while (
+          i < programa.length &&
+          programa[i].tipo !== "senao" &&
+          programa[i].tipo !== "se"
+        ) {
+          const resultado = executarAcao(programa[i].tipo, posAtual, nivel);
+          posAtual = resultado.pos;
+          if (resultado.parou) return { pos: posAtual, parou: true };
+          if (
+            posAtual.linha === nivel.destino.linha &&
+            posAtual.coluna === nivel.destino.coluna
+          ) {
+            return { pos: posAtual, parou: true, sucesso: true };
+          }
+          i++;
+        }
+        if (senaoIndex !== -1) {
+          i = senaoIndex + 1;
+          while (i < programa.length && programa[i].tipo !== "se") {
+            i++;
+          }
+        } else {
+          i = entaoIndex + 1;
+        }
+      } else {
+        if (senaoIndex !== -1) {
+          i = senaoIndex + 1;
+          while (i < programa.length && programa[i].tipo !== "se") {
+            const resultado = executarAcao(programa[i].tipo, posAtual, nivel);
+            posAtual = resultado.pos;
+            if (resultado.parou) return { pos: posAtual, parou: true };
+            i++;
+          }
+        } else {
+          i = entaoIndex + 1;
+        }
+      }
+      continue;
+    }
+
+    // Ação direta
+    const resultado = executarAcao(bloco.tipo, posAtual, nivel);
+    posAtual = resultado.pos;
+    if (resultado.parou) return { pos: posAtual, parou: true };
+    if (
+      posAtual.linha === nivel.destino.linha &&
+      posAtual.coluna === nivel.destino.coluna
+    ) {
+      return { pos: posAtual, parou: true, sucesso: true };
+    }
+
+    i++;
+  }
+
+  return { pos: posAtual, parou: passos >= maxPassos };
+}
+
+function interpretarInterno(programa, pos) {
+  const nivel = CONFIG.niveis[state.nivelAtual];
+  let posAtual = { ...pos };
+
+  for (let i = 0; i < programa.length; i++) {
+    const bloco = programa[i];
+    if (bloco.tipo === "se") continue;
+
+    const resultado = executarAcao(bloco.tipo, posAtual, nivel);
+    posAtual = resultado.pos;
+    if (resultado.parou) return { pos: posAtual, parou: true };
+    if (
+      posAtual.linha === nivel.destino.linha &&
+      posAtual.coluna === nivel.destino.coluna
+    ) {
+      return { pos: posAtual, parou: true, sucesso: true };
+    }
+  }
+  return { pos: posAtual };
+}
+// ==================================================
+// PARTE 9: AVALIAÇÃO DE CONDIÇÕES E VALIDAÇÃO
+// ==================================================
+
+function avaliarCondicao(condicao, pos, nivel) {
+  if (condicao === "verde") {
+    const proxima = { linha: pos.linha, coluna: pos.coluna + 1 };
+    const isObstaculo = nivel.obstaculos.some(
+      ([ol, oc]) => ol === proxima.linha && oc === proxima.coluna,
+    );
+    return !isObstaculo && proxima.coluna < CONFIG.gridSize;
+  } else if (condicao === "vermelho" || condicao === "buraco") {
+    const proxima = { linha: pos.linha, coluna: pos.coluna + 1 };
+    const isObstaculo = nivel.obstaculos.some(
+      ([ol, oc]) => ol === proxima.linha && oc === proxima.coluna,
+    );
+    return isObstaculo;
+  }
+  return false;
+}
+
+function validarPrograma(programa) {
+  if (programa.length === 0) {
+    return { valido: false, erro: "Programa vazio!" };
+  }
+
+  let profundidade = 0;
+  let temSe = false;
+  let temEntao = false;
+  let temAcao = false;
+
+  for (let i = 0; i < programa.length; i++) {
+    const bloco = programa[i];
+
+    if (bloco.tipo === "se") {
+      temSe = true;
+      profundidade++;
+      if (i + 1 < programa.length) {
+        const prox = programa[i + 1];
+        if (!CONFIG.condicoesValidas.includes(prox.tipo)) {
+          return {
+            valido: false,
+            erro: "Após SE, deve vir uma condição (VERDE, VERMELHO, BURACO)",
+          };
+        }
+      } else {
+        return { valido: false, erro: "SE sem condição!" };
+      }
+    }
+
+    if (bloco.tipo === "entao") {
+      temEntao = true;
+      if (profundidade === 0) {
+        return { valido: false, erro: "ENTÃO sem SE correspondente!" };
+      }
+      if (i + 1 < programa.length) {
+        const prox = programa[i + 1];
+        if (!CONFIG.acoesValidas.includes(prox.tipo) && prox.tipo !== "se") {
+          return {
+            valido: false,
+            erro: "Após ENTÃO, deve vir uma ação (ANDAR, PARAR, PULAR, VIRAR) ou SE",
+          };
+        }
+      } else {
+        return { valido: false, erro: "ENTÃO sem ação!" };
+      }
+    }
+
+    if (bloco.tipo === "senao") {
+      if (profundidade === 0) {
+        return { valido: false, erro: "SENÃO sem SE correspondente!" };
+      }
+      if (i + 1 < programa.length) {
+        const prox = programa[i + 1];
+        if (!CONFIG.acoesValidas.includes(prox.tipo) && prox.tipo !== "se") {
+          return {
+            valido: false,
+            erro: "Após SENÃO, deve vir uma ação (ANDAR, PARAR, PULAR, VIRAR) ou SE",
+          };
+        }
+      } else {
+        return { valido: false, erro: "SENÃO sem ação!" };
+      }
+    }
+
+    if (CONFIG.acoesValidas.includes(bloco.tipo)) {
+      temAcao = true;
+    }
+
+    if (bloco.tipo === "repita") {
+      if (!bloco.valor || bloco.valor < 1 || bloco.valor > 9) {
+        return {
+          valido: false,
+          erro: "REPITA deve ter um número entre 1 e 9!",
+        };
+      }
+    }
+  }
+
+  if (!temSe) {
+    return { valido: false, erro: "Programa deve conter pelo menos um SE!" };
+  }
+  if (!temEntao) {
+    return { valido: false, erro: "Programa deve conter um ENTÃO!" };
+  }
+  if (!temAcao) {
+    return { valido: false, erro: "Programa deve conter pelo menos uma ação!" };
+  }
+
+  return { valido: true };
+}
+// ==================================================
+// PARTE 10: EXECUÇÃO DO PROGRAMA
+// ==================================================
+
+function executarPrograma() {
+  if (state.executando) return;
+  if (state.programa.length === 0) {
+    mostrarFeedback("⚠️ Monte um programa primeiro!", "erro");
+    return;
+  }
+
+  state.executando = true;
+  DOM.btnExecutar.disabled = true;
+
+  // Validar programa
+  const validacao = validarPrograma(state.programa);
+  if (!validacao.valido) {
+    mostrarFeedback(`❌ ${validacao.erro}`, "erro");
+    state.bugs++;
+    atualizarEstatisticas();
+    state.executando = false;
+    DOM.btnExecutar.disabled = false;
+    return;
+  }
+
+  // Executar
+  const nivel = CONFIG.niveis[state.nivelAtual];
+  const resultado = interpretarPrograma(state.programa, state.posicaoRobo);
+  const novaPos = resultado.pos;
+
+  // Atualizar posição do robô
+  state.posicaoRobo = { ...novaPos };
+  atualizarPosicoes();
+
+  // Verificar resultado
+  const chegou =
+    novaPos.linha === nivel.destino.linha &&
+    novaPos.coluna === nivel.destino.coluna;
+  const acertou = chegou;
+
+  // Registrar histórico
+  const programaStr = state.programa
+    .map((b) => b.texto || CONFIG.comandos[b.tipo])
+    .join(" ");
+  state.historico.unshift({ programa: programaStr, acertou });
+  if (state.historico.length > 10) state.historico.pop();
+  atualizarHistorico();
+
+  if (acertou) {
+    state.estrelas += 2;
+    state.acertos++;
+    mostrarFeedback("🎉 PARABÉNS! Programa executado com sucesso!", "sucesso");
+
+    const roboEl = DOM.roboTabuleiro;
+    roboEl.style.animation = "roboPula 0.8s ease-in-out";
+    setTimeout(() => {
+      roboEl.style.animation = "";
+    }, 1000);
+
+    // Avançar nível automaticamente
+    setTimeout(() => {
+      if (state.nivelAtual < CONFIG.niveis.length - 1) {
+        carregarNivel(state.nivelAtual + 1);
+      } else {
+        DOM.missaoTexto.innerHTML =
+          "🎉 PARABÉNS! Você é um Mestre dos Condicionais! 🎉";
+        DOM.missaoDica.textContent = "🌟 Todos os níveis concluídos!";
+      }
+    }, 1500);
+  } else {
+    state.bugs++;
+    mostrarFeedback(
+      `❌ O robô não chegou ao destino! ${resultado.erro || "Tente novamente."}`,
+      "erro",
+    );
+
+    const roboEl = DOM.roboTabuleiro;
+    roboEl.style.animation = "travouRobo 0.5s ease-in-out 2";
+    setTimeout(() => {
+      roboEl.style.animation = "";
+    }, 1000);
+  }
+
+  atualizarEstatisticas();
+  state.executando = false;
+  DOM.btnExecutar.disabled = false;
+}
+// ==================================================
+// PARTE 11: UTILITÁRIOS
+// ==================================================
+
+function limparPrograma() {
+  if (state.executando) return;
+  state.programa = [];
+  atualizarMontagem();
+  mostrarFeedback("🧹 Programa limpo!", "info");
+}
+
+function mostrarDica() {
+  const nivel = CONFIG.niveis[state.nivelAtual];
+  if (!nivel) return;
+
+  const dicas = [
+    `💡 ${nivel.dica}`,
+    "💡 SE + condição + ENTÃO + ação = programa básico",
+    "💡 Adicione SENÃO para o caso contrário",
+    "💡 Use E ou OU para combinar condições",
+    "💡 REPITA faz o bloco interno se repetir N vezes",
+    "💡 Condições: 🟢 VERDE, 🔴 VERMELHO, 🕳️ BURACO",
+    "💡 Ações: 🚶 ANDAR, ✋ PARAR, ⬆️ PULAR, 🔄 VIRAR",
+  ];
+
+  const dica = dicas[Math.floor(Math.random() * dicas.length)];
+  DOM.missaoDica.textContent = dica;
+  mostrarFeedback(dica, "info");
+}
+
+function mostrarFeedback(msg, tipo) {
+  const missaoDica = DOM.missaoDica;
+  if (!missaoDica) return;
+
+  missaoDica.textContent = msg;
+  missaoDica.style.transition = "all 0.3s ease";
+
+  if (tipo === "sucesso") {
+    missaoDica.style.color = "#2ecc71";
+  } else if (tipo === "erro") {
+    missaoDica.style.color = "#e74c3c";
+  } else {
+    missaoDica.style.color = "#9bbc7b";
+  }
+
+  setTimeout(() => {
+    const nivel = CONFIG.niveis[state.nivelAtual];
+    if (nivel) {
+      missaoDica.textContent = nivel.dica;
+      missaoDica.style.color = "#9bbc7b";
+    }
+  }, 3000);
+}
+// ==================================================
+// PARTE 12: ESTATÍSTICAS, HISTÓRICO E SALVAMENTO
+// ==================================================
+
+function atualizarEstatisticas() {
+  DOM.estrelasJogo.textContent = state.estrelas;
+  DOM.contadorBugsJogo.textContent = state.bugs;
+  DOM.contadorAcertosJogo.textContent = state.acertos;
+  salvarEstado();
+}
+
+function atualizarHistorico() {
+  const container = DOM.historicoProgramas;
+  if (!container) return;
+
+  if (state.historico.length === 0) {
+    container.innerHTML =
+      '<span style="font-size:0.6rem;color:#5a6a5a;">Nenhum programa executado</span>';
+    return;
+  }
+
+  container.innerHTML = state.historico
+    .map((item) => {
+      const texto =
+        item.programa.length > 30
+          ? item.programa.substring(0, 30) + "…"
+          : item.programa;
+      return `<span class="historico-item-programa ${item.acertou ? "acertou" : "errou"}">
+      ${item.acertou ? "✅" : "❌"} ${texto}
+    </span>`;
+    })
+    .join("");
+}
+
+function salvarEstado() {
+  try {
+    const data = {
+      nivelAtual: state.nivelAtual,
+      estrelas: state.estrelas,
+      acertos: state.acertos,
+      bugs: state.bugs,
+      historico: state.historico.slice(0, 10),
+    };
+    localStorage.setItem(
+      "construtor_condicionais_2ano_bim4",
+      JSON.stringify(data),
+    );
+  } catch {}
+}
+
+function carregarEstado() {
+  try {
+    const salvo = localStorage.getItem("construtor_condicionais_2ano_bim4");
+    if (salvo) {
+      const data = JSON.parse(salvo);
+      state.nivelAtual = data.nivelAtual || 0;
+      state.estrelas = data.estrelas || 0;
+      state.acertos = data.acertos || 0;
+      state.bugs = data.bugs || 0;
+      state.historico = data.historico || [];
+    }
+  } catch {}
+}
+// ==================================================
+// PARTE 13: INICIALIZAÇÃO FINAL
+// ==================================================
+
+// Inicializar quando o DOM estiver pronto
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+});

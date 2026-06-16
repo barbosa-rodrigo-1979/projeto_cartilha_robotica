@@ -1,350 +1,385 @@
 <!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>RobôMestres | Menu + Imagem Principal</title>
+    <!-- Bootstrap 5 + ícones + fontes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>RobôMestres | Menu + Imagem Principal</title>
-  <!-- Bootstrap 5 + ícones + fontes -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
-    rel="stylesheet" />
+    <link rel="stylesheet" href="modelos/modelo_css/modelo_cabecalho.css" />
+    <link rel="stylesheet" href="modelos/modelo_css/modelo_rodape.css" />
 
-  <link rel="stylesheet" href="modelos/modelo_css/modelo_cabecalho.css" />
-  <link rel="stylesheet" href="modelos/modelo_css/modelo_rodape.css" />
+    <style>
+      /* ================================================== */
+      /* ESTILOS DO MENU DE NAVEGAÇÃO - ROBÓTICA EDUCACIONAL */
+      /* ================================================== */
 
-  <style>
-    /* ================================================== */
-    /* ESTILOS DO MENU DE NAVEGAÇÃO - ROBÓTICA EDUCACIONAL */
-    /* ================================================== */
-
-    /* ---------- VARIÁVEIS GLOBAIS ---------- */
-    :root {
-      --robot-green: #4a7c3f;
-      --robot-dark: #1e2a1a;
-      --robot-bg: #0d1f0b;
-      --robot-card: #2c3e2b;
-      --robot-gold: #ffb347;
-      --robot-glow: #ffcc44;
-      --robot-danger: #e74c3c;
-      --robot-text: #e9f5db;
-      --robot-text-claro: #ebf0eb;
-    }
-
-    /* ---------- RESET E BASE ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body.bg-robotica {
-      background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
-      font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
-      color: var(--robot-text);
-      min-height: 100vh;
-    }
-
-    /* ---------- MENU GLASSMORPHISM ---------- */
-    .menu-robomestre {
-      background: rgba(13, 31, 11, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid var(--robot-gold);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    /* ---------- LINKS DO MENU ---------- */
-    .menu-robomestre .nav-link {
-      color: var(--robot-text);
-      font-family: "Chakra Petch", monospace;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 40px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .menu-robomestre .nav-link i {
-      font-size: 1.1rem;
-      color: var(--robot-gold);
-      transition: transform 0.2s;
-    }
-
-    /* Efeito hover */
-    .menu-robomestre .nav-link:hover {
-      color: var(--robot-gold);
-      text-shadow: 0 0 4px var(--robot-gold);
-      background: rgba(255, 180, 71, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .menu-robomestre .nav-link:hover i {
-      transform: scale(1.1);
-      color: var(--robot-glow);
-    }
-
-    /* Link ativo (página atual) */
-    .menu-robomestre .nav-link.active {
-      color: var(--robot-glow);
-      background: rgba(255, 180, 71, 0.25);
-      text-shadow: 0 0 6px var(--robot-gold);
-      border-bottom: 2px solid var(--robot-gold);
-    }
-
-    /* ---------- BOTÃO TOGGLE (mobile) ---------- */
-    .menu-robomestre .navbar-toggler {
-      border-color: var(--robot-gold);
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: all 0.2s;
-    }
-
-    .menu-robomestre .navbar-toggler:hover {
-      background-color: rgba(255, 180, 71, 0.2);
-      border-color: var(--robot-glow);
-    }
-
-    .menu-robomestre .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    /* ---------- MARCA (brand) em mobile ---------- */
-    .menu-robomestre .navbar-brand {
-      color: var(--robot-gold);
-      font-family: "Press Start 2P", cursive;
-      font-size: 0.9rem;
-    }
-
-    /* ---------- RESPONSIVIDADE DO MENU ---------- */
-    @media (max-width: 992px) {
-      .menu-robomestre .nav-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+      /* ---------- VARIÁVEIS GLOBAIS ---------- */
+      :root {
+        --robot-green: #4a7c3f;
+        --robot-dark: #1e2a1a;
+        --robot-bg: #0d1f0b;
+        --robot-card: #2c3e2b;
+        --robot-gold: #ffb347;
+        --robot-glow: #ffcc44;
+        --robot-danger: #e74c3c;
+        --robot-text: #e9f5db;
+        --robot-text-claro: #ebf0eb;
       }
-    }
 
-    @media (max-width: 768px) {
-      .menu-robomestre .navbar-collapse {
-        background: rgba(13, 31, 11, 0.95);
+      /* ---------- RESET E BASE ---------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body.bg-robotica {
+        background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
+        font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+        color: var(--robot-text);
+        min-height: 100vh;
+      }
+
+      /* ---------- MENU GLASSMORPHISM ---------- */
+      .menu-robomestre {
+        background: rgba(13, 31, 11, 0.85);
         backdrop-filter: blur(12px);
-        border-radius: 20px;
-        margin-top: 12px;
-        padding: 12px 0;
-        border: 1px solid var(--robot-gold);
+        border-bottom: 2px solid var(--robot-gold);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
       }
 
+      /* ---------- LINKS DO MENU ---------- */
       .menu-robomestre .nav-link {
-        justify-content: center;
-        margin: 4px 12px;
+        color: var(--robot-text);
+        font-family: "Chakra Petch", monospace;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 40px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
-    }
 
-    /* ---------- ESPAÇO PARA IMAGEM GRANDE ---------- */
-    .hero-imagem {
-      margin: 2rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .menu-robomestre .nav-link i {
+        font-size: 1.1rem;
+        color: var(--robot-gold);
+        transition: transform 0.2s;
+      }
 
-    .hero-imagem img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 30px;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
-      border: 3px solid var(--robot-gold);
-      transition: transform 0.3s ease;
-    }
+      /* Efeito hover */
+      .menu-robomestre .nav-link:hover {
+        color: var(--robot-gold);
+        text-shadow: 0 0 4px var(--robot-gold);
+        background: rgba(255, 180, 71, 0.15);
+        transform: translateY(-2px);
+      }
 
-    .hero-imagem img:hover {
-      transform: scale(1.01);
-    }
+      .menu-robomestre .nav-link:hover i {
+        transform: scale(1.1);
+        color: var(--robot-glow);
+      }
 
-    /* legenda opcional */
-    .legenda-imagem {
-      text-align: center;
-      margin-top: 1rem;
-      font-family: "Chakra Petch", monospace;
-      color: var(--robot-text-claro);
-      font-size: 0.9rem;
-    }
+      /* Link ativo (página atual) */
+      .menu-robomestre .nav-link.active {
+        color: var(--robot-glow);
+        background: rgba(255, 180, 71, 0.25);
+        text-shadow: 0 0 6px var(--robot-gold);
+        border-bottom: 2px solid var(--robot-gold);
+      }
 
-    /* rodapé simples (opcional, apenas para fechar a página) */
-    .footer-simples {
-      margin-top: 3rem;
-      text-align: center;
-      padding: 1.5rem 0;
-      border-top: 1px dashed var(--robot-gold);
-      color: var(--robot-text-claro);
-      font-size: 0.8rem;
-    }
-  </style>
-</head>
+      /* ---------- BOTÃO TOGGLE (mobile) ---------- */
+      .menu-robomestre .navbar-toggler {
+        border-color: var(--robot-gold);
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.2s;
+      }
 
-<body class="bg-robotica">
-  <!-- CABEÇALHO REBELDE -->
-  <header class="cabecalho-robotico cabecalho-rebelde">
-    <div class="container">
-      <div class="row align-items-center justify-content-between g-2">
-        <div class="col-auto">
-          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
-            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-        </div>
-        <div class="col text-center">
-          <h1 class="titulo-principal glitch-text">
-            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
-            <span class="parafuso-esquerda">⬤</span>
-          </h1>
-          <div class="subtitulo-chiclete">
-            ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
-            ISSO; SENÃO… AGUENTA ⚡<br />
-            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+      .menu-robomestre .navbar-toggler:hover {
+        background-color: rgba(255, 180, 71, 0.2);
+        border-color: var(--robot-glow);
+      }
+
+      .menu-robomestre .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* ---------- MARCA (brand) em mobile ---------- */
+      .menu-robomestre .navbar-brand {
+        color: var(--robot-gold);
+        font-family: "Press Start 2P", cursive;
+        font-size: 0.9rem;
+      }
+
+      /* ---------- RESPONSIVIDADE DO MENU ---------- */
+      @media (max-width: 992px) {
+        .menu-robomestre .nav-link {
+          font-size: 0.9rem;
+          padding: 0.4rem 0.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-robomestre .navbar-collapse {
+          background: rgba(13, 31, 11, 0.95);
+          backdrop-filter: blur(12px);
+          border-radius: 20px;
+          margin-top: 12px;
+          padding: 12px 0;
+          border: 1px solid var(--robot-gold);
+        }
+
+        .menu-robomestre .nav-link {
+          justify-content: center;
+          margin: 4px 12px;
+        }
+      }
+
+      /* ---------- ESPAÇO PARA IMAGEM GRANDE ---------- */
+      .hero-imagem {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-imagem img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 30px;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
+        border: 3px solid var(--robot-gold);
+        transition: transform 0.3s ease;
+      }
+
+      .hero-imagem img:hover {
+        transform: scale(1.01);
+      }
+
+      /* legenda opcional */
+      .legenda-imagem {
+        text-align: center;
+        margin-top: 1rem;
+        font-family: "Chakra Petch", monospace;
+        color: var(--robot-text-claro);
+        font-size: 0.9rem;
+      }
+
+      /* rodapé simples (opcional, apenas para fechar a página) */
+      .footer-simples {
+        margin-top: 3rem;
+        text-align: center;
+        padding: 1.5rem 0;
+        border-top: 1px dashed var(--robot-gold);
+        color: var(--robot-text-claro);
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+
+  <body class="bg-robotica">
+    <!-- CABEÇALHO REBELDE -->
+    <header class="cabecalho-robotico cabecalho-rebelde">
+      <div class="container">
+        <div class="row align-items-center justify-content-between g-2">
+          <div class="col-auto">
+            <img
+              src="imagens/logo_rb.png"
+              alt="Logo Rodrigo Barbosa"
+              class="logo-rb"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+            />
           </div>
-        </div>
-        <div class="col-auto">
-          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
-            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- MENU GLASSMORPHISM (exatamente como no modelo_menu.html) -->
-  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-lg-none" href="#">
-        <i class="bi bi-robot"></i> RobôMestres
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboMenu"
-        aria-label="Abrir menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navRoboMenu">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <i class="bi bi-house-door-fill"></i> Principal
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a1index.html">
-              <i class="bi bi-1-circle-fill"></i> 1º ano
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2index.html">
-              <i class="bi bi-2-circle-fill"></i> 2º ano
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="3_ano_temp.html">
-              <i class="bi bi-3-circle-fill"></i> 3º ano
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="4_ano_temp.html">
-              <i class="bi bi-4-circle-fill"></i> 4º ano
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="5_ano_temp.html">
-              <i class="bi bi-5-circle-fill"></i> 5º ano
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- CONTEÚDO PRINCIPAL: ESPAÇO PARA IMAGEM .jpeg OCUPANDO TODO O ESPAÇO -->
-  <main class="container my-5">
-    <div class="hero-imagem">
-      <!-- IMAGEM LOCAL "imagens/imagem_principal.jpeg" ocupando todo o espaço -->
-      <img src="imagens/imagem_principal.jpeg" alt="Imagem principal - RobôMestres"
-        class="img-fluid rounded-4 shadow-lg" style="border: 4px solid #ffb347" />
-    </div>
-
-
-    <!-- Mensagem de exemplo (opcional, mantém o tom pedagógico) -->
-    <div class="text-center mt-4">
-      <p class="small text-muted" style="color: #ebf0eb !important">
-        🤖 "Loop não é macarrão! Variável não é coisa de velho!"<br />
-      </p>
-    </div>
-  </main>
-
-  <!-- Rodapé discreto (apenas para fechar a página) -->
-  <footer class="footer-robotico footer-rebelde">
-    <div class="container">
-      <div class="row align-items-center mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="d-flex justify-content-center justify-content-md-start">
-            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="d-flex justify-content-center justify-content-md-end">
-            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
-          </div>
-        </div>
-      </div>
-
-      <div class="row align-items-start mb-4">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="text-center text-md-start">
-            <div class="dev-nome">
-              💀 Desenvolvido na base do ódio, litros de café e condicionais
-              malucas por Rodrigo Barbosa.
-            </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+          <div class="col text-center">
+            <h1 class="titulo-principal glitch-text">
+              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+              <span class="parafuso-esquerda">⬤</span>
+            </h1>
+            <div class="subtitulo-chiclete">
+              ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
+              ISSO; SENÃO… AGUENTA ⚡<br />
+              <span class="selo-sucata mt-2 d-inline-block"
+                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
+              >
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="text-center text-md-end">
-            <div class="dev-nome">
-              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
-              SENÃO e uma dedicação que só aparece quando o prazo já passou
-              por Gisele Nunes.
-            </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
-            </div>
+          <div class="col-auto">
+            <img
+              src="imagens/logo_gn.png"
+              alt="Logo Gisele Nunes"
+              class="logo-gn"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+            />
           </div>
         </div>
       </div>
+    </header>
+    <!-- MENU GLASSMORPHISM (exatamente como no modelo_menu.html) -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="#">
+          <i class="bi bi-robot"></i> RobôMestres
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboMenu"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboMenu">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <i class="bi bi-house-door-fill"></i> Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a1index.html">
+                <i class="bi bi-1-circle-fill"></i> 1º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2index.html">
+                <i class="bi bi-2-circle-fill"></i> 2º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3index.html">
+                <i class="bi bi-3-circle-fill"></i> 3º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="4_ano_temp.html">
+                <i class="bi bi-4-circle-fill"></i> 4º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="5_ano_temp.html">
+                <i class="bi bi-5-circle-fill"></i> 5º ano
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-      <div class="relatorio-bugs"></div>
-    </div>
-  </footer>
+    <!-- CONTEÚDO PRINCIPAL: ESPAÇO PARA IMAGEM .jpeg OCUPANDO TODO O ESPAÇO -->
+    <main class="container my-5">
+      <div class="hero-imagem">
+        <!-- IMAGEM LOCAL "imagens/imagem_principal.jpeg" ocupando todo o espaço -->
+        <img
+          src="imagens/imagem_principal.png"
+          alt="Imagem principal - RobôMestres"
+          class="img-fluid rounded-4 shadow-lg"
+          style="border: 4px solid #ffb347"
+        />
+      </div>
 
+      <!-- Mensagem de exemplo (opcional, mantém o tom pedagógico) -->
+      <div class="text-center mt-4">
+        <p class="small text-muted" style="color: #ebf0eb !important">
+          🤖 "Loop não é macarrão! Variável não é coisa de velho!"<br />
+        </p>
+      </div>
+    </main>
 
-  <!-- Bootstrap JS (necessário para o menu colapsável em mobile) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Script simples para manter o link ativo de acordo com a página -->
-  <script>
-    (function () {
-      const currentPath =
-        window.location.pathname.split("/").pop() || "index.html";
-      const navLinks = document.querySelectorAll(
-        ".menu-robomestre .nav-link",
-      );
-      let hasActive = false;
-      navLinks.forEach((link) => {
-        if (link.classList.contains("active")) hasActive = true;
-      });
-      if (!hasActive && navLinks.length) navLinks[0].classList.add("active");
-    })();
-  </script>
-</body>
+    <!-- Rodapé discreto (apenas para fechar a página) -->
+    <footer class="footer-robotico footer-rebelde">
+      <div class="container">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img
+                src="imagens/logo_rb.png"
+                alt="Rodrigo Barbosa"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end">
+              <img
+                src="imagens/logo_gn.png"
+                alt="Gisele Nunes"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+              />
+            </div>
+          </div>
+        </div>
 
+        <div class="row align-items-start mb-4">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="text-center text-md-start">
+              <div class="dev-nome">
+                💀 Desenvolvido na base do ódio, litros de café e condicionais
+                malucas por Rodrigo Barbosa.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
+                  >barbosa.rodrigo.1979@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center text-md-end">
+              <div class="dev-nome">
+                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+                SENÃO e uma dedicação que só aparece quando o prazo já passou
+                por Gisele Nunes.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relatorio-bugs"></div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS (necessário para o menu colapsável em mobile) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script simples para manter o link ativo de acordo com a página -->
+    <script>
+      (function () {
+        const currentPath =
+          window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(
+          ".menu-robomestre .nav-link",
+        );
+        let hasActive = false;
+        navLinks.forEach((link) => {
+          if (link.classList.contains("active")) hasActive = true;
+        });
+        if (!hasActive && navLinks.length) navLinks[0].classList.add("active");
+      })();
+    </script>
+  </body>
 </html>

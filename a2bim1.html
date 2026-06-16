@@ -1,1848 +1,2031 @@
 <!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>2º Ano - 1º Bimestre | Robótica Educacional</title>
+    <!-- Bootstrap 5 + ícones + fontes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/a2bim1.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>2º Ano - 1º Bimestre | Robótica Educacional</title>
-  <!-- Bootstrap 5 + ícones + fontes -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
-    rel="stylesheet" />
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="css/a2bim1.css" />
-</head>
+  <body class="bg-robotica">
+    <!-- ==================== CABEÇALHO REBELDE (modelo_cabecalho) ==================== -->
+    <header class="cabecalho-robotico cabecalho-rebelde">
+      <div class="container">
+        <div class="row align-items-center justify-content-between g-2">
+          <div class="col-auto">
+            <img
+              src="imagens/logo_rb.png"
+              alt="Logo Rodrigo Barbosa"
+              class="logo-rb"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+            />
+          </div>
+          <div class="col text-center">
+            <h1 class="titulo-principal glitch-text">
+              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+              <span class="parafuso-esquerda">⬤</span>
+            </h1>
+            <div class="subtitulo-chiclete">
+              ⚡ 1º BIMESTRE: "SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
+              ISSO; SENÃO… AGUENTA" ⚡<br />
+              <span class="selo-sucata mt-2 d-inline-block"
+                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
+              >
+            </div>
+          </div>
+          <div class="col-auto">
+            <img
+              src="imagens/logo_gn.png"
+              alt="Logo Gisele Nunes"
+              class="logo-gn"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
 
-<body class="bg-robotica">
-  <!-- ==================== CABEÇALHO REBELDE (modelo_cabecalho) ==================== -->
-  <header class="cabecalho-robotico cabecalho-rebelde">
-    <div class="container">
-      <div class="row align-items-center justify-content-between g-2">
-        <div class="col-auto">
-          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
-            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-        </div>
-        <div class="col text-center">
-          <h1 class="titulo-principal glitch-text">
-            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
-            <span class="parafuso-esquerda">⬤</span>
-          </h1>
-          <div class="subtitulo-chiclete">
-            ⚡ 1º BIMESTRE: "SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
-            ISSO; SENÃO… AGUENTA" ⚡<br />
-            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
-          </div>
-        </div>
-        <div class="col-auto">
-          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
-            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+    <!-- MENU GLASSMORPHISM (idêntico ao modelo_menu_bim.html) -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="a2index.html"
+          ><i class="bi bi-robot"></i> 2º Ano</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboBim"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboBim">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="bi bi-house-door-fill"></i> Principal</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2index.html"
+                ><i class="bi bi-house-door-fill"></i> 2° ano</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="a2bim1.html"
+                ><i class="bi bi-1-circle-fill"></i> 1º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim2.html"
+                ><i class="bi bi-2-circle-fill"></i> 2º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim3.html"
+                ><i class="bi bi-3-circle-fill"></i> 3º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2bim4.html"
+                ><i class="bi bi-4-circle-fill"></i> 4º bimestre</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </header>
+    </nav>
 
-  <!-- MENU GLASSMORPHISM (idêntico ao modelo_menu_bim.html) -->
-  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-lg-none" href="a2index.html"><i class="bi bi-robot"></i> 2º Ano</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navRoboBim">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link " href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2index.html"><i class="bi bi-house-door-fill"></i> 2° ano</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  active" href="a2bim1.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim2.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim3.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="a2bim4.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <main class="container my-4">
+      <!-- ==================== CARTA DE ABERTURA + MAPEAMENTO (modelo_apresentacao_bimestre adaptado) ==================== -->
+      <section id="carta-abertura" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
+            BIMESTRE
+          </h2>
+          <div class="badge-projeto">
+            Leia com um apito na boca e um capacete de papelão na cabeça
+          </div>
+        </div>
+        <div class="bg-robocard p-4 rounded-4 carta-container">
+          <p class="carta-texto">
+            "Prestem atenção, pequenos programadores de segunda série! Vocês
+            estão prestes a aprender o comando mais PODEROSO depois do ‘SE’: o
+            SENÃO! Neste bimestre, NÃO vamos apenas ensinar condicionais. Vamos
+            VIVER condicionais. Cada criança será um robô, um programador, um
+            debugger e um ser humano aprendendo a pensar como uma máquina (mas
+            com muito humor e abraços robóticos)."
+          </p>
+          <p class="carta-texto mt-3">
+            Professor, se seus alunos não saírem da primeira aula gritando "SE →
+            ENTÃO" e pedindo bis, você não fez direito.
+          </p>
+          <p class="carta-texto mt-3">
+            Neste bimestre, vamos transformar sua sala em um CIRCO DE ROBÔS
+            LOUCOS. Vamos programar robôs humanos, jogar tabuleiros
+            condicionais, construir robôs de caixa de sapato que escolhem entre
+            biscoito e cenoura (spoiler: quase sempre biscoito).
+          </p>
+          <p class="carta-texto mt-3">
+            Nada de caderno parado. Nada de "copiar do quadro". O chão é o
+            primeiro tapete de programação. O grito é a primeira mensagem de
+            depuração.
+          </p>
+          <p class="carta-texto mt-3 fw-bold">
+            Regra de ouro do bimestre: Se você não ouvir pelo menos um aluno
+            gritar "SENÃO!" em todas as aulas, você não está sendo barulhento o
+            suficiente.
+          </p>
+          <p class="carta-texto mt-3">
+            Agora respira fundo, coloca "Robot Rock" do Daft Punk e vamos nessa!
+            🎧🤖💥
+          </p>
+        </div>
+      </section>
 
-  <main class="container my-4">
-    <!-- ==================== CARTA DE ABERTURA + MAPEAMENTO (modelo_apresentacao_bimestre adaptado) ==================== -->
-    <section id="carta-abertura" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
-          BIMESTRE
-        </h2>
-        <div class="badge-projeto">
-          Leia com um apito na boca e um capacete de papelão na cabeça
+      <section id="mapeamento" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 1 – SE, ENTÃO,
+            SENÃO
+          </h2>
+          <div class="badge-projeto">
+            RCP-PR · Programação desplugada com condicionais (p.32-35)
+          </div>
         </div>
-      </div>
-      <div class="bg-robocard p-4 rounded-4 carta-container">
-        <p class="carta-texto">
-          "Prestem atenção, pequenos programadores de segunda série! Vocês
-          estão prestes a aprender o comando mais PODEROSO depois do ‘SE’: o
-          SENÃO! Neste bimestre, NÃO vamos apenas ensinar condicionais. Vamos
-          VIVER condicionais. Cada criança será um robô, um programador, um
-          debugger e um ser humano aprendendo a pensar como uma máquina (mas
-          com muito humor e abraços robóticos)."
-        </p>
-        <p class="carta-texto mt-3">
-          Professor, se seus alunos não saírem da primeira aula gritando "SE →
-          ENTÃO" e pedindo bis, você não fez direito.
-        </p>
-        <p class="carta-texto mt-3">
-          Neste bimestre, vamos transformar sua sala em um CIRCO DE ROBÔS
-          LOUCOS. Vamos programar robôs humanos, jogar tabuleiros
-          condicionais, construir robôs de caixa de sapato que escolhem entre
-          biscoito e cenoura (spoiler: quase sempre biscoito).
-        </p>
-        <p class="carta-texto mt-3">
-          Nada de caderno parado. Nada de "copiar do quadro". O chão é o
-          primeiro tapete de programação. O grito é a primeira mensagem de
-          depuração.
-        </p>
-        <p class="carta-texto mt-3 fw-bold">
-          Regra de ouro do bimestre: Se você não ouvir pelo menos um aluno
-          gritar "SENÃO!" em todas as aulas, você não está sendo barulhento o
-          suficiente.
-        </p>
-        <p class="carta-texto mt-3">
-          Agora respira fundo, coloca "Robot Rock" do Daft Punk e vamos nessa!
-          🎧🤖💥
-        </p>
-      </div>
-    </section>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>RCP-PR</th>
+                <th>Bimestre</th>
+                <th>Tema Radical</th>
+                <th>Habilidades BNCC (Matemática)</th>
+                <th>Habilidades BNCC (LP)</th>
+                <th>Competências Gerais</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Programação desplugada, autoria de algoritmos com condicionais
+                </td>
+                <td>1º</td>
+                <td>SE → ENTÃO → SENÃO</td>
+                <td>EF02MA01 (localização em malha), EF02MA11 (padrões)</td>
+                <td>
+                  EF02LP09 (compreensão de comandos), EF02LP10 (produção de
+                  instruções)
+                </td>
+                <td>
+                  CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <section id="mapeamento" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 1 – SE, ENTÃO,
-          SENÃO
-        </h2>
-        <div class="badge-projeto">
-          RCP-PR · Programação desplugada com condicionais (p.32-35)
+      <!-- ==================== PLANOS DE AULA (modelo_planos_aula adaptado com conteúdo do DOCX) ==================== -->
+      <section id="aulas" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS –
+            BIMESTRE 1
+          </h2>
+          <div class="badge-projeto">
+            Prepare a bagunça organizada. SENÃO vai ficar chato!
+          </div>
         </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-robotica table-bordered text-center">
-          <thead class="table-dark">
-            <tr>
-              <th>RCP-PR</th>
-              <th>Bimestre</th>
-              <th>Tema Radical</th>
-              <th>Habilidades BNCC (Matemática)</th>
-              <th>Habilidades BNCC (LP)</th>
-              <th>Competências Gerais</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                Programação desplugada, autoria de algoritmos com condicionais
-              </td>
-              <td>1º</td>
-              <td>SE → ENTÃO → SENÃO</td>
-              <td>EF02MA01 (localização em malha), EF02MA11 (padrões)</td>
-              <td>
-                EF02LP09 (compreensão de comandos), EF02LP10 (produção de
-                instruções)
-              </td>
-              <td>
-                CG4 (Linguagens digitais), CG5 (Pensamento computacional)
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <div class="accordion" id="accordionAulas">
+          <!-- SEMANA 1 -->
+          <div class="accordion-item" data-semana="1">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana1"
+              >
+                🔧 Semana 1 – Revisão dos comandos básicos (mas com uma ameaça
+                velada)
+              </button>
+            </h2>
+            <div
+              id="semana1"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="1"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Executar comandos motores simples (frente, trás, esquerda,
+                      direita, parar, pular).
+                    </li>
+                    <li>
+                      Diferenciar sequência correta de comandos de uma lista
+                      bagunçada.
+                    </li>
+                    <li>
+                      Introduzir a ideia de "condição implícita": SE eu disser
+                      "anda", ENTÃO você anda.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>Algoritmos, sequência lógica, comandos motores.</p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA01, EF02LP09, RCP-PR (Sequências).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-grid-3x3"></i> Fita crepe grid 4x4</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões coloridos
+                      texturizados</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-music-note"></i> "Robot Rock" Daft
+                      Punk</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-emoji-frown"></i> Placas "ERROU!"</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Ritual "O Robô Acordou"</strong> – imitar robô
+                      ligando, teste com apito: SE apitar, ENTÃO congelar.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Dança dos comandos</strong> – professor fala
+                      comandos, crianças executam. Introduz "SE eu disser PULA,
+                      ENTÃO você pula".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Grid humano com penalidade</strong> – robô andando
+                      no grid, turma ajuda. Se sair do grid, gritam "ERROU!
+                      Reinicia!".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Desafio do tesouro</strong> – em duplas, programa
+                      o colega com comandos. Erro = paralisação dramática.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Registro escrito</strong> – desenham caminho no
+                      grid usando setas (F, D, E).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Selo do Primeiro Comando</strong> – carimbo na mão
+                      e grito final.
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Executa comandos motores no grid</td>
+                          <td>Sincronia motora</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Diferencia sequência correta</td>
+                          <td>Leitura de sequência</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Reage à condição implícita (apito)</td>
+                          <td>Comando implícito</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE eu aprendi, ENTÃO eu sou
+                    fera! (SENÃO ainda não, né?)"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 2 -->
+          <div class="accordion-item" data-semana="2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana2"
+              >
+                🤖 Semana 2 -- Apresentando o SE → ENTÃO (ainda sem SENÃO, calma
+                lá, garotada)
+              </button>
+            </h2>
+            <div
+              id="semana2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div
+                    class="d-flex justify-content-between align-items-start flex-wrap"
+                  >
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="2"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Compreender a estrutura SE (condição) → ENTÃO (ação).
+                    </li>
+                    <li>
+                      Identificar relações causa-efeito em brincadeiras
+                      cotidianas.
+                    </li>
+                    <li>Produzir exemplos orais e desenhados de SE → ENTÃO.</li>
+                  </ul>
+                  <h5>📚 Conteúdo Programático</h5>
+                  <p>Algoritmos, sequência lógica, condicional SE-ENTÃO.</p>
+                  <h5>📋 Habilidades BNCC</h5>
+                  <p>EF02LP09, EF02MA11, RCP-PR (Causa-efeito).</p>
+                  <h5>🧰 Materiais (turbinados)</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões grandes A4 "SE"
+                      (azul) e "ENTÃO" (amarelo)</span
+                    >
+                    <span class="material-badge"
+                      ><i class="bi bi-music-note"></i> Caixa de som com músicas
+                      de 10s</span
+                    >
+                    <span class="material-badge"
+                      ><i class="bi bi-whistle"></i> Apito, lanterna, pote de
+                      biscoitos</span
+                    >
+                    <span class="material-badge"
+                      ><i class="bi bi-robot"></i> Fantoche de robô com olhos
+                      que brilham</span
+                    >
+                    <span class="material-badge"
+                      ><i class="bi bi-check-circle"></i> Placas "VERDADEIRO"
+                      (verde) e "FALSO" (vermelho)</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto (50 min)</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Ritual de repetição nervosa:</strong> "SE eu ouvir
+                      o apito, ENTÃO viro estátua!" Depois: "SE eu não apitar,
+                      ENTÃO vocês dançam!"
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      <strong
+                        >História "Robô Zé e a chuva de brigadeiro":</strong
+                      >
+                      Robô Zé só anda SE chover brigadeiro. SE chover
+                      brigadeiro, ENTÃO Zé anda. SE não chover... ele fica
+                      parado (sem SENÃO ainda).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Jogo musical condicional:</strong> "SE a música
+                      tocar, ENTÃO dançam; SE parar, ENTÃO congelam." Aumenta
+                      dificuldade: "SE a música for rápida, ENTÃO dançam rápido;
+                      SE for lenta, ENTÃO devagar."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Construção de cartões em dupla:</strong> Cada
+                      dupla desenha um SE→ENTÃO da vida real. Ex: "SE fizer sol,
+                      ENTÃO vou à piscina." Colam na parede e leem em voz alta.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Mestre dos Condicionais:</strong> Um aluno é o
+                      "mestre" e fala uma condição: "SE eu levantar a mão
+                      direita, ENTÃO vocês levantam a mão esquerda." Os outros
+                      executam. Troca de mestre a cada 2 min.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Fechamento com figuras malucas:</strong> Professor
+                      mostra situações (chuva, sol, fome). Pergunta: "SE está
+                      chovendo, ENTÃO o que devemos fazer?" Quem acertar ganha
+                      "Cupom do Programador".
+                    </div>
+                  </div>
+                  <h5>📊 Critérios Operacionais</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Cria exemplos válidos de "SE→ENTÃO" da vida real
+                          </td>
+                          <td>Identificação causa-efeito oral</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Dá comando condicional e observa colegas executarem
+                          </td>
+                          <td>Mestre dos Condicionais</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Posiciona cartões SE/ENTÃO na ordem correta</td>
+                          <td>Uso dos cartões</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE a professora bater
+                    palmas, ENTÃO todo mundo grita ROBÔ! (e se não bater,
+                    ninguém grita -- isso é condicional, baby)"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 3 -->
+          <div class="accordion-item" data-semana="3">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana3"
+              >
+                🤖 Semana 3 -- Reforçando o SE → ENTÃO com o corpo todo e com
+                muito grito
+              </button>
+            </h2>
+            <div
+              id="semana3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="3"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Automatizar a resposta condicional simples (reflexo
+                      robótico).
+                    </li>
+                    <li>
+                      Introduzir a noção de condicional falso (se a condição não
+                      ocorre, nada acontece ou ação padrão, sem usar SENÃO).
+                    </li>
+                    <li>
+                      Trabalhar em duplas com troca de papéis e competição
+                      saudável.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>
+                    Padrões e regularidades, produção de instruções, algoritmos.
+                  </p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA11, EF02LP10, RCP-PR (Algoritmos).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Fichas com pares
+                      estímulo→reação (memes)</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-square"></i> Colchonetes ou círculos de
+                      EVA</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-check-lg"></i> Placas "SIM" (verde) e
+                      "NÃO" (vermelho) gigantes</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-lightbulb"></i> Apito com luzes
+                      piscantes</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-5 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Ritual maluco de aquecimento:</strong> "SE a
+                      professora disser 'ROBÔ', ENTÃO fazem 'bip-bip'; SE ela
+                      disser 'HUMANO', ENTÃO fazem 'olá'." Velocidade aumenta.
+                      Quem erra vira "robô defeituoso" e precisa de reinício.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">5-15 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Treinamento de robôs de combate (duplas):</strong>
+                      Cada criança recebe um cartão com regra fixada no peito.
+                      Ex: "SE alguém tocar meu ombro, ENTÃO eu giro." O parceiro
+                      dá estímulos e o robô reage. Troca de papéis.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong
+                        >Jogo "SE você vir a cor amarela" (grid do
+                        caos):</strong
+                      >
+                      No grid do chão, cartões virados. Criança anda, vira um
+                      cartão. SE for amarelo, ENTÃO pula. SE for azul, anda mais
+                      duas casas. Verde não faz nada. Vermelho = grita "FOGO!".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong
+                        >Dança das cadeiras condicional (versão sem
+                        cadeiras):</strong
+                      >
+                      Música tocando, todos andam. SE a música parar, ENTÃO
+                      sentam no chão. O último a sentar conta uma piada de robô.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Desenho de fluxograma simples:</strong> Desenhar
+                      uma seta que pergunta "Está chovendo?". Dois caminhos: SIM
+                      (guarda-chuva) e NÃO (sol). Adicionar opção "TALVEZ" com
+                      guarda-chuva de sol.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Autoavaliação "Minha cara do SE":</strong> Cada
+                      aluno desenha carinha feliz (entendeu), neutra (mais ou
+                      menos) ou triste (perdido). Quem desenhar robô com cara de
+                      "bugado" ganha adesivo "Debugger emocional".
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Reage a estímulos com ação pré-definida em menos de
+                            2s
+                          </td>
+                          <td>Automação condicional</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Quando condição não ocorre, fica parado ou faz ação
+                            padrão
+                          </td>
+                          <td>Condicional falso</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Desenha fluxograma com pergunta e dois caminhos
+                          </td>
+                          <td>Desenho de fluxograma</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE eu levantar a mão
+                    direita, ENTÃO você levanta a esquerda -- agora inverta, seu
+                    robô teimoso"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 4 -->
+          <div class="accordion-item" data-semana="4">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana4"
+              >
+                🤖 Semana 4 -- Chegou o SENÃO (e o mundo nunca mais foi o mesmo)
+              </button>
+            </h2>
+            <div
+              id="semana4"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="4"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>Compreender a estrutura SE → ENTÃO → SENÃO.</li>
+                    <li>
+                      Criar regras para situações cotidianas usando SENÃO.
+                    </li>
+                    <li>
+                      Escrever ou ditar pequenos algoritmos com condicional
+                      completa.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>Condicional completo, autoria de algoritmos.</p>
+                  <h5>📋 Habilidades</h5>
+                  <p>
+                    EF02LP10, EF02MA11, RCP-PR (Causa-efeito e alternativas).
+                  </p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-traffic-light"></i> Semáforo real ou de
+                      papel (verde=SE, vermelho=SENÃO)</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-people-fill"></i> Fita para fila do
+                      lanche</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões "SE", "ENTÃO",
+                      "SENÃO"</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Revisão e introdução do SENÃO:</strong> Professor
+                      conta história do Robô Zé que agora tem um plano B. Usa
+                      semáforo: verde = SE, vermelho = SENÃO.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Fila do Lanche com SENÃO:</strong> Crianças criam
+                      regras para a fila usando SE→ENTÃO→SENÃO. Ex: "SE a fila
+                      estiver grande, ENTÃO esperamos e conversamos baixo; SENÃO
+                      (se estiver pequena), ENTÃO vamos direto."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Teatro condicional:</strong> Duplas encenam
+                      situações (ex: SE chover, ENTÃO uso guarda-chuva; SENÃO
+                      uso boné). Turma identifica o SENÃO.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Escrita de algoritmo para robô:</strong> Cada
+                      aluno escreve ou desenha um pequeno algoritmo com
+                      SE/ENTÃO/SENÃO (ex: para o robô decidir entre dois
+                      caminhos).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Roda de compartilhamento:</strong> Alguns alunos
+                      leem seus algoritmos. Grito final: "SENÃO, SENÃO, SENÃO!"
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cria algoritmo pequeno com SE/ENTÃO/SENÃO</td>
+                          <td>Autoria com SENÃO</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Participa da atividade "Fila do Lanche" com regra
+                            coerente
+                          </td>
+                          <td>Regra condicional aplicada</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Identifica o SENÃO em situações apresentadas</td>
+                          <td>Reconhecimento de alternativa</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE você errar, ENTÃO tente
+                    de novo; SENÃO, você já sabe, né?"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 5 -->
+          <div class="accordion-item" data-semana="5">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana5"
+              >
+                🤖 Semana 5 -- SENÃO na prática: O jogo dos dois caminhos
+              </button>
+            </h2>
+            <div
+              id="semana5"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="5"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>Aplicar SENÃO em jogos de tabuleiro físico.</li>
+                    <li>
+                      Testar e depurar regras condicionais escritas pelos
+                      alunos.
+                    </li>
+                    <li>
+                      Identificar regras injustas ou mal programadas e
+                      modificá-las.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>Jogo de tabuleiro com casas condicionais, depuração.</p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA01, EF02LP10, RCP-PR (Algoritmos e depuração).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-dice-6"></i> Dado grande de espuma</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-robot"></i> Marcadores com formato de
+                      robô</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-grid-3x3"></i> Tabuleiro físico com casas
+                      condicionais escritas pelos alunos</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Criação das regras do tabuleiro:</strong> Em
+                      grupos, alunos escrevem regras condicionais para as casas
+                      (ex: "SE cair na casa 3, ENTÃO avance 2; SENÃO fique onde
+                      está").
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Montagem do tabuleiro:</strong> Usam cartolina
+                      para desenhar o tabuleiro e escrever as regras nas casas.
+                      Cada grupo cria seu próprio jogo.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Teste do jogo:</strong> Grupos trocam de tabuleiro
+                      e jogam. Devem anotar regras confusas ou injustas (bugs).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Depuração emocional:</strong> Cada grupo revisa
+                      seu tabuleiro com base no feedback e modifica as regras
+                      problemáticas.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Premiação e reflexão:</strong> Grupo com regra
+                      mais criativa ganha "Selo do Debugger". Conversa sobre a
+                      importância de testar programas.
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Grupo identifica regra injusta e a modifica</td>
+                          <td>Ajuste de algoritmo</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Jogo contém pelo menos 3 casas com SE/ENTÃO/SENÃO
+                          </td>
+                          <td>Quantidade de condicionais</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Participa da depuração do próprio grupo</td>
+                          <td>Engajamento</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "No tabuleiro da vida, o
+                    SENÃO é o plano B que a gente sempre esquece de programar."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 6 -->
+          <div class="accordion-item" data-semana="6">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana6"
+              >
+                🤖 Semana 6 -- Obstáculos simples: o robô desvia (ou cai no
+                buraco)
+              </button>
+            </h2>
+            <div
+              id="semana6"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="6"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Programar um robô vendado para desviar de obstáculos
+                      usando SE/ENTÃO/SENÃO.
+                    </li>
+                    <li>
+                      Refletir sobre o que acontece quando o robô encontra algo
+                      não previsto.
+                    </li>
+                    <li>Simular sensores com comandos condicionais.</li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>
+                    Condicionais com obstáculos, detecção de colisão (simulada).
+                  </p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA01, EF02LP09, RCP-PR (Depuração).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-eye-slash"></i> Lenços para vendar</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-cube"></i> Caixas pequenas
+                      (obstáculos)</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões
+                      SE/ENTÃO/SENÃO</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-chat"></i> Placas de "Imprevisto!"</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Demonstração do robô vendado:</strong> Professor é
+                      o robô vendado, alunos dão comandos. Quando ele toca um
+                      obstáculo, param e discutem o que fazer.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Programação em duplas:</strong> Uma criança é o
+                      robô vendado, a outra é programadora. Usam cartões
+                      SE/ENTÃO/SENÃO para dar instruções (ex: "SE sentir parede,
+                      ENTÃO vire à esquerda; SENÃO ande reto").
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Percurso com obstáculos:</strong> Colocar 3
+                      obstáculos no chão. O programador deve escrever o
+                      algoritmo antes de executar. Depois testam e corrigem
+                      (debug).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Reflexão coletiva:</strong> Roda de conversa: "O
+                      que aconteceu quando o robô encontrou um obstáculo que não
+                      estava previsto?" (Prepara para bimestre 2).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Registro e premiação:</strong> Cada aluno desenha
+                      o percurso e as regras que criou. Entrega de adesivos
+                      "Desviador de Obstáculos".
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            O robô desvia ou para em obstáculo conforme
+                            programado
+                          </td>
+                          <td>Condicional com obstáculo</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Comenta na roda o que aconteceu com imprevisto
+                          </td>
+                          <td>Reflexão sobre imprevisto</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Ajuda o parceiro a depurar o algoritmo</td>
+                          <td>Depuração colaborativa</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE você bater na parede,
+                    ENTÃO não desista; SENÃO mude de direção!"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 7 -->
+          <div class="accordion-item" data-semana="7">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana7"
+              >
+                🤖 Semana 7 -- Projeto Mini-Robô Decisor -- Parte 1:
+                Planejamento
+              </button>
+            </h2>
+            <div
+              id="semana7"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="7"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Planejar um robô de papelão que decide entre biscoito e
+                      cenoura.
+                    </li>
+                    <li>Escolher uma condição clara para a decisão.</li>
+                    <li>Desenhar o robô e os dois caminhos (grid em Y).</li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>
+                    Projeto autoral, definição de condição, desenho técnico.
+                  </p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA01, EF02LP10, RCP-PR (Autoria).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Ficha de projeto (campos:
+                      condição, caminho biscoito, caminho cenoura, desenho do
+                      robô)</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-box"></i> Caixas de sapato, tesoura sem
+                      ponta</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-robot"></i> Antenas de papel alumínio,
+                      olhos móveis</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Apresentação do projeto "Robô do Lanche":</strong>
+                      Professor mostra o desafio: construir um robô que decide
+                      entre biscoito (gostoso) e cenoura (saudável) baseado em
+                      uma condição (ex: "SE o robô estiver feliz, ENTÃO vai para
+                      o biscoito; SENÃO vai para a cenoura").
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Em grupos, escolhem a condição:</strong> Cada
+                      grupo preenche a ficha de projeto: "Condição escolhida",
+                      "Caminho do biscoito", "Caminho da cenoura", e desenham o
+                      robô.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Construção do robô (parte física):</strong>
+                      Começam a montar a caixa de sapato, colam antenas, olhos.
+                      Não finalizam ainda.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Planejamento do grid em Y:</strong> Desenham no
+                      chão (com giz ou fita) um caminho que se bifurca: um lado
+                      para biscoito, outro para cenoura.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Apresentação das condições:</strong> Cada grupo
+                      conta para a turma qual condição escolheu. Professor dá
+                      feedback.
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Grupo escolhe e registra condição clara para o robô
+                          </td>
+                          <td>Condição do projeto</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Desenha o robô e os dois caminhos na ficha</td>
+                          <td>Registro visual</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Explica a condição para a turma</td>
+                          <td>Comunicação</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE o robô for esperto, ENTÃO
+                    ele escolhe o biscoito; SENÃO, cenoura... coitado."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 8 -->
+          <div class="accordion-item" data-semana="8">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana8"
+              >
+                🤖 Semana 8 -- Projeto Mini-Robô Decisor -- Parte 2: Programação
+                e Teste
+              </button>
+            </h2>
+            <div
+              id="semana8"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="8"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>Programar o robô com cartões SE/ENTÃO/SENÃO.</li>
+                    <li>Realizar teste de mesa antes da execução física.</li>
+                    <li>
+                      Executar o robô no grid em Y e verificar se vai para o
+                      caminho correto.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>
+                    Programação com condicionais, teste de mesa, execução
+                    física.
+                  </p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02MA01, EF02LP09, RCP-PR (Teste e depuração).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões
+                      SE/ENTÃO/SENÃO</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-cup-straw"></i> Prêmios: biscoito e
+                      cenoura de mentira</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-person-walking"></i> Robô construído na
+                      semana anterior</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Teste de mesa:</strong> Cada grupo simula com os
+                      cartões o que o robô fará antes de andar. Professor
+                      circula e questiona.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Programação final:</strong> Os grupos escrevem o
+                      algoritmo em uma folha ou cartões, usando a condição
+                      escolhida. Ex: "SE estiver sol, ENTÃO vá para o biscoito;
+                      SENÃO vá para a cenoura."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-40 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Execução no grid em Y:</strong> Um aluno aplica a
+                      condição (por exemplo, mostra uma imagem de sol ou nuvem)
+                      e outro programa o robô. O robô deve seguir o caminho
+                      correto. Se errar, depuram.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">40-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Roda de resultados:</strong> Cada grupo conta se o
+                      robô acertou ou se precisou corrigir. Entrega de "Cupom do
+                      Lanche" simbólico.
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Robô vai para o caminho correto de acordo com a
+                            condição
+                          </td>
+                          <td>Execução no grid Y</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Grupo realiza teste de mesa antes da execução</td>
+                          <td>Teste de mesa</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Depura o algoritmo quando necessário</td>
+                          <td>Depuração</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE o robô errar, ENTÃO a
+                    gente depura; SENÃO, comemora com biscoito!"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 9 -->
+          <div class="accordion-item" data-semana="9">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana9"
+              >
+                🤖 Semana 9 -- APRIMORANDO O ROBÔ DECISOR: duas condições
+              </button>
+            </h2>
+            <div
+              id="semana9"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="9"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Usar duas condicionais em sequência no mesmo percurso.
+                    </li>
+                    <li>
+                      Registrar em vídeo a explicação do grupo sobre o robô.
+                    </li>
+                    <li>
+                      Escrever duas regras SE/ENTÃO/SENÃO diferentes para o
+                      mesmo caminho.
+                    </li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>Condicionais encadeadas, documentação em vídeo.</p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02LP10, EF02MA11, RCP-PR (Autoria e comunicação).</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-camera-video"></i> Celular do professor
+                      para gravação</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-robot"></i> Robô do grupo</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-card-text"></i> Cartões adicionais</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-10 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Desafio extra:</strong> Professor apresenta um
+                      percurso com dois desafios: "SE houver boneco, ENTÃO
+                      cumprimente; SENÃO, continue. Depois, SE chão vermelho,
+                      ENTÃO pare; SENÃO, ande."
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">10-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Grupos escrevem duas regras:</strong> Cada grupo
+                      inventa duas condicionais diferentes para o mesmo robô e
+                      escreve no papel.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Teste das duas regras:</strong> Executam no grid,
+                      alternando as condições. Observam se o robô consegue lidar
+                      com ambas.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Gravação de vídeo:</strong> Cada grupo explica seu
+                      robô para o celular do professor. Depois assistem e riem
+                      dos erros.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Prévia da feira:</strong> Combinam como será a
+                      apresentação na semana seguinte.
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Grupo escreve duas regras SE/ENTÃO/SENÃO diferentes
+                          </td>
+                          <td>Duas condicionais</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Executa as duas regras no percurso</td>
+                          <td>Execução sequencial</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Explica o robô na gravação</td>
+                          <td>Comunicação oral</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE você tem duas condições,
+                    ENTÃO seu robô é quase humano; SENÃO, ainda é só uma
+                    máquina."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SEMANA 10 -->
+          <div class="accordion-item" data-semana="10">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#semana10"
+              >
+                🤖 Semana 10 -- Feira dos Robôs Decisores -- Avaliação Final
+              </button>
+            </h2>
+            <div
+              id="semana10"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionAulas"
+            >
+              <div class="accordion-body">
+                <div class="semana-card-completo">
+                  <div class="d-flex justify-content-between">
+                    <h5>🎯 Objetivos</h5>
+                    <label class="check-concluido"
+                      ><input
+                        type="checkbox"
+                        class="semana-check"
+                        data-semana="10"
+                      /><span>Marcar concluída</span></label
+                    >
+                  </div>
+                  <ul>
+                    <li>
+                      Apresentar o robô para outra turma ou para bonecos de
+                      pelúcia.
+                    </li>
+                    <li>Votar no SENÃO mais criativo.</li>
+                    <li>Receber certificado de "Mestre do SE (Nível 1)".</li>
+                    <li>Dançar a música condicional final.</li>
+                  </ul>
+                  <h5>📚 Conteúdo</h5>
+                  <p>Apresentação, avaliação coletiva, celebração.</p>
+                  <h5>📋 Habilidades</h5>
+                  <p>EF02LP10, EF02MA11, Competências Gerais 7 e 9.</p>
+                  <h5>🧰 Materiais</h5>
+                  <div class="materiais-container">
+                    <span class="material-badge"
+                      ><i class="bi bi-trophy"></i> Certificados impressos</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-sticky"></i> Adesivos para votação</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-music-note"></i> Caixa de som com música
+                      condicional</span
+                    ><span class="material-badge"
+                      ><i class="bi bi-robot"></i> Robôs finalizados</span
+                    >
+                  </div>
+                  <h5>⏱️ Minuto a Minuto</h5>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">0-15 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Feira aberta:</strong> Convidar outra turma ou
+                      professores. Cada grupo apresenta seu robô e explica a
+                      condição escolhida. Visitantes fazem perguntas.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">15-25 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Votação do SENÃO mais criativo:</strong> Cada
+                      criança recebe 3 adesivos e cola no robô que achou mais
+                      legal (ou na folha do grupo). Contagem.
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">25-35 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Cerimônia de certificação:</strong> Professor
+                      entrega o "Certificado de Mestre do SE (Nível 1)" com
+                      carimbo da pata do Robô Zé. Parafusos conquistados: cada
+                      aluno marca seu nível (enferrujado, apertado, de ouro).
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">35-45 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Dança final condicional:</strong> "SE a música
+                      tocar, ENTÃO dancem; SENÃO, congelem." Tocar e parar
+                      várias vezes. Finalizar com gritaria robótica "BIP BIP!".
+                    </div>
+                  </div>
+                  <div class="minuto-item">
+                    <span class="minuto-tempo">45-50 min</span>
+                    <div class="minuto-descricao">
+                      <strong>Roda de despedida:</strong> Cada aluno fala uma
+                      coisa que aprendeu. Professor entrega lembrancinhas
+                      (adesivos de robozinho).
+                    </div>
+                  </div>
+                  <h5>📊 Critérios</h5>
+                  <div class="table-responsive">
+                    <table class="table tabela-criterios-semana">
+                      <thead>
+                        <tr>
+                          <th>Descritor</th>
+                          <th>Critério</th>
+                          <th>Pontuação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Apresenta o robô para visitantes</td>
+                          <td>Comunicação e demonstração</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>Participa da votação e da dança</td>
+                          <td>Engajamento</td>
+                          <td>0-2 pts</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Recebe o certificado e reflete sobre aprendizados
+                          </td>
+                          <td>Autoavaliação</td>
+                          <td>0-1 pt</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="frase-do-dia">
+                    <i class="bi bi-chat-quote"></i>
+                    <strong>Frase do dia:</strong> "SE você sobreviveu ao 1º
+                    bimestre, ENTÃO você é fera; SENÃO, AGUENTA o próximo!"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <!-- ==================== PLANOS DE AULA (modelo_planos_aula adaptado com conteúdo do DOCX) ==================== -->
-    <section id="aulas" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS –
-          BIMESTRE 1
-        </h2>
-        <div class="badge-projeto">
-          Prepare a bagunça organizada. SENÃO vai ficar chato!
-        </div>
-      </div>
-      <div class="accordion" id="accordionAulas">
-        <!-- SEMANA 1 -->
-        <div class="accordion-item" data-semana="1">
-          <h2 class="accordion-header">
-            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana1">
-              🔧 Semana 1 – Revisão dos comandos básicos (mas com uma ameaça
-              velada)
-            </button>
+      <!-- ==================== NOVO JOGO: ROBÔ DECISOR (CONDICIONAIS) ==================== -->
+      <section id="jogo-condicional" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-arrow-left-right"></i> 🎮 JOGO DO BIMESTRE: ROBÔ
+            DECISOR
           </h2>
-          <div id="semana1" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="1" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Executar comandos motores simples (frente, trás, esquerda,
-                    direita, parar, pular).
-                  </li>
-                  <li>
-                    Diferenciar sequência correta de comandos de uma lista
-                    bagunçada.
-                  </li>
-                  <li>
-                    Introduzir a ideia de "condição implícita": SE eu disser
-                    "anda", ENTÃO você anda.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>Algoritmos, sequência lógica, comandos motores.</p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA01, EF02LP09, RCP-PR (Sequências).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-grid-3x3"></i> Fita crepe grid 4x4</span><span
-                    class="material-badge"><i class="bi bi-card-text"></i> Cartões coloridos
-                    texturizados</span><span class="material-badge"><i class="bi bi-music-note"></i> "Robot Rock" Daft
-                    Punk</span><span class="material-badge"><i class="bi bi-emoji-frown"></i> Placas "ERROU!"</span>
-                </div>
-                <h5>⏱️ Minuto a minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-5 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Ritual "O Robô Acordou"</strong> – imitar robô
-                    ligando, teste com apito: SE apitar, ENTÃO congelar.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">5-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Dança dos comandos</strong> – professor fala
-                    comandos, crianças executam. Introduz "SE eu disser PULA,
-                    ENTÃO você pula".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Grid humano com penalidade</strong> – robô andando
-                    no grid, turma ajuda. Se sair do grid, gritam "ERROU!
-                    Reinicia!".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Desafio do tesouro</strong> – em duplas, programa
-                    o colega com comandos. Erro = paralisação dramática.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Registro escrito</strong> – desenham caminho no
-                    grid usando setas (F, D, E).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Selo do Primeiro Comando</strong> – carimbo na mão
-                    e grito final.
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Executa comandos motores no grid</td>
-                        <td>Sincronia motora</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Diferencia sequência correta</td>
-                        <td>Leitura de sequência</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Reage à condição implícita (apito)</td>
-                        <td>Comando implícito</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE eu aprendi, ENTÃO eu sou
-                  fera! (SENÃO ainda não, né?)"
-                </div>
-              </div>
-            </div>
+          <div class="badge-projeto">
+            SE → ENTÃO → SENÃO – Tome a decisão certa!
           </div>
         </div>
-        <!-- SEMANA 2 -->
-        <div class="accordion-item" data-semana="2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana2">
-              🤖 Semana 2 -- Apresentando o SE → ENTÃO (ainda sem SENÃO, calma
-              lá, garotada)
-            </button>
-          </h2>
-          <div id="semana2" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between align-items-start flex-wrap">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="2" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Compreender a estrutura SE (condição) → ENTÃO (ação).
-                  </li>
-                  <li>
-                    Identificar relações causa-efeito em brincadeiras
-                    cotidianas.
-                  </li>
-                  <li>Produzir exemplos orais e desenhados de SE → ENTÃO.</li>
-                </ul>
-                <h5>📚 Conteúdo Programático</h5>
-                <p>Algoritmos, sequência lógica, condicional SE-ENTÃO.</p>
-                <h5>📋 Habilidades BNCC</h5>
-                <p>EF02LP09, EF02MA11, RCP-PR (Causa-efeito).</p>
-                <h5>🧰 Materiais (turbinados)</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões grandes A4 "SE"
-                    (azul) e "ENTÃO" (amarelo)</span>
-                  <span class="material-badge"><i class="bi bi-music-note"></i> Caixa de som com músicas
-                    de 10s</span>
-                  <span class="material-badge"><i class="bi bi-whistle"></i> Apito, lanterna, pote de
-                    biscoitos</span>
-                  <span class="material-badge"><i class="bi bi-robot"></i> Fantoche de robô com olhos
-                    que brilham</span>
-                  <span class="material-badge"><i class="bi bi-check-circle"></i> Placas "VERDADEIRO"
-                    (verde) e "FALSO" (vermelho)</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-5 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Ritual de repetição nervosa:</strong> "SE eu ouvir
-                    o apito, ENTÃO viro estátua!" Depois: "SE eu não apitar,
-                    ENTÃO vocês dançam!"
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">5-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>História "Robô Zé e a chuva de brigadeiro":</strong>
-                    Robô Zé só anda SE chover brigadeiro. SE chover
-                    brigadeiro, ENTÃO Zé anda. SE não chover... ele fica
-                    parado (sem SENÃO ainda).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Jogo musical condicional:</strong> "SE a música
-                    tocar, ENTÃO dançam; SE parar, ENTÃO congelam." Aumenta
-                    dificuldade: "SE a música for rápida, ENTÃO dançam rápido;
-                    SE for lenta, ENTÃO devagar."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Construção de cartões em dupla:</strong> Cada
-                    dupla desenha um SE→ENTÃO da vida real. Ex: "SE fizer sol,
-                    ENTÃO vou à piscina." Colam na parede e leem em voz alta.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Mestre dos Condicionais:</strong> Um aluno é o
-                    "mestre" e fala uma condição: "SE eu levantar a mão
-                    direita, ENTÃO vocês levantam a mão esquerda." Os outros
-                    executam. Troca de mestre a cada 2 min.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Fechamento com figuras malucas:</strong> Professor
-                    mostra situações (chuva, sol, fome). Pergunta: "SE está
-                    chovendo, ENTÃO o que devemos fazer?" Quem acertar ganha
-                    "Cupom do Programador".
-                  </div>
-                </div>
-                <h5>📊 Critérios Operacionais</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Cria exemplos válidos de "SE→ENTÃO" da vida real
-                        </td>
-                        <td>Identificação causa-efeito oral</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Dá comando condicional e observa colegas executarem
-                        </td>
-                        <td>Mestre dos Condicionais</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Posiciona cartões SE/ENTÃO na ordem correta</td>
-                        <td>Uso dos cartões</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE a professora bater
-                  palmas, ENTÃO todo mundo grita ROBÔ! (e se não bater,
-                  ninguém grita -- isso é condicional, baby)"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 3 -->
-        <div class="accordion-item" data-semana="3">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana3">
-              🤖 Semana 3 -- Reforçando o SE → ENTÃO com o corpo todo e com
-              muito grito
-            </button>
-          </h2>
-          <div id="semana3" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="3" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Automatizar a resposta condicional simples (reflexo
-                    robótico).
-                  </li>
-                  <li>
-                    Introduzir a noção de condicional falso (se a condição não
-                    ocorre, nada acontece ou ação padrão, sem usar SENÃO).
-                  </li>
-                  <li>
-                    Trabalhar em duplas com troca de papéis e competição
-                    saudável.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>
-                  Padrões e regularidades, produção de instruções, algoritmos.
-                </p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA11, EF02LP10, RCP-PR (Algoritmos).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Fichas com pares
-                    estímulo→reação (memes)</span><span class="material-badge"><i class="bi bi-square"></i> Colchonetes
-                    ou círculos de
-                    EVA</span><span class="material-badge"><i class="bi bi-check-lg"></i> Placas "SIM" (verde) e
-                    "NÃO" (vermelho) gigantes</span><span class="material-badge"><i class="bi bi-lightbulb"></i> Apito
-                    com luzes
-                    piscantes</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-5 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Ritual maluco de aquecimento:</strong> "SE a
-                    professora disser 'ROBÔ', ENTÃO fazem 'bip-bip'; SE ela
-                    disser 'HUMANO', ENTÃO fazem 'olá'." Velocidade aumenta.
-                    Quem erra vira "robô defeituoso" e precisa de reinício.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">5-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Treinamento de robôs de combate (duplas):</strong>
-                    Cada criança recebe um cartão com regra fixada no peito.
-                    Ex: "SE alguém tocar meu ombro, ENTÃO eu giro." O parceiro
-                    dá estímulos e o robô reage. Troca de papéis.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Jogo "SE você vir a cor amarela" (grid do
-                      caos):</strong>
-                    No grid do chão, cartões virados. Criança anda, vira um
-                    cartão. SE for amarelo, ENTÃO pula. SE for azul, anda mais
-                    duas casas. Verde não faz nada. Vermelho = grita "FOGO!".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Dança das cadeiras condicional (versão sem
-                      cadeiras):</strong>
-                    Música tocando, todos andam. SE a música parar, ENTÃO
-                    sentam no chão. O último a sentar conta uma piada de robô.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Desenho de fluxograma simples:</strong> Desenhar
-                    uma seta que pergunta "Está chovendo?". Dois caminhos: SIM
-                    (guarda-chuva) e NÃO (sol). Adicionar opção "TALVEZ" com
-                    guarda-chuva de sol.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Autoavaliação "Minha cara do SE":</strong> Cada
-                    aluno desenha carinha feliz (entendeu), neutra (mais ou
-                    menos) ou triste (perdido). Quem desenhar robô com cara de
-                    "bugado" ganha adesivo "Debugger emocional".
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Reage a estímulos com ação pré-definida em menos de
-                          2s
-                        </td>
-                        <td>Automação condicional</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Quando condição não ocorre, fica parado ou faz ação
-                          padrão
-                        </td>
-                        <td>Condicional falso</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Desenha fluxograma com pergunta e dois caminhos
-                        </td>
-                        <td>Desenho de fluxograma</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE eu levantar a mão
-                  direita, ENTÃO você levanta a esquerda -- agora inverta, seu
-                  robô teimoso"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 4 -->
-        <div class="accordion-item" data-semana="4">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana4">
-              🤖 Semana 4 -- Chegou o SENÃO (e o mundo nunca mais foi o mesmo)
-            </button>
-          </h2>
-          <div id="semana4" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="4" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>Compreender a estrutura SE → ENTÃO → SENÃO.</li>
-                  <li>
-                    Criar regras para situações cotidianas usando SENÃO.
-                  </li>
-                  <li>
-                    Escrever ou ditar pequenos algoritmos com condicional
-                    completa.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>Condicional completo, autoria de algoritmos.</p>
-                <h5>📋 Habilidades</h5>
-                <p>
-                  EF02LP10, EF02MA11, RCP-PR (Causa-efeito e alternativas).
-                </p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-traffic-light"></i> Semáforo real ou de
-                    papel (verde=SE, vermelho=SENÃO)</span><span class="material-badge"><i
-                      class="bi bi-people-fill"></i> Fita para fila do
-                    lanche</span><span class="material-badge"><i class="bi bi-card-text"></i> Cartões "SE", "ENTÃO",
-                    "SENÃO"</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Revisão e introdução do SENÃO:</strong> Professor
-                    conta história do Robô Zé que agora tem um plano B. Usa
-                    semáforo: verde = SE, vermelho = SENÃO.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Fila do Lanche com SENÃO:</strong> Crianças criam
-                    regras para a fila usando SE→ENTÃO→SENÃO. Ex: "SE a fila
-                    estiver grande, ENTÃO esperamos e conversamos baixo; SENÃO
-                    (se estiver pequena), ENTÃO vamos direto."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Teatro condicional:</strong> Duplas encenam
-                    situações (ex: SE chover, ENTÃO uso guarda-chuva; SENÃO
-                    uso boné). Turma identifica o SENÃO.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Escrita de algoritmo para robô:</strong> Cada
-                    aluno escreve ou desenha um pequeno algoritmo com
-                    SE/ENTÃO/SENÃO (ex: para o robô decidir entre dois
-                    caminhos).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Roda de compartilhamento:</strong> Alguns alunos
-                    leem seus algoritmos. Grito final: "SENÃO, SENÃO, SENÃO!"
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Cria algoritmo pequeno com SE/ENTÃO/SENÃO</td>
-                        <td>Autoria com SENÃO</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Participa da atividade "Fila do Lanche" com regra
-                          coerente
-                        </td>
-                        <td>Regra condicional aplicada</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Identifica o SENÃO em situações apresentadas</td>
-                        <td>Reconhecimento de alternativa</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE você errar, ENTÃO tente
-                  de novo; SENÃO, você já sabe, né?"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 5 -->
-        <div class="accordion-item" data-semana="5">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana5">
-              🤖 Semana 5 -- SENÃO na prática: O jogo dos dois caminhos
-            </button>
-          </h2>
-          <div id="semana5" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="5" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>Aplicar SENÃO em jogos de tabuleiro físico.</li>
-                  <li>
-                    Testar e depurar regras condicionais escritas pelos
-                    alunos.
-                  </li>
-                  <li>
-                    Identificar regras injustas ou mal programadas e
-                    modificá-las.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>Jogo de tabuleiro com casas condicionais, depuração.</p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA01, EF02LP10, RCP-PR (Algoritmos e depuração).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-dice-6"></i> Dado grande de espuma</span><span
-                    class="material-badge"><i class="bi bi-robot"></i> Marcadores com formato de
-                    robô</span><span class="material-badge"><i class="bi bi-grid-3x3"></i> Tabuleiro físico com casas
-                    condicionais escritas pelos alunos</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Criação das regras do tabuleiro:</strong> Em
-                    grupos, alunos escrevem regras condicionais para as casas
-                    (ex: "SE cair na casa 3, ENTÃO avance 2; SENÃO fique onde
-                    está").
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Montagem do tabuleiro:</strong> Usam cartolina
-                    para desenhar o tabuleiro e escrever as regras nas casas.
-                    Cada grupo cria seu próprio jogo.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Teste do jogo:</strong> Grupos trocam de tabuleiro
-                    e jogam. Devem anotar regras confusas ou injustas (bugs).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Depuração emocional:</strong> Cada grupo revisa
-                    seu tabuleiro com base no feedback e modifica as regras
-                    problemáticas.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Premiação e reflexão:</strong> Grupo com regra
-                    mais criativa ganha "Selo do Debugger". Conversa sobre a
-                    importância de testar programas.
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Grupo identifica regra injusta e a modifica</td>
-                        <td>Ajuste de algoritmo</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Jogo contém pelo menos 3 casas com SE/ENTÃO/SENÃO
-                        </td>
-                        <td>Quantidade de condicionais</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Participa da depuração do próprio grupo</td>
-                        <td>Engajamento</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "No tabuleiro da vida, o
-                  SENÃO é o plano B que a gente sempre esquece de programar."
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 6 -->
-        <div class="accordion-item" data-semana="6">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana6">
-              🤖 Semana 6 -- Obstáculos simples: o robô desvia (ou cai no
-              buraco)
-            </button>
-          </h2>
-          <div id="semana6" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="6" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Programar um robô vendado para desviar de obstáculos
-                    usando SE/ENTÃO/SENÃO.
-                  </li>
-                  <li>
-                    Refletir sobre o que acontece quando o robô encontra algo
-                    não previsto.
-                  </li>
-                  <li>Simular sensores com comandos condicionais.</li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>
-                  Condicionais com obstáculos, detecção de colisão (simulada).
-                </p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA01, EF02LP09, RCP-PR (Depuração).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Lenços para vendar</span><span
-                    class="material-badge"><i class="bi bi-cube"></i> Caixas pequenas
-                    (obstáculos)</span><span class="material-badge"><i class="bi bi-card-text"></i> Cartões
-                    SE/ENTÃO/SENÃO</span><span class="material-badge"><i class="bi bi-chat"></i> Placas de
-                    "Imprevisto!"</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Demonstração do robô vendado:</strong> Professor é
-                    o robô vendado, alunos dão comandos. Quando ele toca um
-                    obstáculo, param e discutem o que fazer.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Programação em duplas:</strong> Uma criança é o
-                    robô vendado, a outra é programadora. Usam cartões
-                    SE/ENTÃO/SENÃO para dar instruções (ex: "SE sentir parede,
-                    ENTÃO vire à esquerda; SENÃO ande reto").
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Percurso com obstáculos:</strong> Colocar 3
-                    obstáculos no chão. O programador deve escrever o
-                    algoritmo antes de executar. Depois testam e corrigem
-                    (debug).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Reflexão coletiva:</strong> Roda de conversa: "O
-                    que aconteceu quando o robô encontrou um obstáculo que não
-                    estava previsto?" (Prepara para bimestre 2).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Registro e premiação:</strong> Cada aluno desenha
-                    o percurso e as regras que criou. Entrega de adesivos
-                    "Desviador de Obstáculos".
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          O robô desvia ou para em obstáculo conforme
-                          programado
-                        </td>
-                        <td>Condicional com obstáculo</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Comenta na roda o que aconteceu com imprevisto
-                        </td>
-                        <td>Reflexão sobre imprevisto</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Ajuda o parceiro a depurar o algoritmo</td>
-                        <td>Depuração colaborativa</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE você bater na parede,
-                  ENTÃO não desista; SENÃO mude de direção!"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 7 -->
-        <div class="accordion-item" data-semana="7">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana7">
-              🤖 Semana 7 -- Projeto Mini-Robô Decisor -- Parte 1:
-              Planejamento
-            </button>
-          </h2>
-          <div id="semana7" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="7" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Planejar um robô de papelão que decide entre biscoito e
-                    cenoura.
-                  </li>
-                  <li>Escolher uma condição clara para a decisão.</li>
-                  <li>Desenhar o robô e os dois caminhos (grid em Y).</li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>
-                  Projeto autoral, definição de condição, desenho técnico.
-                </p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA01, EF02LP10, RCP-PR (Autoria).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Ficha de projeto (campos:
-                    condição, caminho biscoito, caminho cenoura, desenho do
-                    robô)</span><span class="material-badge"><i class="bi bi-box"></i> Caixas de sapato, tesoura sem
-                    ponta</span><span class="material-badge"><i class="bi bi-robot"></i> Antenas de papel alumínio,
-                    olhos móveis</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Apresentação do projeto "Robô do Lanche":</strong>
-                    Professor mostra o desafio: construir um robô que decide
-                    entre biscoito (gostoso) e cenoura (saudável) baseado em
-                    uma condição (ex: "SE o robô estiver feliz, ENTÃO vai para
-                    o biscoito; SENÃO vai para a cenoura").
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Em grupos, escolhem a condição:</strong> Cada
-                    grupo preenche a ficha de projeto: "Condição escolhida",
-                    "Caminho do biscoito", "Caminho da cenoura", e desenham o
-                    robô.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Construção do robô (parte física):</strong>
-                    Começam a montar a caixa de sapato, colam antenas, olhos.
-                    Não finalizam ainda.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Planejamento do grid em Y:</strong> Desenham no
-                    chão (com giz ou fita) um caminho que se bifurca: um lado
-                    para biscoito, outro para cenoura.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Apresentação das condições:</strong> Cada grupo
-                    conta para a turma qual condição escolheu. Professor dá
-                    feedback.
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Grupo escolhe e registra condição clara para o robô
-                        </td>
-                        <td>Condição do projeto</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Desenha o robô e os dois caminhos na ficha</td>
-                        <td>Registro visual</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Explica a condição para a turma</td>
-                        <td>Comunicação</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE o robô for esperto, ENTÃO
-                  ele escolhe o biscoito; SENÃO, cenoura... coitado."
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 8 -->
-        <div class="accordion-item" data-semana="8">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana8">
-              🤖 Semana 8 -- Projeto Mini-Robô Decisor -- Parte 2: Programação
-              e Teste
-            </button>
-          </h2>
-          <div id="semana8" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="8" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>Programar o robô com cartões SE/ENTÃO/SENÃO.</li>
-                  <li>Realizar teste de mesa antes da execução física.</li>
-                  <li>
-                    Executar o robô no grid em Y e verificar se vai para o
-                    caminho correto.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>
-                  Programação com condicionais, teste de mesa, execução
-                  física.
-                </p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02MA01, EF02LP09, RCP-PR (Teste e depuração).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões
-                    SE/ENTÃO/SENÃO</span><span class="material-badge"><i class="bi bi-cup-straw"></i> Prêmios: biscoito
-                    e
-                    cenoura de mentira</span><span class="material-badge"><i class="bi bi-person-walking"></i> Robô
-                    construído na
-                    semana anterior</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Teste de mesa:</strong> Cada grupo simula com os
-                    cartões o que o robô fará antes de andar. Professor
-                    circula e questiona.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Programação final:</strong> Os grupos escrevem o
-                    algoritmo em uma folha ou cartões, usando a condição
-                    escolhida. Ex: "SE estiver sol, ENTÃO vá para o biscoito;
-                    SENÃO vá para a cenoura."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Execução no grid em Y:</strong> Um aluno aplica a
-                    condição (por exemplo, mostra uma imagem de sol ou nuvem)
-                    e outro programa o robô. O robô deve seguir o caminho
-                    correto. Se errar, depuram.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Roda de resultados:</strong> Cada grupo conta se o
-                    robô acertou ou se precisou corrigir. Entrega de "Cupom do
-                    Lanche" simbólico.
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Robô vai para o caminho correto de acordo com a
-                          condição
-                        </td>
-                        <td>Execução no grid Y</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Grupo realiza teste de mesa antes da execução</td>
-                        <td>Teste de mesa</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Depura o algoritmo quando necessário</td>
-                        <td>Depuração</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE o robô errar, ENTÃO a
-                  gente depura; SENÃO, comemora com biscoito!"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 9 -->
-        <div class="accordion-item" data-semana="9">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana9">
-              🤖 Semana 9 -- APRIMORANDO O ROBÔ DECISOR: duas condições
-            </button>
-          </h2>
-          <div id="semana9" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="9" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Usar duas condicionais em sequência no mesmo percurso.
-                  </li>
-                  <li>
-                    Registrar em vídeo a explicação do grupo sobre o robô.
-                  </li>
-                  <li>
-                    Escrever duas regras SE/ENTÃO/SENÃO diferentes para o
-                    mesmo caminho.
-                  </li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>Condicionais encadeadas, documentação em vídeo.</p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02LP10, EF02MA11, RCP-PR (Autoria e comunicação).</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-camera-video"></i> Celular do professor
-                    para gravação</span><span class="material-badge"><i class="bi bi-robot"></i> Robô do
-                    grupo</span><span class="material-badge"><i class="bi bi-card-text"></i> Cartões adicionais</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Desafio extra:</strong> Professor apresenta um
-                    percurso com dois desafios: "SE houver boneco, ENTÃO
-                    cumprimente; SENÃO, continue. Depois, SE chão vermelho,
-                    ENTÃO pare; SENÃO, ande."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Grupos escrevem duas regras:</strong> Cada grupo
-                    inventa duas condicionais diferentes para o mesmo robô e
-                    escreve no papel.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Teste das duas regras:</strong> Executam no grid,
-                    alternando as condições. Observam se o robô consegue lidar
-                    com ambas.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Gravação de vídeo:</strong> Cada grupo explica seu
-                    robô para o celular do professor. Depois assistem e riem
-                    dos erros.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Prévia da feira:</strong> Combinam como será a
-                    apresentação na semana seguinte.
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Grupo escreve duas regras SE/ENTÃO/SENÃO diferentes
-                        </td>
-                        <td>Duas condicionais</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Executa as duas regras no percurso</td>
-                        <td>Execução sequencial</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Explica o robô na gravação</td>
-                        <td>Comunicação oral</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE você tem duas condições,
-                  ENTÃO seu robô é quase humano; SENÃO, ainda é só uma
-                  máquina."
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SEMANA 10 -->
-        <div class="accordion-item" data-semana="10">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana10">
-              🤖 Semana 10 -- Feira dos Robôs Decisores -- Avaliação Final
-            </button>
-          </h2>
-          <div id="semana10" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
-            <div class="accordion-body">
-              <div class="semana-card-completo">
-                <div class="d-flex justify-content-between">
-                  <h5>🎯 Objetivos</h5>
-                  <label class="check-concluido"><input type="checkbox" class="semana-check"
-                      data-semana="10" /><span>Marcar concluída</span></label>
-                </div>
-                <ul>
-                  <li>
-                    Apresentar o robô para outra turma ou para bonecos de
-                    pelúcia.
-                  </li>
-                  <li>Votar no SENÃO mais criativo.</li>
-                  <li>Receber certificado de "Mestre do SE (Nível 1)".</li>
-                  <li>Dançar a música condicional final.</li>
-                </ul>
-                <h5>📚 Conteúdo</h5>
-                <p>Apresentação, avaliação coletiva, celebração.</p>
-                <h5>📋 Habilidades</h5>
-                <p>EF02LP10, EF02MA11, Competências Gerais 7 e 9.</p>
-                <h5>🧰 Materiais</h5>
-                <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-trophy"></i> Certificados impressos</span><span
-                    class="material-badge"><i class="bi bi-sticky"></i> Adesivos para votação</span><span
-                    class="material-badge"><i class="bi bi-music-note"></i> Caixa de som com música
-                    condicional</span><span class="material-badge"><i class="bi bi-robot"></i> Robôs finalizados</span>
-                </div>
-                <h5>⏱️ Minuto a Minuto</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Feira aberta:</strong> Convidar outra turma ou
-                    professores. Cada grupo apresenta seu robô e explica a
-                    condição escolhida. Visitantes fazem perguntas.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Votação do SENÃO mais criativo:</strong> Cada
-                    criança recebe 3 adesivos e cola no robô que achou mais
-                    legal (ou na folha do grupo). Contagem.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-35 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Cerimônia de certificação:</strong> Professor
-                    entrega o "Certificado de Mestre do SE (Nível 1)" com
-                    carimbo da pata do Robô Zé. Parafusos conquistados: cada
-                    aluno marca seu nível (enferrujado, apertado, de ouro).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">35-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Dança final condicional:</strong> "SE a música
-                    tocar, ENTÃO dancem; SENÃO, congelem." Tocar e parar
-                    várias vezes. Finalizar com gritaria robótica "BIP BIP!".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>Roda de despedida:</strong> Cada aluno fala uma
-                    coisa que aprendeu. Professor entrega lembrancinhas
-                    (adesivos de robozinho).
-                  </div>
-                </div>
-                <h5>📊 Critérios</h5>
-                <div class="table-responsive">
-                  <table class="table tabela-criterios-semana">
-                    <thead>
-                      <tr>
-                        <th>Descritor</th>
-                        <th>Critério</th>
-                        <th>Pontuação</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Apresenta o robô para visitantes</td>
-                        <td>Comunicação e demonstração</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>Participa da votação e da dança</td>
-                        <td>Engajamento</td>
-                        <td>0-2 pts</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Recebe o certificado e reflete sobre aprendizados
-                        </td>
-                        <td>Autoavaliação</td>
-                        <td>0-1 pt</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong> "SE você sobreviveu ao 1º
-                  bimestre, ENTÃO você é fera; SENÃO, AGUENTA o próximo!"
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ==================== JOGO DO BIMESTRE: LOOP DASH (criado conforme descrição do DOCX) ==================== -->
-    <section id="jogo-loopdash" class="mb-5">
-      <div class="projeto-header">
-        <h2>
-          <i class="bi bi-joystick"></i> 🎲 JOGO DO BIMESTRE 1: LOOP DASH
-        </h2>
-        <div class="badge-projeto">
-          A Corrida dos Comandos Repetidos – Monte seu algoritmo com cartões!
-        </div>
-      </div>
-      <div class="bg-robocard p-4 rounded-4 mb-4">
-        <h4>
-          <i class="bi bi-info-circle-fill"></i> LOOP DASH – A CORRIDA DOS
-          COMANDOS REPETIDOS
-        </h4>
-        <p>
-          <strong>🤖 Contexto:</strong> Loop Dash é um jogo onde você controla
-          um robozinho que só pode se mover usando comandos de REPITA.
-          Objetivo: chegar ao final da pista usando o MENOR número de cartões
-          possível!
-        </p>
-        <p>
-          <strong>🎯 Público-alvo:</strong> Alunos do 2º ano (individual ou
-          duplas)
-        </p>
-        <p>
-          <strong>💡 Conceito estrela:</strong> Loop como otimização de código
-          (menos cartões = mais eficiência)
-        </p>
-        <h5 class="mt-3">📜 Regras do Jogo:</h5>
-        <ol>
-          <li>
-            <strong>🏁 Pista de 3 fases:</strong> RETA → ZIGUE-ZAGUE →
-            OBSTÁCULOS
-          </li>
-          <li>
-            <strong>🎴 Monte seu algoritmo:</strong> Clique nos cartões de
-            comando para construir a sequência
-          </li>
-          <li>
-            <strong>🔁 Regra de ouro:</strong> Use o cartão REPITA para
-            repetir ações – NADA de comandos soltos!
-          </li>
-          <li>
-            <strong>🏆 Pontuação:</strong> Quem usar MENOS cartões vence!
-          </li>
-          <li>
-            <strong>🐛 Bug e penalidade:</strong> Se o robô bater num
-            obstáculo, você tem que DEPURAR (trocar cartões)
-          </li>
-          <li>
-            <strong>🌟 Bônus criativo:</strong> Usar um REPITA dentro de outro
-            = título "Mestre do Loopception" + estrela dourada!
-          </li>
-        </ol>
-      </div>
-
-      <div class="simulador-comandos p-4 rounded-4 text-center">
-        <h3 class="text-warning">
-          🤖 LOOP DASH – MONTE SEU ALGORITMO COM CARTOES! 🃏
-        </h3>
-        <div class="mb-4">
-          <div class="btn-group flex-wrap" role="group">
-            <button class="btn-phase fase1-btn" data-fase="1">
-              🏁 FASE 1: RETA
-              <span class="badge bg-success">FÁCIL</span></button><button class="btn-phase fase2-btn" data-fase="2">
-              🔄 FASE 2: ZIGUE-ZAGUE
-              <span class="badge bg-warning text-dark">MÉDIO</span></button><button class="btn-phase fase3-btn"
-              data-fase="3">
-              🧱 FASE 3: OBSTÁCULOS
-              <span class="badge bg-danger">DIFÍCIL</span>
-            </button>
-          </div>
-        </div>
-        <div class="loopdash-pista-visual mb-4">
-          <div class="pista-label">
-            <i class="bi bi-map-fill"></i> PISTA ATUAL:
-            <span id="faseNomeAtual" class="text-warning">RETA</span>
-            <span id="faseIconeAtual">🏁</span>
-          </div>
-          <div id="loopdashGrid" class="loopdash-grid"></div>
-        </div>
-        <div class="row mt-3 justify-content-center g-2">
-          <div class="col-md-3 col-6">
-            <div class="stat-card">
-              <div class="stat-icon">📊</div>
-              <div class="stat-label">CARTOES USADOS</div>
-              <div class="stat-value" id="loopdashCartoes">0</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="stat-card">
-              <div class="stat-icon">🏆</div>
-              <div class="stat-label">MELHOR MARCA</div>
-              <div class="stat-value" id="loopdashMelhor">--</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="stat-card">
-              <div class="stat-icon">🤖</div>
-              <div class="stat-label">STATUS</div>
-              <div class="stat-value" id="loopdashStatus">PRONTO</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="stat-card">
-              <div class="stat-icon">⭐</div>
-              <div class="stat-label">BÔNUS</div>
-              <div class="stat-value" id="loopdashBonus">---</div>
-            </div>
-          </div>
-        </div>
-        <div class="algoritmo-builder mt-4">
-          <div class="builder-header">
-            <i class="bi bi-grid-3x3-gap-fill"></i> SEU ALGORITMO (clique nos
-            cartões abaixo)<button class="btn-clear-algoritmo" id="btnLimparAlgoritmo">
-              <i class="bi bi-trash3-fill"></i> LIMPAR TUDO
-            </button>
-          </div>
-          <div id="algoritmoMontado" class="algoritmo-montado">
-            <div class="placeholder-algoritmo" id="placeholderAlgoritmo">
-              🃏 Clique nos cartões abaixo para montar seu algoritmo...
-            </div>
-          </div>
-        </div>
-        <div class="cartoes-prateleira mt-4">
-          <div class="cartoes-header">
-            <i class="bi bi-card-list"></i> CARTOES DE COMANDO (clique para
-            adicionar)<span class="regra-destaque">🔁 REGRA DE OURO: Use REPITA para repetir ações!</span>
-          </div>
-          <div class="cartoes-grid" id="cartoesGrid">
-            <div class="cartao-comando" data-comando="ande1">
-              <div class="cartao-icone">🚶</div>
-              <div class="cartao-texto">ANDE 1</div>
-              <div class="cartao-desc">1 passo pra frente</div>
-            </div>
-            <div class="cartao-comando" data-comando="ande2">
-              <div class="cartao-icone">🏃</div>
-              <div class="cartao-texto">ANDE 2</div>
-              <div class="cartao-desc">2 passos pra frente</div>
-            </div>
-            <div class="cartao-comando" data-comando="vireDireita">
-              <div class="cartao-icone">▶️</div>
-              <div class="cartao-texto">VIRE DIREITA</div>
-              <div class="cartao-desc">90° pra direita</div>
-            </div>
-            <div class="cartao-comando" data-comando="vireEsquerda">
-              <div class="cartao-icone">◀️</div>
-              <div class="cartao-texto">VIRE ESQUERDA</div>
-              <div class="cartao-desc">90° pra esquerda</div>
-            </div>
-            <div class="cartao-comando cartao-especial" data-comando="repita">
-              <div class="cartao-icone">🔄</div>
-              <div class="cartao-texto">REPITA</div>
-              <div class="cartao-desc">
-                Repetir ações (clique e depois adicione comandos dentro)
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="botoes-painel mt-4">
-          <button class="btn-executar" id="btnExecutarLoopDash">
-            <i class="bi bi-play-fill"></i> EXECUTAR ROBÔ!</button><button class="btn-resetar" id="btnResetLoopDash">
-            <i class="bi bi-arrow-repeat"></i> REINICIAR ROBÔ</button><button class="btn-dica" id="btnDicaLoopDash">
-            <i class="bi bi-lightbulb-fill"></i> DICA MALUCA</button><button class="btn-exemplo"
-            id="btnExemploLoopDash">
-            <i class="bi bi-stars"></i> ALGORITMO EXEMPLO
-          </button>
-        </div>
-        <div id="loopdashMensagem" class="mensagem-jogo mt-3">
-          <i class="bi bi-robot"></i>
-          <span>🏁 Selecione uma fase e monte seu algoritmo clicando nos cartões!
-            Lembre-se: use REPITA para repetir ações!</span>
-        </div>
-        <div class="recordes-painel mt-4">
-          <div class="recordes-header">
-            <i class="bi bi-trophy-fill"></i> RECORDES DE CADA FASE (menos
-            cartões = melhor!)
-          </div>
-          <div class="recordes-grid">
-            <div class="recorde-card fase1-recorde">
-              <div class="recorde-fase">🏁 FASE 1 - RETA</div>
-              <div class="recorde-valor" id="recordeFase1">---</div>
-              <div class="recorde-unidade">cartões</div>
-            </div>
-            <div class="recorde-card fase2-recorde">
-              <div class="recorde-fase">🔄 FASE 2 - ZIGUE-ZAGUE</div>
-              <div class="recorde-valor" id="recordeFase2">---</div>
-              <div class="recorde-unidade">cartões</div>
-            </div>
-            <div class="recorde-card fase3-recorde">
-              <div class="recorde-fase">🧱 FASE 3 - OBSTÁCULOS</div>
-              <div class="recorde-valor" id="recordeFase3">---</div>
-              <div class="recorde-unidade">cartões</div>
-            </div>
-          </div>
-        </div>
-        <div class="legenda-pista mt-3">
-          <span class="legenda-item"><span class="badge-robot">🤖</span> ROBÔ</span><span class="legenda-item"><span
-              class="badge-flag">🏁</span> CHEGADA</span><span class="legenda-item"><span class="badge-path">⬜</span>
-            PISTA</span><span class="legenda-item"><span class="badge-obstacle">🧱</span> OBSTÁCULO</span><span
-            class="legenda-item"><span class="badge-loop">🔄</span> REPITA (loop)</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CERTIFICADO (modelo_certificado adaptado para 2º ano) ==================== -->
-    <section id="certificacao" class="mb-5">
-      <div class="bg-robocard p-4 rounded-4 shadow-lg">
-        <div class="text-center mb-4">
-          <h3>
-            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
-            CONCLUSÃO - 2º ANO
+        <div class="simulador-comandos p-4 rounded-4">
+          <h3 class="text-warning text-center">
+            🤖 MISSÃO: ESCOLHA O CAMINHO CERTO
           </h3>
-          <p class="lead">"MESTRE DO SE, ENTÃO E SENÃO"</p>
-        </div>
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-6">
-            <div class="certificado-preview p-3 text-center">
-              <div class="certificado-modelo p-4" id="previewCertificado">
-                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
-                <p>Certificamos que</p>
-                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
-                <p>
-                  concluiu com êxito o
-                  <strong>2º ANO - ROBÓTICA EDUCACIONAL</strong><br />Dominando os conceitos de:<br />🤖
-                  <strong>SE → ENTÃO → SENÃO</strong> (condicionais)<br />🃏
-                  <strong>JOGO LOOP DASH</strong><br />🤖
-                  <strong>PROJETO ROBÔ DO LANCHE</strong>
-                </p>
-                <hr class="linha-certificado" />
-                <p class="data-rodape">
-                  RobôMestres do Paraná • <span id="previewData">2026</span>
-                </p>
-                <p class="assinatura-engracada">
-                  "SE você pensou, ENTÃO você programou. SENÃO, programe de
-                  novo."
-                </p>
-                <div class="mt-2">
-                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 2.0</span>
-                </div>
+          <p class="text-center">
+            O robô precisa decidir com base numa condição. Monte a regra e veja
+            o resultado!
+          </p>
+
+          <!-- Painel do cenário -->
+          <div class="cenario-painel bg-dark p-3 rounded-4 mb-4">
+            <div
+              class="d-flex justify-content-between align-items-center flex-wrap"
+            >
+              <div>
+                <i class="bi bi-image-fill"></i> <strong>Cenário:</strong>
+                <span id="cenarioTexto" class="badge bg-warning text-dark"
+                  >Carregando...</span
+                >
               </div>
-              <p class="text-muted mt-2 small">
-                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
-              </p>
+              <div>
+                <i class="bi bi-question-diamond-fill"></i>
+                <strong>Condição:</strong>
+                <span id="condicaoTexto" class="badge bg-info text-dark"
+                  >---</span
+                >
+              </div>
+              <button class="btn-novo-cenario" id="btnNovoCenario">
+                <i class="bi bi-shuffle"></i> NOVO DESAFIO
+              </button>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
-              <h4>
-                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
-              </h4>
-              <div class="row g-3 align-items-end">
-                <div class="col-md-8">
-                  <label class="form-label text-warning">Nome do Aluno(a)</label><input type="text" id="nomeAluno"
-                    class="form-control" placeholder="Digite o nome do pequeno programador" />
+
+          <!-- Opções de escolha (ENTÃO e SENÃO) -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-6">
+              <div class="card-opcao" id="opcaoEntao">
+                <div class="opcao-titulo">
+                  ✅ ENTÃO (se condição verdadeira)
                 </div>
-                <div class="col-md-4">
-                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
-                    🤖 Adicionar
-                  </button>
+                <div class="opcao-descricao" id="opcaoEntaoTexto">
+                  Clique para escolher
                 </div>
+                <button class="btn-escolher" data-tipo="entao">
+                  ESCOLHER ESTE
+                </button>
               </div>
-              <div class="mt-4">
-                <h5>
-                  📋 Lista de Programadores
-                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
-                </h5>
-                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
-                </ul>
-              </div>
-              <div class="mt-3 d-flex gap-2 flex-wrap">
-                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
-                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button><button id="btnPreviewAluno"
-                  class="btn btn-outline-warning" disabled>
-                  <i class="bi bi-eye"></i> Pré-visualizar
+            </div>
+            <div class="col-md-6">
+              <div class="card-opcao" id="opcaoSenao">
+                <div class="opcao-titulo">⚠️ SENÃO (se condição falsa)</div>
+                <div class="opcao-descricao" id="opcaoSenaoTexto">
+                  Clique para escolher
+                </div>
+                <button class="btn-escolher" data-tipo="senao">
+                  ESCOLHER ESTE
                 </button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="bg-robocard p-4 rounded-4 mb-4">
-          <i class="bi bi-info-circle-fill"></i>
-          <strong>Dica de impressão:</strong> Os certificados serão gerados em
-          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
-          por folha).
-        </div>
-      </div>
-    </section>
 
-    <!-- ==================== FECHAMENTO DO BIMESTRE (modelo_fechamento_bimestre com conteúdo do DOCX) ==================== -->
-    <section id="fechamento" class="mb-5">
-      <div class="card card-adaptacoes border-warning mt-4 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
-            ESPECÍFICAS BIMESTRE 1 (Caos Acessível para Todos)
-          </h5>
-          <h6 class="mt-3">📌 Para TEA</h6>
-          <ul>
-            <li>
-              Cartões individuais com textura (lisa= frente, áspera= para).
-              Evitar apito muito alto – usar sino suave. Ter um canto "low
-              stimulus" com fones abafadores.
-            </li>
-          </ul>
-          <h6 class="mt-3">📌 Para TDAH</h6>
-          <ul>
-            <li>
-              A cada 10 minutos, mudar posição (sentado, em pé, no chão, em
-              cima de um pé só). Usar timer visual (ampulheta de 15 minutos).
-            </li>
-          </ul>
-          <h6 class="mt-3">📌 Para Deficiência Física</h6>
-          <ul>
-            <li>
-              Criança não andante pode ser o "programador" que dá comandos
-              para um robô humano. Oferecer prancha de comunicação com setas.
-            </li>
-          </ul>
-          <h6 class="mt-3">📌 Para Altas Habilidades</h6>
-          <ul>
-            <li>
-              Desafio de criar condicionais com duas condições (SE houver
-              boneco, ENTÃO cumprimente; SENÃO continue).
-            </li>
-          </ul>
-          <p class="mb-0 mt-3 fst-italic">
-            “SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a
-            gente dança.”
-          </p>
-        </div>
-      </div>
+          <!-- Feedback do robô -->
+          <div id="feedbackRobo" class="mensagem-jogo mb-3">
+            <i class="bi bi-robot"></i>
+            <span>Escolha a opção correta para o robô!</span>
+          </div>
 
-      <div class="row mt-4">
-        <div class="col-12">
-          <div class="bg-robocard p-3 rounded-4 small">
-            <h5>
-              <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+          <!-- Placar e estatísticas -->
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <div class="stat-card">
+                🏆 <strong>Acertos</strong><br /><span id="pontuacaoAcertos"
+                  >0</span
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-card">
+                ❌ <strong>Erros</strong><br /><span id="pontuacaoErros"
+                  >0</span
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-card">
+                🎯 <strong>Sequência</strong><br /><span id="sequenciaAcertos"
+                  >0</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão para revelar resposta correta -->
+          <div class="text-center mt-4">
+            <button class="btn-dica" id="btnMostrarResposta">
+              <i class="bi bi-lightbulb"></i> MOSTRE-ME A RESPOSTA
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CERTIFICADO (modelo_certificado adaptado para 2º ano) ==================== -->
+      <section id="certificacao" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4 shadow-lg">
+          <div class="text-center mb-4">
+            <h3>
+              <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+              CONCLUSÃO - 2º ANO
+            </h3>
+            <p class="lead">"MESTRE DO SE, ENTÃO E SENÃO"</p>
+          </div>
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+              <div class="certificado-preview p-3 text-center">
+                <div class="certificado-modelo p-4" id="previewCertificado">
+                  <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                  <p>Certificamos que</p>
+                  <strong id="previewNomeAluno" class="nome-aluno-destaque"
+                    >[NOME DO ALUNO]</strong
+                  >
+                  <p>
+                    concluiu com êxito o
+                    <strong>2º ANO - ROBÓTICA EDUCACIONAL</strong
+                    ><br />Dominando os conceitos de:<br />🤖
+                    <strong>SE → ENTÃO → SENÃO</strong> (condicionais)<br />🃏
+                    <strong>JOGO LOOP DASH</strong><br />🤖
+                    <strong>PROJETO ROBÔ DO LANCHE</strong>
+                  </p>
+                  <hr class="linha-certificado" />
+                  <p class="data-rodape">
+                    RobôMestres do Paraná • <span id="previewData">2026</span>
+                  </p>
+                  <p class="assinatura-engracada">
+                    "SE você pensou, ENTÃO você programou. SENÃO, programe de
+                    novo."
+                  </p>
+                  <div class="mt-2">
+                    <span class="badge bg-warning text-dark"
+                      >🔧 Ass: Robô Zé 2.0</span
+                    >
+                  </div>
+                </div>
+                <p class="text-muted mt-2 small">
+                  <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+                <h4>
+                  <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+                </h4>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <label class="form-label text-warning"
+                      >Nome do Aluno(a)</label
+                    ><input
+                      type="text"
+                      id="nomeAluno"
+                      class="form-control"
+                      placeholder="Digite o nome do pequeno programador"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      id="btnAdicionar"
+                      class="btn btn-warning w-100 fw-bold"
+                    >
+                      🤖 Adicionar
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <h5>
+                    📋 Lista de Programadores
+                    <span id="contadorAlunos" class="badge bg-warning text-dark"
+                      >0</span
+                    >
+                  </h5>
+                  <ul
+                    id="listaAlunos"
+                    class="lista-alunos list-unstyled"
+                    style="max-height: 220px; overflow-y: auto"
+                  ></ul>
+                </div>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <button
+                    id="btnImprimirCertificados"
+                    class="btn btn-robotico-ano2"
+                    disabled
+                  >
+                    <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button
+                  ><button
+                    id="btnPreviewAluno"
+                    class="btn btn-outline-warning"
+                    disabled
+                  >
+                    <i class="bi bi-eye"></i> Pré-visualizar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-robocard p-4 rounded-4 mb-4">
+            <i class="bi bi-info-circle-fill"></i>
+            <strong>Dica de impressão:</strong> Os certificados serão gerados em
+            uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+            por folha).
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== FECHAMENTO DO BIMESTRE (modelo_fechamento_bimestre com conteúdo do DOCX) ==================== -->
+      <section id="fechamento" class="mb-5">
+        <div class="card card-adaptacoes border-warning mt-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
+              ESPECÍFICAS BIMESTRE 1 (Caos Acessível para Todos)
             </h5>
-            <p>
-              BRASIL. Ministério da Educação.
-              <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC,
-              2018.<br />PARANÁ. Secretaria de Estado da Educação.
-              <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
-                Iniciais</strong>. Curitiba: SEED/PR, 2018.<br />RESNICK, M.
-              <strong>Jardim de Infância para a Vida Toda</strong>. Porto
-              Alegre: Penso, 2020.<br />WING, J. M. Pensamento Computacional.
-              <strong>Revista Brasileira de Computação</strong>, v. 12, n. 2,
-              p. 10-14, 2017.<br />BERS, M. U.
-              <strong>Beyond Computer Literacy: Supporting Children's Learning in
-                Robotics</strong>. MIT Press, 2022.
+            <h6 class="mt-3">📌 Para TEA</h6>
+            <ul>
+              <li>
+                Cartões individuais com textura (lisa= frente, áspera= para).
+                Evitar apito muito alto – usar sino suave. Ter um canto "low
+                stimulus" com fones abafadores.
+              </li>
+            </ul>
+            <h6 class="mt-3">📌 Para TDAH</h6>
+            <ul>
+              <li>
+                A cada 10 minutos, mudar posição (sentado, em pé, no chão, em
+                cima de um pé só). Usar timer visual (ampulheta de 15 minutos).
+              </li>
+            </ul>
+            <h6 class="mt-3">📌 Para Deficiência Física</h6>
+            <ul>
+              <li>
+                Criança não andante pode ser o "programador" que dá comandos
+                para um robô humano. Oferecer prancha de comunicação com setas.
+              </li>
+            </ul>
+            <h6 class="mt-3">📌 Para Altas Habilidades</h6>
+            <ul>
+              <li>
+                Desafio de criar condicionais com duas condições (SE houver
+                boneco, ENTÃO cumprimente; SENÃO continue).
+              </li>
+            </ul>
+            <p class="mb-0 mt-3 fst-italic">
+              “SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a
+              gente dança.”
             </p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- ==================== RODAPÉ REBELDE (modelo_rodape) ==================== -->
-  <footer class="footer-robotico footer-rebelde">
-    <div class="container">
-      <div class="row align-items-center mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="d-flex justify-content-center justify-content-md-start">
-            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="d-flex justify-content-center justify-content-md-end">
-            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
-              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-start mb-4">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <div class="text-center text-md-start">
-            <div class="dev-nome">
-              💀 Desenvolvido na base do ódio, litros de café e condicionais
-              malucas por Rodrigo Barbosa.
-            </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="bg-robocard p-3 rounded-4 small">
+              <h5>
+                <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+              </h5>
+              <p>
+                BRASIL. Ministério da Educação.
+                <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC,
+                2018.<br />PARANÁ. Secretaria de Estado da Educação.
+                <strong
+                  >Referencial Curricular do Paraná: Ensino Fundamental Anos
+                  Iniciais</strong
+                >. Curitiba: SEED/PR, 2018.<br />RESNICK, M.
+                <strong>Jardim de Infância para a Vida Toda</strong>. Porto
+                Alegre: Penso, 2020.<br />WING, J. M. Pensamento Computacional.
+                <strong>Revista Brasileira de Computação</strong>, v. 12, n. 2,
+                p. 10-14, 2017.<br />BERS, M. U.
+                <strong
+                  >Beyond Computer Literacy: Supporting Children's Learning in
+                  Robotics</strong
+                >. MIT Press, 2022.
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="text-center text-md-end">
-            <div class="dev-nome">
-              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
-              SENÃO e uma dedicação que só aparece quando o prazo já passou
-              por Gisele Nunes.
-            </div>
-            <div class="dev-contato mt-1">
-              <i class="bi bi-envelope-paper"></i>
-              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="relatorio-bugs"></div>
-    </div>
-  </footer>
+      </section>
+    </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/a2bim1.js"></script>
-</body>
+    <!-- ==================== RODAPÉ REBELDE (modelo_rodape) ==================== -->
+    <footer class="footer-robotico footer-rebelde">
+      <div class="container">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img
+                src="imagens/logo_rb.png"
+                alt="Rodrigo Barbosa"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end">
+              <img
+                src="imagens/logo_gn.png"
+                alt="Gisele Nunes"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-start mb-4">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="text-center text-md-start">
+              <div class="dev-nome">
+                💀 Desenvolvido na base do ódio, litros de café e condicionais
+                malucas por Rodrigo Barbosa.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
+                  >barbosa.rodrigo.1979@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center text-md-end">
+              <div class="dev-nome">
+                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+                SENÃO e uma dedicação que só aparece quando o prazo já passou
+                por Gisele Nunes.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relatorio-bugs"></div>
+      </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/a2bim1.js"></script>
+  </body>
 </html>

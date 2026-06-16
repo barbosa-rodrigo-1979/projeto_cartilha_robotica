@@ -1,0 +1,1705 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>🤖 3º Ano - Robótica Educacional | Loop, Variável, Depuração</title>
+    <!-- Bootstrap 5 + ícones + fontes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/a3index.css" />
+  </head>
+  <body class="bg-robotica">
+    <!-- ==================== CABEÇALHO REBELDE ==================== -->
+    <header class="cabecalho-robotico cabecalho-rebelde">
+      <div class="container">
+        <div class="row align-items-center justify-content-between g-2">
+          <div class="col-auto">
+            <img
+              src="imagens/logo_rb.png"
+              alt="Logo Rodrigo Barbosa"
+              class="logo-rb"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+            />
+          </div>
+          <div class="col text-center">
+            <h1 class="titulo-principal glitch-text">
+              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 3º ANO
+              <span class="parafuso-esquerda">⬤</span>
+            </h1>
+            <div class="subtitulo-chiclete">
+              ⚡ ANO LETIVO COMPLETO: LOOP, VARIÁVEL, DEPURAÇÃO E PROJETO
+              AUTORAL ⚡<br />
+              <span class="selo-sucata mt-2 d-inline-block"
+                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
+              >
+            </div>
+          </div>
+          <div class="col-auto">
+            <img
+              src="imagens/logo_gn.png"
+              alt="Logo Gisele Nunes"
+              class="logo-gn"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== MENU GLASSMORPHISM ==================== -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="#">
+          <i class="bi bi-robot"></i> 3º Ano
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboBim"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboBim">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="bi bi-house-door-fill"></i> Principal</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="a3index.html"
+                ><i class="bi bi-1-circle-fill"></i> 3º ano</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim1.html"
+                ><i class="bi bi-1-circle-fill"></i> 1º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim2.html"
+                ><i class="bi bi-2-circle-fill"></i> 2º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim3.html"
+                ><i class="bi bi-3-circle-fill"></i> 3º bimestre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3bim4.html"
+                ><i class="bi bi-4-circle-fill"></i> 4º bimestre</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL (ano3_index.docx) ==================== -->
+    <main class="container py-4">
+      <!-- ==================== CONTEÚDO DO ANO3_INDEX.DOCX ==================== -->
+
+      <!-- CARTA DE ABERTURA DO ANO -->
+      <section id="carta-abertura" class="mb-5">
+        <div
+          class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden"
+        >
+          <div class="row align-items-center">
+            <div class="col-md-9">
+              <h2 class="text-gradient mb-3">
+                🤖 PANORAMA DO ANO LETIVO -- 3º ANO
+              </h2>
+              <p class="lead fw-bold">
+                "De loop em loop, de bug em bug, até virarmos Mestres da
+                Programação"
+              </p>
+              <div
+                class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning"
+              >
+                <i class="bi bi-megaphone-fill"></i>
+                <strong>CARTA DE ABERTURA DO ANO</strong><br />
+                (Leia com megafone de brinquedo, uma peruca colorida e a cara de
+                quem acabou de descobrir que robô também erra.)
+              </div>
+              <div class="bg-dark p-3 rounded-3 text-white">
+                <p>
+                  "ATENÇÃO, SERES HUMANOS DE 8 ANOS DE IDADE (e professores que
+                  ainda têm coragem)!
+                </p>
+                <p>
+                  Vocês vão passar 40 semanas mergulhados num caos organizado,
+                  onde:
+                </p>
+                <ul>
+                  <li>
+                    <strong>LOOP</strong> não é macarrão, é repetição até a
+                    diretora aparecer.
+                  </li>
+                  <li>
+                    <strong>VARIÁVEL</strong> não é coisa de outro mundo, é o
+                    bolso mágico do robô (com prendedor e régua, sim).
+                  </li>
+                  <li>
+                    <strong>BUG</strong> não é inseto nojento, é um erro que a
+                    gente caça com lupa e grita 'ACHEI!'.
+                  </li>
+                  <li>
+                    <strong>DEPURAÇÃO</strong> não é palavra difícil, é o
+                    esporte favorito de quem programa de verdade.
+                  </li>
+                </ul>
+                <p>
+                  Se você nunca errou, você nunca aprendeu.<br />
+                  Se nunca gritou 'ACHEI O BUG!', você nunca depurou com
+                  paixão.<br />
+                  Se a diretora não aparecer na porta perguntando 'que escândalo
+                  é esse?', você não está ensinando direito.
+                </p>
+                <p>
+                  Bota óleo na engrenagem, prepara a sucata, afia a língua pros
+                  gritos e vem pro ano mais divertido da sua vida escolar.
+                </p>
+                <p class="text-end">
+                  --- Seu guia no caos programático. 🤖🎪💥
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <i class="bi bi-robot display-1 text-warning flutuar"></i>
+              <i class="bi bi-bug-fill display-1 text-danger flutuar"></i>
+              <div class="card-bug-hunter p-2 mt-3">
+                <small
+                  ><i class="bi bi-binoculars"></i> Caçador de Bugs Nível
+                  3</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPEAMENTO BNCC E RCP-PR -->
+      <section id="mapa-bncc" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO COMPLETO DE HABILIDADES
+            BNCC E RCP-PR -- 3º ANO
+          </h2>
+          <div class="badge-projeto">Relação completa por bimestre</div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered table-hover">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Competências RCP-PR</th>
+                <th>Bimestre</th>
+                <th>Tema Principal</th>
+                <th>Habilidades BNCC (Matemática)</th>
+                <th>Habilidades BNCC (Língua Portuguesa)</th>
+                <th>Habilidades BNCC (Ciências / Complemento)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CG4, CG5</td>
+                <td>1 (Semanas 1–10)</td>
+                <td>Loop: a arte de repetir sem enlouquecer</td>
+                <td>EF03MA10, EF03MA11, EF03MA22</td>
+                <td>EF03LP13, EF03LP18</td>
+                <td>--</td>
+              </tr>
+              <tr>
+                <td>CG4, CG5</td>
+                <td>2 (Semanas 11–20)</td>
+                <td>Variável: o bolso mágico do robô</td>
+                <td>EF03MA10, EF03MA11, EF03MA22</td>
+                <td>EF03LP13, EF03LP18</td>
+                <td>--</td>
+              </tr>
+              <tr>
+                <td>CG4, CG5, CG9</td>
+                <td>3 (Semanas 21–30)</td>
+                <td>Detetives de Bugs -- depuração sistemática</td>
+                <td>EF03MA10, EF03MA11, EF03MA22</td>
+                <td>EF03LP13, EF03LP16, EF03LP18, EF03LP21</td>
+                <td>EF03CI01 + Complemento Computação</td>
+              </tr>
+              <tr>
+                <td>CG4, CG5, CG7, CG8, CG9, CG10</td>
+                <td>4 (Semanas 31–40)</td>
+                <td>Projeto Robô Autoral -- da sucata à feira</td>
+                <td>EF03MA10, EF03MA11, EF03MA22</td>
+                <td>EF03LP13, EF03LP18</td>
+                <td>EF03CI01</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-2 fst-italic text-warning">
+          <i class="bi bi-info-circle"></i> Observação: O Complemento Computação
+          segue as diretrizes do Pensamento Computacional na BNCC (identificação
+          de padrões, decomposição, abstração, algoritmos, depuração).
+        </p>
+      </section>
+
+      <!-- PLANO ANUAL COMPLETO 40 SEMANAS -->
+      <section id="plano-anual" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-calendar-range"></i> 📅 PLANO ANUAL COMPLETO -- 40
+            SEMANAS (SEM RESMO)
+          </h2>
+          <div class="badge-projeto">Cada semana, uma aventura diferente</div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered table-robotica">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Atividade Monstro</th>
+                <th>Sem</th>
+                <th>Bim</th>
+                <th>Título da Aula (Clickbait Pedagógico)</th>
+                <th>Conceito Estrela</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Coreografia humana com `repita X vezes` + desafio da bexiga
+                  tonta
+                </td>
+                <td>1</td>
+                <td>1</td>
+                <td>Loop Infinito: vamos repetir até a diretora aparecer</td>
+                <td>Introdução ao loop</td>
+              </tr>
+              <tr>
+                <td>Labirinto humano com comandos de loop condicional</td>
+                <td>2</td>
+                <td>1</td>
+                <td>Repetição é a mãe da paciência (e da depuração)</td>
+                <td>Padrões e sequências</td>
+              </tr>
+              <tr>
+                <td>Criação coletiva de coreografia com loop e desvio</td>
+                <td>3</td>
+                <td>1</td>
+                <td>Coreografia do Robô: se você erra, nós dançamos juntos</td>
+                <td>Algoritmo de dança</td>
+              </tr>
+              <tr>
+                <td>
+                  Construção de torre de copos seguindo algoritmo coletivo (+
+                  vendados)
+                </td>
+                <td>4</td>
+                <td>1</td>
+                <td>Máquinas Humanas: a fábrica de repetição</td>
+                <td>Cooperação e loop</td>
+              </tr>
+              <tr>
+                <td>Coleta de objetos em tapete quadriculado com navegação</td>
+                <td>5</td>
+                <td>1</td>
+                <td>Robô do Chão: a invasão cartesiana</td>
+                <td>Coordenadas e loop</td>
+              </tr>
+              <tr>
+                <td>
+                  Caça ao erro com algoritmos impressos + Jogo do Cronômetro
+                </td>
+                <td>6</td>
+                <td>1</td>
+                <td>Depuração no Grito: caçada ao Loop Zumbi</td>
+                <td>Erros comuns de loop</td>
+              </tr>
+              <tr>
+                <td>Criação de jogo autoral com casas de comando `repita`</td>
+                <td>7</td>
+                <td>1</td>
+                <td>Mestre dos Magos: Tabuleiro das Repetições</td>
+                <td>Jogo de tabuleiro com loops</td>
+              </tr>
+              <tr>
+                <td>Construção de instrumento de sucata + partitura‑loop</td>
+                <td>8</td>
+                <td>1</td>
+                <td>Cartão Musical: o Ritmo do Loop</td>
+                <td>Ritmo e repetição</td>
+              </tr>
+              <tr>
+                <td>Saída de labirinto usando apenas comandos com `repita`</td>
+                <td>9</td>
+                <td>1</td>
+                <td>Labirinto do Loop Infinito (Desafio Final)</td>
+                <td>Integração de loops</td>
+              </tr>
+              <tr>
+                <td>
+                  Jogo da memória de algoritmos + autoavaliação + certificados
+                </td>
+                <td>10</td>
+                <td>1</td>
+                <td>Loop e Memória: a Revisão do Mestre</td>
+                <td>Revisão gamificada</td>
+              </tr>
+              <tr>
+                <td>"Variável" humana -- cartão perfurado que muda de valor</td>
+                <td>11</td>
+                <td>2</td>
+                <td>O Bolso Mágico: entram números, saem ações</td>
+                <td>Introdução à variável</td>
+              </tr>
+              <tr>
+                <td>Construção de um placar móvel com prendedor e régua</td>
+                <td>12</td>
+                <td>2</td>
+                <td>Prendedor na Régua: a variável que desliza</td>
+                <td>Variável palpável</td>
+              </tr>
+              <tr>
+                <td>Jogo de tabuleiro com `soma = soma + 1` e prendedor</td>
+                <td>13</td>
+                <td>2</td>
+                <td>Corrida das Variáveis: quem chega a 10?</td>
+                <td>Incremento e decremento</td>
+              </tr>
+              <tr>
+                <td>Algoritmo de distribuição de chocolate com `repita até`</td>
+                <td>14</td>
+                <td>2</td>
+                <td>Chocolate infinito? Não, variável limitada</td>
+                <td>Variável de controle</td>
+              </tr>
+              <tr>
+                <td>Dança do robô: cada volta aumenta o prendedor + 1</td>
+                <td>15</td>
+                <td>2</td>
+                <td>Loop com placar: repetindo e contando</td>
+                <td>Loop com variável</td>
+              </tr>
+              <tr>
+                <td>
+                  Caça aos erros: variável que não atualiza, condição errada
+                </td>
+                <td>16</td>
+                <td>2</td>
+                <td>Depuração de variáveis: quando o prendedor não desliza</td>
+                <td>Bugs de variável</td>
+              </tr>
+              <tr>
+                <td>
+                  Construção de um "crachá de pontos" com prendedor e fita
+                  métrica
+                </td>
+                <td>17</td>
+                <td>2</td>
+                <td>Projeto: placar eletrônico de papelão</td>
+                <td>Integração loop + variável</td>
+              </tr>
+              <tr>
+                <td>Competição: quem acerta o valor final mais rápido</td>
+                <td>18</td>
+                <td>2</td>
+                <td>Batalha dos contadores -- desafio de equipes</td>
+                <td>Velocidade de incremento</td>
+              </tr>
+              <tr>
+                <td>Resolução de enigmas: onde a variável errou?</td>
+                <td>19</td>
+                <td>2</td>
+                <td>O Detetive e a Variável Fantasma</td>
+                <td>Identificação de escopo</td>
+              </tr>
+              <tr>
+                <td>
+                  Jogo da memória com variáveis + certificado "Mestre da
+                  Variável"
+                </td>
+                <td>20</td>
+                <td>2</td>
+                <td>Revisão do Bolso Mágico + spoiler dos bugs</td>
+                <td>Fechamento bimestre</td>
+              </tr>
+              <tr>
+                <td>Teatro de fantoches + caça aos bugs individuais</td>
+                <td>21</td>
+                <td>3</td>
+                <td>Bug ou Feature? Depurando com bom humor</td>
+                <td>Diferença entre erro acidental e feature</td>
+              </tr>
+              <tr>
+                <td>Prontuário do detetive + competição "Bug mais rápido"</td>
+                <td>22</td>
+                <td>3</td>
+                <td>O Detetive de Bugs: investigando o Loop Suspeito</td>
+                <td>Tipos de bug: nanico, gigante, zumbi</td>
+              </tr>
+              <tr>
+                <td>Criação coletiva da checklist + aplicação guiada</td>
+                <td>23</td>
+                <td>3</td>
+                <td>Checklist da Depuração: passo a passo do detetive</td>
+                <td>Rotina sistemática</td>
+              </tr>
+              <tr>
+                <td>Robô com defeito (troca direita/esquerda, anda o dobro)</td>
+                <td>24</td>
+                <td>3</td>
+                <td>Jogo do Robô Avariado</td>
+                <td>Depuração em equipe</td>
+              </tr>
+              <tr>
+                <td>Criação de guia ilustrado para programadores iniciantes</td>
+                <td>25</td>
+                <td>3</td>
+                <td>Projeto: Manual do Detetive de Bugs</td>
+                <td>Texto instrucional</td>
+              </tr>
+              <tr>
+                <td>
+                  Caça a bugs em receitas culinárias e manuais de montagem
+                </td>
+                <td>26</td>
+                <td>3</td>
+                <td>Depurando o Mundo Real</td>
+                <td>Transferência para receitas, manuais, mapas</td>
+              </tr>
+              <tr>
+                <td>5 pistas, cada uma com um bug para corrigir</td>
+                <td>27</td>
+                <td>3</td>
+                <td>Caça ao Tesouro dos Bugs</td>
+                <td>Resolução com pistas bugadas</td>
+              </tr>
+              <tr>
+                <td>Correção de algoritmos de anos anteriores com erros</td>
+                <td>28</td>
+                <td>3</td>
+                <td>Robô Arqueólogo</td>
+                <td>Depuração de algoritmos "antigos"</td>
+              </tr>
+              <tr>
+                <td>
+                  Conserto de robôs de papelão com defeitos físicos (roda
+                  quadrada, braço invertido)
+                </td>
+                <td>29</td>
+                <td>3</td>
+                <td>Depuração com Sucata</td>
+                <td>Bugs físicos vs lógicos</td>
+              </tr>
+              <tr>
+                <td>Algoritmo com 3 bugs para encontrar e corrigir</td>
+                <td>30</td>
+                <td>3</td>
+                <td>Desafio Final: Depuração em Duas Rodas</td>
+                <td>Integração total (loop, variável, depuração)</td>
+              </tr>
+              <tr>
+                <td>
+                  Chuva de ideias em papel metro + grito de guerra + esboço
+                  inicial
+                </td>
+                <td>31</td>
+                <td>4</td>
+                <td>Brainstorm: O Que Meu Robô Vai Fazer?</td>
+                <td>Geração de ideias + escopo</td>
+              </tr>
+              <tr>
+                <td>
+                  Papel quadriculado, código em português estruturado, divisão
+                  de tarefas
+                </td>
+                <td>32</td>
+                <td>4</td>
+                <td>Esboço e Algoritmo: A Planta do Robô</td>
+                <td>Desenho técnico + algoritmo estruturado</td>
+              </tr>
+              <tr>
+                <td>
+                  Montagem com caixas, garrafas, tampinhas + música do Daft Punk
+                </td>
+                <td>33</td>
+                <td>4</td>
+                <td>Construção Parte 1: Estrutura do Robô</td>
+                <td>Sucata criativa + habilidades manuais</td>
+              </tr>
+              <tr>
+                <td>
+                  Instalação do placar móvel + loop físico + algoritmo colado no
+                  robô
+                </td>
+                <td>34</td>
+                <td>4</td>
+                <td>Construção Parte 2: Mecanismos de Loop e Variável</td>
+                <td>Mecanismos físicos (prendedor, régua, roldana)</td>
+              </tr>
+              <tr>
+                <td>Fita de código com cartões + testes + documentação</td>
+                <td>35</td>
+                <td>4</td>
+                <td>Programação do Robô (Plugado ou Desplugado)</td>
+                <td>Tradução do algoritmo para cartões/digital</td>
+              </tr>
+              <tr>
+                <td>
+                  Batalha de robôs amigável + checklist de inspeção + prêmios
+                  ridículos
+                </td>
+                <td>36</td>
+                <td>4</td>
+                <td>Testes e Depuração do Projeto</td>
+                <td>Identificação de bugs físicos e lógicos</td>
+              </tr>
+              <tr>
+                <td>
+                  Cartaz, manual do usuário, crachás, ensaio com cronômetro
+                </td>
+                <td>37</td>
+                <td>4</td>
+                <td>Preparação para a Feira de Robótica</td>
+                <td>Comunicação visual e oral</td>
+              </tr>
+              <tr>
+                <td>Apresentação para outra turma + ajustes de última hora</td>
+                <td>38</td>
+                <td>4</td>
+                <td>Feira de Robótica -- Ensaio Geral</td>
+                <td>Feedback com convidados internos</td>
+              </tr>
+              <tr>
+                <td>
+                  Evento aberto com pais, professores, certificados e lenço
+                </td>
+                <td>39</td>
+                <td>4</td>
+                <td>Feira de Robótica -- O Grande Dia</td>
+                <td>Apresentação para a comunidade</td>
+              </tr>
+              <tr>
+                <td>
+                  Roda de memórias, certificados finais, spoiler do 4º ano e
+                  bolo
+                </td>
+                <td>40</td>
+                <td>4</td>
+                <td>Celebração e Reflexão: O Ano do Loop</td>
+                <td>Autoavaliação + fechamento emocional</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CRITÉRIOS DE AVALIAÇÃO + CARTÃO PERFURADO + CERTIFICADOS -->
+      <section id="avaliacao" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4">
+          <h3>📊 CRITÉRIOS DE AVALIAÇÃO -- ANO LETIVO COMPLETO</h3>
+          <p>
+            Avaliação é processo, não tiro. Aqui, cada grito "ACHEI O BUG!",
+            cada prendedor que desliza, cada robô de sucata que anda (mesmo que
+            torto) vale ponto.
+          </p>
+          <p>
+            Use a Rubrica por Bimestre (0–50 pts por bimestre) e converta para o
+            <strong>Cartão Perfurado do Programador</strong> – 1 furo = 1 ponto.
+            No final do ano, 200 pontos possíveis.
+          </p>
+
+          <h4 class="mt-4">
+            🧩 Critérios Específicos por Bimestre (resumo operacional)
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead style="background-color: #b1cf9a">
+                <tr>
+                  <th>Indicadores de Excelência (4-5 pts na semana)</th>
+                  <th>Bimestre</th>
+                  <th>Foco</th>
+                  <th>
+                    Critérios de Pontuação (máximo 5 pts por semana, total 50)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Coreografia sincronizada, loop criativo, ajuda colegas na
+                    depuração
+                  </td>
+                  <td>1 (Loop)</td>
+                  <td>
+                    Execução corporal, criação de algoritmos com `repita`,
+                    identificação de bugs
+                  </td>
+                  <td>
+                    Executa comandos de loop sem errar<br />Cria algoritmo com
+                    loop no desafio<br />Identifica erro do colega gritando
+                    "ACHEI!"
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Variável desliza sem travar, algoritmo com loop+variável
+                    funciona em primeira tentativa
+                  </td>
+                  <td>2 (Variável)</td>
+                  <td>
+                    Uso de variável palpável (prendedor), incremento/decremento,
+                    integração com loop
+                  </td>
+                  <td>
+                    Monta placar móvel (régua + prendedor)<br />Algoritmo
+                    atualiza variável corretamente<br />Depura variável que não
+                    muda
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Cria bug novo, documenta em prontuário, ajuda outros grupos
+                    sem dar resposta
+                  </td>
+                  <td>3 (Depuração)</td>
+                  <td>
+                    Classificação de bugs (nanico/gigante/zumbi), aplicação da
+                    checklist, correção de algoritmos
+                  </td>
+                  <td>
+                    Classifica 3 tipos de bug<br />Usa checklist para encontrar
+                    ≥4 erros<br />Depura robô com defeito físico
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Robô criativo, integração loop+variável, manual claro,
+                    engaja a comunidade
+                  </td>
+                  <td>4 (Projeto Robô Autoral)</td>
+                  <td>
+                    Construção física, mecanismos de loop/variável, programação
+                    com cartões, apresentação na feira
+                  </td>
+                  <td>
+                    Estrutura do robô fica em pé e respeita esboço<br />Mecanismo
+                    (prendedor/disco) funciona<br />Fita de código com ≥5
+                    cartões executa sem erro<br />Apresenta com autonomia para
+                    visitantes
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="mt-4">
+            🎯 Tabela de Conversão -- Cartão Perfurado (acumulado por bimestre)
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead style="background-color: #b1cf9a">
+                <tr>
+                  <th>Conceito</th>
+                  <th>Pontos no Bimestre</th>
+                  <th>Furadas no Cartão (1 furo = 1 ponto)</th>
+                  <th>Adesivo do Bimestre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Insatisfatório</td>
+                  <td>0–24</td>
+                  <td>0–4 furos</td>
+                  <td>❌ Não recebe</td>
+                </tr>
+                <tr>
+                  <td>Satisfatório</td>
+                  <td>25–39</td>
+                  <td>5–7 furos</td>
+                  <td>⭐ Adesivo Prata</td>
+                </tr>
+                <tr>
+                  <td>Excelente</td>
+                  <td>40–50</td>
+                  <td>8–10 furos</td>
+                  <td>🏆 Adesivo Ouro + Certificado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="mt-4">
+            🏅 Certificados de Final de Ano (com base nos 4 bimestres – 200
+            pontos possíveis)
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead style="background-color: #b1cf9a">
+                <tr>
+                  <th>O que o aluno recebe</th>
+                  <th>Pontuação Total</th>
+                  <th>Título do Certificado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Certificado dourado + lupa de brinquedo oficial + selo "Robô
+                    Autoral"
+                  </td>
+                  <td>160–200</td>
+                  <td>MESTRE PROGRAMADOR NÍVEL MÁXIMO</td>
+                </tr>
+                <tr>
+                  <td>Certificado prata + adesivo especial de detetive</td>
+                  <td>120–159</td>
+                  <td>MESTRE PROGRAMADOR NÍVEL AVANÇADO</td>
+                </tr>
+                <tr>
+                  <td>Certificado azul + adesivo "Loop Aprendiz"</td>
+                  <td>80–119</td>
+                  <td>MESTRE PROGRAMADOR NÍVEL BÁSICO</td>
+                </tr>
+                <tr>
+                  <td>
+                    Certificado colorido com incentivo para continuar
+                    programando
+                  </td>
+                  <td>0–79</td>
+                  <td>APRENDIZ DE ROBÔ (continua evoluindo!)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Todos os alunos recebem certificado de participação e um abraço
+            barulhento. Porque programar é poder, e poder a gente divide.
+          </p>
+        </div>
+      </section>
+
+      <!-- TEXTO DE ENCERRAMENTO IRREVERENTE -->
+      <section id="encerramento" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4 text-center">
+          <h3>
+            🎤 TEXTO DE ENCERRAMENTO -- EXTREMAMENTE IRÔNICO E IRREVERENTE
+          </h3>
+          <p>
+            (Leia com uma lupa no olho, um prendedor preso na orelha e a voz de
+            quem acabou de sobreviver a 40 semanas de gritos, cola quente e
+            robôs que não andavam reto.)
+          </p>
+          <div class="bg-dark p-3 rounded-3 text-white text-start">
+            <p>"É isso, parceiro(a).</p>
+            <p>
+              Você chegou ao final do ano mais louco da sua vida docente (ou da
+              vida dos seus alunos, não vamos julgar).
+            </p>
+            <p>Seu aluno:</p>
+            <ul>
+              <li>
+                Já gritou 'ACHEI O BUG!' mais vezes que o número de vezes que
+                você pediu silêncio.
+              </li>
+              <li>
+                Construiu um robô com caixa de pizza, tampinha de garrafa e um
+                prendedor de roupa que desliza na régua (e funcionou, pasme).
+              </li>
+              <li>
+                Comeu chocolate enquanto aprendia variável (e não deixou cair no
+                chão, vitória!).
+              </li>
+              <li>
+                Depurou receita de bolo que dizia 'leve ao forno a -10°C' e não
+                botou fogo na cozinha.
+              </li>
+              <li>
+                Apresentou o próprio robô pra diretora, pros pais e pro porteiro
+                – e todo mundo aplaudiu de pé.
+              </li>
+            </ul>
+            <p>
+              Se a diretora não apareceu na porta nenhuma vez perguntando 'que
+              escândalo é esse?', você não fez barulho o suficiente.<br />
+              Se nenhum aluno tentou programar a própria lição de casa com
+              `repita`, você não plantou a semente da preguiça criativa.<br />
+              Se você não chorou na feira de robótica (nem que foi um
+              pouquinho), você é de pedra.
+            </p>
+            <p>
+              Mas não se preocupe.<br />
+              No ano que vem tem MAIS: sensores, loop aninhado, e robô que
+              desvia de obstáculo.<br />
+              E você vai estar lá, de lupa na mão, pronto pra repetir tudo de
+              novo.
+            </p>
+            <p>
+              Porque programar é assim: um loop infinito de aprendizado, gritos
+              e glória.
+            </p>
+            <p>
+              Até o próximo ano, Mestre Programador(a).<br />
+              Que a régua esteja sempre alinhada e o prendedor nunca trave.<br />
+              Bons bugs pra você. 🐛🔍🚀
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TABELÕES RESUMIDOS POR BIMESTRE + DICAS DE MATERIAIS -->
+      <section id="tabeloes-bimestres" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            📦 TABELÕES RESUMIDOS POR BIMESTRE + DICAS DE MATERIAIS & FRASES DE
+            EFEITO
+          </h2>
+          <div class="badge-projeto">Para consulta rápida</div>
+        </div>
+
+        <!-- Bimestre 1 -->
+        <h3 class="text-warning mt-4">
+          🧩 BIMESTRE 1 – LOOP: A ARTE DE REPETIR SEM ENLOUQUECER
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Frase de Efeito para o Professor</th>
+                <th>Semanas</th>
+                <th>Título Resumido</th>
+                <th>Materiais (o essencial)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  "Se o robô não se mexer, você não está programando direito.
+                  Bota eles pra pular!"
+                </td>
+                <td>1–3</td>
+                <td>Loop corporal e coreografia</td>
+                <td>
+                  Apito, bexigas, tiras de ação, caixa de som (batida
+                  repetitiva)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Labirinto sem loop é só um corredor. Com loop, vira festa da
+                  repetição!"
+                </td>
+                <td>4–5</td>
+                <td>Labirinto humano e torre de copos</td>
+                <td>Giz, vendas, copos plásticos, algoritmos impressos</td>
+              </tr>
+              <tr>
+                <td>
+                  "Erro não é vergonha, é PISTA. Quem nunca errou, nunca
+                  aprendeu a gritar ACHEI!"
+                </td>
+                <td>6–7</td>
+                <td>Depuração e jogo de tabuleiro</td>
+                <td>
+                  Lupas de brinquedo, cartões de `repita`, dados, cartolina
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Loop musical é repetição com groove. Até a diretora vai
+                  dançar (ou pedir pra baixar o som)."
+                </td>
+                <td>8–9</td>
+                <td>Música e labirinto final</td>
+                <td>
+                  Sucata sonora (garrafas, latas), giz colorido, cronômetro
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Repetir não é chato quando você SABE o que está fazendo.
+                  Agora repita comigo: EU SOU MESTRE DO LOOP!"
+                </td>
+                <td>10</td>
+                <td>Revisão + certificados</td>
+                <td>
+                  Jogo da memória (algoritmo/ação), adesivos, autoavaliação
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bimestre 2 -->
+        <h3 class="text-warning mt-4">
+          🧩 BIMESTRE 2 – VARIÁVEL: O BOLSO MÁGICO DO ROBÔ
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Frase de Efeito para o Professor</th>
+                <th>Semanas</th>
+                <th>Título Resumido</th>
+                <th>Materiais (o essencial)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  "Variável é um bolso que guarda números. Se o prendedor não
+                  deslizar, a conta não fecha."
+                </td>
+                <td>11–12</td>
+                <td>Introdução com prendedor e régua</td>
+                <td>
+                  Régua de 30 cm, prendedor de madeira, papel quadriculado
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Cada volta no loop = um chocolate a mais. Isso sim é
+                  motivação de verdade."
+                </td>
+                <td>13–14</td>
+                <td>Corrida das variáveis e chocolate</td>
+                <td>
+                  Cartões de incremento, chocolate (ou moedas de mentira),
+                  cronômetro
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Variável que não muda é prisão. Variável que muda é poder.
+                  Desliza, prendedor!"
+                </td>
+                <td>15–16</td>
+                <td>Loop com placar e depuração</td>
+                <td>
+                  Placar móvel (régua + prendedor fixado no robô de papelão)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Quem chegar a 10 primeiro grita 'PLACAR!' – e ganha um
+                  chocolate (ou só a glória eterna)."
+                </td>
+                <td>17–18</td>
+                <td>Projeto crachá de pontos e batalha</td>
+                <td>
+                  Crachás de papelão, fita métrica, cartões com `soma = soma +
+                  1`
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "A variável fantasma é aquela que esquecemos de incrementar.
+                  Não deixe ela assombrar seu robô."
+                </td>
+                <td>19–20</td>
+                <td>Detetive e revisão</td>
+                <td>
+                  Envelopes com algoritmos bugados (variável errada, condição
+                  trocada)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bimestre 3 -->
+        <h3 class="text-warning mt-4">
+          🧩 BIMESTRE 3 – DETETIVES DE BUGS (DEPURAÇÃO SISTEMÁTICA)
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Frase de Efeito para o Professor</th>
+                <th>Semanas</th>
+                <th>Título Resumido</th>
+                <th>Materiais (o essencial)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  "Bug não é inseto nojento. É erro no código. E a gente CAÇA
+                  erros com gosto!"
+                </td>
+                <td>21–22</td>
+                <td>Bug ou feature? + os 3 monstros</td>
+                <td>
+                  Lupas, fantoche "Detetive Bugs", cartazes
+                  (nanico/gigante/zumbi)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Sem checklist, você é um detetive amador. Com checklist, você
+                  é SHERLOCK HOLMES DA PROGRAMAÇÃO."
+                </td>
+                <td>23</td>
+                <td>Checklist da depuração</td>
+                <td>
+                  Cartaz com 5 passos (variáveis, loop, infinito, ordem,
+                  sintaxe)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "O robô anda pra trás? Vira esquerda quando você manda
+                  direita? ADAPTAÇÃO é a chave."
+                </td>
+                <td>24</td>
+                <td>Robô avariado (troca direita/esquerda)</td>
+                <td>Vendas, obstáculos (cadeiras), cartões de comando</td>
+              </tr>
+              <tr>
+                <td>
+                  "Erro não é só no código. Tem receita que manda levar ao forno
+                  a -10°C. ISSO É BUG CULINÁRIO."
+                </td>
+                <td>25–26</td>
+                <td>Manual do detetive + mundo real</td>
+                <td>
+                  Receitas com erro (bolo congelado), manuais de montagem
+                  trocados
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Caça ao tesouro sem bug é fácil. Com bug, vira aventura e
+                  chocolate no final."
+                </td>
+                <td>27–28</td>
+                <td>Caça ao tesouro e robô arqueólogo</td>
+                <td>
+                  Pistas com bugs, algoritmos antigos (com erros clássicos)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Consertar roda quadrada é arte. Encontrar 3 bugs em 15
+                  minutos é SUPERPODER."
+                </td>
+                <td>29–30</td>
+                <td>Sucata e desafio final</td>
+                <td>Robôs de papelão com defeitos, algoritmo com 3 bugs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bimestre 4 -->
+        <h3 class="text-warning mt-4">
+          🧩 BIMESTRE 4 – PROJETO ROBÔ AUTORAL (DA SUCATA À FEIRA)
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Frase de Efeito para o Professor</th>
+                <th>Semanas</th>
+                <th>Título Resumido</th>
+                <th>Materiais (o essencial)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  "Robô que lambe o chão? CLARO que pode. A criatividade é o
+                  único limite (e a cola quente)."
+                </td>
+                <td>31–32</td>
+                <td>Brainstorm + esboço e algoritmo</td>
+                <td>Papel metro, canetões, post-its, papel quadriculado</td>
+              </tr>
+              <tr>
+                <td>
+                  "Sucata + loop + prendedor = coração do robô. Se não deslizar,
+                  não funciona. LUBRIFICA COM PAPEL."
+                </td>
+                <td>33–34</td>
+                <td>Construção estrutura e mecanismos</td>
+                <td>
+                  Caixas, garrafas, tampinhas, régua, prendedor, cola quente (só
+                  professor)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Fita de código é a alma do robô. Se o robô não anda, a fita
+                  tá mentindo. REVISE."
+                </td>
+                <td>35</td>
+                <td>Programação (fita de código)</td>
+                <td>
+                  Cartões de setas, `repita`, variável, fita adesiva, papelão
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Stress test é o melhor amigo do programador. Se o robô
+                  quebrar, conserta GRITANDO."
+                </td>
+                <td>36</td>
+                <td>Testes e depuração (batalha)</td>
+                <td>
+                  Checklist de inspeção, pista de testes (fita crepe no chão)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Cartaz bonito e manual claro = pai entende. Pai entendendo =
+                  aplauso garantido."
+                </td>
+                <td>37–38</td>
+                <td>Preparação + ensaio geral</td>
+                <td>
+                  Cartaz, manual, crachás, microfone de brinquedo, turma
+                  convidada
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Hoje o robô anda torto mas é SEU. Mostre com orgulho. E não
+                  chore na frente (ou chore – ninguém vai julgar)."
+                </td>
+                <td>39–40</td>
+                <td>Feira + celebração</td>
+                <td>
+                  Certificados, câmera, lenços (pra você e pros pais), bolo
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-info mt-4">
+          <i class="bi bi-tools"></i>
+          <strong>🛠️ DICAS DE MATERIAIS – KIT MÍNIMO PARA O ANO TODO</strong
+          ><br />
+          - Loops e corpo: apito, bexigas, tiras de ação, giz colorido, fita
+          crepe.<br />
+          - Variáveis: régua de 30 cm, prendedor de madeira (1 por grupo), papel
+          quadriculado.<br />
+          - Depuração: lupa de brinquedo (ou papelão com celofane), fantoche de
+          meia, cartões coloridos.<br />
+          - Projeto Robô: caixas de sapato/leite/pizza, garrafas PET, tampinhas,
+          tesoura sem ponta, cola quente (uso exclusivo professor), tinta
+          guache.<br />
+          - Sempre: cronômetro (ou ampulheta), adesivos de "Caçador de Bugs" e
+          "Loop Aprendiz", caixa de som para playlists.
+        </div>
+      </section>
+
+      <!-- GLOSSÁRIO ANUAL ILUSTRADO -->
+      <section id="glossario" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-book-half"></i> 📚 GLOSSÁRIO ANUAL ILUSTRADO – 3º
+            ANO
+          </h2>
+          <div class="badge-projeto">
+            Para afixar na parede ou distribuir na feira
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead style="background-color: #b1cf9a">
+              <tr>
+                <th>Termo</th>
+                <th>Definição pra criança (e pra família)</th>
+                <th>Ícone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Loop</td>
+                <td>
+                  Repetir ações várias vezes, igual uma dança que não acaba (mas
+                  acaba, sim, depois de X repetições).
+                </td>
+                <td>🔁</td>
+              </tr>
+              <tr>
+                <td>Variável</td>
+                <td>
+                  Um bolso mágico que guarda números que podem mudar (ex:
+                  pontos, entregas, energia).
+                </td>
+                <td>🧮</td>
+              </tr>
+              <tr>
+                <td>Bug</td>
+                <td>
+                  Erro no algoritmo ou no robô. Não é inseto, mas a gente caça
+                  igual.
+                </td>
+                <td>🐛</td>
+              </tr>
+              <tr>
+                <td>Depuração</td>
+                <td>
+                  Caçar e corrigir bugs. É o esporte favorito de quem programa.
+                </td>
+                <td>🔍</td>
+              </tr>
+              <tr>
+                <td>Algoritmo</td>
+                <td>
+                  Lista de instruções em ordem. Tipo uma receita de bolo, mas
+                  pro robô.
+                </td>
+                <td>📜</td>
+              </tr>
+              <tr>
+                <td>Robô Autoral</td>
+                <td>
+                  Robô criado por você, com sua cara, sua sucata e seu código.
+                </td>
+                <td>🤖</td>
+              </tr>
+              <tr>
+                <td>Sucata Criativa</td>
+                <td>
+                  Caixas, garrafas, tampinhas que viram robô. Lixo que vira
+                  arte.
+                </td>
+                <td>📦</td>
+              </tr>
+              <tr>
+                <td>Feira de Robótica</td>
+                <td>
+                  O grande dia em que você mostra seu robô pra todo mundo (e
+                  arranca palmas).
+                </td>
+                <td>🎪</td>
+              </tr>
+              <tr>
+                <td>Loop infinito</td>
+                <td>
+                  Quando o robô repete sem parar porque você esqueceu a condição
+                  de parada. Isso é BUG!
+                </td>
+                <td>🔁∞</td>
+              </tr>
+              <tr>
+                <td>Loop Zumbi</td>
+                <td>
+                  Loop infinito que nunca termina. Faz o robô travar (e você
+                  gritar "ACHEI!").
+                </td>
+                <td>🧟‍♂️</td>
+              </tr>
+              <tr>
+                <td>Loop Nanico</td>
+                <td>
+                  Loop que repete menos vezes do que devia (ex: `repita 3` pra
+                  desenhar quadrado).
+                </td>
+                <td>🤏</td>
+              </tr>
+              <tr>
+                <td>Loop Gigante</td>
+                <td>
+                  Loop que repete muito mais vezes do que o necessário (ex:
+                  pentear o cabelo 100x).
+                </td>
+                <td>🦍</td>
+              </tr>
+              <tr>
+                <td>Prendedor na Régua</td>
+                <td>
+                  A variável palpável. Desliza pra somar, contar, mostrar a
+                  pontuação.
+                </td>
+                <td>🩹</td>
+              </tr>
+              <tr>
+                <td>Checklist de Depuração</td>
+                <td>5 passos do detetive pra não deixar nenhum bug escapar.</td>
+                <td>📋</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- JOGO DO ANO: B.U.G.S. -->
+      <section id="jogo-bugs" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4">
+          <h2>
+            <i class="bi bi-dice-6-fill"></i> 🎲 JOGO DO ANO – "B.U.G.S. –
+            BATALHA ULTRA GERAL DE SUPRESSÃO"
+          </h2>
+          <p>
+            "O jogo de tabuleiro cooperativo onde você vira um programador que
+            precisa consertar robôs antes que a feira comece – e sem cola quente
+            (só cartas)."
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                <li><strong>Idade:</strong> 7–9 anos (3º ano)</li>
+                <li>
+                  <strong>Número de jogadores:</strong> 2 a 5 grupos de 3–4
+                  alunos (joga a turma toda ou em rodízio)
+                </li>
+                <li><strong>Duração:</strong> 20–30 minutos por partida</li>
+                <li>
+                  <strong>Objetivo:</strong> O time inteiro deve corrigir 10
+                  bugs (cartas) antes que o cronômetro (ou contador de
+                  tentativas) chegue a zero.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-warning">
+                <i class="bi bi-printer"></i>
+                <strong
+                  >Componentes (imprimir e cortar – use as cores da
+                  paleta):</strong
+                ><br />
+                - Tabuleiro gigante (4 folhas A4 coladas) – caminho com 10
+                casas.<br />
+                - Baralho de BUGS (20 cartas – Loop, Variável, Ordem,
+                Sintaxe)<br />
+                - Baralho de SOLUÇÕES (20 cartas correspondentes)<br />
+                - Prendedor gigante (marcador de "bugômetro")<br />
+                - Dado de ações (opcional)<br />
+                - Cronômetro (3 minutos por rodada)
+              </div>
+            </div>
+          </div>
+          <h4 class="mt-3">🧠 REGRAS RESUMIDAS (para o professor)</h4>
+          <ol>
+            <li>
+              <strong>Setup:</strong> Embaralhe os BUGS e coloque 10 cartas
+              viradas para baixo nas casas. Baralho de SOLUÇÕES ao lado.
+              Prendedor no início.
+            </li>
+            <li>
+              <strong>Como jogar (cooperativo):</strong> Cada rodada, um grupo
+              vira a primeira carta de BUG não resolvida. Têm 3 minutos para
+              encontrar a SOLUÇÃO correspondente. Se acharem, gritam "ACHEI O
+              BUG!", avançam o prendedor 1 casa.
+            </li>
+            <li>
+              <strong>Regras especiais:</strong> Dica coletiva (1 vez por
+              partida), Coringa "Cola Quente" (resolver em menos de 1 minuto
+              avança 2 casas), Super bug (após 3 tentativas, professor revela a
+              solução).
+            </li>
+            <li>
+              <strong>Fim de jogo:</strong> Quando o prendedor chegar à casa 10,
+              a turma vence e ganha o título "Mestres da Depuração – B.U.G.S.
+              Champions".
+            </li>
+          </ol>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h5>🃏 EXEMPLOS DE CARTAS (para imprimir)</h5>
+              <p>
+                <strong>BUG 01 – LOOP NANICO:</strong> "repita 3 vezes: ande 2,
+                vire 90°" (Queria desenhar um quadrado)<br />
+                <strong>SOLUÇÃO 01:</strong> Troque `repita 3 vezes` por `repita
+                4 vezes`.
+              </p>
+              <p>
+                <strong>BUG 02 – VARIÁVEL TRAVADA:</strong> "entregas = entregas
+                - 1" (deveria ser +1) → placar nunca aumenta.<br />
+                <strong>SOLUÇÃO 02:</strong> Mude o sinal: `entregas = entregas
+                + 1`.
+              </p>
+              <p>
+                <strong>BUG 03 – LOOP ZUMBI (INFINITO):</strong> "repita até x =
+                10: x = x - 1" (x começa em 0)<br />
+                <strong>SOLUÇÃO 03:</strong> Inverta a operação: `x = x + 1` ou
+                mude a condição.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h5>🏆 PRÊMIOS SIMBÓLICOS</h5>
+              <ul>
+                <li>
+                  Adesivo "Caçador de Bugs Relâmpago" – resolver 3 bugs
+                  consecutivos
+                </li>
+                <li>
+                  Grito coletivo "APRENDIZ DO BUG!" + doce – solução em menos de
+                  30s
+                </li>
+                <li>
+                  Certificado "Mestres da Depuração – B.U.G.S." – vencer com
+                  tempo recorde
+                </li>
+              </ul>
+              <h5>🎲 VERSÃO PARA ALTAS HABILIDADES</h5>
+              <p>
+                Bugs duplos (dois erros na mesma carta). Modo Arqueólogo:
+                escrever correção à mão antes de pegar a solução.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICADO DE CONCLUSÃO + CADASTRO (módulo interativo) -->
+      <section id="certificacao" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4 shadow-lg">
+          <div class="text-center mb-4">
+            <h3>
+              <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+              CONCLUSÃO - 3º ANO
+            </h3>
+            <p class="lead">"MESTRE DO LOOP, VARIÁVEL E DEPURAÇÃO"</p>
+          </div>
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+              <div class="certificado-preview p-3 text-center">
+                <div class="certificado-modelo p-4" id="previewCertificado">
+                  <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                  <p>Certificamos que</p>
+                  <strong id="previewNomeAluno" class="nome-aluno-destaque"
+                    >[NOME DO ALUNO]</strong
+                  >
+                  <p>
+                    concluiu com êxito o
+                    <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                    🔁 <strong>LOOP</strong> (repetição inteligente)<br />
+                    📦 <strong>VARIÁVEL</strong> (o bolso mágico do robô)<br />
+                    🐛 <strong>DEPURAÇÃO</strong> (caça aos bugs)<br />
+                    🤖 <strong>PROJETO AUTORAL</strong> (Robô de Sucata)
+                  </p>
+                  <hr class="linha-certificado" />
+                  <p class="data-rodape">
+                    RobôMestres do Paraná • <span id="previewData">2026</span>
+                  </p>
+                  <p class="assinatura-engracada">
+                    "Loop não é macarrão! Variável não é coisa de velho! Depurar
+                    não é xingamento!"
+                  </p>
+                  <div class="mt-2">
+                    <span class="badge bg-warning text-dark"
+                      >🔧 Ass: Robô Zé 3.0</span
+                    >
+                  </div>
+                </div>
+                <p class="text-muted mt-2 small">
+                  <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+                <h4>
+                  <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+                </h4>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <label class="form-label text-warning"
+                      >Nome do Aluno(a)</label
+                    ><input
+                      type="text"
+                      id="nomeAluno"
+                      class="form-control"
+                      placeholder="Digite o nome do pequeno programador"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <button
+                      id="btnAdicionar"
+                      class="btn btn-warning w-100 fw-bold"
+                    >
+                      🤖 Adicionar
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <h5>
+                    📋 Lista de Programadores
+                    <span id="contadorAlunos" class="badge bg-warning text-dark"
+                      >0</span
+                    >
+                  </h5>
+                  <ul
+                    id="listaAlunos"
+                    class="lista-alunos list-unstyled"
+                    style="max-height: 220px; overflow-y: auto"
+                  ></ul>
+                </div>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <button
+                    id="btnImprimirCertificados"
+                    class="btn btn-robotico-ano2"
+                    disabled
+                  >
+                    <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                  </button>
+                  <button
+                    id="btnPreviewAluno"
+                    class="btn btn-outline-warning"
+                    disabled
+                  >
+                    <i class="bi bi-eye"></i> Pré-visualizar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-info mt-4 mb-0 small" role="alert">
+            <i class="bi bi-info-circle-fill"></i>
+            <strong>Dica de impressão:</strong> Os certificados serão gerados em
+            uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+            por folha). As cores serão preservadas na impressão. Utilize papel
+            sulfite A4 e configure para "Colorido" e "Margens padrão".
+          </div>
+        </div>
+      </section>
+
+      <!-- FRASES DE EFEITO (para colar na parede) -->
+      <section id="frases-efeito" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4">
+          <h3>
+            <i class="bi bi-chat-quote-fill"></i> 💬 FRASES DE EFEITO – PARA
+            COLAR NA PAREDE DA SALA
+          </h3>
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                <li>
+                  "Hoje vamos repetir até a diretora aparecer (e ela vai
+                  aparecer)."
+                </li>
+                <li>
+                  "Erro não é vergonha – é PISTA. Grite 'ACHEI!' e conserte com
+                  orgulho."
+                </li>
+                <li>
+                  "Sucata + cola quente + loop = ROBÔ QUE VAI PARAR NO MURAL DE
+                  RECONHECIMENTO."
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li>
+                  "Mostre o prendedor, grite o loop e faça sua avó aplaudir de
+                  pé."
+                </li>
+                <li>
+                  "Ajudar o colega não é colar – é DEPURAR EM EQUIPE. Só não faz
+                  por ele."
+                </li>
+                <li>
+                  "Programar é poder. E poder a gente divide com sucata,
+                  prendedor e muito brilho nos olhos."
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCLUSÃO DO ANO – TEXTO FINAL PARA O PROFESSOR -->
+      <section id="conclusao-professor" class="mb-5">
+        <div class="bg-robocard p-4 rounded-4 text-center">
+          <h3>🎬 CONCLUSÃO DO ANO – TEXTO FINAL PARA O PROFESSOR</h3>
+          <p>(Leia com um prendedor na lapela e uma lupa no bolso.)</p>
+          <div class="bg-dark p-3 rounded-3 text-white">
+            "Você sobreviveu.<br />
+            Seus alunos sobreviveram.<br />
+            Os robôs andaram (mesmo que tortos).<br />
+            Os prendedores deslizaram (mesmo com atrito).<br />
+            Os bugs foram caçados (e muitos, exterminados).<br />
+            Agora, respire fundo, guarde os certificados, tire a última foto da
+            turma com os robôs e vá comer um chocolate – você merece.<br />
+            No ano que vem, tem mais: sensores, loop aninhado e robô que desvia
+            de obstáculo.<br />
+            Mas isso é spoiler para o 4º ano.<br />
+            Até lá, continue repetindo:<br />
+            Loop, variável, depuração – programar é poder e diversão! 🐛🔁🤖"
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== RODAPÉ REBELDE ==================== -->
+    <footer class="footer-robotico footer-rebelde">
+      <div class="container">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img
+                src="imagens/logo_rb.png"
+                alt="Rodrigo Barbosa"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end">
+              <img
+                src="imagens/logo_gn.png"
+                alt="Gisele Nunes"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-start mb-4">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="text-center text-md-start">
+              <div class="dev-nome">
+                💀 Desenvolvido na base do ódio, litros de café e condicionais
+                malucas por Rodrigo Barbosa.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
+                  >barbosa.rodrigo.1979@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center text-md-end">
+              <div class="dev-nome">
+                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+                SENÃO e uma dedicação que só aparece quando o prazo já passou
+                por Gisele Nunes.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relatorio-bugs"></div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/a3index.js"></script>
+  </body>
+</html>

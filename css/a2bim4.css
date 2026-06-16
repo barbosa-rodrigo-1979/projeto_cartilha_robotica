@@ -1,812 +1,114 @@
-/* ==================================================
-   a2bim4.css – ESTILOS COMPLETOS PARA 2º ANO - 4º BIMESTRE
-   União fiel de todos os modelos CSS anexados.
-   ================================================== */
+/* ============================================================
+   a2bim4.css – ESTILOS COMPLETOS
+   2º ANO - 4º BIMESTRE | CIDADE DOS CONDICIONAIS
+   ============================================================ */
 
-/* ---------- VARIÁVEIS GLOBAIS ---------- */
-:root {
-  --robot-green: #4a7c3f;
-  --robot-dark: #1e2a1a;
-  --robot-bg: #0d1f0b;
-  --robot-card: #2c3e2b;
-  --robot-gold: #ffb347;
-  --robot-glow: #ffcc44;
-  --robot-danger: #e74c3c;
-  --robot-text: #e9f5db;
-  --robot-text-claro: #ebf0eb;
-}
+/* ---------- IMPORTS E RESET ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap");
 
-/* ---------- RESET E BASE ---------- */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
+/* ---------- VARIÁVEIS ---------- */
+:root {
+  --robot-green: #2ecc71;
+  --robot-gold: #ffb347;
+  --robot-glow: #ffb347;
+  --robot-dark: #0d1a0a;
+  --robot-card: #1a2a18;
+  --robot-border: #4a7c3f;
+  --robot-text: #ebf0eb;
+  --robot-muted: #9bbc7b;
+  --robot-danger: #e74c3c;
+  --robot-purple: #8e44ad;
+}
+
+/* ---------- BODY ---------- */
 body.bg-robotica {
-  background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
-  font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(145deg, #0a1208, #142010);
+  font-family: "Inter", sans-serif;
   color: var(--robot-text);
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-/* ---------- CABEÇALHO ROBÓTICO (modelo_cabecalho) ---------- */
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
 .cabecalho-robotico {
-  background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
-  padding: 1rem 0;
-  border-bottom: 5px solid #9bbc7b;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #0d1a0a 0%, #1a2a18 50%, #0d1a0a 100%);
+  border-bottom: 4px solid var(--robot-gold);
+  padding: 18px 0 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   position: relative;
   overflow: hidden;
 }
 
-.cabecalho-rebelde {
-  border-bottom-color: #ffb347;
-}
-.cabecalho-rebelde::before {
-  content: "⚠️ BUG ZONE ⚠️";
+.cabecalho-robotico::before {
+  content: "";
   position: absolute;
-  bottom: 5px;
-  right: 10px;
-  font-size: 0.6rem;
-  opacity: 0.3;
-  font-family: monospace;
-  white-space: nowrap;
-  pointer-events: none;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(255, 179, 71, 0.05),
+    transparent 70%
+  );
+  animation: cabecalhoBrilho 10s ease-in-out infinite;
+}
+
+@keyframes cabecalhoBrilho {
+  0%,
+  100% {
+    transform: translateX(-10%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(10%) rotate(5deg);
+  }
 }
 
 .logo-rb,
 .logo-gn {
-  max-height: 70px;
+  height: 60px;
   width: auto;
-  filter: drop-shadow(2px 2px 6px black);
-  transition: transform 0.2s ease;
-  border-radius: 12px;
+  filter: drop-shadow(0 2px 12px rgba(255, 179, 71, 0.2));
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
+
 .logo-rb:hover,
 .logo-gn:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate(-2deg);
 }
 
 .titulo-principal {
   font-family: "Press Start 2P", cursive;
-  font-size: 1.95rem;
-  letter-spacing: 2px;
-  color: #e9f5db;
-  background: linear-gradient(135deg, #1a2b17 0%, #2c3e2b 100%);
-  display: inline-block;
-  padding: 0.6rem 1.8rem;
-  border-radius: 60px;
-  position: relative;
-  text-transform: uppercase;
-  border: 2px solid #ffb347;
-  box-shadow:
-    0 0 0 2px #1a2b17,
-    0 0 0 4px #ffb347,
-    0 4px 15px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
-  text-shadow: 2px 2px 0 #3d5a2b;
-  backdrop-filter: blur(2px);
-  white-space: nowrap;
-}
-.titulo-principal::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 20%;
-  width: 60%;
-  height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
-  border-radius: 20px;
-  filter: blur(1px);
-  pointer-events: none;
-}
-.titulo-principal::after {
-  content: "⬤";
-  position: absolute;
-  bottom: -6px;
-  right: -6px;
-  font-size: 0.7rem;
-  color: #ffb347;
-  text-shadow: 0 0 3px #000;
-  pointer-events: none;
-}
-.titulo-principal .parafuso-esquerda {
-  position: absolute;
-  bottom: -6px;
-  left: -6px;
-  font-size: 0.7rem;
-  color: #ffb347;
-  text-shadow: 0 0 3px #000;
-  pointer-events: none;
-}
-.titulo-principal:hover {
-  transform: translateY(-2px);
-  border-color: #ffcc44;
-  box-shadow:
-    0 0 0 2px #1a2b17,
-    0 0 0 4px #ffcc44,
-    0 6px 20px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
-}
-.glitch-text {
-  font-family: "Press Start 2P", monospace;
-  letter-spacing: 1px;
-}
-
-.subtitulo-chiclete {
-  font-family: "Chakra Petch", monospace;
-  font-size: 0.85rem;
-  color: #ffcc88;
-  margin-top: 0.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 0 #1a2b17;
-}
-.selo-sucata {
-  background: #1e1e1e;
-  color: #ffcc44;
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.7rem;
-  font-family: monospace;
-  border-left: 3px solid #ff9900;
-  letter-spacing: 1px;
-}
-
-/* ---------- MENU GLASSMORPHISM (modelo_menu_bim) ---------- */
-.menu-robomestre {
-  background: rgba(13, 31, 11, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--robot-gold);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-}
-
-.menu-robomestre .nav-link {
-  color: var(--robot-text);
-  font-family: "Chakra Petch", monospace;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 40px;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.menu-robomestre .nav-link i {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--robot-gold);
-  transition: transform 0.2s;
-}
-.menu-robomestre .nav-link:hover {
-  color: var(--robot-gold);
-  text-shadow: 0 0 4px var(--robot-gold);
-  background: rgba(255, 180, 71, 0.15);
-  transform: translateY(-2px);
-}
-.menu-robomestre .nav-link:hover i {
-  transform: scale(1.1);
-  color: var(--robot-glow);
-}
-.menu-robomestre .nav-link.active {
-  color: var(--robot-glow);
-  background: rgba(255, 180, 71, 0.25);
-  text-shadow: 0 0 6px var(--robot-gold);
-  border-bottom: 2px solid var(--robot-gold);
-}
-.menu-robomestre .navbar-toggler {
-  border-color: var(--robot-gold);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.menu-robomestre .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-.menu-robomestre .navbar-brand {
-  color: var(--robot-gold);
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.9rem;
-}
-
-/* ---------- CARDS GLOBAIS ---------- */
-.bg-robocard {
-  background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
-  border: 1px solid var(--robot-gold);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-}
-.text-gradient {
-  background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.alert-warning {
-  background-color: rgba(255, 180, 71, 0.2) !important;
-  border-color: var(--robot-gold) !important;
-  color: var(--robot-text-claro) !important;
-}
-
-/* ---------- APRESENTACAO BIMESTRE (modelo_apresentacao_bimestre) ---------- */
-.projeto-header {
-  background: linear-gradient(90deg, var(--robot-dark) 0%, #2a3b24 100%);
-  border-left: 8px solid var(--robot-gold);
-  border-radius: 20px;
-  padding: 12px 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.projeto-header h2 {
-  font-size: 1.3rem;
+  text-shadow:
+    0 0 20px rgba(255, 179, 71, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
   margin: 0;
-  font-family: "Chakra Petch", monospace;
-  font-weight: 700;
-  color: var(--robot-gold);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-shadow: 2px 2px 0 #1e2a1a;
-}
-.badge-projeto {
-  background: var(--robot-danger);
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 2px 0 #8b1a1a;
-}
-.table-robotica {
-  background: rgba(30, 42, 26, 0.85);
-  border-radius: 20px;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  color: var(--robot-text);
-}
-.table-robotica th,
-.table-robotica td {
-  vertical-align: middle;
-  padding: 12px 8px;
-  border-color: #4a7c3f;
-}
-.table-robotica thead th {
-  background: var(--robot-dark);
-  color: var(--robot-gold);
-  font-family: "Chakra Petch", monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-.table-robotica tbody tr:hover {
-  background: rgba(74, 124, 63, 0.3);
-  transition: 0.2s;
-}
-.carta-container {
   position: relative;
-  overflow: hidden;
+  z-index: 2;
 }
-.carta-container::before {
-  content: "📜";
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  font-size: 5rem;
-  opacity: 0.08;
-  pointer-events: none;
-}
-.carta-texto {
-  font-size: 1.05rem;
-  line-height: 1.5;
-  text-align: justify;
-  font-weight: 500;
-  color: #f0f7e6;
-}
-.carta-texto.fw-bold {
-  color: var(--robot-gold);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 8px 12px;
-  border-radius: 16px;
+
+.titulo-principal .parafuso-esquerda {
+  color: #7f8c8d;
+  font-size: 0.7rem;
   display: inline-block;
+  animation: girarParafuso 4s linear infinite;
 }
 
-/* ---------- PLANOS DE AULA (modelo_planos_aula) ---------- */
-.accordion-item {
-  background: transparent;
-  border: none;
-  margin-bottom: 16px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-.accordion-header {
-  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
-}
-.accordion-button {
-  background: #627454;
-  color: #ffb347;
-  font-weight: bold;
-  font-family: "Chakra Petch", monospace;
-  border: none;
-  border-radius: 0;
-  padding: 16px 24px;
-  font-size: 1rem;
-}
-.accordion-button:not(.collapsed) {
-  background: #7f9470;
-  color: #ffcc44;
-  box-shadow: none;
-}
-.accordion-button:focus {
-  box-shadow: none;
-  border-color: #ffb347;
-}
-.accordion-body {
-  background: #0d1f0b;
-  padding: 24px;
-  border-top: 2px solid #ffb347;
-}
-.semana-card-completo {
-  background: #505e45;
-  border-radius: 24px;
-  padding: 20px;
-}
-.semana-card-completo h5 {
-  color: #ffb347;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border-left: 4px solid #ffb347;
-  padding-left: 12px;
-}
-.semana-card-completo h5:first-of-type {
-  margin-top: 0;
-}
-.semana-card-completo ul,
-.semana-card-completo p {
-  margin-bottom: 16px;
-  line-height: 1.5;
-  color: #ebf0eb;
-}
-.check-concluido {
-  background: #1e2a1a;
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.7rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.check-concluido span {
-  color: #ebf0eb;
-}
-.check-concluido:hover {
-  background: #2c3e2b;
-}
-.check-concluido input {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: #ffb347;
-}
-.materiais-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.material-badge {
-  background: #2c3e2b;
-  padding: 6px 12px;
-  border-radius: 40px;
-  font-size: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-left: 2px solid #ffb347;
-  color: #ebf0eb;
-}
-.minuto-item {
-  display: flex;
-  margin-bottom: 16px;
-  background: #0a0f08;
-  border-radius: 20px;
-  overflow: hidden;
-  border-left: 4px solid #ffb347;
-}
-.minuto-tempo {
-  background: #2c3e2b;
-  padding: 10px 16px;
-  font-weight: bold;
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.7rem;
-  min-width: 100px;
-  text-align: center;
-  color: #ffb347;
-}
-.minuto-descricao {
-  padding: 10px 16px;
-  flex: 1;
-  line-height: 1.4;
-  color: #ebf0eb;
-}
-.frase-do-dia {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border-radius: 20px;
-  padding: 12px 20px;
-  margin-top: 20px;
-  text-align: center;
-  font-style: italic;
-  border: 1px dashed #ffb347;
-  color: #ebf0eb;
-}
-.frase-do-dia i {
-  color: #ffb347;
-  margin-right: 8px;
-}
-.btn-outline-warning {
-  border-color: #ffb347;
-  color: #ffb347;
-}
-.btn-outline-warning:hover {
-  background: #ffb347;
-  color: #1e2a1a;
-}
-code {
-  background: #1e2a1a;
-  padding: 2px 6px;
-  border-radius: 8px;
-  color: #ffb347;
-  font-family: monospace;
-}
-
-/* ---------- CERTIFICADO (modelo_certificado) ---------- */
-.certificado-preview {
-  background: transparent;
-}
-.certificado-modelo {
-  font-family: "Courier New", "Press Start 2P", monospace;
-  background: #0d1f0b !important;
-  border: 3px double rgba(155, 188, 123, 0.9) !important;
-  border-radius: 48px 24px 48px 24px !important;
-  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  padding: 1.5rem;
-}
-.certificado-modelo h3 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.9rem;
-  color: #ffb347;
-  margin-bottom: 1rem;
-}
-.nome-aluno-destaque {
-  font-size: 22px;
-  display: block;
-  margin: 15px 0;
-  color: #2c5e1f;
-  background: #d4b87a !important;
-  padding: 12px;
-  border-radius: 40px;
-  font-weight: bold;
-  word-break: break-word;
-}
-.certificado-modelo p {
-  color: #e9f5db;
-  line-height: 1.4;
-}
-.linha-certificado {
-  border-color: #ffb347;
-  margin: 15px 0;
-}
-.cadastro-alunos {
-  background: #1e2a1a !important;
-  border-radius: 32px;
-  border-left: 5px solid #ffb347;
-}
-.cadastro-alunos h4,
-.cadastro-alunos h5 {
-  color: #ffb347;
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.8rem;
-}
-.lista-alunos {
-  list-style: none;
-  padding-left: 0;
-}
-.lista-alunos li {
-  background: #2c3e2b;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #ebf0eb;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-.lista-alunos li:hover {
-  background: #3a5538;
-  transform: translateX(5px);
-}
-.btn-selecionar-aluno {
-  background: #ffb34720;
-  border: 1px solid #ffb347;
-  color: #ffb347;
-  border-radius: 40px;
-  padding: 4px 12px;
-  font-size: 0.75rem;
-  transition: all 0.2s;
-}
-.btn-selecionar-aluno:hover {
-  background: #ffb347;
-  color: #1e2a1a;
-  transform: scale(1.05);
-}
-.btn-robotico-ano2 {
-  background: linear-gradient(95deg, #ffb347, #ff8c00);
-  border: none;
-  color: #1e2a1a;
-  font-weight: bold;
-  padding: 8px 20px;
-  border-radius: 60px;
-  transition: all 0.3s;
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.65rem;
-}
-.btn-robotico-ano2:hover:not(:disabled) {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px #ffb347;
-  background: linear-gradient(95deg, #ffa01e, #ff7000);
-  color: white;
-}
-.btn-robotico-ano2:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.btn-outline-warning:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ---------- FECHAMENTO BIMESTRE (modelo_fechamento_bimestre) e JOGO ---------- */
-.loopdash-pista-visual,
-.jogo-painel {
-  background: linear-gradient(135deg, #1a3a15, #0f2a0c);
-  border-radius: 24px;
-  padding: 16px;
-  border: 2px solid #ffb347;
-}
-.cruzamento-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  background: #2c3e2b;
-  padding: 12px;
-  border-radius: 20px;
-  text-align: center;
-}
-.cruzamento-grid div {
-  background: #1e2a1a;
-  border-radius: 12px;
-  padding: 20px;
-  font-size: 1.5rem;
-}
-.blocos-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-.bloco-condicional {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border: 1px solid #ffb347;
-  border-radius: 40px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s;
-}
-.bloco-condicional:hover {
-  background: #ffb347;
-  color: #1e2a1a;
-  transform: scale(1.02);
-}
-.area-regra {
-  background: #0a0f08;
-  border-radius: 20px;
-  min-height: 60px;
-}
-.stat-card {
-  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
-  border-radius: 20px;
-  padding: 10px;
-  text-align: center;
-  border-left: 4px solid #ffb347;
-}
-.stat-value {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffb347;
-  font-family: "Press Start 2P", cursive;
-}
-.mensagem-jogo {
-  background: #0a0f08;
-  border-radius: 20px;
-  padding: 16px;
-  text-align: center;
-  border-left: 6px solid #ffb347;
-}
-.recordes-painel {
-  background: #0d1f0b;
-  border-radius: 20px;
-  padding: 12px;
-}
-.recorde-card {
-  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
-  border-radius: 16px;
-  padding: 10px 20px;
-  text-align: center;
-}
-.recorde-valor {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffb347;
-  font-family: "Press Start 2P", cursive;
-}
-.btn-executar,
-.btn-resetar,
-.btn-dica,
-.btn-exemplo {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 60px;
-  font-weight: bold;
-  font-family: "Chakra Petch", monospace;
-  transition: all 0.3s;
-}
-.btn-executar {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: white;
-}
-.btn-resetar {
-  background: linear-gradient(135deg, #7f8c8d, #6c7a7a);
-  color: white;
-}
-.btn-dica {
-  background: linear-gradient(135deg, #8e44ad, #6c3483);
-  color: white;
-}
-.btn-exemplo {
-  background: linear-gradient(135deg, #2980b9, #1a6da0);
-  color: white;
-}
-@keyframes pulseRobot {
-  0% {
-    transform: scale(0.98);
-  }
-  100% {
-    transform: scale(1.02);
-  }
-}
-@keyframes bounceFlag {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-5px);
-  }
-}
-
-/* ---------- RODAPÉ (modelo_rodape) ---------- */
-.footer-robotico {
-  background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
-  border-top: 5px solid #9bbc7b;
-  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
-  position: relative;
-  overflow: hidden;
-  padding: 2rem 0 1rem;
-  margin-top: 3rem;
-}
-.footer-rebelde {
-  border-top-color: #ffb347;
-}
-.footer-rebelde::before {
-  content: "⚠️ BUG ZONE ⚠️";
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  font-size: 0.6rem;
-  opacity: 0.3;
-  font-family: monospace;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.footer-logo {
-  max-height: 70px;
-  width: auto;
-  filter: drop-shadow(2px 2px 6px black);
-  transition: transform 0.2s ease;
-  border-radius: 16px;
-}
-.footer-logo:hover {
-  transform: scale(1.05);
-}
-.dev-nome {
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.4;
-  font-family: "Chakra Petch", monospace;
-  color: #ebf0eb;
-}
-.dev-contato a {
-  color: #ebf0eb;
-  text-decoration: none;
-  transition:
-    color 0.2s,
-    text-shadow 0.2s;
-  font-family: monospace;
-}
-.dev-contato a:hover {
-  color: #ffb347;
-  text-decoration: underline;
-  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
-}
-.relatorio-bugs {
-  border-top: 1px dashed #ffb347;
-  padding-top: 0.8rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #ffcc88;
-  letter-spacing: 0.5px;
-}
-
-/* ---------- ANIMAÇÕES GLOBAIS ---------- */
-@keyframes pulseGlitch {
-  0% {
-    text-shadow:
-      2px 0 0 #ffb347,
-      -2px 0 0 #4a7c3f;
-  }
-  100% {
-    text-shadow:
-      -2px 0 0 #ffb347,
-      2px 0 0 #4a7c3f;
-  }
-}
-.glitch-text {
-  animation: pulseGlitch 2s infinite alternate;
-}
-@keyframes loopInfinitoAnim {
+@keyframes girarParafuso {
   0% {
     transform: rotate(0deg);
   }
@@ -814,139 +116,1067 @@ code {
     transform: rotate(360deg);
   }
 }
-.loop-infinito-icon {
-  animation: loopInfinitoAnim 2s linear infinite;
-  display: inline-block;
+
+.subtitulo-chiclete {
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.85rem;
+  color: #ccbb99;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
 }
-@keyframes flutuarBadge {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+
+.selo-sucata {
+  background: rgba(255, 179, 71, 0.1);
+  border: 2px solid var(--robot-gold);
+  padding: 4px 16px;
+  border-radius: 40px;
+  font-size: 0.65rem;
+  color: var(--robot-gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Chakra Petch", monospace;
 }
+
+/* ============================================================
+   MENU
+   ============================================================ */
+.menu-robomestre {
+  background: rgba(13, 26, 10, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-border);
+  padding: 8px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.menu-robomestre .nav-link {
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 8px 18px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  background: rgba(255, 179, 71, 0.08);
+  transform: translateY(-2px);
+}
+
+.menu-robomestre .nav-link.active {
+  color: var(--robot-gold);
+  background: rgba(255, 179, 71, 0.12);
+  border: 1px solid rgba(255, 179, 71, 0.2);
+  box-shadow: 0 0 30px rgba(255, 179, 71, 0.05);
+}
+
+.menu-robomestre .nav-link i {
+  margin-right: 6px;
+}
+
+/* ============================================================
+   CARDS E HEADERS DE PROJETO
+   ============================================================ */
+.projeto-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--robot-border);
+}
+
+.projeto-header h2 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.1rem;
+  color: var(--robot-gold);
+  text-shadow: 0 2px 12px rgba(255, 179, 71, 0.15);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.projeto-header h2 i {
+  margin-right: 8px;
+}
+
 .badge-projeto {
-  display: inline-block;
-  animation: flutuarBadge 2s ease-in-out infinite;
+  background: rgba(255, 179, 71, 0.1);
+  border: 1px solid var(--robot-gold);
+  padding: 4px 16px;
+  border-radius: 40px;
+  font-size: 0.65rem;
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
-@keyframes piscaLed {
-  0%,
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 5px #00ff00;
-  }
-  50% {
-    opacity: 0.4;
-    text-shadow: 0 0 15px #ffcc00;
-  }
+
+.bg-robocard {
+  background: linear-gradient(145deg, #1a2a18, #0d1a0a);
+  border: 2px solid var(--robot-border);
+  border-radius: 28px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  transition: all 0.3s ease;
 }
-@keyframes curtoCircuito {
-  0%,
-  100% {
-    background-color: #2c3e2b;
-  }
-  10%,
-  30%,
-  50% {
-    background-color: #ffcc00;
-  }
-  20%,
-  40% {
-    background-color: #ff6600;
-  }
+
+.bg-robocard:hover {
+  border-color: var(--robot-gold);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(255, 179, 71, 0.02);
 }
-@keyframes reboot {
+
+/* ============================================================
+   CARTA DE ABERTURA
+   ============================================================ */
+.carta-container {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  border-left: 4px solid var(--robot-gold);
+}
+
+.carta-texto {
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.95rem;
+  color: #d4d9d0;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================================
+   TABELAS
+   ============================================================ */
+.table-robotica {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+}
+
+.table-robotica thead th {
+  background: linear-gradient(135deg, #1a2a18, #0d1a0a);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--robot-border);
+}
+
+.table-robotica tbody td {
+  background: rgba(0, 0, 0, 0.2);
+  color: #d4d9d0;
+  padding: 10px;
+  border-color: rgba(74, 124, 63, 0.2);
+  vertical-align: middle;
+}
+
+.table-robotica tbody tr:hover td {
+  background: rgba(255, 179, 71, 0.05);
+}
+
+/* ============================================================
+   ACCORDION - PLANOS DE AULA
+   ============================================================ */
+.accordion-item {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--robot-border);
+  border-radius: 16px !important;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-header .accordion-button {
+  background: linear-gradient(135deg, #1a2a18, #0d1a0a);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 14px 20px;
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.accordion-header .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, #1a2a18, #0d1a0a);
+  color: var(--robot-gold);
+  box-shadow: inset 0 -2px 0 var(--robot-gold);
+}
+
+.accordion-header .accordion-button:hover {
+  background: linear-gradient(135deg, #2a3a24, #1a2a18);
+}
+
+.accordion-header .accordion-button::after {
+  filter: invert(1) brightness(0.7) sepia(1) hue-rotate(20deg) saturate(3);
+}
+
+.accordion-body {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-top: 1px solid rgba(74, 124, 63, 0.2);
+}
+
+.semana-card-completo {
+  padding: 4px 0;
+}
+
+.semana-card-completo h5 {
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 179, 71, 0.1);
+  padding-bottom: 4px;
+}
+
+.semana-card-completo h5:first-of-type {
+  margin-top: 0;
+}
+
+.semana-card-completo ul {
+  padding-left: 20px;
+  color: #d4d9d0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.semana-card-completo ul li {
+  margin-bottom: 4px;
+}
+
+/* ---------- MATERIAIS BADGE ---------- */
+.materiais-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.material-badge {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(74, 124, 63, 0.3);
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.material-badge i {
+  font-size: 0.9rem;
+  color: var(--robot-gold);
+}
+
+/* ---------- CRITÉRIOS SEMANA ---------- */
+.tabela-criterios-semana {
+  font-size: 0.8rem;
+  margin: 8px 0;
+}
+
+.tabela-criterios-semana thead th {
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 6px;
+  border-bottom: 2px solid var(--robot-border);
+}
+
+.tabela-criterios-semana tbody td {
+  background: rgba(0, 0, 0, 0.15);
+  color: #d4d9d0;
+  padding: 8px 6px;
+  border-color: rgba(74, 124, 63, 0.1);
+  font-size: 0.75rem;
+  vertical-align: top;
+}
+
+/* ---------- MINUTO A MINUTO ---------- */
+.minuto-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(74, 124, 63, 0.1);
+}
+
+.minuto-item:last-child {
+  border-bottom: none;
+}
+
+.minuto-tempo {
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  color: var(--robot-gold);
+  font-size: 0.75rem;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.minuto-descricao {
+  color: #d4d9d0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ---------- FRASE DO DIA ---------- */
+.frase-do-dia {
+  background: rgba(255, 179, 71, 0.05);
+  border-left: 4px solid var(--robot-gold);
+  padding: 12px 16px;
+  border-radius: 0 12px 12px 0;
+  margin-top: 16px;
+}
+
+.frase-do-dia i {
+  color: var(--robot-gold);
+  margin-right: 8px;
+}
+
+.frase-do-dia em {
+  color: #d4d9d0;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ---------- CHECK CONCLUÍDO ---------- */
+.check-concluido {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  cursor: pointer;
+}
+
+.check-concluido input[type="checkbox"] {
+  accent-color: var(--robot-gold);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* ============================================================
+   CERTIFICADO
+   ============================================================ */
+.certificado-preview {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 179, 71, 0.1);
+}
+
+.certificado-modelo {
+  background: linear-gradient(145deg, #f5f0e8, #e8e0d0);
+  border: 4px solid var(--robot-gold);
+  border-radius: 48px 24px 48px 24px;
+  padding: 24px;
+  color: #2a2a2a;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.certificado-modelo h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  color: var(--robot-gold);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.certificado-modelo .nome-aluno-destaque {
+  font-size: 1.4rem;
+  display: block;
+  background: rgba(255, 179, 71, 0.15);
+  padding: 8px 16px;
+  border-radius: 40px;
+  margin: 12px 0;
+  font-family: "Chakra Petch", monospace;
+  color: #1a2a18;
+}
+
+.certificado-modelo .linha-certificado {
+  border: 1px dashed var(--robot-gold);
+  margin: 12px 0;
+}
+
+.certificado-modelo .data-rodape {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.certificado-modelo .assinatura-engracada {
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+}
+
+.cadastro-alunos {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 179, 71, 0.1);
+}
+
+.cadastro-alunos h4 {
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.cadastro-alunos label {
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #9bbc7b;
+}
+
+.cadastro-alunos .form-control {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--robot-border);
+  color: var(--robot-text);
+  border-radius: 40px;
+  padding: 10px 16px;
+  font-family: "Chakra Petch", monospace;
+}
+
+.cadastro-alunos .form-control:focus {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: var(--robot-gold);
+  box-shadow: 0 0 20px rgba(255, 179, 71, 0.05);
+  color: var(--robot-text);
+}
+
+.lista-alunos li {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  border-left: 3px solid var(--robot-gold);
+  color: #d4d9d0;
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.85rem;
+}
+
+.lista-alunos li .btn-group .btn {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  border-radius: 30px;
+}
+
+/* ============================================================
+   BOTÕES GERAIS
+   ============================================================ */
+.btn-robotico-ano2 {
+  background: linear-gradient(95deg, #ffb347, #e67e22);
+  border: none;
+  color: #1a2a18;
+  font-weight: 700;
+  font-family: "Chakra Petch", monospace;
+  padding: 12px 24px;
+  border-radius: 60px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255, 179, 71, 0.25);
+}
+
+.btn-robotico-ano2:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(255, 179, 71, 0.35);
+  color: #0d1a0a;
+}
+
+.btn-robotico-ano2:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline-warning {
+  border-color: var(--robot-gold);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  border-radius: 60px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-warning:hover {
+  background: var(--robot-gold);
+  color: #0d1a0a;
+}
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+.footer-robotico {
+  background: linear-gradient(135deg, #0d1a0a, #1a2a18);
+  border-top: 4px solid var(--robot-gold);
+  padding: 24px 0 16px;
+  margin-top: 40px;
+}
+
+.footer-robotico .footer-logo {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.footer-robotico .footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-robotico .dev-nome {
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.footer-robotico .dev-contato a {
+  color: var(--robot-gold);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.footer-robotico .dev-contato a:hover {
+  color: #ffdd99;
+  text-decoration: underline;
+}
+
+.footer-robotico .relatorio-bugs {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.6rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(74, 124, 63, 0.2);
+}
+
+/* ============================================================
+   NOVO JOGO: CONSTRUTOR DE CONDICIONAIS
+   ============================================================ */
+
+/* --- MISSÃO --- */
+.missao-box {
+  background: linear-gradient(135deg, #1a2a18, #0d1a0a);
+  border-radius: 20px;
+  padding: 14px 20px;
+  border-left: 4px solid #ffb347;
+}
+
+.missao-label {
+  font-size: 0.55rem;
+  color: #9bbc7b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+}
+
+.missao-texto {
+  font-size: 1rem;
+  color: #ebf0eb;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.missao-texto strong {
+  color: #ffb347;
+}
+
+.missao-dica {
+  font-size: 0.8rem;
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  font-style: italic;
+}
+
+/* --- TABULEIRO --- */
+.tabuleiro-condicional {
+  background: linear-gradient(180deg, #0a1208, #1a2a18);
+  border-radius: 24px;
+  padding: 20px;
+  border: 2px solid #4a7c3f;
+  position: relative;
+  min-height: 280px;
+}
+
+.cenario-grid {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  background: radial-gradient(ellipse at center, #1a2a18, #0d1a0a);
+  border-radius: 16px;
+  border: 2px solid rgba(74, 124, 63, 0.3);
+  overflow: hidden;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 2px;
+  padding: 4px;
+}
+
+.grid-cell {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.grid-cell.obstaculo {
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.grid-cell.destino {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.grid-cell.caminho {
+  background: rgba(255, 179, 71, 0.05);
+}
+
+/* Personagens flutuantes */
+.personagem {
+  position: absolute;
+  font-size: 2.2rem;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+  z-index: 5;
+}
+
+.personagem.robo {
+  font-size: 2.8rem;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.personagem.robo.andando {
+  animation: roboAnda 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes roboAnda {
   0% {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(0px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+.personagem.robo.pulando {
+  animation: roboPula 0.6s ease-in-out;
+}
+
+@keyframes roboPula {
+  0% {
+    transform: translateY(0) scale(1);
   }
   30% {
-    opacity: 0.5;
-    transform: scale(0.98);
+    transform: translateY(-50px) scale(1.1);
   }
   60% {
-    opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(-20px) scale(0.9);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* ---------- RESPONSIVIDADE ---------- */
+.personagem.destino {
+  font-size: 2.4rem;
+  animation: destinoPisca 2s ease-in-out infinite;
+}
+
+@keyframes destinoPisca {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+.personagem.obstaculo {
+  font-size: 2rem;
+  animation: obstaculoTremedeira 3s ease-in-out infinite;
+}
+
+@keyframes obstaculoTremedeira {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* --- Status do robô --- */
+.robo-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 179, 71, 0.1);
+}
+
+.robo-nome {
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  color: #ffb347;
+  font-size: 0.9rem;
+}
+
+.robo-personalidade {
+  font-size: 0.75rem;
+  color: #9bbc7b;
+  font-style: italic;
+}
+
+/* --- ÁREA DE PROGRAMAÇÃO --- */
+.area-programacao {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid rgba(74, 124, 63, 0.2);
+}
+
+.area-programacao h5 {
+  font-family: "Chakra Petch", monospace;
+  color: #ffb347;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* Blocos disponíveis */
+.blocos-disponiveis {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.grupo-blocos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 4px 10px;
+  border-radius: 14px;
+}
+
+.grupo-label {
+  font-size: 0.5rem;
+  color: #9bbc7b;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(74, 124, 63, 0.15);
+}
+
+.bloco-programa {
+  background: linear-gradient(145deg, #1a2a18, #0d1a0a);
+  border: 2px solid rgba(74, 124, 63, 0.3);
+  color: #ebf0eb;
+  padding: 4px 12px;
+  border-radius: 24px;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bloco-programa:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: #ffb347;
+  box-shadow: 0 4px 16px rgba(255, 179, 71, 0.15);
+}
+
+.bloco-programa:active {
+  transform: scale(0.92);
+}
+
+/* Área de montagem */
+.area-montagem {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  padding: 12px 16px;
+  border: 2px dashed rgba(255, 179, 71, 0.15);
+  min-height: 80px;
+}
+
+.montagem-label {
+  font-size: 0.55rem;
+  color: #9bbc7b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+}
+
+.montagem-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 0;
+  min-height: 36px;
+  align-items: center;
+}
+
+.placeholder-programa {
+  color: #5a6a5a;
+  font-style: italic;
+  font-size: 0.8rem;
+  font-family: "Chakra Petch", monospace;
+}
+
+.bloco-montado {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  color: #ffcc88;
+  font-weight: 700;
+  font-size: 0.75rem;
+  font-family: "Chakra Petch", monospace;
+  animation: blocoMontadoAnim 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bloco-montado:hover {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+}
+
+.bloco-montado .btn-remover-bloco {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 0.6rem;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+@keyframes blocoMontadoAnim {
+  0% {
+    transform: scale(0) rotate(-5deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Botões de montagem */
+.montagem-acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn-montagem {
+  padding: 6px 18px;
+  border-radius: 40px;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-executar {
+  background: linear-gradient(95deg, #2ecc71, #1e8449);
+  color: white;
+  box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
+}
+
+.btn-executar:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(46, 204, 113, 0.3);
+}
+
+.btn-executar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-limpar {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #ffb347;
+  color: #ffb347;
+}
+
+.btn-limpar:hover {
+  background: #ffb347;
+  color: #0d1a0a;
+}
+
+.btn-dica {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  color: white;
+}
+
+.btn-dica:hover {
+  transform: scale(1.03);
+}
+
+/* --- HISTÓRICO --- */
+.historico-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 24px;
+  align-items: center;
+}
+
+.historico-item-programa {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.5rem;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 600;
+  border-left: 2px solid #ffb347;
+  color: #9bbc7b;
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.historico-item-programa.acertou {
+  border-left-color: #2ecc71;
+  color: #2ecc71;
+}
+
+.historico-item-programa.errou {
+  border-left-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
-  .titulo-principal {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
-    white-space: normal;
+  .personagem.robo {
+    font-size: 2.2rem;
   }
-  .logo-rb,
-  .logo-gn {
-    max-height: 50px;
+  .personagem.destino {
+    font-size: 1.8rem;
   }
-  .menu-robomestre .navbar-collapse {
-    background: rgba(13, 31, 11, 0.95);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    margin-top: 12px;
-    border: 1px solid var(--robot-gold);
+  .personagem.obstaculo {
+    font-size: 1.6rem;
   }
-  .projeto-header h2 {
-    font-size: 1rem;
+  .grid-cell {
+    font-size: 0.9rem;
   }
-  .accordion-button {
-    font-size: 0.8rem;
-    padding: 12px 16px;
+  .bloco-programa {
+    font-size: 0.55rem;
+    padding: 3px 8px;
   }
-  .minuto-item {
-    flex-direction: column;
+  .missao-texto {
+    font-size: 0.85rem;
   }
-  .minuto-tempo {
-    min-width: auto;
-    text-align: left;
+}
+
+@media (max-width: 576px) {
+  .tabuleiro-condicional {
+    padding: 12px;
+    min-height: 200px;
   }
-  .loopdash-grid.fase1 {
-    grid-template-columns: repeat(8, 40px);
+  .personagem.robo {
+    font-size: 1.8rem;
   }
-  .loopdash-grid.fase2 {
-    grid-template-columns: repeat(5, 40px);
+  .personagem.destino {
+    font-size: 1.5rem;
   }
-  .loopdash-grid.fase3 {
-    grid-template-columns: repeat(6, 40px);
+  .personagem.obstaculo {
+    font-size: 1.3rem;
   }
-  .bloco-condicional {
+  .grid-cell {
     font-size: 0.7rem;
   }
-  .footer-logo {
-    max-height: 50px;
+  .bloco-programa {
+    font-size: 0.5rem;
+    padding: 2px 6px;
   }
-}
-
-@media (max-width: 480px) {
-  .titulo-principal {
+  .montagem-linha {
+    font-size: 0.7rem;
+  }
+  .btn-montagem {
     font-size: 0.6rem;
-    padding: 0.3rem 0.6rem;
-  }
-  .logo-rb,
-  .logo-gn {
-    max-height: 40px;
-  }
-  .selo-sucata {
-    font-size: 0.55rem;
-    padding: 2px 8px;
-  }
-  .footer-logo {
-    max-height: 40px;
-  }
-  .cartao-comando {
-    min-width: 70px;
-    padding: 8px 10px;
-  }
-  .btn-robotico-ano2 {
-    font-size: 0.55rem;
-    padding: 6px 12px;
+    padding: 4px 12px;
   }
 }
