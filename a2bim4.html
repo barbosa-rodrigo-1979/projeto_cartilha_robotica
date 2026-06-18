@@ -3514,240 +3514,217 @@
         </div>
       </section>
 
-      <!-- ==================== NOVO JOGO: CONSTRUTOR DE CONDICIONAIS ==================== -->
-      <section id="jogo-condicional" class="mb-5">
+      <!-- ==================== JOGO DO BIMESTRE ==================== -->
+      <section id="jogo-entregador" class="mb-5">
         <div class="projeto-header">
           <h2>
-            <i class="bi bi-puzzle-fill"></i> 🧩 CONSTRUTOR DE CONDICIONAIS
+            <i class="bi bi-box-seam-fill"></i> 📦 SIMULADOR INTERATIVO: CIDADE
+            DOS CONDICIONAIS
           </h2>
           <div class="badge-projeto">
-            Monte programas com SE, ENTÃO, SENÃO, E, OU e REPITA!
+            SE configurar certo, ENTÃO o Robô ZIG entrega; SENÃO, vira sucata de
+            papelão!
           </div>
         </div>
 
-        <div class="bg-robocard p-4 rounded-4">
-          <!-- ===== TOPO - MISSÃO ATUAL ===== -->
-          <div class="row g-3 align-items-center mb-3">
-            <div class="col-md-7">
-              <div class="missao-box">
-                <div class="missao-label">🎯 MISSÃO ATUAL</div>
-                <div class="missao-texto" id="missaoTexto">
-                  Faça o Robô <strong>ZIG</strong> chegar ao
-                  <strong>BAÚ</strong>!
-                </div>
-                <div class="missao-dica" id="missaoDica">
-                  💡 Use SE... ENTÃO... SENÃO com a condição correta
-                </div>
+        <div class="bg-robocard p-4 rounded-4 shadow-lg text-white">
+          <div class="row g-4">
+            <div class="col-lg-6 text-center">
+              <h5 class="text-warning mb-3 text-start">
+                <i class="bi bi-map-fill"></i> Mapa da Maquete Virtual (Grid
+                5x5)
+              </h5>
+              <div
+                id="grid-simulador"
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(5, 1fr);
+                  gap: 8px;
+                  background: rgba(0, 0, 0, 0.4);
+                  padding: 15px;
+                  border: 3px solid var(--robot-border, #4a7c3f);
+                  border-radius: 12px;
+                  max-width: 420px;
+                  margin: 0 auto;
+                  aspect-ratio: 1;
+                "
+              ></div>
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+                style="max-width: 420px; margin-left: auto; margin-right: auto"
+              >
+                <button
+                  id="btn-mudar-sinal"
+                  class="btn btn-sm btn-outline-warning fw-bold"
+                >
+                  <i class="bi bi-traffic-light"></i> Alternar Semáforo
+                </button>
+                <span
+                  id="txt-sinal-status"
+                  class="badge bg-danger p-2"
+                  style="font-family: &quot;Chakra Petch&quot;, monospace"
+                  >SEMÁFORO: VERMELHO</span
+                >
               </div>
             </div>
-            <div class="col-md-5">
-              <div class="row g-2">
-                <div class="col-6">
-                  <div class="stat-card text-center">
-                    <div>⭐ ESTRELAS</div>
-                    <div class="stat-value" id="estrelasJogo">0</div>
+
+            <div class="col-lg-6 d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="text-warning mb-3">
+                  <i class="bi bi-code-slash"></i> Painel de Blocos Condicionais
+                  (2º Ano)
+                </h5>
+
+                <div
+                  class="mb-3 p-3 rounded-3 shadow-sm"
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border-left: 5px solid var(--robot-gold, #ffb347);
+                  "
+                >
+                  <p class="mb-1 text-muted small">
+                    <strong>SINALIZAÇÃO URBANA (Semana 34)</strong>
+                  </p>
+                  <div class="d-flex align-items-center flex-wrap gap-2 mt-2">
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >SE</span
+                    >
+                    <span class="text-danger fw-bold font-monospace"
+                      >Semáforo estiver Vermelho</span
+                    >
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >ENTÃO</span
+                    >
+                    <select
+                      id="regra-semaforo"
+                      class="form-select form-select-sm d-inline-block w-auto bg-dark text-white border-warning"
+                    >
+                      <option value="parar">
+                        🛑 PARAR e aguardar o sinal Verde
+                      </option>
+                      <option value="ignorar">
+                        🚀 IGNORAR e avançar (Gera Caos)
+                      </option>
+                    </select>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="stat-card text-center">
-                    <div>🏆 NÍVEL</div>
-                    <div class="stat-value" id="nivelJogo">1</div>
+
+                <div
+                  class="mb-3 p-3 rounded-3 shadow-sm"
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border-left: 5px solid var(--robot-green, #2ecc71);
+                  "
+                >
+                  <p class="mb-1 text-muted small">
+                    <strong>OBSTÁCULO MAKER (Semana 32 & 33)</strong>
+                  </p>
+                  <div class="d-flex align-items-center flex-wrap gap-2 mt-2">
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >SE</span
+                    >
+                    <span class="text-success fw-bold font-monospace"
+                      >Encontrar Caixa de Leite</span
+                    >
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >ENTÃO</span
+                    >
+                    <select
+                      id="regra-obstaculo"
+                      class="form-select form-select-sm d-inline-block w-auto bg-dark text-white border-warning"
+                    >
+                      <option value="virar">
+                        ↪️ VIRAR à Esquerda (Desviar do obstáculo)
+                      </option>
+                      <option value="bater">
+                        💥 SEGUIR RETO (Colidir frontalmente)
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div
+                  class="mb-3 p-3 rounded-3 shadow-sm"
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border-left: 5px solid var(--robot-purple, #8e44ad);
+                  "
+                >
+                  <p class="mb-1 text-muted small">
+                    <strong>PERIGO NO GRID (Semana 31 & 35)</strong>
+                  </p>
+                  <div class="d-flex align-items-center flex-wrap gap-2 mt-2">
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >QUANDO</span
+                    >
+                    <span class="fw-bold font-monospace" style="color: #bc7bef"
+                      >Ver Buraco da Minhoca</span
+                    >
+                    <span
+                      class="badge bg-dark border border-secondary text-light"
+                      >ENTÃO</span
+                    >
+                    <select
+                      id="regra-buraco"
+                      class="form-select form-select-sm d-inline-block w-auto bg-dark text-white border-warning"
+                    >
+                      <option value="desviar">
+                        ✨ SALTAR / Ativar propulsor lúdico
+                      </option>
+                      <option value="cair">
+                        🕳️ CAIR e sumir no loop do bug
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- ===== TABULEIRO - ROBÔ E CENÁRIO ===== -->
-          <div class="tabuleiro-condicional">
-            <div class="cenario-grid" id="cenarioGrid">
-              <!-- Grid 6x6 gerado por JS -->
-              <div class="grid-container" id="gridContainer"></div>
-
-              <!-- Personagens flutuantes -->
-              <div class="personagem robo" id="roboTabuleiro">🤖</div>
-              <div class="personagem destino" id="destinoTabuleiro">🎁</div>
-              <div class="personagem obstaculo" id="obstaculoTabuleiro">🧱</div>
-            </div>
-
-            <!-- Info do robô -->
-            <div class="robo-status">
-              <div class="robo-nome" id="roboNome">🤖 ZIG</div>
-              <div class="robo-personalidade" id="roboPersonalidade">
-                "Sou teimoso, me programe direito!"
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== PAINEL DE BLOCO ===== -->
-          <div class="area-programacao mt-3">
-            <h5>📟 MONTE SEU PROGRAMA</h5>
-
-            <!-- Blocos disponíveis -->
-            <div class="blocos-disponiveis">
-              <div class="grupo-blocos">
-                <span class="grupo-label">🧠 LÓGICA</span>
-                <button
-                  class="bloco-programa"
-                  data-tipo="se"
-                  style="border-color: #e74c3c"
-                >
-                  SE
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="entao"
-                  style="border-color: #2ecc71"
-                >
-                  ENTÃO
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="senao"
-                  style="border-color: #f39c12"
-                >
-                  SENÃO
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="repita"
-                  style="border-color: #1abc9c"
-                >
-                  REPITA
-                </button>
-              </div>
-
-              <div class="grupo-blocos">
-                <span class="grupo-label">🔍 CONDIÇÕES</span>
-                <button
-                  class="bloco-programa"
-                  data-tipo="verde"
-                  style="border-color: #27ae60"
-                >
-                  🟢 VERDE
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="vermelho"
-                  style="border-color: #c0392b"
-                >
-                  🔴 VERMELHO
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="buraco"
-                  style="border-color: #8e44ad"
-                >
-                  🕳️ BURACO
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="e"
-                  style="border-color: #3498db"
-                >
-                  E
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="ou"
-                  style="border-color: #e67e22"
-                >
-                  OU
-                </button>
-              </div>
-
-              <div class="grupo-blocos">
-                <span class="grupo-label">🚀 AÇÕES</span>
-                <button
-                  class="bloco-programa"
-                  data-tipo="andar"
-                  style="border-color: #3498db"
-                >
-                  🚶 ANDAR
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="parar"
-                  style="border-color: #7f8c8d"
-                >
-                  ✋ PARAR
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="pular"
-                  style="border-color: #f1c40f"
-                >
-                  ⬆️ PULAR
-                </button>
-                <button
-                  class="bloco-programa"
-                  data-tipo="virar"
-                  style="border-color: #9b59b6"
-                >
-                  🔄 VIRAR
-                </button>
-              </div>
-            </div>
-
-            <!-- Área de montagem do programa -->
-            <div class="area-montagem" id="areaMontagem">
-              <div class="montagem-label">📝 SEU PROGRAMA:</div>
-              <div class="montagem-linha" id="linhaMontagem">
-                <span class="placeholder-programa"
-                  >⬅️ Clique nos blocos para montar</span
-                >
-              </div>
-              <div class="montagem-acoes">
-                <button
-                  class="btn-montagem btn-executar"
-                  id="btnExecutarPrograma"
-                >
-                  ▶️ EXECUTAR
-                </button>
-                <button class="btn-montagem btn-limpar" id="btnLimparPrograma">
-                  🧹 LIMPAR
-                </button>
-                <button class="btn-montagem btn-dica" id="btnDicaPrograma">
-                  💡 DICA
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== HISTÓRICO E PONTOS ===== -->
-          <div class="row g-3 mt-3">
-            <div class="col-md-6">
-              <div class="historico-jogo">
-                <small>📜 ÚLTIMOS PROGRAMAS:</small>
-                <div id="historicoProgramas" class="historico-lista">
-                  <span style="font-size: 0.6rem; color: #5a6a5a"
-                    >Nenhum programa executado</span
+              <div class="mt-3">
+                <h6 class="text-warning mb-2 small">
+                  <i class="bi bi-cpu-fill"></i> Motor de Simulação & Depuração
+                </h6>
+                <div class="d-flex gap-2 mb-3 flex-wrap">
+                  <button
+                    id="btn-jogo-iniciar"
+                    class="btn btn-success fw-bold px-3"
                   >
+                    <i class="bi bi-play-fill"></i> Executar Cidade
+                  </button>
+                  <button
+                    id="btn-jogo-passo"
+                    class="btn btn-warning text-dark fw-bold px-3"
+                  >
+                    <i class="bi bi-skip-forward-fill"></i> Passo a Passo
+                  </button>
+                  <button
+                    id="btn-jogo-reiniciar"
+                    class="btn btn-danger fw-bold px-3"
+                  >
+                    <i class="bi bi-arrow-counterclockwise"></i> Reiniciar
+                  </button>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="d-flex gap-2 flex-wrap justify-content-end">
-                <span
-                  class="badge"
+
+                <div
+                  id="console-logs"
+                  class="p-3 rounded-3 font-monospace shadow-inner"
                   style="
-                    background: rgba(255, 179, 71, 0.15);
-                    color: #ffb347;
-                    padding: 8px 16px;
+                    background: #091208;
+                    color: #39ff14;
+                    height: 130px;
+                    overflow-y: auto;
+                    font-size: 0.75rem;
+                    border: 1px solid rgba(74, 124, 63, 0.4);
+                    line-height: 1.4;
                   "
                 >
-                  🔧 BUGS: <span id="contadorBugsJogo">0</span>
-                </span>
-                <span
-                  class="badge"
-                  style="
-                    background: rgba(46, 204, 113, 0.15);
-                    color: #2ecc71;
-                    padding: 8px 16px;
-                  "
-                >
-                  ✅ ACERTOS: <span id="contadorAcertosJogo">0</span>
-                </span>
+                  [Aguardando comandos...] Configure os blocos lógicos e clique
+                  em Executar Cidade!
+                </div>
               </div>
             </div>
           </div>

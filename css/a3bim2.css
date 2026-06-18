@@ -1,10 +1,20 @@
-/* ==================================================
-   a3bim2.css – Estilos unificados para 3º ano – Bimestre 2
-   Inclui: cabeçalho, rodapé, planos de aula (semanas),
-   certificado, jogo Loop Dash, tabelas, adaptações
-   ================================================== */
+/* ================================================================
+   🎨 a3bim2.css - 3º ANO - BIMESTRE 2
+   ================================================================
+   ESTRUTURA:
+     1. VARIÁVEIS GLOBAIS
+     2. RESET E BASE
+     3. CABEÇALHO E RODAPÉ
+     4. MENU
+     5. GAME LOOP DANCE
+     6. CERTIFICADOS
+     7. ANIMAÇÕES
+     8. RESPONSIVIDADE
+   ================================================================ */
 
-/* ---------- VARIÁVEIS GLOBAIS ---------- */
+/* ================================================================
+   1. VARIÁVEIS GLOBAIS
+   ================================================================ */
 :root {
   --robot-green: #4a7c3f;
   --robot-dark: #1e2a1a;
@@ -17,7 +27,9 @@
   --robot-text-claro: #ebf0eb;
 }
 
-/* ---------- RESET E BASE ---------- */
+/* ================================================================
+   2. RESET E BASE
+   ================================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +43,9 @@ body.bg-robotica {
   min-height: 100vh;
 }
 
-/* ---------- CABEÇALHO ROBÓTICO ---------- */
+/* ================================================================
+   3. CABEÇALHO E RODAPÉ
+   ================================================================ */
 .cabecalho-robotico {
   background: #0c140b;
   background-image: repeating-linear-gradient(
@@ -52,24 +66,12 @@ body.bg-robotica {
   border-bottom-color: var(--robot-gold);
 }
 
-.cabecalho-rebelde::before {
-  content: "⚠️ BUG ZONE ⚠️";
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  font-size: 0.6rem;
-  opacity: 0.3;
-  font-family: monospace;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
 .logo-rb,
 .logo-gn {
   max-height: 70px;
   width: auto;
   filter: drop-shadow(2px 2px 6px black);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s;
   border-radius: 12px;
 }
 
@@ -88,52 +90,9 @@ body.bg-robotica {
   box-shadow:
     0 0 0 2px #1a2b17,
     0 0 0 4px var(--robot-gold),
-    0 4px 15px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
+    0 4px 15px rgba(0, 0, 0, 0.5);
   text-shadow: 2px 2px 0 #3d5a2b;
-  backdrop-filter: blur(2px);
   white-space: nowrap;
-}
-
-.titulo-principal::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 20%;
-  width: 60%;
-  height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
-  border-radius: 20px;
-  filter: blur(1px);
-  pointer-events: none;
-}
-
-.titulo-principal::after {
-  content: "⬤";
-  position: absolute;
-  bottom: -6px;
-  right: -6px;
-  font-size: 0.7rem;
-  color: var(--robot-gold);
-  text-shadow: 0 0 3px #000;
-  pointer-events: none;
-}
-
-.titulo-principal .parafuso-esquerda {
-  position: absolute;
-  bottom: -6px;
-  left: -6px;
-  font-size: 0.7rem;
-  color: var(--robot-gold);
-  text-shadow: 0 0 3px #000;
-  pointer-events: none;
 }
 
 .subtitulo-chiclete {
@@ -146,52 +105,6 @@ body.bg-robotica {
   text-shadow: 1px 1px 0 #1a2b17;
 }
 
-.selo-sucata {
-  background: #1e1e1e;
-  color: #ffcc44;
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.7rem;
-  font-family: monospace;
-  border-left: 3px solid #ff9900;
-  letter-spacing: 1px;
-}
-
-@media (max-width: 768px) {
-  .titulo-principal {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
-    white-space: normal;
-  }
-
-  .logo-rb,
-  .logo-gn {
-    max-height: 50px;
-  }
-
-  .subtitulo-chiclete {
-    font-size: 0.6rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .titulo-principal {
-    font-size: 0.6rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  .logo-rb,
-  .logo-gn {
-    max-height: 40px;
-  }
-
-  .selo-sucata {
-    font-size: 0.55rem;
-    padding: 2px 8px;
-  }
-}
-
-/* ---------- RODAPÉ ROBÓTICO ---------- */
 .footer-robotico {
   background: #0c140b;
   background-image: repeating-linear-gradient(
@@ -203,8 +116,6 @@ body.bg-robotica {
   );
   border-top: 5px solid #9bbc7b;
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
-  position: relative;
-  overflow: hidden;
   padding: 2rem 0 1rem;
   margin-top: 3rem;
 }
@@ -212,69 +123,55 @@ body.bg-robotica {
 .footer-rebelde {
   border-top-color: var(--robot-gold);
 }
-
-.footer-rebelde::before {
-  content: "⚠️ BUG ZONE ⚠️";
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  font-size: 0.6rem;
-  opacity: 0.3;
-  font-family: monospace;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
 .footer-logo {
   max-height: 70px;
-  width: auto;
-  filter: drop-shadow(2px 2px 6px black);
-  transition: transform 0.2s ease;
   border-radius: 16px;
+  filter: drop-shadow(2px 2px 6px black);
 }
 
-.dev-nome {
-  font-size: 0.85rem;
-  font-weight: 500;
-  line-height: 1.4;
+/* ================================================================
+   4. MENU
+   ================================================================ */
+.menu-robomestre {
+  background: rgba(13, 31, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-robomestre .nav-link {
+  color: var(--robot-text);
   font-family: "Chakra Petch", monospace;
-  color: #ebf0eb;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.dev-contato a {
-  color: #ebf0eb;
-  text-decoration: none;
-  font-family: monospace;
-}
-
-.dev-contato a:hover {
+.menu-robomestre .nav-link i {
   color: var(--robot-gold);
-  text-decoration: underline;
+  font-size: 1.1rem;
+}
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+.menu-robomestre .nav-link.active {
+  color: var(--robot-glow);
+  background: rgba(255, 180, 71, 0.25);
+  border-bottom: 2px solid var(--robot-gold);
 }
 
-.relatorio-bugs {
-  border-top: 1px dashed var(--robot-gold);
-  padding-top: 0.8rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #ffcc88;
-}
+/* ================================================================
+   5. GAME LOOP DANCE 🕺
+   ================================================================ */
 
-@media (max-width: 768px) {
-  .footer-logo {
-    max-height: 50px;
-  }
-
-  .dev-nome {
-    font-size: 0.7rem;
-  }
-
-  .dev-contato {
-    font-size: 0.65rem;
-  }
-}
-
-/* ---------- CARDS, TABELAS, HEADERS COMUNS ---------- */
+/* ---------- CARDS GERAIS ---------- */
 .bg-robocard {
   background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
   border: 1px solid var(--robot-gold);
@@ -309,285 +206,261 @@ body.bg-robotica {
   border-radius: 40px;
   font-size: 0.7rem;
   font-weight: bold;
-  display: inline-block;
   text-transform: uppercase;
 }
 
-.table-robotica {
-  background: rgba(30, 42, 26, 0.85);
+/* ---------- PALCO ---------- */
+.danca-grid {
+  display: grid;
+  gap: 4px;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #0a0f08;
+  padding: 12px;
   border-radius: 20px;
-  overflow: hidden;
-  color: var(--robot-text);
+  border: 2px solid var(--robot-gold);
 }
 
-.table-robotica th,
-.table-robotica td {
-  vertical-align: middle;
-  padding: 12px 8px;
-  border-color: #4a7c3f;
-}
-
-.table-robotica thead th {
-  background: var(--robot-dark);
-  color: var(--robot-gold);
-  font-family: "Chakra Petch", monospace;
-  font-weight: 700;
-}
-
-@media (max-width: 768px) {
-  .projeto-header h2 {
-    font-size: 0.9rem;
-  }
-
-  .table-robotica th,
-  .table-robotica td {
-    font-size: 0.7rem;
-    padding: 6px 4px;
-  }
-}
-
-/* ---------- CARTA DE ABERTURA ---------- */
-.carta-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.carta-container::before {
-  content: "📜";
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  font-size: 5rem;
-  opacity: 0.08;
-  pointer-events: none;
-}
-
-.carta-texto {
-  font-size: 1.05rem;
-  line-height: 1.5;
-  text-align: justify;
-  color: #f0f7e6;
-}
-
-.carta-texto.fw-bold {
-  color: var(--robot-gold);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 8px 12px;
-  border-radius: 16px;
-  display: inline-block;
-}
-
-@media (max-width: 576px) {
-  .carta-texto {
-    font-size: 0.9rem;
-  }
-}
-
-/* ========== ESTILOS PARA PLANOS DE AULA (SEMANAS) ========== */
-.accordion-item {
-  background: transparent;
-  border: none;
-  margin-bottom: 16px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.accordion-header {
-  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
-}
-
-.accordion-button {
-  background: #627454;
-  color: var(--robot-gold);
-  font-weight: bold;
-  font-family: "Chakra Petch", monospace;
-  border: none;
-  border-radius: 0;
-  padding: 16px 24px;
-  font-size: 1rem;
-}
-
-.accordion-button:not(.collapsed) {
-  background: #7f9470;
-  color: #ffcc44;
-  box-shadow: none;
-}
-
-.accordion-button:focus {
-  box-shadow: none;
-  border-color: var(--robot-gold);
-}
-
-.accordion-body {
-  background: #0d1f0b;
-  padding: 24px;
-  border-top: 2px solid var(--robot-gold);
-}
-
-.semana-card-completo {
-  background: #505e45;
-  border-radius: 24px;
-  padding: 20px;
-}
-
-.semana-card-completo h5 {
-  color: var(--robot-gold);
-  margin-top: 20px;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border-left: 4px solid var(--robot-gold);
-  padding-left: 12px;
-}
-
-.semana-card-completo h5:first-of-type {
-  margin-top: 0;
-}
-
-.semana-card-completo ul,
-.semana-card-completo p {
-  margin-bottom: 16px;
-  line-height: 1.5;
-  color: var(--robot-text-claro);
-}
-
-.check-concluido {
-  background: #1e2a1a;
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.7rem;
-  display: inline-flex;
+.danca-cell {
+  aspect-ratio: 1/1;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
+  justify-content: center;
+  font-size: 1.8rem;
+  border-radius: 8px;
+  background: #1e2a1a;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.check-concluido:hover {
+.danca-cell.robo {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
+  animation: pulseRobot 0.8s ease-in-out infinite alternate;
+  font-size: 2.2rem;
+}
+
+.danca-cell.robo::after {
+  content: attr(data-direcao);
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 0.8rem;
+  background: #0a0f08;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.danca-cell.chegada {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  animation: bounceFlag 0.5s ease-in-out infinite alternate;
+}
+
+.danca-cell.obstaculo {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+/* ---------- COREOGRAFIA ---------- */
+.coreografia-display {
+  background: #0a0f08;
+  border: 2px solid var(--robot-gold);
+}
+
+.passos-display {
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+}
+
+/* ---------- BOTÕES DE FASE ---------- */
+.btn-fase {
+  background: #1e2a1a;
+  border: 2px solid #4a7c3f;
+  color: var(--robot-text);
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.btn-fase:hover {
   background: #2c3e2b;
+  border-color: var(--robot-gold);
+  transform: translateY(-2px);
 }
 
-.check-concluido input {
-  width: 18px;
-  height: 18px;
+.btn-fase.ativo {
+  background: var(--robot-gold);
+  border-color: var(--robot-gold);
+  color: #1e2a1a;
+  box-shadow: 0 0 20px rgba(255, 180, 71, 0.3);
+}
+
+/* ---------- COMANDOS ---------- */
+.cmd-btn {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border: 2px solid #4a7c3f;
+  border-radius: 16px;
+  padding: 8px 14px;
+  color: var(--robot-text);
+  font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
-  accent-color: var(--robot-gold);
+  transition: all 0.2s ease;
 }
 
-.check-concluido span {
-  color: var(--robot-text-claro);
+.cmd-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--robot-gold);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.materiais-container {
+.cmd-btn.cmd-loop {
+  border-color: #f39c12;
+  background: linear-gradient(135deg, #2c3e2b, #1a2b17);
+}
+.cmd-btn.cmd-variavel {
+  border-color: #3498db;
+  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
+}
+.cmd-btn.cmd-bug {
+  border-color: #e74c3c;
+  background: linear-gradient(135deg, #3b1a1a, #1e2a1a);
+  animation: bugPulse 1.5s ease-in-out infinite;
+}
+
+/* ---------- ALGORITMO ---------- */
+.algoritmo-container {
+  min-height: 80px;
+  background: #0a0f08;
+  border-radius: 12px;
+  padding: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-content: flex-start;
+  gap: 4px;
 }
 
-.material-badge {
-  background: #2c3e2b;
-  padding: 6px 12px;
-  border-radius: 40px;
-  font-size: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-left: 2px solid var(--robot-gold);
-  color: var(--robot-text-claro);
-}
-
-.tabela-criterios-semana {
-  background: #0a0f08;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 16px;
+.placeholder-algoritmo {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
   width: 100%;
 }
 
-.tabela-criterios-semana thead {
-  background: #2c3e2b;
-  color: var(--robot-gold);
+/* ---------- COMANDO SIMPLES ---------- */
+.comando-simples {
+  animation: comandoEntrar 0.3s ease-out;
+  margin: 2px 4px;
 }
 
-.tabela-criterios-semana th,
-.tabela-criterios-semana td {
-  padding: 10px 12px;
-  border-color: #4a7c3f;
-  vertical-align: middle;
-  color: var(--robot-text-claro);
+/* ---------- LOOP CONTAINER ---------- */
+.loop-container {
+  animation: comandoEntrar 0.3s ease-out;
 }
 
-.tabela-criterios-semana tbody tr:hover {
-  background: #1e2a1a;
+.loop-header .btn-toggle-loop:hover {
+  background: rgba(255, 180, 71, 0.2);
 }
 
-.minuto-item {
-  display: flex;
-  margin-bottom: 16px;
-  background: #0a0f08;
+.loop-comandos {
+  transition: all 0.3s ease;
+}
+
+.sub-comando {
+  animation: comandoEntrar 0.3s ease-out;
+}
+
+/* ---------- SELETORES VISUAIS ---------- */
+.seletor {
+  animation: comandoEntrar 0.3s ease-out;
+}
+
+.seletor-opcao {
+  transition: all 0.2s ease;
+}
+
+.seletor-opcao:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- VARIÁVEIS ---------- */
+.variavel-badge {
+  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
+  border: 1px solid #3498db;
   border-radius: 20px;
-  overflow: hidden;
-  border-left: 4px solid var(--robot-gold);
+  padding: 4px 12px;
+  color: #85c1e9;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.minuto-tempo {
-  background: #2c3e2b;
-  padding: 10px 16px;
+/* ---------- MENSAGENS ---------- */
+.mensagem-jogo {
+  background: #0a0f08;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--robot-gold);
+  color: var(--robot-text);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+/* ---------- BOTÕES DE AÇÃO ---------- */
+.btn-executar {
+  background: linear-gradient(95deg, var(--robot-gold), #ff8c00);
+  border: none;
+  color: #1e2a1a;
   font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 60px;
   font-family: "Press Start 2P", cursive;
   font-size: 0.7rem;
-  min-width: 100px;
-  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-executar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 180, 71, 0.3);
+}
+
+.btn-resetar,
+.btn-dica,
+.btn-depurar {
+  border: 2px solid var(--robot-gold);
   color: var(--robot-gold);
-}
-
-.minuto-descricao {
-  padding: 10px 16px;
-  flex: 1;
-  line-height: 1.4;
-  color: var(--robot-text-claro);
-}
-
-.frase-do-dia {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border-radius: 20px;
-  padding: 12px 20px;
-  margin-top: 20px;
-  text-align: center;
-  font-style: italic;
-  border: 1px dashed var(--robot-gold);
-  color: var(--robot-text-claro);
-}
-
-.frase-do-dia i {
-  color: var(--robot-gold);
-  margin-right: 8px;
-}
-
-code {
-  background: #1e2a1a;
-  padding: 2px 6px;
-  border-radius: 8px;
-  color: var(--robot-gold);
-  font-family: monospace;
-}
-
-/* Cores gerais para textos */
-li,
-p,
-.minuto-descricao,
-.semana-card-completo p,
-.semana-card-completo li {
-  color: var(--robot-text-claro);
-}
-
-/* ========== CERTIFICADO ========== */
-.certificado-preview {
+  border-radius: 60px;
   background: transparent;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+.btn-resetar:hover,
+.btn-dica:hover,
+.btn-depurar:hover {
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ---------- RECORDES ---------- */
+.recorde-card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 16px;
+  border-radius: 40px;
+  border-left: 3px solid var(--robot-gold);
+  font-size: 0.85rem;
+}
+
+/* ================================================================
+   6. CERTIFICADOS
+   ================================================================ */
 .certificado-modelo {
   font-family: "Courier New", "Press Start 2P", monospace;
   background: #0d1f0b !important;
@@ -616,11 +489,6 @@ p,
   font-weight: bold;
 }
 
-.certificado-modelo p {
-  color: #e9f5db;
-  line-height: 1.4;
-}
-
 .linha-certificado {
   border-color: var(--robot-gold);
   margin: 15px 0;
@@ -632,8 +500,7 @@ p,
   border-left: 5px solid var(--robot-gold);
 }
 
-.cadastro-alunos h4,
-.cadastro-alunos h5 {
+.cadastro-alunos h4 {
   color: var(--robot-gold);
   font-family: "Press Start 2P", cursive;
   font-size: 0.8rem;
@@ -668,262 +535,16 @@ p,
   background: transparent;
 }
 
-@media print {
-  .cadastro-alunos,
-  .btn-robotico-ano2,
-  .btn-outline-warning,
-  .alert-info,
-  footer {
-    display: none !important;
-  }
-
-  .certificado-modelo {
-    background: #fffef7 !important;
-    border: 3px solid var(--robot-gold) !important;
-    -webkit-print-color-adjust: exact;
-    break-inside: avoid;
-  }
-
-  @page {
-    size: A4;
-    margin: 1.2cm;
-  }
-
-  .print-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-  }
-}
-
-/* ========== ESTILOS DO JOGO ROBÔ DANÇARINO ========== */
-
-/* Palco do jogo */
-.danca-grid {
-  display: grid;
-  gap: 4px;
-  max-width: 400px;
-  margin: 0 auto;
-  background: #0a0f08;
-  padding: 12px;
-  border-radius: 20px;
-  border: 2px solid var(--robot-gold);
-}
-
-.danca-cell {
-  aspect-ratio: 1/1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  border-radius: 8px;
-  background: #1e2a1a;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.danca-cell.pista {
-  background: #1e2a1a;
-}
-
-.danca-cell.robo {
-  background: linear-gradient(135deg, #4a90e2, #357abd);
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
-  animation: pulseRobot 0.8s ease-in-out infinite alternate;
-  font-size: 2.2rem;
-}
-
-.danca-cell.robo::after {
-  content: attr(data-direcao);
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  font-size: 0.8rem;
-  background: #0a0f08;
-  border-radius: 50%;
-  padding: 2px;
-}
-
-.danca-cell.chegada {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  animation: bounceFlag 0.5s ease-in-out infinite alternate;
-}
-
-.danca-cell.obstaculo {
-  background: linear-gradient(135deg, #c0392b, #a93226);
-}
-
-/* Botões de fase */
-.btn-fase {
-  background: #1e2a1a;
-  border: 2px solid #4a7c3f;
-  color: var(--robot-text);
-  padding: 6px 14px;
-  border-radius: 40px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 0.85rem;
-}
-
-.btn-fase:hover {
-  background: #2c3e2b;
-  border-color: var(--robot-gold);
-  transform: translateY(-2px);
-}
-
-.btn-fase.ativo {
-  background: var(--robot-gold);
-  border-color: var(--robot-gold);
-  color: #1e2a1a;
-  box-shadow: 0 0 20px rgba(255, 180, 71, 0.3);
-}
-
-/* Cartões de comando */
-.cartao-comando {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border: 2px solid #4a7c3f;
-  border-radius: 16px;
-  padding: 8px 14px;
-  color: var(--robot-text);
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cartao-comando:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: var(--robot-gold);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.cartao-comando.cartao-especial {
-  border-color: #f39c12;
-  background: linear-gradient(135deg, #2c3e2b, #1a2b17);
-}
-
-.cartao-comando.cartao-variavel {
-  border-color: #3498db;
-  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
-}
-
-.cartao-comando.cartao-bug {
-  border-color: #e74c3c;
-  background: linear-gradient(135deg, #3b1a1a, #1e2a1a);
-  animation: bugPulse 1.5s ease-in-out infinite;
-}
-
-/* Algoritmo montado */
-.algoritmo-montado-mini {
-  min-height: 80px;
-  background: #0a0f08;
-  border-radius: 12px;
-  padding: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-content: flex-start;
-}
-
-.comando-item {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border-radius: 12px;
-  padding: 6px 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  border-left: 3px solid var(--robot-gold);
-  animation: comandoEntrar 0.3s ease-out;
-}
-
-.comando-item .btn-remove-comando {
-  background: none;
-  border: none;
-  color: #e74c3c;
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0 4px;
-}
-
-.comando-item .btn-remove-comando:hover {
-  color: #ff6b6b;
-}
-
-/* Loop container */
-.loop-container {
-  background: linear-gradient(135deg, #1a2b17, #0d1f0b);
-  border: 2px solid #f39c12;
-  border-radius: 16px;
-  padding: 8px;
-  width: 100%;
-}
-
-.loop-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.loop-header .loop-icone {
-  font-size: 1.2rem;
-}
-
-.loop-header .loop-texto {
-  color: #f39c12;
-  font-weight: bold;
-  font-size: 0.85rem;
-}
-
-.loop-comandos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding-left: 16px;
-  border-left: 2px dashed #f39c12;
-}
-
-.sub-comando {
-  background: #1a2b17;
-  border-left-color: #f39c12;
-  font-size: 0.8rem;
-  padding: 4px 10px;
-}
-
-/* Variáveis */
-.variavel-badge {
-  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
-  border: 1px solid #3498db;
-  border-radius: 20px;
-  padding: 4px 12px;
-  color: #85c1e9;
-  font-weight: 600;
-  font-size: 0.85rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Mensagens */
-.mensagem-jogo {
-  background: #0a0f08;
-  border-radius: 12px;
-  padding: 12px 16px;
-  border-left: 4px solid var(--robot-gold);
-  color: var(--robot-text);
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-/* Animações */
+/* ================================================================
+   7. ANIMAÇÕES
+   ================================================================ */
 @keyframes comandoEntrar {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.9) translateY(-10px);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
 }
@@ -938,17 +559,49 @@ p,
   }
 }
 
-/* Responsividade */
+@keyframes pulseRobot {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounceFlag {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ================================================================
+   8. RESPONSIVIDADE
+   ================================================================ */
 @media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    white-space: normal;
+  }
+  .logo-rb,
+  .logo-gn,
+  .footer-logo {
+    max-height: 50px;
+  }
+  .subtitulo-chiclete {
+    font-size: 0.6rem;
+  }
+
   .danca-grid {
     max-width: 300px;
     padding: 8px;
   }
-
   .danca-cell {
     font-size: 1.3rem;
   }
-
   .danca-cell.robo {
     font-size: 1.6rem;
   }
@@ -957,28 +610,34 @@ p,
     font-size: 0.7rem;
     padding: 4px 10px;
   }
-
-  .cartao-comando {
+  .cmd-btn {
     font-size: 0.75rem;
     padding: 6px 10px;
   }
 
-  .comando-item {
-    font-size: 0.75rem;
-    padding: 4px 8px;
+  .projeto-header h2 {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
+  .titulo-principal {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+  .logo-rb,
+  .logo-gn,
+  .footer-logo {
+    max-height: 40px;
+  }
+
   .danca-grid {
     max-width: 250px;
     gap: 3px;
   }
-
   .danca-cell {
     font-size: 1rem;
   }
-
   .danca-cell.robo {
     font-size: 1.3rem;
   }
@@ -987,87 +646,56 @@ p,
     font-size: 0.6rem;
     padding: 3px 8px;
   }
-}
-
-/* ========== ADAPTAÇÕES (CARD DE ADAPTAÇÕES) ========== */
-.card.bg-light.border-warning {
-  background-color: #2c3e2b !important;
-  color: var(--robot-text-claro);
-}
-
-.card.bg-light.border-warning .card-title {
-  color: #e67e22;
-  font-weight: bold;
-}
-
-.card.bg-light.border-warning h6,
-.card.bg-light.border-warning li,
-.card.bg-light.border-warning p {
-  color: var(--robot-text-claro);
-}
-
-/* ========== GARANTIA DE ESTILOS DO MENU ========== */
-.menu-robomestre {
-  background: rgba(13, 31, 11, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--robot-gold, #ffb347);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-.menu-robomestre .nav-link {
-  color: var(--robot-text, #e9f5db);
-  font-family: "Chakra Petch", monospace;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 40px;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.menu-robomestre .nav-link i {
-  font-size: 1.1rem;
-  color: var(--robot-gold, #ffb347);
-  transition: transform 0.2s;
-}
-
-.menu-robomestre .nav-link:hover {
-  color: var(--robot-gold, #ffb347);
-  text-shadow: 0 0 4px var(--robot-gold, #ffb347);
-  background: rgba(255, 180, 71, 0.15);
-  transform: translateY(-2px);
-}
-
-.menu-robomestre .nav-link.active {
-  color: var(--robot-glow, #ffcc44);
-  background: rgba(255, 180, 71, 0.25);
-  text-shadow: 0 0 6px var(--robot-gold, #ffb347);
-  border-bottom: 2px solid var(--robot-gold, #ffb347);
-}
-
-.menu-robomestre .navbar-toggler {
-  border-color: var(--robot-gold, #ffb347);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.menu-robomestre .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-@media (max-width: 768px) {
-  .menu-robomestre .navbar-collapse {
-    background: rgba(13, 31, 11, 0.95);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    margin-top: 12px;
-    padding: 12px 0;
-    border: 1px solid var(--robot-gold, #ffb347);
+  .cmd-btn {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  .btn-executar {
+    font-size: 0.6rem;
+    padding: 8px 16px;
   }
 
-  .menu-robomestre .nav-link {
-    justify-content: center;
-    margin: 4px 12px;
+  .seletor div {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .seletor-opcao {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* ================================================================
+   IMPRESSÃO
+   ================================================================ */
+@media print {
+  .cadastro-alunos,
+  .btn-robotico-ano2,
+  .btn-outline-warning,
+  .alert-info,
+  footer,
+  .menu-robomestre,
+  .game-acoes,
+  .game-comandos,
+  .game-variaveis,
+  .game-recordes {
+    display: none !important;
+  }
+
+  .certificado-modelo {
+    background: #fffef7 !important;
+    border: 3px solid var(--robot-gold) !important;
+    -webkit-print-color-adjust: exact;
+    break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 1.2cm;
+  }
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 }

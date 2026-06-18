@@ -12,7 +12,8 @@
   const relatorioBugsEl = document.querySelector(".relatorio-bugs");
 
   function atualizarContadorBugs() {
-    if (relatorioBugsEl) relatorioBugsEl.innerText = `🐛 Bugs encontrados: ${contadorBugs}`;
+    if (relatorioBugsEl)
+      relatorioBugsEl.innerText = `🐛 Bugs encontrados: ${contadorBugs}`;
     localStorage.setItem("cabecalho_contador_bugs", contadorBugs);
   }
 
@@ -24,7 +25,7 @@
   try {
     const salvo = localStorage.getItem("cabecalho_contador_bugs");
     if (salvo !== null) contadorBugs = parseInt(salvo);
-  } catch (e) { }
+  } catch (e) {}
   atualizarContadorBugs();
 
   // --------------------------------------------------------------
@@ -32,7 +33,7 @@
   // --------------------------------------------------------------
   function highlightMenu() {
     const current = window.location.pathname.split("/").pop();
-    document.querySelectorAll(".menu-robomestre .nav-link").forEach(link => {
+    document.querySelectorAll(".menu-robomestre .nav-link").forEach((link) => {
       const href = link.getAttribute("href");
       if (href === current) link.classList.add("active");
       else link.classList.remove("active");
@@ -52,7 +53,7 @@
 
   function atualizarProgresso() {
     const total = checkboxes.length;
-    const marcados = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const marcados = Array.from(checkboxes).filter((cb) => cb.checked).length;
     const percent = total ? (marcados / total) * 100 : 0;
     if (barraProgresso) {
       barraProgresso.style.width = percent + "%";
@@ -61,7 +62,9 @@
     }
     if (progressoTexto) progressoTexto.textContent = `${marcados}/${total}`;
     const concluidas = {};
-    checkboxes.forEach(cb => { concluidas[cb.dataset.semana] = cb.checked; });
+    checkboxes.forEach((cb) => {
+      concluidas[cb.dataset.semana] = cb.checked;
+    });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(concluidas));
   }
 
@@ -70,10 +73,10 @@
     if (salvo) {
       try {
         const concluidas = JSON.parse(salvo);
-        checkboxes.forEach(cb => {
+        checkboxes.forEach((cb) => {
           if (concluidas[cb.dataset.semana]) cb.checked = true;
         });
-      } catch (e) { }
+      } catch (e) {}
     }
     atualizarProgresso();
   }
@@ -95,20 +98,26 @@
     }
 
     carregarProgresso();
-    checkboxes.forEach(cb => cb.addEventListener("change", atualizarProgresso));
+    checkboxes.forEach((cb) =>
+      cb.addEventListener("change", atualizarProgresso),
+    );
 
     if (expandirBtn && typeof bootstrap !== "undefined") {
       expandirBtn.addEventListener("click", () => {
-        document.querySelectorAll("#accordionAulas .accordion-collapse").forEach(coll => {
-          bootstrap.Collapse.getOrCreateInstance(coll).show();
-        });
+        document
+          .querySelectorAll("#accordionAulas .accordion-collapse")
+          .forEach((coll) => {
+            bootstrap.Collapse.getOrCreateInstance(coll).show();
+          });
       });
     }
     if (recolherBtn && typeof bootstrap !== "undefined") {
       recolherBtn.addEventListener("click", () => {
-        document.querySelectorAll("#accordionAulas .accordion-collapse").forEach(coll => {
-          bootstrap.Collapse.getOrCreateInstance(coll).hide();
-        });
+        document
+          .querySelectorAll("#accordionAulas .accordion-collapse")
+          .forEach((coll) => {
+            bootstrap.Collapse.getOrCreateInstance(coll).hide();
+          });
       });
     }
   }
@@ -129,9 +138,9 @@
 
   function escapeHtml(str) {
     return str.replace(/[&<>]/g, function (m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
+      if (m === "&") return "&amp;";
+      if (m === "<") return "&lt;";
+      if (m === ">") return "&gt;";
       return m;
     });
   }
@@ -144,7 +153,8 @@
   function atualizarListaAlunos() {
     if (!listaAlunosEl) return;
     if (alunos.length === 0) {
-      listaAlunosEl.innerHTML = '<li class="text-muted text-center">Nenhum aluno cadastrado 🤖</li>';
+      listaAlunosEl.innerHTML =
+        '<li class="text-muted text-center">Nenhum aluno cadastrado 🤖</li>';
       if (contadorAlunosEl) contadorAlunosEl.textContent = "0";
       if (btnImprimir) btnImprimir.disabled = true;
       if (btnPreview) btnPreview.disabled = true;
@@ -165,14 +175,19 @@
     });
     if (contadorAlunosEl) contadorAlunosEl.textContent = alunos.length;
     if (btnImprimir) btnImprimir.disabled = false;
-    if (btnPreview && previewNome && previewNome.textContent !== "[NOME DO ALUNO]") btnPreview.disabled = false;
+    if (
+      btnPreview &&
+      previewNome &&
+      previewNome.textContent !== "[NOME DO ALUNO]"
+    )
+      btnPreview.disabled = false;
     else if (btnPreview) btnPreview.disabled = true;
 
-    document.querySelectorAll(".btn-selecionar-aluno").forEach(btn => {
+    document.querySelectorAll(".btn-selecionar-aluno").forEach((btn) => {
       btn.removeEventListener("click", handleSelect);
       btn.addEventListener("click", handleSelect);
     });
-    document.querySelectorAll(".btn-remover-aluno").forEach(btn => {
+    document.querySelectorAll(".btn-remover-aluno").forEach((btn) => {
       btn.removeEventListener("click", handleRemove);
       btn.addEventListener("click", handleRemove);
     });
@@ -229,15 +244,20 @@
       </body>
       </html>`;
     const win = window.open("", "_blank", "width=800,height=600");
-    if (win) { win.document.write(html); win.document.close(); }
-    else alert("Permita pop-ups para gerar o certificado.");
+    if (win) {
+      win.document.write(html);
+      win.document.close();
+    } else alert("Permita pop-ups para gerar o certificado.");
   }
 
   function imprimirTodosCertificados() {
-    if (!alunos.length) { alert("Nenhum aluno cadastrado!"); return; }
+    if (!alunos.length) {
+      alert("Nenhum aluno cadastrado!");
+      return;
+    }
     const data = new Date().toLocaleDateString("pt-BR");
     let cards = "";
-    alunos.forEach(aluno => {
+    alunos.forEach((aluno) => {
       cards += `<div class="certificado-impressao" style="border:3px solid #ffb347; border-radius:48px 24px; padding:20px; text-align:center; background:#fffef7; break-inside:avoid;">
         <h3 style="color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.7rem;">🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>
         <p>Certificamos que</p>
@@ -261,17 +281,27 @@
       <script>window.onload=function(){window.print();setTimeout(function(){window.close();},500);};<\/script>
       </body></html>`;
     const win = window.open("", "_blank");
-    if (win) { win.document.write(html); win.document.close(); }
-    else alert("Permita pop-ups para gerar os certificados.");
+    if (win) {
+      win.document.write(html);
+      win.document.close();
+    } else alert("Permita pop-ups para gerar os certificados.");
   }
 
   function initCertificado() {
     if (!inputNome) return;
     const salvos = localStorage.getItem(CERT_STORAGE);
-    if (salvos) { try { alunos = JSON.parse(salvos); } catch (e) { alunos = []; } }
-    if (!alunos.length) alunos = ["ANA BEATRIZ SANTOS", "LUCAS MARTINS FERREIRA"];
+    if (salvos) {
+      try {
+        alunos = JSON.parse(salvos);
+      } catch (e) {
+        alunos = [];
+      }
+    }
+    if (!alunos.length)
+      alunos = ["ANA BEATRIZ SANTOS", "LUCAS MARTINS FERREIRA"];
     salvarAlunos();
-    if (previewData) previewData.textContent = new Date().toLocaleDateString("pt-BR");
+    if (previewData)
+      previewData.textContent = new Date().toLocaleDateString("pt-BR");
     if (btnAdicionar) {
       btnAdicionar.addEventListener("click", () => {
         let nome = inputNome.value.trim().toUpperCase();
@@ -282,7 +312,8 @@
         inputNome.value = "";
       });
     }
-    if (btnImprimir) btnImprimir.addEventListener("click", imprimirTodosCertificados);
+    if (btnImprimir)
+      btnImprimir.addEventListener("click", imprimirTodosCertificados);
     if (btnPreview) {
       btnPreview.addEventListener("click", () => {
         if (previewNome && previewNome.textContent !== "[NOME DO ALUNO]") {
@@ -291,286 +322,724 @@
       });
     }
     if (inputNome) {
-      inputNome.addEventListener("keypress", (e) => { if (e.key === "Enter" && btnAdicionar) btnAdicionar.click(); });
+      inputNome.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && btnAdicionar) btnAdicionar.click();
+      });
     }
   }
 
-  // --------------------------------------------------------------
-  // 5. JOGO DO BIMESTRE – VERSÃO CORRIGIDA E FUNCIONAL
-  // --------------------------------------------------------------
-  let comandos = [];
-  let caixasRestantes = 0;
-  let caixasPegas = 0;
-  let posicaoRobo = 0;
-  let execucaoEmAndamento = false;
-  let pontuacaoAtual = 0;
+  // ==================================================
+  // JOGO: ROBÔ LOMBRIGUEIRO V5 - CORRIGIDO COMPLETAMENTE
+  // Usa array de posições para controle de peças
+  // ==================================================
 
-  const roboAnimationDiv = document.getElementById("roboAnimation");
-  const variavelDisplay = document.getElementById("variavelDisplay");
-  const esteiraDiv = document.getElementById("esteiraVisual");
-  const mensagemDiv = document.getElementById("mensagemJogo");
-  const listaComandosDiv = document.getElementById("listaComandos");
-  const algoritmoVazioMsg = document.getElementById("algoritmoVazioMsg");
-  const btnExecutar = document.getElementById("btnExecutarRobo");
-  const btnReiniciar = document.getElementById("btnReiniciarJogo");
-  const btnDica = document.getElementById("btnDicaJogo");
-  const btnLimpar = document.getElementById("btnLimparAlgoritmo");
-  const pontuacaoFinalSpan = document.getElementById("pontuacaoFinal");
+  (function () {
+    "use strict";
 
-  function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    // --- Estado do jogo ---
+    let comandos = [];
+    let pecasColetadas = 0;
+    let posicaoRobo = 0;
+    let execucaoEmAndamento = false;
+    let pontuacaoAtual = 0;
+    let totalLoops = 0;
+    let logMessages = [];
 
-  function desenharEsteira() {
-    if (!esteiraDiv) return;
-    esteiraDiv.innerHTML = "";
-    for (let i = 0; i < 5; i++) {
-      const caixaDiv = document.createElement("div");
-      caixaDiv.className = "caixa-esteira";
-      caixaDiv.style.cssText = "width:50px; height:50px; background:#ffb347; border-radius:12px; display:flex; align-items:center; justify-content:center; margin:0 4px; font-size:1.5rem;";
-      if (i < caixasRestantes) caixaDiv.innerHTML = "📦";
-      else caixaDiv.innerHTML = "✅";
-      esteiraDiv.appendChild(caixaDiv);
+    // --- Array que controla quais posições têm peças ---
+    // posicoes[1] = true significa que a posição 1 tem peça
+    // posicoes[1] = false significa que a peça da posição 1 já foi coletada
+    let posicoes = {
+      1: true, // peça na posição 1
+      2: true, // peça na posição 2
+      3: true, // peça na posição 3
+      4: true, // peça na posição 4
+      5: true, // peça na posição 5
+    };
+    const TOTAL_PECAS = 5;
+
+    // --- Configuração do LOOP ---
+    let loopConfig = { vezes: 3, cmd1: null, cmd2: null };
+    let loopSelecionados = [];
+
+    // --- Elementos DOM ---
+    const roboAnimationDiv = document.getElementById("roboAnimation");
+    const variavelDisplay = document.getElementById("variavelDisplay");
+    const esteiraDiv = document.getElementById("esteiraVisual");
+    const mensagemDiv = document.getElementById("mensagemJogo");
+    const listaComandosDiv = document.getElementById("listaComandos");
+    const algoritmoVazioMsg = document.getElementById("algoritmoVazioMsg");
+    const btnExecutar = document.getElementById("btnExecutarRobo");
+    const btnReiniciar = document.getElementById("btnReiniciarJogo");
+    const btnDica = document.getElementById("btnDicaJogo");
+    const btnLimpar = document.getElementById("btnLimparAlgoritmo");
+    const pontuacaoFinalSpan = document.getElementById("pontuacaoFinal");
+    const pecasColetadasSpan = document.getElementById("pecasColetadas");
+    const loopCounterSpan = document.getElementById("loopCounter");
+    const cmdCounterSpan = document.getElementById("cmdCounter");
+    const pontuacaoStatusSpan = document.getElementById("pontuacaoStatus");
+    const logDiv = document.getElementById("logExecucao");
+
+    // --- Elementos do Modal ---
+    const loopModal = document.getElementById("loopModal");
+    const loopCmdPreview = document.getElementById("loopCmdPreview");
+    const btnInserirLoop = document.getElementById("btnInserirLoop");
+    const btnLoop = document.getElementById("btnLoop");
+    const modalCloseBtns = document.querySelectorAll(
+      '[data-bs-dismiss="modal"]',
+    );
+    let modalAberto = false;
+
+    // --- Utilitários ---
+    function delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
     }
-    const todasCaixas = esteiraDiv.children;
-    for (let i = 0; i < todasCaixas.length; i++) {
-      if (i === posicaoRobo) todasCaixas[i].style.border = "3px solid #2ecc71";
-      else todasCaixas[i].style.border = "none";
-    }
-  }
 
-  function atualizarDisplayCaixas() {
-    if (variavelDisplay) variavelDisplay.innerHTML = `📦 Caixas: ${caixasPegas}`;
-    desenharEsteira();
-  }
-
-  function inicializarCenario() {
-    caixasRestantes = 5;
-    caixasPegas = 0;
-    posicaoRobo = 0;
-    atualizarDisplayCaixas();
-    if (roboAnimationDiv) roboAnimationDiv.innerHTML = "🤖";
-    if (mensagemDiv) {
-      mensagemDiv.className = "alert alert-info py-2";
-      mensagemDiv.innerHTML = "Cenário reiniciado! Monte o algoritmo e clique em EXECUTAR.";
-    }
-    pontuacaoAtual = 0;
-    if (pontuacaoFinalSpan) pontuacaoFinalSpan.innerText = "0";
-  }
-
-  function mostrarMensagem(msg, tipo = "info") {
-    if (!mensagemDiv) return;
-    mensagemDiv.innerHTML = msg;
-    mensagemDiv.className = `alert alert-${tipo === "erro" ? "danger" : tipo === "warning" ? "warning" : "info"} py-2`;
-    setTimeout(() => {
-      if (mensagemDiv && !mensagemDiv.className.includes("danger")) {
-        mensagemDiv.className = "alert alert-info py-2";
-        mensagemDiv.innerHTML = "Clique nos comandos para montar o algoritmo.";
+    function addLog(msg, isError = false) {
+      const prefix = isError ? "🐛" : "🤖";
+      logMessages.push(`${prefix} ${msg}`);
+      if (logMessages.length > 30) logMessages.shift();
+      if (logDiv) {
+        logDiv.innerHTML = logMessages.join("<br>");
+        logDiv.scrollTop = logDiv.scrollHeight;
       }
-    }, 3000);
-  }
-
-  function adicionarComando(comando) {
-    if (execucaoEmAndamento) {
-      mostrarMensagem("Aguarde a execução terminar para editar o algoritmo.", "warning");
-      return;
     }
-    comandos.push(comando);
-    atualizarInterfaceComandos();
-  }
 
-  function removerComando(idx) {
-    if (execucaoEmAndamento) {
-      mostrarMensagem("Aguarde a execução terminar.", "warning");
-      return;
+    // --- MODAL (JavaScript puro) ---
+    function abrirModal() {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Aguarde a execução terminar!", "warning");
+        return;
+      }
+      loopSelecionados = [];
+      loopConfig = { vezes: 3, cmd1: null, cmd2: null };
+      if (loopCmdPreview) loopCmdPreview.textContent = "(nenhum)";
+
+      document.querySelectorAll(".loop-cmd-btn").forEach((btn) => {
+        btn.classList.remove("btn-warning");
+        btn.classList.add("btn-secondary");
+      });
+
+      document.querySelectorAll(".loop-vezes").forEach((btn) => {
+        btn.classList.remove("btn-warning", "btn-active");
+        btn.classList.add("btn-outline-warning");
+      });
+      const btn3x = document.querySelector('.loop-vezes[data-vezes="3"]');
+      if (btn3x) {
+        btn3x.classList.remove("btn-outline-warning");
+        btn3x.classList.add("btn-warning", "btn-active");
+      }
+      loopConfig.vezes = 3;
+
+      if (loopModal) {
+        loopModal.style.display = "flex";
+        loopModal.style.alignItems = "center";
+        loopModal.style.justifyContent = "center";
+        document.body.style.overflow = "hidden";
+        modalAberto = true;
+      }
     }
-    comandos.splice(idx, 1);
-    atualizarInterfaceComandos();
-  }
 
-  function atualizarInterfaceComandos() {
-    if (!listaComandosDiv) return;
-    if (comandos.length === 0) {
-      algoritmoVazioMsg.style.display = "block";
-      listaComandosDiv.innerHTML = "";
-    } else {
-      algoritmoVazioMsg.style.display = "none";
-      listaComandosDiv.innerHTML = comandos.map((cmd, idx) => {
-        let texto = cmd === "andar" ? "🚶 ANDAR" : cmd === "pegar" ? "✋ PEGAR" : "🔄 LOOP (3x)";
-        return `<span class="comando-item" data-idx="${idx}" style="background:#2c3e2b; border-left:4px solid #ffb347; border-radius:16px; padding:6px 12px; display:inline-flex; align-items:center; gap:8px; margin:4px;">
-                  ${texto}
-                  <span class="remover-comando" data-idx="${idx}" style="cursor:pointer; color:#e74c3c;">✖️</span>
-                </span>`;
-      }).join("");
-      document.querySelectorAll(".remover-comando").forEach(btn => {
-        btn.removeEventListener("click", (e) => {
-          const idx = parseInt(e.currentTarget.getAttribute("data-idx"));
-          removerComando(idx);
+    function fecharModal() {
+      if (loopModal) {
+        loopModal.style.display = "none";
+        document.body.style.overflow = "";
+        modalAberto = false;
+      }
+    }
+
+    // --- Eventos do Modal ---
+    document.querySelectorAll(".loop-vezes").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".loop-vezes").forEach((b) => {
+          b.classList.remove("btn-warning", "btn-active");
+          b.classList.add("btn-outline-warning");
         });
+        this.classList.remove("btn-outline-warning");
+        this.classList.add("btn-warning", "btn-active");
+        loopConfig.vezes = parseInt(this.dataset.vezes);
+      });
+    });
+
+    document.querySelectorAll(".loop-cmd-btn").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const cmd = this.dataset.cmd;
+        if (loopSelecionados.length < 2) {
+          if (!loopSelecionados.includes(cmd)) {
+            loopSelecionados.push(cmd);
+            this.classList.remove("btn-secondary");
+            this.classList.add("btn-warning");
+
+            if (loopSelecionados.length === 1) loopConfig.cmd1 = cmd;
+            else if (loopSelecionados.length === 2) loopConfig.cmd2 = cmd;
+
+            if (loopCmdPreview) {
+              const nomes = {
+                andar: "🚶ANDAR",
+                catar: "🔧CATAR",
+                pular: "⬆️PULAR",
+              };
+              loopCmdPreview.textContent = loopSelecionados
+                .map((c) => nomes[c] || c)
+                .join(" → ");
+            }
+          }
+        } else {
+          mostrarMensagem("⚠️ LOOP só pode ter 2 comandos!", "warning");
+        }
+      });
+    });
+
+    btnInserirLoop?.addEventListener("click", function () {
+      if (!loopConfig.cmd1 || !loopConfig.cmd2) {
+        mostrarMensagem("⚠️ Selecione 2 comandos para o LOOP!", "warning");
+        return;
+      }
+      const loopObj = {
+        type: "loop",
+        vezes: loopConfig.vezes,
+        cmd1: loopConfig.cmd1,
+        cmd2: loopConfig.cmd2,
+      };
+      comandos.push(loopObj);
+      totalLoops++;
+      atualizarInterfaceComandos();
+      atualizarDisplay();
+      calcularPontuacao();
+      addLog(
+        `🔄 LOOP ${loopConfig.vezes}x [${loopConfig.cmd1} ${loopConfig.cmd2}]`,
+      );
+      mostrarMensagem(`✅ LOOP ${loopConfig.vezes}x adicionado!`, "success");
+      fecharModal();
+    });
+
+    modalCloseBtns.forEach((btn) => btn.addEventListener("click", fecharModal));
+    loopModal?.addEventListener("click", function (e) {
+      if (e.target === this) fecharModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modalAberto) fecharModal();
+    });
+    btnLoop?.addEventListener("click", abrirModal);
+
+    // --- DESENHO DA ESTEIRA (CORRETO) ---
+    function desenharEsteira() {
+      if (!esteiraDiv) return;
+      esteiraDiv.innerHTML = "";
+
+      for (let i = 0; i < 6; i++) {
+        const div = document.createElement("div");
+        div.className = "caixa-esteira";
+
+        let conteudo = "";
+        let bg = "#1a2a17";
+        let borda = "2px solid #4a7c3f";
+        let sombra = "none";
+
+        // Posição 0: início
+        if (i === 0) {
+          if (posicaoRobo === 0) {
+            conteudo = "🤖";
+            bg = "#4a90e2";
+            borda = "3px solid #ffb347";
+            sombra = "0 0 25px rgba(74, 144, 226, 0.5)";
+          } else {
+            conteudo = "⬜";
+            bg = "#1a2a17";
+          }
+        }
+        // Posições 1-5
+        else {
+          const temPeca = posicoes[i] === true;
+          const roboAqui = posicaoRobo === i;
+
+          if (roboAqui) {
+            // Robô está nesta posição
+            conteudo = "🤖";
+            bg = "#4a90e2";
+            borda = "3px solid #ffb347";
+            sombra = "0 0 25px rgba(74, 144, 226, 0.5)";
+          } else if (temPeca) {
+            // Tem peça disponível
+            conteudo = "🔩";
+            bg = "#ffb347";
+            borda = "2px solid #e67e22";
+          } else {
+            // Peça já foi coletada
+            conteudo = "✅";
+            bg = "#2c3e2b";
+          }
+        }
+
+        div.style.cssText = `
+        width: 60px; height: 60px; 
+        background: ${bg};
+        border-radius: 14px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        margin: 0 5px; 
+        font-size: 2rem;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        border: ${borda};
+        box-shadow: ${sombra};
+        position: relative;
+      `;
+        div.textContent = conteudo;
+
+        // Label da posição
+        const label = document.createElement("span");
+        label.style.cssText = `
+        position: absolute;
+        bottom: -20px;
+        font-size: 0.5rem;
+        color: #9bbc7b;
+        font-family: monospace;
+        background: rgba(0,0,0,0.5);
+        padding: 0 6px;
+        border-radius: 8px;
+      `;
+        label.textContent = i;
+        div.appendChild(label);
+
+        esteiraDiv.appendChild(div);
+      }
+    }
+
+    // --- Atualização de display ---
+    function atualizarDisplay() {
+      // Conta quantas peças foram coletadas
+      let coletadas = 0;
+      for (let i = 1; i <= TOTAL_PECAS; i++) {
+        if (posicoes[i] === false) coletadas++;
+      }
+      pecasColetadas = coletadas;
+
+      if (variavelDisplay)
+        variavelDisplay.innerHTML = `🔩 Peças: ${pecasColetadas}`;
+      if (pecasColetadasSpan)
+        pecasColetadasSpan.textContent = `${pecasColetadas}/${TOTAL_PECAS}`;
+      if (loopCounterSpan) loopCounterSpan.textContent = totalLoops;
+      if (cmdCounterSpan) cmdCounterSpan.textContent = comandos.length;
+      if (pontuacaoStatusSpan) pontuacaoStatusSpan.textContent = pontuacaoAtual;
+      desenharEsteira();
+    }
+
+    // --- Cálculo de pontuação ---
+    function calcularPontuacao() {
+      // Conta quantas peças foram coletadas
+      let coletadas = 0;
+      for (let i = 1; i <= TOTAL_PECAS; i++) {
+        if (posicoes[i] === false) coletadas++;
+      }
+      pecasColetadas = coletadas;
+
+      const bonusLoop = totalLoops > 0 ? 15 : 0;
+      const eficiencia = Math.max(
+        0,
+        100 - comandos.length * 2 + pecasColetadas * 10 + bonusLoop,
+      );
+      pontuacaoAtual = Math.min(200, eficiencia);
+      if (pontuacaoFinalSpan) pontuacaoFinalSpan.textContent = pontuacaoAtual;
+      if (pontuacaoStatusSpan) pontuacaoStatusSpan.textContent = pontuacaoAtual;
+    }
+
+    // --- Inicialização do cenário ---
+    function inicializarCenario() {
+      // Reseta todas as posições
+      posicoes = {
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+      };
+      pecasColetadas = 0;
+      posicaoRobo = 0;
+      totalLoops = 0;
+      logMessages = [];
+      if (logDiv)
+        logDiv.innerHTML =
+          "🕹️ Robô na posição 0. Use ANDAR para chegar nas peças (posições 1-5)!";
+      atualizarDisplay();
+      calcularPontuacao();
+      if (roboAnimationDiv) roboAnimationDiv.textContent = "🤖";
+      if (mensagemDiv) {
+        mensagemDiv.className = "alert alert-info py-2";
+        mensagemDiv.style.background = "#1e2a1a";
+        mensagemDiv.style.borderColor = "#ffb347";
+        mensagemDiv.style.color = "#ebf0eb";
+        mensagemDiv.innerHTML =
+          "🚶 ANDAR para ir até as peças (posições 1-5) → depois CATAR para coletar!";
+      }
+    }
+
+    function mostrarMensagem(msg, tipo = "info") {
+      if (!mensagemDiv) return;
+      const cores = {
+        info: { bg: "#1e2a1a", border: "#ffb347", color: "#ebf0eb" },
+        success: { bg: "#1a3a1a", border: "#2ecc71", color: "#d5f5e3" },
+        danger: { bg: "#3a1a1a", border: "#e74c3c", color: "#fadbd8" },
+        warning: { bg: "#3a2a1a", border: "#f1c40f", color: "#fef9e7" },
+      };
+      const estilo = cores[tipo] || cores.info;
+      mensagemDiv.style.background = estilo.bg;
+      mensagemDiv.style.borderColor = estilo.border;
+      mensagemDiv.style.color = estilo.color;
+      mensagemDiv.innerHTML = msg;
+    }
+
+    // --- Gerenciamento de comandos ---
+    function adicionarComando(comando) {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Aguarde a execução terminar!", "warning");
+        return;
+      }
+      comandos.push(comando);
+      atualizarInterfaceComandos();
+      atualizarDisplay();
+      calcularPontuacao();
+      addLog(`➕ Adicionado: ${comando.toUpperCase()}`);
+    }
+
+    function removerComando(idx) {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Aguarde a execução terminar!", "warning");
+        return;
+      }
+      const removido = comandos[idx];
+      comandos.splice(idx, 1);
+      if (typeof removido === "object" && removido.type === "loop")
+        totalLoops--;
+      atualizarInterfaceComandos();
+      atualizarDisplay();
+      calcularPontuacao();
+      addLog(`✖️ Removido: ${removido.toUpperCase()}`);
+    }
+
+    function limparAlgoritmo() {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Aguarde a execução terminar!", "warning");
+        return;
+      }
+      comandos = [];
+      totalLoops = 0;
+      atualizarInterfaceComandos();
+      atualizarDisplay();
+      calcularPontuacao();
+      addLog("🗑️ Algoritmo limpo!");
+      mostrarMensagem("🧹 Algoritmo limpo! Monte um novo.", "info");
+    }
+
+    function atualizarInterfaceComandos() {
+      if (!listaComandosDiv) return;
+      if (comandos.length === 0) {
+        algoritmoVazioMsg.style.display = "block";
+        listaComandosDiv.innerHTML = "";
+        return;
+      }
+      algoritmoVazioMsg.style.display = "none";
+      listaComandosDiv.innerHTML = comandos
+        .map((cmd, idx) => {
+          let icone = "",
+            label = "",
+            cor = "#ffb347";
+          if (typeof cmd === "object" && cmd.type === "loop") {
+            const nomes = {
+              andar: "🚶ANDAR",
+              catar: "🔧CATAR",
+              pular: "⬆️PULAR",
+            };
+            icone = "🔄";
+            label = `LOOP ${cmd.vezes}x [${nomes[cmd.cmd1] || cmd.cmd1} ${nomes[cmd.cmd2] || cmd.cmd2}]`;
+            cor = "#ffcc44";
+          } else {
+            icone = cmd === "andar" ? "🚶" : cmd === "catar" ? "🔧" : "⬆️";
+            label = cmd.toUpperCase();
+          }
+          return `
+        <span class="comando-item" style="background:#2c3e2b; border-left:4px solid ${cor}; border-radius:16px; padding:6px 14px; display:inline-flex; align-items:center; gap:8px; margin:4px; font-size:0.85rem;">
+          ${icone} ${label}
+          <span class="remover-comando" data-idx="${idx}" style="cursor:pointer; color:#e74c3c; font-weight:bold; font-size:1.1rem;">✖️</span>
+        </span>
+      `;
+        })
+        .join("");
+      document.querySelectorAll(".remover-comando").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const idx = parseInt(e.currentTarget.getAttribute("data-idx"));
           removerComando(idx);
         });
       });
+      atualizarDisplay();
     }
-  }
 
-  function limparAlgoritmo() {
-    if (execucaoEmAndamento) {
-      mostrarMensagem("Aguarde a execução terminar.", "warning");
-      return;
-    }
-    comandos = [];
-    atualizarInterfaceComandos();
-    mostrarMensagem("Algoritmo limpo! Monte um novo.", "info");
-  }
+    // --- EXECUÇÃO DO ROBÔ (CORRIGIDA) ---
+    async function executarRobo() {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Já estou executando! Aguarde.", "warning");
+        return;
+      }
+      if (comandos.length === 0) {
+        mostrarMensagem(
+          "❌ Nenhum comando! Monte o algoritmo primeiro.",
+          "danger",
+        );
+        return;
+      }
 
-  async function executarRobo() {
-    if (execucaoEmAndamento) {
-      mostrarMensagem("Já estou executando! Aguarde.", "warning");
-      return;
-    }
-    if (comandos.length === 0) {
-      mostrarMensagem("❌ Nenhum comando! Monte o algoritmo primeiro.", "erro");
-      return;
-    }
-    inicializarCenario();
-    execucaoEmAndamento = true;
-    btnExecutar.disabled = true;
-    btnReiniciar.disabled = true;
-    btnLimpar.disabled = true;
-    let sucesso = true;
-    let i = 0;
+      inicializarCenario();
+      execucaoEmAndamento = true;
+      btnExecutar.disabled = true;
+      btnReiniciar.disabled = true;
+      btnLimpar.disabled = true;
+      btnLoop.disabled = true;
 
-    while (i < comandos.length && sucesso && caixasRestantes > 0) {
-      const cmd = comandos[i];
+      addLog("🚀 Iniciando execução...");
+      mostrarMensagem("⚙️ Executando programa...", "info");
+
+      let sucesso = true;
+      let i = 0;
+
+      while (i < comandos.length && sucesso) {
+        const cmd = comandos[i];
+
+        if (typeof cmd === "object" && cmd.type === "loop") {
+          addLog(`🔄 LOOP ${cmd.vezes}x [${cmd.cmd1} ${cmd.cmd2}]`);
+          for (let r = 0; r < cmd.vezes; r++) {
+            if (!sucesso) break;
+
+            // Verifica se todas as peças foram coletadas
+            let todasColetadas = true;
+            for (let p = 1; p <= TOTAL_PECAS; p++) {
+              if (posicoes[p] === true) {
+                todasColetadas = false;
+                break;
+              }
+            }
+            if (todasColetadas) break;
+
+            addLog(`  🔄 Iteração ${r + 1}/${cmd.vezes}`);
+
+            const r1 = await executarComando(cmd.cmd1);
+            if (!r1) {
+              sucesso = false;
+              break;
+            }
+
+            const r2 = await executarComando(cmd.cmd2);
+            if (!r2) {
+              sucesso = false;
+              break;
+            }
+
+            await delay(150);
+          }
+          i++;
+        } else {
+          const result = await executarComando(cmd);
+          if (!result) {
+            sucesso = false;
+            break;
+          }
+          i++;
+        }
+
+        // Verifica se todas as peças foram coletadas
+        let todasColetadas = true;
+        for (let p = 1; p <= TOTAL_PECAS; p++) {
+          if (posicoes[p] === true) {
+            todasColetadas = false;
+            break;
+          }
+        }
+        if (todasColetadas) break;
+      }
+
+      execucaoEmAndamento = false;
+      btnExecutar.disabled = false;
+      btnReiniciar.disabled = false;
+      btnLimpar.disabled = false;
+      btnLoop.disabled = false;
+
+      // Verifica se todas foram coletadas
+      let todasColetadas = true;
+      for (let p = 1; p <= TOTAL_PECAS; p++) {
+        if (posicoes[p] === true) {
+          todasColetadas = false;
+          break;
+        }
+      }
+
+      if (sucesso && todasColetadas) {
+        calcularPontuacao();
+        roboAnimationDiv.textContent = "🤖🎉✨";
+        addLog(
+          `✅ VITÓRIA! ${pecasColetadas} peças! Pontos: ${pontuacaoAtual}`,
+        );
+        mostrarMensagem(
+          `🎉 VITÓRIA! Coletou TODAS as ${pecasColetadas} peças! 🏆 ${pontuacaoAtual} pontos`,
+          "success",
+        );
+      } else if (sucesso && !todasColetadas) {
+        calcularPontuacao();
+        roboAnimationDiv.textContent = "🤔";
+        // Conta quantas peças ainda faltam
+        let faltam = 0;
+        for (let p = 1; p <= TOTAL_PECAS; p++) {
+          if (posicoes[p] === true) faltam++;
+        }
+        addLog(
+          `⏹️ Parou com ${faltam} peças restantes na posição ${posicaoRobo}`,
+        );
+        mostrarMensagem(
+          `⚠️ Faltam ${faltam} peças! O robô está na posição ${posicaoRobo}.`,
+          "warning",
+        );
+      } else {
+        roboAnimationDiv.textContent = "🤖💥";
+        addLog("💥 Execução interrompida por erro!");
+        calcularPontuacao();
+      }
+    }
+
+    // --- EXECUTAR COMANDO SIMPLES (CORRIGIDO) ---
+    async function executarComando(cmd) {
       if (cmd === "andar") {
-        if (posicaoRobo < 4) {
+        // ANDAR: move para a direita (+1)
+        if (posicaoRobo < 5) {
           posicaoRobo++;
-          desenharEsteira();
-          await delay(400);
+          addLog(`  🚶 ANDAR → posição ${posicaoRobo}`);
+          atualizarDisplay();
+          await delay(350);
+          return true;
         } else {
-          sucesso = false;
-          mostrarMensagem("🐛 ERRO: O robô tentou sair da esteira! Use ANDAR com cuidado.", "erro");
-          incrementarBug();
-          break;
+          addLog("  🐛 ERRO: ANDAR - robô já está no fim da esteira!", true);
+          mostrarMensagem(
+            "🐛 ERRO: O robô já está na última posição (5)!",
+            "danger",
+          );
+          return false;
         }
-        i++;
-      }
-      else if (cmd === "pegar") {
-        if (posicaoRobo < caixasRestantes) {
-          caixasPegas++;
-          caixasRestantes--;
-          atualizarDisplayCaixas();
-          await delay(300);
+      } else if (cmd === "catar") {
+        // CATAR: coleta a peça na posição ATUAL do robô
+        if (posicaoRobo === 0) {
+          addLog("  🐛 ERRO: CATAR - robô está na posição 0 (sem peça)!", true);
+          mostrarMensagem(
+            "🐛 ERRO: Não há peça na posição 0! Use ANDAR primeiro.",
+            "danger",
+          );
+          return false;
+        }
+
+        // Verifica se a posição atual tem peça
+        if (posicoes[posicaoRobo] === true) {
+          // Coleta a peça
+          posicoes[posicaoRobo] = false;
+          pecasColetadas++;
+          addLog(
+            `  🔧 CATAR → coletou peça na posição ${posicaoRobo} (total: ${pecasColetadas})`,
+          );
+          atualizarDisplay();
+          await delay(350);
+          return true;
         } else {
-          sucesso = false;
-          mostrarMensagem("🐛 ERRO: Não há caixa para pegar nessa posição!", "erro");
-          incrementarBug();
-          break;
+          addLog(
+            `  🐛 ERRO: CATAR - posição ${posicaoRobo} já foi coletada!`,
+            true,
+          );
+          mostrarMensagem(
+            `🐛 ERRO: A peça na posição ${posicaoRobo} já foi coletada!`,
+            "danger",
+          );
+          return false;
         }
-        i++;
+      } else if (cmd === "pular") {
+        // PULAR: move 2 posições para a direita
+        if (posicaoRobo < 4) {
+          posicaoRobo += 2;
+          if (posicaoRobo > 5) posicaoRobo = 5;
+          addLog(`  ⬆️ PULAR → posição ${posicaoRobo}`);
+          atualizarDisplay();
+          await delay(350);
+          return true;
+        } else {
+          addLog("  🐛 ERRO: PULAR - não há espaço para pular!", true);
+          mostrarMensagem(
+            "🐛 ERRO: Não dá para pular da posição atual!",
+            "danger",
+          );
+          return false;
+        }
       }
-      else if (cmd === "loop") {
-        if (i + 2 >= comandos.length) {
-          sucesso = false;
-          mostrarMensagem("🐛 ERRO: LOOP sem os dois comandos obrigatórios depois!", "erro");
-          incrementarBug();
-          break;
-        }
-        const subCmd1 = comandos[i + 1];
-        const subCmd2 = comandos[i + 2];
-        for (let r = 0; r < 3; r++) {
-          // executa subCmd1
-          if (subCmd1 === "andar") {
-            if (posicaoRobo < 4) {
-              posicaoRobo++;
-              desenharEsteira();
-              await delay(300);
-            } else { sucesso = false; break; }
-          } else if (subCmd1 === "pegar") {
-            if (posicaoRobo < caixasRestantes) {
-              caixasPegas++;
-              caixasRestantes--;
-              atualizarDisplayCaixas();
-              await delay(300);
-            } else { sucesso = false; break; }
-          }
-          if (!sucesso) break;
-          // executa subCmd2
-          if (subCmd2 === "andar") {
-            if (posicaoRobo < 4) {
-              posicaoRobo++;
-              desenharEsteira();
-              await delay(300);
-            } else { sucesso = false; break; }
-          } else if (subCmd2 === "pegar") {
-            if (posicaoRobo < caixasRestantes) {
-              caixasPegas++;
-              caixasRestantes--;
-              atualizarDisplayCaixas();
-              await delay(300);
-            } else { sucesso = false; break; }
-          }
-          if (!sucesso) break;
-        }
-        if (!sucesso) break;
-        i += 3; // pula o LOOP + dois comandos
-      }
+      return false;
     }
 
-    execucaoEmAndamento = false;
-    btnExecutar.disabled = false;
-    btnReiniciar.disabled = false;
-    btnLimpar.disabled = false;
+    // --- Controle do jogo ---
+    function reiniciarCompleto() {
+      if (execucaoEmAndamento) {
+        mostrarMensagem("⏳ Aguarde a execução atual terminar.", "warning");
+        return;
+      }
+      comandos = [];
+      totalLoops = 0;
+      loopConfig = { vezes: 3, cmd1: null, cmd2: null };
+      loopSelecionados = [];
+      atualizarInterfaceComandos();
+      inicializarCenario();
+      calcularPontuacao();
+      addLog("🔄 Jogo reiniciado!");
+      mostrarMensagem("🔄 Jogo reiniciado! O robô está na posição 0.", "info");
+    }
 
-    if (sucesso && caixasRestantes === 0) {
-      const numComandos = comandos.length;
-      const bonusLoop = comandos.includes("loop") ? 20 : 0;
-      pontuacaoAtual = Math.max(0, 100 - (numComandos * 3) + (caixasPegas * 2) + bonusLoop);
-      pontuacaoFinalSpan.innerText = pontuacaoAtual;
-      roboAnimationDiv.innerHTML = "🤖🎉✨";
-      mostrarMensagem(`✅ VITÓRIA! Você pegou todas as ${caixasPegas} caixas com ${numComandos} comandos. Pontuação: ${pontuacaoAtual}`, "success");
-    } else if (sucesso && caixasRestantes > 0) {
-      mostrarMensagem(`⚠️ O robô parou, mas ainda restam ${caixasRestantes} caixas. Acrescente mais comandos ou use LOOP.`, "warning");
+    function mostrarDica() {
+      const dicas = [
+        "💡 ANDAR move o robô 1 posição para a DIREITA.",
+        "💡 CATAR coleta a peça onde o robô ESTÁ (posição 1-5).",
+        "💡 Use ANDAR + CATAR para andar e coletar uma peça.",
+        "💡 LOOP 5x [ANDAR CATAR] → anda e coleta todas as 5 peças!",
+        "💡 PULAR avança 2 posições de uma vez.",
+        "💡 O robô começa na posição 0 (sem peça).",
+        "💡 Peças estão nas posições 1, 2, 3, 4, 5.",
+        "💡 Depois de coletar, a peça vira ✅.",
+        "💡 Tente: LOOP 3x [ANDAR CATAR] + ANDAR + CATAR para coletar 4 peças!",
+      ];
+      const dica = dicas[Math.floor(Math.random() * dicas.length)];
+      mostrarMensagem(dica, "warning");
+      addLog(`💡 Dica: ${dica}`);
+    }
+
+    // --- Inicialização ---
+    function initJogo() {
+      if (!btnExecutar) return;
+
+      document
+        .querySelectorAll(".cartao-comando-jogo:not(.loop-card)")
+        .forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const comando = e.currentTarget.dataset.comando;
+            if (comando) adicionarComando(comando);
+          });
+        });
+
+      btnExecutar.addEventListener("click", executarRobo);
+      btnReiniciar.addEventListener("click", reiniciarCompleto);
+      btnDica.addEventListener("click", mostrarDica);
+      btnLimpar.addEventListener("click", limparAlgoritmo);
+
+      inicializarCenario();
+      calcularPontuacao();
+      addLog("🤖 Robô Lembrete V5 - Controle por posições!");
+      addLog("📌 Posição 0 = início | Posições 1-5 = peças individuais");
+
+      console.log("🎮 Robô Lembrete V5 inicializado!");
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initJogo);
     } else {
-      roboAnimationDiv.innerHTML = "🤖💥";
+      initJogo();
     }
-  }
-
-  function reiniciarCompleto() {
-    if (execucaoEmAndamento) {
-      mostrarMensagem("Aguarde a execução atual terminar.", "warning");
-      return;
-    }
-    comandos = [];
-    atualizarInterfaceComandos();
-    inicializarCenario();
-    mostrarMensagem("Jogo reiniciado! Monte um novo algoritmo.", "info");
-  }
-
-  function mostrarDicaJogo() {
-    mostrarMensagem("💡 DICA: Use LOOP + PEGAR + PEGAR para pegar 2 caixas repetidas 3 vezes (total 6 caixas). Combine com ANDAR para se mover.", "info");
-  }
-
-  function initJogo() {
-    if (!btnExecutar) return;
-    document.querySelectorAll(".cartao-comando-jogo").forEach(btn => {
-      btn.removeEventListener("click", (e) => {
-        const comando = e.currentTarget.getAttribute("data-comando");
-        if (comando) adicionarComando(comando);
-      });
-      btn.addEventListener("click", (e) => {
-        const comando = e.currentTarget.getAttribute("data-comando");
-        if (comando) adicionarComando(comando);
-      });
-    });
-    btnExecutar.addEventListener("click", executarRobo);
-    btnReiniciar.addEventListener("click", reiniciarCompleto);
-    btnDica.addEventListener("click", mostrarDicaJogo);
-    btnLimpar.addEventListener("click", limparAlgoritmo);
-    inicializarCenario();
-  }
+  })();
 
   // --------------------------------------------------------------
   // 6. INICIALIZAÇÃO GERAL

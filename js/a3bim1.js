@@ -8,16 +8,52 @@
 
   // ========== MÓDULO MENU ATIVO ==========
   function highlightCurrentPage() {
-    const currentHash = window.location.hash || "#apresentacao";
-    const navLinks = document.querySelectorAll(".menu-robomestre .nav-link");
-    navLinks.forEach((link) => {
-      const href = link.getAttribute("href");
-      if (href === currentHash) {
+    // Pega o caminho atual da página (ex: "a3bim1.html")
+    var currentPath = window.location.pathname.split("/").pop() || "index.html";
+    // Pega também o hash se existir (ex: "#apresentacao")
+    var currentHash = window.location.hash || "";
+
+    var navLinks = document.querySelectorAll(".menu-robomestre .nav-link");
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute("href");
+      if (!href) return;
+
+      // Remove qualquer hash do href para comparar com o caminho
+      var hrefClean = href.split("#")[0];
+
+      // Verifica se o href corresponde ao caminho atual
+      var isPathMatch =
+        hrefClean === currentPath ||
+        (hrefClean === "index.html" && currentPath === "") ||
+        (hrefClean === "" && currentPath === "index.html");
+
+      // Verifica se o hash corresponde (se houver)
+      var isHashMatch = false;
+      if (currentHash && href.indexOf("#") !== -1) {
+        var hrefHash = href.split("#")[1];
+        if (hrefHash && currentHash.indexOf(hrefHash) !== -1) {
+          isHashMatch = true;
+        }
+      }
+
+      // Se o link é para a página atual, adiciona active
+      if (isPathMatch || isHashMatch) {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
       }
     });
+
+    // Fallback: se nenhum link ficou ativo, tenta pelo texto
+    var hasActive = document.querySelector(".menu-robomestre .nav-link.active");
+    if (!hasActive) {
+      navLinks.forEach(function (link) {
+        var href = link.getAttribute("href");
+        if (href && href.indexOf("bim1") !== -1) {
+          link.classList.add("active");
+        }
+      });
+    }
   }
 
   // ========== MÓDULO PLANOS DE AULA ==========
@@ -103,10 +139,9 @@
   // ========== MÓDULO JOGO REPITA COMIGO (VERSÃO REVISADA) ==========
   const JogoModule = {
     comandos: [],
-    // Estrutura para armazenar o loop que está sendo construído
-    loopEmConstrucao: null,
-    // Estado do modo loop: true quando estamos dentro da construção de um loop
+    loopEmEdicao: null,
     modoLoop: false,
+    seletorLoopAtivo: false,
     desafios: [
       { texto: "PULE 3 VEZES", acaoEsperada: ["pular", "pular", "pular"] },
       {
@@ -134,25 +169,28 @@
     pontuacao: 0,
     acertos: 0,
     timeoutId: null,
-    // Nomes amigáveis para exibição
     nomesAcoes: {
       pular: "🤸 PULAR",
       bater_palma: "👏 BATER PALMA",
       girar: "🔄 GIRAR",
     },
+
     init() {
       if (!document.getElementById("jogoRepitaComigo")) return;
       this.carregarDesafio();
       this.configurarEventos();
       this.atualizarPontuacao();
     },
+
     carregarDesafio() {
       const desafio = this.desafios[this.indice];
       const desafioEl = document.getElementById("desafioAlvo");
       if (desafioEl) desafioEl.innerHTML = desafio.texto;
       this.comandos = [];
-      this.loopEmConstrucao = null;
+      this.loopEmEdicao = null;
       this.modoLoop = false;
+      this.seletorLoopAtivo = false;
+      this.esconderSeletorLoop();
       this.atualizarAreaAlgoritmo();
       this.atualizarStatusLoop(false);
       const msgDiv = document.getElementById("feedbackMsg");
@@ -164,287 +202,485 @@
       this.atualizarBarraProgressoJogo(0);
       const btnProximo = document.getElementById("btnProximoDesafio");
       if (btnProximo) btnProximo.disabled = false;
-      // Resetar botão do loop
       const btnLoop = document.getElementById("btnLoop");
       if (btnLoop) {
         btnLoop.textContent = "🔁 REPITA (loop)";
         btnLoop.classList.remove("btn-loop-ativo");
       }
+      document.querySelectorAll(".cartao-cmd:not(.especial)").forEach((btn) => {
+        btn.classList.remove("modo-loop-ativo");
+      });
     },
-    atualizarStatusLoop(ativo) {
-      const statusEl = document.getElementById("statusLoop");
-      if (!statusEl) return;
-      if (ativo) {
-        statusEl.innerHTML =
-          '<span class="badge bg-warning text-dark p-2">🔁 MODO LOOP ATIVO — Clique nas ações para dentro do loop, depois clique em "FECHAR LOOP"</span>';
-        statusEl.style.display = "block";
-      } else {
-        statusEl.style.display = "none";
+
+    // ===== SELETOR DE NÚMEROS (sem pop-up) =====
+    mostrarSeletorLoop() {
+      if (this.seletorLoopAtivo) return;
+      this.seletorLoopAtivo = true;
+
+      const container = document.getElementById("jogoRepitaComigo");
+      if (!container) return;
+
+      this.esconderSeletorLoop();
+
+      const seletor = document.createElement("div");
+      seletor.id = "seletorLoop";
+      seletor.className = "seletor-loop-overlay";
+      seletor.innerHTML = `
+        <div class="seletor-loop-card">
+          <div class="seletor-loop-header">
+            <span class="seletor-loop-titulo">🔁 QUANTAS VEZES?</span>
+            <button class="seletor-loop-fechar" id="seletorLoopFechar">✖</button>
+          </div>
+          <div class="seletor-loop-grid">
+            ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+              .map(function (n) {
+                return (
+                  '<button class="seletor-loop-numero" data-vezes="' +
+                  n +
+                  '">' +
+                  n +
+                  "</button>"
+                );
+              })
+              .join("")}
+          </div>
+          <div class="seletor-loop-footer">
+            <span class="text-muted small">Clique em um número para criar o loop</span>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(seletor);
+
+      // Evento para fechar
+      var fecharBtn = document.getElementById("seletorLoopFechar");
+      if (fecharBtn) {
+        fecharBtn.addEventListener(
+          "click",
+          function () {
+            this.fecharSeletorLoop();
+          }.bind(this),
+        );
+      }
+
+      // Clicar fora do card fecha
+      seletor.addEventListener(
+        "click",
+        function (e) {
+          if (e.target === seletor) {
+            this.fecharSeletorLoop();
+          }
+        }.bind(this),
+      );
+
+      // Eventos dos números
+      document.querySelectorAll(".seletor-loop-numero").forEach(
+        function (btn) {
+          btn.addEventListener(
+            "click",
+            function (e) {
+              var vezes = parseInt(btn.getAttribute("data-vezes"));
+              this.fecharSeletorLoop();
+              this.criarLoopComVezes(vezes);
+            }.bind(this),
+          );
+        }.bind(this),
+      );
+    },
+
+    esconderSeletorLoop() {
+      var existente = document.getElementById("seletorLoop");
+      if (existente) existente.remove();
+      this.seletorLoopAtivo = false;
+    },
+
+    fecharSeletorLoop() {
+      this.esconderSeletorLoop();
+      var btnLoop = document.getElementById("btnLoop");
+      if (btnLoop) btnLoop.focus();
+    },
+
+    // ===== CRIA UM LOOP COM NÚMERO DE REPETIÇÕES ESCOLHIDO =====
+    criarLoopComVezes(vezes) {
+      if (this.modoLoop) {
+        if (
+          !confirm(
+            "⚠️ Você já está editando um loop. Deseja substituí-lo por um novo?",
+          )
+        ) {
+          return;
+        }
+        this.cancelarLoop();
+      }
+
+      var novoLoop = {
+        tipo: "repita",
+        vezes: vezes,
+        filhos: [],
+        emEdicao: true,
+      };
+
+      this.comandos.push(novoLoop);
+      this.loopEmEdicao = novoLoop;
+      this.modoLoop = true;
+
+      this.atualizarStatusLoop(
+        true,
+        "Repetir " + vezes + "× — adicione ações!",
+      );
+      this.atualizarAreaAlgoritmo();
+
+      var btnLoop = document.getElementById("btnLoop");
+      if (btnLoop) {
+        btnLoop.textContent = "🔁 EDITANDO LOOP...";
+        btnLoop.classList.add("btn-loop-ativo");
+      }
+
+      document
+        .querySelectorAll(".cartao-cmd:not(.especial)")
+        .forEach(function (btn) {
+          btn.classList.add("modo-loop-ativo");
+        });
+
+      var msgDiv = document.getElementById("feedbackMsg");
+      if (msgDiv) {
+        msgDiv.className = "alert alert-warning mt-2";
+        msgDiv.innerHTML =
+          "🔁 Loop criado com <strong>" +
+          vezes +
+          " repetições</strong>! Clique em <strong>PULAR</strong>, <strong>BATER PALMA</strong> ou <strong>GIRAR</strong> para adicionar ações dentro do loop. Depois clique em <strong>FECHAR LOOP</strong>.";
       }
     },
+
+    // ===== ADICIONA AÇÃO AO LOOP EM EDIÇÃO =====
+    adicionarAcaoAoLoop(acao) {
+      if (!this.modoLoop || !this.loopEmEdicao) {
+        this.adicionarComando(acao);
+        return;
+      }
+
+      this.loopEmEdicao.filhos.push(acao);
+      this.atualizarAreaAlgoritmo();
+
+      var msgDiv = document.getElementById("feedbackMsg");
+      if (msgDiv) {
+        var nome =
+          this.nomesAcoes[acao] || acao.replace(/_/g, " ").toUpperCase();
+        var total = this.loopEmEdicao.filhos.length;
+        msgDiv.className = "alert alert-success mt-2";
+        msgDiv.innerHTML =
+          "✅ " +
+          nome +
+          " adicionado ao loop! (" +
+          total +
+          " ação" +
+          (total > 1 ? "es" : "") +
+          ")";
+      }
+    },
+
+    // ===== FECHA O LOOP EM EDIÇÃO =====
+    fecharLoop() {
+      if (!this.loopEmEdicao) {
+        this.cancelarLoop();
+        return;
+      }
+
+      if (this.loopEmEdicao.filhos.length === 0) {
+        if (
+          !confirm(
+            "⚠️ Este loop não tem nenhuma ação. Deseja mantê-lo mesmo assim?",
+          )
+        ) {
+          return;
+        }
+      }
+
+      this.loopEmEdicao.emEdicao = false;
+      this.loopEmEdicao = null;
+      this.modoLoop = false;
+
+      this.atualizarStatusLoop(false);
+      this.atualizarAreaAlgoritmo();
+
+      var msgDiv = document.getElementById("feedbackMsg");
+      if (msgDiv) {
+        msgDiv.className = "alert alert-success mt-2";
+        msgDiv.innerHTML =
+          "🎉 Loop finalizado! Continue montando seu algoritmo.";
+      }
+
+      var btnLoop = document.getElementById("btnLoop");
+      if (btnLoop) {
+        btnLoop.textContent = "🔁 REPITA (loop)";
+        btnLoop.classList.remove("btn-loop-ativo");
+      }
+
+      document
+        .querySelectorAll(".cartao-cmd:not(.especial)")
+        .forEach(function (btn) {
+          btn.classList.remove("modo-loop-ativo");
+        });
+    },
+
+    // ===== CANCELA O LOOP EM EDIÇÃO =====
+    cancelarLoop() {
+      if (!this.loopEmEdicao) {
+        this.modoLoop = false;
+        this.atualizarStatusLoop(false);
+        return;
+      }
+
+      var index = this.comandos.indexOf(this.loopEmEdicao);
+      if (index !== -1) {
+        this.comandos.splice(index, 1);
+      }
+
+      this.loopEmEdicao = null;
+      this.modoLoop = false;
+      this.atualizarStatusLoop(false);
+      this.atualizarAreaAlgoritmo();
+
+      var msgDiv = document.getElementById("feedbackMsg");
+      if (msgDiv) {
+        msgDiv.className = "alert alert-info mt-2";
+        msgDiv.innerHTML =
+          "⏹️ Loop cancelado e removido. Clique em REPITA para criar outro.";
+      }
+
+      var btnLoop = document.getElementById("btnLoop");
+      if (btnLoop) {
+        btnLoop.textContent = "🔁 REPITA (loop)";
+        btnLoop.classList.remove("btn-loop-ativo");
+      }
+
+      document
+        .querySelectorAll(".cartao-cmd:not(.especial)")
+        .forEach(function (btn) {
+          btn.classList.remove("modo-loop-ativo");
+        });
+    },
+
+    // ===== ADICIONA COMANDO NORMAL =====
+    adicionarComando(cmd) {
+      if (this.modoLoop && this.loopEmEdicao) {
+        this.adicionarAcaoAoLoop(cmd);
+        return;
+      }
+
+      this.comandos.push(cmd);
+      this.atualizarAreaAlgoritmo();
+
+      var msgDiv = document.getElementById("feedbackMsg");
+      if (msgDiv) {
+        var nome = this.nomesAcoes[cmd] || cmd.replace(/_/g, " ").toUpperCase();
+        msgDiv.className = "alert alert-success mt-2";
+        msgDiv.innerHTML = "✅ " + nome + " adicionado!";
+      }
+    },
+
+    // ===== RENDERIZA A ÁREA DO ALGORITMO =====
     atualizarAreaAlgoritmo() {
-      const area = document.getElementById("areaAlgoritmo");
+      var area = document.getElementById("areaAlgoritmo");
       if (!area) return;
-      if (this.comandos.length === 0 && !this.loopEmConstrucao) {
+
+      if (this.comandos.length === 0) {
         area.innerHTML =
           '<span class="text-muted">⚡ Nenhum comando adicionado</span>';
         return;
       }
 
-      let html = "";
-      let temLoopAberto = false;
+      var html = "";
 
-      for (let cmd of this.comandos) {
+      for (var i = 0; i < this.comandos.length; i++) {
+        var cmd = this.comandos[i];
+
         if (cmd.tipo === "repita") {
-          html += `<div class="loop-container mb-2 p-2" style="border:2px solid #ffb347; border-radius:12px; background:#1a2b17;">`;
-          html += `<div class="d-flex align-items-center gap-2 mb-1">`;
-          html += `<span class="badge bg-warning text-dark p-2">🔁 REPITA ${cmd.vezes}×</span>`;
-          html += `<button class="btn-remover-loop btn btn-sm btn-danger" data-index="${this.comandos.indexOf(cmd)}" title="Remover este loop">✕</button>`;
-          html += `</div>`;
-          html += `<div class="loop-filhos ms-3 d-flex flex-wrap gap-1">`;
-          if (cmd.filhos && cmd.filhos.length) {
-            for (let filho of cmd.filhos) {
-              const nome =
+          var isEditando = cmd.emEdicao === true;
+          var borderColor = isEditando ? "#ffcc44" : "#ffb347";
+          var bgColor = isEditando ? "#2a3b24" : "#1a2b17";
+          var estiloBorda = isEditando
+            ? "border-style:dashed; border-width:3px;"
+            : "";
+
+          html +=
+            '<div class="loop-container mb-2 p-2" style="border:2px solid ' +
+            borderColor +
+            "; border-radius:12px; background:" +
+            bgColor +
+            "; " +
+            estiloBorda +
+            '">';
+          html +=
+            '<div class="d-flex align-items-center gap-2 mb-1 flex-wrap">';
+          html +=
+            '<span class="badge ' +
+            (isEditando ? "bg-warning text-dark" : "bg-warning text-dark") +
+            ' p-2">';
+          html +=
+            "🔁 REPITA " + cmd.vezes + "× " + (isEditando ? "✏️ EDITANDO" : "");
+          html += "</span>";
+          if (!isEditando) {
+            html +=
+              '<button class="btn-remover-loop btn btn-sm btn-danger" data-index="' +
+              i +
+              '" title="Remover este loop">✕</button>';
+          }
+          if (!isEditando && cmd.filhos && cmd.filhos.length > 0) {
+            html +=
+              '<span class="badge bg-info text-dark">' +
+              cmd.filhos.length +
+              " ação" +
+              (cmd.filhos.length > 1 ? "es" : "") +
+              "</span>";
+          }
+          if (isEditando) {
+            html +=
+              '<span class="badge bg-info p-1">' +
+              cmd.filhos.length +
+              " ações adicionadas</span>";
+          }
+          html += "</div>";
+
+          html += '<div class="loop-filhos ms-3 d-flex flex-wrap gap-1">';
+          if (cmd.filhos && cmd.filhos.length > 0) {
+            for (var j = 0; j < cmd.filhos.length; j++) {
+              var filho = cmd.filhos[j];
+              var nomeFilho =
                 this.nomesAcoes[filho] ||
                 filho
                   .replace(/_/g, " ")
                   .toUpperCase()
                   .replace(/BATER PALMA/g, "BATER PALMA");
-              html += `<span class="badge bg-info p-2">${nome}</span>`;
+              html +=
+                '<span class="badge bg-info p-2">' + nomeFilho + "</span>";
             }
           } else {
-            html += `<span class="text-danger small">⚠️ Nenhuma ação</span>`;
+            html +=
+              '<span class="text-' +
+              (isEditando ? "warning" : "danger") +
+              ' small">' +
+              (isEditando ? "⚠️ Adicione ações!" : "⚠️ Nenhuma ação") +
+              "</span>";
           }
-          html += `</div></div>`;
+          html += "</div>";
+
+          if (isEditando) {
+            html += '<div class="mt-2 d-flex gap-2 flex-wrap">';
+            html +=
+              '<button class="btn-add-ao-loop btn btn-sm btn-outline-success" data-acao="pular">🤸 PULAR</button>';
+            html +=
+              '<button class="btn-add-ao-loop btn btn-sm btn-outline-success" data-acao="bater_palma">👏 BATER PALMA</button>';
+            html +=
+              '<button class="btn-add-ao-loop btn btn-sm btn-outline-success" data-acao="girar">🔄 GIRAR</button>';
+            html +=
+              '<button class="btn-fechar-loop-inline btn btn-sm btn-success">✅ FECHAR</button>';
+            html +=
+              '<button class="btn-cancelar-loop-inline btn btn-sm btn-secondary">✖ CANCELAR</button>';
+            html += "</div>";
+          }
+
+          html += "</div>";
         } else {
-          const nome =
+          var nomeCmd =
             this.nomesAcoes[cmd] ||
             cmd
               .replace(/_/g, " ")
               .toUpperCase()
               .replace(/BATER PALMA/g, "BATER PALMA");
-          html += `<span class="badge bg-info p-2 m-1">${nome}</span>`;
+          html += '<span class="badge bg-info p-2 m-1">' + nomeCmd + "</span>";
         }
-      }
-
-      // Se temos um loop em construção, mostrar ele
-      if (this.loopEmConstrucao) {
-        temLoopAberto = true;
-        html += `<div class="loop-container mb-2 p-2" style="border:2px solid #ffcc44; border-radius:12px; background:#2a3b24; border-style:dashed;">`;
-        html += `<div class="d-flex align-items-center gap-2 mb-1">`;
-        html += `<span class="badge bg-warning text-dark p-2">🔁 REPITA ${this.loopEmConstrucao.vezes}× (em construção)</span>`;
-        html += `<span class="badge bg-info p-1">${this.loopEmConstrucao.filhos.length} ações</span>`;
-        html += `</div>`;
-        html += `<div class="loop-filhos ms-3 d-flex flex-wrap gap-1">`;
-        if (this.loopEmConstrucao.filhos.length) {
-          for (let filho of this.loopEmConstrucao.filhos) {
-            const nome =
-              this.nomesAcoes[filho] ||
-              filho
-                .replace(/_/g, " ")
-                .toUpperCase()
-                .replace(/BATER PALMA/g, "BATER PALMA");
-            html += `<span class="badge bg-info p-2">${nome}</span>`;
-          }
-        } else {
-          html += `<span class="text-muted small">adicione ações clicando nos cartões</span>`;
-        }
-        html += `</div>`;
-        html += `<button id="btnFecharLoop" class="btn btn-success btn-sm mt-2">✅ FECHAR LOOP</button>`;
-        html += ` <button id="btnCancelarLoop" class="btn btn-secondary btn-sm mt-2">✖ CANCELAR</button>`;
-        html += `</div>`;
       }
 
       area.innerHTML = html;
 
-      // Adicionar eventos aos botões de remover loop
-      document.querySelectorAll(".btn-remover-loop").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const index = parseInt(btn.getAttribute("data-index"));
-          if (!isNaN(index) && index >= 0 && index < this.comandos.length) {
-            this.comandos.splice(index, 1);
-            this.atualizarAreaAlgoritmo();
+      // Eventos para botões de remover loop
+      var self = this;
+      document.querySelectorAll(".btn-remover-loop").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          var index = parseInt(btn.getAttribute("data-index"));
+          if (!isNaN(index) && index >= 0 && index < self.comandos.length) {
+            self.comandos.splice(index, 1);
+            self.atualizarAreaAlgoritmo();
           }
         });
       });
 
-      // Eventos para botões de fechar/cancelar loop
-      const btnFechar = document.getElementById("btnFecharLoop");
-      if (btnFechar) {
-        btnFechar.addEventListener("click", () => this.fecharLoop());
-      }
-      const btnCancelar = document.getElementById("btnCancelarLoop");
-      if (btnCancelar) {
-        btnCancelar.addEventListener("click", () => this.cancelarLoop());
-      }
-    },
-    // Iniciar construção de um loop
-    iniciarLoop() {
-      if (this.modoLoop) {
-        alert(
-          "⚠️ Você já está construindo um loop! Termine ou cancele primeiro.",
-        );
-        return;
-      }
-
-      // Perguntar quantas vezes
-      let vezes = prompt("🔁 Quantas vezes o loop vai repetir? (1 a 10)", "3");
-      vezes = parseInt(vezes);
-      if (isNaN(vezes) || vezes < 1) vezes = 1;
-      if (vezes > 10) vezes = 10;
-
-      this.loopEmConstrucao = {
-        vezes: vezes,
-        filhos: [],
-      };
-      this.modoLoop = true;
-      this.atualizarStatusLoop(true);
-      this.atualizarAreaAlgoritmo();
-
-      // Mudar aparência do botão
-      const btnLoop = document.getElementById("btnLoop");
-      if (btnLoop) {
-        btnLoop.textContent = "🔁 ADICIONAR AO LOOP";
-        btnLoop.classList.add("btn-loop-ativo");
-      }
-
-      const msgDiv = document.getElementById("feedbackMsg");
-      if (msgDiv) {
-        msgDiv.className = "alert alert-warning mt-2";
-        msgDiv.innerHTML =
-          "🔁 Agora clique nas ações (PULAR, BATER PALMA, GIRAR) para adicionar dentro do loop. Depois clique em <strong>FECHAR LOOP</strong>.";
-      }
-    },
-    // Adicionar ação ao loop em construção
-    adicionarAcaoAoLoop(acao) {
-      if (!this.modoLoop || !this.loopEmConstrucao) {
-        // Se não estiver em modo loop, adiciona como comando normal
-        this.adicionarComando(acao);
-        return;
-      }
-
-      this.loopEmConstrucao.filhos.push(acao);
-      this.atualizarAreaAlgoritmo();
-
-      // Feedback visual
-      const msgDiv = document.getElementById("feedbackMsg");
-      if (msgDiv) {
-        const nome =
-          this.nomesAcoes[acao] || acao.replace(/_/g, " ").toUpperCase();
-        msgDiv.className = "alert alert-success mt-2";
-        msgDiv.innerHTML = `✅ ${nome} adicionado ao loop! (${this.loopEmConstrucao.filhos.length} ações)`;
-      }
-    },
-    // Fechar o loop e adicionar aos comandos
-    fecharLoop() {
-      if (!this.loopEmConstrucao) {
-        this.cancelarLoop();
-        return;
-      }
-
-      if (this.loopEmConstrucao.filhos.length === 0) {
-        alert("⚠️ Você precisa adicionar pelo menos uma ação dentro do loop!");
-        return;
-      }
-
-      // Adicionar o loop completo aos comandos
-      this.comandos.push({
-        tipo: "repita",
-        vezes: this.loopEmConstrucao.vezes,
-        filhos: [...this.loopEmConstrucao.filhos],
+      // Eventos para botões inline de adicionar ação ao loop
+      document.querySelectorAll(".btn-add-ao-loop").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          var acao = btn.getAttribute("data-acao");
+          if (acao && self.modoLoop && self.loopEmEdicao) {
+            self.loopEmEdicao.filhos.push(acao);
+            self.atualizarAreaAlgoritmo();
+            var msgDiv = document.getElementById("feedbackMsg");
+            if (msgDiv) {
+              var nome = self.nomesAcoes[acao] || acao;
+              msgDiv.className = "alert alert-success mt-2";
+              msgDiv.innerHTML =
+                "✅ " +
+                nome +
+                " adicionado ao loop! (" +
+                self.loopEmEdicao.filhos.length +
+                " ações)";
+            }
+          }
+        });
       });
 
-      // Limpar estado do loop
-      this.loopEmConstrucao = null;
-      this.modoLoop = false;
-      this.atualizarStatusLoop(false);
-      this.atualizarAreaAlgoritmo();
+      document
+        .querySelectorAll(".btn-fechar-loop-inline")
+        .forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            self.fecharLoop();
+          });
+        });
 
-      const msgDiv = document.getElementById("feedbackMsg");
-      if (msgDiv) {
-        msgDiv.className = "alert alert-success mt-2";
-        msgDiv.innerHTML =
-          "🎉 Loop criado com sucesso! Continue montando seu algoritmo.";
-      }
-
-      const btnLoop = document.getElementById("btnLoop");
-      if (btnLoop) {
-        btnLoop.textContent = "🔁 REPITA (loop)";
-        btnLoop.classList.remove("btn-loop-ativo");
-      }
+      document
+        .querySelectorAll(".btn-cancelar-loop-inline")
+        .forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            self.cancelarLoop();
+          });
+        });
     },
-    // Cancelar a construção do loop
-    cancelarLoop() {
-      this.loopEmConstrucao = null;
-      this.modoLoop = false;
-      this.atualizarStatusLoop(false);
-      this.atualizarAreaAlgoritmo();
 
-      const msgDiv = document.getElementById("feedbackMsg");
-      if (msgDiv) {
-        msgDiv.className = "alert alert-info mt-2";
-        msgDiv.innerHTML =
-          "⏹️ Loop cancelado. Clique em REPITA para criar outro.";
-      }
-
-      const btnLoop = document.getElementById("btnLoop");
-      if (btnLoop) {
-        btnLoop.textContent = "🔁 REPITA (loop)";
-        btnLoop.classList.remove("btn-loop-ativo");
-      }
-    },
-    adicionarComando(cmd) {
-      // Se estiver em modo loop, adiciona ao loop
-      if (this.modoLoop && this.loopEmConstrucao) {
-        this.adicionarAcaoAoLoop(cmd);
-        return;
-      }
-
-      // Caso contrário, adiciona como comando normal
-      this.comandos.push(cmd);
-      this.atualizarAreaAlgoritmo();
-
-      const msgDiv = document.getElementById("feedbackMsg");
-      if (msgDiv) {
-        const nome =
-          this.nomesAcoes[cmd] || cmd.replace(/_/g, " ").toUpperCase();
-        msgDiv.className = "alert alert-success mt-2";
-        msgDiv.innerHTML = `✅ ${nome} adicionado!`;
-      }
-    },
+    // ===== LIMPAR ALGORITMO =====
     limparAlgoritmo() {
       if (this.modoLoop) {
         this.cancelarLoop();
       }
       this.comandos = [];
       this.atualizarAreaAlgoritmo();
-      const msgDiv = document.getElementById("feedbackMsg");
+      var msgDiv = document.getElementById("feedbackMsg");
       if (msgDiv) {
         msgDiv.className = "alert alert-info mt-2";
         msgDiv.innerHTML =
           "🗑️ Algoritmo limpo. Monte um novo com os cartões abaixo!";
       }
     },
+
+    // ===== EXECUTAR ALGORITMO =====
     executarAlgoritmo() {
       if (this.timeoutId) clearTimeout(this.timeoutId);
 
-      // Se estiver em modo loop, não pode executar
       if (this.modoLoop) {
-        const msgDiv = document.getElementById("feedbackMsg");
+        var msgDiv = document.getElementById("feedbackMsg");
         if (msgDiv) {
           msgDiv.className = "alert alert-warning mt-2";
           msgDiv.innerHTML =
-            "⚠️ Você está construindo um loop. Termine ou cancele antes de executar!";
+            "⚠️ Você está editando um loop. Finalize ou cancele antes de executar!";
         }
         return;
       }
 
-      let acoes = [];
-      for (let cmd of this.comandos) {
+      var acoes = [];
+      for (var i = 0; i < this.comandos.length; i++) {
+        var cmd = this.comandos[i];
         if (cmd.tipo === "repita") {
           if (!cmd.filhos || cmd.filhos.length === 0) continue;
-          for (let i = 0; i < cmd.vezes; i++) {
-            acoes.push(...cmd.filhos);
+          for (var r = 0; r < cmd.vezes; r++) {
+            acoes.push.apply(acoes, cmd.filhos);
           }
         } else {
           acoes.push(cmd);
@@ -452,7 +688,7 @@
       }
 
       if (acoes.length === 0) {
-        const msgDiv = document.getElementById("feedbackMsg");
+        var msgDiv = document.getElementById("feedbackMsg");
         if (msgDiv) {
           msgDiv.className = "alert alert-warning mt-2";
           msgDiv.innerHTML =
@@ -461,9 +697,9 @@
         return;
       }
 
-      const esperado = this.desafios[this.indice].acaoEsperada;
-      const acertou = JSON.stringify(acoes) === JSON.stringify(esperado);
-      const msgDiv = document.getElementById("feedbackMsg");
+      var esperado = this.desafios[this.indice].acaoEsperada;
+      var acertou = JSON.stringify(acoes) === JSON.stringify(esperado);
+      var msgDiv = document.getElementById("feedbackMsg");
 
       if (acertou) {
         this.pontuacao += 10;
@@ -474,92 +710,153 @@
         }
         this.atualizarPontuacao();
         this.atualizarBarraProgressoJogo(100);
-        this.timeoutId = setTimeout(() => {
-          if (this.indice + 1 < this.desafios.length) {
-            this.indice++;
-            this.carregarDesafio();
+        var self = this;
+        this.timeoutId = setTimeout(function () {
+          if (self.indice + 1 < self.desafios.length) {
+            self.indice++;
+            self.carregarDesafio();
           } else {
             if (msgDiv) {
               msgDiv.className = "alert alert-warning mt-2";
               msgDiv.innerHTML =
                 "🏆 VOCÊ COMPLETOU TODOS OS DESAFIOS! É UM MESTRE DO LOOP! 🏆";
             }
-            const btnProximo = document.getElementById("btnProximoDesafio");
+            var btnProximo = document.getElementById("btnProximoDesafio");
             if (btnProximo) btnProximo.disabled = true;
           }
-          this.timeoutId = null;
+          self.timeoutId = null;
         }, 1500);
       } else {
         if (msgDiv) {
           msgDiv.className = "alert alert-danger mt-2";
-          let msg = "❌ BUG! Algoritmo errado. ";
-          // Dica amigável
-          const acoesStr = acoes
-            .map((a) => this.nomesAcoes[a] || a)
+          var msg = "❌ BUG! Algoritmo errado. ";
+          var acoesStr = acoes
+            .map(function (a) {
+              return self.nomesAcoes[a] || a;
+            })
             .join(" → ");
-          const esperadoStr = esperado
-            .map((a) => this.nomesAcoes[a] || a)
+          var esperadoStr = esperado
+            .map(function (a) {
+              return self.nomesAcoes[a] || a;
+            })
             .join(" → ");
-          msg += `Seu algoritmo: ${acoesStr || "(vazio)"}. Esperado: ${esperadoStr}. Tente novamente!`;
+          msg +=
+            "Seu algoritmo: " +
+            (acoesStr || "(vazio)") +
+            ". Esperado: " +
+            esperadoStr +
+            ". Tente novamente!";
           msgDiv.innerHTML = msg;
         }
         this.atualizarBarraProgressoJogo(0);
       }
     },
+
+    // ===== PONTUAÇÃO =====
     atualizarPontuacao() {
-      const pontuacaoEl = document.getElementById("pontuacao");
-      const acertosEl = document.getElementById("acertos");
+      var pontuacaoEl = document.getElementById("pontuacao");
+      var acertosEl = document.getElementById("acertos");
       if (pontuacaoEl) pontuacaoEl.innerText = this.pontuacao;
-      if (acertosEl) acertosEl.innerHTML = `Acertos: ${this.acertos}`;
+      if (acertosEl) acertosEl.innerHTML = "Acertos: " + this.acertos;
     },
+
     atualizarBarraProgressoJogo(percent) {
-      const barra = document.getElementById("barraProgressoJogo");
+      var barra = document.getElementById("barraProgressoJogo");
       if (barra) {
         barra.style.width = percent + "%";
         barra.setAttribute("aria-valuenow", percent);
       }
     },
-    configurarEventos() {
-      // Cartões de comando
-      const cartoes = document.querySelectorAll(".cartao-cmd");
-      cartoes.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const cmd = btn.getAttribute("data-cmd");
+
+    atualizarStatusLoop(ativo, textoExtra) {
+      var statusEl = document.getElementById("statusLoop");
+      if (!statusEl) return;
+      if (ativo) {
+        var extra = textoExtra || "Adicione ações clicando nos cartões abaixo";
+        statusEl.innerHTML =
+          '<div class="alert alert-warning p-2 mb-0">' +
+          "<strong>🔁 MODO LOOP ATIVO</strong> " +
+          '<span class="badge bg-dark text-warning ms-2">' +
+          extra +
+          "</span> " +
+          '<button id="btnFecharLoopEdicao" class="btn btn-success btn-sm ms-2">✅ FECHAR LOOP</button> ' +
+          '<button id="btnCancelarLoopEdicao" class="btn btn-secondary btn-sm">✖ CANCELAR</button>' +
+          "</div>";
+        statusEl.style.display = "block";
+
+        var self = this;
+        var btnFechar = document.getElementById("btnFecharLoopEdicao");
+        if (btnFechar) {
+          btnFechar.addEventListener("click", function () {
+            self.fecharLoop();
+          });
+        }
+        var btnCancelar = document.getElementById("btnCancelarLoopEdicao");
+        if (btnCancelar) {
+          btnCancelar.addEventListener("click", function () {
+            self.cancelarLoop();
+          });
+        }
+      } else {
+        statusEl.style.display = "none";
+      }
+    },
+
+    // ===== EVENTOS =====
+    configurarEventos: function () {
+      var self = this;
+
+      var cartoes = document.querySelectorAll(".cartao-cmd");
+      cartoes.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          var cmd = btn.getAttribute("data-cmd");
           if (cmd === "repita") {
-            // Botão especial do loop
-            this.iniciarLoop();
+            if (self.seletorLoopAtivo) {
+              self.fecharSeletorLoop();
+            }
+            self.mostrarSeletorLoop();
           } else {
-            this.adicionarComando(cmd);
+            self.adicionarComando(cmd);
           }
         });
       });
 
-      // Botão específico para REPITA
-      const btnLoop = document.getElementById("btnLoop");
+      var btnLoop = document.getElementById("btnLoop");
       if (btnLoop) {
-        btnLoop.addEventListener("click", () => this.iniciarLoop());
+        btnLoop.addEventListener("click", function () {
+          if (self.seletorLoopAtivo) {
+            self.fecharSeletorLoop();
+          }
+          self.mostrarSeletorLoop();
+        });
       }
 
-      const btnLimpar = document.getElementById("btnLimparAlgoritmo");
-      if (btnLimpar)
-        btnLimpar.addEventListener("click", () => this.limparAlgoritmo());
+      var btnLimpar = document.getElementById("btnLimparAlgoritmo");
+      if (btnLimpar) {
+        btnLimpar.addEventListener("click", function () {
+          self.limparAlgoritmo();
+        });
+      }
 
-      const btnExecutar = document.getElementById("btnExecutar");
-      if (btnExecutar)
-        btnExecutar.addEventListener("click", () => this.executarAlgoritmo());
+      var btnExecutar = document.getElementById("btnExecutar");
+      if (btnExecutar) {
+        btnExecutar.addEventListener("click", function () {
+          self.executarAlgoritmo();
+        });
+      }
 
-      const btnProximo = document.getElementById("btnProximoDesafio");
+      var btnProximo = document.getElementById("btnProximoDesafio");
       if (btnProximo) {
-        btnProximo.addEventListener("click", () => {
-          if (this.modoLoop) {
+        btnProximo.addEventListener("click", function () {
+          if (self.modoLoop) {
             alert(
-              "⚠️ Você está construindo um loop. Termine ou cancele primeiro!",
+              "⚠️ Você está editando um loop. Finalize ou cancele primeiro!",
             );
             return;
           }
-          if (this.indice + 1 < this.desafios.length) {
-            this.indice++;
-            this.carregarDesafio();
+          if (self.indice + 1 < self.desafios.length) {
+            self.indice++;
+            self.carregarDesafio();
           } else {
             alert("🎉 Você já completou todos os desafios! Parabéns!");
           }
@@ -592,7 +889,7 @@
       this.configurarEventos();
     },
     carregarAlunos() {
-      const salvos = localStorage.getItem(this.storageKey);
+      var salvos = localStorage.getItem(this.storageKey);
       if (salvos) {
         try {
           this.alunos = JSON.parse(salvos);
@@ -614,7 +911,7 @@
     },
     atualizarDataPreview() {
       if (this.previewData) {
-        const hoje = new Date().toLocaleDateString("pt-BR");
+        var hoje = new Date().toLocaleDateString("pt-BR");
         this.previewData.textContent = hoje;
       }
     },
@@ -628,37 +925,47 @@
         this.atualizarBotoes();
         return;
       }
-      this.alunos.forEach((aluno, idx) => {
-        const li = document.createElement("li");
+      var self = this;
+      this.alunos.forEach(function (aluno, idx) {
+        var li = document.createElement("li");
         li.className = "d-flex justify-content-between align-items-center";
-        li.innerHTML = `<span><i class="bi bi-robot"></i> ${this.escapeHtml(aluno)}</span>
-                        <div>
-                          <button class="btn-selecionar-aluno btn-sm" data-nome="${this.escapeHtml(aluno)}">👁️</button>
-                          <button class="btn-remover-aluno btn-sm btn-danger ms-1" data-idx="${idx}">🗑️</button>
-                        </div>`;
-        this.listaAlunos.appendChild(li);
+        li.innerHTML =
+          '<span><i class="bi bi-robot"></i> ' +
+          self.escapeHtml(aluno) +
+          "</span>" +
+          "<div>" +
+          '<button class="btn-selecionar-aluno btn-sm" data-nome="' +
+          self.escapeHtml(aluno) +
+          '">👁️</button> ' +
+          '<button class="btn-remover-aluno btn-sm btn-danger ms-1" data-idx="' +
+          idx +
+          '">🗑️</button>' +
+          "</div>";
+        self.listaAlunos.appendChild(li);
       });
       if (this.contadorAlunos)
         this.contadorAlunos.textContent = this.alunos.length;
       this.atualizarBotoes();
 
-      document.querySelectorAll(".btn-selecionar-aluno").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const nome = btn.getAttribute("data-nome");
-          if (nome && this.previewNome) this.previewNome.textContent = nome;
-          this.atualizarBotoes();
+      document
+        .querySelectorAll(".btn-selecionar-aluno")
+        .forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            var nome = btn.getAttribute("data-nome");
+            if (nome && self.previewNome) self.previewNome.textContent = nome;
+            self.atualizarBotoes();
+          });
         });
-      });
-      document.querySelectorAll(".btn-remover-aluno").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const idx = parseInt(btn.getAttribute("data-idx"));
-          if (!isNaN(idx)) this.removerAluno(idx);
+      document.querySelectorAll(".btn-remover-aluno").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          var idx = parseInt(btn.getAttribute("data-idx"));
+          if (!isNaN(idx)) self.removerAluno(idx);
         });
       });
     },
     removerAluno(idx) {
-      const nomeRemovido = this.alunos[idx];
-      if (confirm(`Remover ${nomeRemovido} da lista?`)) {
+      var nomeRemovido = this.alunos[idx];
+      if (confirm("Remover " + nomeRemovido + " da lista?")) {
         this.alunos.splice(idx, 1);
         this.salvarAlunos();
         this.atualizarLista();
@@ -668,10 +975,10 @@
       }
     },
     atualizarBotoes() {
-      const temAlunos = this.alunos.length > 0;
+      var temAlunos = this.alunos.length > 0;
       if (this.btnImprimirTodos) this.btnImprimirTodos.disabled = !temAlunos;
       if (this.btnPreviewAluno) {
-        const nomeSelecionado = this.previewNome
+        var nomeSelecionado = this.previewNome
           ? this.previewNome.textContent
           : "";
         this.btnPreviewAluno.disabled =
@@ -680,12 +987,12 @@
     },
     adicionarAluno() {
       if (!this.inputNome) return;
-      let nome = this.inputNome.value.trim().toUpperCase();
+      var nome = this.inputNome.value.trim().toUpperCase();
       if (!nome) {
         alert("🤖 Digite o nome do aluno(a) primeiro!");
         return;
       }
-      if (this.alunos.includes(nome)) {
+      if (this.alunos.indexOf(nome) !== -1) {
         alert("⚠️ Este aluno já está na lista!");
         return;
       }
@@ -695,51 +1002,58 @@
       this.inputNome.value = "";
       this.inputNome.focus();
     },
-    imprimirTodos() {
+    imprimirTodos: function () {
       if (this.alunos.length === 0) {
         alert("🤖 Nenhum aluno cadastrado! Adicione nomes antes de imprimir.");
         return;
       }
-      const dataAtual = new Date().toLocaleDateString("pt-BR");
-      let cardsHTML = "";
-      this.alunos.forEach((aluno) => {
-        cardsHTML += `
-          <div class="certificado-impressao" style="border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:20px; text-align:center; background:#fffef7; break-inside:avoid; page-break-inside:avoid;">
-            <h3 style="color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.7rem;">🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>
-            <p style="color:#4a6e2c;">Certificamos que</p>
-            <strong style="font-size:1rem; display:block; margin:10px 0; color:#2c5e1f; background:#fff0cc; padding:6px; border-radius:40px;">${this.escapeHtml(aluno)}</strong>
-            <p style="color:#4a6e2c;">concluiu o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>
-            <hr style="margin:12px 0; border:1px solid #ffb347;">
-            <p style="font-size:0.65rem; color:#6b8c5c;">RobôMestres do Paraná • ${dataAtual}</p>
-            <p style="font-size:0.6rem; color:#b4621a; font-style:italic;">"Loop não é macarrão! Variável não é coisa de velho!"</p>
-            <div style="font-size:0.55rem; margin-top:8px;">🤖 Ass: Robô Zé 3.0</div>
-          </div>
-        `;
+      var dataAtual = new Date().toLocaleDateString("pt-BR");
+      var cardsHTML = "";
+      var self = this;
+      this.alunos.forEach(function (aluno) {
+        cardsHTML +=
+          '<div class="certificado-impressao" style="border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:20px; text-align:center; background:#fffef7; break-inside:avoid; page-break-inside:avoid;">' +
+          "<h3 style=\"color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.7rem;\">🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>" +
+          '<p style="color:#4a6e2c;">Certificamos que</p>' +
+          '<strong style="font-size:1rem; display:block; margin:10px 0; color:#2c5e1f; background:#fff0cc; padding:6px; border-radius:40px;">' +
+          self.escapeHtml(aluno) +
+          "</strong>" +
+          '<p style="color:#4a6e2c;">concluiu o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>' +
+          '<hr style="margin:12px 0; border:1px solid #ffb347;">' +
+          '<p style="font-size:0.65rem; color:#6b8c5c;">RobôMestres do Paraná • ' +
+          dataAtual +
+          "</p>" +
+          '<p style="font-size:0.6rem; color:#b4621a; font-style:italic;">"Loop não é macarrão! Variável não é coisa de velho!"</p>' +
+          '<div style="font-size:0.55rem; margin-top:8px;">🤖 Ass: Robô Zé 3.0</div>' +
+          "</div>";
       });
-      const htmlLote = `<!DOCTYPE html>
-      <html>
-      <head><meta charset="UTF-8"><title>Certificados RobôMestres - 3º Ano</title>
-      <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Courier New', monospace; background: white; padding: 20px; }
-        .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        @media print {
-          body { padding: 0; margin: 0; }
-          .print-grid { gap: 15px; }
-          @page { size: A4; margin: 0.8cm; }
-        }
-      </style>
-      </head>
-      <body>
-        <div class="print-grid">${cardsHTML}</div>
-        <script>
-          window.onload = function() {
-            setTimeout(function() { window.print(); setTimeout(function() { window.close(); }, 500); }, 200);
-          };
-        <\/script>
-      </body>
-      </html>`;
-      const win = window.open("", "_blank", "width=1000,height=800");
+      var htmlLote =
+        "<!DOCTYPE html>" +
+        "<html>" +
+        '<head><meta charset="UTF-8"><title>Certificados RobôMestres - 3º Ano</title>' +
+        "<style>" +
+        "* { margin: 0; padding: 0; box-sizing: border-box; }" +
+        "body { font-family: 'Courier New', monospace; background: white; padding: 20px; }" +
+        ".print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }" +
+        "@media print {" +
+        "body { padding: 0; margin: 0; }" +
+        ".print-grid { gap: 15px; }" +
+        "@page { size: A4; margin: 0.8cm; }" +
+        "}" +
+        "</style>" +
+        "</head>" +
+        "<body>" +
+        '<div class="print-grid">' +
+        cardsHTML +
+        "</div>" +
+        "<script>" +
+        "window.onload = function() {" +
+        "setTimeout(function() { window.print(); setTimeout(function() { window.close(); }, 500); }, 200);" +
+        "};" +
+        "<\/script>" +
+        "</body>" +
+        "</html>";
+      var win = window.open("", "_blank", "width=1000,height=800");
       if (win) {
         win.document.write(htmlLote);
         win.document.close();
@@ -747,40 +1061,47 @@
         alert("⚠️ Permita pop-ups para gerar os certificados em lote.");
       }
     },
-    previewAlunoSelecionado() {
-      const nomeSelecionado = this.previewNome
+    previewAlunoSelecionado: function () {
+      var nomeSelecionado = this.previewNome
         ? this.previewNome.textContent
         : "";
       if (!nomeSelecionado || nomeSelecionado === "[NOME DO ALUNO]") {
         alert("⚠️ Selecione um aluno na lista primeiro!");
         return;
       }
-      const dataAtual = new Date().toLocaleDateString("pt-BR");
-      const html = `<!DOCTYPE html>
-      <html>
-      <head><meta charset="UTF-8"><title>Certificado - ${this.escapeHtml(nomeSelecionado)}</title>
-      <style>
-        body { font-family: 'Courier New', monospace; background: #e0e0e0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .certificado { border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:30px; text-align:center; background:#fffef7; max-width:800px; margin:0 auto; }
-        .certificado h3 { color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.9rem; }
-        .certificado strong.nome { font-size:22px; display:block; margin:15px 0; color:#2c5e1f; background:#fff0cc; padding:12px; border-radius:40px; }
-        @media print { body { background:white; } @page { size: A4; margin: 1.5cm; } }
-      </style>
-      </head>
-      <body>
-        <div class="certificado">
-          <h3>🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>
-          <p>Certificamos que</p>
-          <strong class="nome">${this.escapeHtml(nomeSelecionado)}</strong>
-          <p>concluiu com êxito o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>
-          <hr><p>RobôMestres do Paraná • ${dataAtual}</p>
-          <p style="font-size:11px;">"Loop não é macarrão! Variável não é coisa de velho!"</p>
-          <div>🤖 Ass: Robô Zé 3.0</div>
-        </div>
-        <script>window.print(); setTimeout(window.close, 500);<\/script>
-      </body>
-      </html>`;
-      const win = window.open("", "_blank", "width=900,height=700");
+      var dataAtual = new Date().toLocaleDateString("pt-BR");
+      var html =
+        "<!DOCTYPE html>" +
+        "<html>" +
+        '<head><meta charset="UTF-8"><title>Certificado - ' +
+        this.escapeHtml(nomeSelecionado) +
+        "</title>" +
+        "<style>" +
+        "body { font-family: 'Courier New', monospace; background: #e0e0e0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }" +
+        ".certificado { border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:30px; text-align:center; background:#fffef7; max-width:800px; margin:0 auto; }" +
+        ".certificado h3 { color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.9rem; }" +
+        ".certificado strong.nome { font-size:22px; display:block; margin:15px 0; color:#2c5e1f; background:#fff0cc; padding:12px; border-radius:40px; }" +
+        "@media print { body { background:white; } @page { size: A4; margin: 1.5cm; } }" +
+        "</style>" +
+        "</head>" +
+        "<body>" +
+        '<div class="certificado">' +
+        "<h3>🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>" +
+        "<p>Certificamos que</p>" +
+        '<strong class="nome">' +
+        this.escapeHtml(nomeSelecionado) +
+        "</strong>" +
+        "<p>concluiu com êxito o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>" +
+        "<hr><p>RobôMestres do Paraná • " +
+        dataAtual +
+        "</p>" +
+        '<p style="font-size:11px;">"Loop não é macarrão! Variável não é coisa de velho!"</p>' +
+        "<div>🤖 Ass: Robô Zé 3.0</div>" +
+        "</div>" +
+        "<script>window.print(); setTimeout(window.close, 500);<\/script>" +
+        "</body>" +
+        "</html>";
+      var win = window.open("", "_blank", "width=900,height=700");
       if (win) {
         win.document.write(html);
         win.document.close();
@@ -788,7 +1109,7 @@
         alert("⚠️ Permita pop-ups para visualizar o certificado.");
       }
     },
-    escapeHtml(str) {
+    escapeHtml: function (str) {
       if (!str) return "";
       return str.replace(/[&<>]/g, function (m) {
         if (m === "&") return "&amp;";
@@ -797,32 +1118,33 @@
         return m;
       });
     },
-    configurarEventos() {
+    configurarEventos: function () {
+      var self = this;
       if (this.btnAdicionar) {
-        this.btnAdicionar.addEventListener("click", () =>
-          this.adicionarAluno(),
-        );
+        this.btnAdicionar.addEventListener("click", function () {
+          self.adicionarAluno();
+        });
       }
       if (this.inputNome) {
-        this.inputNome.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") this.adicionarAluno();
+        this.inputNome.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") self.adicionarAluno();
         });
       }
       if (this.btnImprimirTodos) {
-        this.btnImprimirTodos.addEventListener("click", () =>
-          this.imprimirTodos(),
-        );
+        this.btnImprimirTodos.addEventListener("click", function () {
+          self.imprimirTodos();
+        });
       }
       if (this.btnPreviewAluno) {
-        this.btnPreviewAluno.addEventListener("click", () =>
-          this.previewAlunoSelecionado(),
-        );
+        this.btnPreviewAluno.addEventListener("click", function () {
+          self.previewAlunoSelecionado();
+        });
       }
     },
   };
 
   // ========== INICIALIZAÇÃO GERAL ==========
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     try {
       highlightCurrentPage();
       PlanosModule.init();
