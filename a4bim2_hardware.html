@@ -1,0 +1,4051 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 4º Ano | 2º Bimestre | Aninhamento Profundo - Hardware</title>
+  <!-- Bootstrap 5 + ícones + fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS exclusivo do a4bim2_hardware -->
+  <link rel="stylesheet" href="css/a4bim2_hardware.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ================================================== -->
+  <!-- CABEÇALHO REBELDE (copiado exatamente do modelo_cabecalho.html) -->
+  <!-- ================================================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 4º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 2º BIMESTRE: O MERGULHO NO ANINHAMENTO PROFUNDO ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO LOOP-DENTRO-DE-LOOP</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================== -->
+  <!-- MENU GLASSMORPHISM (copiado exatamente do modelo_menu_bim.html) -->
+  <!-- ================================================== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a4index.html">
+        <i class="bi bi-robot"></i> 4º Ano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a4index_hardware.html"><i class="bi bi-house-door-fill"></i> 4° ano</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a4bim1_hardware.html"><i class="bi bi-1-circle-fill"></i> 1º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="a4bim2_hardware.html"><i class="bi bi-2-circle-fill"></i> 2º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a4bim3_hardware.html"><i class="bi bi-3-circle-fill"></i> 3º bimestre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a4bim4_hardware.html"><i class="bi bi-4-circle-fill"></i> 4º bimestre</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================== -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- ================================================== -->
+  <main class="container my-4">
+    <!-- ================================================== -->
+    <!-- APRESENTAÇÃO DO BIMESTRE (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          Leia com um apito na boca e um capacete de papelão na cabeça
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">
+          "ATENÇÃO, PROFESSOR(A) QUE PENSA QUE SABE TUDO SOBRE ROBÓTICA!
+        </p>
+        <p class="carta-texto">
+          Você acha que ensinar aninhamento é difícil? Que criança de 9 anos
+          não entende loop dentro de loop? PREPARE-SE PARA LEVAR UM CHOQUE DE
+          REALIDADE.
+        </p>
+        <p class="carta-texto">
+          Enquanto você estava preocupado(a) em decorar a BNCC, seu aluno já
+          estava aninhando desculpas para não fazer a lição de casa. Enquanto
+          você tentava explicar o que é uma variável, ele já estava aninhando
+          brinquedos, aninhando histórias, aninhando até os bloquinhos de
+          montar. Aninhar código é só mais uma brincadeira para eles.
+        </p>
+        <p class="carta-texto">
+          Este material não é para os fracos de espírito. É para professores
+          que têm coragem de botar a mão na massa, que não têm medo de ver o
+          micro:bit piscar, apitar e quem sabe quase explodir de tanta lógica
+          aninhada.
+        </p>
+        <p class="carta-texto">
+          Bem-vindo(a) ao Segundo Bimestre do 4º Ano: O Mergulho no
+          Aninhamento Profundo.
+        </p>
+        <p class="carta-texto">
+          Aqui, a gente não ensina robótica. A gente cria vício pedagógico.
+        </p>
+        <p class="carta-texto">
+          Agora, respire fundo, tampe o nariz (porque o cheiro de algoritmo
+          avançado vai invadir sua sala) e vamos nessa!
+        </p>
+        <p class="carta-texto">
+          🤖 ASS: O Robô que vai dominar o mundo (e seu planejamento).
+        </p>
+        <p class="carta-texto fw-bold mt-3">
+          🤖 ROBÓTICA NO 4º ANO SEGUNDO BIMESTRE<br />
+          Material Didático Completo Semanas 11 a 20
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- INTRODUÇÃO AO PROFESSOR (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="introducao-professor" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-robot"></i> 🎯 INTRODUÇÃO AO PROFESSOR — SEGUNDO ATO
+        </h2>
+        <div class="badge-projeto">
+          Respire fundo. Você sobreviveu ao primeiro bimestre.
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p class="carta-texto">
+          Respire fundo. Você sobreviveu ao primeiro bimestre. As crianças já
+          sabem o que é um loop, uma variável e um evento. Agora, vamos pegar
+          tudo isso e jogar no liquidificador do aninhamento.
+        </p>
+        <p class="carta-texto">
+          Professor(a), tampe o nariz. Porque o cheiro de algoritmo avançado
+          vai invadir sua sala.
+        </p>
+        <p class="carta-texto">
+          No primeiro bimestre, ensinamos o micro:bit a piscar, contar e
+          reagir. Agora, vamos ensiná-lo a pensar enquanto repete. É como
+          ensinar uma criança a andar de bicicleta e, de repente, pedir para
+          ela fazer malabarismo com bolinhas enquanto pedala. Parece loucura?
+          É exatamente isso que o 4º ano vai adorar.
+        </p>
+
+        <h5 class="mt-4 mb-3 text-warning">
+          O que muda neste bimestre (e por que você vai amar):
+        </h5>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Agora (2º Bimestre)</th>
+                <th>Antes (1º Bimestre)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Loop dentro de loop (a boneca russa)</td>
+                <td>Loop simples</td>
+              </tr>
+              <tr>
+                <td>SE, SENÃO SE, SENÃO (o cardápio de opções)</td>
+                <td>SE ou SENÃO</td>
+              </tr>
+              <tr>
+                <td>Evento que dispara loop com SE dentro</td>
+                <td>Evento isolado</td>
+              </tr>
+              <tr>
+                <td>Contar, acumular e decidir com base no total</td>
+                <td>Contar até 10</td>
+              </tr>
+              <tr>
+                <td>"O que acontece se eu aninhar isso aqui?"</td>
+                <td>"O que acontece?"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="carta-texto mt-3">
+          <strong>Aviso aos navegantes:</strong> Se você acha que criança de 9
+          anos não entende aninhamento, você está redondamente enganado. Eles
+          aninham brinquedos, aninham histórias, aninham desculpas para não
+          fazer lição. Aninhar código é só mais uma brincadeira. E nós vamos
+          transformar isso em vício pedagógico.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- ESTRUTURA GERAL DO ANO LETIVO (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="estrutura-geral" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-event"></i> 📋 ESTRUTURA GERAL DO ANO
+          LETIVO (RELEMBRANDO)
+        </h2>
+        <div class="badge-projeto">4 bimestres • 10 semanas cada</div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Conceito-Chave</th>
+                <th>Bimestre</th>
+                <th>Semanas</th>
+                <th>Tema Central</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sequências, variáveis, eventos simples</td>
+                <td>1º</td>
+                <td>1 a 10</td>
+                <td>Conhecendo o micro:bit</td>
+              </tr>
+              <tr>
+                <td>Condicionais aninhadas e loops avançados</td>
+                <td>2º</td>
+                <td>11 a 20</td>
+                <td>Aninhando decisões</td>
+              </tr>
+              <tr>
+                <td>Acelerômetro, botões e multitarefa</td>
+                <td>3º</td>
+                <td>21 a 30</td>
+                <td>Eventos concorrentes</td>
+              </tr>
+              <tr>
+                <td>Robô que resolve um problema real</td>
+                <td>4º</td>
+                <td>31 a 40</td>
+                <td>Projeto autoral</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- ================================================== -->
+    <!-- MAPEAMENTO BIMESTRE (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE — HABILIDADES
+          BNCC E RCP-PR
+        </h2>
+        <div class="badge-projeto">2º Bimestre • Semanas 11 a 20</div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>RCP-PR</th>
+                <th>Semana</th>
+                <th>Título da Aula</th>
+                <th>Habilidades BNCC (Matemática)</th>
+                <th>Habilidades BNCC (LP)</th>
+                <th>Habilidades BNCC (Outras)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Autoria: Ordenar algoritmos</td>
+                <td>11</td>
+                <td>"Desembaralhe o aninhamento"</td>
+                <td>EF04MA01, EF04MA21</td>
+                <td>EF04LP11</td>
+                <td>Competência Geral 5</td>
+              </tr>
+              <tr>
+                <td>Autoria: Múltiplas condições</td>
+                <td>12</td>
+                <td>"SENÃO SE a terceira via"</td>
+                <td>EF04MA01, EF04MA03</td>
+                <td>EF04LP11</td>
+                <td>Competência Geral 4</td>
+              </tr>
+              <tr>
+                <td>Autoria: Repetições aninhadas</td>
+                <td>13</td>
+                <td>"Loop dentro de loop"</td>
+                <td>EF04MA16, EF04MA21</td>
+                <td>—</td>
+                <td>Competência Geral 5</td>
+              </tr>
+              <tr>
+                <td>Autoria: Variáveis e operações</td>
+                <td>14</td>
+                <td>"Contadores e acumuladores"</td>
+                <td>EF04MA01, EF04MA03</td>
+                <td>—</td>
+                <td>Competência Geral 5</td>
+              </tr>
+              <tr>
+                <td>Autoria: Eventos e aninhamento</td>
+                <td>15</td>
+                <td>"Eventos com aninhamento"</td>
+                <td>EF04MA21</td>
+                <td>—</td>
+                <td>EF04CI01, EF04GE09</td>
+              </tr>
+              <tr>
+                <td>Autoria: Depuração avançada</td>
+                <td>16</td>
+                <td>"Caça ao bug nível 2"</td>
+                <td>EF04MA21</td>
+                <td>EF04LP11</td>
+                <td>Competência Geral 5</td>
+              </tr>
+              <tr>
+                <td>Autoria: Projeto integrado</td>
+                <td>17</td>
+                <td>"Robô contador de passos"</td>
+                <td>EF04MA01, EF04MA03</td>
+                <td>—</td>
+                <td>EF04CI01</td>
+              </tr>
+              <tr>
+                <td>Autoria: Projeto lúdico</td>
+                <td>18</td>
+                <td>"Jogo da memória"</td>
+                <td>EF04MA21</td>
+                <td>—</td>
+                <td>Competência Geral 5</td>
+              </tr>
+              <tr>
+                <td>Autoria: Projeto com sensores</td>
+                <td>19</td>
+                <td>"Semáforo com sensor"</td>
+                <td>EF04MA03</td>
+                <td>—</td>
+                <td>EF04CI01, EF04GE09</td>
+              </tr>
+              <tr>
+                <td>Autoria e Apresentação</td>
+                <td>20</td>
+                <td>"Feira de robôs"</td>
+                <td>EF04MA01, EF04MA21</td>
+                <td>EF04LP11</td>
+                <td>Competência Geral 5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5 class="mt-4 text-warning">Detalhamento das Habilidades BNCC:</h5>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Como será trabalhada</th>
+                <th>Código</th>
+                <th>Descrição da Habilidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Contadores, acumuladores e variáveis numéricas nos loops
+                </td>
+                <td>EF04MA01</td>
+                <td>
+                  Ler, escrever e ordenar números naturais até a ordem de
+                  dezenas de milhar
+                </td>
+              </tr>
+              <tr>
+                <td>Acumuladores que somam passos e tomam decisões</td>
+                <td>EF04MA03</td>
+                <td>
+                  Resolver e elaborar problemas com números naturais
+                  envolvendo adição e subtração
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Matriz de LEDs com coordenadas (x, y) nos loops aninhados
+                </td>
+                <td>EF04MA16</td>
+                <td>Descrever a posição de objetos usando coordenadas</td>
+              </tr>
+              <tr>
+                <td>
+                  Algoritmos com repetições aninhadas e reconhecimento de
+                  padrões
+                </td>
+                <td>EF04MA21</td>
+                <td>Compreender padrões e regularidades</td>
+              </tr>
+              <tr>
+                <td>
+                  Manual do robô, diário de bordo e explicação de fluxogramas
+                </td>
+                <td>EF04LP11</td>
+                <td>Planejar e produzir textos instrucionais</td>
+              </tr>
+              <tr>
+                <td>Acelerômetro como sensor de passos e movimento</td>
+                <td>EF04CI01</td>
+                <td>Relação entre movimento e energia</td>
+              </tr>
+              <tr>
+                <td>Robô navegando com decisões em cada passo</td>
+                <td>EF04GE09</td>
+                <td>Representar trajetos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5 class="mt-4 text-warning">
+          Detalhamento RCP-PR (Referencial Curricular do Paraná):
+        </h5>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Como será trabalhado</th>
+                <th>Eixo RCP-PR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Resolução de problemas com lógica, algoritmos e aninhamento
+                </td>
+                <td>Pensamento Computacional</td>
+              </tr>
+              <tr>
+                <td>Uso do micro:bit, programação por blocos e hardware</td>
+                <td>Mundo Digital</td>
+              </tr>
+              <tr>
+                <td>Segurança, ética e uso consciente da tecnologia</td>
+                <td>Cultura Digital</td>
+              </tr>
+              <tr>
+                <td>
+                  Criação de sistemas simples com múltiplas condições e
+                  aninhamento
+                </td>
+                <td>Autoria</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- PLANO SINTÉTICO (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE — PLANO
+          SINTÉTICO
+        </h2>
+        <div class="badge-projeto">Semanas 11 a 20</div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Atividade Principal</th>
+                <th>Semana</th>
+                <th>Título da Aula</th>
+                <th>Conceito</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jogo de cartões com código bagunçado</td>
+                <td>11</td>
+                <td>"Desembaralhe o aninhamento"</td>
+                <td>Ordem de execução em aninhamentos</td>
+              </tr>
+              <tr>
+                <td>Robô cardápio com 3 opções</td>
+                <td>12</td>
+                <td>"SENÃO SE a terceira via"</td>
+                <td>Múltiplas condições</td>
+              </tr>
+              <tr>
+                <td>Grade de LEDs com dois loops</td>
+                <td>13</td>
+                <td>"Loop dentro de loop"</td>
+                <td>Aninhamento de repetições</td>
+              </tr>
+              <tr>
+                <td>Soma de passos com meta</td>
+                <td>14</td>
+                <td>"Contadores e acumuladores"</td>
+                <td>Variáveis dentro de aninhamentos</td>
+              </tr>
+              <tr>
+                <td>Dança do chacoalhão</td>
+                <td>15</td>
+                <td>"Eventos com aninhamento"</td>
+                <td>Eventos que disparam loops com SE</td>
+              </tr>
+              <tr>
+                <td>3 bugs em aninhamentos</td>
+                <td>16</td>
+                <td>"Caça ao bug nível 2"</td>
+                <td>Depuração avançada</td>
+              </tr>
+              <tr>
+                <td>Pedômetro com meta e comemoração</td>
+                <td>17</td>
+                <td>"Robô contador de passos"</td>
+                <td>Projeto integrado</td>
+              </tr>
+              <tr>
+                <td>Genius com micro:bit</td>
+                <td>18</td>
+                <td>"Jogo da memória"</td>
+                <td>Aninhamento e eventos</td>
+              </tr>
+              <tr>
+                <td>Semáforo que detecta "carros"</td>
+                <td>19</td>
+                <td>"Semáforo com sensor"</td>
+                <td>Aninhamento e simulação</td>
+              </tr>
+              <tr>
+                <td>Mostra de projetos do bimestre</td>
+                <td>20</td>
+                <td>"Feira de robôs"</td>
+                <td>Revisão e apresentação</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- PLANOS DE AULA DETALHADOS (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="planos-aula" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-journal-bookmark-fill"></i> 📚 PLANOS DE AULA
+          DETALHADOS — 2º BIMESTRE
+        </h2>
+        <div class="badge-projeto">Semanas 11 a 20</div>
+      </div>
+
+      <!-- ========== SEMANA 11 ========== -->
+      <div class="accordion" id="accordionAulas">
+        <div class="accordion-item" data-semana="11">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana11">
+              📌 Semana 11 — "Desembaralhe o aninhamento o robô bagunceiro"
+            </button>
+          </h2>
+          <div id="semana11" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="11" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Revisar os conceitos de loop,
+                    condicional e aninhamento; compreender que a ordem das
+                    instruções altera o resultado.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Desembaralhar códigos
+                    bagunçados e reordená-los corretamente no MakeCode.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Perceber que a ordem das
+                    instruções faz toda a diferença e que errar é parte do
+                    processo.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Revisão de estruturas: REPITA, SE, SENÃO. Ordem de execução
+                  em aninhamentos. Jogo do "desembaralhe o código" (unplugged
+                  e digital).
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA01, EF04MA21, EF04LP11, Competência Geral 5, RCP-PR:
+                  Autoria — Ordenar algoritmos
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB (1 por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões com linhas de
+                    código bagunçadas</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  Nesta semana, o foco é a lógica. O hardware será usado
+                  apenas para testar os códigos desembaralhados.
+                </p>
+                <ol>
+                  <li>
+                    Conecte o micro:bit ao computador usando o cabo USB.
+                  </li>
+                  <li>
+                    Abra o MakeCode no navegador (makecode.microbit.org).
+                  </li>
+                  <li>Crie um novo projeto.</li>
+                  <li>
+                    Após programar (ver código abaixo), clique em "Baixar" e
+                    transfira o arquivo .hex para o micro:bit.
+                  </li>
+                  <li>Observe o resultado na matriz de LEDs.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Código Bagunçado 1 (Corrigir a ordem):
+                  </p>
+                  <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+// VERSÃO BAGUNÇADA — FORA DE ORDEM
+// O que o robô deveria fazer? Piscar um ícone feliz 5 vezes.
+// Mas a ordem está errada!
+
+pausar 100 ms
+limpar tela
+mostrar ícone feliz
+repetir 5 vezes</pre>
+                  <p class="text-warning fw-bold mt-3">Ordem correta:</p>
+                  <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+// VERSÃO CORRIGIDA
+// O loop deve envolver as ações que se repetem!
+
+repetir 5 vezes          // O loop começa aqui
+    mostrar ícone feliz  // Mostra o ícone
+    pausar 100 ms        // Espera um pouquinho
+    limpar tela          // Limpa a tela
+// Fim do loop — volta para o início e repete mais 4 vezes</pre>
+                  <p class="text-light mt-2">
+                    <em>Explicação didática: "O `repetir 5 vezes` é como um
+                      abraço gigante que envolve tudo que deve ser repetido.
+                      Tudo que está DENTRO do abraço vai acontecer 5 vezes.
+                      Tudo que está FORA acontece só uma vez. Se o `limpar
+                      tela` estiver fora do abraço, a tela só vai limpar no
+                      final!"</em>
+                  </p>
+                </div>
+
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Código Bagunçado 2 (Aninhamento errado):
+                  </p>
+                  <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+// VERSÃO BAGUNÇADA
+// O programador queria que, a cada repetição, o robô verificasse se o botão A foi pressionado.
+// Mas o SE está fora do loop!
+
+se botão A for pressionado
+repetir 10 vezes
+    mostrar número contador</pre>
+                  <p class="text-warning fw-bold mt-3">Correção:</p>
+                  <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+// VERSÃO CORRIGIDA
+// O SE deve estar DENTRO do loop para verificar a cada repetição!
+
+repetir 10 vezes
+    se botão A for pressionado então
+        mostrar número contador
+    senão
+        mostrar ícone triste
+    // Fim do SE
+// Fim do loop — volta e verifica de novo</pre>
+                  <p class="text-light mt-2">
+                    <em>Explicação didática: "Imagine que você está numa roda
+                      gigante que dá 10 voltas. Se você só olhar para fora
+                      ANTES de entrar na roda gigante, vai ver a mesma coisa
+                      sempre. Mas se você olhar para fora A CADA VOLTA, vai
+                      ver coisas diferentes! O SE dentro do loop faz
+                      exatamente isso: verifica a condição a cada
+                      repetição."</em>
+                  </p>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>"Hoje o robô está bagunceiro! Ele embaralhou tudo!
+                      Vamos ser detetives do código?"</strong>
+                    — Abertura explosiva
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio 1 — cartões</strong> — Distribua os
+                    cartões do Código 1 bagunçado. Em duplas, ordenem as
+                    linhas em 2 minutos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-15min</span>
+                  <div class="minuto-descricao">
+                    <strong>Correção coletiva</strong> — Projete a solução e
+                    discuta: "Por que a ordem certa é aquela? O que
+                    aconteceria se...?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio 2 — aninhamento</strong> — Cartões com o
+                    Código 2 bagunçado. Ordenar em duplas.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Discussão</strong> — "O que acontece se o SE
+                    estiver fora do loop? E se o loop estiver dentro do SE?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação no MakeCode</strong> — Cada dupla
+                    programa os dois códigos corrigidos e testa no micro:bit.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio extra</strong> — Criar seu próprio código
+                    bagunçado (com 1 erro de aninhamento) e trocar com outra
+                    dupla.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Depuração em dupla</strong> — Corrigir o código
+                    bagunçado do colega.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Escrever no caderno: "A
+                    importância da ordem dos comandos — o que aprendi hoje."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar cartões coloridos (azul para
+                    loop, vermelho para SE, verde para ações) para facilitar a
+                    identificação visual.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Desafios cronometrados (2 minutos
+                    para cada desembaralhamento) mantêm o foco.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Cartões em relevo ou
+                    com letras grandes; descrever os códigos verbalmente.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa e uso da simulação visual do MakeCode.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Utilizar a simulação
+                    do MakeCode caso o manuseio do mouse seja difícil;
+                    oferecer apoio de um colega.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar um código com 3
+                    níveis de aninhamento bagunçado (loop dentro de SE dentro
+                    de loop).
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ordenou corretamente as linhas</td>
+                        <td>Desembaralhar o código 1</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Ordenou corretamente com aninhamento</td>
+                        <td>Desembaralhar o código 2</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criatividade do bug e correção correta</td>
+                        <td>Criar e corrigir código próprio</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 12 ========== -->
+        <div class="accordion-item" data-semana="12">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana12">
+              📌 Semana 12 — "SENÃO SE a terceira via (como um cardápio)"
+            </button>
+          </h2>
+          <div id="semana12" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="12" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Compreender a estrutura
+                    `SENÃO SE` para múltiplas condições.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um programa que
+                    responda de 3 maneiras diferentes com base em uma
+                    variável.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Desenvolver o raciocínio de
+                    decisões múltiplas e perceber que a vida não é só "sim ou
+                    não".
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Estrutura condicional múltipla: SE, SENÃO SE, SENÃO. Usando
+                  variáveis para decidir entre várias opções. Exemplo: mostrar
+                  ícone diferente para números 1, 2, 3.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA01, EF04MA03, EF04LP11, Competência Geral 4, RCP-PR:
+                  Autoria — Múltiplas condições
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões com números (para
+                    sorteio)</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Abra o MakeCode.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>
+                    Teste apertando o botão A várias vezes e observando a
+                    matriz de LEDs.
+                  </li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "O Robô Cardápio"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: O ROBÔ CARDÁPIO
+// ============================================================
+// OBJETIVO: O robô mostra um ícone diferente para cada opção (1, 2, 3).
+// AO APERTAR O BOTÃO A: avança para a próxima opção.
+// ============================================================
+
+// DECLARAÇÃO DE VARIÁVEIS
+let opcao = 0
+
+// ============================================================
+// EVENTO: BOTÃO A PRESSIONADO
+// ============================================================
+input.onButtonPressed(Button.A, function () {
+    opcao = opcao + 1
+
+    // ESTRUTURA CONDICIONAL MÚLTIPLA (SE / SENÃO SE / SENÃO)
+    if (opcao == 1) {
+        basic.showIcon(IconNames.Happy)      // Opção 1: FELIZ 😊
+    } else if (opcao == 2) {
+        basic.showIcon(IconNames.Sad)        // Opção 2: TRISTE 😢
+    } else if (opcao == 3) {
+        basic.showIcon(IconNames.Surprised)  // Opção 3: SURPRESO 😮
+    } else {
+        opcao = 0
+        basic.clearScreen()
+        basic.showNumber(0)
+    }
+})</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Linha</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>É como um prato que começa vazio</td>
+                        <td><code>let opcao = 0</code></td>
+                        <td>
+                          Cria uma "caixinha" chamada opção que começa vazia
+                          (0)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>É como adicionar uma bola de sorvete</td>
+                        <td><code>opcao = opcao + 1</code></td>
+                        <td>A cada aperto, coloca +1 no prato</td>
+                      </tr>
+                      <tr>
+                        <td>"Se você pedir pizza..."</td>
+                        <td><code>if (opcao == 1)</code></td>
+                        <td>"Se for 1..."</td>
+                      </tr>
+                      <tr>
+                        <td>"Se não for pizza, mas for hambúrguer..."</td>
+                        <td><code>else if (opcao == 2)</code></td>
+                        <td>"Senão, se for 2..."</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Se não for nem pizza nem hambúrguer, mas for
+                          salada..."
+                        </td>
+                        <td><code>else if (opcao == 3)</code></td>
+                        <td>"Senão, se for 3..."</td>
+                      </tr>
+                      <tr>
+                        <td>"Se não for nenhuma das opções acima..."</td>
+                        <td><code>else</code></td>
+                        <td>"Senão..."</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como um cardápio: você pode
+                    escolher 1 (pizza 🍕), 2 (hambúrguer 🍔) ou 3 (salada 🥗).
+                    Se escolher 4, o robô fica confuso e começa de novo!"</em>
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo do cardápio humano</strong> — Professor diz
+                    um número (1, 2, 3) e alunos fazem uma ação (pular,
+                    dançar, parar). "E se eu disser 4?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação do SENÃO SE</strong> — "Se não for a
+                    primeira opção, testa a segunda. Se não for, testa a
+                    terceira. É tipo uma escada de decisões!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o programa
+                    do cardápio juntos, linha por linha. Explicar cada bloco.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste</strong> — Apertar A várias vezes e ver as
+                    opções mudando na matriz de LEDs.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio dos ícones</strong> — Trocar os ícones por
+                    outros: estrela, X, check, coração.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do botão B</strong> — Fazer o botão B
+                    diminuir a opção (voltar). <code>opcao = opcao - 1</code>
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do número</strong> — Em vez de ícones,
+                    mostrar o número da opção na tela.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação livre</strong> — Cada dupla cria seu
+                    próprio "cardápio" com 4 opções (usando números de 1 a 4).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar a estrutura
+                    SENÃO SE no caderno com um exemplo.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar cores para cada opção (1=verde,
+                    2=amarelo, 3=vermelho) e associar a imagens.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Desafios de 5 minutos para cada
+                    etapa; manter o ritmo acelerado.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Descrever os ícones
+                    em voz alta; usar feedback sonoro (bip diferente para cada
+                    opção com <code>music.playTone</code>).
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa; usar a simulação visual do MakeCode.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Utilizar a simulação
+                    com clique do mouse caso o botão físico seja difícil.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar um cardápio com
+                    5 opções usando números e ícones personalizados.
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funcionou para 3 opções com ícones</td>
+                        <td>Programa do cardápio</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Implementou a volta corretamente</td>
+                        <td>Desafio do botão B</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criatividade e execução do cardápio próprio</td>
+                        <td>Criação livre</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 13 ========== -->
+        <div class="accordion-item" data-semana="13">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana13">
+              📌 Semana 13 — "Loop dentro de loop (a boneca russa)"
+            </button>
+          </h2>
+          <div id="semana13" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="13" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Compreender o aninhamento de
+                    estruturas de repetição (loop dentro de loop).
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um programa que
+                    desenha uma grade 5×5 usando dois loops aninhados.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Perceber que loops aninhados
+                    podem gerar padrões complexos com poucas linhas e que isso
+                    é mágico.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Loop dentro de loop: como funciona a execução (o loop
+                  interno termina antes do externo avançar). Exemplo: desenhar
+                  uma linha de 5 LEDs usando um loop, e repetir 5 linhas com
+                  outro loop. Aplicação: matriz de LEDs com coordenadas (x,
+                  y).
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA16, EF04MA21, Competência Geral 5, RCP-PR: Autoria —
+                  Repetições aninhadas
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Papel
+                    quadriculado para planejar os padrões</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Abra o MakeCode.</li>
+                  <li>
+                    Programe usando dois loops aninhados para acender LEDs
+                    específicos.
+                  </li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>Observe o padrão na matriz de LEDs 5×5.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Grade de LEDs — A Diagonal Mágica"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: GRADE DE LEDS — A DIAGONAL MÁGICA
+// ============================================================
+// OBJETIVO: Usar dois loops aninhados para acender a diagonal
+// principal da matriz 5×5 de LEDs.
+// ============================================================
+
+// LOOP EXTERNO: PERCORRE AS LINHAS (x)
+for (let x = 0; x <= 4; x++) {
+    // LOOP INTERNO: PERCORRE AS COLUNAS (y)
+    for (let y = 0; y <= 4; y++) {
+        if (x == y) {
+            led.plot(x, y)      // Acende o LED na posição (x, y)
+        } else {
+            led.unplot(x, y)    // Apaga o LED na posição (x, y)
+        }
+        basic.pause(50)
+    }
+}</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Parte do código</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>É como um professor que vai de mesa em mesa</td>
+                        <td><code>for (let x = 0; x <= 4; x++)</code></td>
+                        <td>
+                          Loop externo: "Vá para a linha 0, depois 1, depois
+                          2..."
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          É como o professor que, em cada mesa, pergunta para
+                          cada aluno
+                        </td>
+                        <td><code>for (let y = 0; y <= 4; y++)</code></td>
+                        <td>
+                          Loop interno: "Percorra todas as colunas desta
+                          linha"
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Se o número da mesa for igual ao número do
+                          aluno..."
+                        </td>
+                        <td><code>if (x == y)</code></td>
+                        <td>"Se a linha for igual à coluna..."</td>
+                      </tr>
+                      <tr>
+                        <td>Acende a luz daquele aluno</td>
+                        <td><code>led.plot(x, y)</code></td>
+                        <td>Acende o LED na posição (x, y)</td>
+                      </tr>
+                      <tr>
+                        <td>Apaga a luz daquele aluno</td>
+                        <td><code>led.unplot(x, y)</code></td>
+                        <td>Apaga o LED na posição (x, y)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como se o robô fosse uma formiga
+                    andando em uma grade 5×5. O primeiro loop diz 'vá para a
+                    linha 1'. O segundo loop diz 'ande por todas as colunas
+                    dessa linha, uma por uma'. Depois volta para o primeiro
+                    loop, que diz 'vá para a linha 2', e o segundo loop repete
+                    tudo de novo. A formiga visita TODAS as 25 posições!"</em>
+                </p>
+
+                <div class="bg-dark p-3 rounded-4 mb-3 text-center" style="font-family: monospace">
+                  <p class="text-light mb-1">Visualização da Diagonal:</p>
+                  <p class="text-light mb-0" style="font-size: 0.8rem">
+                    (0,0) ★ (0,1) · (0,2) · (0,3) · (0,4) ·<br />
+                    (1,0) · (1,1) ★ (1,2) · (1,3) · (1,4) ·<br />
+                    (2,0) · (2,1) · (2,2) ★ (2,3) · (2,4) ·<br />
+                    (3,0) · (3,1) · (3,2) · (3,3) ★ (3,4) ·<br />
+                    (4,0) · (4,1) · (4,2) · (4,3) · (4,4) ★
+                  </p>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desenho no papel</strong> — Em uma grade 5×5,
+                    marcar a diagonal. "Como faríamos isso com repetições?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação do loop aninhado</strong> — Mostrar o
+                    funcionamento com uma demonstração: para cada x, percorre
+                    todos os y.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o programa
+                    da diagonal juntos, linha por linha.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste</strong> — Ver a diagonal acendendo e
+                    apagando na matriz de LEDs.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do X</strong> — Em vez da diagonal, fazer
+                    um X (x==y OU x+y==4).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do quadrado</strong> — Fazer um quadrado
+                    apenas nas bordas (x==0 OU x==4 OU y==0 OU y==4).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação de padrão próprio</strong> — Cada dupla
+                    cria um padrão com loops aninhados (coração, seta, letra).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação</strong> — Mostrar os padrões criados
+                    para a turma.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Explicar como funciona
+                    um loop dentro de outro com desenho.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar papel quadriculado com cores
+                    para guiar o padrão (azul para x, vermelho para y).
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Dividir em etapas: "primeiro faça a
+                    linha, depois repita a linha 5 vezes."
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Descrever o padrão
+                    verbalmente; usar a simulação em alto contraste.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    passo a passo na lousa.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Utilizar a simulação
+                    do MakeCode com clique do mouse.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar um padrão
+                    animado que se move com loops aninhados (ex: uma cobrinha
+                    que anda).
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funcionou com dois loops aninhados</td>
+                        <td>Programa da diagonal</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Implementou corretamente o padrão</td>
+                        <td>Desafio do X ou quadrado</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criatividade e execução do padrão</td>
+                        <td>Padrão próprio</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ========== SEMANA 14 ========== -->
+        <div class="accordion-item" data-semana="14">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana14">
+              📌 Semana 14 — "Contadores e acumuladores (o cofrinho
+              inteligente)"
+            </button>
+          </h2>
+          <div id="semana14" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="14" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Diferenciar contador
+                    (incremento simples) de acumulador (soma de valores).
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um programa que
+                    soma números em um loop e toma decisões com base no total.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Desenvolver raciocínio
+                    aritmético aplicado à programação e descobrir que
+                    matemática pode ser divertida.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Contador: conta quantas vezes algo aconteceu. Acumulador:
+                  soma valores ao longo do tempo. Aninhamento: dentro do loop,
+                  somar e decidir.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA01, EF04MA03, Competência Geral 5, RCP-PR: Autoria —
+                  Variáveis e operações
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Abra o MakeCode.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>
+                    Teste apertando o botão A várias vezes e observando os
+                    números na matriz.
+                  </li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Soma de Passos — O Cofrinho Inteligente"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: SOMA DE PASSOS — O COFRINHO INTELIGENTE
+// ============================================================
+// OBJETIVO: A cada aperto do botão A, o robô:
+// 1. Conta quantas vezes apertou (CONTADOR)
+// 2. Soma os valores (ACUMULADOR)
+// 3. Se o total passar de 20, comemora e zera!
+// ============================================================
+
+let contador = 0    // "quantas moedas eu coloquei?"
+let acumulador = 0  // "quanto dinheiro eu tenho no total?"
+
+input.onButtonPressed(Button.A, function () {
+    contador = contador + 1
+    acumulador = acumulador + contador
+    basic.showNumber(acumulador)
+
+    if (acumulador > 20) {
+        basic.showIcon(IconNames.Happy)
+        basic.pause(500)
+        basic.showNumber(0)
+        acumulador = 0
+        contador = 0
+    }
+})
+
+input.onButtonPressed(Button.B, function () {
+    acumulador = 0
+    contador = 0
+    basic.showNumber(0)
+    basic.pause(500)
+    basic.showString("ZERADO!")
+})</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Conceito</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Quantas moedas eu coloquei no cofrinho?"</td>
+                        <td><code>contador</code></td>
+                        <td>Conta quantas vezes algo aconteceu</td>
+                      </tr>
+                      <tr>
+                        <td>"Quanto dinheiro eu tenho no total?"</td>
+                        <td><code>acumulador</code></td>
+                        <td>Soma os valores ao longo do tempo</td>
+                      </tr>
+                      <tr>
+                        <td>"Coloco mais uma moeda"</td>
+                        <td><code>contador = contador + 1</code></td>
+                        <td>Incrementa o contador</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          "Adiciono o valor da moeda ao total que já tinha"
+                        </td>
+                        <td>
+                          <code>acumulador = acumulador + contador</code>
+                        </td>
+                        <td>Soma o novo valor ao total</td>
+                      </tr>
+                      <tr>
+                        <td>"Será que já enchi o cofrinho?"</td>
+                        <td><code>if (acumulador > 20)</code></td>
+                        <td>Verifica se passou da meta</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como se você tivesse um cofrinho.
+                    Cada vez que aperta o botão, você coloca uma moeda. O
+                    contador é quantas moedas você colocou. O acumulador é o
+                    valor total guardado. Se juntar mais de 20 reais, o robô
+                    fica feliz e esvazia o cofrinho!"</em>
+                </p>
+
+                <div class="bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning mb-1">Simulação numérica:</p>
+                  <table class="table table-robotica table-bordered table-sm" style="font-size: 0.8rem">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Cálculo</th>
+                        <th>Aperto</th>
+                        <th>Contador</th>
+                        <th>Acumulador</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>0 + 1 = 1</td>
+                        <td>1º</td>
+                        <td>1</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <td>1 + 2 = 3</td>
+                        <td>2º</td>
+                        <td>2</td>
+                        <td>3</td>
+                      </tr>
+                      <tr>
+                        <td>3 + 3 = 6</td>
+                        <td>3º</td>
+                        <td>3</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>6 + 4 = 10</td>
+                        <td>4º</td>
+                        <td>4</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>10 + 5 = 15</td>
+                        <td>5º</td>
+                        <td>5</td>
+                        <td>15</td>
+                      </tr>
+                      <tr>
+                        <td>15 + 6 = 21 → META ATINGIDA! 🎉</td>
+                        <td>6º</td>
+                        <td>6</td>
+                        <td>21</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio mental</strong> — "Se eu apertar 3 vezes,
+                    o total é 1+2+3=6. Se apertar 4, é 10. Qual a lógica?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação</strong> — Diferença entre contador e
+                    acumulador com exemplos do dia a dia.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o programa
+                    juntos, linha por linha.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste</strong> — Apertar várias vezes e ver o
+                    total na tela.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio da meta</strong> — Mudar a meta de 20 para
+                    50 (ou qualquer número que quiserem).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do botão B</strong> — Botão B zera tudo e
+                    mostra "ZERADO".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio da média</strong> — Fazer o robô mostrar a
+                    média (acumulador / contador).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Depuração</strong> — Ajudar quem está com
+                    dificuldade.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar a diferença
+                    entre contador e acumulador com exemplos.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar objetos físicos (botões ou
+                    moedas de brinquedo) para representar contador/acumulador.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Desafios com números pequenos (meta
+                    5) para ver resultado rápido.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Descrever os números
+                    em voz alta; usar feedback sonoro com
+                    <code>music.playTone</code>.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Utilizar a simulação
+                    do MakeCode com clique do mouse.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar um acumulador
+                    que calcula o fatorial (1×2×3×4×...).
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funcionou contador e acumulador</td>
+                        <td>Programa da soma</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Mudou a condição corretamente</td>
+                        <td>Desafio da meta</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Implementou a divisão corretamente</td>
+                        <td>Desafio da média</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 15 ========== -->
+        <div class="accordion-item" data-semana="15">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana15">
+              📌 Semana 15 — "Eventos com aninhamento (o DJ robótico)"
+            </button>
+          </h2>
+          <div id="semana15" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="15" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Compreender que eventos podem
+                    disparar loops com condicionais dentro.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um programa onde o
+                    acelerômetro dispara um loop que toma decisões.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Perceber a diferença entre
+                    evento simples e evento com comportamento complexo e se
+                    divertir com isso.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Eventos que disparam estruturas aninhadas. Exemplo: ao
+                  chacoalhar, o micro:bit entra em um loop que verifica a
+                  inclinação. Combinação de gestos e lógica.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA21, EF04CI01, EF04GE09, RCP-PR: Autoria — Eventos e
+                  aninhamento
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por dupla)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (para testes com movimento)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Abra o MakeCode.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>Desconecte o USB e conecte o suporte de pilhas.</li>
+                  <li>Chacoalhe o micro:bit e observe a reação.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Dança do Chacoalhão — O DJ Robótico"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: DANÇA DO CHACOALHÃO — O DJ ROBÓTICO
+// ============================================================
+// OBJETIVO: Quando o robô for chacoalhado, ele entra em um loop
+// que verifica a inclinação 10 vezes e mostra setas.
+// ============================================================
+
+input.onGesture(Gesture.Shake, function () {
+    for (let i = 0; i < 10; i++) {
+        if (input.rotation(Rotation.Pitch) < -10) {
+            basic.showArrow(ArrowNames.West)  // Seta para esquerda ◄
+        } else if (input.rotation(Rotation.Pitch) > 10) {
+            basic.showArrow(ArrowNames.East)  // Seta para direita ►
+        } else {
+            basic.showIcon(IconNames.Happy)   // Mostra feliz 😊
+        }
+        basic.pause(200)
+    }
+    basic.showString("FIM!")
+})</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Parte do código</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Quando o DJ começar a tocar..."</td>
+                        <td>
+                          <code>input.onGesture(Gesture.Shake, function ()</code>
+                        </td>
+                        <td>"Quando chacoalhar..."</td>
+                      </tr>
+                      <tr>
+                        <td>"A música tem 10 batidas"</td>
+                        <td><code>for (let i = 0; i < 10; i++)</code></td>
+                        <td>Repete 10 vezes</td>
+                      </tr>
+                      <tr>
+                        <td>"Se o robô pender para a esquerda..."</td>
+                        <td>
+                          <code>if (input.rotation(Rotation.Pitch) < -10)</code>
+                        </td>
+                        <td>"Se inclinar para esquerda..."</td>
+                      </tr>
+                      <tr>
+                        <td>"Mostra ◄"</td>
+                        <td><code>basic.showArrow(ArrowNames.West)</code></td>
+                        <td>Mostra seta para esquerda</td>
+                      </tr>
+                      <tr>
+                        <td>"Pausa entre uma batida e outra"</td>
+                        <td><code>basic.pause(200)</code></td>
+                        <td>Espera 200 milissegundos</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como se o robô fosse um DJ. Quando
+                    você chacoalha (evento), ele começa a tocar uma música
+                    (loop) e, a cada batida (repetição), ele decide qual luz
+                    acender (SE). No final da música, ele mostra 'FIM'."</em>
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Demonstração</strong> — Professor chacoalha o
+                    micro:bit e mostra a reação. "Uau! Como ele fez isso?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação</strong> — "O evento é o gatilho.
+                    Dentro dele, pode ter loop, SE, tudo!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o programa
+                    juntos, linha por linha.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste com bateria</strong> — Desconectar USB, usar
+                    bateria e chacoalhar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio da contagem</strong> — Fazer o loop contar
+                    de 0 a 10 enquanto mostra os números.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do botão</strong> — Em vez de chacoalhar,
+                    usar o botão A como gatilho.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação própria</strong> — Cada dupla cria um
+                    evento com aninhamento (ex: ao chacoalhar, mostrar
+                    padrão).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação</strong> — Mostrar os eventos criados
+                    para a turma.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar evento com
+                    aninhamento no caderno.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar um "mapa de gatilhos" com
+                    símbolos para cada gesto.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Dividir em etapas: primeiro o
+                    evento, depois o loop, depois o SE.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Usar botões em vez de
+                    gestos (botão A como gatilho).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro para
+                    cada decisão com <code>music.playTone</code>.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar um som
+                    diferente para cada inclinação.
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Evento com loop e SE funcionou</td>
+                        <td>Programa do chacoalhão</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Adaptou para botão corretamente</td>
+                        <td>Desafio do botão</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criatividade e execução</td>
+                        <td>Criação própria</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 16 ========== -->
+        <div class="accordion-item" data-semana="16">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana16">
+              📌 Semana 16 — "Caça ao bug nível 2 (bugs em aninhamento)"
+            </button>
+          </h2>
+          <div id="semana16" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="16" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Identificar bugs específicos
+                    de aninhamento (condição invertida, loop sem saída,
+                    aninhamento fora de ordem).
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Depurar programas com
+                    bugs propositais.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Desenvolver paciência e
+                    método na depuração e aprender que errar é parte do
+                    processo.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Bugs comuns em aninhamentos: condição invertida (SE > quando
+                  deveria ser <), loop infinito por falta de incremento, aninhamento fora de ordem (SE fora do loop).
+                    Estratégias de depuração: teste de mesa, isolamento de partes. </p>
+
+                    <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                    <p>
+                      EF04MA21, EF04LP11, Competência Geral 5, RCP-PR: Autoria —
+                      Depuração avançada
+                    </p>
+
+                    <h5>🧰 Materiais</h5>
+                    <div class="materiais-container">
+                      <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                        por dupla)</span>
+                      <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                        dupla</span>
+                      <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                      <span class="material-badge"><i class="bi bi-bug-fill"></i> Programas com bugs
+                        (preparados pelo professor)</span>
+                    </div>
+
+                    <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                    <ol>
+                      <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                      <li>Carregue o programa com bug.</li>
+                      <li>Identifique o bug.</li>
+                      <li>Corrija o código.</li>
+                      <li>Teste a correção no micro:bit.</li>
+                    </ol>
+
+                    <h5>💻 Código a ser desenvolvido</h5>
+                    <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                      <p class="text-danger fw-bold">
+                        Bug 1 — Loop Infinito por Falta de Incremento
+                      </p>
+                      <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+let i = 0
+while (i < 10) {
+    basic.showNumber(i)
+    // FALTA ALGO AQUI! O que será?
+}
+// CORREÇÃO: Adicionar "i = i + 1" dentro do loop.</pre>
+                    </div>
+
+                    <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                      <p class="text-danger fw-bold">
+                        Bug 2 — Condição Invertida
+                      </p>
+                      <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+let contador = 3
+if (contador > 5) {
+    basic.showIcon(IconNames.Happy)
+} else {
+    basic.showIcon(IconNames.Sad)
+}
+// CORREÇÃO: Trocar ">" por "<".</pre>
+                    </div>
+
+                    <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                      <p class="text-danger fw-bold">Bug 3 — SE fora do Loop</p>
+                      <pre class="text-light" style="font-family: monospace; font-size: 0.85rem">
+for (let contador = 0; contador < 5; contador++) {
+    basic.showNumber(contador)
+}
+// O SE deveria estar DENTRO do loop!
+if (contador == 5) {
+    basic.showIcon(IconNames.Happy)
+}
+// CORREÇÃO: Mover o SE para DENTRO do loop.</pre>
+                    </div>
+
+                    <div class="table-responsive mb-3">
+                      <table class="table table-robotica table-bordered">
+                        <thead class="table-dark">
+                          <tr>
+                            <th>Como corrigir</th>
+                            <th>Bug</th>
+                            <th>O que acontece</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Adicionar o incremento dentro do loop</td>
+                            <td>Loop infinito</td>
+                            <td>O robô trava e não para nunca</td>
+                          </tr>
+                          <tr>
+                            <td>Inverter o sinal ( > vira < )</td>
+                            <td>Condição invertida</td>
+                            <td>O robô faz o oposto do que deveria</td>
+                          </tr>
+                          <tr>
+                            <td>Mover o SE para dentro do loop</td>
+                            <td>SE fora do loop</td>
+                            <td>O robô só verifica uma vez</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">0-5min</span>
+                      <div class="minuto-descricao">
+                        <strong>Introdução</strong> — "Hoje os bugs estão mais
+                        espertos. Eles se escondem dentro de aninhamentos!"
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">5-10min</span>
+                      <div class="minuto-descricao">
+                        <strong>Bug 1 — Loop infinito</strong> — Distribuir o
+                        código. Alunos identificam e corrigem.
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">10-15min</span>
+                      <div class="minuto-descricao">
+                        <strong>Discussão</strong> — "Por que o robô travou? O que
+                        faltou?"
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">15-20min</span>
+                      <div class="minuto-descricao">
+                        <strong>Bug 2 — Condição</strong> — Distribuir. Corrigir.
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">20-25min</span>
+                      <div class="minuto-descricao">
+                        <strong>Discussão</strong> — "Inverter o sinal muda tudo!"
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">25-30min</span>
+                      <div class="minuto-descricao">
+                        <strong>Bug 3 — Aninhamento</strong> — Distribuir.
+                        Corrigir.
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">30-35min</span>
+                      <div class="minuto-descricao">
+                        <strong>Discussão</strong> — "Onde o SE deveria estar?"
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">35-40min</span>
+                      <div class="minuto-descricao">
+                        <strong>Desafio: crie seu bug</strong> — Cada dupla cria
+                        um bug e troca com outra.
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">40-45min</span>
+                      <div class="minuto-descricao">
+                        <strong>Correção em dupla</strong> — Corrigir o bug do
+                        colega.
+                      </div>
+                    </div>
+                    <div class="minuto-item">
+                      <span class="minuto-tempo">45-50min</span>
+                      <div class="minuto-descricao">
+                        <strong>Diário do robô</strong> — Listar os 3 tipos de bug
+                        e como corrigi-los.
+                      </div>
+                    </div>
+
+                    <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                    <ul>
+                      <li>
+                        <strong>TEA:</strong> Usar um checklist visual de
+                        depuração com símbolos.
+                      </li>
+                      <li>
+                        <strong>TDAH:</strong> Corrigir um bug por vez
+                        (micro-desafio).
+                      </li>
+                      <li>
+                        <strong>Deficiência visual:</strong> Descrever os erros
+                        verbalmente; usar letras grandes.
+                      </li>
+                      <li>
+                        <strong>Deficiência auditiva:</strong> Instruções escritas
+                        na lousa.
+                      </li>
+                      <li>
+                        <strong>Deficiência física:</strong> Utilizar a simulação
+                        do MakeCode.
+                      </li>
+                      <li>
+                        <strong>Altas habilidades:</strong> Criar um bug com 2
+                        erros simultâneos.
+                      </li>
+                    </ul>
+
+                    <h5>
+                      📊 Critérios Operacionais de Avaliação "com pontuação"
+                    </h5>
+                    <div class="table-responsive">
+                      <table class="table tabela-criterios-semana">
+                        <thead>
+                          <tr>
+                            <th>Descrição</th>
+                            <th>Critério</th>
+                            <th>Pontuação</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Loop infinito corrigido</td>
+                            <td>Correção do Bug 1</td>
+                            <td>0-3</td>
+                          </tr>
+                          <tr>
+                            <td>Condição corrigida</td>
+                            <td>Correção do Bug 2</td>
+                            <td>0-3</td>
+                          </tr>
+                          <tr>
+                            <td>Aninhamento corrigido</td>
+                            <td>Correção do Bug 3</td>
+                            <td>0-4</td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><strong>Total</strong></td>
+                            <td><strong>0-10</strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 17 ========== -->
+        <div class="accordion-item" data-semana="17">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana17">
+              📌 Semana 17 — "Robô contador de passos (o personal trainer
+              robótico)"
+            </button>
+          </h2>
+          <div id="semana17" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="17" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Integrar acelerômetro,
+                    contador e condicionais.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Construir um pedômetro
+                    que conta passos (chacoalhadas) e avisa quando bater a
+                    meta.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Trabalhar em equipe,
+                    celebrar as metas e... andar pela sala!
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Acelerômetro como sensor de passos (detecta chacoalhar).
+                  Contador de passos com meta. Condicional para avisar ao
+                  atingir a meta.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA01, EF04MA03, EF04CI01, RCP-PR: Autoria — Projeto
+                  integrado
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por grupo)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    grupo</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (para testar o pedômetro andando)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>Desconecte o USB e conecte o suporte de pilhas.</li>
+                  <li>
+                    Coloque no bolso ou amarre no tênis (com cuidado!) e ande.
+                  </li>
+                  <li>Observe a contagem de passos.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Pedômetro Inteligente — O Personal Trainer
+                    Robótico"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: PEDÔMETRO INTELIGENTE
+// ============================================================
+// OBJETIVO: Contar passos (chacoalhadas) e avisar quando bater a meta.
+// ============================================================
+
+let passos = 0
+let meta = 10
+
+input.onGesture(Gesture.Shake, function () {
+    passos = passos + 1
+    basic.showNumber(passos)
+
+    if (passos >= meta) {
+        basic.showIcon(IconNames.Happy)
+        music.playTone(523, 200)
+        basic.pause(1000)
+        basic.clearScreen()
+        passos = 0
+    }
+})
+
+input.onButtonPressed(Button.A, function () {
+    meta = meta + 5
+    basic.showNumber(meta)
+    basic.pause(500)
+    basic.showNumber(passos)
+})
+
+input.onButtonPressed(Button.B, function () {
+    passos = 0
+    basic.showNumber(0)
+})</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Parte do código</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"Ainda não dei nenhum passo"</td>
+                        <td><code>let passos = 0</code></td>
+                        <td>Começa a contagem em 0</td>
+                      </tr>
+                      <tr>
+                        <td>"Quero dar 10 passos hoje"</td>
+                        <td><code>let meta = 10</code></td>
+                        <td>Define a meta em 10 passos</td>
+                      </tr>
+                      <tr>
+                        <td>"O robô sente o movimento"</td>
+                        <td>
+                          <code>input.onGesture(Gesture.Shake, ...)</code>
+                        </td>
+                        <td>Detecta quando você anda</td>
+                      </tr>
+                      <tr>
+                        <td>"Dei mais um passo!"</td>
+                        <td><code>passos = passos + 1</code></td>
+                        <td>Conta mais um passo</td>
+                      </tr>
+                      <tr>
+                        <td>"Será que já cheguei?"</td>
+                        <td><code>if (passos >= meta)</code></td>
+                        <td>Verifica se bateu a meta</td>
+                      </tr>
+                      <tr>
+                        <td>"Quero andar mais 5 passos"</td>
+                        <td><code>meta = meta + 5</code></td>
+                        <td>Aumenta a meta</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como um personal trainer robótico.
+                    Ele conta seus passos, define metas e comemora quando você
+                    chega lá! Se você quiser andar mais, aperta A para
+                    aumentar a meta. Se quiser recomeçar, aperta B."</em>
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do desafio</strong> — "Quem aqui
+                    gosta de andar? Vamos construir um robô que conta seus
+                    passos!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento</strong> — Definir a lógica:
+                    chacoalhar conta, meta avisa.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o programa
+                    juntos, linha por linha.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste em mesa</strong> — Chacoalhar o micro:bit e
+                    ver a contagem.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste com bateria</strong> — Colocar no bolso e
+                    andar pela sala.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio da meta</strong> — Mudar a meta usando o
+                    botão A.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do som</strong> — Adicionar um som (bip)
+                    ao atingir a meta.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Competição</strong> — Quem atinge a meta primeiro
+                    (andar 10 passos)?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar o projeto e
+                    como funciona.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Oferecer um "mapa do pedômetro" com
+                    etapas visuais.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Meta baixa (5 passos) para ver
+                    resultado rápido.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Usar botões em vez de
+                    chacoalhar (botão A conta passo).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro para
+                    cada passo com <code>music.playTone</code>.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar cálculo de
+                    calorias (fictício) baseado nos passos.
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Conta passos e avisa na meta</td>
+                        <td>Programa do pedômetro</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Ajusta a meta corretamente</td>
+                        <td>Desafio do botão A</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Funcionou ao andar com bateria</td>
+                        <td>Teste prático</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 18 ========== -->
+        <div class="accordion-item" data-semana="18">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana18">
+              📌 Semana 18 — "Jogo da memória (Genius com micro:bit)"
+            </button>
+          </h2>
+          <div id="semana18" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="18" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Compreender sequências,
+                    eventos e condicionais em um jogo.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um jogo onde o
+                    micro:bit mostra uma sequência de LEDs e o jogador deve
+                    repetir.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Desenvolver memória, atenção
+                    e trabalho em equipe e se divertir muito!
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Sequências aleatórias com números. Comparação entre
+                  sequência gerada e sequência do jogador. Loop e condicionais
+                  para verificar acertos/erros.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA21, Competência Geral 5, RCP-PR: Autoria — Projeto
+                  lúdico
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por grupo)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    grupo</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-pencil"></i> Papel para anotar a
+                    sequência (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>Teste o jogo.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Genius — O Jogo da Memória" (Versão Simplificada
+                    para o 4º ano)
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: GENIUS — O JOGO DA MEMÓRIA
+// ============================================================
+// OBJETIVO: O robô mostra uma sequência de números (0 a 3).
+// O jogador deve repetir a sequência usando os botões.
+// ============================================================
+
+let sequencia: number[] = []
+let nivel = 1
+let tentativa = 0
+
+function gerarSequencia() {
+    sequencia = []
+    for (let i = 0; i < nivel; i++) {
+        let numero = Math.randomRange(0, 3)
+        sequencia.push(numero)
+    }
+}
+
+function mostrarSequencia() {
+    for (let i = 0; i < sequencia.length; i++) {
+        let numero = sequencia[i]
+        basic.showNumber(numero)
+        basic.pause(500)
+        if (numero == 0) {
+            basic.showIcon(IconNames.Square)
+        } else if (numero == 1) {
+            basic.showIcon(IconNames.Heart)
+        } else if (numero == 2) {
+            basic.showIcon(IconNames.Diamond)
+        } else {
+            basic.showIcon(IconNames.Chessboard)
+        }
+        basic.pause(500)
+    }
+    basic.clearScreen()
+    basic.showString("SUA VEZ!")
+}
+
+function verificarTentativa(valor: number) {
+    if (valor == sequencia[tentativa]) {
+        tentativa = tentativa + 1
+        if (tentativa == sequencia.length) {
+            basic.showIcon(IconNames.Happy)
+            basic.pause(500)
+            nivel = nivel + 1
+            tentativa = 0
+            gerarSequencia()
+            mostrarSequencia()
+        }
+    } else {
+        basic.showIcon(IconNames.No)
+        basic.pause(1000)
+        tentativa = 0
+        mostrarSequencia()
+    }
+}
+
+input.onButtonPressed(Button.A, function () { verificarTentativa(0) })
+input.onButtonPressed(Button.B, function () { verificarTentativa(1) })
+input.onButtonPressed(Button.AB, function () { verificarTentativa(2) })
+input.onGesture(Gesture.Shake, function () { verificarTentativa(3) })
+
+gerarSequencia()
+mostrarSequencia()</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Parte do código</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"É uma fila de números"</td>
+                        <td><code>let sequencia: number[] = []</code></td>
+                        <td>Cria uma lista vazia para guardar os números</td>
+                      </tr>
+                      <tr>
+                        <td>"O robô escolhe um número aleatório"</td>
+                        <td><code>Math.randomRange(0, 3)</code></td>
+                        <td>Sorteia um número entre 0 e 3</td>
+                      </tr>
+                      <tr>
+                        <td>"Coloca o número na fila"</td>
+                        <td><code>sequencia.push(numero)</code></td>
+                        <td>Adiciona o número à lista</td>
+                      </tr>
+                      <tr>
+                        <td>"O robô mostra os números"</td>
+                        <td><code>mostrarSequencia()</code></td>
+                        <td>Mostra a sequência na tela</td>
+                      </tr>
+                      <tr>
+                        <td>"O robô confere se você acertou"</td>
+                        <td><code>verificarTentativa(valor)</code></td>
+                        <td>Verifica se o jogador acertou</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como o jogo Genius que você
+                    conhece! O robô mostra uma sequência de luzes (números).
+                    Você tem que repetir na mesma ordem. Se acertar, o robô
+                    fica feliz e aumenta o nível. Se errar, o robô mostra 'X'
+                    e você tenta de novo!"</em>
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do Genius</strong> — Mostrar o jogo
+                    original e como funciona.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento</strong> — "Como o robô vai mostrar a
+                    sequência? Como o jogador vai responder?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir a versão
+                    simplificada juntos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste</strong> — Jogar o jogo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do nível</strong> — Aumentar o nível a
+                    cada rodada.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio dos erros</strong> — Se errar, mostrar "X"
+                    e recomeçar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Competição</strong> — Quem chega ao nível mais
+                    alto?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Depuração</strong> — Ajustar bugs.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar a lógica do
+                    jogo.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Sequências curtas (2 ou 3 números) e
+                    pausas mais longas.
+                  </li>
+                  <li><strong>TDAH:</strong> Jogar em dupla para ajudar.</li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Usar sons para
+                    representar os números com <code>music.playTone</code>.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Usar a matriz para
+                    mostrar os números.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Usar apenas botões (A
+                    e B) em vez de gestos.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar mais opções
+                    (4 botões/gestos) e níveis mais altos.
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Gera e mostra sequência</td>
+                        <td>Programa do Genius</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Jogador pode responder com botões</td>
+                        <td>Sistema de resposta</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Aumenta a dificuldade corretamente</td>
+                        <td>Sistema de níveis</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 19 ========== -->
+        <div class="accordion-item" data-semana="19">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana19">
+              📌 Semana 19 — "Semáforo com sensor (detector de carros)"
+            </button>
+          </h2>
+          <div id="semana19" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="19" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Integrar sensor (botão como
+                    simulador de detector) com semáforo.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Criar um semáforo que
+                    alterna e reage a "carros" (botão pressionado).
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Entender sistemas de
+                    controle em tempo real e se sentir um engenheiro de
+                    trânsito.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Semáforo com temporizador (verde, amarelo, vermelho).
+                  Detector de "carros" via botão. Aninhamento: dentro do loop
+                  do semáforo, verificar se o botão foi pressionado.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA03, EF04CI01, EF04GE09, RCP-PR: Autoria — Projeto com
+                  sensores
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por grupo)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    grupo</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <ol>
+                  <li>Conecte o micro:bit ao computador via cabo USB.</li>
+                  <li>Programe conforme o código abaixo.</li>
+                  <li>Transfira o arquivo .hex para o micro:bit.</li>
+                  <li>Teste o semáforo.</li>
+                </ol>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <div class="code-block bg-dark p-3 rounded-4 mb-3">
+                  <p class="text-warning fw-bold">
+                    Programa "Semáforo com Detector de Carros"
+                  </p>
+                  <pre class="text-light" style="
+                        font-family: monospace;
+                        font-size: 0.78rem;
+                        white-space: pre-wrap;
+                      ">
+// ============================================================
+// PROGRAMA: SEMÁFORO COM DETECTOR DE CARROS
+// ============================================================
+// OBJETIVO: Simular um semáforo que detecta "carros" esperando
+// e acelera a mudança para verde.
+// ============================================================
+
+let cor = 0          // 0=verde, 1=amarelo, 2=vermelho
+let carroEsperando = false
+
+input.onButtonPressed(Button.A, function () {
+    carroEsperando = true
+    basic.showIcon(IconNames.Yes)
+    basic.pause(300)
+})
+
+basic.forever(function () {
+    if (carroEsperando == true && cor == 2) {
+        cor = 0
+        carroEsperando = false
+        mostrarVerde()
+        basic.pause(2000)
+    } else if (cor == 0) {
+        mostrarVerde()
+        basic.pause(3000)
+        cor = 1
+    } else if (cor == 1) {
+        mostrarAmarelo()
+        basic.pause(1000)
+        cor = 2
+    } else {
+        mostrarVermelho()
+        basic.pause(3000)
+        cor = 0
+    }
+})
+
+function mostrarVerde() {
+    basic.showArrow(ArrowNames.North)
+}
+function mostrarAmarelo() {
+    basic.showIcon(IconNames.SmallSquare)
+}
+function mostrarVermelho() {
+    basic.showIcon(IconNames.No)
+}</pre>
+                </div>
+
+                <div class="table-responsive mb-3">
+                  <table class="table table-robotica table-bordered">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Analogia</th>
+                        <th>Parte do código</th>
+                        <th>O que faz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"O semáforo começa verde"</td>
+                        <td><code>let cor = 0</code></td>
+                        <td>Começa no verde</td>
+                      </tr>
+                      <tr>
+                        <td>"Não tem ninguém na faixa"</td>
+                        <td><code>let carroEsperando = false</code></td>
+                        <td>Nenhum carro esperando</td>
+                      </tr>
+                      <tr>
+                        <td>"Um carro chegou no farol"</td>
+                        <td>
+                          <code>input.onButtonPressed(Button.A, ...)</code>
+                        </td>
+                        <td>Botão A = carro chegou</td>
+                      </tr>
+                      <tr>
+                        <td>"Se tem carro esperando no vermelho..."</td>
+                        <td><code>if (carroEsperando && cor == 2)</code></td>
+                        <td>Se tem carro E está vermelho...</td>
+                      </tr>
+                      <tr>
+                        <td>"Libera o carro!"</td>
+                        <td><code>cor = 0</code></td>
+                        <td>Muda para verde</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-light">
+                  <em>Analogia principal: "É como se o robô fosse um guarda de
+                    trânsito que vê um carro parado e decide liberar mais
+                    rápido. O botão A é o 'sensor' que detecta o carro. Quando
+                    o semáforo está vermelho e alguém aperta A, ele acelera e
+                    volta para o verde!"</em>
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Revisão do semáforo</strong> — Lembrar o semáforo
+                    do bimestre passado.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do sensor</strong> — "E se o semáforo
+                    pudesse 'ver' os carros?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação guiada</strong> — Construir o novo
+                    semáforo juntos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-25min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste</strong> — Deixar rodar e apertar A no
+                    vermelho.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-30min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do pedestre</strong> — Adicionar botão B
+                    para pedestre (mostra "PARE" por 5s).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do tempo</strong> — Mudar os tempos de
+                    espera.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Criação de cenário</strong> — Desenhar um
+                    cruzamento no papel e simular.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação</strong> — Cada grupo mostra seu
+                    semáforo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário do robô</strong> — Registrar a integração
+                    de sensor.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar cores fortes nos LEDs e no
+                    papel.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Focar na lógica do carro esperando.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro para
+                    cada mudança de cor com <code>music.playTone</code>.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Instruções escritas
+                    na lousa.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Utilizar a simulação
+                    do MakeCode.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar um sensor de
+                    luminosidade real (se disponível) ou mais botões.
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funciona e reage ao botão</td>
+                        <td>Semáforo com detector</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Botão B implementado</td>
+                        <td>Desafio do pedestre</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Clareza e criatividade</td>
+                        <td>Apresentação</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SEMANA 20 ========== -->
+        <div class="accordion-item" data-semana="20">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana20">
+              📌 Semana 20 — "Feira de Robôs do 2º Bimestre"
+            </button>
+          </h2>
+          <div id="semana20" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="20" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Cognitivos:</strong> Revisar todos os conceitos do
+                    bimestre.
+                  </li>
+                  <li>
+                    <strong>Procedimentais:</strong> Apresentar um projeto
+                    autoral (escolhido pelo grupo) com aninhamento.
+                  </li>
+                  <li>
+                    <strong>Atitudinais:</strong> Celebrar as conquistas e
+                    compartilhar aprendizados.
+                  </li>
+                </ul>
+
+                <h5>📖 Conteúdo Programático</h5>
+                <p>
+                  Revisão: loop, SE, SENÃO SE, aninhamento, eventos,
+                  contadores, acumuladores. Apresentação de projetos.
+                  Autoavaliação e avaliação dos pares.
+                </p>
+
+                <h5>📜 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  EF04MA01, EF04MA21, EF04LP11, Competência Geral 5, RCP-PR:
+                  Autoria e apresentação
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computador com MakeCode (1
+                    por grupo)</span>
+                  <span class="material-badge"><i class="bi bi-motherboard"></i> 1 micro:bit por
+                    grupo</span>
+                  <span class="material-badge"><i class="bi bi-usb-c"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartolina para pôster do
+                    projeto</span>
+                  <span class="material-badge"><i class="bi bi-battery-charging"></i> Suporte de pilhas
+                    (para demonstrações)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  Cada grupo escolhe um dos projetos do bimestre para
+                  apresentar ou cria um novo. Devem ter o código pronto e o
+                  hardware funcionando.
+                </p>
+
+                <h5>💻 Código a ser desenvolvido</h5>
+                <p>
+                  Cada grupo apresenta seu código e explica o aninhamento
+                  utilizado.
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura</strong> — "Hoje é dia de mostrar o que
+                    aprendemos!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15min</span>
+                  <div class="minuto-descricao">
+                    <strong>Preparação</strong> — Grupos organizam seus
+                    pôsteres e testam os robôs.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-35min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentações</strong> — Cada grupo (4-5 min)
+                    mostra seu projeto, explica o código e demonstra.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-40min</span>
+                  <div class="minuto-descricao">
+                    <strong>Votação</strong> — Votação para "Robô mais
+                    criativo", "Código mais limpo", "Bug mais divertido".
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação</strong> — Cada aluno preenche uma
+                    ficha de autoavaliação.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50min</span>
+                  <div class="minuto-descricao">
+                    <strong>Encerramento</strong> — Entrega de certificados
+                    ("Mestre do Aninhamento") e celebração.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Oferecer um roteiro para
+                    apresentação.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Grupos com tarefas definidas.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Apresentar o projeto
+                    com descrição verbal.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Apresentar com
+                    apoio visual e escrito.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Garantir que todos
+                    possam participar da demonstração.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Projeto com múltiplos
+                    aninhamentos (3 níveis).
+                  </li>
+                </ul>
+
+                <h5>
+                  📊 Critérios Operacionais de Avaliação "com pontuação"
+                </h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Critério</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>O robô executou o programa corretamente</td>
+                        <td>Projeto funcionando</td>
+                        <td>0-4</td>
+                      </tr>
+                      <tr>
+                        <td>Mostrou onde está o aninhamento e explicou</td>
+                        <td>Explicação do aninhamento</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Originalidade e apresentação do pôster</td>
+                        <td>Criatividade e capricho</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-10</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- RECURSOS COMPLEMENTARES (conteúdo do DOCX) -->
+    <!-- ================================================== 
+      <section id="recursos-complementares" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-trophy-fill"></i> 🏆 RECURSOS COMPLEMENTARES — 2º
+            BIMESTRE
+          </h2>
+          <div class="badge-projeto">
+            Certificados • Jogos Unplugged • Avaliações Lúdicas
+          </div>
+        </div>
+        <div class="bg-robocard p-4 rounded-4">
+          <h5 class="text-warning">Certificados</h5>
+          <ul>
+            <li>
+              <strong>"Mestre do Aninhamento"</strong> — para quem dominou loop
+              dentro de SE e vice-versa.
+            </li>
+            <li>
+              <strong>"Bug Buster Nível 2"</strong> — para quem encontrou bugs
+              em aninhamentos.
+            </li>
+            <li>
+              <strong>"Arquiteto de Algoritmos"</strong> — para os projetos mais
+              criativos.
+            </li>
+          </ul>
+
+          <h5 class="text-warning mt-3">Jogos Unplugged</h5>
+          <ul>
+            <li>
+              <strong>"Boneca Russa Humana"</strong> — Um aluno é o loop
+              externo, outro é o loop interno, outro é o SE. Eles executam uma
+              coreografia aninhada.
+            </li>
+            <li>
+              <strong>"Cardápio Humano"</strong> — Alunos representam opções 1,
+              2, 3. O "programador" diz um número e o aluno correspondente faz
+              uma ação.
+            </li>
+          </ul>
+
+          <h5 class="text-warning mt-3">Avaliações Lúdicas</h5>
+          <ul>
+            <li>
+              <strong>"Passaporte do Aninhamento"</strong> — Carimbos para cada
+              nível de aninhamento conquistado (1 nível, 2 níveis, 3 níveis).
+            </li>
+            <li>
+              <strong>"Diário de Bordo do Robô"</strong> — Cada grupo mantém um
+              diário com os códigos e desafios enfrentados.
+            </li>
+          </ul>
+        </div>
+      </section> -->
+
+    <!-- ================================================== -->
+    <!-- ORIENTAÇÕES PARA ADAPTAÇÕES E INCLUSÃO (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="adaptacoes" class="mb-5">
+      <div class="card bg-robocard border-warning mt-4 shadow-sm p-4 rounded-4">
+        <h5 class="card-title text-warning">
+          <i class="bi bi-universal-access-circle"></i> ♿ ORIENTAÇÕES PARA
+          ADAPTAÇÕES E INCLUSÃO (EXEMPLOS PRÁTICOS)
+        </h5>
+
+        <h6 class="mt-3 text-warning">
+          📌 Transtorno do Espectro Autista (TEA)
+        </h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Usar cartões coloridos (azul para loop, vermelho para SE)
+                </td>
+                <td>Organização visual</td>
+              </tr>
+              <tr>
+                <td>Manter a mesma sequência de atividades toda semana</td>
+                <td>Estrutura previsível</td>
+              </tr>
+              <tr>
+                <td>Oferecer um "mapa do pedômetro" com etapas ilustradas</td>
+                <td>Mapas e roteiros</td>
+              </tr>
+              <tr>
+                <td>Permitir pausas quando necessário</td>
+                <td>Pausas sensoriais</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h6 class="mt-3 text-warning">
+          📌 Transtorno de Déficit de Atenção e Hiperatividade (TDAH)
+        </h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Você tem 2 minutos para desembaralhar este código!"</td>
+                <td>Desafios cronometrados</td>
+              </tr>
+              <tr>
+                <td>
+                  "Primeiro faça a linha, depois repita a linha 5 vezes"
+                </td>
+                <td>Divisão em etapas</td>
+              </tr>
+              <tr>
+                <td>
+                  Meta de 5 passos em vez de 10 para ver resultado rápido
+                </td>
+                <td>Metas curtas</td>
+              </tr>
+              <tr>
+                <td>O robô mostra resultado na hora</td>
+                <td>Feedback imediato</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h6 class="mt-3 text-warning">📌 Deficiência Visual</h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Descrever os ícones e padrões em voz alta</td>
+                <td>Descrição verbal</td>
+              </tr>
+              <tr>
+                <td>Usar <code>music.playTone</code> para cada ação</td>
+                <td>Feedback sonoro</td>
+              </tr>
+              <tr>
+                <td>Cartões e instruções com fonte ampliada</td>
+                <td>Letras grandes</td>
+              </tr>
+              <tr>
+                <td>Cartões em relevo para identificação tátil</td>
+                <td>Relevo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h6 class="mt-3 text-warning">📌 Deficiência Auditiva</h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Escrever todos os comandos na lousa</td>
+                <td>Instruções escritas</td>
+              </tr>
+              <tr>
+                <td>Usar a simulação do MakeCode com animações</td>
+                <td>Simulação visual</td>
+              </tr>
+              <tr>
+                <td>Fluxogramas e diagramas na parede</td>
+                <td>Apoio visual</td>
+              </tr>
+              <tr>
+                <td>Intérprete ou professor com conhecimento básico</td>
+                <td>Libras</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h6 class="mt-3 text-warning">📌 Deficiência Física</h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Usar a simulação do MakeCode em vez do hardware físico
+                </td>
+                <td>Simulação</td>
+              </tr>
+              <tr>
+                <td>Substituir chacoalhar por botão A</td>
+                <td>Botões em vez de gestos</td>
+              </tr>
+              <tr>
+                <td>Trabalho em dupla com divisão de tarefas</td>
+                <td>Apoio de colegas</td>
+              </tr>
+              <tr>
+                <td>Oferecer mouse com botões maiores</td>
+                <td>Mouse adaptado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h6 class="mt-3 text-warning">📌 Altas Habilidades/Superdotação</h6>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático</th>
+                <th>Estratégia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Criar códigos com 3 níveis de aninhamento</td>
+                <td>Desafios extras</td>
+              </tr>
+              <tr>
+                <td>
+                  Permitir criar projetos próprios com múltiplos aninhamentos
+                </td>
+                <td>Projetos autorais</td>
+              </tr>
+              <tr>
+                <td>Aluno ajuda colegas com dificuldade</td>
+                <td>Mentoria</td>
+              </tr>
+              <tr>
+                <td>Adicionar funcionalidades extras (sons, animações)</td>
+                <td>Aprofundamento</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- RUBRICA DE AVALIAÇÃO (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="rubrica" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-clipboard-check"></i> 📊 RUBRICA DE AVALIAÇÃO — 2º
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">Critérios de avaliação</div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Precisa Melhorar (0-4)</th>
+                <th>Critério</th>
+                <th>Excelente (9-10)</th>
+                <th>Bom (7-8)</th>
+                <th>Satisfatório (5-6)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Não identifica aninhamentos</td>
+                <td>Compreensão de aninhamento</td>
+                <td>Identifica e cria aninhamentos com 3 níveis</td>
+                <td>Identifica e cria aninhamentos com 2 níveis</td>
+                <td>Identifica aninhamentos simples</td>
+              </tr>
+              <tr>
+                <td>Não consegue programar</td>
+                <td>Programação no MakeCode</td>
+                <td>Programa com autonomia e criatividade</td>
+                <td>Programa com pouca ajuda</td>
+                <td>Programa com ajuda constante</td>
+              </tr>
+              <tr>
+                <td>Não identifica bugs</td>
+                <td>Depuração</td>
+                <td>Encontra e corrige bugs complexos</td>
+                <td>Encontra e corrige bugs simples</td>
+                <td>Identifica bugs mas não corrige</td>
+              </tr>
+              <tr>
+                <td>Não colabora</td>
+                <td>Trabalho em equipe</td>
+                <td>Colabora e lidera</td>
+                <td>Colabora bem</td>
+                <td>Colabora com incentivo</td>
+              </tr>
+              <tr>
+                <td>Não consegue explicar</td>
+                <td>Apresentação</td>
+                <td>Explica com clareza e criatividade</td>
+                <td>Explica com clareza</td>
+                <td>Explica com ajuda</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- CERTIFICADO DE CONCLUSÃO (padrão modelo_certificado) -->
+    <!-- ================================================== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 4º ANO
+          </h3>
+          <p class="lead">"MESTRE DO ANINHAMENTO"</p>
+        </div>
+
+        <!-- Layout duas colunas: prévia do certificado (esquerda) e cadastro (direita) -->
+        <div class="row g-4 align-items-start">
+          <!-- COLUNA ESQUERDA: PRÉ-VISUALIZAÇÃO DO CERTIFICADO -->
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>4º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                  Dominando os conceitos de:<br />
+                  🔁 <strong>LOOP DENTRO DE LOOP</strong> (aninhamento de
+                  repetições)<br />
+                  📋 <strong>CONDICIONAIS MÚLTIPLAS</strong> (SE, SENÃO SE,
+                  SENÃO)<br />
+                  📦 <strong>CONTADORES E ACUMULADORES</strong> (variáveis em
+                  aninhamentos)<br />
+                  🐛 <strong>DEPURAÇÃO AVANÇADA</strong> (caça aos bugs em
+                  aninhamentos)<br />
+                  🤖 <strong>PROJETOS INTEGRADOS</strong> (com micro:bit)
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "O aninhamento não é mais um mistério — é uma
+                  superpotência!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 4.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+
+          <!-- COLUNA DIREITA: CADASTRO DE ALUNOS E IMPRESSÃO -->
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label>
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DICA DE IMPRESSÃO -->
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+          por folha). As cores serão preservadas na impressão. Utilize papel
+          sulfite A4 e configure para "Colorido" e "Margens padrão".
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- REFERÊNCIAS BIBLIOGRÁFICAS (conteúdo do DOCX) -->
+    <!-- ================================================== -->
+    <section id="referencias" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4">
+        <h5 class="text-warning">
+          <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+        </h5>
+        <p>
+          BRASIL. Ministério da Educação.
+          <strong>Base Nacional Comum Curricular (BNCC)</strong>. Brasília:
+          MEC, 2018.
+        </p>
+        <p>
+          BRASIL. Ministério da Educação.
+          <strong>Resolução CNE/CEB nº 1/2022</strong> — Institui a
+          BNCC-Computação como complemento à Base Nacional Comum Curricular.
+          Brasília: MEC, 2022.
+        </p>
+        <p>
+          BRASIL. Ministério da Educação.
+          <strong>Resolução CNE/CEB nº 2/2025</strong> — Diretrizes
+          Operacionais Nacionais sobre o uso de dispositivos digitais em
+          espaços escolares e integração curricular de Educação Digital e
+          Midiática. Brasília: MEC, 2025.
+        </p>
+        <p>
+          BRENNAN, K.; RESNICK, M. New frameworks for studying and assessing
+          the development of computational thinking. In:
+          <strong>Annual American Educational Research Association Meeting</strong>, 2012, Vancouver. Proceedings...
+          Vancouver: AERA, 2012.
+        </p>
+        <p>
+          PARANÁ. Secretaria de Estado da Educação.
+          <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
+            Iniciais</strong>. Curitiba: SEED/PR, 2018.
+        </p>
+        <p>
+          PARANÁ. Secretaria de Estado da Educação.
+          <strong>Currículo da Rede Estadual Paranaense (CREP)</strong>.
+          Curitiba: SEED/PR.
+        </p>
+        <p>
+          RESNICK, M.
+          <strong>Lifelong Kindergarten: Cultivating Creativity through Projects,
+            Passion, Peers, and Play</strong>. Cambridge: MIT Press, 2017.
+        </p>
+        <p>
+          UNDIME.
+          <strong>O que é preciso saber sobre a implementação da BNCC Computação e
+            integração curricular de educação digital e midiática</strong>. Brasília: Undime, 2025.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================== -->
+  <!-- RODAPÉ REBELDE (copiado exatamente do modelo_rodape.html) -->
+  <!-- ================================================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <!-- Scripts obrigatórios -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a4bim2_hardware.js"></script>
+</body>
+
+</html>
