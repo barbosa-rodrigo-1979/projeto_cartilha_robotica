@@ -1,0 +1,2514 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 ROBÔMESTRES 3000 | 5º Ano - Hardware e Robótica</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS do Projeto -->
+  <link rel="stylesheet" href="css/ano5index_hardware.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ========================================================== -->
+  <!-- CABEÇALHO REBELDE (copiado exatamente do modelo_cabecalho.html) -->
+  <!-- ========================================================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 5º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 1º BIMESTRE: HARDWARE — PLACA, COMPONENTES, MONTAGEM ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================== -->
+  <!-- MENU GLASSMORPHISM (copiado de modelo_menu_bim.html) -->
+  <!-- ================================================== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a5bim1_hardware.html">
+        <i class="bi bi-robot"></i> 5º Ano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">
+              <i class="bi bi-house-door-fill"></i> Principal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="ano5index_hardware.html">
+              <i class="bi bi-1-circle-fill"></i> 5º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="a5bim1_hardware.html">
+              <i class="bi bi-1-circle-fill"></i> 1º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim2_hardware.html">
+              <i class="bi bi-2-circle-fill"></i> 2º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim3_hardware.html">
+              <i class="bi bi-3-circle-fill"></i> 3º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim4_hardware.html">
+              <i class="bi bi-4-circle-fill"></i> 4º bimestre
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+  <main class="container py-4">
+    <!-- ====== INTRODUÇÃO / INÍCIO ====== -->
+    <section id="inicio" class="mb-5">
+      <div class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <p class="lead fw-bold text-gradient">
+              🔧 Bem-vindo ao 5º Ano - Hardware e Robótica!
+            </p>
+            <p>
+              Este material é o <strong>manual definitivo</strong> para
+              transformar sua sala de aula em uma
+              <strong>oficina de engenharia criativa</strong>. Aqui, os alunos
+              deixam de ser meros usuários de tecnologia e se tornam
+              <strong>construtores</strong>, <strong>inventores</strong> e
+              <strong>depuradores de hardware</strong>.
+            </p>
+            <p>
+              <strong>Regra de platina:</strong> Se o robô não funcionar, a
+              gente conserta. Se quebrar, a gente reinventa. Se o aluno errar,
+              a gente aprende junto.
+            </p>
+            <p>
+              <strong>Regra de diamante:</strong> "Não existe problema, existe
+              desafio. Não existe erro, existe aprendizado. Não existe fim,
+              existe evolução."
+            </p>
+            <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+              <i class="bi bi-tools"></i> <strong>Hardware é vida!</strong>
+              Do parafuso ao código, cada peça conta uma história.
+            </div>
+          </div>
+          <div class="col-md-3 text-center">
+            <i class="bi bi-cpu display-1 text-warning flutuar"></i>
+            <i class="bi bi-gear display-1 text-success flutuar" style="animation-delay: 0.5s"></i>
+            <div class="card-bug-hunter p-2 mt-3">
+              <small><i class="bi bi-tools"></i> Engenheiro Nível 5</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BIMESTRE 1 ====== -->
+    <section id="bimestre1" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-1-circle"></i> BIMESTRE 1 - CONHECENDO O HARDWARE
+        </h2>
+        <div class="badge-projeto">Dos parafusos aos circuitos</div>
+      </div>
+
+      <!-- ====== BIMESTRE 1 ====== -->
+      <section id="bimestre1" class="mb-5">
+        <div class="bg-robocard p-4 p-md-5 rounded-4">
+          <!-- INTRO DO BIMESTRE -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <p class="lead fw-bold text-gradient">
+                🔧 "Se o robô é o corpo, o hardware é o esqueleto, os músculos
+                e os nervos."
+              </p>
+              <p>
+                Neste primeiro bimestre, vamos desvendar os
+                <strong>mistérios do hardware</strong>
+                — a parte física que dá vida aos robôs. Seus alunos vão:
+              </p>
+              <ul class="list-unstyled row g-2 mt-3">
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Identificar</strong> componentes básicos de um robô
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Explorar</strong> placas, fios, motores e sensores
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Construir</strong> protótipos com sucata criativa
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Compreender</strong> o fluxo de energia e informação
+                </li>
+              </ul>
+              <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+                <i class="bi bi-tools"></i>
+                <strong>Desafio do bimestre:</strong>
+                "Desmonte e remonte — cada parafuso conta uma história!"
+              </div>
+            </div>
+          </div>
+
+          <!-- OBJETIVOS DO BIMESTRE -->
+          <h4 class="text-warning mb-3">
+            <i class="bi bi-bullseye"></i> Objetivos do Bimestre
+          </h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-cpu fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Compreender</h5>
+                  <p class="small">
+                    O que é hardware e sua importância na robótica
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-plug fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Identificar</h5>
+                  <p class="small">
+                    Componentes: placas, motores, sensores e atuadores
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-arrow-repeat fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Relacionar</h5>
+                  <p class="small">
+                    Hardware com as funções de entrada, processamento e saída
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTEÚDO DETALHADO DO BIMESTRE -->
+          <h4 class="text-warning mb-3">
+            <i class="bi bi-file-text"></i> Conteúdo Programático
+          </h4>
+
+          <!-- SEMANA 1 -->
+          <div class="accordion accordion-flush" id="accordionB1">
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s1">
+                  <strong>🔧 SEMANA 1: O que é Hardware?</strong>
+                </button>
+              </h2>
+              <div id="b1s1" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Hardware é a parte física do
+                    robô — tudo o que podemos tocar, ver e parafusar.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Caça ao Hardware" — os
+                      alunos procuram objetos na sala que podem ser
+                      considerados hardware (computador, mouse, fios, etc.)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Desenho coletivo de um
+                      robô no quadro, identificando cada parte como hardware
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Construção de um "Robô de
+                      Papelão" — cada aluno traz uma caixa e começa a montar a
+                      estrutura
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-lightbulb"></i>
+                    <strong>Dica do Professor:</strong> Use objetos do dia a
+                    dia para mostrar que hardware está em todo lugar!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 2 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s2">
+                  <strong>⚡ SEMANA 2: Componentes Básicos</strong>
+                </button>
+              </h2>
+              <div id="b1s2" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Placa-mãe, processador,
+                    memória, fontes de alimentação.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Desmontando um Computador
+                      Velho" — com supervisão, os alunos veem as peças
+                      internas
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Criação de um "Mapa do
+                      Hardware" — cada componente desenhado com sua função
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Jogo da memória com
+                      componentes de hardware
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Atenção:</strong> Sempre com supervisão! Peças
+                    podem ser perigosas.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 3 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s3">
+                  <strong>🔌 SEMANA 3: Fios e Conexões</strong>
+                </button>
+              </h2>
+              <div id="b1s3" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Como a energia e os dados
+                    viajam pelos fios e conexões.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Circuito Humano" — os
+                      alunos formam um circuito com as mãos, passando uma
+                      "energia" (bola) entre eles
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um circuito
+                      simples com pilha, fio e lâmpada
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> "Qual fio é qual?" —
+                      identificação de cabos USB, HDMI, áudio, etc.
+                    </li>
+                  </ul>
+                  <div class="alert alert-info mt-2">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Extra:</strong> Se tiver disponível, use kits de
+                    eletrônica básica.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 4 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s4">
+                  <strong>🧠 SEMANA 4: Entrada, Processamento e Saída</strong>
+                </button>
+              </h2>
+              <div id="b1s4" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> O fluxo de informação no
+                    hardware.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "O Robô Humano" — um aluno
+                      é o processador, outros são sensores (entrada) e
+                      atuadores (saída)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Desenho de um diagrama de
+                      fluxo para um robô simples
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> "Corrida do Dado" — um
+                      dado (entrada) é processado e a resposta (saída) é um
+                      movimento
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-check-circle"></i>
+                    <strong>Autoavaliação:</strong> Os alunos desenham um robô
+                    e explicam seu fluxo de entrada-processamento-saída.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 5 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s5">
+                  <strong>🖥️ SEMANA 5: Conhecendo o Arduino e
+                    Microcontroladores</strong>
+                </button>
+              </h2>
+              <div id="b1s5" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> O Arduino é o "cérebro" de
+                    muitos robôs — um microcontrolador programável.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> Apresentação do Arduino
+                      Uno — mostrar as portas, pinos e conexões
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Arduino de Papelão" —
+                      cada aluno recorta um Arduino em papel e identifica suas
+                      partes
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Simulação online com
+                      Tinkercad (ou similar)
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-star"></i> <strong>Desafio:</strong> Se
+                    disponível, conecte um LED ao Arduino e faça piscar!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 6 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s6">
+                  <strong>🔋 SEMANA 6: Energia e Alimentação</strong>
+                </button>
+              </h2>
+              <div id="b1s6" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Como os robôs obtêm e usam
+                    energia elétrica.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Caça às Baterias" — quais
+                      dispositivos usam pilhas, baterias ou energia da tomada?
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um "Gerador
+                      Humano" — energia cinética transformada em luz
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Experimento: medir
+                      voltagem com multímetro (com supervisão)
+                    </li>
+                  </ul>
+                  <div class="alert alert-info mt-2">
+                    <i class="bi bi-battery-charging"></i>
+                    <strong>Curiosidade:</strong> Robôs podem usar energia
+                    solar, eólica e até biológica!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 7 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s7">
+                  <strong>🏗️ SEMANA 7: Construindo um Protótipo</strong>
+                </button>
+              </h2>
+              <div id="b1s7" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Transformar ideias em
+                    protótipos físicos com materiais simples.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "O Desafio da Ponte" —
+                      construir uma ponte com palitos de picolé e testar sua
+                      resistência
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Esboço do projeto do robô
+                      — desenho técnico com dimensões
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Início da construção do
+                      protótipo com sucata (caixas, garrafas, tampinhas)
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-trophy"></i> <strong>Desafio:</strong> O
+                    protótipo deve ter pelo menos 3 componentes de hardware!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 8 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s8">
+                  <strong>🔍 SEMANA 8: Testes e Depuração</strong>
+                </button>
+              </h2>
+              <div id="b1s8" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Testar, encontrar falhas e
+                    corrigir — a depuração de hardware.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "O Robô Defeituoso" — um
+                      robô de papelão com peças trocadas ou faltando; os
+                      alunos devem identificar os problemas
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Checklist de verificação
+                      de hardware (fios conectados? energia? componentes
+                      certos?)
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Correção coletiva dos
+                      protótipos — cada equipe apresenta e recebe feedback
+                    </li>
+                  </ul>
+                  <div class="alert alert-danger mt-2">
+                    <i class="bi bi-bug"></i> <strong>Caça ao Bug:</strong> O
+                    erro no hardware é o melhor professor!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 9 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s9">
+                  <strong>🎨 SEMANA 9: Apresentação dos Protótipos</strong>
+                </button>
+              </h2>
+              <div id="b1s9" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Compartilhar o aprendizado com
+                    a turma e celebrar as conquistas.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> Cada equipe apresenta seu
+                      protótipo (2-3 minutos)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Feira do Hardware" — os
+                      robôs são expostos na sala
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Votação: "Melhor Design",
+                      "Mais Criativo", "Mais Funcional"
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-award"></i>
+                    <strong>Celebração:</strong> Todos recebem um "Certificado
+                    de Engenheiro de Hardware Nível 1"!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 10 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b1s10">
+                  <strong>📝 SEMANA 10: Revisão e Avaliação</strong>
+                </button>
+              </h2>
+              <div id="b1s10" class="accordion-collapse collapse" data-bs-parent="#accordionB1">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Consolidar o aprendizado do
+                    bimestre e refletir sobre a jornada.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Quiz do Hardware" —
+                      perguntas em equipe
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Mapa mental coletivo do
+                      que foi aprendido
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Autoavaliação: "O que eu
+                      aprendi?" "O que foi mais difícil?" "O que eu quero
+                      aprender mais?"
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-check2-circle"></i>
+                    <strong>Fim do Bimestre 1!</strong>
+                    Agora seus alunos conhecem o hardware e já construíram
+                    seus primeiros protótipos!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRITÉRIOS DE AVALIAÇÃO DO BIMESTRE -->
+          <h4 class="text-warning mt-4 mb-3">
+            <i class="bi bi-clipboard-check"></i> Critérios de Avaliação -
+            Bimestre 1
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead>
+                <tr>
+                  <th>Critério</th>
+                  <th>⭐ (Em Bug)</th>
+                  <th>⭐⭐ (Robô Aprendiz)</th>
+                  <th>⭐⭐⭐ (Robô Ninja)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Identificação de Hardware</strong></td>
+                  <td>Reconhece alguns componentes</td>
+                  <td>Identifica a maioria dos componentes</td>
+                  <td>Identifica e explica função de todos os componentes</td>
+                </tr>
+                <tr>
+                  <td><strong>Construção do Protótipo</strong></td>
+                  <td>Participa com ajuda</td>
+                  <td>Constrói com autonomia parcial</td>
+                  <td>Constrói com criatividade e autonomia</td>
+                </tr>
+                <tr>
+                  <td><strong>Compreensão do Fluxo</strong></td>
+                  <td>Entende entrada e saída</td>
+                  <td>Compreende entrada, processamento e saída</td>
+                  <td>Aplica o conceito em novos contextos</td>
+                </tr>
+                <tr>
+                  <td><strong>Trabalho em Equipe</strong></td>
+                  <td>Participa com incentivo</td>
+                  <td>Colabora ativamente</td>
+                  <td>Lidera e apoia colegas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- MAPEAMENTO BNCC -->
+          <h4 class="text-warning mt-4 mb-3">
+            <i class="bi bi-map-fill"></i> Habilidades BNCC Trabalhadas
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Habilidade</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Matemática (EF05MA01)</td>
+                  <td>Sistema de numeração decimal</td>
+                  <td>Leitura, escrita e comparação de números</td>
+                </tr>
+                <tr>
+                  <td>Matemática (EF05MA04)</td>
+                  <td>Representação de dados</td>
+                  <td>Gráficos e tabelas para dados de robôs</td>
+                </tr>
+                <tr>
+                  <td>Ciências (EF05CI02)</td>
+                  <td>Transformação de energia</td>
+                  <td>Conversão de energia elétrica em movimento</td>
+                </tr>
+                <tr>
+                  <td>Ciências (EF05CI04)</td>
+                  <td>Circuitos elétricos</td>
+                  <td>Montagem de circuitos simples</td>
+                </tr>
+                <tr>
+                  <td>LP (EF05LP07)</td>
+                  <td>Textos instrucionais</td>
+                  <td>Manuais de montagem e instruções</td>
+                </tr>
+                <tr>
+                  <td>CG4</td>
+                  <td>Linguagens digitais</td>
+                  <td>Registro digital dos projetos</td>
+                </tr>
+                <tr>
+                  <td>CG5</td>
+                  <td>Pensamento computacional</td>
+                  <td>Decomposição e abstração</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-success mt-4">
+            <i class="bi bi-check-circle-fill"></i>
+            <strong>Bimestre 1 concluído!</strong>
+            Seus alunos agora são "Engenheiros de Hardware Nível 1" — prontos
+            para mergulhar nos circuitos elétricos no Bimestre 2!
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ====== BIMESTRE 2 ====== -->
+    <section id="bimestre2" class="mb-5">
+      <!-- ====== BIMESTRE 2 ====== -->
+      <section id="bimestre2" class="mb-5">
+        <div class="projeto-header">
+          <h2>
+            <i class="bi bi-2-circle"></i> BIMESTRE 2 - CIRCUITOS E
+            ELETRICIDADE
+          </h2>
+          <div class="badge-projeto">Luz, movimento e ação!</div>
+        </div>
+
+        <div class="bg-robocard p-4 p-md-5 rounded-4">
+          <!-- INTRO DO BIMESTRE -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <p class="lead fw-bold text-gradient">
+                ⚡ "A eletricidade é a alma do robô — sem ela, ele é apenas
+                uma escultura."
+              </p>
+              <p>
+                Neste segundo bimestre, vamos explorar o
+                <strong>mundo dos circuitos elétricos</strong>
+                e como eles dão vida aos robôs. Seus alunos vão:
+              </p>
+              <ul class="list-unstyled row g-2 mt-3">
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Compreender</strong> o que é um circuito elétrico
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Construir</strong> circuitos simples com pilhas e
+                  LEDs
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Explorar</strong> interruptores, resistores e
+                  motores
+                </li>
+                <li class="col-md-6">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <strong>Aplicar</strong> conceitos de eletricidade em
+                  projetos
+                </li>
+              </ul>
+              <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+                <i class="bi bi-lightning"></i>
+                <strong>Desafio do bimestre:</strong>
+                "Acenda uma luz e faça algo se mover!"
+              </div>
+            </div>
+          </div>
+
+          <!-- OBJETIVOS DO BIMESTRE -->
+          <h4 class="text-warning mb-3">
+            <i class="bi bi-bullseye"></i> Objetivos do Bimestre
+          </h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-lamp fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Construir</h5>
+                  <p class="small">
+                    Circuitos elétricos funcionais com materiais simples
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-graph-up-arrow fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Medir</h5>
+                  <p class="small">
+                    Voltagem, corrente e resistência (de forma lúdica)
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card bg-dark border-warning h-100">
+                <div class="card-body text-center">
+                  <i class="bi bi-diagram-2 fs-1 text-warning"></i>
+                  <h5 class="text-warning mt-2">Representar</h5>
+                  <p class="small">
+                    Diagramas de circuitos com símbolos padrão
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTEÚDO DETALHADO DO BIMESTRE -->
+          <h4 class="text-warning mb-3">
+            <i class="bi bi-file-text"></i> Conteúdo Programático
+          </h4>
+
+          <div class="accordion accordion-flush" id="accordionB2">
+            <!-- SEMANA 1 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s1">
+                  <strong>⚡ SEMANA 1: O que é um Circuito Elétrico?</strong>
+                </button>
+              </h2>
+              <div id="b2s1" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Um circuito é um caminho
+                    fechado por onde a corrente elétrica viaja.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Circuito Humano" — alunos
+                      formam um círculo e passam uma "corrente" (bola) de mão
+                      em mão
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um circuito
+                      simples com pilha, fio e lâmpada
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Desenho de um circuito no
+                      caderno com setas mostrando o fluxo
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-lightbulb"></i> <strong>Dica:</strong> Use
+                    uma lâmpada de lanterna para demonstrar!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 2 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s2">
+                  <strong>🔌 SEMANA 2: Símbolos e Diagramas</strong>
+                </button>
+              </h2>
+              <div id="b2s2" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Aprender a ler e desenhar
+                    diagramas elétricos.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> Apresentação dos símbolos:
+                      pilha, resistor, LED, interruptor, motor
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Bingo dos Símbolos" — o
+                      professor mostra o símbolo, os alunos marcam o nome
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Desenhar o diagrama do
+                      circuito que construíram
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-card-checklist"></i>
+                    <strong>Desafio:</strong> Trocar diagramas com um colega e
+                    tentar montar o circuito do outro!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 3 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s3">
+                  <strong>💡 SEMANA 3: LEDs e Iluminação</strong>
+                </button>
+              </h2>
+              <div id="b2s3" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> LEDs (Diodos Emissores de Luz)
+                    são componentes que convertem energia elétrica em luz.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "LED na Mão" — cada aluno
+                      recebe um LED e uma pilha, descobre qual lado é positivo
+                      e negativo
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um "Circuito
+                      de Luz" com 3 LEDs em paralelo
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> "Ilumine seu Robô" —
+                      adicionar LEDs ao protótipo do bimestre 1
+                    </li>
+                  </ul>
+                  <div class="alert alert-info mt-2">
+                    <i class="bi bi-rainbow"></i>
+                    <strong>Curiosidade:</strong> LEDs existem em várias cores
+                    — cada cor usa uma voltagem diferente!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 4 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s4">
+                  <strong>🔄 SEMANA 4: Interruptores e Controles</strong>
+                </button>
+              </h2>
+              <div id="b2s4" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Interruptores abrem ou fecham o
+                    circuito, controlando o fluxo de eletricidade.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Caça aos Interruptores" —
+                      onde há interruptores na sala? (luz, computador, etc.)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um
+                      interruptor caseiro com clipe de papel e alfinetes
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> "Interruptor Humano" —
+                      dois alunos seguram as pontas do fio; quando se tocam, o
+                      circuito fecha!
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-hand-index"></i>
+                    <strong>Dica:</strong> Mostre diferentes tipos de
+                    interruptores (botão, alavanca, toque).
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 5 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s5">
+                  <strong>🌀 SEMANA 5: Motores e Movimento</strong>
+                </button>
+              </h2>
+              <div id="b2s5" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Motores convertem energia
+                    elétrica em movimento mecânico.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Motor na Mão" — mostrar
+                      um motor DC, como funciona e quais são as partes
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um
+                      "Vibrador" com motor e pilha (cola na ponta de um
+                      palito)
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Adicionar um motor ao
+                      protótipo para criar um robô que se move
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-gear"></i> <strong>Desafio:</strong> Faça
+                    seu robô andar em linha reta por 1 metro!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 6 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s6">
+                  <strong>📏 SEMANA 6: Resistores e Controle de Corrente</strong>
+                </button>
+              </h2>
+              <div id="b2s6" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Resistores limitam a corrente
+                    elétrica, protegendo os componentes.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "O que acontece?" — testar
+                      LED com e sem resistor (com supervisão)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Corrida de Resistores" —
+                      montar circuitos com diferentes resistores e observar o
+                      brilho
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Leitura de código de cores
+                      dos resistores (jogo da memória)
+                    </li>
+                  </ul>
+                  <div class="alert alert-danger mt-2">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Atenção:</strong> Sempre use resistores com LEDs
+                    para evitar queimá-los!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 7 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s7">
+                  <strong>🔋 SEMANA 7: Baterias e Fontes de Energia</strong>
+                </button>
+              </h2>
+              <div id="b2s7" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Tipos de baterias e como
+                    escolher a fonte certa para cada projeto.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Caça às Baterias" —
+                      coletar e identificar diferentes baterias (AA, AAA, 9V,
+                      botão)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Experimento: usar 1, 2 e 3
+                      pilhas para ver a diferença de voltagem
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Construção de um
+                      "Carregador Solar" simples com célula fotovoltaica (se
+                      disponível)
+                    </li>
+                  </ul>
+                  <div class="alert alert-info mt-2">
+                    <i class="bi bi-sun"></i>
+                    <strong>Curiosidade:</strong> Robôs podem usar energia
+                    solar, eólica e até biológica!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 8 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s8">
+                  <strong>🛠️ SEMANA 8: Projeto Integrador do Bimestre</strong>
+                </button>
+              </h2>
+              <div id="b2s8" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Unir tudo o que foi aprendido
+                    em um projeto completo.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Desafio da Lanterna" —
+                      construir uma lanterna funcional com pilha, LED,
+                      interruptor e resistor
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Robô que Pisca" —
+                      adicionar um circuito de LED piscante ao protótipo
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Documentação do projeto
+                      com diagrama e descrição
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-trophy"></i>
+                    <strong>Desafio:</strong> Adicione um motor para fazer o
+                    robô se mover enquanto as luzes piscam!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 9 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s9">
+                  <strong>🎪 SEMANA 9: Feira dos Circuitos</strong>
+                </button>
+              </h2>
+              <div id="b2s9" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Compartilhar os projetos com a
+                    turma e celebrar as conquistas.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> Cada equipe apresenta seu
+                      projeto (3-4 minutos)
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> "Circuito Gigante" — todos
+                      os projetos são conectados em uma exposição
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Votação: "Circuito Mais
+                      Criativo", "LED Mais Brilhante", "Melhor Documentação"
+                    </li>
+                  </ul>
+                  <div class="alert alert-warning mt-2">
+                    <i class="bi bi-award"></i>
+                    <strong>Celebração:</strong> Certificado "Mestre dos
+                    Circuitos" para todos!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEMANA 10 -->
+            <div class="accordion-item bg-dark border-warning">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#b2s10">
+                  <strong>📝 SEMANA 10: Revisão e Avaliação</strong>
+                </button>
+              </h2>
+              <div id="b2s10" class="accordion-collapse collapse" data-bs-parent="#accordionB2">
+                <div class="accordion-body bg-dark text-light">
+                  <p>
+                    <strong>Conceito:</strong> Consolidar o aprendizado do
+                    bimestre sobre circuitos e eletricidade.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Atividade 1:</strong> "Quiz dos Circuitos" —
+                      perguntas em equipe
+                    </li>
+                    <li>
+                      <strong>Atividade 2:</strong> Construção de um mapa
+                      mental coletivo
+                    </li>
+                    <li>
+                      <strong>Atividade 3:</strong> Autoavaliação: "O que
+                      aprendi?" "O que foi mais difícil?"
+                    </li>
+                  </ul>
+                  <div class="alert alert-success mt-2">
+                    <i class="bi bi-check2-circle"></i>
+                    <strong>Fim do Bimestre 2!</strong>
+                    Agora seus alunos dominam os circuitos elétricos e já têm
+                    robôs com luz e movimento!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRITÉRIOS DE AVALIAÇÃO DO BIMESTRE -->
+          <h4 class="text-warning mt-4 mb-3">
+            <i class="bi bi-clipboard-check"></i> Critérios de Avaliação -
+            Bimestre 2
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-robotica table-bordered">
+              <thead>
+                <tr>
+                  <th>Critério</th>
+                  <th>⭐ (Em Bug)</th>
+                  <th>⭐⭐ (Robô Aprendiz)</th>
+                  <th>⭐⭐⭐ (Robô Ninja)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Construção de Circuitos</strong></td>
+                  <td>Monta com ajuda</td>
+                  <td>Monta autonomamente</td>
+                  <td>Monta e explica o funcionamento</td>
+                </tr>
+                <tr>
+                  <td><strong>Leitura de Diagramas</strong></td>
+                  <td>Reconhece alguns símbolos</td>
+                  <td>Lê diagramas simples</td>
+                  <td>Cria diagramas completos</td>
+                </tr>
+                <tr>
+                  <td><strong>Uso de Componentes</strong></td>
+                  <td>Identifica LED e motor</td>
+                  <td>Usa resistor e interruptor corretamente</td>
+                  <td>Combina múltiplos componentes com criatividade</td>
+                </tr>
+                <tr>
+                  <td><strong>Documentação</strong></td>
+                  <td>Desenha o circuito</td>
+                  <td>Desenha e descreve o circuito</td>
+                  <td>Documenta com diagramas e explicações completas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-success mt-4">
+            <i class="bi bi-check-circle-fill"></i>
+            <strong>Bimestre 2 concluído!</strong>
+            Seus alunos agora são "Mestres dos Circuitos" — prontos para
+            explorar sensores e atuadores no Bimestre 3!
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+
+    <!-- ====== BIMESTRE 3 ====== -->
+    <section id="bimestre3" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-3-circle"></i> BIMESTRE 3 - SENSORES E ATUADORES
+        </h2>
+        <div class="badge-projeto">O robô que sente o mundo</div>
+      </div>
+
+      <div class="bg-robocard p-4 p-md-5 rounded-4">
+        <!-- INTRO DO BIMESTRE -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <p class="lead fw-bold text-gradient">
+              📡 "Um robô sem sensor é como um humano sem sentidos — cego e
+              surdo ao mundo."
+            </p>
+            <p>
+              Neste terceiro bimestre, vamos dotar nossos robôs de
+              <strong>sentidos</strong>
+              através de sensores e atuadores. Seus alunos vão:
+            </p>
+            <ul class="list-unstyled row g-2 mt-3">
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Explorar</strong> diferentes tipos de sensores
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Compreender</strong> como sensores captam
+                informações
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Construir</strong> projetos com sensores de luz, som
+                e toque
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Integrar</strong> sensores ao hardware existente
+              </li>
+            </ul>
+            <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+              <i class="bi bi-eye"></i>
+              <strong>Desafio do bimestre:</strong>
+              "Faça seu robô reagir ao ambiente!"
+            </div>
+          </div>
+        </div>
+
+        <!-- OBJETIVOS DO BIMESTRE -->
+        <h4 class="text-warning mb-3">
+          <i class="bi bi-bullseye"></i> Objetivos do Bimestre
+        </h4>
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-sun fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Explorar</h5>
+                <p class="small">
+                  Sensores de luz, som, temperatura e proximidade
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-arrows-move fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Integrar</h5>
+                <p class="small">
+                  Sensores e atuadores em um sistema funcional
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-diagram-3 fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Programar</h5>
+                <p class="small">
+                  Respostas condicionais (se-então) baseadas em sensores
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO DO BIMESTRE -->
+        <h4 class="text-warning mb-3">
+          <i class="bi bi-file-text"></i> Conteúdo Programático
+        </h4>
+
+        <div class="accordion accordion-flush" id="accordionB3">
+          <!-- SEMANA 1 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s1">
+                <strong>📡 SEMANA 1: O que são Sensores?</strong>
+              </button>
+            </h2>
+            <div id="b3s1" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Sensores são dispositivos que
+                  captam informações do ambiente.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Caça aos Sensores" —
+                    quais sensores existem na sala? (luz, temperatura, som)
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Os Sentidos Humanos" —
+                    comparar sensores com os sentidos humanos (visão,
+                    audição, tato)
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Desenho de um robô com
+                    "olhos" (sensores) e "músculos" (atuadores)
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-lightbulb"></i> <strong>Dica:</strong> Use
+                  o celular como exemplo de dispositivo com múltiplos
+                  sensores!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 2 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s2">
+                <strong>☀️ SEMANA 2: Sensores de Luz</strong>
+              </button>
+            </h2>
+            <div id="b3s2" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Sensores de luz (LDR) detectam
+                  a intensidade luminosa.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Luz que Acende" —
+                    construir um circuito que acende um LED quando a luz
+                    ambiente diminui
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Medindo a Luz" — usar um
+                    LDR para medir a luz em diferentes lugares da sala
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "Semáforo Inteligente" —
+                    um LED que acende dependendo da luz do dia
+                  </li>
+                </ul>
+                <div class="alert alert-info mt-2">
+                  <i class="bi bi-sunrise"></i>
+                  <strong>Curiosidade:</strong> Postes de rua usam sensores
+                  de luz para acender ao anoitecer!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 3 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s3">
+                <strong>🔊 SEMANA 3: Sensores de Som</strong>
+              </button>
+            </h2>
+            <div id="b3s3" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Sensores de som detectam
+                  vibrações sonoras.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Palmas que Acendem" — um
+                    LED que acende ao bater palmas
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Robô que Dança" — um
+                    motor que gira ao som de música
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "O Ouvido do Robô" —
+                    sensibilidade a diferentes volumes
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-ear"></i> <strong>Desafio:</strong> Faça
+                  seu robô reagir a diferentes sons (palmas, assobio,
+                  batidas)!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 4 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s4">
+                <strong>🤚 SEMANA 4: Sensores de Toque e Proximidade</strong>
+              </button>
+            </h2>
+            <div id="b3s4" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Sensores de toque detectam
+                  contato físico; de proximidade detectam objetos próximos.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Botão Mágico" — construir
+                    um circuito com botão que liga um LED
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Sensor de Proximidade" —
+                    usar papel alumínio para criar um sensor de toque
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "Robô que Desvia" —
+                    adicionar um sensor de proximidade para evitar
+                    obstáculos
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-hand-index-thumb"></i>
+                  <strong>Dica:</strong> Sensores de toque são usados em
+                  telas touch e botões de elevador!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 5 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s5">
+                <strong>🌡️ SEMANA 5: Sensores de Temperatura</strong>
+              </button>
+            </h2>
+            <div id="b3s5" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Sensores de temperatura
+                  (termistores) detectam mudanças térmicas.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Termômetro Humano" — usar
+                    as mãos para aquecer um sensor e ver a mudança
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Robô que Sente o Calor" —
+                    um LED que muda de cor com a temperatura
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "Caça ao Quente e Frio" —
+                    medir diferentes temperaturas na sala
+                  </li>
+                </ul>
+                <div class="alert alert-info mt-2">
+                  <i class="bi bi-thermometer"></i>
+                  <strong>Curiosidade:</strong> Termostatos usam sensores de
+                  temperatura para controlar o ar condicionado!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 6 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s6">
+                <strong>🔄 SEMANA 6: Atuadores - Fazendo o Robô Agir</strong>
+              </button>
+            </h2>
+            <div id="b3s6" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Atuadores são dispositivos que
+                  convertem energia em movimento ou ação.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Motores em Ação" —
+                    explorar diferentes motores: DC, servo, stepper
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Atuador Criativo" —
+                    construir um mecanismo simples com motor e palitos
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "Robô que Gira" — usar um
+                    servo motor para girar um braço robótico
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-arrow-up-circle"></i>
+                  <strong>Desafio:</strong> Combine um sensor com um atuador
+                  para criar uma reação automática!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 7 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s7">
+                <strong>🧠 SEMANA 7: Integração Sensor + Atuador</strong>
+              </button>
+            </h2>
+            <div id="b3s7" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Unir sensores e atuadores para
+                  criar um sistema inteligente.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Luz que Liga o Motor" —
+                    sensor de luz ativando um motor
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> "Palmas que Movem" —
+                    sensor de som controlando um servo
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> "Robô que Foge da Luz" —
+                    sensor de luz fazendo o robô se mover na direção oposta
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-check-circle"></i>
+                  <strong>Desafio:</strong> Crie um robô que reaja a 2
+                  estímulos diferentes!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 8 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s8">
+                <strong>🏗️ SEMANA 8: Projeto Final do Bimestre</strong>
+              </button>
+            </h2>
+            <div id="b3s8" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Construir um robô completo com
+                  sensores e atuadores.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Planejamento do projeto —
+                    escolher sensores, atuadores e objetivo
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Construção do robô com
+                    sensor(es) e atuador(es)
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Testes, ajustes e
+                    documentação
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-trophy"></i>
+                  <strong>Exemplo:</strong> Robô que acende a luz quando
+                  escurece e apaga quando clareia!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 9 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s9">
+                <strong>🎪 SEMANA 9: Feira dos Sensores</strong>
+              </button>
+            </h2>
+            <div id="b3s9" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Apresentar os projetos e
+                  compartilhar conhecimentos.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Cada equipe apresenta seu
+                    robô sensorizado (3-4 minutos)
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Demonstração ao vivo do
+                    funcionamento
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Votação e premiação em
+                    categorias
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-award"></i>
+                  <strong>Celebração:</strong> Certificado "Mestre dos
+                  Sensores" para todos!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 10 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b3s10">
+                <strong>📝 SEMANA 10: Revisão e Avaliação</strong>
+              </button>
+            </h2>
+            <div id="b3s10" class="accordion-collapse collapse" data-bs-parent="#accordionB3">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Consolidar o aprendizado sobre
+                  sensores e atuadores.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Quiz dos Sensores" —
+                    perguntas em equipe
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Construção de um mapa
+                    mental coletivo
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Autoavaliação e reflexão
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-check2-circle"></i>
+                  <strong>Fim do Bimestre 3!</strong>
+                  Agora seus robôs têm sentidos e reagem ao mundo ao redor!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRITÉRIOS DE AVALIAÇÃO DO BIMESTRE -->
+        <h4 class="text-warning mt-4 mb-3">
+          <i class="bi bi-clipboard-check"></i> Critérios de Avaliação -
+          Bimestre 3
+        </h4>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>⭐ (Em Bug)</th>
+                <th>⭐⭐ (Robô Aprendiz)</th>
+                <th>⭐⭐⭐ (Robô Ninja)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Identificação de Sensores</strong></td>
+                <td>Reconhece alguns sensores</td>
+                <td>Identifica e explica a função de cada sensor</td>
+                <td>Escolhe o sensor adequado para cada situação</td>
+              </tr>
+              <tr>
+                <td><strong>Uso de Atuadores</strong></td>
+                <td>Conecta atuadores com ajuda</td>
+                <td>Conecta e controla atuadores autonomamente</td>
+                <td>Combina múltiplos atuadores criativamente</td>
+              </tr>
+              <tr>
+                <td><strong>Integração</strong></td>
+                <td>Faz sensor e atuador funcionarem separadamente</td>
+                <td>Integra sensor e atuador com sucesso</td>
+                <td>Cria um sistema com múltiplas interações</td>
+              </tr>
+              <tr>
+                <td><strong>Criatividade</strong></td>
+                <td>Segue o exemplo dado</td>
+                <td>Adapta o projeto com modificações</td>
+                <td>Inova com soluções originais</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-success mt-4">
+          <i class="bi bi-check-circle-fill"></i>
+          <strong>Bimestre 3 concluído!</strong>
+          Seus robôs agora têm sentidos e reagem ao ambiente — estão prontos
+          para o projeto integrador do Bimestre 4!
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+
+    <!-- ====== BIMESTRE 4 ====== -->
+    <section id="bimestre4" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-4-circle"></i> BIMESTRE 4 - PROJETO INTEGRADOR
+        </h2>
+        <div class="badge-projeto">Do zero ao robô completo</div>
+      </div>
+
+      <div class="bg-robocard p-4 p-md-5 rounded-4">
+        <!-- INTRO DO BIMESTRE -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <p class="lead fw-bold text-gradient">
+              🤖 "O robô não é apenas um projeto — é a prova de que seus
+              alunos são engenheiros!"
+            </p>
+            <p>
+              Neste último bimestre, vamos <strong>integrar tudo</strong> o
+              que foi aprendido durante o ano em um
+              <strong>projeto autoral completo</strong>. Seus alunos vão:
+            </p>
+            <ul class="list-unstyled row g-2 mt-3">
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Projetar</strong> um robô do zero com todas as
+                funções
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Construir</strong> a estrutura, circuitos, sensores
+                e atuadores
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Programar</strong> o comportamento do robô
+              </li>
+              <li class="col-md-6">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>Apresentar</strong> na Feira de Robótica para a
+                comunidade
+              </li>
+            </ul>
+            <div class="alert alert-warning mt-3 bg-warning bg-opacity-10 border-warning">
+              <i class="bi bi-rocket-takeoff"></i>
+              <strong>Desafio do bimestre:</strong>
+              "Crie um robô que resolva um problema real da escola ou da
+              comunidade!"
+            </div>
+          </div>
+        </div>
+
+        <!-- OBJETIVOS DO BIMESTRE -->
+        <h4 class="text-warning mb-3">
+          <i class="bi bi-bullseye"></i> Objetivos do Bimestre
+        </h4>
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-pencil-square fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Projetar</h5>
+                <p class="small">
+                  Um robô autoral com documentação completa
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-people fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Colaborar</h5>
+                <p class="small">Trabalho em equipe e comunicação eficaz</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-megaphone fs-1 text-warning"></i>
+                <h5 class="text-warning mt-2">Apresentar</h5>
+                <p class="small">
+                  O projeto para a comunidade com confiança
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO DO BIMESTRE -->
+        <h4 class="text-warning mb-3">
+          <i class="bi bi-file-text"></i> Conteúdo Programático
+        </h4>
+
+        <div class="accordion accordion-flush" id="accordionB4">
+          <!-- SEMANA 1 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s1">
+                <strong>💡 SEMANA 1: Brainstorm e Definição do Projeto</strong>
+              </button>
+            </h2>
+            <div id="b4s1" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Gerar ideias e definir o escopo
+                  do projeto.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Tempestade de Ideias" —
+                    cada aluno sugere um problema que um robô poderia
+                    resolver
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Escolha do projeto —
+                    votação e formação de equipes
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Definição dos requisitos:
+                    o que o robô deve fazer? Quais componentes serão usados?
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-lightbulb"></i>
+                  <strong>Dica:</strong> Incentive ideias que resolvam
+                  problemas reais da escola!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 2 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s2">
+                <strong>📐 SEMANA 2: Projeto Técnico</strong>
+              </button>
+            </h2>
+            <div id="b4s2" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Criar um projeto detalhado com
+                  desenhos e especificações.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Desenho técnico do robô
+                    (vistas frontal, lateral, superior)
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Lista de materiais
+                    (hardware, eletrônica, sucata)
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Diagrama de blocos do
+                    sistema (entrada → processamento → saída)
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-card-checklist"></i>
+                  <strong>Checklist:</strong> Dimensões, componentes,
+                  funções e cronograma.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 3 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s3">
+                <strong>🏗️ SEMANA 3: Construção da Estrutura</strong>
+              </button>
+            </h2>
+            <div id="b4s3" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Construir a estrutura física do
+                  robô com materiais reciclados.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Corte e montagem da base
+                    (caixas, papelão, garrafas PET)
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Fixação de motores e rodas
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Preparação dos espaços
+                    para circuitos e baterias
+                  </li>
+                </ul>
+                <div class="alert alert-info mt-2">
+                  <i class="bi bi-tools"></i> <strong>Dica:</strong> Use
+                  cola quente e fita adesiva para fixação rápida e
+                  resistente.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 4 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s4">
+                <strong>⚡ SEMANA 4: Circuitos e Eletrônica</strong>
+              </button>
+            </h2>
+            <div id="b4s4" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Instalar os circuitos e
+                  componentes eletrônicos.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Montagem dos circuitos de
+                    potência e controle
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Conexão de sensores e
+                    atuadores
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Teste de continuidade e
+                    funcionamento
+                  </li>
+                </ul>
+                <div class="alert alert-danger mt-2">
+                  <i class="bi bi-exclamation-triangle"></i>
+                  <strong>Atenção:</strong> Verifique polaridades e conexões
+                  antes de ligar!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 5 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s5">
+                <strong>🧠 SEMANA 5: Programação (Integração)</strong>
+              </button>
+            </h2>
+            <div id="b4s5" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Programar o comportamento do
+                  robô (digital ou desplugado).
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Escrita do algoritmo em
+                    linguagem natural ou Scratch/Arduino
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Upload do código (se
+                    digital) ou implementação com cartões (se desplugado)
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Testes iniciais de
+                    funcionamento
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-code-square"></i>
+                  <strong>Desafio:</strong> Use a lógica SE-ENTÃO-SENÃO para
+                  tomar decisões!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 6 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s6">
+                <strong>🔍 SEMANA 6: Testes e Depuração</strong>
+              </button>
+            </h2>
+            <div id="b4s6" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Testar o robô completo e
+                  corrigir falhas.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Testes funcionais — o robô
+                    faz o que deveria fazer?
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Caça aos bugs —
+                    identificar e corrigir problemas
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Otimização — melhorar
+                    desempenho e robustez
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-bug"></i> <strong>Lembrete:</strong> O
+                  erro é parte do processo. Cada bug corrigido é uma
+                  vitória!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 7 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s7">
+                <strong>🎨 SEMANA 7: Finalização e Apresentação</strong>
+              </button>
+            </h2>
+            <div id="b4s7" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Finalizar o robô e preparar a
+                  apresentação.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Acabamentos estéticos
+                    (pintura, decoração)
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Criação do manual do
+                    usuário
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Ensaio da apresentação
+                    para a feira
+                  </li>
+                </ul>
+                <div class="alert alert-info mt-2">
+                  <i class="bi bi-palette"></i> <strong>Dica:</strong> Deixe
+                  os alunos personalizarem seus robôs com criatividade!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 8 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s8">
+                <strong>🎪 SEMANA 8: Feira de Robótica Interna</strong>
+              </button>
+            </h2>
+            <div id="b4s8" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Apresentar para outra turma e
+                  receber feedback.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Cada equipe apresenta para
+                    uma turma convidada
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Sessão de perguntas e
+                    respostas
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Feedback e ajustes finos
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-people"></i>
+                  <strong>Dica:</strong> Convide uma turma mais nova para
+                  inspirar os pequenos!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 9 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s9">
+                <strong>🚀 SEMANA 9: Feira de Robótica - O Grande Dia</strong>
+              </button>
+            </h2>
+            <div id="b4s9" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Apresentar os projetos para a
+                  comunidade escolar.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> Montagem da exposição na
+                    quadra ou auditório
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Cada equipe apresenta para
+                    pais, professores e gestão
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Entrega de certificados e
+                    premiações
+                  </li>
+                </ul>
+                <div class="alert alert-warning mt-2">
+                  <i class="bi bi-award"></i>
+                  <strong>Celebração:</strong> Todos recebem certificados
+                  "Engenheiro de Hardware Nível 5"!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEMANA 10 -->
+          <div class="accordion-item bg-dark border-warning">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#b4s10">
+                <strong>📝 SEMANA 10: Reflexão e Fechamento do Ano</strong>
+              </button>
+            </h2>
+            <div id="b4s10" class="accordion-collapse collapse" data-bs-parent="#accordionB4">
+              <div class="accordion-body bg-dark text-light">
+                <p>
+                  <strong>Conceito:</strong> Celebrar o ano letivo e
+                  refletir sobre a jornada.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Atividade 1:</strong> "Roda de Memórias" — cada
+                    aluno compartilha seu momento favorito do ano
+                  </li>
+                  <li>
+                    <strong>Atividade 2:</strong> Mural coletivo com fotos e
+                    depoimentos
+                  </li>
+                  <li>
+                    <strong>Atividade 3:</strong> Spoiler do 6º ano — o que
+                    vem pela frente!
+                  </li>
+                </ul>
+                <div class="alert alert-success mt-2">
+                  <i class="bi bi-check2-circle"></i>
+                  <strong>Fim do Ano Letivo!</strong>
+                  Parabéns! Seus alunos são agora engenheiros de hardware
+                  completos, prontos para o próximo nível!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRITÉRIOS DE AVALIAÇÃO DO BIMESTRE -->
+        <h4 class="text-warning mt-4 mb-3">
+          <i class="bi bi-clipboard-check"></i> Critérios de Avaliação -
+          Bimestre 4
+        </h4>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>⭐ (Em Bug)</th>
+                <th>⭐⭐ (Robô Aprendiz)</th>
+                <th>⭐⭐⭐ (Robô Ninja)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Projeto e Planejamento</strong></td>
+                <td>Participa com ajuda</td>
+                <td>Contribui com ideias e planejamento</td>
+                <td>Lidera o planejamento e a documentação</td>
+              </tr>
+              <tr>
+                <td><strong>Construção</strong></td>
+                <td>Monta partes do robô</td>
+                <td>Constrói a maior parte do robô</td>
+                <td>Constrói e resolve problemas complexos</td>
+              </tr>
+              <tr>
+                <td><strong>Integração de Componentes</strong></td>
+                <td>Componentes funcionam separadamente</td>
+                <td>Componentes funcionam integrados</td>
+                <td>Sistema completo com interações complexas</td>
+              </tr>
+              <tr>
+                <td><strong>Apresentação</strong></td>
+                <td>Apresenta com apoio</td>
+                <td>Apresenta com confiança</td>
+                <td>Apresenta com domínio e responde perguntas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- MAPEAMENTO BNCC -->
+        <h4 class="text-warning mt-4 mb-3">
+          <i class="bi bi-map-fill"></i> Habilidades BNCC Trabalhadas
+        </h4>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Habilidade</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Matemática (EF05MA04)</td>
+                <td>Representação de dados</td>
+                <td>Gráficos e tabelas para dados de robôs</td>
+              </tr>
+              <tr>
+                <td>Matemática (EF05MA08)</td>
+                <td>Grandezas e medidas</td>
+                <td>Medição de distâncias e velocidades</td>
+              </tr>
+              <tr>
+                <td>Ciências (EF05CI03)</td>
+                <td>Energia e transformação</td>
+                <td>Conversão de energia em movimento</td>
+              </tr>
+              <tr>
+                <td>LP (EF05LP20)</td>
+                <td>Textos explicativos</td>
+                <td>Manual do robô e apresentação oral</td>
+              </tr>
+              <tr>
+                <td>CG4</td>
+                <td>Linguagens digitais</td>
+                <td>Apresentação digital do projeto</td>
+              </tr>
+              <tr>
+                <td>CG5</td>
+                <td>Pensamento computacional</td>
+                <td>Decomposição, abstração, algoritmo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-success mt-4">
+          <i class="bi bi-check-circle-fill"></i>
+          <strong>Bimestre 4 concluído!</strong>
+          Parabéns! Você completou o ano letivo de hardware e robótica. Seus
+          alunos são engenheiros de verdade!
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- ====== CERTIFICAÇÃO ====== -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 5º ANO
+          </h3>
+          <p class="lead">"ENGENHEIRO DE HARDWARE NÍVEL 5"</p>
+        </div>
+
+        <!-- MODELO DE CERTIFICADO -->
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" style="
+                      font-size: 18px;
+                      display: block;
+                      margin: 10px 0;
+                      color: #2c5e1f;
+                      background: #fff0cc;
+                      padding: 8px;
+                      border-radius: 40px;
+                    ">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>5º ANO - HARDWARE E ROBÓTICA</strong><br />
+                  Dominando os conceitos de:<br />
+                  🔧 <strong>HARDWARE</strong> (circuitos e componentes)<br />
+                  ⚡ <strong>ELETRICIDADE</strong> (energia e movimento)<br />
+                  📡 <strong>SENSORES</strong> (o robô que sente)<br />
+                  🤖 <strong>PROJETO AUTORAL</strong> (Robô Completo)
+                </p>
+                <hr style="border-color: #ffb347" />
+                <p style="font-size: 12px">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p style="font-size: 11px; font-style: italic">
+                  "Hardware é vida! Do parafuso ao código, cada peça conta uma
+                  história."
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Eng. Robô Zé 5.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label>
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno engenheiro" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Engenheiros
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 200px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+          por folha).
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================== -->
+  <!-- RODAPÉ REBELDE (copiado exatamente do modelo_rodape.html)   -->
+  <!-- ========================================================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relatorio-bugs"></div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ano5index_hardware.js"></script>
+</body>
+
+</html>

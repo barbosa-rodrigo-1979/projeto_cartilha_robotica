@@ -1,0 +1,4058 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>🤖 5º Ano - 1º BIMESTRE: FUNÇÕES, LÓGICA E MICRO:BIT</title>
+  <!-- Bootstrap 5 + ícones + fontes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- CSS exclusivo do bimestre -->
+  <link rel="stylesheet" href="css/a5bim1_hardware.css" />
+</head>
+
+<body class="bg-robotica">
+  <!-- ================================================== -->
+  <!-- CABEÇALHO REBELDE (copiado de modelo_cabecalho.html) -->
+  <!-- ================================================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 5º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 1º BIMESTRE: FUNÇÕES, LÓGICA E MICRO:BIT — A REVOLUÇÃO DOS
+            PARAFUSOS PENSANTES ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================== -->
+  <!-- MENU GLASSMORPHISM (copiado de modelo_menu_bim.html) -->
+  <!-- ================================================== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a5bim1_hardware.html">
+        <i class="bi bi-robot"></i> 5º Ano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-house-door-fill"></i> Principal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="ano5index_hardware.html">
+              <i class="bi bi-1-circle-fill"></i> 5º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="a5bim1_hardware.html">
+              <i class="bi bi-1-circle-fill"></i> 1º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim2_hardware.html">
+              <i class="bi bi-2-circle-fill"></i> 2º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim3_hardware.html">
+              <i class="bi bi-3-circle-fill"></i> 3º bimestre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5bim4_hardware.html">
+              <i class="bi bi-4-circle-fill"></i> 4º bimestre
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================== -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- ================================================== -->
+  <main class="container my-4">
+    <!-- ================================================ -->
+    <!-- APRESENTAÇÃO DO BIMESTRE (conteúdo do DOCX)       -->
+    <!-- ================================================ -->
+    <section id="carta-abertura" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-envelope-paper-fill"></i> 📬 CARTA DE ABERTURA DO
+          BIMESTRE
+        </h2>
+        <div class="badge-projeto">
+          "ESQUECE O CHATGPT, A GENTE VAI PROGRAMAR UM ROBÔ QUE PENSA! (E QUE
+          TALVEZ TENTE DOMINAR O MUNDO)" 😈🤖
+        </div>
+      </div>
+      <div class="bg-robocard p-4 rounded-4 carta-container">
+        <p class="carta-texto">Prezado(a) Professor(a) de Robótica,</p>
+        <p class="carta-texto">
+          Senta que lá vem história! Este bimestre não é sobre ficar copiando
+          código igual um papagaio de pirata. É sobre TRANSFORMAR SEUS ALUNOS
+          EM MESTRES DA LÓGICA, usando a placa mais irada do momento: a BBC
+          micro:bit!
+        </p>
+        <p class="carta-texto">Você já imaginou seus alunos:</p>
+        <ul class="carta-texto">
+          <li>
+            Criando um semáforo inteligente que decide quando abrir com base
+            na luz ambiente? (E que pisca igual uma balada!)
+          </li>
+          <li>
+            Construindo um detector de mentiras que acusa o colega quando ele
+            conta uma história duvidosa?
+          </li>
+          <li>
+            Programando um alarme ninja que dispara se alguém tocar na
+            mochila?
+          </li>
+          <li>
+            Fazendo um coração pulsante que acelera quando você coloca o dedo
+            no sensor?
+          </li>
+        </ul>
+        <p class="carta-texto">
+          Pois é, isso não é ficção científica. É ROBÓTICA COM MICRO:BIT!
+        </p>
+        <p class="carta-texto">
+          E o melhor: tudo alinhado com a BNCC (porque a gente segue as
+          regras, mas com estilo) e o RCP-PR (o currículo do Paraná que manda
+          a gente ser foda no ensino de programação).
+        </p>
+        <p class="carta-texto fw-bold">Bora codar? 🚀</p>
+        <p class="carta-texto">
+          Seu parceiro na revolução dos parafusos pensantes
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- MAPEAMENTO BIMESTRE (conteúdo do DOCX)            -->
+    <!-- ================================================ -->
+    <section id="mapeamento" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE</h2>
+        <div class="badge-projeto">RCP-PR · Programação e Robótica</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Habilidades BNCC (Outras)</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Habilidades BNCC (Matemática)</th>
+              <th>Habilidades BNCC (LP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Competência Geral 5 - Pensamento computacional<br />RCP-pr:
+                Pensamento Algébrico - Função como máquina
+              </td>
+              <td>1</td>
+              <td>"Função: o tio do churrasco que repete a mesma piada"</td>
+              <td>EF05MA10 - Regularidades (repetição de comportamentos)</td>
+              <td>
+                EF05LP10 - Textos instrucionais (explicar o que a função faz)
+              </td>
+            </tr>
+            <tr>
+              <td>RCP-pr: Pensamento Algébrico - Função como máquina</td>
+              <td>2</td>
+              <td>"Parâmetros: a lanchonete do robô que aceita pedidos"</td>
+              <td>EF05MA01 - Ler e escrever números grandes (parâmetros)</td>
+              <td>EF05LP10 - Especificar parâmetros</td>
+            </tr>
+            <tr>
+              <td>EF05CI01 - Construir protótipos</td>
+              <td>3</td>
+              <td>"Matrioska do código: funções que chamam funções"</td>
+              <td>EF05MA10 - Regularidades (função maior chama outras)</td>
+              <td>EF05LP10 - Estruturação textual (aninhamento)</td>
+            </tr>
+            <tr>
+              <td>RCP-pr: Prototipagem - Artefato modular</td>
+              <td>4</td>
+              <td>"Cardápio de funções: o minichef programador"</td>
+              <td>EF05MA10 - Reutilização de funções</td>
+              <td>EF05LP10 - Produzir texto instrucional</td>
+            </tr>
+            <tr>
+              <td>EF05CI02 - Estímulos e respostas</td>
+              <td>5</td>
+              <td>"Operadores lógicos: SE, E, OU, NÃO"</td>
+              <td>EF05MA18 - Trajetos com decisões</td>
+              <td>Conectivos lógicos</td>
+            </tr>
+            <tr>
+              <td>EF05MA23 - Coordenadas no tabuleiro</td>
+              <td>6</td>
+              <td>"O jogo do tabuleiro programado"</td>
+              <td>EF05MA02 - Ler números (variáveis)</td>
+              <td>Textos instrucionais</td>
+            </tr>
+            <tr>
+              <td>EF05CI01 - Protótipos com sensores</td>
+              <td>7</td>
+              <td>"O robô medroso e o sensor de toque"</td>
+              <td>EF05MA10 - Regularidades (valores do sensor)</td>
+              <td>Relatar experimentos</td>
+            </tr>
+            <tr>
+              <td>EF05CI01 - Protótipo funcional</td>
+              <td>8</td>
+              <td>"Cofre robô: a senha tátil"</td>
+              <td>EF05MA10 - Sequências e padrões</td>
+              <td>EF05LP17 - Planejar roteiro de teste</td>
+            </tr>
+            <tr>
+              <td>Competência Geral 7 - Argumentação</td>
+              <td>9</td>
+              <td>"Caça ao bug: exterminadores de erros"</td>
+              <td>EF05MA10 - Bugs típicos se repetem</td>
+              <td>EF05LP10 - Relatar experimentos</td>
+            </tr>
+            <tr>
+              <td>Todas do bimestre</td>
+              <td>10</td>
+              <td>"Avaliação: Passeporte da Função"</td>
+              <td>Todas do bimestre</td>
+              <td>Todas do bimestre</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- PLANO SINTÉTICO (conteúdo do DOCX)                -->
+    <!-- ================================================ -->
+    <section id="plano-sintetico" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-calendar-week-fill"></i> 📋 BIMESTRE - PLANO
+          SINTÉTICO
+        </h2>
+        <div class="badge-projeto">
+          10 semanas de funções, lógica e micro:bit
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-robotica table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Atividade Principal</th>
+              <th>Semana</th>
+              <th>Título da Aula</th>
+              <th>Conceito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Criar função `piscar()` na micro:bit</td>
+              <td>1</td>
+              <td>"Função: o tio do churrasco que repete a mesma piada"</td>
+              <td>Definir função como bloco de código reutilizável</td>
+            </tr>
+            <tr>
+              <td>Criar função `mostrarNumero(n)`</td>
+              <td>2</td>
+              <td>"Parâmetros: a lanchonete do robô que aceita pedidos"</td>
+              <td>Parâmetros personalizam a função</td>
+            </tr>
+            <tr>
+              <td>Criar `dancaCompleta()` com subfunções</td>
+              <td>3</td>
+              <td>"Matrioska do código: funções que chamam funções"</td>
+              <td>Funções aninhadas</td>
+            </tr>
+            <tr>
+              <td>Mini-sistema de animações com funções</td>
+              <td>4</td>
+              <td>"Cardápio de funções: o minichef programador"</td>
+              <td>Revisão integrada</td>
+            </tr>
+            <tr>
+              <td>Código com condicionais na micro:bit</td>
+              <td>5</td>
+              <td>"Operadores lógicos: SE, E, OU, NÃO"</td>
+              <td>AND, OR, NOT</td>
+            </tr>
+            <tr>
+              <td>Jogo de perguntas na micro:bit</td>
+              <td>6</td>
+              <td>"O jogo do tabuleiro programado"</td>
+              <td>Variáveis + operadores lógicos</td>
+            </tr>
+            <tr>
+              <td>Robô que reage ao toque</td>
+              <td>7</td>
+              <td>"O robô medroso e o sensor de toque"</td>
+              <td>Sensor de toque + lógica</td>
+            </tr>
+            <tr>
+              <td>Cofre com senha na micro:bit</td>
+              <td>8</td>
+              <td>"Cofre robô: a senha tátil"</td>
+              <td>Projeto integrado</td>
+            </tr>
+            <tr>
+              <td>Identificar e corrigir bugs</td>
+              <td>9</td>
+              <td>"Caça ao bug: exterminadores de erros"</td>
+              <td>Depuração de funções</td>
+            </tr>
+            <tr>
+              <td>5 estações com desafios</td>
+              <td>10</td>
+              <td>"Avaliação: Passeporte da Função"</td>
+              <td>Avaliação prática</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- PLANOS DE AULA DETALHADOS (conteúdo do DOCX)      -->
+    <!-- ================================================ -->
+    <section id="aulas" class="mb-5">
+      <div class="projeto-header">
+        <h2>
+          <i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS --
+          BIMESTRE 1
+        </h2>
+        <div class="badge-projeto">
+          Funções, Lógica e Micro:bit — A Revolução dos Parafusos Pensantes!
+        </div>
+      </div>
+
+      <!-- Botões de controle do accordion -->
+      <div class="d-flex gap-2 mb-3 flex-wrap">
+        <button class="btn btn-outline-warning btn-sm" id="expandirTodosBtn">
+          <i class="bi bi-arrows-expand"></i> Expandir Todos
+        </button>
+        <button class="btn btn-outline-secondary btn-sm" id="recolherTodosBtn">
+          <i class="bi bi-arrows-collapse"></i> Recolher Todos
+        </button>
+        <button class="btn btn-outline-danger btn-sm" id="resetarProgressoBtn">
+          <i class="bi bi-arrow-counterclockwise"></i> Resetar Progresso
+        </button>
+        <span class="ms-auto text-muted small" id="progressoTexto">0/10</span>
+      </div>
+
+      <!-- Barra de Progresso -->
+      <div class="progress-container mb-4">
+        <div class="progress" style="height: 30px; border-radius: 30px; background: #0a0f08">
+          <div id="barraProgresso" class="progress-bar bg-warning" style="
+                width: 0%;
+                border-radius: 30px;
+                font-weight: bold;
+                color: #1e2a1a;
+              ">
+            0%
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="accordionAulas">
+        <!-- ============================================================ -->
+        <!-- SEMANA 1: FUNÇÃO - O TIO DO CHURRASCO                          -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="1">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana1">
+              🎯 SEMANA 1: "FUNÇÃO: O TIO DO CHURRASCO QUE REPETE A MESMA
+              PIADA (MAS A GENTE AMA)"
+            </button>
+          </h2>
+          <div id="semana1" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="1" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Definir o conceito de função como um bloco de código que
+                    executa uma tarefa específica e pode ser chamado várias
+                    vezes.
+                  </li>
+                  <li>
+                    Criar funções simples com nomes significativos usando a
+                    micro:bit.
+                  </li>
+                  <li>
+                    Executar uma função chamando-a pelo nome no programa
+                    principal.
+                  </li>
+                  <li>
+                    Diferenciar definição de função de chamada de função.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Conceito de função na programação — Criação de funções no
+                  MakeCode (bloco "function") — Chamada de função — Matriz de
+                  LEDs da micro:bit — Eventos (botão A, botão B).
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Concluir
+                  regularidades (repetição de comportamentos via função).<br />
+                  <strong>BNCC (Língua Portuguesa):</strong> EF05LP10 -
+                  Produzir textos instrucionais (explicar o que a função
+                  faz).<br />
+                  <strong>BNCC (Outras):</strong> Competência Geral 5 -
+                  Pensamento computacional (decomposição e abstração).<br />
+                  <strong>RCP-pr (Programação):</strong> Programação de
+                  Sistemas - Criar e chamar funções em ambiente visual.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-symbol"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões coloridos:
+                    PISCAR, GIRAR, ANIMAR, MOSTRAR NÚMERO</span>
+                  <span class="material-badge"><i class="bi bi-journal"></i> "Diário da Função" (folha
+                    de sulfite)</span>
+                  <span class="material-badge"><i class="bi bi-projector"></i> Projetor para
+                    demonstração</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p><strong>Configuração Inicial:</strong></p>
+                <ol>
+                  <li>
+                    Conecte a micro:bit ao computador usando o cabo USB.
+                  </li>
+                  <li>
+                    A micro:bit acenderá com uma luz amarela/verde indicando
+                    que está recebendo energia.
+                  </li>
+                  <li>
+                    No computador, aparecerá uma unidade chamada "MICROBIT"
+                    (como se fosse um pendrive).
+                  </li>
+                  <li>Abra o navegador e acesse makecode.microbit.org.</li>
+                  <li>
+                    Clique em "Novo Projeto" e dê o nome
+                    <code>AULA1_FUNCAO</code>.
+                  </li>
+                </ol>
+                <p>
+                  <strong>Verificação:</strong> A matriz de 5×5 LEDs da
+                  micro:bit deve acender com uma mensagem padrão quando
+                  conectada. Se não acender, verifique o cabo e a porta USB.
+                </p>
+                <p>
+                  <strong>Compreendendo o Hardware:</strong> A BBC micro:bit é
+                  uma placa programável que funciona como um pequeno
+                  computador. Ela possui: Matriz de LEDs 5×5, Botões A e B,
+                  Conectores de borda.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p><strong>Código 1: Função PISCAR</strong></p>
+                <pre><code>// ==========================================
+// FUNÇÃO PISCAR - O CORAÇÃO DA AULA DE HOJE!
+// ==========================================
+
+function piscar() {
+  led.plot(2, 2)
+  basic.pause(200)
+  led.unplot(2, 2)
+  basic.pause(200)
+}</code></pre>
+
+                <p><strong>Código 2: Programa Principal</strong></p>
+                <pre><code>input.onButtonPressed(Button.A, function () {
+  piscar()
+})
+
+input.onButtonPressed(Button.B, function () {
+  for (let i = 0; i &lt; 5; i++) {
+    piscar()
+  }
+})</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>O Grito da Função - Ativação Neurológica 🔥</strong>
+                    — "HOJE VOCÊS VÃO APRENDER O CONCEITO MAIS PODEROSO DA
+                    PROGRAMAÇÃO: FUNÇÃO! FUNÇÃO NÃO É SÓ AQUELA COISA DA
+                    MATEMÁTICA COM X E Y! FUNÇÃO É UM BLOCO DE CÓDIGO QUE A
+                    GENTE CHAMA QUANDO QUER!" Ação: Definir uma função
+                    corporal: SAUDACAO_ROBO() = pular + bater palmas + gritar
+                    "Robô ativo!". Fazer junto com a turma 3 vezes. Pergunta:
+                    "Se eu quiser fazer essa bagunça de novo, o que eu faço?"
+                    (Resposta: "Chama a função!")
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programação Desplugada - Cartões de Função 🃏</strong>
+                    — Em duplas, cada aluno recebe 5 cartões de ações.
+                    Desafio: definir uma função DANÇA_ESTRANHA() que é uma
+                    sequência de 3 ações. Os alunos escrevem no verso do
+                    cartão principal: DANÇA_ESTRANHA() = [ação1] + [ação2] +
+                    [ação3]. Discussão: "Por que é útil dar um nome para um
+                    conjunto de ações?" (Para não ter que repetir tudo toda
+                    vez)
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Primeira Função na Micro:bit 💻</strong> — Passo a
+                    passo (professor projeta, alunos acompanham): 1. Abrir
+                    MakeCode e criar novo projeto. 2. Clicar em "Avançado" →
+                    "Funções" → "Criar uma função". 3. Nomear a função como
+                    piscar. 4. Adicionar os blocos dentro: plot x y com x=2,
+                    y=2; pausa (ms) com 200; unplot x y com x=2, y=2; pausa
+                    (ms) com 200. 5. No programa principal: ao pressionar
+                    botão A (em "Entrada"); Dentro: colocar o bloco chamar
+                    piscar. 6. Testar no simulador.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio do Pisca-Pisca ⚡</strong> — Criar uma
+                    função piscaPisca() que faz o LED piscar 5 vezes usando
+                    repetir.
+                    <code>function piscaPisca() { for (let i = 0; i &lt; 5; i++)
+                        { led.plot(2, 2); basic.pause(100); led.unplot(2, 2);
+                        basic.pause(100); } }</code>
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Animação com Funções ❤️</strong> — Criar função
+                    coração() que desenha um coração na matriz.
+                    <code>function coracao() { let coracao =
+                        images.createImage(`. . . . . . . . . . . . . . . . . .
+                        . . . . . . .`); coracao.showImage(0); }</code>
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário de Bordo 📝</strong> — Cada aluno escreve:
+                    "Minha função de hoje se chamava ______." "Ela fazia
+                    (descreva) ______." "Eu chamei ela fazendo (o que escrevi
+                    no código) ______."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Rotina visual na lousa: (1) Definir
+                    função, (2) Chamar função, (3) Testar, (4) Anotar. Usar
+                    cores fixas: azul para definição, vermelho para chamada.
+                    Cartões com instruções passo a passo impressas.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Checklist individual: [ ] Criei a
+                    função, [ ] Testei com botão A, [ ] Anotei no diário.
+                    Timer visível no projetor. Dividir em blocos curtos com
+                    pausas ativas.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Usar botões grandes
+                    (Makey Makey) como alternativa. Configurar comandos de
+                    voz. Permitir que um colega digite o código conforme o
+                    aluno dita.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar função com
+                    parâmetro (introdução intuitiva): piscar(3) pisca 3 vezes.
+                    Adicionar mais animações à função coração.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão do conceito de função</td>
+                        <td>Explica o que é uma função em suas palavras</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criação da função no MakeCode</td>
+                        <td>Criou piscar() com os blocos corretos</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Chamada da função</td>
+                        <td>Usou a função no programa principal</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Registro no diário</td>
+                        <td>Completou as perguntas do diário</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Função é a receita de bolo do código: você escreve uma
+                    vez e usa várias vezes!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 2: PARÂMETROS - A LANCHONETE DO ROBÔ                    -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="2">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana2">
+              🎯 SEMANA 2: "PARÂMETROS: A LANCHONETE DO ROBÔ QUE ACEITA
+              PEDIDOS (COM OU SEM PICLES)"
+            </button>
+          </h2>
+          <div id="semana2" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="2" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender parâmetros como informações que a função
+                    precisa para funcionar de maneira personalizada.
+                  </li>
+                  <li>
+                    Criar funções que recebem parâmetros numéricos para
+                    controlar a matriz de LEDs.
+                  </li>
+                  <li>
+                    Chamar a mesma função com parâmetros diferentes,
+                    observando comportamentos distintos.
+                  </li>
+                  <li>
+                    Diferenciar parâmetro (o que a função espera) de argumento
+                    (o que você passa).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Definição de parâmetros em funções — Tipos de parâmetros
+                  (numérico) — Chamada de função com argumentos — Controle da
+                  matriz de LEDs com parâmetros — Introdução à função mostrar
+                  número com parâmetro.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Matemática):</strong> EF05MA01 - Ler e
+                  escrever números naturais até a ordem das centenas de
+                  milhar. EF05MA10 - Concluir regularidades (mesma função,
+                  resultado diferente conforme o parâmetro).<br />
+                  <strong>BNCC (Língua Portuguesa):</strong> EF05LP10 -
+                  Produzir textos instrucionais (especificar quais parâmetros
+                  são necessários).<br />
+                  <strong>BNCC (Outras):</strong> Competência Geral 5 -
+                  Pensamento computacional.<br />
+                  <strong>RCP-pr (Programação):</strong> Pensamento Algébrico
+                  - Função como máquina que transforma entrada em saída.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-symbol"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões com números de 0
+                    a 9</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> "Cardápio de Parâmetros"
+                    (folha ilustrada)</span>
+                  <span class="material-badge"><i class="bi bi-pen"></i> Canetas coloridas</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração da micro:bit:</strong> Conecte a
+                  micro:bit ao computador via USB. Acesse
+                  makecode.microbit.org e crie um novo projeto chamado
+                  AULA2_PARAMETROS. A micro:bit possui uma matriz de LEDs 5×5
+                  que será nosso principal "display".
+                </p>
+                <p>
+                  <strong>Verificação da Matriz:</strong> A matriz de LEDs é
+                  composta por 25 LEDs individuais (5 colunas × 5 linhas).
+                  Cada LED pode ser aceso individualmente usando coordenadas
+                  (0 a 4). A função <code>led.plot(x, y)</code> acende o LED
+                  na posição (x, y). A função <code>led.unplot(x, y)</code>
+                  apaga o LED na posição (x, y).
+                </p>
+                <p>
+                  <strong>Explorando os Botões:</strong> O micro:bit tem dois
+                  botões (A e B) que são dispositivos de entrada que, quando
+                  pressionados, executam uma ação programada. Podemos usá-los
+                  para chamar funções com diferentes parâmetros.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: Função com Parâmetro Numérico</strong>
+                </p>
+                <pre><code>function mostrarNumero(n: number) {
+  basic.clearScreen()
+  basic.showNumber(n)
+}
+
+input.onButtonPressed(Button.A, function () {
+  mostrarNumero(5)
+})
+
+input.onButtonPressed(Button.B, function () {
+  mostrarNumero(8)
+})</code></pre>
+
+                <p>
+                  <strong>Código 2: Função com Múltiplos Parâmetros</strong>
+                </p>
+                <pre><code>function piscarLED(x: number, y: number, vezes: number) {
+  for (let i = 0; i &lt; vezes; i++) {
+    led.plot(x, y)
+    basic.pause(200)
+    led.unplot(x, y)
+    basic.pause(200)
+  }
+}
+
+input.onButtonPressed(Button.AB, function () {
+  piscarLED(2, 2, 3)
+})</code></pre>
+
+                <p>
+                  <strong>Código 3: Função com Parâmetro Textual (usando números
+                    como código)</strong>
+                </p>
+                <pre><code>function mostrarEmocao(codigo: number) {
+  basic.clearScreen()
+  if (codigo == 1) {
+    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    feliz.showImage(0)
+  } else if (codigo == 2) {
+    let triste = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    triste.showImage(0)
+  }
+}</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura - O Drive-Thru da Programação 🍔</strong>
+                    — "Bem-vindos à LANCHONETE DO ROBÔ! Hoje a função vai
+                    receber INGREDIENTES! Parâmetro é igual ao pedido no
+                    drive-thru: 'Quero um sanduíche COM QUEIJO, SEM PICLES,
+                    COM BACON'." Dinâmica: Professor escolhe um aluno para ser
+                    o "robô cozinheiro". Dá um cartão com fazerSanduiche(2) (2
+                    = queijo). O aluno executa a ação (pega queijo
+                    imaginário). Depois outro aluno com fazerSanduiche(3) (3 =
+                    bacon). Pergunta: "O que mudou?" (O parâmetro/ingrediente)
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo da Lanchonete Desplugada 🎮</strong> — Em
+                    duplas: Aluno A = Cliente: dá um cartão com parâmetro (ex:
+                    mostrarNumero(7)). Aluno B = Robô: mostra o número com os
+                    dedos. Depois de 3 rodadas, trocam os papéis. Discussão:
+                    "O que acontece se o cliente pedir um número que não
+                    existe? (ex: mostrarNumero(15))" (Resposta: o robô fica
+                    confuso - erro de parâmetro)
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Primeira Função com Parâmetro no MakeCode 💻</strong>
+                    — Passo a passo (professor projeta): 1. Criar função
+                    mostrarNumero com parâmetro n (tipo número). 2. Dentro:
+                    basic.showNumber(n). 3. No programa principal: ao
+                    pressionar botão A → mostrarNumero(5). 4. Testar no
+                    simulador. 5. Adicionar ao pressionar botão B →
+                    mostrarNumero(8). Desafio: "O que acontece se você colocar
+                    mostrarNumero(10)?" (Mostra "10" na matriz - dois dígitos
+                    sequenciais)
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Função com Múltiplos Parâmetros - Pisca-LED 💡</strong>
+                    — Criar função piscarLED(x, y, vezes): 1. Criar função com
+                    3 parâmetros: x (número), y (número), vezes (número). 2.
+                    Dentro: loop for de 0 até vezes - 1. 3. Dentro do loop:
+                    led.plot(x, y), pause(200), led.unplot(x, y), pause(200).
+                    4. No programa principal: ao pressionar botão A+B →
+                    piscarLED(2, 2, 3). Desafio: Piscar um LED em uma posição
+                    diferente (ex: piscarLED(0, 0, 5))
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Projeto - Emoticon com Parâmetro 😊</strong> —
+                    Criar função mostrarEmocao(codigo): 1. Criar função com
+                    parâmetro codigo (número). 2. Usar if para escolher qual
+                    imagem mostrar. 3. Criar 3 imagens diferentes (feliz,
+                    triste, surpreso). 4. No programa principal: usar
+                    Math.randomRange(1, 3) para escolher aleatoriamente.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário de Bordo da Função 📝</strong> — Cada aluno
+                    escreve: "A função que eu criei que tinha parâmetros se
+                    chamava ______." "Ela recebia os seguintes parâmetros:
+                    ______." "Quando eu mudei o parâmetro de ______ para
+                    ______, o resultado mudou porque ______." "Desenhe a
+                    função como uma máquina: entradas (parâmetros) → PROCESSO
+                    → saída."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TDAH:</strong> Âncora visual: seta apontando para
+                    o local onde se digita o parâmetro no MakeCode. Dividir a
+                    tela em duas partes: "Entrada (parâmetros)" e "Saída
+                    (ação)". Checklist: [ ] Criei função com parâmetro, [ ]
+                    Testei com 2 valores diferentes, [ ] Anotei resultado.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Parâmetros táteis:
+                    usar objetos pequenos (botões, moedas) para representar
+                    números. Feedback sonoro: cada parâmetro é "lido" pelo
+                    computador.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar função com dois
+                    parâmetros que desenha formas geométricas na matriz.
+                    Adicionar parâmetro de "velocidade" para controlar o tempo
+                    de pausa.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão de parâmetros</td>
+                        <td>Explica o que são parâmetros com exemplo</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criação de função com parâmetro</td>
+                        <td>Criou mostrarNumero com 1 parâmetro</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Chamada com diferentes valores</td>
+                        <td>Usou a mesma função com argumentos diferentes</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Registro no diário</td>
+                        <td>Completou as 4 seções do diário</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Parâmetro é o ingrediente que a função cozinha. Mude o
+                    ingrediente, mude o resultado!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 3: MATRIOSKA DO CÓDIGO - FUNÇÕES QUE CHAMAM FUNÇÕES   -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="3">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana3">
+              🎯 SEMANA 3: "MATRIOSKA DO CÓDIGO: FUNÇÕES QUE CHAMAM FUNÇÕES (A
+              BABUSHKA DIGITAL)"
+            </button>
+          </h2>
+          <div id="semana3" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="3" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender aninhamento de funções (uma função chamar
+                    outra).
+                  </li>
+                  <li>
+                    Escrever programas com funções auxiliares que compõem uma
+                    função maior.
+                  </li>
+                  <li>
+                    Identificar a ordem de execução (rastrear a pilha de
+                    chamadas).
+                  </li>
+                  <li>
+                    Criar animações complexas usando funções aninhadas na
+                    micro:bit.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Aninhamento de funções — Função que chama outra função —
+                  Rastreamento de pilha de chamadas — Criação de animações
+                  modulares — Estrutura hierárquica de código.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Concluir
+                  regularidades (a função maior é um padrão que chama outros
+                  padrões).<br />
+                  <strong>BNCC (Ciências):</strong> EF05CI01 - Construir
+                  protótipos (o robô tem subsistemas representados por
+                  funções).<br />
+                  <strong>BNCC (LP):</strong> EF05LP10 - Estruturação textual
+                  (aninhamento de informações).<br />
+                  <strong>RCP-pr (Programação):</strong> Estruturação de
+                  sistemas - Decomposição hierárquica.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-doll"></i> Boneca matrioska (real ou
+                    imagem)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões coloridos com
+                    partes do corpo</span>
+                  <span class="material-badge"><i class="bi bi-diagram-3"></i> "Mapa de Funções"
+                    (diagrama de bolhas impresso)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador. Acesse makecode.microbit.org e crie um novo
+                  projeto: AULA3_MATRIOSKA. A matriz de LEDs será usada para
+                  criar animações sequenciais. Vamos explorar como funções
+                  podem controlar diferentes "camadas" da animação.
+                </p>
+                <p>
+                  <strong>Compreendendo a Matriz:</strong> A matriz 5×5 é
+                  perfeita para desenhar ícones simples. Cada função pode
+                  desenhar uma parte da animação. Funções aninhadas combinam
+                  essas partes em sequências complexas.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: Funções Básicas para Animações</strong>
+                </p>
+                <pre><code>function coracao() {
+  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  img.showImage(0)
+  basic.pause(500)
+}
+
+function quadrado() {
+  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  img.showImage(0)
+  basic.pause(500)
+}
+
+function flechaCima() {
+  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  img.showImage(0)
+  basic.pause(500)
+}</code></pre>
+
+                <p><strong>Código 2: Função que Chama Funções</strong></p>
+                <pre><code>function sequenciaBasica() {
+  coracao()
+  quadrado()
+  flechaCima()
+}
+
+function dancaSimples() {
+  for (let i = 0; i &lt; 3; i++) {
+    flechaCima()
+    basic.pause(100)
+    let baixo = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    baixo.showImage(0)
+    basic.pause(100)
+  }
+}</code></pre>
+
+                <p>
+                  <strong>Código 3: Função Principal (A MATRIOSKA MAIOR)</strong>
+                </p>
+                <pre><code>function espetaculoCompleto() {
+  basic.showString("A")
+  sequenciaBasica()
+  basic.showString("B")
+  dancaSimples()
+  basic.showString("C")
+  for (let i = 0; i &lt; 5; i++) {
+    coracao()
+    basic.pause(100)
+    basic.clearScreen()
+    basic.pause(100)
+  }
+}
+
+input.onButtonPressed(Button.A, function () {
+  espetaculoCompleto()
+})</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura - A Boneca Russa 🪆</strong> — "Função
+                    que chama função é igual a isso (mostra a matrioska): a
+                    função espetaculo chama danca, que chama coracao, que
+                    chama led.plot. Cada uma é uma caixinha que contém outras
+                    caixinhas." Grito coletivo: "ANINHAMENTO É PODER!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Dança Aninhada Desplugada 💃</strong> — Dividir a
+                    turma em 4 grupos. Cada grupo é responsável por uma
+                    "subfunção": Grupo 1: moverBracoEsquerdo() - balança o
+                    braço esquerdo; Grupo 2: moverBracoDireito() - balança o
+                    braço direito; Grupo 3: moverPernaEsquerda() - balança a
+                    perna esquerda; Grupo 4: moverPernaDireita() - balança a
+                    perna direita. Função principal: dancar() = todas as 4
+                    funções juntas. Desafio: dancarLoucamente() = dancar() 2x
+                    + gritar "ÔÔÔ" no meio. Discussão: "Quantas funções foram
+                    chamadas quando executamos dancarLoucamente()?"
+                    (Rastreamento: 1 + 2 + 8 = 11 chamadas)
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Codificação - Funções Básicas na Micro:bit 💻</strong>
+                    — 1. Criar função coracao() que desenha um coração na
+                    matriz. 2. Criar função quadrado() que desenha um
+                    quadrado. 3. Criar função flechaCima() que desenha uma
+                    flecha. Teste: Chamar cada função individualmente com
+                    botões diferentes.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aninhamento - Funções que Chamam Funções 🔗</strong>
+                    — 1. Criar função sequenciaBasica() que chama coracao(),
+                    quadrado(), flechaCima(). 2. Criar função dancaSimples()
+                    que alterna flecha cima/baixo 3 vezes. 3. No programa
+                    principal: ao pressionar A → dancaSimples(). Desafio: O
+                    que acontece se inverter a ordem dentro de
+                    sequenciaBasica()?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Projeto Integrado - O Espetáculo 🎪</strong> — 1.
+                    Criar espetaculoCompleto() que: Mostra "A" (sequência
+                    básica); Mostra "B" (dança); Mostra "C" (corações
+                    pulsantes). 2. Usar basic.showString() entre os atos. 3.
+                    Programar o botão A para executar o espetáculo.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Mapa de Funções (Diagrama) 🗺️</strong> — Cada
+                    aluno desenha um diagrama mostrando quais funções chamam
+                    quais: espetaculoCompleto → sequenciaBasica → coracao →
+                    quadrado → flechaCima → dancaSimples → flechaCima (3x) →
+                    coracao (5x). Autoavaliação: "Quantas funções minha
+                    história tem? Qual é a função 'mãe' que chama todas as
+                    outras?"
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar blocos de montar físicos (tipo
+                    LEGO) para representar as funções. Sequenciamento visual:
+                    cores diferentes para cada nível de aninhamento. Exemplo:
+                    vermelho = função principal, azul = nível 2, verde = nível
+                    3.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Checklist de construção: [ ] Criei
+                    coração, [ ] Criei quadrado, [ ] Criei flecha, [ ] Criei
+                    sequência, [ ] Criei espetáculo. Timer para cada etapa (5
+                    minutos por função).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro
+                    diferente para cada função (tom diferente). Parâmetros
+                    táteis: usar objetos para representar cada função.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar função recursiva
+                    (que chama a si mesma) com condição de parada:
+                    contarRegressivamente(n). Exemplo:
+                    contarRegressivamente(5) → mostra 5, 4, 3, 2, 1, FOGUETE!
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão de aninhamento</td>
+                        <td>Explica o que é uma função que chama outra</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criação de funções aninhadas</td>
+                        <td>Criou sequenciaBasica com 3 subfunções</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Mapa de funções</td>
+                        <td>Desenhou diagrama correto</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Ordem de execução</td>
+                        <td>Rastreou corretamente a pilha de chamadas</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Aninhamento é poder: uma função dentro da outra, como
+                    caixas que se abrem e revelam mais código!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================ -->
+        <!-- SEMANA 4: CARDÁPIO DE FUNÇÕES - O MINICHEF PROGRAMADOR        -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="4">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana4">
+              🎯 SEMANA 4: "CARDÁPIO DE FUNÇÕES - O MINICHEF PROGRAMADOR
+              (AÇÚCAR, SAL E CÓDIGO)"
+            </button>
+          </h2>
+          <div id="semana4" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="4" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Revisar funções simples, com parâmetros e aninhadas de
+                    forma integrada.
+                  </li>
+                  <li>
+                    Planejar e executar um miniprojeto completo com múltiplas
+                    funções na micro:bit.
+                  </li>
+                  <li>
+                    Avaliar o próprio projeto e o dos colegas usando rubrica
+                    lúdica.
+                  </li>
+                  <li>
+                    Criar um "cardápio" de animações que podem ser executadas
+                    sob demanda.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Revisão integrada: funções, parâmetros, aninhamento —
+                  Criação de imagens na matriz de LEDs — Uso de múltiplos
+                  botões para diferentes funções — Planejamento de projeto
+                  modular.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Língua Portuguesa):</strong> EF05LP10 -
+                  Produzir texto instrucional (o "cardápio" de funções).<br />
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Concluir
+                  regularidades (reutilização de funções).<br />
+                  <strong>BNCC (Ciências):</strong> EF05CI01 - Construir
+                  protótipo funcional (mesmo que simulado).<br />
+                  <strong>RCP-pr (Programação):</strong> Prototipagem -
+                  Criação de artefato tecnológico com funções modulares.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> "Cardápio de Funções"
+                    impresso (modelo de menu de restaurante)</span>
+                  <span class="material-badge"><i class="bi bi-star-fill"></i> Rubrica de avaliação
+                    lúdica ("Estrelas Michelin do Código")</span>
+                  <span class="material-badge"><i class="bi bi-pen"></i> Canetas coloridas para
+                    personalização</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org e crie um
+                  projeto chamado AULA4_CARDAPIO. A micro:bit será o "chef"
+                  que exibe diferentes "pratos" (animações). Os botões A, B e
+                  A+B serão os "clientes" fazendo pedidos.
+                </p>
+                <p>
+                  <strong>Explorando a Matriz:</strong> A matriz 5×5 pode
+                  mostrar até 25 LEDs acesos simultaneamente. Imagens podem
+                  ser criadas usando images.createImage() com strings
+                  especiais. O símbolo # representa LED aceso, . representa
+                  LED apagado.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p><strong>Código 1: Cardápio de Animações</strong></p>
+                <pre><code>// ==========================================
+// CARDÁPIO DE FUNÇÕES - RESTAURANTE MICRO:BIT
+// ==========================================
+
+// ENTRADAS - ANIMAÇÕES SIMPLES
+function entradaCoração() {
+  basic.clearScreen()
+  let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  coracao.showImage(0)
+  basic.pause(1000)
+  basic.clearScreen()
+}
+
+function entradaFoguete() {
+  basic.clearScreen()
+  let foguete = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  foguete.showImage(0)
+  basic.pause(1000)
+  basic.clearScreen()
+}
+
+// PRATO PRINCIPAL - ANIMAÇÕES COMPLEXAS (COM PARÂMETROS)
+function pratoAnimado(numero: number) {
+  basic.clearScreen()
+  basic.showNumber(numero)
+  basic.pause(500)
+  for (let i = 0; i &lt; numero; i++) {
+    led.plot(2, 2)
+    basic.pause(100)
+    led.unplot(2, 2)
+    basic.pause(100)
+  }
+}
+
+function pratoForma(tamanho: number) {
+  basic.clearScreen()
+  for (let linha = 0; linha &lt; tamanho && linha &lt; 5; linha++) {
+    for (let coluna = 0; coluna &lt; tamanho && coluna &lt; 5; coluna++) {
+      led.plot(coluna, linha)
+    }
+  }
+  basic.pause(1000)
+  basic.clearScreen()
+}
+
+// SOBREMESA - ANIMAÇÕES ANINHADAS
+function sobremesaFelicidade() {
+  entradaCoração()
+  basic.pause(200)
+  pratoAnimado(3)
+  basic.pause(200)
+  entradaFoguete()
+}
+
+function sobremesaFesta() {
+  for (let i = 0; i &lt; 3; i++) {
+    entradaCoração()
+    basic.pause(100)
+    pratoForma(i + 1)
+    basic.pause(100)
+  }
+  for (let i = 0; i &lt; 5; i++) {
+    if (i % 2 == 0) {
+      entradaCoração()
+    } else {
+      basic.clearScreen()
+    }
+    basic.pause(200)
+  }
+}
+
+// PROGRAMA PRINCIPAL - O MENU INTERATIVO
+basic.showString("MENU")
+basic.pause(500)
+
+input.onButtonPressed(Button.A, function () {
+  basic.showString("A")
+  basic.pause(300)
+  entradaCoração()
+  basic.pause(200)
+  entradaFoguete()
+})
+
+input.onButtonPressed(Button.B, function () {
+  basic.showString("B")
+  basic.pause(300)
+  let escolha = Math.randomRange(0, 1)
+  if (escolha == 0) {
+    pratoAnimado(Math.randomRange(1, 9))
+  } else {
+    pratoForma(Math.randomRange(1, 5))
+  }
+})
+
+input.onButtonPressed(Button.AB, function () {
+  basic.showString("C")
+  basic.pause(300)
+  let escolha = Math.randomRange(0, 1)
+  if (escolha == 0) {
+    sobremesaFelicidade()
+  } else {
+    sobremesaFesta()
+  }
+})</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Anúncio do Desafio - O Chef Robô 👨‍🍳</strong> —
+                    "Vocês já sabem fazer funções simples, com parâmetros e
+                    que chamam outras funções. Agora é hora de montar o
+                    CARDÁPIO DO RESTAURANTE MICRO:BIT! Em duplas, vocês vão
+                    criar um chef robô que serve animações. Quem fizer o
+                    sistema mais completo ganha o TROFÉU MICHELIN DO CÓDIGO!"
+                    Requisitos: Pelo menos 3 funções diferentes; Pelo menos
+                    uma função com parâmetro; Pelo menos um aninhamento; Uso
+                    de todos os botões (A, B, A+B).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento do Cardápio 📋</strong> — Cada dupla
+                    recebe uma folha em formato de menu de restaurante:
+                    CARDÁPIO DO CHEF ROBÔ — ENTRADAS: Coração (____), Foguete
+                    (____) — PRATO PRINCIPAL: Animado (parâmetro: número),
+                    Forma (parâmetro: tamanho) — SOBREMESA: Felicidade (____),
+                    Festa (____). Professor circula, ajudando as duplas a
+                    definir seus cardápios.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-30 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Codificação - Mãos na Massa 💻</strong> — Passo a
+                    passo: 1. Criar funções de entrada (coração, foguete). 2.
+                    Criar funções com parâmetros (animado, forma). 3. Criar
+                    funções aninhadas (felicidade, festa). 4. Configurar o
+                    menu principal com os botões. Dica do Chef: "Testem cada
+                    função individualmente antes de juntar tudo!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Troca de Cardápios 🔄</strong> — Duplas trocam de
+                    lugar e testam o robô da outra dupla. Ficha de avaliação
+                    (estrelas de 1 a 5): As funções são fáceis de entender? Os
+                    parâmetros funcionam? As animações são legais? O cardápio
+                    é completo?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Correções e Ajustes 🔧</strong> — Baseado no
+                    feedback, as duplas ajustam seus projetos.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação e Entrega 📝</strong> — Cada aluno
+                    preenche: "Meu cardápio tem: [ ] 3 funções ou mais [ ]
+                    Função com parâmetro [ ] Aninhamento (função que chama
+                    função). O que foi mais difícil? ______. O que eu mais
+                    gostei? ______. Estrelas que me dou: ⭐⭐⭐⭐⭐"
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Fornecer um template de código já
+                    com as funções vazias (esqueletos). Usar cores fixas para
+                    cada tipo de função (azul = entrada, vermelho = principal,
+                    verde = sobremesa).
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Dividir o projeto em mini-metas:
+                    (1) criar entradas, (2) criar pratos principais, (3) criar
+                    sobremesas. Checklist visual para marcar progresso.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Usar apenas dois
+                    botões (A e B) em vez de três. Simplificar as animações
+                    para menos passos.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar função que
+                    aceita dois parâmetros (forma e tamanho). Criar animações
+                    mais complexas usando toda a matriz.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Funções criadas</td>
+                        <td>Pelo menos 3 funções diferentes</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Parâmetro</td>
+                        <td>Pelo menos uma função com parâmetro</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Aninhamento</td>
+                        <td>Função que chama outra função</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Funcionamento</td>
+                        <td>Todos os botões funcionam corretamente</td>
+                        <td>0-3</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"No restaurante do código, o chef é a função e o cardápio
+                    é a criatividade. Bom apetite digital!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 5: OPERADORES LÓGICOS - SE, E, OU, NÃO...              -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="5">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana5">
+              🎯 SEMANA 5: "OPERADORES LÓGICOS - SE, E, OU, NÃO... (A VIDA É
+              UMA CONDICIONAL, MEU JOVEM PADAWAN)"
+            </button>
+          </h2>
+          <div id="semana5" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="5" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Compreender os operadores lógicos AND (E), OR (OU), NOT
+                    (NÃO) e suas tabelas verdade.
+                  </li>
+                  <li>
+                    Aplicar esses operadores em condicionais do dia a dia e em
+                    código.
+                  </li>
+                  <li>
+                    Construir tabelas verdade simples de forma lúdica na
+                    micro:bit.
+                  </li>
+                  <li>
+                    Usar a matriz de LEDs para mostrar resultados de operações
+                    lógicas.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Operadores lógicos: AND (E), OR (OU), NOT (NÃO) — Tabelas
+                  verdade — Condicionais com operadores lógicos — Uso de
+                  botões como entradas lógicas — Exibição de resultados na
+                  matriz de LEDs — RCP-PR (EF05CO03): Realizar operações de
+                  negação, conjunção e disjunção sobre sentenças lógicas e
+                  valores 'verdadeiro' e 'falso'.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Ciências):</strong> EF05CI02 - Estímulos e
+                  respostas (o robô decide baseado em múltiplos sensores).<br />
+                  <strong>BNCC (Matemática):</strong> EF05MA18 - Representar
+                  trajetos com decisões.<br />
+                  <strong>RCP-pr (Computação):</strong> (EF05CO03) Realizar
+                  operações de negação, conjunção e disjunção sobre sentenças
+                  lógicas e valores 'verdadeiro' e 'falso'.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões "VERDADE" (verde)
+                    e "FALSO" (vermelho)</span>
+                  <span class="material-badge"><i class="bi bi-table"></i> Cópias de tabela verdade em
+                    branco</span>
+                  <span class="material-badge"><i class="bi bi-star-fill"></i> Adesivos de estrela para
+                    premiação</span>
+                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Cartolina para desenhar
+                    tabelas</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org e crie um
+                  projeto chamado AULA5_LOGICA. Vamos usar os botões como
+                  "entradas" (VERDADE ou FALSO). A matriz de LEDs será nossa
+                  "saída" (mostrando o resultado).
+                </p>
+                <p>
+                  <strong>Mapeamento Lógico:</strong> Botão A pressionado =
+                  VERDADE (1); Botão A não pressionado = FALSO (0); Botão B
+                  pressionado = VERDADE (1); Botão B não pressionado = FALSO
+                  (0).
+                </p>
+                <p>
+                  <strong>Tabela Verdade - AND (E):</strong> A E B = V (V,V),
+                  F (V,F), F (F,V), F (F,F).<br />
+                  <strong>Tabela Verdade - OR (OU):</strong> A OU B = V (V,V),
+                  V (V,F), V (F,V), F (F,F).<br />
+                  <strong>Tabela Verdade - NOT (NÃO):</strong> NÃO A = F (V),
+                  V (F).
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: Operador AND (E) - Os Dois Precisam Ser
+                    Verdade</strong>
+                </p>
+                <pre><code>let estadoA = false
+let estadoB = false
+
+input.onButtonPressed(Button.A, function () {
+  estadoA = !estadoA
+  if (estadoA) {
+    led.plot(0, 0)
+  } else {
+    led.unplot(0, 0)
+  }
+  verificarAND()
+})
+
+input.onButtonPressed(Button.B, function () {
+  estadoB = !estadoB
+  if (estadoB) {
+    led.plot(0, 4)
+  } else {
+    led.unplot(0, 4)
+  }
+  verificarAND()
+})
+
+function verificarAND() {
+  led.unplot(4, 2)
+  if (estadoA && estadoB) {
+    led.plot(4, 2)
+    basic.showString("AND")
+    basic.pause(500)
+    basic.clearScreen()
+    if (estadoA) { led.plot(0, 0) }
+    if (estadoB) { led.plot(0, 4) }
+  }
+}</code></pre>
+
+                <p>
+                  <strong>Código 2: Operador OR (OU) - Basta Um Ser Verdade</strong>
+                </p>
+                <pre><code>function mostrarOR() {
+  led.unplot(4, 2)
+  if (estadoA || estadoB) {
+    led.plot(4, 2)
+    basic.showString("OR")
+    basic.pause(500)
+    basic.clearScreen()
+    if (estadoA) { led.plot(0, 0) }
+    if (estadoB) { led.plot(0, 4) }
+  }
+}</code></pre>
+
+                <p>
+                  <strong>Código 3: Operador NOT (NÃO) - O Vira-Lata da
+                    Lógica</strong>
+                </p>
+                <pre><code>function mostrarNOT() {
+  basic.clearScreen()
+  basic.showString("NOT A")
+  basic.pause(500)
+  if (estadoA) {
+    basic.showString("0")
+  } else {
+    basic.showString("1")
+  }
+  basic.pause(500)
+  basic.showString("NOT B")
+  basic.pause(500)
+  if (estadoB) {
+    basic.showString("0")
+  } else {
+    basic.showString("1")
+  }
+  basic.pause(500)
+}</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Grito de Guerra Lógico 📣</strong> — "AND é chato
+                    - as duas condições precisam ser verdade. OR é legal - uma
+                    verdade basta. NOT é o vira-lata - ele inverte tudo!"
+                    Dinâmica Rápida: Professor fala afirmações, alunos
+                    levantam cartão VERDE (verdade) ou VERMELHO (falso).
+                    Exemplos: "Hoje é dia de semana" (verde), "Estamos na aula
+                    de robótica E é segunda-feira" (depende).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo "Juiz Lógico" ⚖️</strong> — Cada aluno recebe
+                    dois cartões (VERDADE e FALSO). Professor projeta uma
+                    tabela verdade vazia para AND. Definir: A = "Está
+                    chovendo", B = "Está frio". Fazer o mesmo para OR e NOT.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Codificação - AND na Micro:bit 💻</strong> — 1.
+                    Criar variáveis estadoA e estadoB. 2. Programar o botão A
+                    para alternar estadoA. 3. Programar o botão B para
+                    alternar estadoB. 4. Criar função verificarAND() que
+                    acende LED se ambos forem verdade. Teste: Pressionar A, B,
+                    A+B e observar o resultado.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Adicionando OR 🔀</strong> — 1. Copiar o código do
+                    AND e adaptar para OR. 2. Adicionar um segundo LED para
+                    mostrar OR (posição diferente). 3. Testar todas as
+                    combinações. Desafio: O que acontece se você pressionar A
+                    E B ao mesmo tempo?
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explorando NOT 🔄</strong> — 1. Criar função
+                    mostrarNOT() que mostra o inverso de cada estado. 2. Usar
+                    basic.showString() para mostrar os resultados.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>História em Quadrinhos Lógica 🎨</strong> — Cada
+                    aluno desenha um quadrinho de 3 painéis explicando AND, OR
+                    e NOT: Painel 1: "Para ir ao cinema, você precisa de
+                    dinheiro E tempo livre." (AND). Painel 2: "Para comer
+                    sobremesa, basta ter sobremesa OU ganhar um prêmio." (OR).
+                    Painel 3: "Se você NÃO estudou, então não vai brincar."
+                    (NOT).
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar objetos concretos para
+                    representar VERDADE (luz acesa) e FALSO (luz apagada).
+                    Tabelas verdade impressas em papel com cores fixas.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Jogo de "verdade ou mentira" em pé:
+                    um lado da sala é verdade, outro é falso. Timer para cada
+                    rodada (10 segundos por combinação).
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro
+                    diferente para verdade (bip alto) e falso (bip baixo).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Construir tabela
+                    verdade de 3 variáveis: (A E B) OU (C). Criar uma
+                    expressão lógica que representa um problema real.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão de operadores</td>
+                        <td>Explica AND, OR e NOT com exemplos</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Tabela verdade</td>
+                        <td>Preencheu corretamente a tabela AND</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Codificação</td>
+                        <td>Criou condicional com AND no MakeCode</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Quadrinho</td>
+                        <td>Desenhou os 3 painéis explicativos</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"AND é exigente, OR é compreensivo, NOT é o rebelde que
+                    inverte tudo. A lógica é a arte de decidir!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 6: O JOGO DO TABULEIRO PROGRAMADO - COORDENADAS        -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="6">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana6">
+              🎯 SEMANA 6: "O JOGO DO TABULEIRO PROGRAMADO - COORDENADAS E
+              VARIÁVEIS NA PRÁTICA"
+            </button>
+          </h2>
+          <div id="semana6" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="6" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Usar variáveis numéricas e lógicas em expressões complexas
+                    com AND/OR.
+                  </li>
+                  <li>
+                    Construir um jogo de tabuleiro físico onde as decisões
+                    usam operadores lógicos.
+                  </li>
+                  <li>
+                    Implementar um mini-jogo na micro:bit com pontuação e
+                    condições de vitória.
+                  </li>
+                  <li>
+                    Compreender o conceito de coordenadas na matriz de LEDs
+                    (plano cartesiano).
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Variáveis numéricas e lógicas — Expressões com AND/OR —
+                  Coordenadas na matriz de LEDs (x, y) — Jogo como sistema de
+                  regras — Estruturas de decisão — RCP-PR (EF04CO01): Matrizes
+                  como estrutura de dados com posições definidas por
+                  coordenadas.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Matemática):</strong> EF05MA02 - Ler e
+                  escrever números (variáveis de pontuação). EF05MA23 -
+                  Coordenadas para movimentação no tabuleiro.<br />
+                  <strong>BNCC (Ciências):</strong> EF05CI02 - Estímulos e
+                  respostas (o jogador decide baseado em condições).<br />
+                  <strong>RCP-pr (Computação):</strong> (EF04CO01) Reconhecer
+                  objetos do mundo real e/ou digital que podem ser
+                  representados através de matrizes. (EF05CO04) Criar
+                  algoritmos com seleções condicionais.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-grid"></i> Tabuleiro impresso 5×5 com
+                    coordenadas (0 a 4)</span>
+                  <span class="material-badge"><i class="bi bi-circle-fill"></i> Fichas coloridas para
+                    marcar posições</span>
+                  <span class="material-badge"><i class="bi bi-dice-6-fill"></i> Dados (ou roleta)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de eventos com
+                    condicionais</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org e crie um
+                  projeto chamado AULA6_TABULEIRO. A matriz de LEDs 5×5 será
+                  nosso tabuleiro de jogo. Cada LED representa uma posição
+                  (coordenada x, y).
+                </p>
+                <p>
+                  <strong>Compreendendo o Plano Cartesiano da Matriz:</strong>
+                  A matriz tem 5 colunas (x = 0 a 4) e 5 linhas (y = 0 a 4). O
+                  canto superior esquerdo é (0,0). O canto inferior direito é
+                  (4,4). led.plot(x, y) acende o LED na posição (x, y).
+                  Analogia: "É igual ao jogo da batalha naval! Cada posição
+                  tem um endereço (coordenada)."
+                </p>
+                <p>
+                  <strong>Movimentação:</strong> Botão A = move para cima
+                  (diminui y); Botão B = move para baixo (aumenta y); Botão
+                  A+B = move para esquerda (diminui x); Logotipo = move para
+                  direita (aumenta x).
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: Jogo de Tabuleiro com Coordenadas</strong>
+                </p>
+                <pre><code>// VARIÁVEIS DO JOGO
+let posicaoJogadorX = 2
+let posicaoJogadorY = 2
+let pontos = 0
+let tesouroEncontrado = false
+let armadilhaAtivada = false
+let casasVisitadas = 0
+
+function mostrarPosicao() {
+  basic.clearScreen()
+  led.plot(posicaoJogadorX, posicaoJogadorY)
+}
+
+function moverCima() {
+  if (posicaoJogadorY > 0) {
+    posicaoJogadorY = posicaoJogadorY - 1
+    casasVisitadas = casasVisitadas + 1
+    mostrarPosicao()
+    verificarEvento()
+  }
+}
+
+function moverBaixo() {
+  if (posicaoJogadorY &lt; 4) {
+    posicaoJogadorY = posicaoJogadorY + 1
+    casasVisitadas = casasVisitadas + 1
+    mostrarPosicao()
+    verificarEvento()
+  }
+}
+
+function moverEsquerda() {
+  if (posicaoJogadorX > 0) {
+    posicaoJogadorX = posicaoJogadorX - 1
+    casasVisitadas = casasVisitadas + 1
+    mostrarPosicao()
+    verificarEvento()
+  }
+}
+
+function moverDireita() {
+  if (posicaoJogadorX &lt; 4) {
+    posicaoJogadorX = posicaoJogadorX + 1
+    casasVisitadas = casasVisitadas + 1
+    mostrarPosicao()
+    verificarEvento()
+  }
+}
+
+function verificarEvento() {
+  let x = posicaoJogadorX
+  let y = posicaoJogadorY
+
+  // EVENTO 1: Tesouro na posição (4, 4)
+  if (x == 4 && y == 4) {
+    if (!tesouroEncontrado) {
+      pontos = pontos + 5
+      tesouroEncontrado = true
+      basic.showIcon(IconNames.Yes)
+      basic.pause(500)
+      mostrarPosicao()
+    }
+  }
+
+  // EVENTO 2: Armadilha na posição (0, 4)
+  if (x == 0 && y == 4) {
+    if (!armadilhaAtivada && pontos > 3) {
+      pontos = pontos - 2
+      armadilhaAtivada = true
+      basic.showIcon(IconNames.No)
+      basic.pause(500)
+      mostrarPosicao()
+    }
+  }
+
+  // EVENTO 3: Dado mágico no centro (2, 2)
+  if (x == 2 && y == 2) {
+    let bonus = Math.randomRange(1, 3)
+    pontos = pontos + bonus
+    basic.showNumber(bonus)
+    basic.pause(500)
+    mostrarPosicao()
+  }
+
+  // EVENTO 4: Condição de vitória
+  if (pontos >= 10 && tesouroEncontrado) {
+    vitoria()
+  }
+}
+
+function vitoria() {
+  basic.clearScreen()
+  for (let i = 0; i &lt; 5; i++) {
+    let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    coracao.showImage(0)
+    basic.pause(200)
+    basic.clearScreen()
+    basic.pause(200)
+  }
+  basic.showString("GANHOU!")
+  basic.pause(1000)
+  basic.showString("PTS")
+  basic.showNumber(pontos)
+}
+
+// PROGRAMA PRINCIPAL
+mostrarPosicao()
+
+input.onButtonPressed(Button.A, function () { moverCima() })
+input.onButtonPressed(Button.B, function () { moverBaixo() })
+input.onButtonPressed(Button.AB, function () { moverEsquerda() })
+input.onLogoEvent(TouchButtonEvent.Pressed, function () { moverDireita() })</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Aquecimento - O Tabuleiro Lógico 🎲</strong> —
+                    "Hoje vamos jogar um jogo de tabuleiro em que as decisões
+                    não dependem só da sorte, mas de LÓGICA! Cada um de vocês
+                    será um peão na matriz de LEDs da micro:bit!" Regras
+                    Básicas: O jogador começa no centro (2,2). Cada movimento
+                    é controlado pelos botões. Cada casa tem eventos
+                    diferentes. Para ganhar, precisa de 10 pontos E encontrar
+                    o tesouro.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Jogo do Tabuleiro Humano (Desplugado) 🧍</strong>
+                    — Desenhe um tabuleiro 5×5 no chão com fita crepe. Cada
+                    aluno é um peão. Cartões de Evento: Casa (4,4): "Tesouro!
+                    +5 pontos" (precisa ter encontrado). Casa (0,4):
+                    "Armadilha! -2 pontos se tiver mais de 3 pontos". Casa
+                    (2,2): "Dado mágico! Ganhe 1-3 pontos". Desafio Lógico:
+                    "Se você tem mais de 3 pontos E encontrou o tesouro, pule
+                    para a casa (4,4) e vença!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Introdução às Coordenadas na Matriz 📐</strong> —
+                    Professor explica: "A matriz 5×5 da micro:bit é igual a um
+                    tabuleiro. Cada posição tem um endereço: (x, y)."
+                    Atividade: 1. led.plot(0, 0) - acende o canto superior
+                    esquerdo. 2. led.plot(4, 4) - acende o canto inferior
+                    direito. 3. led.plot(2, 2) - acende o centro. Desafio:
+                    "Como acender todos os LEDs da borda?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Codificação do Tabuleiro 💻</strong> — Passo a
+                    passo: 1. Criar variáveis: posicaoX, posicaoY, pontos,
+                    tesouroEncontrado. 2. Criar função mostrarPosicao() que
+                    plota o jogador. 3. Criar funções de movimento com limites
+                    (0 a 4). 4. No programa principal: mostrarPosicao().
+                    Teste: "Use os botões para andar pelo tabuleiro. O LED
+                    mostra onde você está."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Adicionando Eventos e Lógica 🎯</strong> — 1.
+                    Criar função verificarEvento() que checa a posição atual.
+                    2. Adicionar evento do tesouro em (4,4) - usa AND. 3.
+                    Adicionar evento da armadilha em (0,4) - usa AND e OR. 4.
+                    Adicionar evento do dado mágico em (2,2). Desafio: "O que
+                    acontece se você chegar em (4,4) antes de ter 10 pontos?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Discussão e Registro 💬</strong> — Professor
+                    conduz rodada de conversa: "Qual foi a condição mais
+                    difícil de avaliar no tabuleiro?" "Como vocês
+                    representaram no código a ideia de 'E' e 'OU'?" "O que
+                    acontece se a gente troca AND por OR no critério de
+                    vitória?" Alunos escrevem no diário: "Uma condição que
+                    usei AND foi ______. Uma condição que usei OR foi ______."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Tabuleiro com menos casas (3×3) com
+                    cartões visuais com ícones. Instruções passo a passo
+                    impressas.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Tabuleiro com poucas casas e
+                    cartões visuais com ícones. Checklist de blocos
+                    necessários no MakeCode.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Feedback sonoro para
+                    cada evento (som diferente para tesouro, armadilha,
+                    vitória). Instruções em áudio.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar jogo com
+                    condicionais envolvendo 3 variáveis (pontos, vida,
+                    inventário). Adicionar "modo de segurança" com timer.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão de coordenadas</td>
+                        <td>Identifica posições na matriz 5×5</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Expressões lógicas</td>
+                        <td>Criou condicional com AND/OR</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Jogo na micro:bit</td>
+                        <td>Implementou tabuleiro com eventos</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Participação</td>
+                        <td>Avaliou corretamente os cartões do tabuleiro</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"No tabuleiro da programação, cada coordenada é um passo.
+                    Cada condição é uma escolha. Jogue com lógica!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================ -->
+        <!-- SEMANA 7: O ROBÔ MEDROSO - SENSOR DE TOQUE E LÓGICA          -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="7">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana7">
+              🎯 SEMANA 7: "O ROBÔ MEDROSO - SENSOR DE TOQUE E LÓGICA
+              CONDICIONAL (OU: COMO ENSINAR UM ROBÔ A TER MEDO DO ESCURO)"
+            </button>
+          </h2>
+          <div id="semana7" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="7" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Integrar sensor de toque (logotipo) real da micro:bit.
+                  </li>
+                  <li>
+                    Usar condicionais com AND/OR para controlar ações do robô.
+                  </li>
+                  <li>
+                    Compreender o conceito de entrada (input) e saída
+                    (output).
+                  </li>
+                  <li>
+                    Criar um sistema de reação a estímulos usando o sensor de
+                    luz ambiente.
+                  </li>
+                  <li>
+                    RCP-PR (EF05CO03): Realizar operações de negação,
+                    conjunção e disjunção sobre sentenças lógicas.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Sensor de toque da micro:bit (logotipo e pinos) — Sensor de
+                  luz ambiente da micro:bit — Leitura de sensores (entradas) —
+                  Condicionais com sensores — Relação estímulo-resposta —
+                  RCP-PR: Sensores e atuadores - Leitura e decisão baseada em
+                  dados.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Ciências):</strong> EF05CI01 - Construir
+                  protótipos com sensores. EF05CI02 - Relação
+                  estímulo-resposta.<br />
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Regularidades
+                  (valores do sensor repetem padrões).<br />
+                  <strong>RCP-pr (Computação):</strong> (EF05CO03) Realizar
+                  operações de negação, conjunção e disjunção sobre sentenças
+                  lógicas e valores 'verdadeiro' e 'falso'.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-wire"></i> Cabos com jacaré
+                    (opcional)</span>
+                  <span class="material-badge"><i class="bi bi-aluminum"></i> Objetos condutores (papel
+                    alumínio, moedas)</span>
+                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Cartolina para
+                    diagrama</span>
+                  <span class="material-badge"><i class="bi bi-lightbulb"></i> Lanterna para testar o
+                    sensor de luz</span>
+                  <span class="material-badge"><i class="bi bi-box"></i> Caixa de papelão para fazer um
+                    "corpo de robô"</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org e crie um
+                  projeto chamado AULA7_MEDROSO. A micro:bit possui sensores
+                  integrados que vamos explorar:
+                </p>
+                <p>
+                  <strong>Sensores Integrados da micro:bit:</strong> Botão A e
+                  B: entrada digital (pressionado/não pressionado). Logotipo
+                  dourado: sensor de toque capacitivo (detecta quando você
+                  toca). Sensor de luz: mede a intensidade de luz ambiente (0
+                  = escuro total, 255 = muito claro).
+                </p>
+                <p>
+                  <strong>Explorando o Sensor de Toque do Logotipo:</strong> O
+                  logotipo dourado na frente da micro:bit é um sensor de
+                  toque! input.onLogoEvent(TouchButtonEvent.Pressed,
+                  function() {}) detecta toque. É como um botão invisível que
+                  responde ao toque do dedo.
+                </p>
+                <p>
+                  <strong>Explorando o Sensor de Luz:</strong> O sensor de luz
+                  fica na parte superior da placa (próximo aos LEDs).
+                  input.lightLevel() retorna um valor de 0 a 255. Valores
+                  baixos = escuro, valores altos = claro.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: O Robô Medroso com Sensor de Toque</strong>
+                </p>
+                <pre><code>// ==========================================
+// O ROBÔ MEDROSO - SENSOR DE TOQUE + LUZ
+// ==========================================
+
+let toqueDetectado = false
+let luzAmbiente = 0
+let passosDados = 0
+let modoMedo = false
+
+function lerLuz() {
+  let nivelLuz = input.lightLevel()
+  return nivelLuz
+}
+
+function moverRobo(passos: number) {
+  for (let i = 0; i &lt; passos; i++) {
+    led.plot(2, i % 5)
+    basic.pause(100)
+    led.unplot(2, i % 5)
+    passosDados = passosDados + 1
+  }
+}
+
+function reagir() {
+  basic.clearScreen()
+  let luz = lerLuz()
+  let toque = toqueDetectado
+
+  // 1. SE (for tocado) E (estiver escuro) → CORRE!
+  if (toque && luz &lt; 50) {
+    basic.showString("CORRE")
+    basic.pause(500)
+    moverRobo(5)
+    let medo = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    medo.showImage(0)
+  }
+  // 2. SE (for tocado) OU (estiver MUITO escuro) → VAI COM MEDO
+  else if (toque || luz &lt; 20) {
+    basic.showString("MEDO")
+    basic.pause(500)
+    moverRobo(3)
+    let preocupado = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    preocupado.showImage(0)
+  }
+  // 3. SE (NÃO for tocado) E (luz normal) → FICA PARADO
+  else if (!toque && luz >= 50) {
+    basic.showString("PARADO")
+    basic.pause(500)
+    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    feliz.showImage(0)
+  }
+  // 4. SE (NÃO estiver escuro) E (NÃO for tocado) → DANÇA!
+  else if (!(luz &lt; 50) && !toque) {
+    basic.showString("DANCA")
+    basic.pause(500)
+    dancar()
+  }
+}
+
+function dancar() {
+  for (let i = 0; i &lt; 3; i++) {
+    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    feliz.showImage(0)
+    basic.pause(200)
+    basic.clearScreen()
+    basic.pause(200)
+  }
+}
+
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  toqueDetectado = true
+  reagir()
+})
+
+input.onLogoEvent(TouchButtonEvent.Released, function () {
+  toqueDetectado = false
+  basic.clearScreen()
+  reagir()
+})
+
+input.onButtonPressed(Button.A, function () {
+  modoMedo = !modoMedo
+  if (modoMedo) {
+    basic.showString("LUZ ON")
+  } else {
+    basic.showString("LUZ OFF")
+  }
+  basic.pause(500)
+  reagir()
+})
+
+input.onButtonPressed(Button.B, function () {
+  basic.clearScreen()
+  basic.showString("T:" + toqueDetectado)
+  basic.pause(500)
+  basic.showString("L:" + lerLuz())
+  basic.pause(500)
+  reagir()
+})
+
+basic.showString("ROBO")
+basic.pause(500)
+reagir()</code></pre>
+
+                <p>
+                  <strong>Código 2: Desafio - O Robô da Senha Tátil (Versão
+                    Medrosa)</strong>
+                </p>
+                <pre><code>let sequencia = 0
+let senhaCorreta = 3
+let modoSecreto = false
+
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  let luz = input.lightLevel()
+  if (luz &lt; 50) {
+    sequencia = sequencia + 1
+    basic.showNumber(sequencia)
+    basic.pause(300)
+    if (sequencia == senhaCorreta) {
+      basic.showString("SENHA OK")
+      basic.pause(1000)
+      sequencia = 0
+      let tesouro = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+      tesouro.showImage(0)
+      modoSecreto = true
+    }
+  } else {
+    basic.showString("MEDO")
+    basic.pause(500)
+    sequencia = 0
+  }
+})
+
+input.onButtonPressed(Button.AB, function () {
+  sequencia = 0
+  modoSecreto = false
+  basic.clearScreen()
+  basic.showString("RESET")
+  basic.pause(500)
+})</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do Desafio - O Robô que Tem Medo do Escuro
+                      👻</strong>
+                    — "Temos um robô que só sai da base se for tocado E se a
+                    luz ambiente for baixa (noturno). OU se alguém gritar
+                    'VAI' (simular com botão). Vamos programar essa lógica!"
+                    Mostrar: A micro:bit reagindo ao toque no logotipo e à luz
+                    ambiente.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explorando os Sensores da Micro:bit 🔍</strong> —
+                    Atividade 1: Testar o sensor do logotipo: ao tocar o
+                    logotipo → mostrar ícone coração; ao soltar o logotipo →
+                    limpar tela. Atividade 2: Explorar o sensor de luz: sempre
+                    → mostrar número nível de luz; Observar como muda quando
+                    cobre a micro:bit; Observar como muda quando usa uma
+                    lanterna. Discussão: "Quando o sensor de luz detecta o
+                    quê? O que é uma 'entrada'?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construindo o Sensor de Toque com o Logotipo 🖐️</strong>
+                    — Passo a passo: 1. Criar variável toqueDetectado
+                    (verdadeiro/falso). 2. No toque do logotipo:
+                    toqueDetectado = verdadeiro. 3. Ao soltar: toqueDetectado
+                    = falso. Teste: "O LED acende quando você toca no logotipo
+                    e apaga quando solta."
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Programando a Lógica do Robô Medroso 🧠</strong> —
+                    Passo a passo da função reagir(): 1. Cenário 1: SE (toque
+                    == verdadeiro) E (luz &lt; 50) → CORRE! 2. Cenário 2: SE
+                    (toque == verdadeiro) OU (luz &lt; 20) → VAI COM MEDO! 3.
+                    Cenário 3: SE (toque == falso) E (luz >= 50) → FICA
+                    PARADO! 4. Cenário 4: SE NÃO (luz &lt; 50) E NÃO (toque ==
+                    verdadeiro) → DANÇA! Desafio: "O que acontece se você
+                    tocar no logotipo e cobrir a micro:bit ao mesmo tempo?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Desafio - O Robô da Senha Tátil 🔐</strong> —
+                    Enunciado: "Construa um robô que só executa uma ação
+                    secreta se o usuário tocar o sensor em uma sequência
+                    específica E estiver escuro!" Exemplo simples: 3 toques em
+                    sequência (só funciona no escuro).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Diário de Bordo 📝</strong> — Escrever: "Meu
+                    sensor de toque funcionou porque ______." "Usei a lógica
+                    (AND/OR) para decidir quando o robô deve se mover:
+                    ______." "Se eu quisesse que o robô só se movesse quando
+                    NÃO tivesse toque, eu mudaria para: ______."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar um botão grande e colorido
+                    (estímulo tátil claro). Programar apenas uma condição de
+                    cada vez. Rotina visual: entrada → processamento → saída.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Dividir a atividade em
+                    minidesafios: (1) sensor, (2) AND, (3) OR, (4) NOT.
+                    Checklist: [ ] Sensor funciona, [ ] AND implementado, [ ]
+                    OR implementado.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Substituir o toque no
+                    logotipo pelo botão A (mais fácil de pressionar). Usar
+                    teclas grandes externas (Makey Makey).
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Integrar dois sensores
+                    (toque e luz) e criar máquina de estados. Construir sensor
+                    de toque capacitivo com moeda e resistor.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Compreensão de entrada/saída</td>
+                        <td>Explica o que é um sensor</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Programação do robô</td>
+                        <td>Condicional com AND/OR implementada</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Desafio da senha</td>
+                        <td>Implementou sequência de toques</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Diário de bordo</td>
+                        <td>Respondeu às 3 perguntas</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Robô que tem medo do escuro é como programador que tem
+                    medo de bug: os dois aprendem com a experiência!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 8: COFRE ROBÔ - A SENHA TÁTIL DOS ESPIÕES              -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="8">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana8">
+              🎯 SEMANA 8: "COFRE ROBÔ - A SENHA TÁTIL DOS ESPIÕES DA ROBÓTICA
+              (OU: COMO CONSTRUIR UM COFRE QUE SÓ ABRE COM CARINHO)"
+            </button>
+          </h2>
+          <div id="semana8" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="8" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Aplicar funções, operadores lógicos e sensor de toque em
+                    um miniprojeto completo.
+                  </li>
+                  <li>
+                    Planejar o projeto em etapas (entrada, processamento,
+                    saída).
+                  </li>
+                  <li>Testar e depurar colaborativamente.</li>
+                  <li>
+                    Compreender o conceito de "lista" como estrutura de dados
+                    para armazenar a senha.
+                  </li>
+                  <li>
+                    RCP-PR (EF05CO04): Criar algoritmos com seleções
+                    condicionais.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Projeto integrado: funções + lógica + sensores —
+                  Planejamento por etapas — Listas como estrutura de dados —
+                  Operadores lógicos (AND, OR, NOT) aplicados — Teste e
+                  depuração colaborativa — Algoritmos com seleção condicional
+                  — RCP-PR (EF05CO04): Criar algoritmos com seleções
+                  condicionais.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Língua Portuguesa):</strong> EF05LP17 -
+                  Planejar roteiro de teste.<br />
+                  <strong>BNCC (Ciências):</strong> EF05CI01 - Protótipo
+                  funcional.<br />
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Regularidades
+                  (sequência de toques).<br />
+                  <strong>RCP-pr (Computação):</strong> (EF05CO04) Criar
+                  algoritmos com seleções condicionais. Resolução de problemas
+                  - Projeto completo.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-usb-symbol"></i> Cabo USB</span>
+                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Cartolina para diagrama
+                    de blocos</span>
+                  <span class="material-badge"><i class="bi bi-clock"></i> Cronômetro</span>
+                  <span class="material-badge"><i class="bi bi-box"></i> Caixa de sapato decorada
+                    (cofre)</span>
+                  <span class="material-badge"><i class="bi bi-gear"></i> Servo motor (opcional)</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org e crie um
+                  projeto chamado AULA8_COFRE. Usaremos o logotipo da
+                  micro:bit como sensor de toque (entrada). A matriz de LEDs
+                  será nosso display mostrando feedback. Os botões A e B
+                  servirão para confirmar e reiniciar.
+                </p>
+                <p>
+                  <strong>Cofre Físico (Opcional - Projeto Maker):</strong>
+                  Decore uma caixa de sapato como um cofre. Cole a micro:bit
+                  na parte frontal. Use um servo motor para trancar/destrancar
+                  a porta. Faça uma "porta" que se abre quando a senha for
+                  correta.
+                </p>
+
+                <h5>💻 Código a Ser Desenvolvido</h5>
+                <p>
+                  <strong>Código 1: Estrutura do Cofre - Variáveis e Listas</strong>
+                </p>
+                <pre><code>// ==========================================
+// COFRE ROBÔ - A SENHA TÁTIL DOS ESPIÕES
+// ==========================================
+
+// 1 = toque curto, 2 = toque longo, 0 = pausa
+let senhaCorreta: number[] = [1, 1, 0, 1]
+let senhaUsuario: number[] = []
+let indiceSenha = 0
+let tentativasErradas = 0
+const MAX_TENTATIVAS = 3
+let cofreAberto = false
+let bloqueado = false
+let tempoUltimoToque = 0
+
+function detectarToque() {
+  if (bloqueado) {
+    basic.showString("BLOQ")
+    return
+  }
+  if (cofreAberto) {
+    return
+  }
+
+  let agora = input.runningTime()
+  let diferenca = agora - tempoUltimoToque
+  tempoUltimoToque = agora
+
+  let tipoToque = 1
+  if (diferenca > 500) {
+    tipoToque = 2
+  }
+
+  senhaUsuario.push(tipoToque)
+  indiceSenha = indiceSenha + 1
+
+  led.plot(2, 2)
+  basic.pause(100)
+  led.unplot(2, 2)
+  basic.showNumber(indiceSenha)
+  basic.pause(200)
+  basic.clearScreen()
+
+  if (indiceSenha >= senhaCorreta.length) {
+    verificarSenha()
+  }
+}</code></pre>
+
+                <p>
+                  <strong>Código 2: Função de Verificação da Senha</strong>
+                </p>
+                <pre><code>function verificarSenha() {
+  basic.clearScreen()
+  let senhaOK = true
+
+  for (let i = 0; i &lt; senhaCorreta.length; i++) {
+    if (senhaUsuario[i] != senhaCorreta[i]) {
+      senhaOK = false
+    }
+  }
+
+  if (senhaOK && !cofreAberto && !bloqueado) {
+    abrirCofre()
+  } else {
+    tentativasErradas = tentativasErradas + 1
+    basic.showIcon(IconNames.No)
+    basic.pause(500)
+
+    if (tentativasErradas >= MAX_TENTATIVAS) {
+      bloquearCofre()
+    } else {
+      basic.showString("T:")
+      basic.showNumber(MAX_TENTATIVAS - tentativasErradas)
+      basic.pause(500)
+      reiniciarDigitacao()
+    }
+  }
+}</code></pre>
+
+                <p><strong>Código 3: Funções de Ação (Saídas)</strong></p>
+                <pre><code>function abrirCofre() {
+  cofreAberto = true
+  basic.clearScreen()
+
+  for (let i = 0; i &lt; 5; i++) {
+    let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    coracao.showImage(0)
+    basic.pause(200)
+    basic.clearScreen()
+    basic.pause(200)
+  }
+
+  basic.showString("ACESSO OK")
+  basic.pause(500)
+
+  for (let i = 0; i &lt; 3; i++) {
+    music.playTone(440, 200)
+    basic.pause(100)
+    music.playTone(554, 200)
+    basic.pause(100)
+  }
+}
+
+function bloquearCofre() {
+  bloqueado = true
+  basic.clearScreen()
+
+  for (let i = 0; i &lt; 10; i++) {
+    if (i % 2 == 0) {
+      let x = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+      x.showImage(0)
+    } else {
+      basic.clearScreen()
+    }
+    music.playTone(800, 100)
+    basic.pause(100)
+    music.playTone(600, 100)
+    basic.pause(100)
+  }
+  basic.showString("BLOQUEADO")
+}
+
+function reiniciarDigitacao() {
+  senhaUsuario = []
+  indiceSenha = 0
+  basic.clearScreen()
+  basic.showString("DIGITE")
+}</code></pre>
+
+                <p>
+                  <strong>Código 4: Programa Principal e Interface</strong>
+                </p>
+                <pre><code>function iniciarCofre() {
+  basic.clearScreen()
+  basic.showString("COFRE")
+  basic.pause(500)
+  reiniciarDigitacao()
+}
+
+input.onButtonPressed(Button.A, function () {
+  if (indiceSenha >= senhaCorreta.length) {
+    verificarSenha()
+  } else {
+    basic.showString("F:")
+    basic.showNumber(senhaCorreta.length - indiceSenha)
+    basic.pause(500)
+    reiniciarDigitacao()
+  }
+})
+
+input.onButtonPressed(Button.B, function () {
+  if (!bloqueado) {
+    reiniciarDigitacao()
+    basic.showString("RESET")
+    basic.pause(500)
+    reiniciarDigitacao()
+  }
+})
+
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  detectarToque()
+})
+
+iniciarCofre()</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Apresentação do Desafio - Missão: Cofre Robô 🕵️</strong>
+                    — "Vocês vão construir um COFRE ROBÔ. A missão de vocês:
+                    criar um sistema de segurança que só abre se o usuário
+                    acertar a sequência secreta de toques! Quem errar muitas
+                    vezes... BLOQUEIO!" Requisitos da Missão: A senha é uma
+                    sequência de toques (curto/longo); Usar o logotipo da
+                    micro:bit como sensor; 3 tentativas erradas = bloqueio;
+                    Feedback visual e sonoro; Botão A para confirmar, B para
+                    reiniciar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-10 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Planejamento - Diagrama de Blocos 📐</strong> —
+                    Cada dupla desenha em uma cartolina: ENTRADA
+                    (Logotipo/toque, Botão A/confirmar, Botão B/reset) →
+                    PROCESSAMENTO (Verificar Senha com AND/OR) → SAÍDA (Matriz
+                    LEDs, Som).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">10-20 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção do Código - Parte 1 (Estrutura) 💻</strong>
+                    — Passo a passo: 1. Criar variáveis: senhaCorreta,
+                    senhaUsuario, tentativasErradas. 2. Criar lista com a
+                    senha: [1, 1, 0, 1] (1=curto, 2=longo, 0=pausa). 3. Criar
+                    função detectarToque() que lê o toque do logotipo. 4.
+                    Criar função reiniciarDigitacao(). Teste: "Toque no
+                    logotipo e veja se o LED pisca!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">20-30 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção do Código - Parte 2 (Verificação) 🔍</strong>
+                    — Passo a passo: 1. Criar função verificarSenha() que
+                    compara as listas. 2. Usar for para percorrer todos os
+                    elementos. 3. Usar AND para verificar se todos são iguais.
+                    4. Incrementar tentativasErradas se falhar. Desafio: "O
+                    que acontece se a lista tem 3 elementos? E se tem 5?"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">30-40 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Construção do Código - Parte 3 (Feedback) 🎵</strong>
+                    — Passo a passo: 1. Criar função abrirCofre() com animação
+                    de coração. 2. Criar função bloquearCofre() com alarme. 3.
+                    Adicionar sons usando music.playTone(). 4. Conectar os
+                    botões A (confirmar) e B (reiniciar). Teste: "Digite a
+                    senha correta [toque, toque, pausa, toque]!"
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">40-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Teste e Depuração entre Duplas 🐛</strong> — Uma
+                    dupla testa o cofre da outra. Ficha de teste: A senha
+                    correta funciona? A senha errada aciona o alarme? O cofre
+                    bloqueia após 3 tentativas? O botão A confirma e o B
+                    reinicia? Anotar bugs encontrados.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Correção e Apresentação Final 🎉</strong> — Duplas
+                    corrigem os bugs apontados. Demonstração rápida: cada
+                    dupla mostra seu cofre funcionando.
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Usar um botão grande e colorido para
+                    o sensor de toque. Programar apenas uma condição de cada
+                    vez. Checklist visual: [ ] Sensor funciona, [ ] Senha
+                    capturada, [ ] Comparação ok.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Checklist de etapas em papel: [ ]
+                    Sensor funciona, [ ] Função capturarSequência ok, [ ]
+                    Comparação com AND ok, [ ] Alarme ok. Dividir os 50 min em
+                    5 blocos de 10 min com sinal sonoro.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Alarme deve ser
+                    visual (LED piscante) além do som. Música de acesso =
+                    sequência de luzes coloridas.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Adicionar "modo de
+                    segurança": se errar 3 vezes, o robô se bloqueia por 10
+                    segundos. Integrar sensor de luz real (LDR) para condição
+                    extra. Construir cofre físico com servo motor.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Planejamento</td>
+                        <td>Diagrama de blocos completo</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Codificação</td>
+                        <td>Todas as funções implementadas</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Teste</td>
+                        <td>Encontrou e corrigiu bugs</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Apresentação</td>
+                        <td>Demonstrou funcionamento</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Cofre robô é como segurança digital: se errar a senha, o
+                    sistema te bloqueia. Cuidado com os toques!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 9: CAÇA AO BUG - EXTERMINADORES DE ERROS NO CÓDIGO     -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="9">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana9">
+              🎯 SEMANA 9: "CAÇA AO BUG - EXTERMINADORES DE ERROS NO CÓDIGO
+              (OU: QUANDO O ROBÔ FAZ COISA ERRADA DE PROPÓSITO)"
+            </button>
+          </h2>
+          <div id="semana9" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="9" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Identificar erros comuns em funções (esquecer de chamar,
+                    parâmetros errados, nome errado).
+                  </li>
+                  <li>Praticar leitura de código e correção colaborativa.</li>
+                  <li>
+                    Desenvolver a habilidade de "debugar" (caçar bugs) de
+                    forma sistemática.
+                  </li>
+                  <li>
+                    Aplicar os conceitos de abstração e generalização na
+                    resolução de problemas.
+                  </li>
+                  <li>RCP-PR (EF05CO07): Testar e depurar programas.</li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Erros comuns em funções — Técnicas de depuração — Leitura
+                  crítica de código — Correção colaborativa — Conceitos do
+                  Pensamento Computacional: abstração, generalização — RCP-PR
+                  (EF05CO07): Testar e depurar programas.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  <strong>BNCC (Língua Portuguesa):</strong> EF05LP10 -
+                  Relatar experimentos (descrever o bug e a solução).<br />
+                  <strong>BNCC (Matemática):</strong> EF05MA10 - Regularidades
+                  (bugs típicos se repetem).<br />
+                  <strong>RCP-pr (Computação):</strong> (EF05CO07) Testar e
+                  depurar programas. Depuração - Técnicas de teste e correção.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-printer"></i> Códigos com bugs impressos
+                    (3 versões diferentes)</span>
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com MakeCode
+                    para testar correções</span>
+                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Cartolina para
+                    "Relatório do Caçador"</span>
+                  <span class="material-badge"><i class="bi bi-bug-fill"></i> Adesivos de barata (bug)
+                    para premiação</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> "Lupas" de papel para
+                    apontar erros</span>
+                  <span class="material-badge"><i class="bi bi-pin"></i> Cartazes com "Bugs Mais
+                    Procurados"</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração:</strong> Conecte a micro:bit ao
+                  computador via USB. Acesse makecode.microbit.org - vamos
+                  testar e corrigir códigos. Teremos códigos com bugs
+                  impressos que serão analisados antes de testar.
+                </p>
+                <p>
+                  <strong>Modo Detetive:</strong> Hoje não vamos criar código
+                  do zero. Vamos ser DETETIVES DE CÓDIGO. Cada bug encontrado
+                  = uma barata capturada. Quem pegar mais bugs vira
+                  "EXTERMINADOR-MOR".
+                </p>
+
+                <h5>🐛 Códigos com Bugs (Material Impresso)</h5>
+                <p>
+                  <strong>Bug 1: Esqueceu de chamar a função (Falta de Parênteses)
+                    🐛</strong>
+                </p>
+                <pre><code>function piscar() {
+  led.plot(2, 2)
+  basic.pause(200)
+  led.unplot(2, 2)
+  basic.pause(200)
+}
+
+input.onButtonPressed(Button.A, function () {
+  piscar // ❌ BUG 1: faltam os parênteses ()
+  // O certo seria: piscar()
+})</code></pre>
+
+                <p>
+                  <strong>Bug 2: Parâmetro Errado (Tipo Incorreto) 🐛</strong>
+                </p>
+                <pre><code>function mostrarNumero(n: number) {
+  basic.showNumber(n)
+}
+
+input.onButtonPressed(Button.A, function () {
+  mostrarNumero("5") // ❌ BUG 2: passou texto, mas espera número
+  // O certo seria: mostrarNumero(5)
+})</code></pre>
+
+                <p><strong>Bug 3: Nome da Função Errado 🐛</strong></p>
+                <pre><code>function animarCoração() {
+  let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  coracao.showImage(0)
+}
+
+input.onButtonPressed(Button.A, function () {
+  animarCoracao() // ❌ BUG 3: nome errado (coracao vs coração)
+  // O certo seria: animarCoração()
+})</code></pre>
+
+                <p>
+                  <strong>Bug 4: Loop Infinito (esqueceu de incrementar) 🐛</strong>
+                </p>
+                <pre><code>function piscarVariasVezes(n: number) {
+  let i = 0
+  while (i &lt; n) {
+    led.plot(2, 2)
+    basic.pause(100)
+    led.unplot(2, 2)
+    basic.pause(100)
+    // ❌ BUG 4: esqueceu de incrementar i
+    // O certo seria: i = i + 1
+  }
+}</code></pre>
+
+                <p>
+                  <strong>Bug 5: Condicional com Operador Errado 🐛</strong>
+                </p>
+                <pre><code>let numeroSecreto = 42
+
+function adivinhar(numero: number) {
+  // ❌ BUG 5: usando OR (||) em vez de AND (&&)
+  if (numero > 40 || numero &lt; 50) {
+    basic.showString("QUASE!")
+  } else {
+    basic.showString("ERRADO")
+  }
+  // O certo seria: if (numero > 40 && numero &lt; 50)
+}</code></pre>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Abertura - O Inseto Bug Aparece! 🪳</strong> —
+                    "Hoje vamos caçar o Inseto Bug! Ele adora se esconder no
+                    código. Cada erro que vocês encontrarem, vocês ganham um
+                    adesivo de barata. Quem pegar mais bugs vira EXTERMINADOR
+                    DE BUGS!" Dinâmica: Mostrar um código com bug óbvio no
+                    projetor e pedir que identifiquem.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Caça ao Bug Impresso 🔍</strong> — Cada dupla
+                    recebe uma folha com 3 códigos contendo bugs (Versões 1, 2
+                    e 3). Tarefas: 1. Circular o bug com a "lupa" de papel. 2.
+                    Escrever a correção ao lado. 3. Testar mentalmente (ou no
+                    computador). Tipos de Bugs: "Bug Zé Esquecido" (faltou
+                    parênteses), "Bug Parâmetro Trocado" (tipo errado), "Bug
+                    Nome Diferente" (nome incorreto).
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">15-25 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Codificação - Injetando Bugs de Propósito 💉</strong>
+                    — Cada dupla escreve um código curto (com 2-3 funções) que
+                    funciona. Depois, intencionalmente, insere 2 bugs. Trocar
+                    o código com outra dupla. A dupla adversária deve
+                    encontrar os dois bugs e corrigir. Regra: Não podem
+                    inserir bugs "idiotas". Devem ser realistas e comuns.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">25-35 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Defenda Seu Bug (Debate) 🗣️</strong> — Professor
+                    sorteia um bug de uma dupla e pede que a dupla que o
+                    inseriu explique: "Por que esse bug é fácil ou difícil de
+                    encontrar?" A dupla que encontrou explica como descobriu.
+                    Prêmio: Dupla que criou o bug mais "enganador" (mas justo)
+                    e a que encontrou mais rápido.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">35-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Laboratório de Depuração no MakeCode 🧪</strong> —
+                    Professor projeta um código bugado na tela (Versão 4 ou
+                    5). Alunos devem encontrar e corrigir em tempo real.
+                    Exemplo:
+                    <code>for (let i = 0; i &lt; 3; i++); { // ❌ BUG - ponto e
+                        vírgula errado! }</code>
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Relatório do Caçador 📝</strong> — Cada aluno
+                    escreve: "O bug mais estranho que encontrei hoje foi
+                    ______." "Aprendi que para evitar esquecer de chamar
+                    funções, devo ______." "Se eu fosse ensinar um colega a
+                    depurar, eu diria ______."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Lista de verificação de bugs comuns:
+                    [ ] Parênteses? [ ] Nome igual? [ ] Parâmetros corretos? [
+                    ] Função chamada? "Detector de bugs" físico: lupa de
+                    brinquedo para apontar o erro.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Cada bug tem um nome engraçado:
+                    "Bug Zé Esquecido", "Bug Parâmetro Trocado". Dividir a
+                    atividade em minidesafios de 5 minutos com sinal sonoro.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Códigos em braille ou
+                    fonte ampliada. Feedback sonoro para cada bug encontrado.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Criar bug intencional
+                    com recursão infinita. Escrever "guia de depuração" para
+                    alunos mais novos.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Critério</th>
+                        <th>Evidência</th>
+                        <th>Pontuação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Identificação de bugs</td>
+                        <td>Encontrou bugs em códigos impressos</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Correção de bugs</td>
+                        <td>Corrigiu corretamente os bugs</td>
+                        <td>0-3</td>
+                      </tr>
+                      <tr>
+                        <td>Criação de bugs</td>
+                        <td>Inseriu 2 bugs realistas</td>
+                        <td>0-2</td>
+                      </tr>
+                      <tr>
+                        <td>Relatório</td>
+                        <td>Completou as 3 seções do relatório</td>
+                        <td>0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia:</strong>
+                  <em>"Bug é o professor disfarçado de erro. Depurar é aprender
+                    com o robô onde você errou!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEMANA 10: AVALIAÇÃO BIMESTRAL - PASSEPORTE DA FUNÇÃO         -->
+        <!-- ============================================================ -->
+        <div class="accordion-item" data-semana="10">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana10">
+              🎯 SEMANA 10: "AVALIAÇÃO BIMESTRAL - PASSEPORTE DA FUNÇÃO (A
+              PROVA FINAL DOS PARAFUSOS PENSANTES)"
+            </button>
+          </h2>
+          <div id="semana10" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
+            <div class="accordion-body">
+              <div class="semana-card-completo">
+                <div class="d-flex justify-content-between align-items-start flex-wrap">
+                  <h5>🎯 Objetivos Operacionais</h5>
+                  <label class="check-concluido">
+                    <input type="checkbox" class="semana-check" data-semana="10" />
+                    <span>Marcar como concluída</span>
+                  </label>
+                </div>
+                <ul>
+                  <li>
+                    Avaliar de forma lúdica e prática as habilidades do
+                    bimestre.
+                  </li>
+                  <li>
+                    Permitir que os alunos demonstrem seu conhecimento em
+                    diferentes formatos.
+                  </li>
+                  <li>
+                    Promover a autoavaliação e a reflexão sobre o aprendizado.
+                  </li>
+                  <li>
+                    Consolidar todos os conceitos em um desafio integrado na
+                    micro:bit.
+                  </li>
+                </ul>
+
+                <h5>📚 Conteúdo Programático</h5>
+                <p>
+                  Avaliação prática de todas as habilidades do bimestre —
+                  Estações de aprendizado com micro:bit — Desafios integrados:
+                  funções, parâmetros, aninhamento, operadores lógicos,
+                  sensores — Autoavaliação e reflexão.
+                </p>
+
+                <h5>📋 Habilidades BNCC e RCP-PR</h5>
+                <p>
+                  Todas as habilidades do 1º bimestre: EF05MA01, EF05MA02,
+                  EF05MA10, EF05MA18, EF05MA23; EF05CI01, EF05CI02; EF05LP10,
+                  EF05LP17; Competência Geral 5 - Pensamento computacional;
+                  RCP-pr: Programação de Sistemas, Pensamento Algébrico.
+                </p>
+
+                <h5>🧰 Materiais</h5>
+                <div class="materiais-container">
+                  <span class="material-badge"><i class="bi bi-laptop"></i> Computadores com
+                    MakeCode</span>
+                  <span class="material-badge"><i class="bi bi-usb"></i> BBC micro:bit para cada
+                    dupla</span>
+                  <span class="material-badge"><i class="bi bi-geo-alt"></i> 5 estações montadas pela
+                    sala</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de instruções
+                    para cada estação</span>
+                  <span class="material-badge"><i class="bi bi-stamp"></i> Carimbos ou adesivos para
+                    cada estação</span>
+                  <span class="material-badge"><i class="bi bi-passport"></i> "Passaporte da Função"
+                    impresso para cada aluno</span>
+                  <span class="material-badge"><i class="bi bi-clock"></i> Cronômetro visível</span>
+                  <span class="material-badge"><i class="bi bi-award"></i> Certificados</span>
+                </div>
+
+                <h5>🔧 Explicação Detalhada da Montagem do Hardware</h5>
+                <p>
+                  <strong>Configuração Geral:</strong> As 5 estações devem
+                  estar pré-configuradas com computadores e micro:bits. Cada
+                  estação deve ter um cartão com instruções claras. As
+                  micro:bits devem estar conectadas e prontas para uso. Um
+                  cronômetro visível para controle do tempo.
+                </p>
+                <p>
+                  <strong>Estações Físicas:</strong> Estação 1: Função
+                  Construtora; Estação 2: Mestre dos Parâmetros; Estação 3:
+                  Detetive Lógico; Estação 4: Mestre do Sensor; Estação 5:
+                  Caçador de Bugs.
+                </p>
+
+                <h5>🎯 Desafios das 5 Estações</h5>
+
+                <p><strong>Estação 1: "Função Construtora" 🛠️</strong></p>
+                <p>
+                  <em>Enunciado:</em> "Crie uma função chamada festejar() que
+                  faz a micro:bit mostrar uma animação de festa (coração
+                  pulsante) ao pressionar o botão A."
+                </p>
+                <pre><code>function festejar() {
+  for (let i = 0; i &lt; 3; i++) {
+    let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    coracao.showImage(0)
+    basic.pause(200)
+    basic.clearScreen()
+    basic.pause(200)
+  }
+}
+
+input.onButtonPressed(Button.A, function () {
+  festejar()
+})</code></pre>
+                <p>
+                  <strong>Critério:</strong> A função existe, é chamada, e
+                  executa a animação. <strong>Carimbo:</strong> 🛠️ "Função
+                  Construtora"
+                </p>
+
+                <p><strong>Estação 2: "Mestre dos Parâmetros" 📊</strong></p>
+                <p>
+                  <em>Enunciado:</em> "Crie uma função piscar(n) que pisca o
+                  LED central n vezes. Ao pressionar o botão A, pisca 3 vezes.
+                  Ao pressionar o botão B, pisca 5 vezes."
+                </p>
+                <pre><code>function piscar(n: number) {
+  for (let i = 0; i &lt; n; i++) {
+    led.plot(2, 2)
+    basic.pause(200)
+    led.unplot(2, 2)
+    basic.pause(200)
+  }
+}
+
+input.onButtonPressed(Button.A, function () { piscar(3) })
+input.onButtonPressed(Button.B, function () { piscar(5) })</code></pre>
+                <p>
+                  <strong>Critério:</strong> A função funciona com diferentes
+                  valores de parâmetro. <strong>Carimbo:</strong> 📊 "Mestre
+                  dos Parâmetros"
+                </p>
+
+                <p><strong>Estação 3: "Detetive Lógico" 🔍</strong></p>
+                <p>
+                  <em>Enunciado:</em> "Use os botões A e B como entradas. O
+                  LED central deve acender APENAS quando AMBOS os botões
+                  estiverem pressionados (AND). O LED (0,0) deve acender
+                  quando PELO MENOS UM botão estiver pressionado (OR)."
+                </p>
+                <pre><code>let estadoA = false
+let estadoB = false
+
+input.onButtonPressed(Button.A, function () {
+  estadoA = !estadoA
+  atualizarLEDs()
+})
+
+input.onButtonPressed(Button.B, function () {
+  estadoB = !estadoB
+  atualizarLEDs()
+})
+
+function atualizarLEDs() {
+  basic.clearScreen()
+  if (estadoA && estadoB) { led.plot(2, 2) }
+  if (estadoA || estadoB) { led.plot(0, 0) }
+}</code></pre>
+                <p>
+                  <strong>Critério:</strong> Os LEDs acendem conforme a lógica
+                  AND/OR. <strong>Carimbo:</strong> 🔍 "Detetive Lógico"
+                </p>
+
+                <p><strong>Estação 4: "Mestre do Sensor" 🎵</strong></p>
+                <p>
+                  <em>Enunciado:</em> "Programe a micro:bit para tocar uma
+                  música quando o logotipo for tocado. A música deve ter pelo
+                  menos 3 notas diferentes."
+                </p>
+                <pre><code>function tocarMusica() {
+  let nota = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  nota.showImage(0)
+  music.playTone(262, 200)
+  basic.pause(100)
+  music.playTone(330, 200)
+  basic.pause(100)
+  music.playTone(392, 200)
+  basic.pause(100)
+  music.playTone(523, 300)
+}
+
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  tocarMusica()
+})</code></pre>
+                <p>
+                  <strong>Critério:</strong> A micro:bit reage ao toque com
+                  som e animação. <strong>Carimbo:</strong> 🎵 "Mestre do
+                  Sensor"
+                </p>
+
+                <p><strong>Estação 5: "Caçador de Bugs" 🐛</strong></p>
+                <p>
+                  <em>Enunciado:</em> "Encontre os 2 bugs no código abaixo.
+                  Corrija-os para que a função saudacao() funcione
+                  corretamente."
+                </p>
+                <pre><code>// BUG 1: Parênteses faltando na definição
+function saudacao {
+  let ola = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  ola.showImage(0)
+  basic.pause(500)
+  basic.showString("OLA")
+}
+
+// BUG 2: Nome da função errado na chamada
+input.onButtonPressed(Button.A, function () {
+  saudacao()
+})</code></pre>
+                <p><strong>Correção:</strong></p>
+                <pre><code>function saudacao() {
+  let ola = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  ola.showImage(0)
+  basic.pause(500)
+  basic.showString("OLA")
+}
+
+input.onButtonPressed(Button.A, function () {
+  saudacao()
+})</code></pre>
+                <p>
+                  <strong>Critério:</strong> Encontrar os 2 bugs e propor a
+                  correção. <strong>Carimbo:</strong> 🐛 "Caçador de Bugs"
+                </p>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Explicação das Regras e Distribuição dos Passaportes
+                      📋</strong>
+                    — Professor explica: "Cada estação tem 8 minutos. Ao
+                    final, os grupos rotacionam. Cada aluno tem um passaporte
+                    para carimbar. Só carimba quem completar a tarefa
+                    corretamente!" Distribuição: Dividir a turma em 5 grupos
+                    (ou 10, se tiver mais estações). Cada grupo começa em uma
+                    estação diferente. Rotação no sentido horário.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">5-45 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Rotação pelas 5 Estações (8 min cada + 1 min de
+                      transição) 🔄</strong>
+                    — Estrutura da Estação: 1. Aluno lê o cartão de
+                    instruções; 2. Programa a solução no MakeCode; 3. Testa na
+                    micro:bit; 4. Chama o professor para verificar; 5. Recebe
+                    o carimbo no passaporte; 6. Limpa o código para o próximo
+                    grupo. Durante as Rotações: Professor circula entre as
+                    estações, verificando e carimbando. Cada estação deve ter
+                    um monitor (aluno que já completou) para ajudar.
+                  </div>
+                </div>
+                <div class="minuto-item">
+                  <span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao">
+                    <strong>Autoavaliação e Fechamento 📝</strong> — Alunos
+                    sentam e preenchem o verso do passaporte: "A estação mais
+                    fácil foi: ______. Porque: ______. A estação mais difícil
+                    foi: ______. Porque: ______. O que eu ainda preciso
+                    praticar? ______. De 0 a 5, quanto eu aprendi neste
+                    bimestre? ⭐⭐⭐⭐⭐. O que eu mais gostei nas aulas de
+                    robótica? ______."
+                  </div>
+                </div>
+
+                <h5>♿ Orientações para Adaptações e Inclusão</h5>
+                <ul>
+                  <li>
+                    <strong>TEA:</strong> Passaporte visual com ícones para
+                    cada estação. Instruções em cartões coloridos. Rotina
+                    clara: entrada → tarefa → verificação → carimbo.
+                  </li>
+                  <li>
+                    <strong>TDAH:</strong> Timer visível com contagem
+                    regressiva. Checklist para cada estação. Sinal sonoro a
+                    cada 6 minutos para lembrar de terminar.
+                  </li>
+                  <li>
+                    <strong>Deficiência física:</strong> Interface adaptada
+                    (comandos de voz, botões grandes). Avaliar raciocínio, não
+                    velocidade de digitação. Permitir que um colega digite o
+                    código conforme o aluno dita.
+                  </li>
+                  <li>
+                    <strong>Deficiência visual:</strong> Instruções em áudio
+                    (professor grava previamente). Aluno responde oralmente
+                    para o monitor. Códigos em braille ou fonte ampliada.
+                  </li>
+                  <li>
+                    <strong>Deficiência auditiva:</strong> Feedback visual
+                    (LEDs piscando) em vez de som. Instruções escritas em
+                    cartões grandes.
+                  </li>
+                  <li>
+                    <strong>Altas habilidades:</strong> Estação 6 bônus: criar
+                    função recursiva para calcular fatorial. Adicionar mais
+                    funcionalidades ao código da estação.
+                  </li>
+                </ul>
+
+                <h5>📊 Critérios Operacionais de Avaliação</h5>
+                <div class="table-responsive">
+                  <table class="table tabela-criterios-semana">
+                    <thead>
+                      <tr>
+                        <th>Quantidade de Estações</th>
+                        <th>Descrição</th>
+                        <th>Conceito</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>5 estações com sucesso</td>
+                        <td>Completou todos os desafios com autonomia</td>
+                        <td>Excelente (A)</td>
+                      </tr>
+                      <tr>
+                        <td>4 estações com sucesso</td>
+                        <td>Completou a maioria com mínima ajuda</td>
+                        <td>Bom (B)</td>
+                      </tr>
+                      <tr>
+                        <td>3 estações com sucesso</td>
+                        <td>Completou com ajuda significativa</td>
+                        <td>Regular (C)</td>
+                      </tr>
+                      <tr>
+                        <td>Menos de 3 estações</td>
+                        <td>Precisa de suporte intenso</td>
+                        <td>Em desenvolvimento (D)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>Total: 10 pontos (média das estações)</strong></p>
+
+                <div class="frase-do-dia">
+                  <i class="bi bi-chat-quote"></i>
+                  <strong>Frase do dia (Última!):</strong>
+                  <em>"Função é poder! Parâmetro é personalização! Lógica é
+                    decisão! E vocês são Mestres da Programação!"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FIM DO ACCORDION                                              -->
+        <!-- ============================================================ -->
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- CERTIFICADO (copiado de modelo_certificado.html)   -->
+    <!-- ================================================ -->
+    <section id="certificacao" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 shadow-lg">
+        <div class="text-center mb-4">
+          <h3>
+            <i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE
+            CONCLUSÃO - 5º ANO
+          </h3>
+          <p class="lead">"MESTRE DOS PARAFUSOS PENSANTES"</p>
+        </div>
+
+        <div class="row g-4 align-items-start">
+          <!-- COLUNA ESQUERDA: PRÉ-VISUALIZAÇÃO -->
+          <div class="col-lg-6">
+            <div class="certificado-preview p-3 text-center">
+              <div class="certificado-modelo p-4" id="previewCertificado">
+                <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
+                <p>Certificamos que</p>
+                <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
+                <p>
+                  concluiu com êxito o
+                  <strong>5º ANO - ROBÓTICA EDUCACIONAL</strong><br />
+                  Dominando os conceitos de:<br />
+                  🔁 <strong>FUNÇÕES</strong> (blocos de código
+                  reutilizáveis)<br />
+                  📦 <strong>PARÂMETROS</strong> (personalização de
+                  funções)<br />
+                  🪆 <strong>ANINHAMENTO</strong> (funções que chamam
+                  funções)<br />
+                  🔀 <strong>OPERADORES LÓGICOS</strong> (AND, OR, NOT)<br />
+                  🖐️ <strong>SENSORES</strong> (toque, luz)<br />
+                  🐛 <strong>DEPURAÇÃO</strong> (caça aos bugs)
+                </p>
+                <hr class="linha-certificado" />
+                <p class="data-rodape">
+                  RobôMestres do Paraná • <span id="previewData">2026</span>
+                </p>
+                <p class="assinatura-engracada">
+                  "Agora você já pode chamar a função `SALVAR_O_MUNDO()`!"
+                </p>
+                <div class="mt-2">
+                  <span class="badge bg-warning text-dark">🔧 Ass: Robô Zé 3.0</span>
+                </div>
+              </div>
+              <p class="text-muted mt-2 small">
+                <i class="bi bi-eye"></i> Visualização ao selecionar aluno
+              </p>
+            </div>
+          </div>
+
+          <!-- COLUNA DIREITA: CADASTRO -->
+          <div class="col-lg-6">
+            <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
+              <h4>
+                <i class="bi bi-person-plus-fill"></i> Cadastro de Alunos
+              </h4>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label class="form-label text-warning">Nome do Aluno(a)</label>
+                  <input type="text" id="nomeAluno" class="form-control"
+                    placeholder="Digite o nome do pequeno programador" />
+                </div>
+                <div class="col-md-4">
+                  <button id="btnAdicionar" class="btn btn-warning w-100 fw-bold">
+                    🤖 Adicionar
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h5>
+                  📋 Lista de Programadores
+                  <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
+                </h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
+                </ul>
+              </div>
+              <div class="mt-3 d-flex gap-2 flex-wrap">
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled>
+                  <i class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)
+                </button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled>
+                  <i class="bi bi-eye"></i> Pré-visualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i>
+          <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados
+          por folha). Use papel sulfite A4 e configure para "Colorido" e
+          "Margens padrão".
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- FECHAMENTO DO BIMESTRE (conteúdo do DOCX)         -->
+    <!-- ================================================ -->
+    <section id="adaptacoes" class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 border-warning shadow-sm card-fechamento-bimestre">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i class="bi bi-universal-access-circle"></i> ♿ ADAPTAÇÕES
+            ESPECÍFICAS BIMESTRE 1 (Caos Acessível para Todos)
+          </h5>
+
+          <h6 class="mt-3">📌 Para TEA (Transtorno do Espectro Autista)</h6>
+          <ul>
+            <li>
+              Use checklist visual com etapas (1. Definir função, 2. Chamar
+              função, 3. Testar, 4. Anotar).
+            </li>
+            <li>
+              Cores fixas por tipo de bloco: azul para definição de função,
+              vermelho para chamada, verde para condicional.
+            </li>
+            <li>
+              Evite estímulos sensoriais intensos: substitua "gritos" por
+              gestos combinados.
+            </li>
+            <li>
+              Forneça um "esqueleto" do código já com a estrutura da função.
+            </li>
+            <li>Permita que o aluno use abafador de ruído se necessário.</li>
+          </ul>
+
+          <h6 class="mt-3">📌 Para TDAH (Déficit de Atenção)</h6>
+          <ul>
+            <li>
+              Timer visível: projetar contagem regressiva para cada atividade.
+            </li>
+            <li>Checklist visual para marcar progresso com checkboxes.</li>
+            <li>
+              Âncoras visuais: setas, cores, ícones para chamar atenção.
+            </li>
+            <li>
+              Divida as atividades em partes curtas com recompensas imediatas
+              (adesivo a cada etapa concluída).
+            </li>
+          </ul>
+
+          <h6 class="mt-3">📌 Para Deficiência Física</h6>
+          <ul>
+            <li>
+              Interfaces alternativas: Makey Makey com botões grandes,
+              comandos de voz.
+            </li>
+            <li>
+              Simplificação de interações: reduzir número de cliques
+              necessários.
+            </li>
+            <li>
+              Tempo estendido: permitir mais tempo para tarefas motoras.
+            </li>
+            <li>
+              Suporte de pares: permitir que um colega digite conforme o aluno
+              dita.
+            </li>
+          </ul>
+
+          <h6 class="mt-3">📌 Para Deficiência Visual</h6>
+          <ul>
+            <li>
+              Feedback sonoro diferente para cada ação (som para verdade, som
+              para falso).
+            </li>
+            <li>
+              Materiais táteis: blocos em relevo, objetos para representar
+              valores.
+            </li>
+            <li>Instruções em áudio: professor grava previamente.</li>
+            <li>Avaliação oral: aluno responde falando para o monitor.</li>
+          </ul>
+
+          <h6 class="mt-3">📌 Para Deficiência Auditiva</h6>
+          <ul>
+            <li>Feedback visual: mudança de cores, LED piscando.</li>
+            <li>Instruções escritas: texto na tela ou impresso.</li>
+            <li>Código visual: cores e formas para representar conceitos.</li>
+            <li>Alarme visual em vez de sonoro.</li>
+          </ul>
+
+          <h6 class="mt-3">📌 Para Altas Habilidades</h6>
+          <ul>
+            <li>
+              Aprofundamento: introduzir conceitos avançados (recursão,
+              máquinas de estados).
+            </li>
+            <li>Complexidade: projetos com mais variáveis, mais sensores.</li>
+            <li>
+              Prototipagem física: construir além do código (eletrônica real).
+            </li>
+            <li>Liderança: aluno atua como monitor ou tutor dos colegas.</li>
+          </ul>
+
+          <p class="mb-0 mt-3 fst-italic">
+            “SE o robô não andar, ENTÃO a gente declara Dia do Bug; SENÃO a
+            gente dança.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- REFERÊNCIAS BIBLIOGRÁFICAS (conteúdo do DOCX)     -->
+    <!-- ================================================ -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="bg-robocard p-3 rounded-4 small">
+          <h5>
+            <i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)
+          </h5>
+          <p>
+            BRASIL. Ministério da Educação.
+            <strong>Base Nacional Comum Curricular (BNCC): Educação Infantil e
+              Ensino Fundamental</strong>. Brasília: MEC, 2018. Disponível em:
+            http://basenacionalcomum.mec.gov.br/. Acesso em: 20 out. 2023.
+          </p>
+          <p>
+            BRASIL. Ministério da Educação.
+            <strong>Base Nacional Comum Curricular (BNCC): Matemática no Ensino
+              Fundamental</strong>. Brasília: MEC, 2018.
+          </p>
+          <p>
+            BRENNAN, Karen; RESNICK, Mitchel. "New Frameworks for Studying and
+            Assessing the Development of Computational Thinking."
+            <strong>Proceedings of the 2012 Annual Meeting of the American
+              Educational Research Association</strong>, 2012.
+          </p>
+          <p>
+            MICROSOFT. <strong>MakeCode for micro:bit</strong>. Disponível em:
+            https://makecode.microbit.org/. Acesso em: 20 out. 2023.
+          </p>
+          <p>
+            PAPERT, Seymour. <strong>Logo: Computadores e Educação</strong>.
+            São Paulo: Brasiliense, 1985.
+          </p>
+          <p>
+            PARANÁ. Secretaria de Estado da Educação.
+            <strong>Referencial Curricular do Paraná (RCP-PR): Ensino Fundamental
+              Anos Iniciais</strong>. Curitiba: SEED, 2018.
+          </p>
+          <p>
+            PARANÁ. Secretaria de Estado da Educação.
+            <strong>Referencial Curricular do Paraná (RCP-PR): Programação e
+              Robótica</strong>. Curitiba: SEED, 2019.
+          </p>
+          <p>
+            PIRES, Nirlene Samorano. Adaptação Curricular: Como Tornar o
+            Ensino Acessível para Todos?.
+            <strong>International Integralize Scientific</strong>, v. 5, n.
+            45, mar. 2025. Disponível em: doi.org/10.63391/6B67C2. Acesso em:
+            20 out. 2023.
+          </p>
+          <p>
+            RESNICK, Mitchel. "Scratch: Programming for All."
+            <strong>Communications of the ACM</strong>, v. 52, n. 11, p.
+            60-67, 2009.
+          </p>
+          <p>
+            WING, Jeannette M. "Computational Thinking."
+            <strong>Communications of the ACM</strong>, v. 49, n. 3, p. 33-35,
+            2006.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================================================== -->
+  <!-- RODAPÉ REBELDE (copiado de modelo_rodape.html)      -->
+  <!-- ================================================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relatorio-bugs" id="relatorioBugs">🤯 0</div>
+    </div>
+  </footer>
+
+  <!-- ================================================== -->
+  <!-- SCRIPTS                                             -->
+  <!-- ================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/a5bim1_hardware.js"></script>
+</body>
+
+</html>
