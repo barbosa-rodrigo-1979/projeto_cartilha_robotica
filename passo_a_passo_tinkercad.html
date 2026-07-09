@@ -1,0 +1,3285 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Manual Tinkercad + Micro:bit - RobôMestres</title>
+    <!-- Bootstrap 5 (para responsividade) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS específico do passo_a_passo_tinkercad -->
+    <link rel="stylesheet" href="css/passo_a_passo_tinkercad.css" />
+  </head>
+
+  <body class="bg-robotica">
+    <!-- ==================== CABEÇALHO REBELDE ==================== -->
+    <header class="cabecalho-robotico cabecalho-rebelde">
+      <div class="container">
+        <div class="row align-items-center justify-content-between g-2">
+          <div class="col-auto">
+            <img
+              src="imagens/logo_rb.png"
+              alt="Logo Rodrigo Barbosa"
+              class="logo-rb"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+            />
+          </div>
+          <div class="col text-center">
+            <h1 class="titulo-principal glitch-text">
+              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+              <span class="parafuso-esquerda">⬤</span>
+            </h1>
+            <div class="subtitulo-chiclete">
+              ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
+              ISSO; SENÃO… AGUENTA ⚡<br />
+              <span class="selo-sucata mt-2 d-inline-block"
+                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
+              >
+            </div>
+          </div>
+          <div class="col-auto">
+            <img
+              src="imagens/logo_gn.png"
+              alt="Logo Gisele Nunes"
+              class="logo-gn"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== MENU GLASSMORPHISM ==================== -->
+    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-lg-none" href="index.html">
+          <i class="bi bi-robot"></i> RobôMestres
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navRoboMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navRoboMenu">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi bi-house-door-fill"></i> Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="passo_a_passo_tinkercad.html">
+                <i class="bi bi-0-circle-fill"></i> Passo a passo
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a1index.html">
+                <i class="bi bi-1-circle-fill"></i> 1º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a2index.html">
+                <i class="bi bi-2-circle-fill"></i> 2º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a3index.html">
+                <i class="bi bi-3-circle-fill"></i> 3º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a4index_hardware.html">
+                <i class="bi bi-4-circle-fill"></i> 4º ano
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="a5index_hardware.html">
+                <i class="bi bi-5-circle-fill"></i> 5º ano
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container my-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-robocard p-4 rounded-4">
+            <h2 class="text-gradient text-center mb-4">
+              <i class="bi bi-robot"></i> MANUAL TINKERCAD + MICRO:BIT
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== CONTEÚDO DO MANUAL (íntegra) ==================== -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="manual-content bg-robocard p-4 rounded-4">
+            <div class="text-center my-3">
+              <img
+                src="imagens/logo_tinKerCad.jpg"
+                alt="Tinkercad"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+            <!-- PARTE 1: O DESPERTAR DO TINKERCAD -->
+            <h3 class="text-gradient">
+              PARTE 1: O DESPERTAR DO TINKERCAD - O QUE É ISSO?
+            </h3>
+            <p>
+              Se você acha que eletrônica é apenas para cientistas malucos com
+              cabelos brancos eletrizados ou engenheiros da NASA, você está
+              redondamente enganado! O Tinkercad é uma plataforma online
+              gratuita da Autodesk que transforma a simulação de circuitos e a
+              modelagem 3D em um autêntico videogame. Em vez de queimar
+              componentes de verdade na sua mesa e respirar fumaça de solda (o
+              que sua mãe ou seu bolso certamente odiariam), o Tinkercad permite
+              que você exploda circuitos virtualmente sem qualquer prejuízo
+              financeiro ou físico.
+            </p>
+            <p>
+              Neste manual, focaremos no motor de simulação de circuitos
+              eletrônicos, utilizando como cérebro central o lendário BBC
+              micro:bit. Prepare-se, pois vamos do zero absoluto até o controle
+              físico do hardware, usando APENAS a placa micro:bit e seus
+              recursos incríveis!
+            </p>
+            <div class="alert alert-warning">
+              <i class="bi bi-lightbulb"></i>
+              <strong>💡 Pensamento Hacker:</strong> Errar no simulador não
+              custa nada. Errar na vida real pode custar o cheiro de silício
+              queimado e lágrimas sobre a mesa de trabalho. Portanto, abuse do
+              botão de simulação! Lembre-se: no Tinkercad, você é um Deus; no
+              hardware, você é apenas um mero aprendiz de feiticeiro.
+            </div>
+            <!-- Imagem: media/image1.jpeg -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/despertar.png"
+                alt="Tinkercad"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- PARTE 2: INFILTRAÇÃO NO SISTEMA -->
+            <h3 class="text-gradient mt-5">
+              PARTE 2: INFILTRAÇÃO NO SISTEMA - CADASTRO PASSO A PASSO
+            </h3>
+            <p>
+              Para entrar nesse parquinho de diversões tecnológico, você precisa
+              de uma credencial. Siga os passos exatos abaixo para criar sua
+              conta sem dores de cabeça:
+            </p>
+            <ol>
+              <li>
+                Abra o seu navegador de preferência e digite o endereço sagrado:
+                <a href="https://www.tinkercad.com/" target="_blank"
+                  >https://www.tinkercad.com/</a
+                >
+              </li>
+              <li>
+                No canto superior direito, você verá um botão chamativo escrito
+                "Inscrever-se" ou "Sign Up". Dê um clique sem medo.
+              </li>
+              <li>
+                A plataforma perguntará como você usará o Tinkercad. Escolha a
+                opção "Criar uma conta pessoal" (a menos que seu professor tenha
+                te passado um código de turma, se for o caso, escolha "Na
+                escola").
+              </li>
+              <li>
+                Agora vem o método de entrada: você pode usar seu e-mail padrão
+                ou agilizar sua vida logando diretamente com sua conta do Google
+                ou da Apple. Recomendamos o botão do Google pela velocidade da
+                luz.
+              </li>
+              <li>
+                Insira sua data de nascimento (seja honesto, ou minta que tem
+                mais de 13 anos se precisar de menos burocracia com autorizações
+                dos pais) e o seu país.
+              </li>
+              <li>
+                Conclua o processo. Pronto! Você acabou de invadir a base de
+                dados da Autodesk e agora tem um passaporte para o
+                desenvolvimento tecnológico.
+              </li>
+            </ol>
+
+            <!-- PARTE 3: O RETORNO AO LABORATÓRIO -->
+            <h3 class="text-gradient mt-5">
+              PARTE 3: O RETORNO AO LABORATÓRIO - COMO LOGAR
+            </h3>
+            <p>
+              Uma vez cadastrado, voltar para o laboratório virtual nas próximas
+              vezes é ainda mais simples:
+            </p>
+            <ol>
+              <li>Acesse novamente o Tinkercad.</li>
+              <li>
+                Clique no botão "Fazer login" (ou "Log In") ao lado do botão de
+                inscrição.
+              </li>
+              <li>
+                Escolha o mesmo método que usou no cadastro (por exemplo,
+                "Entrar com o Google").
+              </li>
+              <li>
+                Insira suas credenciais e BAM! Você será redirecionado para o
+                seu Dashboard (o painel de controle dos seus inventos).
+              </li>
+            </ol>
+            <!-- Imagem: media/image3.png -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/tela.png"
+                alt="Dashboard Tinkercad"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- PARTE 4: MAPA DA MINA -->
+            <h3 class="text-gradient mt-5">
+              PARTE 4: MAPA DA MINA - NAVEGANDO PELO INTERRUPTOR DE CIRCUITOS
+            </h3>
+            <p>
+              Quando cair no Dashboard, seu foco não será em "Projetos 3D", mas
+              sim na aba lateral esquerda chamada "Circuitos" (Circuits). Clique
+              nela e depois clique no botão majestoso "Criar novo circuito".
+            </p>
+            <p>
+              Uma tela em branco se abrirá. À direita, você verá a gaveta de
+              componentes. No menu suspenso de componentes, mude de "Básico"
+              para "Todos" para liberar o arsenal completo. Procure por
+              micro:bit e prepare-se para arrastá-lo para a área de trabalho.
+            </p>
+            <div class="alert alert-info">
+              <i class="bi bi-crosshair"></i>
+              <strong>🎯 Dica de Ninja:</strong> No simulador, você pode girar a
+              placa clicando com o botão direito. Útil para ver os pinos que
+              ficam escondidos!
+            </div>
+            <!-- Imagem: media/image4.jpg -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/simulacao.jpg  "
+                alt="Tinkercad Circuitos"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- PARTE 5: PROJETOS EM SIMULAÇÃO -->
+            <h3 class="text-gradient mt-5">
+              PARTE 5: PROJETOS EM SIMULAÇÃO (PARTINDO DO ZERO ABSOLUTO)
+            </h3>
+
+            <!-- PROJETO 01 -->
+            <h4 class="text-warning mt-4">
+              PROJETO SIMULADO 01: O Coração Pulsante Psicodélico ❤️
+            </h4>
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Fazer com que a matriz de LED 5×5 do
+              micro:bit exiba um coração batendo freneticamente, demonstrando o
+              controle de frames e o loop infinito.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Estrutura de repetição infinita (<code>while(1)</code>)</li>
+              <li>Controle de tempo com <code>sleep()</code></li>
+              <li>Exibição de imagens na matriz de LEDs</li>
+              <li>Criação de animações com frames alternados</li>
+              <li>Sintaxe básica de C++ para microcontroladores</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF07CI04 (Tecnologia e sociedade), EF08CI03
+                (Funcionamento de sistemas)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT101 (Modelagem de sistemas tecnológicos),
+                EM13CNT304 (Análise de fenômenos naturais e tecnológicos)
+              </li>
+            </ul>
+            <p>
+              <strong>Código RCP (Referencial Curricular do Paraná):</strong>
+            </p>
+            <ul>
+              <li>Ensino Fundamental: EF07CI04-PR, EF08CI03-PR</li>
+              <li>Ensino Médio: EM13CNT101-PR</li>
+            </ul>
+
+            <h5 class="text-info">
+              🔧 PASSO A PASSO: COMO MONTAR NO SIMULADOR
+            </h5>
+            <ol>
+              <li>
+                No menu lateral direito do Tinkercad, digite "micro:bit" na
+                barra de pesquisa.
+              </li>
+              <li>
+                Clique na placa do micro:bit e arraste-a para o centro da tela
+                branca.
+              </li>
+              <li>
+                Clique no botão "Código" no canto superior direito da tela.
+              </li>
+              <li>
+                No editor de código que aparecerá, localize a opção de troca de
+                linguagem. Mude o formato de "Blocos" para "Texto".
+              </li>
+              <li>
+                O Tinkercad avisará que vai apagar os blocos existentes. Clique
+                em "Avançar" ou "Continuar" - nós somos programadores raiz,
+                vamos digitar!
+              </li>
+              <li>
+                Apague todo o código que aparecer automaticamente e cole o
+                código abaixo.
+              </li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO SIMULADO 01: O Coração Pulsante Psicodélico ❤️
+// ============================================================
+// Este programa faz o coração do micro:bit bater!
+// Ele alterna entre um coração GRANDE e um coração PEQUENO
+// criando a ilusão de um batimento cardíaco.
+// ============================================================
+
+#include "MicroBit.h" // 📚 BIBLIOTECA MÁGICA:
+// Esta biblioteca é o "dicionário" que permite
+// o micro:bit entender os comandos que vamos dar.
+// Sem ela, o micro:bit ficaria confuso!
+
+MicroBit uBit; // 🧠 INSTÂNCIA DO MICRO:BIT:
+// Aqui criamos um "objeto" chamado uBit que
+// representa o nosso micro:bit.
+// É como dar um apelido para o seu pet!
+
+// ============================================================
+// FUNÇÃO PRINCIPAL: main()
+// ============================================================
+// Todo programa em C++ precisa de uma função main().
+// É aqui que a mágica começa!
+// ============================================================
+
+int main() {
+  uBit.init(); // 🚀 INICIALIZAÇÃO:
+  // Esta função "acorda" o microcontrolador!
+  // É como tomar um café bem forte antes de começar
+  // a trabalhar. Liga todos os sistemas internos.
+
+  // ==========================================================
+  // LOOP INFINITO: while(1)
+  // ==========================================================
+  // while(1) significa "enquanto 1 for verdadeiro"...
+  // E 1 SEMPRE é verdadeiro! Então esse loop nunca termina.
+  // O coração vai bater até o universo acabar ou a energia sumir!
+  // ==========================================================
+
+  while(1) {
+    // ======================================================
+    // PRIMEIRO FRAME: Coração GRANDE ❤️
+    // ======================================================
+    // A função display.print() exibe uma imagem na matriz 5x5.
+    // Cada linha da imagem é representada por 5 números:
+    // 0 = LED apagado, 1 = LED aceso
+    // As quebras de linha (\n) separam as 5 linhas da matriz.
+    // ======================================================
+
+    uBit.display.print(MicroBitImage(
+      "0,1,0,1,0\n" // Linha 1: . . .
+      "1,1,1,1,1\n" // Linha 2:
+      "1,1,1,1,1\n" // Linha 3:
+      "0,1,1,1,0\n" // Linha 4: . .
+      "0,0,1,0,0\n" // Linha 5: . . . .
+    ));
+    uBit.sleep(500); // ⏰ PAUSA DE 500ms (meio segundo):
+    // O coração GRANDE fica visível por 500ms
+    // Isso é como a SÍSTOLE (contração do coração)
+
+    // ======================================================
+    // SEGUNDO FRAME: Coração PEQUENO 💓
+    // ======================================================
+    // O coração pequeno é mais compacto.
+    // Essa alternância cria a sensação de batimento.
+    // ======================================================
+
+    uBit.display.print(MicroBitImage(
+      "0,0,0,0,0\n" // Linha 1: . . . . .
+      "0,1,0,1,0\n" // Linha 2: . . .
+      "0,1,1,1,0\n" // Linha 3: . .
+      "0,0,1,0,0\n" // Linha 4: . . . .
+      "0,0,0,0,0\n" // Linha 5: . . . . .
+    ));
+    uBit.sleep(500); // ⏰ PAUSA DE 500ms (meio segundo):
+    // O coração PEQUENO fica visível por 500ms
+    // Isso é como a DIÁSTOLE (relaxamento do coração)
+
+    // ======================================================
+    // E ASSIM O LOOP SE REPETE:
+    // GRANDE -> PAUSA -> PEQUENO -> PAUSA -> GRANDE...
+    // Formando um batimento cardíaco contínuo!
+    // ======================================================
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora seu micro:bit virtual tem um coração que bate sem parar!
+// Assim como seu coração real quando você vê uma nota 10 na prova!
+// ============================================================</code></pre>
+
+            <h5 class="text-info">🧪 PASSO A PASSO: COMO TESTAR A SIMULAÇÃO</h5>
+            <ol>
+              <li>
+                Inicie a simulação: Clique no botão verde "Iniciar Simulação" no
+                canto superior direito do Tinkercad.
+              </li>
+              <li>
+                Observe a mágica: A matriz de LEDs do micro:bit virtual começará
+                a exibir o coração pulsando alternadamente entre grande e
+                pequeno.
+              </li>
+              <li>
+                Verifique o ritmo: Note que cada "batida" dura exatamente 500ms
+                (meio segundo), totalizando 1 segundo por ciclo completo (um
+                batimento).
+              </li>
+              <li>
+                Interaja: Durante a simulação, você pode clicar com o botão
+                direito do mouse sobre o micro:bit para girá-lo e ver todos os
+                ângulos.
+              </li>
+              <li>
+                Pare a simulação: Quando quiser encerrar, clique novamente no
+                botão "Parar Simulação" (que agora está vermelho).
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              🏆 DESAFIO - "O Batimento Cardíaco Perfeito"
+            </h5>
+            <p>
+              <strong>Desafio:</strong> Modifique o código para criar um
+              batimento cardíaco mais realista!
+            </p>
+            <p><strong>Instruções:</strong></p>
+            <ol>
+              <li>
+                Altere os tempos de <code>sleep()</code> para simular diferentes
+                ritmos cardíacos.
+              </li>
+              <li>
+                Crie um batimento com pausa longa (600ms para o coração grande)
+                e pausa curta (300ms para o coração pequeno).
+              </li>
+              <li>
+                Adicione um terceiro frame com um coração médio para uma
+                animação mais suave.
+              </li>
+            </ol>
+            <p>
+              <strong>Dica:</strong> Um coração humano normal bate cerca de
+              60-100 vezes por minuto. Quantos ms cada batida deve durar para
+              ser realista?
+            </p>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Causa Provável</th>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>O código não foi copiado corretamente</td>
+                    <td>
+                      Verifique se copiou TODO o código, incluindo
+                      <code>#include "MicroBit.h"</code>
+                    </td>
+                    <td>Nada aparece na tela</td>
+                  </tr>
+                  <tr>
+                    <td>O <code>sleep()</code> está muito curto</td>
+                    <td>
+                      Aumente o valor do <code>sleep()</code> para 1000 ou mais
+                    </td>
+                    <td>Apenas um coração aparece</td>
+                  </tr>
+                  <tr>
+                    <td>Faltou uma vírgula ou ponto-e-vírgula</td>
+                    <td>
+                      Compare seu código com o original caractere por caractere
+                    </td>
+                    <td>Erro de compilação</td>
+                  </tr>
+                  <tr>
+                    <td>O valor do <code>sleep()</code> está muito baixo</td>
+                    <td>Altere para pelo menos 300ms para ver a alternância</td>
+                    <td>A animação está muito rápida</td>
+                  </tr>
+                  <tr>
+                    <td>Você não mudou para o modo "Texto"</td>
+                    <td>Clique em "Código" e mude de "Blocos" para "Texto"</td>
+                    <td>A tela do simulador não abre</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- PROJETO 02 -->
+            <h4 class="text-warning mt-5">
+              PROJETO SIMULADO 02: O Detector de Fofoca (Botões Interativos) 🔘
+            </h4>
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Utilizar os Botões A e B para interagir
+              com o usuário. Se o Botão A for pressionado, a tela diz "SIM". Se
+              o Botão B for pressionado, a tela diz "NÃO". Uma ferramenta
+              perfeita para tomar decisões drásticas na vida.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura de entradas digitais (botões)</li>
+              <li>Estruturas condicionais (<code>if</code>)</li>
+              <li>Exibição de texto rolante (<code>scroll()</code>)</li>
+              <li>Interação homem-máquina</li>
+              <li>
+                Debounce (entenda que os botões precisam de um pequeno atraso)
+              </li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF07CI05 (Interação homem-tecnologia),
+                EF08CI04 (Sistemas de controle)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT102 (Análise de sistemas tecnológicos),
+                EM13CNT302 (Comunicação e tecnologia)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF07CI05-PR, EF08CI04-PR</li>
+              <li>Ensino Médio: EM13CNT102-PR</li>
+            </ul>
+
+            <h5 class="text-info">
+              🔧 PASSO A PASSO: COMO MONTAR NO SIMULADOR
+            </h5>
+            <ol>
+              <li>
+                No Tinkercad, arraste o micro:bit para a área de trabalho
+                (exatamente como no projeto anterior).
+              </li>
+              <li>
+                Não precisa adicionar mais nada! Os botões A e B já vêm
+                integrados na placa do micro:bit.
+              </li>
+              <li>Clique em "Código" no canto superior direito.</li>
+              <li>
+                Mude de "Blocos" para "Texto" e apague o código existente.
+              </li>
+              <li>Cole o código abaixo.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO SIMULADO 02: O Detector de Fofoca 🔘
+// ============================================================
+// Este programa transforma seu micro:bit em um "detector de fofoca"!
+// Botão A = "SIM" (você concorda com a fofoca)
+// Botão B = "NÃO" (você discorda da fofoca)
+// Perfeito para tomar decisões rápidas!
+// ============================================================
+
+#include "MicroBit.h" // 📚 A biblioteca que torna tudo possível
+
+MicroBit uBit; // 🧠 Nosso querido micro:bit
+
+// ============================================================
+// FUNÇÃO PRINCIPAL
+// ============================================================
+
+int main() {
+  uBit.init(); // 🚀 Acorda o micro:bit
+
+  // ==========================================================
+  // LOOP INFINITO: O detector de fofoca está SEMPRE ativo!
+  // ==========================================================
+
+  while(1) {
+    // ======================================================
+    // VERIFICAÇÃO DO BOTÃO A
+    // ======================================================
+    // O método isPressed() retorna TRUE se o botão estiver
+    // sendo pressionado no exato momento.
+    // Se você estiver pressionando A...
+    // ======================================================
+
+    if (uBit.buttonA.isPressed()) {
+      // 🟢 AÇÃO DO BOTÃO A:
+      // Exibe "SIM" rolando pela tela
+      // O scroll() faz o texto passar como se estivesse
+      // em um letreiro de cinema!
+      uBit.display.scroll("SIM"); // "SIM" para a fofoca
+      uBit.sleep(200); // ⏰ Pequena pausa para evitar leituras múltiplas
+    }
+
+    // ======================================================
+    // VERIFICAÇÃO DO BOTÃO B
+    // ======================================================
+
+    if (uBit.buttonB.isPressed()) {
+      // 🔴 AÇÃO DO BOTÃO B:
+      // Exibe "NAO" rolando pela tela
+      uBit.display.scroll("NAO"); // "NÃO" para a fofoca
+      uBit.sleep(200); // Pausa para evitar leitura duplicada
+    }
+
+    // ======================================================
+    // PAUSA PARA O PROCESSADOR RESPIRAR
+    // ======================================================
+    // O micro:bit é rápido demais! Sem esta pausa, ele
+    // verificaria os botões milhões de vezes por segundo.
+    // Isso é desnecessário e pode causar "loops de ansiedade".
+    uBit.sleep(100); // 100ms de folga para o processador
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um detector de fofoca portátil!
+// Pressione A para "SIM" e B para "NÃO".
+// Perfeito para decidir se vai comer aquele doce ou não!
+// ============================================================</code></pre>
+
+            <h5 class="text-info">🧪 PASSO A PASSO: COMO TESTAR A SIMULAÇÃO</h5>
+            <ol>
+              <li>Inicie a simulação: Clique em "Iniciar Simulação".</li>
+              <li>
+                Teste o Botão A: Mova o mouse até o Botão A no micro:bit virtual
+                (o botão à esquerda) e clique nele. A palavra "SIM" deve começar
+                a rolar na tela de LEDs.
+              </li>
+              <li>
+                Teste o Botão B: Clique no Botão B (à direita). A palavra "NAO"
+                deve rolar na tela.
+              </li>
+              <li>
+                Teste os dois juntos: O que acontece se você pressionar A e B ao
+                mesmo tempo? 🤔
+              </li>
+              <li>
+                Observe a velocidade: Note que a mensagem rola de forma suave -
+                isso é o <code>scroll()</code> em ação!
+              </li>
+            </ol>
+
+            <h5 class="text-info">🏆 DESAFIO - "A Máquina de Decisões"</h5>
+            <p>
+              <strong>Desafio:</strong> Transforme o detector de fofoca em uma
+              "máquina de decisões" que responde perguntas do tipo "Sim ou Não"?
+            </p>
+            <p><strong>Instruções:</strong></p>
+            <ol>
+              <li>
+                Faça o micro:bit exibir uma mensagem inicial "Pergunte-me algo!"
+              </li>
+              <li>
+                Quando o Botão A for pressionado, exiba "SIM" E também um ícone
+                feliz (:) ou smile.
+              </li>
+              <li>
+                Quando o Botão B for pressionado, exiba "NAO" E também um ícone
+                triste (:( ou frown).
+              </li>
+              <li>
+                Adicione um contador que mostra quantas vezes cada botão foi
+                pressionado.
+              </li>
+            </ol>
+            <p>
+              <strong>Dica:</strong> Use a função
+              <code>uBit.display.print()</code> com imagens de emoticons que
+              você mesmo pode criar!
+            </p>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Causa Provável</th>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>O simulador não está rodando</td>
+                    <td>Certifique-se de que clicou em "Iniciar Simulação"</td>
+                    <td>Nada acontece ao pressionar</td>
+                  </tr>
+                  <tr>
+                    <td>Falta o <code>sleep()</code> após o clique</td>
+                    <td>
+                      Adicione <code>uBit.sleep(200)</code> após cada
+                      <code>scroll()</code>
+                    </td>
+                    <td>A mensagem aparece várias vezes</td>
+                  </tr>
+                  <tr>
+                    <td>O <code>scroll()</code> está sendo interrompido</td>
+                    <td>Verifique se não há outro comando conflitante</td>
+                    <td>O texto não aparece completo</td>
+                  </tr>
+                  <tr>
+                    <td>Você pode estar clicando no lugar errado</td>
+                    <td>
+                      Clique diretamente sobre o botão A ou B na imagem do
+                      micro:bit
+                    </td>
+                    <td>O botão parece não funcionar</td>
+                  </tr>
+                  <tr>
+                    <td>Você está pressionando os dois botões</td>
+                    <td>Pressione apenas um botão de cada vez</td>
+                    <td>Aparece "SIM" e "NAO" juntos</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- PROJETO 03 -->
+            <h4 class="text-warning mt-5">
+              PROJETO SIMULADO 03: O "Dado Eletrônico" (Aleatoriedade com
+              Acelerômetro) 🎲
+            </h4>
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Fazer o micro:bit simular um dado de 6
+              lados. Quando o usuário "chacoalhar" a placa no simulador, ela
+              escolhe um número aleatório de 1 a 6 e mostra na tela.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura do acelerômetro (sensor de movimento)</li>
+              <li>Detecção de gesto "SHAKE" (chacoalhar)</li>
+              <li>Geração de números aleatórios (<code>random()</code>)</li>
+              <li>Exibição de números na matriz de LEDs</li>
+              <li>Eventos e gatilhos (trigger)</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF07CI08 (Probabilidade e estatística),
+                EF09CI03 (Sensores e automação)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT303 (Tecnologias digitais e aleatoriedade)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF07CI08-PR, EF09CI03-PR</li>
+              <li>Ensino Médio: EM13CNT303-PR</li>
+            </ul>
+
+            <h5 class="text-info">
+              🔧 PASSO A PASSO: COMO MONTAR NO SIMULADOR
+            </h5>
+            <ol>
+              <li>Arraste o micro:bit para a área de trabalho do Tinkercad.</li>
+              <li>Abra o editor de Código e mude para "Texto".</li>
+              <li>Cole o código abaixo.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO SIMULADO 03: O Dado Eletrônico 🎲
+// ============================================================
+// Este programa transforma seu micro:bit em um dado digital!
+// Chacoalhe o micro:bit e ele vai sortear um número entre 1 e 6.
+// Perfeito para decidir quem lava a louça! 🍽️
+// ============================================================
+
+#include "MicroBit.h" // Biblioteca essencial
+
+MicroBit uBit; // Nosso herói eletrônico
+
+// ============================================================
+// FUNÇÃO PRINCIPAL
+// ============================================================
+
+int main() {
+  uBit.init(); // Inicializa o micro:bit
+
+  // ==========================================================
+  // LOOP INFINITO: O dado está sempre pronto para ser jogado!
+  // ==========================================================
+
+  while(1) {
+    // ======================================================
+    // DETECÇÃO DO GESTO "SHAKE" (Chacoalhar)
+    // ======================================================
+    // O acelerômetro detecta movimento em 3 eixos (X, Y, Z).
+    // Quando o movimento é brusco, ele identifica como "SHAKE".
+    // getGesture() retorna o gesto detectado.
+    // ======================================================
+
+    if (uBit.accelerometer.getGesture() == MICROBIT_ACCELEROMETER_EVT_SHAKE) {
+      // ==================================================
+      // PREPARAÇÃO PARA O SORTEIO
+      // ==================================================
+      // Primeiro, limpamos a tela para criar suspense!
+      uBit.display.clear(); // Limpa a matriz de LEDs
+      uBit.sleep(200); // ⏰ 200ms de suspense puro!
+
+      // ==================================================
+      // SORTEIO DO NÚMERO ALEATÓRIO
+      // ==================================================
+      // uBit.random(6) gera um número de 0 a 5.
+      // Somamos +1 para ter números de 1 a 6.
+      int numeroDado = uBit.random(6) + 1; // 🎲 1 a 6
+
+      // ==================================================
+      // EXIBIÇÃO DO RESULTADO
+      // ==================================================
+      // O display.print() pode exibir números diretamente!
+      uBit.display.print(numeroDado); // Mostra o número sorteado
+
+      // ==================================================
+      // TEMPO DE VISUALIZAÇÃO
+      // ==================================================
+      uBit.sleep(2000); // 2 segundos de glória para o vencedor!
+    }
+
+    // ======================================================
+    // PAUSA PARA O PROCESSADOR
+    // ======================================================
+    uBit.sleep(100);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um dado eletrônico que não pode ser trapaceado!
+// (A menos que você saiba programar... 🤫)
+// ============================================================</code></pre>
+
+            <h5 class="text-info">🧪 PASSO A PASSO: COMO TESTAR A SIMULAÇÃO</h5>
+            <ol>
+              <li>Inicie a simulação: Clique em "Iniciar Simulação".</li>
+              <li>
+                Localize o botão SHAKE: No Tinkercad, há um botão especial que
+                simula o chacoalhar do micro:bit. Procure por um ícone que
+                parece uma mão chacoalhando ao lado do micro:bit virtual.
+              </li>
+              <li>
+                Chacoalhe o micro:bit: Clique no botão SHAKE. A tela de LEDs
+                deve limpar, pausar por 200ms, e então mostrar um número de 1 a
+                6.
+              </li>
+              <li>
+                Teste várias vezes: Continue chacoalhando para ver diferentes
+                números sendo sorteados.
+              </li>
+              <li>
+                Observe a aleatoriedade: Note que os números aparecem em ordem
+                aleatória - isso é o poder do gerador aleatório!
+              </li>
+            </ol>
+
+            <h5 class="text-info">🏆 DESAFIO - "O Dado dos Desafios"</h5>
+            <p>
+              <strong>Desafio:</strong> Transforme o dado eletrônico em um "Dado
+              dos Desafios" que, em vez de números, mostra ações!
+            </p>
+            <p><strong>Instruções:</strong></p>
+            <ol>
+              <li>
+                Em vez de mostrar números, faça o dado mostrar mensagens como:
+                <ul>
+                  <li>1 = "PULE"</li>
+                  <li>2 = "DANCE"</li>
+                  <li>3 = "CANTA"</li>
+                  <li>4 = "CORRA"</li>
+                  <li>5 = "GRITE"</li>
+                  <li>6 = "SORRIA"</li>
+                </ul>
+              </li>
+              <li>Adicione um som (se disponível) para cada ação.</li>
+              <li>
+                Crie ícones diferentes para cada número usando imagens 5x5.
+              </li>
+            </ol>
+            <p>
+              <strong>Dica:</strong> Use a função
+              <code>display.scroll()</code> para mostrar textos maiores que um
+              caractere.
+            </p>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Causa Provável</th>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>O botão SHAKE não foi clicado</td>
+                    <td>Procure o botão SHAKE no simulador e clique nele</td>
+                    <td>O número não aparece</td>
+                  </tr>
+                  <tr>
+                    <td>O <code>random()</code> não está funcionando</td>
+                    <td>
+                      Verifique se usou
+                      <code>uBit.random(6) + 1</code> corretamente
+                    </td>
+                    <td>Aparece o mesmo número sempre</td>
+                  </tr>
+                  <tr>
+                    <td>O <code>sleep()</code> está muito longo</td>
+                    <td>Reduza o tempo de exibição para 1000ms</td>
+                    <td>A tela fica apagada</td>
+                  </tr>
+                  <tr>
+                    <td>O valor pode estar fora do intervalo</td>
+                    <td>Certifique-se de que o número está entre 1 e 6</td>
+                    <td>O número mostra dígitos estranhos</td>
+                  </tr>
+                  <tr>
+                    <td>O simulador pode estar em pausa</td>
+                    <td>Clique em "Iniciar Simulação" novamente</td>
+                    <td>O SHAKE não é detectado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- PROJETO 04 -->
+            <h4 class="text-warning mt-5">
+              PROJETO SIMULADO 04: O SEMÁFORO INTELIGENTE (Usando Pinos e
+              Componentes Externos) 🚦
+            </h4>
+            <div class="alert alert-secondary">
+              <i class="bi bi-info-circle"></i>
+              <strong>Nota:</strong> Este projeto utiliza componentes externos
+              (LEDs e resistores) que não estão na lista de hardware final, mas
+              é mantido aqui como um projeto de simulação para demonstrar o
+              conceito de controle de pinos. Ele será substituído por um projeto
+              puramente baseado na placa na seção de Hardware.
+            </div>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Sair da bolha da placa e controlar o
+              mundo externo! Vamos piscar 3 LEDs coloridos (Vermelho, Amarelo e
+              Verde) simulando um semáforo, utilizando os pinos de I/O do
+              micro:bit. Isso prova que você não é apenas um programador, mas um
+              controlador do destino luminoso.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Controle de pinos digitais (Output)</li>
+              <li>Lógica de temporização</li>
+              <li>Ciclo de semáforo (Vermelho → Amarelo → Verde → Amarelo)</li>
+              <li>Montagem de circuito com LEDs e resistores</li>
+              <li>Segurança elétrica (resistores de proteção)</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF08CI05 (Sistemas de controle), EF09CI04
+                (Circuitos elétricos)
+              </li>
+              <li>Ensino Médio: EM13CNT105 (Análise de sistemas elétricos)</li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF08CI05-PR, EF09CI04-PR</li>
+              <li>Ensino Médio: EM13CNT105-PR</li>
+            </ul>
+
+            <h5 class="text-info">
+              🔧 PASSO A PASSO: COMO MONTAR NO SIMULADOR
+            </h5>
+            <p><strong>Materiais no Simulador:</strong></p>
+            <ul>
+              <li>1× Micro:bit</li>
+              <li>3× LEDs (Vermelho, Amarelo, Verde)</li>
+              <li>3× Resistores de 220Ω (para não queimar os LEDs)</li>
+              <li>1× Protoboard (a "placa de queijo" para conexões)</li>
+              <li>Fios de ligação (jumpers)</li>
+            </ul>
+            <p><strong>Passo 1: Posicione os componentes</strong></p>
+            <ol>
+              <li>Arraste o micro:bit para a área de trabalho.</li>
+              <li>Arraste uma protoboard para perto dele.</li>
+              <li>Adicione os 3 LEDs e 3 resistores de 220Ω.</li>
+            </ol>
+            <p><strong>Passo 2: Circuito do LED Vermelho (Pino 0)</strong></p>
+            <ol>
+              <li>
+                Conecte a perna MAIOR do LED Vermelho (Ânodo/+) ao Pino 0 do
+                micro:bit usando um fio.
+              </li>
+              <li>
+                Conecte a perna MENOR do LED Vermelho (Cátodo/-) a um resistor
+                de 220Ω.
+              </li>
+              <li>
+                Conecte a outra ponta do resistor à linha GND (Terra) na
+                protoboard.
+              </li>
+              <li>Conecte o GND da protoboard ao GND do micro:bit.</li>
+            </ol>
+            <p><strong>Passo 3: Circuito do LED Amarelo (Pino 1)</strong></p>
+            <ol>
+              <li>Conecte o Ânodo do LED Amarelo ao Pino 1.</li>
+              <li>Conecte o Cátodo a um resistor de 220Ω.</li>
+              <li>Conecte o resistor ao GND.</li>
+            </ol>
+            <p><strong>Passo 4: Circuito do LED Verde (Pino 2)</strong></p>
+            <ol>
+              <li>Conecte o Ânodo do LED Verde ao Pino 2.</li>
+              <li>Conecte o Cátodo a um resistor de 220Ω.</li>
+              <li>Conecte o resistor ao GND.</li>
+            </ol>
+            <div class="alert alert-info">
+              <i class="bi bi-crosshair"></i>
+              <strong>🎯 Dica das pernas:</strong> A perna maior do LED é o
+              positivo (Ânodo), a menor é o negativo (Cátodo). Se você errar, a
+              luz não acende, mas não explode. Relaxa!
+            </div>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO SIMULADO 04: O Semáforo Inteligente 🚦
+// ============================================================
+// Este programa simula um semáforo de trânsito com 3 LEDs.
+// Ciclo: VERMELHO (3s) → AMARELO (1s) → VERDE (3s) → AMARELO (1s)
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+int main() {
+  uBit.init();
+
+  while(1) {
+    // FASE 1: SINAL VERMELHO (PARE!)
+    uBit.io.P0.setDigitalValue(1); // 🔴 Acende o Vermelho
+    uBit.io.P1.setDigitalValue(0); // Apaga o Amarelo
+    uBit.io.P2.setDigitalValue(0); // Apaga o Verde
+    uBit.sleep(3000);
+
+    // FASE 2: SINAL AMARELO (ATENÇÃO!)
+    uBit.io.P0.setDigitalValue(0);
+    uBit.io.P1.setDigitalValue(1); // 🟡 Acende o Amarelo
+    uBit.io.P2.setDigitalValue(0);
+    uBit.sleep(1000);
+
+    // FASE 3: SINAL VERDE (ACELERA!)
+    uBit.io.P0.setDigitalValue(0);
+    uBit.io.P1.setDigitalValue(0);
+    uBit.io.P2.setDigitalValue(1); // 🟢 Acende o Verde
+    uBit.sleep(3000);
+
+    // FASE 4: AMARELO NOVAMENTE
+    uBit.io.P0.setDigitalValue(0);
+    uBit.io.P1.setDigitalValue(1); // 🟡 Acende o Amarelo
+    uBit.io.P2.setDigitalValue(0);
+    uBit.sleep(1000);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================</code></pre>
+
+            <h5 class="text-info">🧪 PASSO A PASSO: COMO TESTAR A SIMULAÇÃO</h5>
+            <ol>
+              <li>Inicie a simulação: Clique em "Iniciar Simulação".</li>
+              <li>
+                Observe os LEDs: Os três LEDs na protoboard devem começar a
+                acender na sequência correta: 🔴 Vermelho (3s) → 🟡 Amarelo (1s)
+                → 🟢 Verde (3s) → 🟡 Amarelo (1s) → (Repete).
+              </li>
+              <li>
+                Verifique a temporização: Use um cronômetro para confirmar os
+                tempos.
+              </li>
+              <li>
+                Identifique os pinos: Observe que cada LED está conectado a um
+                pino diferente (0, 1, 2).
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              🏆 DESAFIO - "O Semáforo Inteligente com Pedestre"
+            </h5>
+            <p>
+              <strong>Desafio:</strong> Adicione um botão para pedestre que,
+              quando pressionado, faz o semáforo mudar mais rápido!
+            </p>
+            <p><strong>Instruções:</strong></p>
+            <ol>
+              <li>Adicione um botão ao circuito (conectado ao Pino 3).</li>
+              <li>
+                Quando o botão for pressionado, reduza o tempo do vermelho para
+                1 segundo.
+              </li>
+              <li>
+                Mostre um ícone de "pedestre" (um boneco) na tela do micro:bit.
+              </li>
+            </ol>
+            <p>
+              <strong>Dica:</strong> Use
+              <code>uBit.buttonA.isPressed()</code> ou um botão externo para
+              simular o pedestre.
+            </p>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Causa Provável</th>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>O código não está carregado</td>
+                    <td>Verifique se colou o código e clicou em "Iniciar"</td>
+                    <td>Os LEDs não acendem</td>
+                  </tr>
+                  <tr>
+                    <td>Conexões erradas na protoboard</td>
+                    <td>Verifique se cada LED está no pino correto</td>
+                    <td>Apenas um LED acende</td>
+                  </tr>
+                  <tr>
+                    <td>Falta apagar os LEDs anteriores</td>
+                    <td>
+                      Certifique-se de que está desligando todos os LEDs antes
+                      de ligar novos
+                    </td>
+                    <td>Todos os LEDs acendem juntos</td>
+                  </tr>
+                  <tr>
+                    <td>Resistor de valor muito baixo</td>
+                    <td>Use resistores de 220Ω ou mais</td>
+                    <td>O LED queima (brilha forte)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- PROJETO 05 -->
+            <h4 class="text-warning mt-5">
+              PROJETO SIMULADO 05: O "TERMÔMETRO DE GELADEIRA" COM COMPONENTES
+              ANALÓGICOS 🌡️
+            </h4>
+            <div class="alert alert-secondary">
+              <i class="bi bi-info-circle"></i>
+              <strong>Nota:</strong> Este projeto utiliza um potenciômetro que
+              não está na lista de hardware final, mas é mantido aqui como um
+              projeto de simulação para demonstrar o conceito de leitura
+              analógica.
+            </div>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Demonstrar que o micro:bit também lê o
+              mundo analógico (valores que variam, como temperatura). Usaremos
+              um potenciômetro para simular uma temperatura variável e exibir
+              alertas na matriz de LEDs.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura analógica (<code>getAnalogValue()</code>)</li>
+              <li>Conversão de sinal analógico para digital (ADC)</li>
+              <li>Mapeamento de valores</li>
+              <li>Tomada de decisão baseada em valores variáveis</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF09CI05 (Sensores e medição), EF09CI06
+                (Conversão de sinais)
+              </li>
+              <li>Ensino Médio: EM13CNT104 (Sistemas de medição)</li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF09CI05-PR, EF09CI06-PR</li>
+              <li>Ensino Médio: EM13CNT104-PR</li>
+            </ul>
+
+            <h5 class="text-info">
+              🔧 PASSO A PASSO: COMO MONTAR NO SIMULADOR
+            </h5>
+            <p><strong>Materiais no Simulador:</strong></p>
+            <ul>
+              <li>1× Micro:bit</li>
+              <li>1× Potenciômetro</li>
+              <li>Fios jumpers</li>
+            </ul>
+            <p><strong>Passo 1: Posicione os componentes</strong></p>
+            <ol>
+              <li>Arraste o micro:bit para a área de trabalho.</li>
+              <li>Arraste um potenciômetro para a protoboard.</li>
+            </ol>
+            <p><strong>Passo 2: Faça as conexões</strong></p>
+            <ol>
+              <li>
+                Conecte o pino do MEIO do potenciômetro ao Pino 0 do micro:bit
+                (sinal).
+              </li>
+              <li>
+                Conecte a perna ESQUERDA do potenciômetro ao 3.3V (alimentação).
+              </li>
+              <li>Conecte a perna DIREITA do potenciômetro ao GND (terra).</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO SIMULADO 05: O "Termômetro de Geladeira" 🌡️
+// ============================================================
+// Este programa simula um termômetro usando um potenciômetro.
+// Gire para a esquerda (FRIO) -> mostra "F"
+// Gire para a direita (QUENTE) -> mostra "Q"
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+int main() {
+  uBit.init();
+  int valorLido = 0;
+
+  while(1) {
+    // Lê o valor analógico (0 a 1023)
+    valorLido = uBit.io.P0.getAnalogValue();
+
+    // Decisão baseada no valor lido
+    if (valorLido > 512) {
+      uBit.display.print("Q"); // 🔥 QUENTE
+    } else {
+      uBit.display.print("F"); // ❄️ FRIO
+    }
+
+    uBit.sleep(200);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================</code></pre>
+
+            <h5 class="text-info">🧪 PASSO A PASSO: COMO TESTAR A SIMULAÇÃO</h5>
+            <ol>
+              <li>Inicie a simulação: Clique em "Iniciar Simulação".</li>
+              <li>
+                Localize o potenciômetro: Na protoboard, você verá o
+                potenciômetro com um botão redondo.
+              </li>
+              <li>
+                Gire o potenciômetro: Clique no botão e arraste para girar (ou
+                use os controles de rotação).
+              </li>
+              <li>
+                Observe a tela: A matriz de LEDs deve mostrar "F" (frio) quando
+                o potenciômetro está para a esquerda e "Q" (quente) quando está
+                para a direita.
+              </li>
+            </ol>
+
+            <h5 class="text-info">🏆 DESAFIO - "O Termômetro de Precisão"</h5>
+            <p>
+              <strong>Desafio:</strong> Transforme o termômetro em um
+              "Termômetro de Precisão" que mostra a temperatura em graus
+              Celsius!
+            </p>
+            <p><strong>Instruções:</strong></p>
+            <ol>
+              <li>
+                Mapeie o valor do potenciômetro (0-1023) para uma faixa de
+                temperatura realista (ex: 0°C a 100°C).
+              </li>
+              <li>Exiba o número da temperatura na tela.</li>
+              <li>Adicione ícones diferentes para temperaturas extremas.</li>
+            </ol>
+            <p>
+              <strong>Dica:</strong> Use a fórmula
+              <code>temperatura = (valorLido * 100) / 1023</code> para
+              converter.
+            </p>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Causa Provável</th>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>O potenciômetro não está conectado</td>
+                    <td>Verifique a conexão do pino do meio ao Pino 0</td>
+                    <td>A letra não muda</td>
+                  </tr>
+                  <tr>
+                    <td>O potenciômetro está sempre em 0V</td>
+                    <td>Gire o potenciômetro para a direita</td>
+                    <td>Mostra apenas "F"</td>
+                  </tr>
+                  <tr>
+                    <td>O potenciômetro está sempre em 3.3V</td>
+                    <td>Gire o potenciômetro para a esquerda</td>
+                    <td>Mostra apenas "Q"</td>
+                  </tr>
+                  <tr>
+                    <td>O pino errado está sendo lido</td>
+                    <td>Certifique-se de usar <code>P0</code> no código</td>
+                    <td>O valor não varia</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Imagem: media/image5.jpg -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/retorno.jpg"
+                alt="Tinkercad"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+            <!-- ================================================== -->
+            <!-- PARTE 6: UNIVERSO FÍSICO MÃO NA MASSA              -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 6: UNIVERSO FÍSICO MÃO NA MASSA - PASSANDO PARA O HARDWARE
+              REAL
+            </h3>
+
+            <div class="alert alert-danger">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <strong>⚠️ ATENÇÃO, JOVEM PADAWAN!</strong> Agora vamos usar
+              APENAS o que está na sua caixa de ferramentas! Chega de
+              componentes que você não tem. Vamos explorar o poder bruto do
+              micro:bit com seus recursos internos.
+            </div>
+
+            <h5 class="text-info">
+              LISTA DE DISPOSITIVOS DE HARDWARE (O QUE VOCÊ TEM)
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Item</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Computador (desktop, notebook ou Chromebook)</td>
+                    <td>01</td>
+                  </tr>
+                  <tr>
+                    <td>BBC micro:bit (placa microcontroladora)</td>
+                    <td>02</td>
+                  </tr>
+                  <tr>
+                    <td>Matriz de LEDs (tela de 5×5 do micro:bit)</td>
+                    <td>03</td>
+                  </tr>
+                  <tr>
+                    <td>Botão A (do micro:bit)</td>
+                    <td>04</td>
+                  </tr>
+                  <tr>
+                    <td>Botão B (do micro:bit)</td>
+                    <td>05</td>
+                  </tr>
+                  <tr>
+                    <td>Acelerômetro (sensor de movimento)</td>
+                    <td>06</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Cabo USB (para conexão entre computador e micro:bit)
+                    </td>
+                    <td>07</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Suporte de pilhas (bateria externa para o micro:bit)
+                    </td>
+                    <td>08</td>
+                  </tr>
+                  <tr>
+                    <td>Monitor (tela do computador)</td>
+                    <td>09</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle"></i>
+              <strong>Observação:</strong> Esta é a sua lista definitiva. Todos
+              os projetos de hardware a seguir usam APENAS esses itens. Nada de
+              LEDs, resistores, protoboards ou potenciômetros. Apenas a placa e
+              seus superpoderes internos!
+            </div>
+
+            <!-- HARDWARE 01 -->
+            <h4 class="text-warning mt-5">
+              PROJETO HARDWARE 01: O "Bússola de Bolso" (Usando o Acelerômetro)
+              🧭
+            </h4>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Criar uma bússola digital que mostra a
+              direção (Norte, Sul, Leste, Oeste) na matriz de LEDs conforme você
+              inclina o micro:bit. Use o poder do acelerômetro para se orientar
+              no mundo!
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura dos eixos do acelerômetro (X, Y, Z)</li>
+              <li>Mapeamento de valores de inclinação para direções</li>
+              <li>Lógica condicional para determinar a direção</li>
+              <li>Exibição de letras na matriz de LEDs</li>
+              <li>Criação de uma interface intuitiva com o usuário</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF08CI03 (Funcionamento de sistemas),
+                EF09CI03 (Sensores e automação)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT303 (Tecnologias digitais e aleatoriedade),
+                EM13CNT104 (Sistemas de medição)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF08CI03-PR, EF09CI03-PR</li>
+              <li>Ensino Médio: EM13CNT303-PR, EM13CNT104-PR</li>
+            </ul>
+
+            <h5 class="text-info">📦 RELAÇÃO DE MATERIAIS (HARDWARE)</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Quantidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BBC micro:bit (placa principal)</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cabo USB (para programação)</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Suporte de pilhas (opcional, para testes portáteis)</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-info">🔧 PASSO A PASSO: COMO MONTAR O HARDWARE</h5>
+            <p>
+              A melhor parte: você NÃO PRECISA montar nada fisicamente! O
+              micro:bit já tem o acelerômetro embutido. Basta conectar o cabo
+              USB para carregar o programa. É a mágica da placa tudo-em-um!
+            </p>
+            <ol>
+              <li>Conecte o micro:bit ao computador usando o cabo USB.</li>
+              <li>Aguarde o computador reconhecer a placa.</li>
+              <li>Pronto! Seu hardware está pronto. Simples assim.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO HARDWARE 01: O "Bússola de Bolso" 🧭
+// ============================================================
+// Este programa transforma seu micro:bit em uma bússola!
+// Ao inclinar a placa, a matriz de LEDs mostra a direção:
+// N (Norte), S (Sul), L (Leste), O (Oeste).
+// Perfeito para não se perder na sala de aula!
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+int main() {
+  uBit.init();
+
+  // Variáveis para armazenar a inclinação
+  int x = 0;
+  int y = 0;
+
+  // Mensagem de boas-vindas
+  uBit.display.scroll("BUSSOLA");
+
+  while(1) {
+    // Lê os eixos X e Y do acelerômetro
+    // Valores variam de -1023 a 1023
+    x = uBit.accelerometer.getX();
+    y = uBit.accelerometer.getY();
+
+    // Determina a direção baseada nos valores de inclinação
+    // Norte: y é negativo (placa inclinada para frente)
+    // Sul: y é positivo (placa inclinada para trás)
+    // Leste: x é positivo (placa inclinada para a direita)
+    // Oeste: x é negativo (placa inclinada para a esquerda)
+
+    // Verifica se a inclinação é maior que um limiar (200)
+    // para evitar tremores e leituras falsas
+    if (y < -200) {
+      // Norte!
+      uBit.display.print("N");
+    } else if (y > 200) {
+      // Sul!
+      uBit.display.print("S");
+    } else if (x > 200) {
+      // Leste!
+      uBit.display.print("L");
+    } else if (x < -200) {
+      // Oeste!
+      uBit.display.print("O");
+    } else {
+      // Placa está na horizontal -> mostra um ponto (.)
+      uBit.display.print(".");
+    }
+
+    // Pequena pausa para não sobrecarregar o processador
+    uBit.sleep(100);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem uma bússola digital portátil!
+// Incline o micro:bit para ver as direções.
+// Útil para encontrar o Norte geográfico ou o caminho da cantina!
+// ============================================================</code></pre>
+
+            <h5 class="text-info">
+              📤 PASSO A PASSO: COMO CARREGAR O CÓDIGO NO HARDWARE
+            </h5>
+            <ol>
+              <li>
+                <strong>Baixe o código como .hex:</strong> No Tinkercad, com o
+                código aberto, clique em "Baixar" ou "Download". Salve o arquivo
+                com extensão <code>.hex</code> no seu computador.
+              </li>
+              <li>
+                <strong>Conecte o micro:bit:</strong> Use o cabo USB para
+                conectar o micro:bit ao computador. O micro:bit aparecerá como
+                uma unidade de disco chamada "MICROBIT".
+              </li>
+              <li>
+                <strong>Copie o arquivo .hex:</strong> Arraste o arquivo
+                <code>.hex</code> para a unidade "MICROBIT". O LED amarelo do
+                micro:bit vai piscar enquanto o código é carregado. Aguarde até
+                que a cópia termine (cerca de 10 segundos).
+              </li>
+              <li>
+                <strong>Desconecte e teste:</strong> Desconecte o cabo USB ou
+                mantenha conectado para energia. Incline o micro:bit para a
+                frente, para trás, para a esquerda e para a direita. Observe a
+                matriz de LEDs exibir a direção correspondente!
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rebaixe o .hex e copie novamente</td>
+                    <td>A tela não mostra nada</td>
+                    <td>O código não foi carregado corretamente</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Verifique se o micro:bit está plano; incline com mais
+                      força
+                    </td>
+                    <td>A tela mostra apenas "."</td>
+                    <td>O acelerômetro não está detectando inclinação</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Troque <code>x</code> por <code>y</code> nas condições do
+                      <code>if</code>
+                    </td>
+                    <td>As direções parecem invertidas</td>
+                    <td>Os valores de X e Y podem estar trocados</td>
+                  </tr>
+                  <tr>
+                    <td>Aumente o valor do limiar para 300 ou 400</td>
+                    <td>A direção muda muito rápido</td>
+                    <td>O limiar (200) está muito baixo</td>
+                  </tr>
+                  <tr>
+                    <td>Troque o cabo USB por um que transfira dados</td>
+                    <td>O micro:bit não aparece no computador</td>
+                    <td>Cabo USB danificado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- HARDWARE 02 -->
+            <h4 class="text-warning mt-5">
+              PROJETO HARDWARE 02: O "Cronômetro Digital" (Botões + Matriz de
+              LEDs) ⏱️
+            </h4>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Criar um cronômetro que conta o tempo
+              em segundos. O Botão A inicia a contagem, o Botão B para e o A+B
+              juntos reiniciam o cronômetro. Tudo exibido na matriz de LEDs.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura de múltiplos botões</li>
+              <li>Lógica de estados (iniciar, parar, reiniciar)</li>
+              <li>Controle de variáveis globais e tempo</li>
+              <li>Exibição de números na matriz de LEDs</li>
+              <li>Criação de uma interface de usuário simples</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF07CI05 (Interação homem-tecnologia),
+                EF08CI04 (Sistemas de controle)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT102 (Análise de sistemas tecnológicos)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF07CI05-PR, EF08CI04-PR</li>
+              <li>Ensino Médio: EM13CNT102-PR</li>
+            </ul>
+
+            <h5 class="text-info">📦 RELAÇÃO DE MATERIAIS (HARDWARE)</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Quantidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BBC micro:bit</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cabo USB</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-info">🔧 PASSO A PASSO: COMO MONTAR O HARDWARE</h5>
+            <p>
+              Nada para montar! Apenas conecte o micro:bit ao computador via
+              cabo USB para carregar o programa.
+            </p>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO HARDWARE 02: O "Cronômetro Digital" ⏱️
+// ============================================================
+// Este programa transforma seu micro:bit em um cronômetro!
+// Botão A = INICIAR a contagem
+// Botão B = PARAR a contagem
+// Botões A+B juntos = REINICIAR (zerar)
+// O tempo é exibido na matriz de LEDs.
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+// Variáveis globais do cronômetro
+int contagem = 0;        // Contagem em segundos
+bool cronometroLigado = false; // Estado do cronômetro
+
+int main() {
+  uBit.init();
+
+  // Mensagem de boas-vindas
+  uBit.display.scroll("CRONOMETRO");
+
+  while(1) {
+    // ======================================================
+    // CONTROLE DO CRONÔMETRO COM OS BOTÕES
+    // ======================================================
+
+    // Botão A: Inicia a contagem
+    if (uBit.buttonA.isPressed()) {
+      cronometroLigado = true;
+      uBit.display.scroll("INICIAR");
+      uBit.sleep(200);
+    }
+
+    // Botão B: Para a contagem
+    if (uBit.buttonB.isPressed()) {
+      cronometroLigado = false;
+      uBit.display.scroll("PARAR");
+      uBit.sleep(200);
+    }
+
+    // Botões A e B juntos: Reinicia (Zera)
+    if (uBit.buttonA.isPressed() && uBit.buttonB.isPressed()) {
+      cronometroLigado = false;
+      contagem = 0;
+      uBit.display.scroll("ZERAR");
+      uBit.sleep(200);
+    }
+
+    // ======================================================
+    // LÓGICA DO CRONÔMETRO
+    // ======================================================
+
+    if (cronometroLigado) {
+      // Incrementa a contagem a cada 1000ms (1 segundo)
+      contagem++;
+      // Exibe o valor atual na matriz de LEDs
+      uBit.display.print(contagem);
+    } else {
+      // Se o cronômetro estiver parado, mostra o tempo atual
+      uBit.display.print(contagem);
+    }
+
+    // Aguarda 1 segundo para o próximo incremento
+    uBit.sleep(1000);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um cronômetro digital portátil!
+// Perfeito para cronometrar suas provas, exercícios ou
+// o tempo de cozimento do miojo! 🍜
+// ============================================================</code></pre>
+
+            <h5 class="text-info">
+              📤 PASSO A PASSO: COMO CARREGAR O CÓDIGO NO HARDWARE
+            </h5>
+            <ol>
+              <li>
+                Baixe o código: No Tinkercad, clique em "Baixar" para gerar o
+                arquivo <code>.hex</code>.
+              </li>
+              <li>
+                Conecte o micro:bit: Use o cabo USB para conectar ao computador.
+              </li>
+              <li>
+                Copie o arquivo: Arraste o <code>.hex</code> para a unidade
+                "MICROBIT".
+              </li>
+              <li>
+                Aguarde: O LED do micro:bit vai piscar e depois o programa
+                iniciará.
+              </li>
+              <li>
+                Teste: Pressione A (iniciar), B (parar) e A+B juntos (reiniciar)
+                e veja a mágica acontecer!
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Verifique se você pressionou o botão A corretamente</td>
+                    <td>O cronômetro não inicia</td>
+                    <td>O botão A não está sendo detectado</td>
+                  </tr>
+                  <tr>
+                    <td>Pressione o botão B com mais firmeza</td>
+                    <td>O cronômetro não para</td>
+                    <td>O botão B não está sendo detectado</td>
+                  </tr>
+                  <tr>
+                    <td>Pressione A e B exatamente ao mesmo tempo</td>
+                    <td>O cronômetro não zera</td>
+                    <td>A combinação A+B não está sendo detectada</td>
+                  </tr>
+                  <tr>
+                    <td>Ajuste <code>uBit.sleep(1000)</code> para 1 segundo</td>
+                    <td>A contagem avança muito rápido</td>
+                    <td>
+                      O <code>sleep()</code> está com valor menor que 1000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      O micro:bit só exibe números de 0 a 9 individualmente
+                    </td>
+                    <td>O número não cabe na matriz</td>
+                    <td>O valor da contagem é maior que 9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- HARDWARE 03 -->
+            <h4 class="text-warning mt-5">
+              PROJETO HARDWARE 03: O "Jogo da Velha Eletrônico" (Matriz de LEDs
+              + Botões) ❌⭕
+            </h4>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Criar um jogo da velha (tic-tac-toe)
+              para dois jogadores usando a matriz de LEDs como tabuleiro e os
+              botões A e B para selecionar as posições. O jogo é um clássico da
+              lógica e interação.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Matriz de LEDs como display para um jogo</li>
+              <li>
+                Lógica de jogo (alternância de turnos, verificação de vitória)
+              </li>
+              <li>Leitura de botões para navegação e seleção</li>
+              <li>Representação de estado de jogo em variáveis</li>
+              <li>Criação de uma interface de usuário complexa</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF08CI03 (Funcionamento de sistemas),
+                EF09CI08 (Robótica e automação)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT108 (Projetos de automação), EM13CNT303
+                (Tecnologias digitais)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF08CI03-PR, EF09CI08-PR</li>
+              <li>Ensino Médio: EM13CNT108-PR, EM13CNT303-PR</li>
+            </ul>
+
+            <h5 class="text-info">📦 RELAÇÃO DE MATERIAIS (HARDWARE)</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Quantidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BBC micro:bit</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cabo USB</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-info">🔧 PASSO A PASSO: COMO MONTAR O HARDWARE</h5>
+            <ol>
+              <li>Conecte o micro:bit ao computador via cabo USB.</li>
+              <li>Nenhuma montagem adicional é necessária.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO HARDWARE 03: O "Jogo da Velha Eletrônico" ❌⭕
+// ============================================================
+// Este programa transforma seu micro:bit em um jogo da velha!
+// Dois jogadores se alternam para marcar X ou O em um tabuleiro 3x3.
+// Botão A = Mover o cursor para a direita
+// Botão B = Mover o cursor para baixo
+// Botões A+B = Marcar a posição atual com X ou O
+// Quem fizer três em linha primeiro, vence!
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+// ============================================================
+// TABULEIRO DO JOGO DA VELHA
+// ============================================================
+// Representação do tabuleiro 3x3:
+// 0 = vazio, 1 = X, 2 = O
+int tabuleiro[3][3] = {
+  {0, 0, 0},
+  {0, 0, 0},
+  {0, 0, 0}
+};
+
+// Posição do cursor (linha, coluna)
+int linha = 0;
+int coluna = 0;
+
+// Jogador atual: 1 = X, 2 = O
+int jogadorAtual = 1;
+
+// Estado do jogo: 0 = jogando, 1 = X venceu, 2 = O venceu, 3 = empate
+int estadoJogo = 0;
+
+// ============================================================
+// FUNÇÃO PARA ATUALIZAR A MATRIZ DE LEDS (TABULEIRO)
+// ============================================================
+void atualizarDisplay() {
+  // Cria uma string para a imagem 5x5
+  String imagem = "";
+
+  // Mapeia o tabuleiro 3x3 para a matriz 5x5
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (tabuleiro[i][j] == 0) {
+        // Célula vazia
+        imagem += "0,";
+      } else if (tabuleiro[i][j] == 1) {
+        // X (jogador 1)
+        imagem += "1,";
+      } else if (tabuleiro[i][j] == 2) {
+        // O (jogador 2)
+        imagem += "1,";
+      }
+    }
+    // Adiciona uma quebra de linha no final de cada linha
+    imagem += "\n";
+  }
+
+  // Exibe a imagem na matriz de LEDs
+  uBit.display.print(MicroBitImage(imagem));
+}
+
+// ============================================================
+// FUNÇÃO PARA VERIFICAR SE ALGUÉM VENCEU
+// ============================================================
+int verificarVencedor() {
+  // Verifica linhas
+  for (int i = 0; i < 3; i++) {
+    if (tabuleiro[i][0] != 0 && tabuleiro[i][0] == tabuleiro[i][1] && tabuleiro[i][1] == tabuleiro[i][2]) {
+      return tabuleiro[i][0];
+    }
+  }
+
+  // Verifica colunas
+  for (int i = 0; i < 3; i++) {
+    if (tabuleiro[0][i] != 0 && tabuleiro[0][i] == tabuleiro[1][i] && tabuleiro[1][i] == tabuleiro[2][i]) {
+      return tabuleiro[0][i];
+    }
+  }
+
+  // Verifica diagonais
+  if (tabuleiro[0][0] != 0 && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) {
+    return tabuleiro[0][0];
+  }
+  if (tabuleiro[0][2] != 0 && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) {
+    return tabuleiro[0][2];
+  }
+
+  return 0; // Ninguém venceu ainda
+}
+
+// ============================================================
+// FUNÇÃO PARA VERIFICAR SE O TABULEIRO ESTÁ CHEIO (EMPATE)
+// ============================================================
+bool tabuleiroCheio() {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (tabuleiro[i][j] == 0) {
+        return false; // Ainda há espaços vazios
+      }
+    }
+  }
+  return true; // Tabuleiro cheio!
+}
+
+// ============================================================
+// FUNÇÃO PRINCIPAL
+// ============================================================
+int main() {
+  uBit.init();
+  uBit.display.scroll("JOGO DA VELHA");
+
+  while(1) {
+    // ======================================================
+    // CONTROLE DO JOGO COM OS BOTÕES
+    // ======================================================
+
+    // Botão A: Move o cursor para a direita
+    if (uBit.buttonA.isPressed() && estadoJogo == 0) {
+      coluna = (coluna + 1) % 3; // Cicla entre 0, 1, 2
+      atualizarDisplay();
+      uBit.sleep(200);
+    }
+
+    // Botão B: Move o cursor para baixo
+    if (uBit.buttonB.isPressed() && estadoJogo == 0) {
+      linha = (linha + 1) % 3; // Cicla entre 0, 1, 2
+      atualizarDisplay();
+      uBit.sleep(200);
+    }
+
+    // Botão A+B: Marca a posição atual
+    if (uBit.buttonA.isPressed() && uBit.buttonB.isPressed() && estadoJogo == 0) {
+      // Verifica se a posição está vazia
+      if (tabuleiro[linha][coluna] == 0) {
+        // Marca a posição com o jogador atual
+        tabuleiro[linha][coluna] = jogadorAtual;
+
+        // Atualiza o tabuleiro
+        atualizarDisplay();
+
+        // Verifica se alguém venceu
+        int vencedor = verificarVencedor();
+        if (vencedor != 0) {
+          estadoJogo = vencedor;
+          if (estadoJogo == 1) {
+            uBit.display.scroll("X VENCEU!");
+          } else {
+            uBit.display.scroll("O VENCEU!");
+          }
+        } else if (tabuleiroCheio()) {
+          estadoJogo = 3; // Empate
+          uBit.display.scroll("EMPATE!");
+        } else {
+          // Troca o jogador
+          jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+        }
+
+        uBit.sleep(300);
+      } else {
+        // Posição ocupada, pisca a tela como aviso
+        uBit.display.print("!");
+        uBit.sleep(200);
+        atualizarDisplay();
+      }
+    }
+
+    // Reiniciar o jogo (se terminou, pressione A+B novamente)
+    if (estadoJogo != 0 && uBit.buttonA.isPressed() && uBit.buttonB.isPressed()) {
+      // Reinicia o tabuleiro
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          tabuleiro[i][j] = 0;
+        }
+      }
+      linha = 0;
+      coluna = 0;
+      jogadorAtual = 1;
+      estadoJogo = 0;
+      atualizarDisplay();
+      uBit.display.scroll("NOVO JOGO");
+      uBit.sleep(200);
+    }
+
+    // Pequena pausa para o processador
+    uBit.sleep(50);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um jogo da velha eletrônico no seu micro:bit!
+// A = mover para a direita, B = mover para baixo, A+B = marcar.
+// Perfeito para decidir quem vai lavar a louça ou passar o aspirador!
+// ============================================================</code></pre>
+
+            <h5 class="text-info">
+              📤 PASSO A PASSO: COMO CARREGAR O CÓDIGO NO HARDWARE
+            </h5>
+            <ol>
+              <li>
+                Baixe o código: No Tinkercad, clique em "Baixar" para gerar o
+                arquivo <code>.hex</code>.
+              </li>
+              <li>
+                Conecte o micro:bit: Use o cabo USB para conectar ao computador.
+              </li>
+              <li>
+                Copie o arquivo: Arraste o <code>.hex</code> para a unidade
+                "MICROBIT".
+              </li>
+              <li>
+                Aguarde: O LED do micro:bit vai piscar e depois o programa
+                iniciará.
+              </li>
+              <li>
+                Teste: Siga as instruções na tela e use os botões para jogar!
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Pressione os botões com mais firmeza</td>
+                    <td>O cursor não se move</td>
+                    <td>Os botões A e B não estão sendo detectados</td>
+                  </tr>
+                  <tr>
+                    <td>Pressione A e B exatamente ao mesmo tempo</td>
+                    <td>Não é possível marcar a posição</td>
+                    <td>A combinação A+B não está sendo detectada</td>
+                  </tr>
+                  <tr>
+                    <td>Verifique as condições de vitória no código</td>
+                    <td>O jogo não termina quando alguém vence</td>
+                    <td>A lógica de verificação de vitória está incorreta</td>
+                  </tr>
+                  <tr>
+                    <td>Verifique a função <code>atualizarDisplay()</code></td>
+                    <td>A tela exibe caracteres estranhos</td>
+                    <td>O mapeamento do tabuleiro para a matriz está errado</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Ajuste a lógica de reinício para ser mais específica
+                    </td>
+                    <td>O jogo reinicia sozinho</td>
+                    <td>
+                      A condição de reinício está sendo acionada acidentalmente
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- HARDWARE 04 -->
+            <h4 class="text-warning mt-5">
+              PROJETO HARDWARE 04: O "Detector de Inclinação" (Nível de Bolha
+              Digital) 📐
+            </h4>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Criar um nível de bolha digital que
+              indica se a superfície está nivelada. O micro:bit mostra um ponto
+              central quando está nivelado e pontos ou linhas se inclinado.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Leitura do acelerômetro em três eixos</li>
+              <li>
+                Mapeamento de inclinação para visualização na matriz de LEDs
+              </li>
+              <li>Criação de um nível digital preciso</li>
+              <li>Filtragem de ruído do acelerômetro</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF09CI04 (Circuitos elétricos), EF09CI10
+                (Controle proporcional)
+              </li>
+              <li>
+                Ensino Médio: EM13CNT110 (Sistemas de controle realimentado)
+              </li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF09CI04-PR, EF09CI10-PR</li>
+              <li>Ensino Médio: EM13CNT110-PR</li>
+            </ul>
+
+            <h5 class="text-info">📦 RELAÇÃO DE MATERIAIS (HARDWARE)</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Quantidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BBC micro:bit</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cabo USB</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-info">🔧 PASSO A PASSO: COMO MONTAR O HARDWARE</h5>
+            <ol>
+              <li>Conecte o micro:bit ao computador via cabo USB.</li>
+              <li>Nenhuma montagem adicional é necessária.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO HARDWARE 04: O "Detector de Inclinação" 📐
+// ============================================================
+// Este programa transforma seu micro:bit em um nível de bolha digital!
+// Mostra um ponto central quando a superfície está nivelada.
+// Se inclinado, mostra linhas ou pontos indicando a direção.
+// Perfeito para pendurar quadros ou alinhar prateleiras!
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+int main() {
+  uBit.init();
+  uBit.display.scroll("NIVEL");
+
+  int x = 0;
+  int y = 0;
+  int z = 0;
+
+  while(1) {
+    // Lê os três eixos do acelerômetro
+    x = uBit.accelerometer.getX();
+    y = uBit.accelerometer.getY();
+    z = uBit.accelerometer.getZ();
+
+    // Verifica se o micro:bit está nivelado (eixo Z aponta para cima)
+    // Quando nivelado, X e Y devem estar próximos de 0
+    if (abs(x) < 100 && abs(y) < 100) {
+      // Placa nivelada - mostra um ponto central
+      uBit.display.print(MicroBitImage(
+        "0,0,0,0,0\n"
+        "0,0,0,0,0\n"
+        "0,0,1,0,0\n"
+        "0,0,0,0,0\n"
+        "0,0,0,0,0\n"
+      ));
+    } else {
+      // Placa inclinada - mostra a direção
+      // Mapeia os valores de inclinação para a matriz
+      int linhas, colunas;
+
+      // Mapeia X (inclinação lateral) para colunas
+      if (x < -300) {
+        // Inclinado para a esquerda
+        colunas = 0;
+      } else if (x > 300) {
+        // Inclinado para a direita
+        colunas = 4;
+      } else {
+        // Inclinação média
+        colunas = 2;
+      }
+
+      // Mapeia Y (inclinação frontal/traseira) para linhas
+      if (y < -300) {
+        // Inclinado para frente
+        linhas = 0;
+      } else if (y > 300) {
+        // Inclinado para trás
+        linhas = 4;
+      } else {
+        // Inclinação média
+        linhas = 2;
+      }
+
+      // Mostra um ponto na posição correspondente
+      String imagem = "";
+      for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+          if (i == linhas && j == colunas) {
+            imagem += "1,";
+          } else {
+            imagem += "0,";
+          }
+        }
+        imagem += "\n";
+      }
+
+      uBit.display.print(MicroBitImage(imagem));
+    }
+
+    uBit.sleep(200);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um nível de bolha digital portátil!
+// Use para pendurar quadros, alinhar móveis ou verificar
+// se sua mesa está nivelada. A precisão é digital! 🔧
+// ============================================================</code></pre>
+
+            <h5 class="text-info">
+              📤 PASSO A PASSO: COMO CARREGAR O CÓDIGO NO HARDWARE
+            </h5>
+            <ol>
+              <li>
+                Baixe o código: No Tinkercad, clique em "Baixar" para gerar o
+                arquivo <code>.hex</code>.
+              </li>
+              <li>
+                Conecte o micro:bit: Use o cabo USB para conectar ao computador.
+              </li>
+              <li>
+                Copie o arquivo: Arraste o <code>.hex</code> para a unidade
+                "MICROBIT".
+              </li>
+              <li>
+                Aguarde: O LED do micro:bit vai piscar e depois o programa
+                iniciará.
+              </li>
+              <li>
+                Teste: Coloque o micro:bit sobre uma superfície e veja o
+                indicador de nivelamento!
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Aumente o valor do limiar para 200 ou 300</td>
+                    <td>O ponto central não aparece quando nivelado</td>
+                    <td>O limiar (100) está muito baixo</td>
+                  </tr>
+                  <tr>
+                    <td>Aumente o limiar para evitar leituras falsas</td>
+                    <td>O indicador de inclinação está muito sensível</td>
+                    <td>O acelerômetro tem ruído</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Troque <code>x</code> por <code>y</code> nas condições
+                    </td>
+                    <td>O ponto se move na direção errada</td>
+                    <td>Os eixos X e Y estão invertidos</td>
+                  </tr>
+                  <tr>
+                    <td>Rebaixe o .hex e copie novamente</td>
+                    <td>A tela não mostra nada</td>
+                    <td>O código não foi carregado corretamente</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- HARDWARE 05 -->
+            <h4 class="text-warning mt-5">
+              PROJETO HARDWARE 05: O "Alarme de Movimento" (Acelerômetro +
+              Matriz de LEDs) 🚨
+            </h4>
+
+            <h5 class="text-info">📚 OBJETIVO E CONCEITOS ENSINADOS</h5>
+            <p>
+              <strong>Objetivo:</strong> Criar um alarme de movimento que
+              detecta quando o micro:bit é movido ou chacoalhado. A matriz de
+              LEDs exibe um ícone de alerta e pisca freneticamente.
+            </p>
+            <p><strong>Conceitos Ensinados:</strong></p>
+            <ul>
+              <li>Detecção de gesto "SHAKE" (chacoalhar)</li>
+              <li>Criação de um estado de alarme</li>
+              <li>Lógica de alternância (toggle) para ativar/desativar</li>
+              <li>Exibição de animações de alerta na matriz de LEDs</li>
+            </ul>
+            <p><strong>Código BNCC:</strong></p>
+            <ul>
+              <li>
+                Ensino Fundamental: EF08CI04 (Sistemas de controle), EF08CI06
+                (Sistemas de alarme)
+              </li>
+              <li>Ensino Médio: EM13CNT106 (Automação residencial)</li>
+            </ul>
+            <p><strong>Código RCP:</strong></p>
+            <ul>
+              <li>Ensino Fundamental: EF08CI04-PR, EF08CI06-PR</li>
+              <li>Ensino Médio: EM13CNT106-PR</li>
+            </ul>
+
+            <h5 class="text-info">📦 RELAÇÃO DE MATERIAIS (HARDWARE)</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Quantidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BBC micro:bit</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cabo USB</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Suporte de pilhas (para testes portáteis)</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 class="text-info">🔧 PASSO A PASSO: COMO MONTAR O HARDWARE</h5>
+            <ol>
+              <li>Conecte o micro:bit ao computador via cabo USB.</li>
+              <li>Nenhuma montagem adicional é necessária.</li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO PROJETO</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// PROJETO HARDWARE 05: O "Alarme de Movimento" 🚨
+// ============================================================
+// Este programa transforma seu micro:bit em um alarme de movimento!
+// Chacoalhe o micro:bit para ATIVAR ou DESATIVAR o alarme.
+// Quando ativado, a tela mostra um ícone de alerta piscando.
+// Perfeito para proteger seus pertences de irmãos curiosos!
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+bool alarmeAtivo = false; // Estado do alarme
+
+int main() {
+  uBit.init();
+  uBit.display.scroll("ALARME");
+
+  while(1) {
+    // ======================================================
+    // DETECÇÃO DO GESTO "SHAKE" (Chacoalhar)
+    // ======================================================
+
+    if (uBit.accelerometer.getGesture() == MICROBIT_ACCELEROMETER_EVT_SHAKE) {
+      // Alterna o estado do alarme (toggle)
+      alarmeAtivo = !alarmeAtivo;
+
+      if (alarmeAtivo) {
+        uBit.display.scroll("ATIVADO");
+      } else {
+        uBit.display.scroll("DESATIVADO");
+      }
+
+      uBit.sleep(300);
+    }
+
+    // ======================================================
+    // COMPORTAMENTO DO ALARME
+    // ======================================================
+
+    if (alarmeAtivo) {
+      // Alarme ativado: exibe um ícone de alerta piscando
+      uBit.display.print(MicroBitImage(
+        "0,0,0,0,0\n"
+        "0,1,1,1,0\n"
+        "0,1,1,1,0\n"
+        "0,0,1,0,0\n"
+        "0,0,0,0,0\n"
+      )); // 🚨
+      uBit.sleep(300);
+
+      // Tela apagada para criar o efeito de pisca
+      uBit.display.clear();
+      uBit.sleep(300);
+    } else {
+      // Alarme desativado: exibe um ponto calmo
+      uBit.display.print(".");
+      uBit.sleep(500);
+    }
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um alarme de movimento portátil!
+// Chacoalhe para ativar/desativar.
+// Perfeito para proteger seus lanches, segredos ou
+// para assustar colegas curiosos! 👻
+// ============================================================</code></pre>
+
+            <h5 class="text-info">
+              📤 PASSO A PASSO: COMO CARREGAR O CÓDIGO NO HARDWARE
+            </h5>
+            <ol>
+              <li>
+                Baixe o código: No Tinkercad, clique em "Baixar" para gerar o
+                arquivo <code>.hex</code>.
+              </li>
+              <li>
+                Conecte o micro:bit: Use o cabo USB para conectar ao computador.
+              </li>
+              <li>
+                Copie o arquivo: Arraste o <code>.hex</code> para a unidade
+                "MICROBIT".
+              </li>
+              <li>
+                Aguarde: O LED do micro:bit vai piscar e depois o programa
+                iniciará.
+              </li>
+              <li>
+                Teste: Chacoalhe o micro:bit para ativar e desativar o alarme!
+              </li>
+            </ol>
+
+            <h5 class="text-info">
+              ❓ SE NÃO FUNCIONAR - Checklist de Resolução
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Solução Rápida</th>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Chacoalhe com mais força</td>
+                    <td>O alarme não ativa</td>
+                    <td>O SHAKE não está sendo detectado</td>
+                  </tr>
+                  <tr>
+                    <td>Aumente o limiar de detecção</td>
+                    <td>O alarme ativa e desativa sozinho</td>
+                    <td>O acelerômetro está detectando movimentos falsos</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Verifique se o loop <code>while(1)</code> está correto
+                    </td>
+                    <td>A tela não pisca</td>
+                    <td>O código não está no loop</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Pressione o botão de reset na parte de trás da placa
+                    </td>
+                    <td>O micro:bit não responde</td>
+                    <td>O código travou</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 7: O SEGREDO DOS PINOS E SENSORES           -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 7: O SEGREDO DOS PINOS E SENSORES - INPUTS E OUTPUTS
+            </h3>
+            <p>
+              Para você não passar vergonha na próxima aula de robótica, decore
+              esta tabela sobre os recursos internos do micro:bit:
+            </p>
+
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Como Usar</th>
+                    <th>Recurso</th>
+                    <th>Tipo</th>
+                    <th>Função</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>uBit.display.print()</code> ou
+                      <code>uBit.display.scroll()</code>
+                    </td>
+                    <td>Matriz de LEDs</td>
+                    <td>Output</td>
+                    <td>Exibir imagens, números e textos</td>
+                  </tr>
+                  <tr>
+                    <td><code>uBit.buttonA.isPressed()</code></td>
+                    <td>Botão A</td>
+                    <td>Digital Input</td>
+                    <td>Ler se foi pressionado (TRUE/FALSE)</td>
+                  </tr>
+                  <tr>
+                    <td><code>uBit.buttonB.isPressed()</code></td>
+                    <td>Botão B</td>
+                    <td>Digital Input</td>
+                    <td>Ler se foi pressionado (TRUE/FALSE)</td>
+                  </tr>
+                  <tr>
+                    <td><code>uBit.accelerometer.getX()</code></td>
+                    <td>Acelerômetro</td>
+                    <td>Analog Input</td>
+                    <td>Medir inclinação (X, Y, Z)</td>
+                  </tr>
+                  <tr>
+                    <td><code>uBit.accelerometer.getGesture()</code></td>
+                    <td>Acelerômetro (Gestos)</td>
+                    <td>Evento</td>
+                    <td>Detectar gestos como SHAKE</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="alert alert-warning">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <strong>ATENÇÃO:</strong> O micro:bit é uma placa poderosa. Use
+              seus recursos internos ao máximo antes de pensar em adicionar
+              componentes externos!
+            </div>
+
+            <!-- Imagem: media/image6.jpg -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/hibrido.jpg"
+                alt="Microbit"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 8: CHECKLIST DE RESOLUÇÃO DE PROBLEMAS      -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 8: CHECKLIST DE RESOLUÇÃO DE PROBLEMAS (TROUBLESHOOTING)
+            </h3>
+
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sintoma</th>
+                    <th>Causa Provável</th>
+                    <th>Correção Rápida</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A tela não mostra nada</td>
+                    <td>O código não foi carregado corretamente</td>
+                    <td>Rebaixe o .hex e copie novamente</td>
+                  </tr>
+                  <tr>
+                    <td>O micro:bit não aparece no computador</td>
+                    <td>O cabo USB não transfere dados</td>
+                    <td>Troque o cabo USB por um que transfira dados</td>
+                  </tr>
+                  <tr>
+                    <td>As leituras do acelerômetro estão inconsistentes</td>
+                    <td>O acelerômetro não está calibrado</td>
+                    <td>Deixe o micro:bit parado por alguns segundos</td>
+                  </tr>
+                  <tr>
+                    <td>O micro:bit não responde aos comandos</td>
+                    <td>O código travou</td>
+                    <td>
+                      Pressione o botão de reset na parte de trás da placa
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Os LEDs estão fracos ou piscando sem parar</td>
+                    <td>Pilhas fracas</td>
+                    <td>Substitua as pilhas AAA</td>
+                  </tr>
+                  <tr>
+                    <td>O código roda no simulador mas dá erro na placa</td>
+                    <td>Versão da biblioteca desatualizada</td>
+                    <td>Selecione a placa correta (micro:bit V1 ou V2)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="text-center my-3">
+              <img
+                src="imagens/mao_massa.jpg"
+                alt="Desafio"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 9: TRUQUES DE ENGENHARIA REVERSA            -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 9: TRUQUES DE ENGENHARIA REVERSA COM HARDWARE
+            </h3>
+
+            <div class="card bg-dark text-light mb-3 border-warning">
+              <div class="card-body">
+                <h5 class="card-title text-warning">🌀 O Teste do Reset</h5>
+                <p class="card-text">
+                  O pequeno botão na parte de trás do micro:bit não serve apenas
+                  para desligar. Se o seu código travar ou começar a agir de
+                  forma estranha (como um loop infinito indesejado), pressione-o
+                  uma vez para reiniciar o processador do zero.
+                </p>
+              </div>
+            </div>
+
+            <div class="card bg-dark text-light mb-3 border-danger">
+              <div class="card-body">
+                <h5 class="card-title text-danger">
+                  ⚠️ Alimentação Dupla (Cuidado Térmico)
+                </h5>
+                <p class="card-text">
+                  Nunca conecte o suporte de pilhas e o cabo USB ao mesmo tempo
+                  se as suas pilhas forem recarregáveis de alta corrente ou se
+                  você notar qualquer aquecimento na placa. O micro:bit possui
+                  um circuito de proteção, mas evitar o estresse dos componentes
+                  estende a vida útil do seu silício.
+                </p>
+              </div>
+            </div>
+
+            <div class="card bg-dark text-light mb-3 border-info">
+              <div class="card-body">
+                <h5 class="card-title text-info">
+                  ⚡ A Energia Estática é Sua Inimiga
+                </h5>
+                <p class="card-text">
+                  Ao manusear o micro:bit, evite tocar nos contatos metálicos se
+                  estiver com as mãos carregadas de eletricidade estática. Use
+                  uma pulseira antiestática ou toque em um objeto metálico
+                  aterrado antes de manusear a placa.
+                </p>
+              </div>
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 10: O DESAFIO HACKER FINAL                  -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 10: O DESAFIO HACKER FINAL (PROJETO MÃO NA MASSA)
+            </h3>
+
+            <div class="alert alert-success">
+              <i class="bi bi-trophy-fill"></i>
+              <strong
+                >🏆 PROJETO: O "Guarda-Costas Digital" (Versão Placa
+                Pura)</strong
+              >
+            </div>
+
+            <p>
+              <strong>Desafio:</strong> O aluno deve esconder o micro:bit (com
+              suporte de pilhas) dentro de uma caixa ou gaveta.
+            </p>
+
+            <p><strong>A Lógica:</strong></p>
+            <ul>
+              <li>
+                Usando o acelerômetro, o micro:bit deve detectar o exato momento
+                em que a caixa for aberta ou movida (detecção de "SHAKE").
+              </li>
+              <li>
+                O micro:bit deve exibir uma mensagem de "INTRUSO!" na matriz de
+                LEDs e piscar freneticamente.
+              </li>
+              <li>
+                Para desarmar, o dono precisa pressionar a combinação secreta:
+                Botão A + Botão B + aguardar 3 segundos.
+              </li>
+              <li>
+                Se não desarmar, a tela continua piscando em modo de alerta.
+              </li>
+            </ul>
+
+            <p><strong>Extras (para nota máxima):</strong></p>
+            <ol>
+              <li>Adicione um contador de tentativas de invasão.</li>
+              <li>
+                Faça a tela piscar em vermelho (ícones de alerta) durante o
+                alarme.
+              </li>
+              <li>
+                Crie um "modo silencioso" que não faz barulho (apenas visual).
+              </li>
+              <li>
+                Adicione um código de desarme mais complexo (ex: A, B, A, B).
+              </li>
+            </ol>
+
+            <h5 class="text-info">💻 CÓDIGO DO DESAFIO FINAL</h5>
+            <pre
+              class="bg-dark text-light p-3 rounded"
+              style="overflow-x: auto"
+            ><code>// ============================================================
+// 🏆 DESAFIO HACKER FINAL: O "Guarda-Costas Digital"
+// ============================================================
+// Este programa transforma seu micro:bit em um sistema de segurança!
+// Chacoalhe = ativa o alarme
+// A+B por 3 segundos = desarma o alarme
+// Perfeito para proteger seus segredos! 🕵️
+// ============================================================
+
+#include "MicroBit.h"
+
+MicroBit uBit;
+bool alarmeAtivo = false; // 🚨 Estado do alarme
+int tentativas = 0;       // Contador de tentativas de invasão
+
+// ============================================================
+// FUNÇÃO: dispararAlarme()
+// ============================================================
+void dispararAlarme() {
+  alarmeAtivo = true;
+  tentativas++;
+  uBit.display.scroll("INTRUSO!");
+
+  while(alarmeAtivo) {
+    // Exibe um ícone de alerta piscando
+    uBit.display.print(MicroBitImage(
+      "0,0,0,0,0\n"
+      "0,1,1,1,0\n"
+      "0,1,1,1,0\n"
+      "0,0,1,0,0\n"
+      "0,0,0,0,0\n"
+    ));
+    uBit.sleep(300);
+    uBit.display.clear();
+    uBit.sleep(300);
+
+    // ======================================================
+    // VERIFICA A COMBINAÇÃO SECRETA PARA DESARMAR
+    // ======================================================
+    if (uBit.buttonA.isPressed() && uBit.buttonB.isPressed()) {
+      uBit.sleep(3000); // Aguarda 3 segundos
+      if (uBit.buttonA.isPressed() && uBit.buttonB.isPressed()) {
+        // ✅ DESARMADO!
+        alarmeAtivo = false;
+        uBit.display.scroll("DESARMADO");
+        uBit.sleep(500);
+      }
+    }
+  }
+}
+
+// ============================================================
+// FUNÇÃO PRINCIPAL
+// ============================================================
+int main() {
+  uBit.init();
+  uBit.display.scroll("GUARDA-COSTAS");
+
+  while(1) {
+    if (uBit.accelerometer.getGesture() == MICROBIT_ACCELEROMETER_EVT_SHAKE) {
+      if (!alarmeAtivo) {
+        dispararAlarme();
+      }
+    }
+    uBit.sleep(50);
+  }
+}
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você tem um sistema de segurança funcional!
+// Chacoalhe = ALARME ATIVADO
+// A+B por 3 segundos = ALARME DESATIVADO
+// Proteja seus lanches, seus segredos ou sua privacidade! 🔒
+// ============================================================</code></pre>
+
+            <h5 class="text-info">📤 CARREGANDO O DESAFIO</h5>
+            <ol>
+              <li>Baixe o arquivo <code>.hex</code>.</li>
+              <li>Copie para o micro:bit.</li>
+              <li>
+                Teste: Chacoalhe → alarme ativa → A+B por 3 segundos → desarma.
+              </li>
+              <li>Divirta-se e adapte para suas próprias ideias!</li>
+            </ol>
+
+            <!-- Imagem: media/image7.png -->
+            <div class="text-center my-3">
+              <img
+                src="imagens/fisica_calculo.png"
+                alt="Desafio"
+                class="img-fluid rounded"
+                style="max-width: 100%"
+              />
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 11: GLOSSÁRIO INSANO                        -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 11: GLOSSÁRIO INSANO DO APRENDIZ DE HACKER
+            </h3>
+
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Termo</th>
+                    <th>Significado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>GND</td>
+                    <td>
+                      O "chão" do circuito. Por onde a corrente volta para casa.
+                      É o 0V, o nada, o vácuo eletrônico.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>VCC / 3.3V</td>
+                    <td>
+                      A "cerveja" do circuito. A energia positiva que faz as
+                      coisas funcionarem.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Acelerômetro</td>
+                    <td>
+                      Um sensor dentro do micro:bit que detecta movimento e
+                      inclinação. É o que faz o seu celular girar a tela e o seu
+                      micro:bit saber se foi chacoalhado.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>.HEX</td>
+                    <td>
+                      O arquivo mágico que o micro:bit entende. É o seu código
+                      transformado em linguagem de máquina. Você arrasta isso
+                      pro micro:bit e ele obedece.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>BNCC</td>
+                    <td>
+                      Base Nacional Comum Curricular - Diretrizes educacionais
+                      brasileiras.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>RCP</td>
+                    <td>
+                      Referencial Curricular do Paraná - Diretrizes educacionais
+                      do estado do Paraná.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ================================================== -->
+            <!-- PARTE 12: CONCLUSÃO FINAL                         -->
+            <!-- ================================================== -->
+            <h3 class="text-gradient mt-5">
+              PARTE 12: CONCLUSÃO FINAL (O GRITO DE GUERRA)
+            </h3>
+
+            <div class="alert alert-success text-center">
+              <p class="lead">
+                Pronto, soldado! O manual foi purificado, adaptado e turbinado.
+                Agora, 100% dos projetos usam APENAS a placa micro:bit e seus
+                recursos internos, com a irreverência que o manual original
+                pedia e o caos controlado que um bom projeto de hacker merece.
+              </p>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="card bg-dark text-light border-success h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-success">
+                      🎯 O QUE VOCÊ APRENDEU:
+                    </h5>
+                    <ul>
+                      <li>
+                        ✅ 5 Projetos no Simulador (do básico ao avançado)
+                      </li>
+                      <li>
+                        ✅ 5 Projetos no Hardware Real (usando apenas a placa)
+                      </li>
+                      <li>✅ Códigos completos e comentados</li>
+                      <li>✅ BNCC e RCP para cada projeto</li>
+                      <li>✅ Desafios para cada projeto</li>
+                      <li>✅ Troubleshooting para cada projeto</li>
+                      <li>✅ Um Desafio Hacker Final</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-dark text-light border-warning h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-warning">💡 LEMBRE-SE:</h5>
+                    <ul>
+                      <li>No Tinkercad, você é um Deus.</li>
+                      <li>
+                        No hardware, você é um feiticeiro que pode ou não soltar
+                        fumaça mágica.
+                      </li>
+                      <li>
+                        Mas com essa lista de componentes, o pior que pode
+                        acontecer é o micro:bit cair da mesa e você ter que
+                        recolocar as pilhas.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="text-center mt-4 p-4 rounded-4 border border-warning"
+              style="background: linear-gradient(145deg, #0d1f0b, #1e2a1a)"
+            >
+              <h4 class="text-warning">
+                Mãos à obra, mestre da gambiarra! O futuro da eletrônica está em
+                suas mãos (e no seu micro:bit)!
+              </h4>
+              <p class="lead mt-3">
+                Que a força (e a corrente elétrica) esteja com você! ⚡🤖
+              </p>
+              <hr class="border-warning" />
+              <p>
+                <em
+                  >"A eletrônica não é sobre componentes - é sobre
+                  criatividade."</em
+                >
+                ⚡
+              </p>
+            </div>
+          </div>
+          <!-- Fim manual-content -->
+        </div>
+      </div>
+      <!-- Fim row -->
+    </main>
+
+    <!-- ==================== RODAPÉ REBELDE ==================== -->
+    <footer class="footer-robotico footer-rebelde">
+      <div class="container">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img
+                src="imagens/logo_rb.png"
+                alt="Rodrigo Barbosa"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end">
+              <img
+                src="imagens/logo_gn.png"
+                alt="Gisele Nunes"
+                class="footer-logo"
+                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-start mb-4">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <div class="text-center text-md-start">
+              <div class="dev-nome">
+                💀 Desenvolvido na base do ódio, litros de café e condicionais
+                malucas por Rodrigo Barbosa.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
+                  >barbosa.rodrigo.1979@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center text-md-end">
+              <div class="dev-nome">
+                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+                SENÃO e uma dedicação que só aparece quando o prazo já passou
+                por Gisele Nunes.
+              </div>
+              <div class="dev-contato mt-1">
+                <i class="bi bi-envelope-paper"></i>
+                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relatorio-bugs" id="relatorioBugs">0</div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS do passo_a_passo_tinkercad -->
+    <script src="js/passo_a_passo_tinkercad.js"></script>
+  </body>
+</html>
