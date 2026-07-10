@@ -1,0 +1,753 @@
+/* ==============================================================
+   INDEX.CSS – ESTILOS UNIFICADOS (cabeçalho, menu, rodapé, conteúdo)
+   Todos os estilos inline foram migrados para cá.
+   ============================================================== */
+
+/* ---------- VARIÁVEIS ---------- */
+:root {
+  --robot-bg: #0d1f0b;
+  --robot-card: #1a2a17;
+  --robot-border: #4a7c3f;
+  --robot-gold: #ffb347;
+  --robot-green: #2ecc71;
+  --robot-red: #e74c3c;
+  --robot-text: #ebf0eb;
+  --robot-dark: #0a0f08;
+}
+
+/* ---------- BASE ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bg-robotica {
+  background: radial-gradient(circle at 10% 20%, #0d1f0b, #050e04);
+  font-family: 'Inter', 'Chakra Petch', sans-serif;
+  color: var(--robot-text);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* ==============================================================
+   CABEÇALHO (modelo_cabecalho.css)
+   ============================================================== */
+.cabecalho-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
+  padding: 1rem 0;
+  border-bottom: 5px solid #9bbc7b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-rebelde {
+  border-bottom-color: var(--robot-gold);
+}
+
+.cabecalho-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.logo-rb,
+.logo-gn {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 12px;
+}
+
+.logo-rb:hover,
+.logo-gn:hover {
+  transform: scale(1.05);
+}
+
+.titulo-principal {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.95rem;
+  letter-spacing: 2px;
+  color: #e9f5db;
+  background: linear-gradient(135deg, #1a2b17 0%, #2c3e2b 100%);
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 60px;
+  position: relative;
+  text-transform: uppercase;
+  border: 2px solid var(--robot-gold);
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px var(--robot-gold),
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  text-shadow: 2px 2px 0 #3d5a2b;
+  backdrop-filter: blur(2px);
+  white-space: nowrap;
+}
+
+.titulo-principal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  width: 60%;
+  height: 12px;
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
+  border-radius: 20px;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.titulo-principal::after {
+  content: "⬤";
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  font-size: 0.7rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal .parafuso-esquerda {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  font-size: 0.7rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal:hover {
+  transform: translateY(-2px);
+  border-color: #ffcc44;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffcc44,
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
+}
+
+.subtitulo-chiclete {
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.85rem;
+  color: #ffcc88;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #1a2b17;
+}
+
+.selo-sucata {
+  background: #1e1e1e;
+  color: #ffcc44;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  border-left: 3px solid #ff9900;
+  letter-spacing: 1px;
+}
+
+/* ==============================================================
+   MENU (modelo_menu.css)
+   ============================================================== */
+.menu-robomestre {
+  background: rgba(13, 31, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--robot-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu-robomestre .nav-link {
+  color: var(--robot-text);
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-robomestre .nav-link i {
+  font-size: 1.1rem;
+  color: var(--robot-gold);
+  transition: transform 0.2s;
+}
+
+.menu-robomestre .nav-link:hover {
+  color: var(--robot-gold);
+  text-shadow: 0 0 4px var(--robot-gold);
+  background: rgba(255, 180, 71, 0.15);
+  transform: translateY(-2px);
+}
+
+.menu-robomestre .nav-link:hover i {
+  transform: scale(1.1);
+  color: #ffcc44;
+}
+
+.menu-robomestre .nav-link.active {
+  color: #ffcc44;
+  background: rgba(255, 180, 71, 0.25);
+  text-shadow: 0 0 6px var(--robot-gold);
+  border-bottom: 2px solid var(--robot-gold);
+}
+
+.menu-robomestre .navbar-toggler {
+  border-color: var(--robot-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+}
+
+.menu-robomestre .navbar-toggler:hover {
+  background-color: rgba(255, 180, 71, 0.2);
+  border-color: #ffcc44;
+}
+
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.menu-robomestre .navbar-brand {
+  color: var(--robot-gold);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.9rem;
+}
+
+/* ==============================================================
+   RODAPÉ (modelo_rodape.css)
+   ============================================================== */
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
+  border-top: 5px solid #9bbc7b;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-rebelde {
+  border-top-color: var(--robot-gold);
+}
+
+.footer-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.footer-logo {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.dev-nome {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: 'Chakra Petch', monospace;
+  color: #ebf0eb;
+}
+
+.dev-contato {
+  font-size: 0.8rem;
+}
+
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+  font-family: monospace;
+}
+
+.dev-contato a:hover {
+  color: var(--robot-gold);
+  text-decoration: underline;
+  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
+}
+
+.relatorio-bugs {
+  border-top: 1px dashed var(--robot-gold);
+  padding-top: 0.8rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffcc88;
+  letter-spacing: 0.5px;
+}
+
+/* ==============================================================
+   CONTEÚDO PRINCIPAL (index.css - conteúdo)
+   ============================================================== */
+.bg-robocard {
+  background: var(--robot-card);
+  border: 1px solid var(--robot-border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.projeto-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 6px solid var(--robot-gold);
+  padding-left: 1rem;
+}
+
+.projeto-header h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 10px #ffb34755;
+  margin: 0;
+}
+
+.badge-projeto {
+  background: var(--robot-gold);
+  color: #1e2a1a;
+  font-weight: 700;
+  padding: 0.2rem 1.2rem;
+  border-radius: 60px;
+  font-size: 0.7rem;
+  font-family: 'Chakra Petch', monospace;
+  white-space: nowrap;
+}
+
+.carta-texto {
+  color: #d4e0d4;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.carta-texto strong {
+  color: var(--robot-gold);
+}
+
+.text-gold {
+  color: var(--robot-gold);
+}
+
+.titulo-card {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 10px #ffb34755;
+}
+
+.selo-divulgacao {
+  background: var(--robot-dark);
+  border: 2px dashed var(--robot-gold);
+  border-radius: 30px;
+  padding: 1.8rem;
+  text-align: center;
+}
+
+.card-bug-hunter {
+  background: var(--robot-dark);
+  border-radius: 60px;
+  border: 1px solid var(--robot-gold);
+}
+
+.alert-robotica {
+  color: var(--robot-text);
+  background: rgba(255, 180, 71, 0.1);
+  border: 1px solid var(--robot-gold);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+
+.table-robotica {
+  background: var(--robot-dark);
+  border-collapse: collapse;
+  color: var(--robot-text);
+}
+
+.table-robotica td {
+  padding: 0.75rem;
+  border: 1px solid var(--robot-border);
+}
+
+.table-robotica tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.table-robotica tr:hover {
+  background: rgba(255, 180, 71, 0.08);
+}
+
+.frase-do-dia {
+  background: var(--robot-dark);
+  border-left: 6px solid var(--robot-gold);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  margin-top: 1.2rem;
+  font-style: italic;
+  color: #e9f5db;
+}
+
+.frase-do-dia i {
+  color: var(--robot-gold);
+  margin-right: 0.5rem;
+}
+
+.grade-anos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.card-ano {
+  background: var(--robot-card);
+  border: 1px solid var(--robot-border);
+  border-radius: 24px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.card-ano:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 179, 71, 0.15);
+  border-color: var(--robot-gold);
+}
+
+.card-ano .ano-numero {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.2rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 20px #ffb34744;
+}
+
+.card-ano .ano-titulo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+  color: #e9f5db;
+}
+
+.card-ano .ano-desc {
+  font-size: 0.8rem;
+  color: #9bbc7b;
+  margin-top: 0.2rem;
+}
+
+.btn-ano {
+  margin-top: 0.8rem;
+  background: var(--robot-gold);
+  border: none;
+  color: #1e2a1a;
+  font-weight: 700;
+  padding: 0.3rem 1.2rem;
+  border-radius: 60px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-ano:hover {
+  background: #ffa726;
+  color: #1e2a1a;
+  box-shadow: 0 0 20px #ffb34788;
+  transform: scale(1.05);
+}
+
+.titulo-fechamento {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: var(--robot-gold);
+  text-shadow: 0 0 15px #ffb34766;
+}
+
+.flutuar {
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ==============================================================
+   ANIMAÇÕES EXTRAS (piscaLed, curtoCircuito, reboot, contadorPisca)
+   ============================================================== */
+@keyframes piscaLed {
+
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 5px #00ff00;
+  }
+
+  50% {
+    opacity: 0.4;
+    text-shadow: 0 0 15px #ffcc00;
+  }
+}
+
+.pisca-alerta {
+  animation: piscaLed 1s step-start infinite;
+  color: #ffcc00;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.1rem 0.3rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+@keyframes curtoCircuito {
+
+  0%,
+  100% {
+    background-color: #2c3e2b;
+  }
+
+  10%,
+  30%,
+  50% {
+    background-color: #ffcc00;
+  }
+
+  20%,
+  40% {
+    background-color: #ff6600;
+  }
+}
+
+@keyframes reboot {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  60% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contadorPisca {
+
+  0%,
+  100% {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+
+  50% {
+    background-color: rgba(255, 180, 71, 0.5);
+    transform: scale(1.05);
+  }
+}
+
+#relatorioBugs.atualizando {
+  animation: contadorPisca 0.3s ease-in-out;
+}
+
+/* ==============================================================
+   RESPONSIVIDADE (todos os módulos)
+   ============================================================== */
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    white-space: normal;
+    word-break: keep-all;
+  }
+
+  .titulo-principal::before {
+    top: -4px;
+    height: 6px;
+  }
+
+  .logo-rb,
+  .logo-gn {
+    max-height: 50px;
+  }
+
+  .subtitulo-chiclete {
+    font-size: 0.6rem;
+  }
+
+  .footer-robotico {
+    font-size: 0.75rem;
+    padding: 1.5rem 0;
+  }
+
+  .footer-logo {
+    max-height: 50px;
+  }
+
+  .dev-nome {
+    font-size: 0.7rem;
+  }
+
+  .dev-contato {
+    font-size: 0.65rem;
+  }
+
+  .relatorio-bugs {
+    font-size: 0.65rem;
+  }
+
+  .menu-robomestre .navbar-collapse {
+    background: rgba(13, 31, 11, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    margin-top: 12px;
+    padding: 12px 0;
+    border: 1px solid var(--robot-gold);
+  }
+
+  .menu-robomestre .nav-link {
+    justify-content: center;
+    margin: 4px 12px;
+  }
+
+  .titulo-card {
+    font-size: 1rem;
+  }
+
+  .projeto-header h2 {
+    font-size: 1rem;
+  }
+
+  .carta-texto {
+    font-size: 0.95rem;
+  }
+
+  .grade-anos {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .card-ano {
+    padding: 1rem 0.8rem;
+  }
+
+  .card-ano .ano-numero {
+    font-size: 1.8rem;
+  }
+
+  .card-ano .ano-titulo {
+    font-size: 0.95rem;
+  }
+
+  .selo-divulgacao {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo-principal {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logo-rb,
+  .logo-gn {
+    max-height: 40px;
+  }
+
+  .selo-sucata {
+    font-size: 0.55rem;
+    padding: 2px 8px;
+  }
+
+  .footer-logo {
+    max-height: 40px;
+  }
+
+  .dev-nome {
+    font-size: 0.6rem;
+  }
+
+  .dev-contato {
+    font-size: 0.55rem;
+  }
+
+  .relatorio-bugs {
+    font-size: 0.55rem;
+  }
+
+  .titulo-fechamento {
+    font-size: 0.8rem;
+  }
+
+  .badge-projeto {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.8rem;
+  }
+
+  .projeto-header h2 {
+    font-size: 0.85rem;
+  }
+}
