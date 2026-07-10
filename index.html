@@ -1,390 +1,501 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>RobôMestres | Menu + Imagem Principal</title>
-    <!-- Bootstrap 5 + ícones + fontes -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
 
-    <link rel="stylesheet" href="modelos/modelo_css/modelo_cabecalho.css" />
-    <link rel="stylesheet" href="modelos/modelo_css/modelo_rodape.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>🤖 RobôMestres · O Caos Programado</title>
+  <!-- Bootstrap 5 + ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <!-- CSS ÚNICO DO PROJETO (contém cabeçalho, menu, rodapé e conteúdo) -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
 
-    <style>
-      /* ================================================== */
-      /* ESTILOS DO MENU DE NAVEGAÇÃO - ROBÓTICA EDUCACIONAL */
-      /* ================================================== */
+<body class="bg-robotica">
 
-      /* ---------- VARIÁVEIS GLOBAIS ---------- */
-      :root {
-        --robot-green: #4a7c3f;
-        --robot-dark: #1e2a1a;
-        --robot-bg: #0d1f0b;
-        --robot-card: #2c3e2b;
-        --robot-gold: #ffb347;
-        --robot-glow: #ffcc44;
-        --robot-danger: #e74c3c;
-        --robot-text: #e9f5db;
-        --robot-text-claro: #ebf0eb;
-      }
-
-      /* ---------- RESET E BASE ---------- */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body.bg-robotica {
-        background: linear-gradient(135deg, #0a1f0a 0%, #0d2a0a 100%);
-        font-family: "Inter", "Chakra Petch", "Segoe UI", system-ui, sans-serif;
-        color: var(--robot-text);
-        min-height: 100vh;
-      }
-
-      /* ---------- MENU GLASSMORPHISM ---------- */
-      .menu-robomestre {
-        background: rgba(13, 31, 11, 0.85);
-        backdrop-filter: blur(12px);
-        border-bottom: 2px solid var(--robot-gold);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease;
-      }
-
-      /* ---------- LINKS DO MENU ---------- */
-      .menu-robomestre .nav-link {
-        color: var(--robot-text);
-        font-family: "Chakra Petch", monospace;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 40px;
-        transition: all 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .menu-robomestre .nav-link i {
-        font-size: 1.1rem;
-        color: var(--robot-gold);
-        transition: transform 0.2s;
-      }
-
-      /* Efeito hover */
-      .menu-robomestre .nav-link:hover {
-        color: var(--robot-gold);
-        text-shadow: 0 0 4px var(--robot-gold);
-        background: rgba(255, 180, 71, 0.15);
-        transform: translateY(-2px);
-      }
-
-      .menu-robomestre .nav-link:hover i {
-        transform: scale(1.1);
-        color: var(--robot-glow);
-      }
-
-      /* Link ativo (página atual) */
-      .menu-robomestre .nav-link.active {
-        color: var(--robot-glow);
-        background: rgba(255, 180, 71, 0.25);
-        text-shadow: 0 0 6px var(--robot-gold);
-        border-bottom: 2px solid var(--robot-gold);
-      }
-
-      /* ---------- BOTÃO TOGGLE (mobile) ---------- */
-      .menu-robomestre .navbar-toggler {
-        border-color: var(--robot-gold);
-        background-color: rgba(0, 0, 0, 0.5);
-        transition: all 0.2s;
-      }
-
-      .menu-robomestre .navbar-toggler:hover {
-        background-color: rgba(255, 180, 71, 0.2);
-        border-color: var(--robot-glow);
-      }
-
-      .menu-robomestre .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-      }
-
-      /* ---------- MARCA (brand) em mobile ---------- */
-      .menu-robomestre .navbar-brand {
-        color: var(--robot-gold);
-        font-family: "Press Start 2P", cursive;
-        font-size: 0.9rem;
-      }
-
-      /* ---------- RESPONSIVIDADE DO MENU ---------- */
-      @media (max-width: 992px) {
-        .menu-robomestre .nav-link {
-          font-size: 0.9rem;
-          padding: 0.4rem 0.8rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .menu-robomestre .navbar-collapse {
-          background: rgba(13, 31, 11, 0.95);
-          backdrop-filter: blur(12px);
-          border-radius: 20px;
-          margin-top: 12px;
-          padding: 12px 0;
-          border: 1px solid var(--robot-gold);
-        }
-
-        .menu-robomestre .nav-link {
-          justify-content: center;
-          margin: 4px 12px;
-        }
-      }
-
-      /* ---------- ESPAÇO PARA IMAGEM GRANDE ---------- */
-      .hero-imagem {
-        margin: 2rem 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .hero-imagem img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 30px;
-        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
-        border: 3px solid var(--robot-gold);
-        transition: transform 0.3s ease;
-      }
-
-      .hero-imagem img:hover {
-        transform: scale(1.01);
-      }
-
-      /* legenda opcional */
-      .legenda-imagem {
-        text-align: center;
-        margin-top: 1rem;
-        font-family: "Chakra Petch", monospace;
-        color: var(--robot-text-claro);
-        font-size: 0.9rem;
-      }
-
-      /* rodapé simples (opcional, apenas para fechar a página) */
-      .footer-simples {
-        margin-top: 3rem;
-        text-align: center;
-        padding: 1.5rem 0;
-        border-top: 1px dashed var(--robot-gold);
-        color: var(--robot-text-claro);
-        font-size: 0.8rem;
-      }
-    </style>
-  </head>
-
-  <body class="bg-robotica">
-    <!-- CABEÇALHO REBELDE -->
-    <header class="cabecalho-robotico cabecalho-rebelde">
-      <div class="container">
-        <div class="row align-items-center justify-content-between g-2">
-          <div class="col-auto">
-            <img
-              src="imagens/logo_rb.png"
-              alt="Logo Rodrigo Barbosa"
-              class="logo-rb"
-              onerror="this.src = 'https://placehold.co/80x80?text=RB'"
-            />
+  <!-- ==================== CABEÇALHO REBELDE ==================== -->
+  <header class="cabecalho-robotico cabecalho-rebelde">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-2">
+        <div class="col-auto">
+          <img src="imagens/logo_rb.png" alt="Logo Rodrigo Barbosa" class="logo-rb"
+            onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+        </div>
+        <div class="col text-center">
+          <h1 class="titulo-principal glitch-text">
+            🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
+            <span class="parafuso-esquerda">⬤</span>
+          </h1>
+          <div class="subtitulo-chiclete">
+            ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
+            ISSO; SENÃO… AGUENTA ⚡<br />
+            <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
           </div>
-          <div class="col text-center">
-            <h1 class="titulo-principal glitch-text">
-              🤖 ROBÓTICA NO ENSINO FUNDAMENTAL I — 2º ANO
-              <span class="parafuso-esquerda">⬤</span>
-            </h1>
-            <div class="subtitulo-chiclete">
-              ⚡ 1º BIMESTRE: SE VOCÊ SOBREVIVEU AO 1º ANO, ENTÃO VAI ADORAR
-              ISSO; SENÃO… AGUENTA ⚡<br />
-              <span class="selo-sucata mt-2 d-inline-block"
-                >APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span
-              >
+        </div>
+        <div class="col-auto">
+          <img src="imagens/logo_gn.png" alt="Logo Gisele Nunes" class="logo-gn"
+            onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MENU GLASSMORPHISM ==================== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="index.html">
+        <i class="bi bi-robot"></i> RobôMestres
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboMenu">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">
+              <i class="bi bi-house-door-fill"></i> Principal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="passo_a_passo_tinkercad.html">
+              <i class="bi bi-0-circle-fill"></i> Passo a passo
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a1index.html">
+              <i class="bi bi-1-circle-fill"></i> 1º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a2index.html">
+              <i class="bi bi-2-circle-fill"></i> 2º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a3index.html">
+              <i class="bi bi-3-circle-fill"></i> 3º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a4index_hardware.html">
+              <i class="bi bi-4-circle-fill"></i> 4º ano
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a5index_hardware.html">
+              <i class="bi bi-5-circle-fill"></i> 5º ano
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ========================================================== -->
+  <!-- CONTEÚDO PRINCIPAL                                          -->
+  <!-- ========================================================== -->
+  <main class="container py-4">
+
+    <!-- ===== CARD DE ABERTURA ===== -->
+    <section class="mb-5">
+      <div class="bg-robocard p-4 p-md-5 rounded-4 shadow-lg position-relative overflow-hidden">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h2 class="titulo-card">
+              <i class="bi bi-robot"></i> BEM-VINDO AO CAOS ORGANIZADO
+            </h2>
+            <p class="lead fw-bold text-gold">
+              "SE você chegou até aqui, ENTÃO seu cérebro ainda não fundiu o que já é um milagre da engenharia
+              pedagógica."
+            </p>
+            <p class="carta-texto">
+              Este é o <strong>RobôMestres 3000</strong>: um material didático completo, irreverente e absurdamente
+              prático para ensinar robótica educacional nos anos iniciais do Ensino Fundamental. <br><br>
+              Aqui, <strong>sucata vira robô</strong>, <strong>código vira dança</strong> e <strong>bug não é erro é
+                aprendizado com efeitos especiais</strong>.
+              São <strong>40 semanas</strong> de planos de aula, desde o 1º até o 5º ano, com projetos que vão do LED
+              piscante à feira de robótica.
+            </p>
+            <div class="selo-divulgacao mt-3">
+              <i class="bi bi-bug-fill text-warning fs-2"></i>
+              <span class="fw-bold text-warning" style="font-family:'Chakra Petch',monospace;">
+                “Loop não é macarrão! Variável não é coisa de velho! Depurar não é xingamento!”
+              </span>
             </div>
           </div>
-          <div class="col-auto">
-            <img
-              src="imagens/logo_gn.png"
-              alt="Logo Gisele Nunes"
-              class="logo-gn"
-              onerror="this.src = 'https://placehold.co/80x80?text=GN'"
-            />
+          <div class="col-md-4 text-center">
+            <i class="bi bi-robot display-1 text-warning flutuar"></i>
+            <i class="bi bi-gear display-1 text-success flutuar" style="animation-delay:0.5s;"></i>
+            <div class="card-bug-hunter p-2 mt-3">
+              <small><i class="bi bi-tools"></i> <span class="text-warning">Nível: Mestre do Caos</span></small>
+            </div>
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- ==================== MENU GLASSMORPHISM ==================== -->
-    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <a class="navbar-brand d-lg-none" href="index.html">
-          <i class="bi bi-robot"></i> RobôMestres
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navRoboMenu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navRoboMenu">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="bi bi-house-door-fill"></i> Principal
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="passo_a_passo_tinkercad.html">
-                <i class="bi bi-0-circle-fill"></i> Passo a passo
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a1index.html">
-                <i class="bi bi-1-circle-fill"></i> 1º ano
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a2index.html">
-                <i class="bi bi-2-circle-fill"></i> 2º ano
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a3index.html">
-                <i class="bi bi-3-circle-fill"></i> 3º ano
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a4index_hardware.html">
-                <i class="bi bi-4-circle-fill"></i> 4º ano
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a5index_hardware.html">
-                <i class="bi bi-5-circle-fill"></i> 5º ano
-              </a>
-            </li>
-          </ul>
+    <!-- ===== APRESENTAÇÃO ===== -->
+    <section id="apresentacao" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-info-circle"></i> O QUE É ISSO?</h2>
+        <span class="badge-projeto">Manual de sobrevivência do professor</span>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p class="carta-texto">
+          <strong>RobôMestres 3000</strong> é um <strong>currículo vivo</strong> de robótica educacional, criado para
+          professores que querem <strong>ensinar pensamento computacional com suor, cola quente e muita
+            gargalhada</strong>.
+          Não é uma apostila cinzenta é uma <strong>trilha de 40 semanas</strong> que leva crianças de 6 a 10 anos a
+          construírem seus próprios robôs, programarem com micro:bit, depurarem bugs e apresentarem projetos na Feira de
+          Robótica.
+        </p>
+        <div class="row g-3 mt-3">
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-cpu fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Hardware de verdade</h5>
+              <p class="small">micro:bit, LEDs, resistores, sensores de papel alumínio o robô nasce da sucata e ganha
+                vida.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-code-square fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Código que dança</h5>
+              <p class="small">Loop, variável, condicional, evento, concorrência tudo com MakeCode, Scratch e muito
+                grito de “ACHEI O BUG!”.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-emoji-laughing fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Irreverência como método</h5>
+              <p class="small">Cartas de abertura, frases do dia, jogos desplugados, certificados “Engenheiro do Caos”
+                a aula nunca é chata.</p>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-robotica mt-4">
+          <i class="bi bi-megaphone-fill"></i> <strong>Regra de ouro:</strong> SE o robô não andar, ENTÃO a gente
+          declara Dia do Bug; SENÃO a gente dança.
         </div>
       </div>
-    </nav>
+    </section>
 
-    <!-- CONTEÚDO PRINCIPAL: ESPAÇO PARA IMAGEM .jpeg OCUPANDO TODO O ESPAÇO -->
-    <main class="container my-5">
-      <div class="hero-imagem">
-        <!-- IMAGEM LOCAL "imagens/imagem_principal.jpeg" ocupando todo o espaço -->
-        <img
-          src="imagens/imagem_principal.png"
-          alt="Imagem principal - RobôMestres"
-          class="img-fluid rounded-4 shadow-lg"
-          style="border: 4px solid #ffb347"
-        />
+    <!-- ===== ESTRUTURA ===== -->
+    <section id="estrutura" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-diagram-3"></i> COMO ESTÁ ESTRUTURADO?</h2>
+        <span class="badge-projeto">O esqueleto do caos</span>
       </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p class="carta-texto">
+          O material é organizado por <strong>ano escolar (1º ao 5º)</strong> e cada ano contém <strong>4
+            bimestres</strong> com <strong>10 semanas</strong> de planos de aula detalhados.
+          Cada plano de aula é uma <strong>aventura completa</strong>:
+        </p>
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <ul class="list-unstyled carta-texto">
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Objetivos operacionais</strong> o que o
+                aluno vai aprender.</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Conteúdo programático</strong> o que
+                será ensinado.</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Habilidades BNCC e RCP-PR</strong>
+                alinhamento curricular.</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Materiais</strong> kit do dia, com
+                ícones divertidos.</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled carta-texto">
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Código</strong> programas prontos para
+                micro:bit (MakeCode/JS).</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Montagem do hardware</strong> passo a
+                passo ilustrado.</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Minuto a minuto</strong> roteiro da
+                aula (50 min).</li>
+              <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Adaptações e inclusão</strong> para
+                TEA, TDAH, deficiências.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="carta-texto mt-3">
+          <strong>Além disso:</strong> cada bimestre traz <strong>jogos temáticos</strong>,
+          <strong>certificados</strong>, <strong>rubricas de avaliação</strong> e <strong>dicas de materiais</strong>.
+          Tudo pensado para que o professor tenha <strong>zero trabalho de preparação</strong> só abrir e botar pra
+          quebrar.
+        </p>
+        <div class="table-responsive mt-3">
+          <table class="table table-robotica table-bordered">
+            <tbody>
+              <tr>
+                <td>1º</td>
+                <td>4</td>
+                <td>40</td>
+                <td>Algoritmos, sequências, comandos, loop, condicional</td>
+              </tr>
+              <tr>
+                <td>2º</td>
+                <td>4</td>
+                <td>40</td>
+                <td>Condicionais, eventos, lógica binária, ScratchJr</td>
+              </tr>
+              <tr>
+                <td>3º</td>
+                <td>4</td>
+                <td>40</td>
+                <td>Loop, variável, depuração, projeto autoral</td>
+              </tr>
+              <tr>
+                <td>4º</td>
+                <td>4</td>
+                <td>40</td>
+                <td>Micro:bit, aninhamento, concorrência, feira</td>
+              </tr>
+              <tr>
+                <td>5º</td>
+                <td>4</td>
+                <td>40</td>
+                <td>Funções, sensores, operadores lógicos, robô autoral</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="frase-do-dia mt-3">
+          <i class="bi bi-chat-quote"></i>
+          <strong>Estrutura é o esqueleto. O caos é a alma. E você, professor, é o Frankenstein que dá vida a tudo
+            isso.</strong>
+        </div>
+      </div>
+    </section>
 
-      <!-- Mensagem de exemplo (opcional, mantém o tom pedagógico) -->
-      <div class="text-center mt-4">
-        <p class="small text-muted" style="color: #ebf0eb !important">
-          🤖 "Loop não é macarrão! Variável não é coisa de velho!"<br />
+    <!-- ===== OS ANOS ===== -->
+    <section id="anos" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-1-square"></i> OS ANOS DO 1º AO 5º</h2>
+        <span class="badge-projeto">Escolha sua turma</span>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p class="carta-texto">
+          Cada ano tem sua própria personalidade, mas todos seguem a mesma <strong>espinha dorsal</strong>:
+          <strong>pensamento computacional</strong> na veia, <strong>criatividade</strong> no DNA e <strong>muita
+            sucata</strong> no corpo.
+        </p>
+        <div class="grade-anos">
+          <!-- 1º Ano -->
+          <div class="card-ano">
+            <div class="ano-numero">1º</div>
+            <div class="ano-titulo">A Dança dos Comandos</div>
+            <div class="ano-desc">Algoritmos, sequências, direita/esquerda, primeiros passos com robôs de papelão.</div>
+            <a href="a1index.html" class="btn-ano">Explorar</a>
+          </div>
+          <!-- 2º Ano -->
+          <div class="card-ano">
+            <div class="ano-numero">2º</div>
+            <div class="ano-titulo">SE → ENTÃO → SENÃO</div>
+            <div class="ano-desc">Condicionais, eventos, lógica binária, jogos de tabuleiro e robôs que decidem.</div>
+            <a href="a2index.html" class="btn-ano">Explorar</a>
+          </div>
+          <!-- 3º Ano -->
+          <div class="card-ano">
+            <div class="ano-numero">3º</div>
+            <div class="ano-titulo">Loop & Variável</div>
+            <div class="ano-desc">Repetição, contadores, depuração, projetos com prendedor e régua.</div>
+            <a href="a3index.html" class="btn-ano">Explorar</a>
+          </div>
+          <!-- 4º Ano -->
+          <div class="card-ano">
+            <div class="ano-numero">4º</div>
+            <div class="ano-titulo">Micro:bit & Aninhamento</div>
+            <div class="ano-desc">Hardware de verdade: micro:bit, LEDs, resistores, eventos concorrentes.</div>
+            <a href="a4index_hardware.html" class="btn-ano">Explorar</a>
+          </div>
+          <!-- 5º Ano -->
+          <div class="card-ano">
+            <div class="ano-numero">5º</div>
+            <div class="ano-titulo">Robô Autoral</div>
+            <div class="ano-desc">Funções, sensores, operadores lógicos, projeto integrado com Feira de Robótica.</div>
+            <a href="a5index_hardware.html" class="btn-ano">Explorar</a>
+          </div>
+        </div>
+        <p class="carta-texto mt-3 text-center">
+          <i class="bi bi-arrow-right-circle text-warning"></i>
+          Clique em "Explorar" para acessar o índice de cada ano e navegar pelos bimestres.
         </p>
       </div>
-    </main>
+    </section>
 
-    <!-- Rodapé discreto (apenas para fechar a página) -->
-    <footer class="footer-robotico footer-rebelde">
-      <div class="container">
-        <div class="row align-items-center mb-3">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <div class="d-flex justify-content-center justify-content-md-start">
-              <img
-                src="imagens/logo_rb.png"
-                alt="Rodrigo Barbosa"
-                class="footer-logo"
-                onerror="this.src = 'https://placehold.co/80x80?text=RB'"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex justify-content-center justify-content-md-end">
-              <img
-                src="imagens/logo_gn.png"
-                alt="Gisele Nunes"
-                class="footer-logo"
-                onerror="this.src = 'https://placehold.co/80x80?text=GN'"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="row align-items-start mb-4">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <div class="text-center text-md-start">
-              <div class="dev-nome">
-                💀 Desenvolvido na base do ódio, litros de café e condicionais
-                malucas por Rodrigo Barbosa.
-              </div>
-              <div class="dev-contato mt-1">
-                <i class="bi bi-envelope-paper"></i>
-                <a href="mailto:barbosa.rodrigo.1979@gmail.com"
-                  >barbosa.rodrigo.1979@gmail.com</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="text-center text-md-end">
-              <div class="dev-nome">
-                ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
-                SENÃO e uma dedicação que só aparece quando o prazo já passou
-                por Gisele Nunes.
-              </div>
-              <div class="dev-contato mt-1">
-                <i class="bi bi-envelope-paper"></i>
-                <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relatorio-bugs"></div>
+    <!-- ===== PARA QUEM É? ===== -->
+    <section id="para-quem" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-people"></i> PARA QUEM É ISSO?</h2>
+        <span class="badge-projeto">Público‑alvo</span>
       </div>
-    </footer>
+      <div class="bg-robocard p-4 rounded-4">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <ul class="list-unstyled carta-texto">
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Professores do Ensino Fundamental
+                  I</strong> que querem inovar com robótica sem gastar rios de dinheiro.</li>
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Coordenadores pedagógicos</strong> que
+                buscam um currículo pronto e alinhado à BNCC.</li>
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Entusiastas de tecnologia</strong> que
+                acreditam que crianças podem programar desde cedo.</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled carta-texto">
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Quem nunca viu um micro:bit</strong> o
+                material começa do zero, com explicações claras.</li>
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Quem já é veterano</strong> encontra
+                projetos desafiadores e abordagens criativas.</li>
+              <li><i class="bi bi-person-check-fill text-success"></i> <strong>Inclusão é prioridade</strong>
+                adaptações para TEA, TDAH, deficiências física, visual e auditiva.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="alert alert-success mt-3">
+          <i class="bi bi-heart-fill"></i> <strong>Não precisa ser expert em programação.</strong> O material foi
+          escrito por professores para professores com muito humor e zero arrogância.
+        </div>
+      </div>
+    </section>
 
-    <!-- Bootstrap JS (necessário para o menu colapsável em mobile) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Script simples para manter o link ativo de acordo com a página -->
-    <script>
-      (function () {
-        const currentPath =
-          window.location.pathname.split("/").pop() || "index.html";
-        const navLinks = document.querySelectorAll(
-          ".menu-robomestre .nav-link",
-        );
-        let hasActive = false;
-        navLinks.forEach((link) => {
-          if (link.classList.contains("active")) hasActive = true;
-        });
-        if (!hasActive && navLinks.length) navLinks[0].classList.add("active");
-      })();
-    </script>
-  </body>
+    <!-- ===== DOWNLOAD / ACESSO ===== -->
+    <section id="download" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-download"></i> COMO ACESSAR?</h2>
+        <span class="badge-projeto">Gratuito e aberto</span>
+      </div>
+      <div class="bg-robocard p-4 rounded-4">
+        <p class="carta-texto">
+          Todo o material está disponível neste site, em formato <strong>HTML interativo</strong>.
+          Você pode navegar pelos anos e bimestres, copiar códigos, baixar imagens e imprimir os planos de aula.
+        </p>
+        <div class="row g-3 mt-3">
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-globe2 fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Navegação online</h5>
+              <p class="small">Use o menu para saltar entre anos e bimestres. Tudo pronto para usar na sala de aula.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-printer fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Impressão amigável</h5>
+              <p class="small">Cada plano de aula tem uma versão otimizada para impressão leve para a sala sem
+                depender de tela.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center p-3">
+              <i class="bi bi-github fs-1 text-warning"></i>
+              <h5 class="text-warning mt-2">Código aberto</h5>
+              <p class="small">Todo o código fonte está disponível para adaptação sinta‑se à vontade para remixar e
+                melhorar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#anos" class="btn btn-warning fw-bold px-5 py-2" style="border-radius:60px;">
+            <i class="bi bi-arrow-right-circle"></i> COMEÇAR AGORA
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FECHAMENTO ===== -->
+    <section class="mb-5">
+      <div class="bg-robocard p-4 rounded-4 text-center border border-warning">
+        <h3 class="titulo-fechamento">
+          ⚡ PARA ENCERRAR COM CHAVE DE OURO (E MUITO RISO) ⚡
+        </h3>
+        <p class="carta-texto mt-3">
+          Então, professor(a), como foi essa primeira leva? Você ainda está com a caneca de café? Tomara que esteja com
+          uma caneta na mão, rabiscando ideias nas laterais. O material é seu. Pode rasgar, pode colar, pode errar. A
+          robótica, assim como a infância, é um eterno <strong>SE… ENTÃO… SENÃO</strong>.
+        </p>
+        <p class="carta-texto fst-italic">
+          <strong>SE</strong> o robô não andar, <strong>ENTÃO</strong> a gente declara "Dia do Bug",
+          <strong>SENÃO</strong> a gente dança.<br>
+          <strong>SE</strong> uma criança chorar, <strong>ENTÃO</strong> a gente abraça e pergunta qual comando erramos,
+          <strong>SENÃO</strong> a gente celebra.
+        </p>
+        <p class="carta-texto">
+          No próximo bimestre, a gente vai para o segundo nível. Mas, por enquanto, respire. Você acabou de plantar uma
+          semente poderosa. E, acredite, daqui a alguns anos, essa turma não vai só apertar botões eles vão
+          <strong>construir</strong> os botões.
+        </p>
+        <p class="mt-3 fw-bold text-warning" style="font-family:'Chakra Petch',monospace;">
+          Até a próxima aventura, comandante! 🚀🤖💥
+        </p>
+        <div class="selo-sucata mt-3 d-inline-block">
+          BUGS ESMAGADOS: INFINITOS ☕
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- ==================== RODAPÉ REBELDE ==================== -->
+  <footer class="footer-robotico footer-rebelde">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center justify-content-md-end">
+            <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-start mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="text-center text-md-start">
+            <div class="dev-nome">
+              💀 Desenvolvido na base do ódio, litros de café e condicionais
+              malucas por Rodrigo Barbosa.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:barbosa.rodrigo.1979@gmail.com">barbosa.rodrigo.1979@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-center text-md-end">
+            <div class="dev-nome">
+              ✨ Desenvolvido com o mínimo de esforço possível, o máximo de
+              SENÃO e uma dedicação que só aparece quando o prazo já passou
+              por Gisele Nunes.
+            </div>
+            <div class="dev-contato mt-1">
+              <i class="bi bi-envelope-paper"></i>
+              <a href="mailto:giseleacn@gmail.com">giseleacn@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relatorio-bugs" id="relatorioBugs">0</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JS ÚNICO DO PROJETO (contém cabeçalho, menu, rodapé e lógica da página) -->
+  <script src="js/index.js"></script>
+</body>
+
 </html>
