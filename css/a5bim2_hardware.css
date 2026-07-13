@@ -1190,3 +1190,160 @@ code {
     margin-bottom: 8px;
   }
 }
+
+/* ==================================================
+   REGRAS DE IMPRESSÃO - APENAS PLANOS DE AULA
+   ================================================== */
+@media print {
+
+  /* --- Oculta tudo que não é o accordion --- */
+  .cabecalho-robotico,
+  .menu-robomestre,
+  .footer-robotico,
+  #carta-abertura,
+  #mapeamento,
+  #plano-sintetico,
+  #certificacao,
+  #adaptacoes,
+  #referencias,
+  .btn-robotico-ano2,
+  /* botão de imprimir */
+  .btn-outline-warning,
+  .btn-selecionar-aluno,
+  .btn-remover-aluno,
+  .check-concluido,
+  .badge-projeto,
+  .projeto-header .badge-projeto,
+  .projeto-header .btn-robotico-ano2,
+  .navbar-toggler,
+  .alert-info,
+  .frase-do-dia,
+  .progress-container {
+    display: none !important;
+  }
+
+  /* --- Mostra apenas a seção de aulas e o accordion --- */
+  #aulas,
+  .accordion,
+  .accordion-item,
+  .accordion-header,
+  .accordion-button,
+  .accordion-collapse,
+  .accordion-body {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* --- Expande todos os painéis do accordion --- */
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .accordion-button::after {
+    display: none !important;
+    /* esconde ícone de seta */
+  }
+
+  .accordion-button {
+    background: #2c3e2b !important;
+    color: #ffb347 !important;
+    font-size: 14pt !important;
+    padding: 12px 16px !important;
+    border-bottom: 2px solid #ffb347 !important;
+  }
+
+  .accordion-body {
+    padding: 16px !important;
+    border: 1px solid #4a7c3f !important;
+    border-top: none !important;
+    background: #0d1f0b !important;
+    color: #e9f5db !important;
+  }
+
+  /* --- Quebra de página entre as semanas --- */
+  .accordion-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 20px !important;
+    border: 2px solid #9bbc7b !important;
+    border-radius: 12px !important;
+    background: #1e2a1a !important;
+  }
+
+  /* --- Estiliza tabelas e códigos para impressão --- */
+  .table-robotica,
+  .tabela-criterios-semana {
+    background: #1a2b17 !important;
+    color: #e9f5db !important;
+    border-color: #4a7c3f !important;
+  }
+
+  .table-robotica th,
+  .tabela-criterios-semana th {
+    background: #2c3e2b !important;
+    color: #ffb347 !important;
+  }
+
+  .table-robotica td,
+  .tabela-criterios-semana td {
+    border-color: #4a7c3f !important;
+  }
+
+  .code-block,
+  pre {
+    background: #0a0f08 !important;
+    color: #ffb347 !important;
+    border: 1px solid #4a7c3f !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    page-break-inside: avoid;
+  }
+
+  /* --- Garante que listas e textos fiquem legíveis --- */
+  ul,
+  p,
+  h5,
+  h6 {
+    color: #e9f5db !important;
+  }
+
+  h5 {
+    color: #ffb347 !important;
+    border-left-color: #ffb347 !important;
+  }
+
+  /* --- Remove fundos de gradiente para economia de tinta (opcional) --- */
+  body.bg-robotica {
+    background: #0d1f0b !important;
+  }
+
+  .bg-robocard {
+    background: #1e2a1a !important;
+    box-shadow: none !important;
+    border: 1px solid #4a7c3f !important;
+  }
+
+  /* --- Ajusta margens gerais --- */
+  main.container {
+    max-width: 100% !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+  }
+
+  /* --- Mostra o conteúdo de código inline --- */
+  code {
+    background: #1e2a1a !important;
+    color: #ffb347 !important;
+  }
+
+  /* --- Esconde o checkbox de "marcar como concluída" (já ocultamos acima) --- */
+  .check-concluido {
+    display: none !important;
+  }
+}

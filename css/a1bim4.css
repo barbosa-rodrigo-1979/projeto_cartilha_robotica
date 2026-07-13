@@ -925,3 +925,106 @@ code {
   color: #ffb347;
   font-family: monospace;
 }
+
+/* ========== NOVAS CLASSES PARA O JOGO (substituem estilos inline) ========== */
+.jogo-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.coluna-saude,
+.coluna-arte {
+  flex: 1;
+  min-width: 250px;
+  background: #1e2a1a;
+  border-radius: 24px;
+  padding: 16px;
+  text-align: center;
+  border: 2px solid #ffb347;
+}
+
+.coluna-arte {
+  min-width: 300px;
+}
+
+.status-robo {
+  background: #0a0f08;
+  padding: 8px;
+  border-radius: 40px;
+  margin: 12px 0;
+  font-family: monospace;
+}
+
+.btn-acao {
+  background: #ffb347;
+  border: none;
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-comando {
+  background: #2c3e2b;
+  border: none;
+  border-radius: 40px;
+  padding: 8px 16px;
+  color: #ffb347;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-comando:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+}
+
+.canvas-desenho {
+  border: 2px solid #ffb347;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.btn-reset-jogo {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1e2a1a;
+}
+
+.btn-reset-jogo:hover {
+  transform: scale(1.02);
+}
+
+/* ========== BOTÃO DE IMPRESSÃO DO ACCORDION ========== */
+.btn-print-accordion {
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
+  border: none;
+  color: #1e2a1a;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 60px;
+  transition: all 0.3s;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+}
+
+.btn-print-accordion:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ffb347;
+}
+
+/* ========== CLASSE PARA OCULTAR ELEMENTOS NA IMPRESSÃO ========== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  /* mantém as demais regras de impressão já existentes */
+}

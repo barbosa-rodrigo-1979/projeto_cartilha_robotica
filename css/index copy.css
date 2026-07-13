@@ -1,0 +1,621 @@
+/* ============================================================ */
+/* 1. RESET E ESTILOS BASE                                      */
+/* ============================================================ */
+
+.bg-robotica {
+  background-color: #0a0f08;
+  color: #ebf0eb;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.text-custom-light {
+  color: #ebf0eb !important;
+}
+
+.press-start-title {
+  font-family: 'Press Start 2P', cursive !important;
+}
+
+.chakra-font {
+  font-family: 'Chakra Petch', monospace !important;
+}
+
+/* ============================================================ */
+/* 2. CABEÇALHO                                                 */
+/* ============================================================ */
+
+.cabecalho-robotico {
+  background: linear-gradient(135deg, #1a1f1a 0%, #0d130d 100%);
+  border-bottom: 3px solid #f1c40f;
+  padding: 1.2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-rebelde::before {
+  content: "⚡";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 4rem;
+  opacity: 0.08;
+  transform: rotate(15deg);
+}
+
+.logo-rb,
+.logo-gn {
+  height: 70px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid #f1c40f;
+  padding: 4px;
+  background: #0a0f08;
+  transition: transform 0.3s ease;
+}
+
+.logo-rb:hover,
+.logo-gn:hover {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.titulo-principal {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1rem;
+  color: #f1c40f;
+  text-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+  margin: 0;
+  letter-spacing: 0.05em;
+  word-break: break-word;
+}
+
+.glitch-text {
+  animation: glitch 4s infinite;
+}
+
+@keyframes glitch {
+
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+  }
+
+  2% {
+    text-shadow: -2px 0 red, 2px 0 blue;
+  }
+
+  4% {
+    text-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+  }
+
+  6% {
+    text-shadow: 2px 0 red, -2px 0 blue;
+  }
+
+  8% {
+    text-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+  }
+}
+
+.parafuso-esquerda {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  display: inline-block;
+  animation: girar 6s linear infinite;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.subtitulo-chiclete {
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.8rem;
+  color: #bdc3c7;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1rem;
+  border-radius: 60px;
+  display: inline-block;
+  backdrop-filter: blur(4px);
+  border: 1px solid #f1c40f55;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.selo-sucata {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  background: #1e2a1e;
+  color: #f1c40f;
+  padding: 0.3rem 1rem;
+  border-radius: 60px;
+  border: 1px dashed #f1c40f;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================ */
+/* 3. MENU – GLASSMORPHISM                                      */
+/* ============================================================ */
+
+.menu-robomestre {
+  background: rgba(10, 15, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(241, 196, 15, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+.menu-robomestre .navbar-nav .nav-link {
+  color: #bdc3c7 !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 60px;
+  transition: all 0.2s ease;
+  font-family: 'Chakra Petch', monospace;
+}
+
+.menu-robomestre .navbar-nav .nav-link:hover,
+.menu-robomestre .navbar-nav .nav-link.active {
+  color: #f1c40f !important;
+  background: rgba(241, 196, 15, 0.12);
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.2);
+}
+
+.menu-robomestre .navbar-toggler {
+  border-color: rgba(241, 196, 15, 0.4);
+}
+
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(241, 196, 15, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.menu-robomestre .navbar-brand {
+  color: #f1c40f !important;
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 700;
+}
+
+/* ============================================================ */
+/* 4. CARDS E ELEMENTOS DE CONTEÚDO                            */
+/* ============================================================ */
+
+.bg-robocard {
+  background: rgba(20, 28, 20, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(241, 196, 15, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #f1c40f, #f39c12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.carta-texto {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #d5dbd5;
+}
+
+.carta-texto strong {
+  color: #f1c40f;
+}
+
+.selo-divulgacao {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.8rem 1.5rem;
+  border-radius: 60px;
+  border-left: 4px solid #f1c40f;
+  display: inline-block;
+}
+
+.flutuar {
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.card-bug-hunter {
+  background: #0a0f08;
+  border-radius: 60px;
+  border: 1px solid #ffb347;
+  padding: 0.5rem 1.2rem;
+  display: inline-block;
+}
+
+.card-robotica {
+  background: #141c14;
+  border: 1px solid rgba(241, 196, 15, 0.25);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-robotica:hover {
+  border-color: #f1c40f;
+  box-shadow: 0 0 20px rgba(241, 196, 15, 0.08);
+  transform: translateY(-4px);
+}
+
+.card-robotica p.small {
+  color: #b0b8b0;
+  font-size: 0.9rem;
+}
+
+/* ============================================================ */
+/* 5. CABEÇALHOS DE SEÇÃO (projeto-header)                     */
+/* ============================================================ */
+
+.projeto-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid rgba(241, 196, 15, 0.2);
+  padding-bottom: 0.6rem;
+}
+
+.projeto-header h2 {
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 700;
+  color: #f1c40f;
+  font-size: 1.6rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge-projeto {
+  background: #1e2a1e;
+  color: #f1c40f;
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 60px;
+  border: 1px solid #f1c40f55;
+  white-space: nowrap;
+}
+
+/* ============================================================ */
+/* 6. TABELA                                                    */
+/* ============================================================ */
+
+.table-robotica {
+  background: #0d130d;
+  border-color: #2a3a2a;
+  color: #ebf0eb;
+  font-family: 'Chakra Petch', monospace;
+}
+
+.table-robotica td {
+  padding: 0.75rem 1rem;
+  border-color: #2a3a2a;
+  vertical-align: middle;
+}
+
+.table-robotica tr:nth-child(even) {
+  background: #141c14;
+}
+
+.table-robotica tr:hover {
+  background: #1e2a1e;
+}
+
+/* ============================================================ */
+/* 7. FRASE DO DIA                                             */
+/* ============================================================ */
+
+.frase-do-dia {
+  background: rgba(241, 196, 15, 0.06);
+  border-left: 4px solid #f1c40f;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: #d5dbd5;
+}
+
+.frase-do-dia i {
+  color: #f1c40f;
+  margin-right: 0.6rem;
+}
+
+/* ============================================================ */
+/* 8. GRADE DE ANOS (customizada)                              */
+/* ============================================================ */
+
+.grade-anos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card-ano {
+  background: #141c14;
+  border: 1px solid rgba(241, 196, 15, 0.15);
+  border-radius: 20px;
+  padding: 1.8rem 1.2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-ano:hover {
+  transform: translateY(-6px);
+  border-color: #f1c40f;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.ano-numero {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.8rem;
+  color: #f1c40f;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 20px rgba(241, 196, 15, 0.15);
+}
+
+.ano-titulo {
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ebf0eb;
+  margin-bottom: 0.4rem;
+}
+
+.ano-desc {
+  font-size: 0.85rem;
+  color: #b0b8b0;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.btn-ano {
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 700;
+  background: transparent;
+  color: #f1c40f;
+  border: 2px solid #f1c40f;
+  padding: 0.4rem 1.8rem;
+  border-radius: 60px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.btn-ano:hover {
+  background: #f1c40f;
+  color: #0a0f08;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(241, 196, 15, 0.25);
+}
+
+/* ============================================================ */
+/* 9. RODAPÉ                                                    */
+/* ============================================================ */
+
+.footer-robotico {
+  background: #0d130d;
+  border-top: 3px solid #f1c40f55;
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 2rem;
+}
+
+.footer-rebelde {
+  position: relative;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid #f1c40f55;
+  padding: 3px;
+  background: #0a0f08;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
+.dev-nome {
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.85rem;
+  color: #a0a8a0;
+  line-height: 1.5;
+}
+
+.dev-contato a {
+  color: #bdc3c7;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.dev-contato a:hover {
+  color: #f1c40f;
+  text-decoration: underline;
+}
+
+.relatorio-bugs {
+  text-align: center;
+  border-top: 1px solid #1e2a1e;
+  padding-top: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  color: #5a6a5a;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.relatorio-bugs::after {
+  content: "🐛 RELATÓRIO DE BUGS: NENHUM ENCONTRADO (AINDA) 🐛";
+}
+
+/* ============================================================ */
+/* 10. UTILITÁRIOS ADICIONAIS                                  */
+/* ============================================================ */
+
+.rounded-60 {
+  border-radius: 60px !important;
+}
+
+/* ============================================================ */
+/* 11. RESPONSIVIDADE                                           */
+/* ============================================================ */
+
+@media (max-width: 991.98px) {
+  .titulo-principal {
+    font-size: 0.9rem;
+  }
+
+  .subtitulo-chiclete {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .logo-rb,
+  .logo-gn {
+    height: 50px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .titulo-principal {
+    font-size: 0.75rem;
+  }
+
+  .subtitulo-chiclete {
+    font-size: 0.55rem;
+  }
+
+  .projeto-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .projeto-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .badge-projeto {
+    font-size: 0.65rem;
+    white-space: normal;
+  }
+
+  .grade-anos {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .ano-numero {
+    font-size: 2.2rem;
+  }
+
+  .card-ano {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .selo-divulgacao {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .carta-texto {
+    font-size: 0.9rem;
+  }
+
+  .footer-logo {
+    height: 45px;
+  }
+
+  .dev-nome {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cabecalho-robotico {
+    padding: 0.8rem 0;
+  }
+
+  .titulo-principal {
+    font-size: 0.6rem;
+  }
+
+  .logo-rb,
+  .logo-gn {
+    height: 40px;
+  }
+
+  .subtitulo-chiclete {
+    font-size: 0.5rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .selo-sucata {
+    font-size: 0.4rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .grade-anos {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .ano-numero {
+    font-size: 1.8rem;
+  }
+
+  .ano-titulo {
+    font-size: 0.9rem;
+  }
+
+  .ano-desc {
+    font-size: 0.75rem;
+  }
+
+  .btn-ano {
+    font-size: 0.75rem;
+    padding: 0.2rem 1.2rem;
+  }
+
+  .projeto-header h2 {
+    font-size: 1rem;
+  }
+
+  .bg-robocard {
+    padding: 1.2rem !important;
+  }
+
+  .table-robotica td {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

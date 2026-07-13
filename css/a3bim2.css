@@ -1,20 +1,12 @@
-/* ================================================================
-   🎨 a3bim2.css - 3º ANO - BIMESTRE 2
-   ================================================================
-   ESTRUTURA:
-     1. VARIÁVEIS GLOBAIS
-     2. RESET E BASE
-     3. CABEÇALHO E RODAPÉ
-     4. MENU
-     5. GAME LOOP DANCE
-     6. CERTIFICADOS
-     7. ANIMAÇÕES
-     8. RESPONSIVIDADE
-   ================================================================ */
+/* ==================================================
+   a3bim2.css – Estilos completos para o 3º Ano – 2º Bimestre
+   Unifica todos os estilos necessários:
+   cabeçalho, menu, cards, planos de aula, certificado,
+   fechamento, jogo Loop Dash e rodapé.
+   Baseado nos anexos fornecidos.
+   ================================================== */
 
-/* ================================================================
-   1. VARIÁVEIS GLOBAIS
-   ================================================================ */
+/* ---------- VARIÁVEIS GLOBAIS ---------- */
 :root {
   --robot-green: #4a7c3f;
   --robot-dark: #1e2a1a;
@@ -27,9 +19,7 @@
   --robot-text-claro: #ebf0eb;
 }
 
-/* ================================================================
-   2. RESET E BASE
-   ================================================================ */
+/* ---------- RESET E BASE ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -43,18 +33,14 @@ body.bg-robotica {
   min-height: 100vh;
 }
 
-/* ================================================================
-   3. CABEÇALHO E RODAPÉ
-   ================================================================ */
+/* ---------- CABEÇALHO ROBÓTICO (modelo_cabecalho) ---------- */
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -63,7 +49,19 @@ body.bg-robotica {
 }
 
 .cabecalho-rebelde {
-  border-bottom-color: var(--robot-gold);
+  border-bottom-color: #ffb347;
+}
+
+.cabecalho-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .logo-rb,
@@ -71,8 +69,13 @@ body.bg-robotica {
   max-height: 70px;
   width: auto;
   filter: drop-shadow(2px 2px 6px black);
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
   border-radius: 12px;
+}
+
+.logo-rb:hover,
+.logo-gn:hover {
+  transform: scale(1.05);
 }
 
 .titulo-principal {
@@ -86,13 +89,70 @@ body.bg-robotica {
   border-radius: 60px;
   position: relative;
   text-transform: uppercase;
-  border: 2px solid var(--robot-gold);
+  border: 2px solid #ffb347;
   box-shadow:
     0 0 0 2px #1a2b17,
-    0 0 0 4px var(--robot-gold),
-    0 4px 15px rgba(0, 0, 0, 0.5);
+    0 0 0 4px #ffb347,
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
   text-shadow: 2px 2px 0 #3d5a2b;
+  backdrop-filter: blur(2px);
   white-space: nowrap;
+}
+
+.titulo-principal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  width: 60%;
+  height: 12px;
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
+  border-radius: 20px;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.titulo-principal::after {
+  content: "⬤";
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal .parafuso-esquerda {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  font-size: 0.7rem;
+  color: #ffb347;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+.titulo-principal:hover {
+  transform: translateY(-2px);
+  border-color: #ffcc44;
+  box-shadow:
+    0 0 0 2px #1a2b17,
+    0 0 0 4px #ffcc44,
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
+}
+
+.glitch-text {
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 1px;
 }
 
 .subtitulo-chiclete {
@@ -105,38 +165,24 @@ body.bg-robotica {
   text-shadow: 1px 1px 0 #1a2b17;
 }
 
-.footer-robotico {
-  background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
-  border-top: 5px solid #9bbc7b;
-  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
-  padding: 2rem 0 1rem;
-  margin-top: 3rem;
+.selo-sucata {
+  background: #1e1e1e;
+  color: #ffcc44;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  border-left: 3px solid #ff9900;
+  letter-spacing: 1px;
 }
 
-.footer-rebelde {
-  border-top-color: var(--robot-gold);
-}
-.footer-logo {
-  max-height: 70px;
-  border-radius: 16px;
-  filter: drop-shadow(2px 2px 6px black);
-}
-
-/* ================================================================
-   4. MENU
-   ================================================================ */
+/* ---------- MENU GLASSMORPHISM (modelo_menu) ---------- */
 .menu-robomestre {
   background: rgba(13, 31, 11, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 2px solid var(--robot-gold);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
 .menu-robomestre .nav-link {
@@ -146,32 +192,53 @@ body.bg-robotica {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 40px;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
 .menu-robomestre .nav-link i {
-  color: var(--robot-gold);
   font-size: 1.1rem;
+  color: var(--robot-gold);
+  transition: transform 0.2s;
 }
+
 .menu-robomestre .nav-link:hover {
   color: var(--robot-gold);
+  text-shadow: 0 0 4px var(--robot-gold);
   background: rgba(255, 180, 71, 0.15);
   transform: translateY(-2px);
 }
+
+.menu-robomestre .nav-link:hover i {
+  transform: scale(1.1);
+  color: var(--robot-glow);
+}
+
 .menu-robomestre .nav-link.active {
   color: var(--robot-glow);
   background: rgba(255, 180, 71, 0.25);
+  text-shadow: 0 0 6px var(--robot-gold);
   border-bottom: 2px solid var(--robot-gold);
 }
 
-/* ================================================================
-   5. GAME LOOP DANCE 🕺
-   ================================================================ */
+.menu-robomestre .navbar-toggler {
+  border-color: var(--robot-gold);
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-/* ---------- CARDS GERAIS ---------- */
+.menu-robomestre .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.menu-robomestre .navbar-brand {
+  color: var(--robot-gold);
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+}
+
+/* ---------- CARDS GLOBAIS ---------- */
 .bg-robocard {
   background: linear-gradient(145deg, var(--robot-card), var(--robot-dark));
   border: 1px solid var(--robot-gold);
@@ -179,12 +246,136 @@ body.bg-robotica {
   backdrop-filter: blur(2px);
 }
 
+.text-gradient {
+  background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.alert-warning {
+  background-color: rgba(255, 180, 71, 0.2) !important;
+  border-color: var(--robot-gold) !important;
+  color: var(--robot-text-claro) !important;
+}
+
+/* ---------- RODAPÉ ROBÓTICO (modelo_rodape) ---------- */
+.footer-robotico {
+  background: #0c140b;
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
+  border-top: 5px solid #9bbc7b;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-rebelde {
+  border-top-color: #ffb347;
+}
+
+.footer-rebelde::before {
+  content: "⚠️ BUG ZONE ⚠️";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  font-family: monospace;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.footer-logo {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(2px 2px 6px black);
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.dev-nome {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Chakra Petch", monospace;
+  color: #ebf0eb;
+}
+
+.dev-contato {
+  font-size: 0.8rem;
+}
+
+.dev-contato a {
+  color: #ebf0eb;
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+  font-family: monospace;
+}
+
+.dev-contato a:hover {
+  color: #ffb347;
+  text-decoration: underline;
+  text-shadow: 0 0 4px rgba(255, 180, 71, 0.5);
+}
+
+.relatorio-bugs {
+  border-top: 1px dashed #ffb347;
+  padding-top: 0.8rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #ffcc88;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- ANIMAÇÕES E DETALHES ADICIONAIS ---------- */
+@keyframes pulseGlitch {
+  0% {
+    text-shadow: 2px 0 0 #ffb347, -2px 0 0 #4a7c3f;
+  }
+
+  100% {
+    text-shadow: -2px 0 0 #ffb347, 2px 0 0 #4a7c3f;
+  }
+}
+
+.glitch-text {
+  animation: pulseGlitch 2s infinite alternate;
+}
+
+@keyframes loopInfinitoAnim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loop-infinito-icon {
+  animation: loopInfinitoAnim 2s linear infinite;
+  display: inline-block;
+}
+
+/* ==================================================
+   ESTILOS PARA PLANOS DE AULA (modelo_planos_aula)
+   ================================================== */
 .projeto-header {
-  background: linear-gradient(90deg, #1e2a1a, #2c3e2b);
-  border-radius: 40px;
+  background: linear-gradient(90deg, var(--robot-dark) 0%, #2a3b24 100%);
+  border-left: 8px solid var(--robot-gold);
+  border-radius: 20px;
   padding: 12px 20px;
   margin-bottom: 20px;
-  border-left: 8px solid var(--robot-gold);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -193,274 +384,281 @@ body.bg-robotica {
 }
 
 .projeto-header h2 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 1.2rem;
-  color: var(--robot-gold);
+  font-size: 1.3rem;
   margin: 0;
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  color: var(--robot-gold);
 }
 
 .badge-projeto {
   background: var(--robot-danger);
-  color: white;
-  padding: 6px 14px;
+  padding: 4px 12px;
   border-radius: 40px;
   font-size: 0.7rem;
   font-weight: bold;
-  text-transform: uppercase;
+  color: white;
 }
 
-/* ---------- PALCO ---------- */
-.danca-grid {
-  display: grid;
-  gap: 4px;
-  max-width: 400px;
-  margin: 0 auto;
-  background: #0a0f08;
-  padding: 12px;
-  border-radius: 20px;
-  border: 2px solid var(--robot-gold);
+.accordion-item {
+  background: transparent;
+  border: none;
+  margin-bottom: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.danca-cell {
-  aspect-ratio: 1/1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  border-radius: 8px;
-  background: #1e2a1a;
-  transition: all 0.3s ease;
-  position: relative;
+.accordion-header {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
 }
 
-.danca-cell.robo {
-  background: linear-gradient(135deg, #4a90e2, #357abd);
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
-  animation: pulseRobot 0.8s ease-in-out infinite alternate;
-  font-size: 2.2rem;
+.accordion-button {
+  background: #627454;
+  color: #ffb347;
+  font-weight: bold;
+  font-family: "Chakra Petch", monospace;
+  border: none;
+  border-radius: 0;
+  padding: 16px 24px;
+  font-size: 1rem;
 }
 
-.danca-cell.robo::after {
-  content: attr(data-direcao);
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  font-size: 0.8rem;
-  background: #0a0f08;
-  border-radius: 50%;
-  padding: 2px;
+.accordion-button:not(.collapsed) {
+  background: #7f9470;
+  color: #ffcc44;
+  box-shadow: none;
 }
 
-.danca-cell.chegada {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  animation: bounceFlag 0.5s ease-in-out infinite alternate;
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: #ffb347;
 }
 
-.danca-cell.obstaculo {
-  background: linear-gradient(135deg, #c0392b, #a93226);
+.accordion-body {
+  background: #0d1f0b;
+  padding: 24px;
+  border-top: 2px solid #ffb347;
 }
 
-/* ---------- COREOGRAFIA ---------- */
-.coreografia-display {
-  background: #0a0f08;
-  border: 2px solid var(--robot-gold);
-}
-
-.passos-display {
-  font-size: 1.5rem;
-  letter-spacing: 4px;
-}
-
-/* ---------- BOTÕES DE FASE ---------- */
-.btn-fase {
-  background: #1e2a1a;
-  border: 2px solid #4a7c3f;
-  color: var(--robot-text);
-  padding: 6px 14px;
-  border-radius: 40px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 0.85rem;
-}
-
-.btn-fase:hover {
-  background: #2c3e2b;
-  border-color: var(--robot-gold);
-  transform: translateY(-2px);
-}
-
-.btn-fase.ativo {
-  background: var(--robot-gold);
-  border-color: var(--robot-gold);
-  color: #1e2a1a;
-  box-shadow: 0 0 20px rgba(255, 180, 71, 0.3);
-}
-
-/* ---------- COMANDOS ---------- */
-.cmd-btn {
-  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
-  border: 2px solid #4a7c3f;
-  border-radius: 16px;
-  padding: 8px 14px;
-  color: var(--robot-text);
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cmd-btn:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: var(--robot-gold);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.cmd-btn.cmd-loop {
-  border-color: #f39c12;
-  background: linear-gradient(135deg, #2c3e2b, #1a2b17);
-}
-.cmd-btn.cmd-variavel {
-  border-color: #3498db;
-  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
-}
-.cmd-btn.cmd-bug {
-  border-color: #e74c3c;
-  background: linear-gradient(135deg, #3b1a1a, #1e2a1a);
-  animation: bugPulse 1.5s ease-in-out infinite;
-}
-
-/* ---------- ALGORITMO ---------- */
-.algoritmo-container {
-  min-height: 80px;
-  background: #0a0f08;
-  border-radius: 12px;
-  padding: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 4px;
-}
-
-.placeholder-algoritmo {
-  color: #666;
-  font-size: 0.9rem;
-  text-align: center;
+.semana-card-completo {
+  background: #505e45;
+  border-radius: 24px;
   padding: 20px;
-  width: 100%;
 }
 
-/* ---------- COMANDO SIMPLES ---------- */
-.comando-simples {
-  animation: comandoEntrar 0.3s ease-out;
-  margin: 2px 4px;
+.semana-card-completo h5 {
+  color: #ffb347;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-left: 4px solid #ffb347;
+  padding-left: 12px;
 }
 
-/* ---------- LOOP CONTAINER ---------- */
-.loop-container {
-  animation: comandoEntrar 0.3s ease-out;
+.semana-card-completo h5:first-of-type {
+  margin-top: 0;
 }
 
-.loop-header .btn-toggle-loop:hover {
-  background: rgba(255, 180, 71, 0.2);
+.semana-card-completo ul,
+.semana-card-completo p {
+  margin-bottom: 16px;
+  line-height: 1.5;
 }
 
-.loop-comandos {
-  transition: all 0.3s ease;
-}
-
-.sub-comando {
-  animation: comandoEntrar 0.3s ease-out;
-}
-
-/* ---------- SELETORES VISUAIS ---------- */
-.seletor {
-  animation: comandoEntrar 0.3s ease-out;
-}
-
-.seletor-opcao {
-  transition: all 0.2s ease;
-}
-
-.seletor-opcao:hover {
-  transform: scale(1.05);
-}
-
-/* ---------- VARIÁVEIS ---------- */
-.variavel-badge {
-  background: linear-gradient(135deg, #1a2a3b, #1e2a1a);
-  border: 1px solid #3498db;
-  border-radius: 20px;
+.check-concluido {
+  background: #1e2a1a;
   padding: 4px 12px;
-  color: #85c1e9;
-  font-weight: 600;
-  font-size: 0.85rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-/* ---------- MENSAGENS ---------- */
-.mensagem-jogo {
-  background: #0a0f08;
-  border-radius: 12px;
-  padding: 12px 16px;
-  border-left: 4px solid var(--robot-gold);
-  color: var(--robot-text);
+.check-concluido:hover {
+  background: #2c3e2b;
+}
+
+.check-concluido input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ffb347;
+}
+
+.check-concluido span {
+  color: #ebf0eb;
+}
+
+.materiais-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.material-badge {
+  background: #2c3e2b;
+  padding: 6px 12px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 2px solid #ffb347;
+  color: #ebf0eb;
+}
+
+.material-badge i {
   font-size: 0.9rem;
-  transition: all 0.3s ease;
 }
 
-/* ---------- BOTÕES DE AÇÃO ---------- */
-.btn-executar {
-  background: linear-gradient(95deg, var(--robot-gold), #ff8c00);
-  border: none;
-  color: #1e2a1a;
+.tabela-criterios-semana {
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.tabela-criterios-semana thead {
+  background: #2c3e2b;
+  color: #ffb347;
+}
+
+.tabela-criterios-semana th,
+.tabela-criterios-semana td {
+  padding: 10px 12px;
+  border-color: #4a7c3f;
+  vertical-align: middle;
+  color: #ebf0eb;
+}
+
+.tabela-criterios-semana tbody tr:hover {
+  background: #1e2a1a;
+}
+
+.minuto-item {
+  display: flex;
+  margin-bottom: 16px;
+  background: #0a0f08;
+  border-radius: 20px;
+  overflow: hidden;
+  border-left: 4px solid #ffb347;
+}
+
+.minuto-tempo {
+  background: #2c3e2b;
+  padding: 10px 16px;
   font-weight: bold;
-  padding: 10px 24px;
-  border-radius: 60px;
   font-family: "Press Start 2P", cursive;
   font-size: 0.7rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+  color: #ffb347;
 }
 
-.btn-executar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 180, 71, 0.3);
+.minuto-descricao {
+  padding: 10px 16px;
+  flex: 1;
+  line-height: 1.4;
+  color: #ebf0eb;
 }
 
-.btn-resetar,
-.btn-dica,
-.btn-depurar {
-  border: 2px solid var(--robot-gold);
+.frase-do-dia {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  border: 1px dashed #ffb347;
+  color: #ebf0eb;
+}
+
+.frase-do-dia i {
+  color: #ffb347;
+  margin-right: 8px;
+}
+
+/* ==================================================
+   ESTILOS PARA APRESENTAÇÃO (modelo_apresentacao)
+   ================================================== */
+.carta-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carta-container::before {
+  content: "📜";
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 5rem;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.carta-texto {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  text-align: justify;
+  font-weight: 500;
+  color: #f0f7e6;
+}
+
+.carta-texto.fw-bold {
   color: var(--robot-gold);
-  border-radius: 60px;
-  background: transparent;
-  padding: 10px 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-resetar:hover,
-.btn-dica:hover,
-.btn-depurar:hover {
-  background: rgba(255, 180, 71, 0.15);
-  transform: translateY(-2px);
-}
-
-/* ---------- RECORDES ---------- */
-.recorde-card {
   background: rgba(0, 0, 0, 0.3);
-  padding: 6px 16px;
-  border-radius: 40px;
-  border-left: 3px solid var(--robot-gold);
-  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: inline-block;
 }
 
-/* ================================================================
-   6. CERTIFICADOS
-   ================================================================ */
+.table-robotica {
+  background: rgba(30, 42, 26, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  color: var(--robot-text);
+}
+
+.table-robotica th,
+.table-robotica td {
+  vertical-align: middle;
+  padding: 12px 8px;
+  border-color: #4a7c3f;
+}
+
+.table-robotica thead th {
+  background: var(--robot-dark);
+  color: var(--robot-gold);
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table-robotica tbody tr:hover {
+  background: rgba(74, 124, 63, 0.3);
+  transition: 0.2s;
+}
+
+.table-responsive {
+  border-radius: 20px;
+  overflow-x: auto;
+}
+
+/* ==================================================
+   ESTILOS PARA CERTIFICADO (modelo_certificado)
+   ================================================== */
+.certificado-preview {
+  background: transparent;
+}
+
 .certificado-modelo {
   font-family: "Courier New", "Press Start 2P", monospace;
   background: #0d1f0b !important;
@@ -474,7 +672,7 @@ body.bg-robotica {
 .certificado-modelo h3 {
   font-family: "Press Start 2P", cursive;
   font-size: 0.9rem;
-  color: var(--robot-gold);
+  color: #ffb347;
   margin-bottom: 1rem;
 }
 
@@ -487,23 +685,41 @@ body.bg-robotica {
   padding: 12px;
   border-radius: 40px;
   font-weight: bold;
+  word-break: break-word;
+}
+
+.certificado-modelo p {
+  color: #e9f5db;
+  line-height: 1.4;
+}
+
+.certificado-modelo .data-rodape,
+.certificado-modelo .assinatura-engracada {
+  color: #e9f5db;
+  font-size: 0.8rem;
 }
 
 .linha-certificado {
-  border-color: var(--robot-gold);
+  border-color: #ffb347;
   margin: 15px 0;
 }
 
 .cadastro-alunos {
   background: #1e2a1a !important;
   border-radius: 32px;
-  border-left: 5px solid var(--robot-gold);
+  border-left: 5px solid #ffb347;
 }
 
-.cadastro-alunos h4 {
-  color: var(--robot-gold);
+.cadastro-alunos h4,
+.cadastro-alunos h5 {
+  color: #ffb347;
   font-family: "Press Start 2P", cursive;
   font-size: 0.8rem;
+}
+
+.lista-alunos {
+  list-style: none;
+  padding-left: 0;
 }
 
 .lista-alunos li {
@@ -515,108 +731,766 @@ body.bg-robotica {
   justify-content: space-between;
   align-items: center;
   color: #ebf0eb;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lista-alunos li:hover {
+  background: #3a5538;
+  transform: translateX(5px);
+}
+
+.btn-selecionar-aluno {
+  background: #ffb34720;
+  border: 1px solid #ffb347;
+  color: #ffb347;
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-selecionar-aluno:hover {
+  background: #ffb347;
+  color: #1e2a1a;
+  transform: scale(1.05);
 }
 
 .btn-robotico-ano2 {
-  background: linear-gradient(95deg, var(--robot-gold), #ff8c00);
+  background: linear-gradient(95deg, #ffb347, #ff8c00);
   border: none;
   color: #1e2a1a;
   font-weight: bold;
   padding: 8px 20px;
   border-radius: 60px;
+  transition: all 0.3s;
   font-family: "Press Start 2P", cursive;
   font-size: 0.65rem;
 }
 
+.btn-robotico-ano2:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ffb347;
+  background: linear-gradient(95deg, #ffa01e, #ff7000);
+  color: white;
+}
+
+.btn-robotico-ano2:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn-outline-warning {
-  border: 2px solid var(--robot-gold);
-  color: var(--robot-gold);
+  border: 2px solid #ffb347;
+  color: #ffb347;
   border-radius: 60px;
+  font-weight: bold;
   background: transparent;
+  transition: all 0.2s;
 }
 
-/* ================================================================
-   7. ANIMAÇÕES
-   ================================================================ */
-@keyframes comandoEntrar {
-  0% {
-    transform: scale(0.9) translateY(-10px);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
+.btn-outline-warning:hover:not(:disabled) {
+  background: #ffb347;
+  color: #1e2a1a;
 }
 
-@keyframes bugPulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+/* ==================================================
+   ESTILOS PARA JOGO LOOP DASH (modelo_fechamento_bimestre)
+   ================================================== */
+.loopdash-pista-visual {
+  background: linear-gradient(135deg, #1a3a15, #0f2a0c);
+  border-radius: 24px;
+  padding: 16px;
+  border: 2px solid #ffb347;
 }
 
+.pista-label {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #e9f5db;
+}
+
+.loopdash-grid {
+  display: grid;
+  gap: 6px;
+  background: #2c3e2b;
+  padding: 12px;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.loopdash-grid.fase1 {
+  grid-template-columns: repeat(8, 55px);
+}
+
+.loopdash-grid.fase2 {
+  grid-template-columns: repeat(5, 55px);
+}
+
+.loopdash-grid.fase3 {
+  grid-template-columns: repeat(6, 55px);
+}
+
+.loopdash-cell {
+  aspect-ratio: 1 / 1;
+  background: #1e2a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.loopdash-cell.robot {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.6);
+  animation: pulseRobot 0.8s ease-in-out infinite alternate;
+}
+
+.loopdash-cell.robot::after {
+  content: "🤖";
+  font-size: 1.8rem;
+}
+
+.loopdash-cell.target {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.loopdash-cell.target::after {
+  content: "🏁";
+  font-size: 1.6rem;
+  animation: bounceFlag 0.5s ease-in-out infinite alternate;
+}
+
+.loopdash-cell.wall {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.loopdash-cell.wall::after {
+  content: "🧱";
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
+
+.loopdash-cell.path {
+  background: #4a7c3f;
+}
+
+.loopdash-cell.visited {
+  background: #2c5e1f;
+  animation: fadeStep 0.3s ease-out;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  border-left: 4px solid #ffb347;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #9bbc7b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+
+.algoritmo-builder {
+  background: linear-gradient(135deg, #0d1f0b, #1a2b17);
+  border-radius: 24px;
+  border: 2px dashed #ffb347;
+  overflow: hidden;
+}
+
+.builder-header {
+  background: #2c3e2b;
+  padding: 12px 16px;
+  color: #ffb347;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.btn-clear-algoritmo {
+  background: #e74c3c;
+  border: none;
+  border-radius: 40px;
+  padding: 6px 14px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-clear-algoritmo:hover {
+  background: #c0392b;
+  transform: scale(1.02);
+}
+
+.algoritmo-montado {
+  min-height: 120px;
+  padding: 16px;
+  background: #0a0f08;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.placeholder-algoritmo {
+  color: #6b8c5c;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.cartao-montado {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 16px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 4px solid #ffb347;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.cartao-montado:hover {
+  transform: translateY(-2px);
+  background: #3a5a35;
+}
+
+.cartao-montado .cartao-remove {
+  width: 20px;
+  height: 20px;
+  background: #e74c3c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.cartao-montado .cartao-remove:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.cartao-montado.repita-container {
+  background: linear-gradient(135deg, #4a7c3f, #2c5e1f);
+  border-left: 4px solid #ffcc44;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 150px;
+}
+
+.repita-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.repita-contador-input {
+  background: #ffb347;
+  border: none;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.repita-filhos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px;
+  background: #1a2b17;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.cartoes-prateleira {
+  background: linear-gradient(135deg, #1a2b17, #0d1f0b);
+  border-radius: 24px;
+  padding: 16px;
+}
+
+.cartoes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #ffb347;
+  font-weight: bold;
+}
+
+.regra-destaque {
+  background: #e74c3c;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  color: white;
+}
+
+.cartoes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cartao-comando {
+  background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
+  border-radius: 20px;
+  padding: 12px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid #4a7c3f;
+  min-width: 100px;
+}
+
+.cartao-comando:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #ffb347;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cartao-comando.cartao-especial {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  border-color: #ffcc44;
+}
+
+.cartao-icone {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.cartao-texto {
+  font-weight: bold;
+  color: #ffb347;
+  font-size: 0.8rem;
+}
+
+.cartao-desc {
+  font-size: 0.6rem;
+  color: #9bbc7b;
+}
+
+.botoes-painel {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-executar,
+.btn-resetar,
+.btn-dica,
+.btn-exemplo {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 60px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+  font-family: "Chakra Petch", monospace;
+}
+
+.btn-executar {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  box-shadow: 0 4px 0 #1e6b3a;
+}
+
+.btn-executar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1e6b3a;
+}
+
+.btn-resetar {
+  background: linear-gradient(135deg, #7f8c8d, #6c7a7a);
+  color: white;
+}
+
+.btn-dica {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+  color: white;
+}
+
+.btn-exemplo {
+  background: linear-gradient(135deg, #2980b9, #1a6da0);
+  color: white;
+}
+
+.mensagem-jogo {
+  background: #0a0f08;
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  border-left: 6px solid #ffb347;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.mensagem-jogo.sucesso {
+  background: #1e6b3a;
+  border-left-color: #2ecc71;
+}
+
+.mensagem-jogo.erro {
+  background: #6b1a1a;
+  border-left-color: #e74c3c;
+}
+
+.recordes-painel {
+  background: #0d1f0b;
+  border-radius: 20px;
+  padding: 12px;
+}
+
+.recordes-header {
+  text-align: center;
+  color: #ffb347;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.recordes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.recorde-card {
+  background: linear-gradient(135deg, #1e2a1a, #2a3b24);
+  border-radius: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.recorde-fase {
+  font-size: 0.7rem;
+  color: #9bbc7b;
+}
+
+.recorde-valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347;
+  font-family: "Press Start 2P", cursive;
+}
+
+.recorde-unidade {
+  font-size: 0.6rem;
+  color: #9bbc7b;
+}
+
+.legenda-pista {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+}
+
+.legenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-robot,
+.badge-flag,
+.badge-path,
+.badge-obstacle,
+.badge-loop {
+  font-size: 1.2rem;
+}
+
+.btn-phase {
+  background: #2c3e2b;
+  border: 2px solid #4a7c3f;
+  padding: 10px 20px;
+  border-radius: 40px;
+  color: #e9f5db;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin: 4px;
+}
+
+.btn-phase:hover,
+.btn-phase.ativo {
+  background: #ffb347;
+  color: #1e2a1a;
+  border-color: #ffcc44;
+}
+
+.fase1-btn.ativo {
+  background: #27ae60;
+  color: white;
+}
+
+.fase2-btn.ativo {
+  background: #f39c12;
+  color: #1e2a1a;
+}
+
+.fase3-btn.ativo {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Animações do jogo */
 @keyframes pulseRobot {
   0% {
-    transform: scale(1);
+    transform: scale(0.98);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
   }
+
   100% {
-    transform: scale(1.05);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
   }
 }
 
 @keyframes bounceFlag {
   0% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
+
   100% {
     transform: translateY(-5px);
   }
 }
 
-/* ================================================================
-   8. RESPONSIVIDADE
-   ================================================================ */
+@keyframes fadeStep {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flutuarBadge {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ==================================================
+   RESPONSIVIDADE
+   ================================================== */
 @media (max-width: 768px) {
   .titulo-principal {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
     white-space: normal;
+    word-break: keep-all;
   }
+
   .logo-rb,
-  .logo-gn,
-  .footer-logo {
+  .logo-gn {
     max-height: 50px;
   }
+
   .subtitulo-chiclete {
     font-size: 0.6rem;
   }
 
-  .danca-grid {
-    max-width: 300px;
-    padding: 8px;
-  }
-  .danca-cell {
-    font-size: 1.3rem;
-  }
-  .danca-cell.robo {
-    font-size: 1.6rem;
+  .menu-robomestre .navbar-collapse {
+    background: rgba(13, 31, 11, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    margin-top: 12px;
+    padding: 12px 0;
+    border: 1px solid var(--robot-gold);
   }
 
-  .btn-fase {
-    font-size: 0.7rem;
-    padding: 4px 10px;
+  .menu-robomestre .nav-link {
+    justify-content: center;
+    margin: 4px 12px;
   }
-  .cmd-btn {
+
+  .footer-robotico {
     font-size: 0.75rem;
-    padding: 6px 10px;
+    padding: 1.5rem 0;
+  }
+
+  .footer-logo {
+    max-height: 50px;
+  }
+
+  .dev-nome {
+    font-size: 0.7rem;
+  }
+
+  .dev-contato {
+    font-size: 0.65rem;
+  }
+
+  .projeto-header {
+    flex-direction: column;
+    text-align: center;
   }
 
   .projeto-header h2 {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .accordion-button {
+    font-size: 0.8rem;
+    padding: 12px 16px;
+  }
+
+  .minuto-item {
+    flex-direction: column;
+  }
+
+  .minuto-tempo {
+    min-width: auto;
+    text-align: left;
+  }
+
+  .semana-card-completo {
+    padding: 12px;
+  }
+
+  .tabela-criterios-semana th,
+  .tabela-criterios-semana td {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+  }
+
+  .material-badge {
+    font-size: 0.65rem;
+  }
+
+  .check-concluido {
+    margin-top: 8px;
+  }
+
+  .loopdash-grid.fase1 {
+    grid-template-columns: repeat(8, 40px);
+    gap: 4px;
+  }
+
+  .loopdash-grid.fase2 {
+    grid-template-columns: repeat(5, 40px);
+    gap: 4px;
+  }
+
+  .loopdash-grid.fase3 {
+    grid-template-columns: repeat(6, 40px);
+    gap: 4px;
+  }
+
+  .loopdash-cell {
+    font-size: 1.2rem;
+  }
+
+  .loopdash-cell.robot::after {
+    font-size: 1.3rem;
+  }
+
+  .loopdash-cell.target::after {
+    font-size: 1.2rem;
+  }
+
+  .cartao-comando {
+    min-width: 70px;
+    padding: 8px 10px;
+  }
+
+  .cartao-icone {
+    font-size: 1.3rem;
+  }
+
+  .cartao-texto {
+    font-size: 0.6rem;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  .recorde-valor {
+    font-size: 1.2rem;
+  }
+
+  .btn-executar,
+  .btn-resetar,
+  .btn-dica,
+  .btn-exemplo {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .certificado-modelo {
+    padding: 1rem !important;
+  }
+
+  .certificado-modelo h3 {
+    font-size: 0.7rem;
+  }
+
+  .nome-aluno-destaque {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .bg-robocard {
+    padding: 1rem !important;
+  }
+
+  .cadastro-alunos .row .col-md-4,
+  .cadastro-alunos .row .col-md-8 {
+    margin-bottom: 8px;
   }
 }
 
@@ -625,77 +1499,328 @@ body.bg-robotica {
     font-size: 0.6rem;
     padding: 0.3rem 0.6rem;
   }
+
   .logo-rb,
-  .logo-gn,
+  .logo-gn {
+    max-height: 40px;
+  }
+
+  .selo-sucata {
+    font-size: 0.55rem;
+    padding: 2px 8px;
+  }
+
   .footer-logo {
     max-height: 40px;
   }
 
-  .danca-grid {
-    max-width: 250px;
-    gap: 3px;
-  }
-  .danca-cell {
-    font-size: 1rem;
-  }
-  .danca-cell.robo {
-    font-size: 1.3rem;
+  .dev-nome {
+    font-size: 0.6rem;
   }
 
-  .btn-fase {
-    font-size: 0.6rem;
-    padding: 3px 8px;
-  }
-  .cmd-btn {
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-  .btn-executar {
-    font-size: 0.6rem;
-    padding: 8px 16px;
+  .relatorio-bugs {
+    font-size: 0.55rem;
   }
 
-  .seletor div {
-    flex-direction: column;
-    align-items: stretch !important;
+  .loopdash-grid.fase1 {
+    grid-template-columns: repeat(8, 30px);
   }
-  .seletor-opcao {
-    text-align: center;
+
+  .loopdash-grid.fase2 {
+    grid-template-columns: repeat(5, 30px);
+  }
+
+  .loopdash-grid.fase3 {
+    grid-template-columns: repeat(6, 30px);
+  }
+
+  .btn-robotico-ano2,
+  .btn-outline-warning {
     width: 100%;
+    text-align: center;
+  }
+
+  .certificado-modelo {
+    padding: 0.8rem !important;
+  }
+
+  .nome-aluno-destaque {
+    font-size: 16px;
   }
 }
 
-/* ================================================================
+/* ==================================================
    IMPRESSÃO
-   ================================================================ */
+   ================================================== */
 @media print {
+
+  .menu-robomestre,
+  .cabecalho-robotico,
+  .footer-robotico,
+  .btn-print-amigavel,
+  .btn-topo-robotico,
+  .custom-tooltip,
+  .check-concluido,
+  #expandirTodosBtn,
+  #recolherTodosBtn,
+  #imprimirPlanosBtn,
+  .botoes-painel,
+  .cartoes-prateleira,
+  .algoritmo-builder,
+  .recordes-painel,
+  .legenda-pista,
   .cadastro-alunos,
   .btn-robotico-ano2,
   .btn-outline-warning,
-  .alert-info,
-  footer,
-  .menu-robomestre,
-  .game-acoes,
-  .game-comandos,
-  .game-variaveis,
-  .game-recordes {
+  .alert-info {
     display: none !important;
+  }
+
+  .projeto-header,
+  .bg-robocard {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .accordion-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .accordion-body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .accordion-button {
+    background: #f0f0f0 !important;
+    color: #1e2a1a !important;
+  }
+
+  .semana-card-completo {
+    background: white !important;
+    color: #1e2a1a !important;
+  }
+
+  .semana-card-completo h5 {
+    color: #4a7c3f !important;
+  }
+
+  .table-robotica,
+  .tabela-criterios-semana {
+    background: white !important;
+    color: #1e2a1a !important;
+  }
+
+  .table-robotica th,
+  .table-robotica td,
+  .tabela-criterios-semana th,
+  .tabela-criterios-semana td {
+    color: #1e2a1a !important;
+    border-color: #aaa !important;
+  }
+
+  .minuto-item {
+    background: #f9f9f9 !important;
+    border-left-color: #4a7c3f !important;
+  }
+
+  .minuto-tempo {
+    background: #e0e0e0 !important;
+    color: #1e2a1a !important;
+  }
+
+  .frase-do-dia {
+    background: #f0f0f0 !important;
+    border-color: #4a7c3f !important;
+    color: #1e2a1a !important;
+  }
+
+  .carta-texto {
+    color: #1e2a1a !important;
+  }
+
+  .projeto-header {
+    background: #f0f0f0 !important;
+    border-left-color: #4a7c3f !important;
+  }
+
+  .projeto-header h2 {
+    color: #4a7c3f !important;
+  }
+
+  .badge-projeto {
+    background: #ffb347 !important;
+    color: white !important;
   }
 
   .certificado-modelo {
     background: #fffef7 !important;
-    border: 3px solid var(--robot-gold) !important;
-    -webkit-print-color-adjust: exact;
-    break-inside: avoid;
+    border: 3px solid #ffb347 !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .nome-aluno-destaque {
+    color: #2c5e1f !important;
+    background: #d4b87a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .certificado-modelo h3 {
+    color: #ffb347 !important;
+  }
+
+  .linha-certificado {
+    border-color: #ffb347 !important;
+  }
+
+  .data-rodape,
+  .assinatura-engracada {
+    color: #4a6e2c !important;
+  }
+
+  .loopdash-pista-visual,
+  .simulador-comandos {
+    background: white !important;
+    border-color: #4a7c3f !important;
+  }
+
+  .loopdash-cell {
+    background: #f0f0f0 !important;
+  }
+
+  .loopdash-cell.robot {
+    background: #4a90e2 !important;
+  }
+
+  .loopdash-cell.target {
+    background: #f39c12 !important;
+  }
+
+  .loopdash-cell.wall {
+    background: #c0392b !important;
+  }
+
+  .stat-card {
+    background: #f0f0f0 !important;
+    border-left-color: #4a7c3f !important;
+  }
+
+  .stat-value {
+    color: #4a7c3f !important;
+  }
+
+  .recordes-painel {
+    background: white !important;
+  }
+
+  .recorde-card {
+    background: #f0f0f0 !important;
+  }
+
+  .recorde-valor {
+    color: #4a7c3f !important;
+  }
+
+  .msg-jogo {
+    background: #f0f0f0 !important;
   }
 
   @page {
     size: A4;
     margin: 1.2cm;
   }
-  .print-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+}
+
+/* ---------- UTILITÁRIOS ADICIONAIS ---------- */
+@keyframes curtoCircuito {
+
+  0%,
+  100% {
+    background-color: #2c3e2b;
   }
+
+  10%,
+  30%,
+  50% {
+    background-color: #ffcc00;
+  }
+
+  20%,
+  40% {
+    background-color: #ff6600;
+  }
+}
+
+@keyframes reboot {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  60% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btn-print-amigavel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffb347;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 20px;
+  color: #1e2a1a;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+  font-family: monospace;
+}
+
+.btn-print-amigavel:hover {
+  transform: scale(1.05);
+}
+
+.btn-topo-robotico {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #2c3e2b;
+  border: 2px solid #ffb347;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: #ffb347;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-topo-robotico.visible {
+  opacity: 1;
+  visibility: visible;
 }

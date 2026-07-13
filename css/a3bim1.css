@@ -44,13 +44,11 @@ body.bg-robotica {
 
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -120,13 +118,11 @@ body.bg-robotica {
   left: 20%;
   width: 60%;
   height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
   border-radius: 20px;
   filter: blur(1px);
   pointer-events: none;
@@ -535,13 +531,11 @@ code {
 /* ========== RODAPÉ ========== */
 .footer-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   border-top: 5px solid #9bbc7b;
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -805,11 +799,9 @@ code {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle at 30% 40%,
-    rgba(255, 180, 71, 0.05),
-    transparent 60%
-  );
+  background: radial-gradient(circle at 30% 40%,
+      rgba(255, 180, 71, 0.05),
+      transparent 60%);
   pointer-events: none;
 }
 
@@ -890,6 +882,7 @@ code {
     transform: scale(0.5);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -919,6 +912,7 @@ code {
     transform: scale(0.9) translateY(-10px);
     opacity: 0;
   }
+
   100% {
     transform: scale(1) translateY(0);
     opacity: 1;
@@ -1053,12 +1047,10 @@ code {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
   transition: left 0.5s ease;
 }
 
@@ -1112,6 +1104,7 @@ code {
     box-shadow: 0 0 10px rgba(255, 204, 68, 0.1);
     transform: scale(1);
   }
+
   100% {
     box-shadow: 0 0 35px rgba(255, 204, 68, 0.3);
     transform: scale(1.02);
@@ -1122,6 +1115,7 @@ code {
   0% {
     box-shadow: 0 0 15px rgba(230, 126, 34, 0.3);
   }
+
   100% {
     box-shadow: 0 0 45px rgba(241, 196, 15, 0.6);
   }
@@ -1209,10 +1203,12 @@ code {
 }
 
 @keyframes statusPulse {
+
   0%,
   100% {
     border-color: #ffb347;
   }
+
   50% {
     border-color: #ffcc44;
     box-shadow: 0 0 30px rgba(255, 204, 68, 0.1);
@@ -1238,6 +1234,7 @@ code {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -1318,6 +1315,7 @@ code {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -1342,6 +1340,7 @@ code {
     transform: scale(0.7) rotate(-5deg);
     opacity: 0;
   }
+
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -1412,15 +1411,19 @@ code {
 .seletor-loop-numero:nth-child(5n + 1) {
   border-color: #e74c3c;
 }
+
 .seletor-loop-numero:nth-child(5n + 2) {
   border-color: #f39c12;
 }
+
 .seletor-loop-numero:nth-child(5n + 3) {
   border-color: #2ecc71;
 }
+
 .seletor-loop-numero:nth-child(5n + 4) {
   border-color: #3498db;
 }
+
 .seletor-loop-numero:nth-child(5n + 5) {
   border-color: #9b59b6;
 }
@@ -1442,12 +1445,15 @@ code {
     padding: 22px 18px;
     max-width: 340px;
   }
+
   .seletor-loop-titulo {
     font-size: 0.7rem;
   }
+
   .seletor-loop-grid {
     gap: 8px;
   }
+
   .seletor-loop-numero {
     padding: 12px 0;
     font-size: 1.1rem;
@@ -1460,11 +1466,13 @@ code {
     grid-template-columns: repeat(5, 1fr);
     gap: 5px;
   }
+
   .seletor-loop-numero {
     padding: 10px 0;
     font-size: 0.9rem;
     border-radius: 10px;
   }
+
   .seletor-loop-card {
     padding: 16px 12px;
     max-width: 300px;
@@ -1476,32 +1484,39 @@ code {
   #jogoRepitaComigo .desafio-card {
     border-left: 4px solid #ffb347;
   }
+
   #jogoRepitaComigo .algoritmo-card {
     border-right: 4px solid #ffb347;
   }
+
   .cartao-cmd {
     padding: 6px 14px;
     font-size: 0.75rem;
   }
+
   .btn-executar-jogo,
   .btn-proximo-jogo {
     padding: 8px 20px;
     font-size: 0.55rem;
   }
+
   #areaAlgoritmo {
     min-height: 80px;
     font-size: 0.75rem;
   }
+
   .loop-container .d-flex {
     flex-direction: column;
     align-items: flex-start !important;
   }
+
   .btn-add-ao-loop,
   .btn-fechar-loop-inline,
   .btn-cancelar-loop-inline {
     font-size: 0.6rem;
     padding: 3px 12px;
   }
+
   #desafioAlvo {
     font-size: 0.9rem !important;
   }
@@ -1512,11 +1527,13 @@ code {
     padding: 4px 10px;
     font-size: 0.65rem;
   }
+
   .btn-executar-jogo,
   .btn-proximo-jogo {
     padding: 6px 14px;
     font-size: 0.5rem;
   }
+
   #areaAlgoritmo .badge {
     font-size: 0.6rem;
     padding: 4px 10px;
@@ -1525,4 +1542,217 @@ code {
 
 #areaAlgoritmo .text-muted {
   color: #ebf0eb !important;
+}
+
+/* ==================================================
+   ESTILOS DE IMPRESSÃO - PLANOS DE AULA
+   ================================================== */
+@media print {
+
+  /* Oculta elementos não essenciais */
+  .cabecalho-robotico,
+  .menu-robomestre,
+  footer,
+  #jogo,
+  #certificado,
+  #fechamento,
+  .btn-robotico-ano2,
+  .check-concluido,
+  .btn-remover-loop,
+  .btn-add-ao-loop,
+  .btn-fechar-loop-inline,
+  .btn-cancelar-loop-inline,
+  #btnImprimirPlanos {
+    display: none !important;
+  }
+
+  /* Garante que todos os accordions fiquem abertos */
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
+  .accordion-button {
+    background: #2c3e2b !important;
+    color: #ffb347 !important;
+    border: 1px solid #4a7c3f !important;
+    page-break-after: avoid;
+  }
+
+  .accordion-body {
+    background: #0d1f0b !important;
+    color: #ebf0eb !important;
+    border: 1px solid #4a7c3f !important;
+    border-top: none !important;
+    page-break-inside: avoid;
+  }
+
+  /* Melhora a legibilidade */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .bg-robotica {
+    background: white !important;
+  }
+
+  .bg-robocard {
+    background: #f5f5f0 !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    color: #1a1a1a !important;
+  }
+
+  .semana-card-completo {
+    background: #fafaf5 !important;
+    padding: 12px !important;
+    color: #1a1a1a !important;
+  }
+
+  .projeto-header {
+    background: #e8e8e0 !important;
+    border-left-color: #b8860b !important;
+  }
+
+  .projeto-header h2 {
+    color: #3d5a2b !important;
+    text-shadow: none !important;
+  }
+
+  .badge-projeto {
+    background: #b8860b !important;
+    color: white !important;
+  }
+
+  .table-robotica {
+    background: white !important;
+    border: 1px solid #999 !important;
+  }
+
+  .table-robotica th,
+  .table-robotica td {
+    border-color: #999 !important;
+    color: #1a1a1a !important;
+  }
+
+  .table-robotica thead th {
+    background: #3d5a2b !important;
+    color: white !important;
+  }
+
+  .table-robotica tbody tr:hover {
+    background: transparent !important;
+  }
+
+  .minuto-item {
+    border-left-color: #b8860b !important;
+    background: #f0f0eb !important;
+  }
+
+  .minuto-tempo {
+    background: #3d5a2b !important;
+    color: white !important;
+  }
+
+  .minuto-descricao {
+    color: #1a1a1a !important;
+  }
+
+  .frase-do-dia {
+    background: #e8e8e0 !important;
+    border: 1px dashed #b8860b !important;
+    color: #1a1a1a !important;
+  }
+
+  .material-badge {
+    background: #e0e0d8 !important;
+    color: #1a1a1a !important;
+    border-left-color: #b8860b !important;
+  }
+
+  .tabela-criterios-semana {
+    background: white !important;
+  }
+
+  .tabela-criterios-semana thead {
+    background: #3d5a2b !important;
+    color: white !important;
+  }
+
+  .tabela-criterios-semana td {
+    color: #1a1a1a !important;
+  }
+
+  .tabela-criterios-semana tbody tr:hover {
+    background: transparent !important;
+  }
+
+  .bg-robocard {
+    background: #fafaf5 !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .alert-warning {
+    background: #fff3cd !important;
+    border-color: #ffeeba !important;
+    color: #856404 !important;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background: #4a7c3f !important;
+    color: white !important;
+  }
+
+  .accordion-button::after {
+    display: none !important;
+  }
+
+  code {
+    background: #f0f0eb !important;
+    color: #b22222 !important;
+  }
+
+  .semana-card-completo h5 {
+    color: #3d5a2b !important;
+    border-left-color: #b8860b !important;
+  }
+
+  .semana-card-completo ul,
+  .semana-card-completo p {
+    color: #1a1a1a !important;
+  }
+
+  .loop-container {
+    border-color: #b8860b !important;
+    background: #f0f0eb !important;
+  }
+
+  .loop-container .badge.bg-warning {
+    background: #b8860b !important;
+    color: white !important;
+  }
+
+  .loop-filhos .badge {
+    background: #4a7c3f !important;
+    color: white !important;
+  }
+
+  .btn-add-ao-loop,
+  .btn-fechar-loop-inline,
+  .btn-cancelar-loop-inline {
+    display: none !important;
+  }
+
+  .progress {
+    display: none !important;
+  }
+
+  /* Força quebra de página entre semanas, se necessário */
+  .accordion-item {
+    page-break-inside: avoid;
+    margin-bottom: 20px !important;
+  }
 }

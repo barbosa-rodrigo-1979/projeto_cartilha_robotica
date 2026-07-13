@@ -34,22 +34,22 @@ body.bg-robotica {
 /* ========== CABEÇALHO ========== */
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
+
 .cabecalho-rebelde {
   border-bottom-color: #ffb347;
 }
+
 .cabecalho-rebelde::before {
   content: "⚠️ BUG ZONE ⚠️";
   position: absolute;
@@ -61,6 +61,7 @@ body.bg-robotica {
   white-space: nowrap;
   pointer-events: none;
 }
+
 .logo-rb,
 .logo-gn {
   max-height: 70px;
@@ -69,6 +70,7 @@ body.bg-robotica {
   transition: transform 0.2s ease;
   border-radius: 12px;
 }
+
 .titulo-principal {
   font-family: "Press Start 2P", cursive;
   font-size: 1.95rem;
@@ -88,6 +90,7 @@ body.bg-robotica {
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-shadow: 2px 2px 0 #3d5a2b;
 }
+
 .subtitulo-chiclete {
   font-family: "Chakra Petch", monospace;
   font-size: 0.85rem;
@@ -95,6 +98,7 @@ body.bg-robotica {
   margin-top: 0.5rem;
   font-weight: bold;
 }
+
 .selo-sucata {
   background: #1e1e1e;
   color: #ffcc44;
@@ -103,11 +107,13 @@ body.bg-robotica {
   font-size: 0.7rem;
   border-left: 3px solid #ff9900;
 }
+
 @media (max-width: 768px) {
   .titulo-principal {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
   }
+
   .logo-rb,
   .logo-gn {
     max-height: 50px;
@@ -127,6 +133,7 @@ body.bg-robotica {
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .projeto-header h2 {
   font-size: 1.3rem;
   margin: 0;
@@ -134,6 +141,7 @@ body.bg-robotica {
   font-weight: 700;
   color: #ffb347;
 }
+
 .badge-projeto {
   background: #e74c3c;
   padding: 4px 12px;
@@ -142,6 +150,7 @@ body.bg-robotica {
   font-weight: bold;
   color: white;
 }
+
 .bg-robocard {
   background: linear-gradient(145deg, #2c3e2b, #1a2b17);
   border: 1px solid #ffb347;
@@ -149,28 +158,33 @@ body.bg-robotica {
   backdrop-filter: blur(2px);
   border-radius: 48px 24px 48px 24px;
 }
+
 .carta-texto {
   font-size: 1.05rem;
   line-height: 1.5;
   color: #f0f7e6;
   margin-bottom: 1rem;
 }
+
 .table-robotica {
   background: rgba(30, 42, 26, 0.85);
   border-radius: 20px;
   overflow: hidden;
   color: #e9f5db;
 }
+
 .table-robotica th,
 .table-robotica td {
   vertical-align: middle;
   padding: 12px 8px;
   border-color: #4a7c3f;
 }
+
 .table-robotica thead th {
   background: #1e2a1a;
   color: #ffb347;
 }
+
 .table-robotica tbody tr:hover {
   background: rgba(74, 124, 63, 0.3);
 }
@@ -184,6 +198,7 @@ body.bg-robotica {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
 .accordion-button {
   background: #627454;
   color: #ffb347;
@@ -193,25 +208,30 @@ body.bg-robotica {
   font-size: 1rem;
   border: none;
 }
+
 .accordion-button:not(.collapsed) {
   background: #7f9470;
   color: #ffcc44;
   box-shadow: none;
 }
+
 .accordion-button:focus {
   box-shadow: none;
   border-color: #ffb347;
 }
+
 .accordion-body {
   background: #0d1f0b;
   padding: 24px;
   border-top: 2px solid #ffb347;
 }
+
 .semana-card-completo {
   background: #505e45;
   border-radius: 24px;
   padding: 20px;
 }
+
 .semana-card-completo h5 {
   color: #ffb347;
   margin-top: 20px;
@@ -221,15 +241,18 @@ body.bg-robotica {
   border-left: 4px solid #ffb347;
   padding-left: 12px;
 }
+
 .semana-card-completo h5:first-of-type {
   margin-top: 0;
 }
+
 .semana-card-completo ul,
 .semana-card-completo p {
   margin-bottom: 16px;
   line-height: 1.5;
   color: #ebf0eb;
 }
+
 .check-concluido {
   background: #1e2a1a;
   padding: 4px 12px;
@@ -241,15 +264,18 @@ body.bg-robotica {
   cursor: pointer;
   transition: all 0.2s;
 }
+
 .check-concluido span {
   color: #ebf0eb;
 }
+
 .materiais-container {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
 }
+
 .material-badge {
   background: #2c3e2b;
   padding: 6px 12px;
@@ -261,6 +287,7 @@ body.bg-robotica {
   border-left: 2px solid #ffb347;
   color: #ebf0eb;
 }
+
 .tabela-criterios-semana {
   background: #0a0f08;
   border-radius: 20px;
@@ -269,10 +296,12 @@ body.bg-robotica {
   width: 100%;
   border-collapse: collapse;
 }
+
 .tabela-criterios-semana thead {
   background: #2c3e2b;
   color: #ffb347;
 }
+
 .tabela-criterios-semana th,
 .tabela-criterios-semana td {
   padding: 10px 12px;
@@ -280,9 +309,11 @@ body.bg-robotica {
   vertical-align: middle;
   color: #ebf0eb;
 }
+
 .tabela-criterios-semana tbody tr:hover {
   background: #1e2a1a;
 }
+
 .minuto-item {
   display: flex;
   margin-bottom: 16px;
@@ -291,6 +322,7 @@ body.bg-robotica {
   overflow: hidden;
   border-left: 4px solid #ffb347;
 }
+
 .minuto-tempo {
   background: #2c3e2b;
   padding: 10px 16px;
@@ -301,12 +333,14 @@ body.bg-robotica {
   text-align: center;
   color: #ffb347;
 }
+
 .minuto-descricao {
   padding: 10px 16px;
   flex: 1;
   line-height: 1.4;
   color: #ebf0eb;
 }
+
 .frase-do-dia {
   background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
   border-radius: 20px;
@@ -317,6 +351,7 @@ body.bg-robotica {
   border: 1px dashed #ffb347;
   color: #ebf0eb;
 }
+
 .frase-do-dia i {
   color: #ffb347;
   margin-right: 8px;
@@ -329,6 +364,7 @@ body.bg-robotica {
   padding: 16px;
   border: 2px solid #ffb347;
 }
+
 .loopdash-grid {
   display: grid;
   gap: 6px;
@@ -338,15 +374,19 @@ body.bg-robotica {
   justify-content: center;
   margin: 0 auto;
 }
+
 .loopdash-grid.fase1 {
   grid-template-columns: repeat(8, 55px);
 }
+
 .loopdash-grid.fase2 {
   grid-template-columns: repeat(5, 55px);
 }
+
 .loopdash-grid.fase3 {
   grid-template-columns: repeat(6, 55px);
 }
+
 .loopdash-cell {
   aspect-ratio: 1/1;
   background: #1e2a1a;
@@ -357,30 +397,38 @@ body.bg-robotica {
   font-size: 1.6rem;
   transition: all 0.2s;
 }
+
 .loopdash-cell.robot {
   background: linear-gradient(135deg, #4a90e2, #357abd);
   animation: pulseRobot 0.8s infinite alternate;
 }
+
 .loopdash-cell.robot::after {
   content: "🤖";
   font-size: 1.8rem;
 }
+
 .loopdash-cell.target {
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
+
 .loopdash-cell.target::after {
   content: "🏁";
   animation: bounceFlag 0.5s infinite alternate;
 }
+
 .loopdash-cell.wall {
   background: linear-gradient(135deg, #c0392b, #a93226);
 }
+
 .loopdash-cell.wall::after {
   content: "🧱";
 }
+
 .loopdash-cell.path {
   background: #4a7c3f;
 }
+
 .stat-card {
   background: linear-gradient(135deg, #1e2a1a, #2a3b24);
   border-radius: 20px;
@@ -388,17 +436,20 @@ body.bg-robotica {
   text-align: center;
   border-left: 4px solid #ffb347;
 }
+
 .stat-value {
   font-size: 1.8rem;
   font-weight: bold;
   color: #ffb347;
   font-family: "Press Start 2P", cursive;
 }
+
 .algoritmo-builder {
   background: linear-gradient(135deg, #0d1f0b, #1a2b17);
   border-radius: 24px;
   border: 2px dashed #ffb347;
 }
+
 .builder-header {
   background: #2c3e2b;
   padding: 12px 16px;
@@ -407,6 +458,7 @@ body.bg-robotica {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .algoritmo-montado {
   min-height: 120px;
   padding: 16px;
@@ -415,6 +467,7 @@ body.bg-robotica {
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .cartao-montado {
   background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
   border-radius: 16px;
@@ -424,16 +477,19 @@ body.bg-robotica {
   gap: 8px;
   border-left: 4px solid #ffb347;
 }
+
 .cartao-montado.repita-container {
   background: #4a7c3f;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .repita-header {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .repita-contador-input {
   background: #ffb347;
   border-radius: 20px;
@@ -441,17 +497,20 @@ body.bg-robotica {
   width: 55px;
   text-align: center;
 }
+
 .cartoes-prateleira {
   background: linear-gradient(135deg, #1a2b17, #0d1f0b);
   border-radius: 24px;
   padding: 16px;
 }
+
 .cartoes-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
 }
+
 .cartao-comando {
   background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
   border-radius: 20px;
@@ -461,13 +520,16 @@ body.bg-robotica {
   border: 2px solid #4a7c3f;
   min-width: 100px;
 }
+
 .cartao-comando:hover {
   transform: translateY(-4px);
   border-color: #ffb347;
 }
+
 .cartao-comando.cartao-especial {
   background: linear-gradient(135deg, #8e44ad, #6c3483);
 }
+
 .btn-executar,
 .btn-resetar,
 .btn-dica,
@@ -478,39 +540,47 @@ body.bg-robotica {
   transition: 0.3s;
   border: none;
 }
+
 .btn-executar {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
   color: white;
 }
+
 .btn-resetar {
   background: #7f8c8d;
   color: white;
 }
+
 .btn-dica {
   background: #8e44ad;
   color: white;
 }
+
 .btn-exemplo {
   background: #2980b9;
   color: white;
 }
+
 .mensagem-jogo {
   background: #0a0f08;
   border-radius: 20px;
   padding: 16px;
   border-left: 6px solid #ffb347;
 }
+
 .recordes-painel {
   background: #0d1f0b;
   border-radius: 20px;
   padding: 12px;
 }
+
 .recorde-valor {
   font-size: 1.8rem;
   font-weight: bold;
   color: #ffb347;
   font-family: "Press Start 2P", cursive;
 }
+
 .btn-phase {
   background: #2c3e2b;
   border: 2px solid #4a7c3f;
@@ -519,24 +589,29 @@ body.bg-robotica {
   margin: 4px;
   padding: 8px 16px;
 }
+
 .btn-phase.ativo {
   background: #ffb347;
   color: #1e2a1a;
 }
+
 @keyframes pulseRobot {
   0% {
     transform: scale(0.98);
     box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
   }
+
   100% {
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
   }
 }
+
 @keyframes bounceFlag {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-5px);
   }
@@ -550,6 +625,7 @@ body.bg-robotica {
   text-align: center;
   padding: 20px;
 }
+
 .nome-aluno-destaque {
   font-size: 22px;
   display: block;
@@ -559,11 +635,13 @@ body.bg-robotica {
   padding: 12px;
   border-radius: 40px;
 }
+
 .cadastro-alunos {
   background: #1e2a1a !important;
   border-radius: 32px;
   border-left: 5px solid #ffb347;
 }
+
 .lista-alunos li {
   background: #2c3e2b;
   margin-bottom: 8px;
@@ -573,6 +651,7 @@ body.bg-robotica {
   justify-content: space-between;
   color: #f0f0e0;
 }
+
 .btn-robotico-ano2 {
   background: linear-gradient(95deg, #ffb347, #ff8c00);
   border: none;
@@ -583,12 +662,14 @@ body.bg-robotica {
   font-size: 0.65rem;
   padding: 8px 16px;
 }
+
 .btn-outline-warning {
   border: 2px solid #ffb347;
   color: #ffb347;
   border-radius: 60px;
   background: transparent;
 }
+
 @media print {
   .certificado-impressao {
     break-inside: avoid;
@@ -597,11 +678,13 @@ body.bg-robotica {
     border-radius: 48px 24px !important;
     background: #fffef7 !important;
   }
+
   .print-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
   }
+
   @page {
     size: A4;
     margin: 1cm;
@@ -611,35 +694,39 @@ body.bg-robotica {
 /* ========== RODAPÉ ========== */
 .footer-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   border-top: 5px solid #9bbc7b;
   padding: 2rem 0 1rem;
   margin-top: 3rem;
 }
+
 .footer-rebelde {
   border-top-color: #ffb347;
 }
+
 .footer-logo {
   max-height: 70px;
   border-radius: 16px;
 }
+
 .dev-nome {
   font-size: 0.85rem;
   color: #ebf0eb;
 }
+
 .dev-contato a {
   color: #ebf0eb;
   text-decoration: none;
 }
+
 .dev-contato a:hover {
   color: #ffb347;
 }
+
 .relatorio-bugs {
   border-top: 1px dashed #ffb347;
   padding-top: 0.8rem;
@@ -652,20 +739,25 @@ body.bg-robotica {
   .loopdash-grid.fase1 {
     grid-template-columns: repeat(8, 40px);
   }
+
   .loopdash-grid.fase2 {
     grid-template-columns: repeat(5, 40px);
   }
+
   .loopdash-grid.fase3 {
     grid-template-columns: repeat(6, 40px);
   }
+
   .stat-value,
   .recorde-valor {
     font-size: 1.2rem;
   }
+
   .cartao-comando {
     min-width: 70px;
     padding: 8px 10px;
   }
+
   .btn-executar,
   .btn-resetar,
   .btn-dica,
@@ -673,19 +765,23 @@ body.bg-robotica {
     padding: 8px 16px;
     font-size: 0.8rem;
   }
+
   .minuto-item {
     flex-direction: column;
   }
+
   .minuto-tempo {
     min-width: auto;
     text-align: left;
   }
+
   .tabela-criterios-semana th,
   .tabela-criterios-semana td {
     font-size: 0.7rem;
     padding: 6px 8px;
   }
 }
+
 /* ========== MENU GLASSMORPHISM (copiado do modelo_menu_bim) ========== */
 .menu-robomestre {
   background: rgba(13, 31, 11, 0.85);
@@ -707,34 +803,41 @@ body.bg-robotica {
   align-items: center;
   gap: 8px;
 }
+
 .menu-robomestre .nav-link i {
   font-size: 1.1rem;
   color: var(--robot-gold);
   transition: transform 0.2s;
 }
+
 .menu-robomestre .nav-link:hover {
   color: var(--robot-gold);
   text-shadow: 0 0 4px var(--robot-gold);
   background: rgba(255, 180, 71, 0.15);
   transform: translateY(-2px);
 }
+
 .menu-robomestre .nav-link:hover i {
   transform: scale(1.1);
   color: var(--robot-glow);
 }
+
 .menu-robomestre .nav-link.active {
   color: var(--robot-glow);
   background: rgba(255, 180, 71, 0.25);
   text-shadow: 0 0 6px var(--robot-gold);
   border-bottom: 2px solid var(--robot-gold);
 }
+
 .menu-robomestre .navbar-toggler {
   border-color: var(--robot-gold);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .menu-robomestre .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+
 .menu-robomestre .navbar-brand {
   color: var(--robot-gold);
   font-family: "Press Start 2P", cursive;
@@ -751,6 +854,7 @@ body.bg-robotica {
     padding: 12px 0;
     border: 1px solid var(--robot-gold);
   }
+
   .menu-robomestre .nav-link {
     justify-content: center;
     margin: 4px 12px;
@@ -768,6 +872,7 @@ body.bg-robotica {
   border-radius: 24px;
   margin: 0 auto;
 }
+
 .grid-cell {
   aspect-ratio: 1/1;
   background: #1e2a1a;
@@ -779,16 +884,20 @@ body.bg-robotica {
   transition: all 0.2s;
   box-shadow: inset 0 0 0 1px #4a7c3f;
 }
+
 .grid-cell.robot {
   background: linear-gradient(135deg, #4a90e2, #357abd);
   animation: pulseRobot 0.8s infinite alternate;
 }
+
 .grid-cell.target {
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
+
 .grid-cell.wall {
   background: linear-gradient(135deg, #c0392b, #a93226);
 }
+
 .grid-cell.path {
   background: #4a7c3f;
 }
@@ -800,6 +909,7 @@ body.bg-robotica {
   justify-content: center;
   margin-top: 12px;
 }
+
 .bloco-comando {
   background: linear-gradient(135deg, #2c3e2b, #1e2a1a);
   border-radius: 24px;
@@ -810,17 +920,21 @@ body.bg-robotica {
   min-width: 110px;
   transition: 0.2s;
 }
+
 .bloco-comando:hover {
   transform: translateY(-4px);
   background: #3a5538;
 }
+
 .bloco-icone {
   font-size: 2rem;
 }
+
 .bloco-texto {
   font-weight: bold;
   color: #ffb347;
 }
+
 .bloco-desc {
   font-size: 0.7rem;
   color: #ccc;
@@ -836,6 +950,7 @@ body.bg-robotica {
   gap: 12px;
   align-items: flex-start;
 }
+
 .bloco-montado {
   background: #2c3e2b;
   border-radius: 20px;
@@ -845,6 +960,7 @@ body.bg-robotica {
   gap: 10px;
   border-left: 4px solid #ffb347;
 }
+
 .bloco-montado.repetir,
 .bloco-montado.condicional {
   flex-direction: column;
@@ -852,6 +968,7 @@ body.bg-robotica {
   background: #3a5538;
   min-width: 220px;
 }
+
 .bloco-montado-sub {
   background: #1e2a1a;
   border-radius: 16px;
@@ -859,6 +976,7 @@ body.bg-robotica {
   margin: 4px 0;
   display: inline-block;
 }
+
 .btn-remover-bloco {
   background: #e74c3c;
   border: none;
@@ -869,6 +987,7 @@ body.bg-robotica {
   cursor: pointer;
   font-size: 12px;
 }
+
 .btn-sm-outline-warning {
   background: #ffb34720;
   border: 1px solid #ffb347;
@@ -879,6 +998,7 @@ body.bg-robotica {
   cursor: pointer;
   color: #ffb347;
 }
+
 .condicao-select {
   background: #1e2a1a;
   color: #ffb347;
@@ -887,6 +1007,7 @@ body.bg-robotica {
   padding: 4px 8px;
   margin-left: 8px;
 }
+
 .btn-executar,
 .btn-resetar,
 .btn-dica {
@@ -896,46 +1017,184 @@ body.bg-robotica {
   border: none;
   margin: 0 6px;
 }
+
 .btn-executar {
   background: #2ecc71;
   color: white;
 }
+
 .btn-resetar {
   background: #7f8c8d;
   color: white;
 }
+
 .btn-dica {
   background: #8e44ad;
   color: white;
 }
+
 .mensagem-jogo.erro {
   background: #e74c3c20;
   border-left-color: #e74c3c;
   color: #ffaaaa;
 }
+
 @keyframes pulseRobot {
   0% {
     transform: scale(0.98);
     opacity: 0.9;
   }
+
   100% {
     transform: scale(1.05);
     opacity: 1;
   }
 }
+
 @media (max-width: 600px) {
   .game-grid {
     grid-template-columns: repeat(5, 50px);
     gap: 4px;
   }
+
   .grid-cell {
     font-size: 1.5rem;
   }
+
   .bloco-comando {
     min-width: 80px;
     padding: 8px 10px;
   }
+
   .bloco-icone {
     font-size: 1.5rem;
+  }
+}
+
+/* ========== IMPRESSÃO ========== */
+@media print {
+
+  /* Oculta cabeçalho, menu, rodapé, botões e outros elementos não essenciais */
+  .cabecalho-robotico,
+  .menu-robomestre,
+  .footer-robotico,
+  .botoes-painel,
+  .btn,
+  .navbar-toggler,
+  #btnImprimirPlanos,
+  .projeto-header .badge-projeto,
+  .check-concluido,
+  .frase-do-dia {
+    display: none !important;
+  }
+
+  /* Garante que todos os accordions fiquem abertos e visíveis */
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
+  .accordion-button {
+    background: #f0f0e0 !important;
+    color: #1e2a1a !important;
+  }
+
+  .accordion-body {
+    background: white !important;
+    color: #1e2a1a !important;
+  }
+
+  .semana-card-completo {
+    background: #f9f9f9 !important;
+    border: 1px solid #ccc !important;
+    color: #1e2a1a !important;
+  }
+
+  .table-robotica {
+    background: white !important;
+    color: #1e2a1a !important;
+  }
+
+  .table-robotica th,
+  .table-robotica td {
+    border-color: #888 !important;
+    color: #1e2a1a !important;
+  }
+
+  body.bg-robotica {
+    background: white !important;
+  }
+
+  .bg-robocard {
+    background: white !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .projeto-header {
+    background: #eee !important;
+    border-left-color: #666 !important;
+  }
+
+  .projeto-header h2 {
+    color: #1e2a1a !important;
+  }
+
+  .carta-texto {
+    color: #1e2a1a !important;
+  }
+
+  .material-badge {
+    background: #eaeaea !important;
+    color: #1e2a1a !important;
+  }
+
+  .tabela-criterios-semana {
+    background: white !important;
+  }
+
+  .tabela-criterios-semana tbody tr:hover {
+    background: #f0f0f0 !important;
+  }
+
+  .minuto-item {
+    background: #f0f0f0 !important;
+    border-left-color: #666 !important;
+  }
+
+  .minuto-tempo {
+    background: #ddd !important;
+    color: #1e2a1a !important;
+  }
+
+  .minuto-descricao {
+    color: #1e2a1a !important;
+  }
+
+  .accordion-item {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    margin-bottom: 8px !important;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background: #e0e0e0 !important;
+    color: #1e2a1a !important;
+  }
+
+  .semana-card-completo h5 {
+    color: #1e2a1a !important;
+    border-left-color: #666 !important;
+  }
+
+  .semana-card-completo ul,
+  .semana-card-completo p {
+    color: #1e2a1a !important;
+  }
+
+  /* Ajuste de quebras de página */
+  .accordion-item {
+    page-break-inside: avoid;
   }
 }

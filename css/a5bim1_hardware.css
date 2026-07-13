@@ -1709,3 +1709,45 @@ code {
     opacity: 0;
   }
 }
+
+/* Botão de impressão */
+.btn-outline-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+  background: #17a2b8;
+  color: #fff;
+}
+
+/* Ajustes para impressão (caso queira aplicar globalmente) */
+@media print {
+
+  .btn,
+  .progress-container,
+  .check-concluido,
+  .d-flex.gap-2 {
+    display: none !important;
+  }
+
+  .accordion-collapse {
+    display: block !important;
+  }
+
+  .accordion-button::after {
+    display: none !important;
+  }
+}
+
+/* Botão de impressão */
+.btn-outline-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+  background: #17a2b8;
+  color: #fff;
+  border-color: #17a2b8;
+}

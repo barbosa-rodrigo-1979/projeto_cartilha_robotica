@@ -35,13 +35,11 @@ body.bg-robotica {
 /* ---------- CABEÇALHO ROBÓTICO ---------- */
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -52,6 +50,7 @@ body.bg-robotica {
 .cabecalho-rebelde {
   border-bottom-color: #ffb347;
 }
+
 .cabecalho-rebelde::before {
   content: "⚠️ BUG ZONE ⚠️";
   position: absolute;
@@ -72,6 +71,7 @@ body.bg-robotica {
   transition: transform 0.2s ease;
   border-radius: 12px;
 }
+
 .logo-rb:hover,
 .logo-gn:hover {
   transform: scale(1.05);
@@ -99,6 +99,7 @@ body.bg-robotica {
   backdrop-filter: blur(2px);
   white-space: nowrap;
 }
+
 .titulo-principal::before {
   content: "";
   position: absolute;
@@ -106,17 +107,16 @@ body.bg-robotica {
   left: 20%;
   width: 60%;
   height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
   border-radius: 20px;
   filter: blur(1px);
   pointer-events: none;
 }
+
 .titulo-principal::after {
   content: "⬤";
   position: absolute;
@@ -127,6 +127,7 @@ body.bg-robotica {
   text-shadow: 0 0 3px #000;
   pointer-events: none;
 }
+
 .titulo-principal .parafuso-esquerda {
   position: absolute;
   bottom: -6px;
@@ -136,6 +137,7 @@ body.bg-robotica {
   text-shadow: 0 0 3px #000;
   pointer-events: none;
 }
+
 .titulo-principal:hover {
   transform: translateY(-2px);
   border-color: #ffcc44;
@@ -146,6 +148,7 @@ body.bg-robotica {
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
   background: linear-gradient(135deg, #2a3b24 0%, #1a2b17 100%);
 }
+
 .glitch-text {
   font-family: "Press Start 2P", monospace;
   letter-spacing: 1px;
@@ -160,6 +163,7 @@ body.bg-robotica {
   letter-spacing: 1px;
   text-shadow: 1px 1px 0 #1a2b17;
 }
+
 .selo-sucata {
   background: #1e1e1e;
   color: #ffcc44;
@@ -192,34 +196,41 @@ body.bg-robotica {
   align-items: center;
   gap: 8px;
 }
+
 .menu-robomestre .nav-link i {
   font-size: 1.1rem;
   color: var(--robot-gold);
   transition: transform 0.2s;
 }
+
 .menu-robomestre .nav-link:hover {
   color: var(--robot-gold);
   text-shadow: 0 0 4px var(--robot-gold);
   background: rgba(255, 180, 71, 0.15);
   transform: translateY(-2px);
 }
+
 .menu-robomestre .nav-link:hover i {
   transform: scale(1.1);
   color: var(--robot-glow);
 }
+
 .menu-robomestre .nav-link.active {
   color: var(--robot-glow);
   background: rgba(255, 180, 71, 0.25);
   text-shadow: 0 0 6px var(--robot-gold);
   border-bottom: 2px solid var(--robot-gold);
 }
+
 .menu-robomestre .navbar-toggler {
   border-color: var(--robot-gold);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .menu-robomestre .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffb347' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+
 .menu-robomestre .navbar-brand {
   color: var(--robot-gold);
   font-family: "Press Start 2P", cursive;
@@ -233,12 +244,14 @@ body.bg-robotica {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
 }
+
 .text-gradient {
   background: linear-gradient(135deg, var(--robot-gold), #ffe0a3);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 .alert-warning {
   background-color: rgba(255, 180, 71, 0.2) !important;
   border-color: var(--robot-gold) !important;
@@ -562,13 +575,11 @@ body.bg-robotica {
 /* ---------- RODAPÉ ---------- */
 .footer-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   border-top: 5px solid #9bbc7b;
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -812,12 +823,14 @@ body.bg-robotica {
       2px 0 0 #ffb347,
       -2px 0 0 #4a7c3f;
   }
+
   100% {
     text-shadow:
       -2px 0 0 #ffb347,
       2px 0 0 #4a7c3f;
   }
 }
+
 .glitch-text {
   animation: pulseGlitch 2s infinite alternate;
 }
@@ -826,21 +839,25 @@ body.bg-robotica {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .loop-infinito-icon {
   animation: loopInfinitoAnim 2s linear infinite;
   display: inline-block;
 }
 
 @keyframes piscaLed {
+
   0%,
   100% {
     opacity: 1;
     text-shadow: 0 0 5px #00ff00;
   }
+
   50% {
     opacity: 0.4;
     text-shadow: 0 0 15px #ffcc00;
@@ -852,6 +869,7 @@ body.bg-robotica {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -863,6 +881,7 @@ body.bg-robotica {
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(100%);
     opacity: 0;
@@ -877,13 +896,16 @@ body.bg-robotica {
     white-space: normal;
     word-break: keep-all;
   }
+
   .logo-rb,
   .logo-gn {
     max-height: 50px;
   }
+
   .subtitulo-chiclete {
     font-size: 0.6rem;
   }
+
   .menu-robomestre .navbar-collapse {
     background: rgba(13, 31, 11, 0.95);
     backdrop-filter: blur(12px);
@@ -892,57 +914,72 @@ body.bg-robotica {
     padding: 12px 0;
     border: 1px solid var(--robot-gold);
   }
+
   .menu-robomestre .nav-link {
     justify-content: center;
     margin: 4px 12px;
   }
+
   .footer-robotico {
     font-size: 0.75rem;
     padding: 1.5rem 0;
   }
+
   .footer-logo {
     max-height: 50px;
   }
+
   .dev-nome {
     font-size: 0.7rem;
   }
+
   .dev-contato {
     font-size: 0.65rem;
   }
+
   .projeto-header {
     flex-direction: column;
     text-align: center;
   }
+
   .projeto-header h2 {
     font-size: 1rem;
   }
+
   .accordion-button {
     font-size: 0.8rem;
     padding: 12px 16px;
   }
+
   .minuto-item {
     flex-direction: column;
   }
+
   .minuto-tempo {
     min-width: auto;
     text-align: left;
   }
+
   .semana-card-completo {
     padding: 12px;
   }
+
   .tabela-criterios-semana th,
   .tabela-criterios-semana td {
     font-size: 0.7rem;
     padding: 6px 8px;
   }
+
   .table-robotica th,
   .table-robotica td {
     font-size: 0.7rem;
     padding: 8px 4px;
   }
+
   .material-badge {
     font-size: 0.65rem;
   }
+
   .check-concluido {
     margin-top: 8px;
   }
@@ -953,20 +990,25 @@ body.bg-robotica {
     font-size: 0.6rem;
     padding: 0.3rem 0.6rem;
   }
+
   .logo-rb,
   .logo-gn {
     max-height: 40px;
   }
+
   .selo-sucata {
     font-size: 0.55rem;
     padding: 2px 8px;
   }
+
   .footer-logo {
     max-height: 40px;
   }
+
   .dev-nome {
     font-size: 0.6rem;
   }
+
   .relatorio-bugs {
     font-size: 0.55rem;
   }
@@ -991,6 +1033,7 @@ body.bg-robotica {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--robot-glow);
 }
+
 /* ==================================================
    a5bim3_hardware.css - Estilos para Planos de Aula
    5º ano / 3º bimestre - HARDWARE E MICRO:BIT
@@ -1413,6 +1456,7 @@ li {
       2px 0 0 #ffb347,
       -2px 0 0 #4a7c3f;
   }
+
   100% {
     text-shadow:
       -2px 0 0 #ffb347,
@@ -1430,6 +1474,7 @@ li {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -1441,8 +1486,137 @@ li {
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(100%);
     opacity: 0;
+  }
+}
+
+/* Estilos para o botão de impressão */
+.btn-outline-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+  background: #17a2b8;
+  color: #fff;
+}
+
+/* Garantia de que os accordion fiquem legíveis na impressão */
+@media print {
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+
+  .accordion-button {
+    display: none !important;
+  }
+
+  .check-concluido {
+    display: none !important;
+  }
+
+  .btn {
+    display: none !important;
+  }
+
+  .menu-robomestre,
+  .cabecalho-robotico,
+  .footer-robotico,
+  #certificacao,
+  #adaptacoes,
+  #rubrica,
+  #referencias,
+  #creditos {
+    display: none !important;
+  }
+
+  body.bg-robotica {
+    background: white !important;
+    color: black !important;
+  }
+
+  .bg-robocard {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Botão de impressão - mantém consistência visual */
+.btn-outline-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+  background: #17a2b8;
+  color: #fff;
+}
+
+/* Regras de impressão para garantir legibilidade mesmo se a janela for impressa diretamente do navegador */
+@media print {
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+
+  .accordion-button {
+    display: none !important;
+  }
+
+  .check-concluido {
+    display: none !important;
+  }
+
+  .btn {
+    display: none !important;
+  }
+
+  .menu-robomestre,
+  .cabecalho-robotico,
+  .footer-robotico,
+  #certificacao,
+  #adaptacoes,
+  #rubrica,
+  #referencias,
+  #creditos {
+    display: none !important;
+  }
+
+  body.bg-robotica {
+    background: white !important;
+    color: black !important;
+  }
+
+  .bg-robocard {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+
+  /* Força texto escuro em qualquer elemento que por acaso herde cores claras */
+  * {
+    color: #1e2a1a !important;
+  }
+
+  /* Exceção: cabeçalho do accordion mantém o dourado */
+  .accordion-header {
+    color: #ffb347 !important;
+    background: #2c3e2b !important;
+  }
+
+  /* Exceção: blocos de código mantêm fundo escuro e texto claro */
+  pre,
+  pre * {
+    color: #e9f5db !important;
+    background: #1e2a1a !important;
   }
 }

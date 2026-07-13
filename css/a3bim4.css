@@ -35,13 +35,11 @@ body.bg-robotica {
 /* ========== CABEÇALHO ROBÓTICO ========== */
 .cabecalho-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   padding: 1rem 0;
   border-bottom: 5px solid #9bbc7b;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -109,13 +107,11 @@ body.bg-robotica {
   left: 20%;
   width: 60%;
   height: 12px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 220, 150, 0.6) 0px,
-    rgba(255, 220, 150, 0.6) 8px,
-    rgba(200, 170, 100, 0.4) 8px,
-    rgba(200, 170, 100, 0.4) 16px
-  );
+  background: repeating-linear-gradient(90deg,
+      rgba(255, 220, 150, 0.6) 0px,
+      rgba(255, 220, 150, 0.6) 8px,
+      rgba(200, 170, 100, 0.4) 8px,
+      rgba(200, 170, 100, 0.4) 16px);
   border-radius: 20px;
   filter: blur(1px);
   pointer-events: none;
@@ -265,13 +261,11 @@ body.bg-robotica {
 /* ---------- RODAPÉ ROBÓTICO ---------- */
 .footer-robotico {
   background: #0c140b;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #2a3b24 0px,
-    #2a3b24 2px,
-    #1b2a18 2px,
-    #1b2a18 8px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #2a3b24 0px,
+      #2a3b24 2px,
+      #1b2a18 2px,
+      #1b2a18 8px);
   border-top: 5px solid #9bbc7b;
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -945,10 +939,12 @@ p {
 }
 
 @keyframes glowLoop {
+
   0%,
   100% {
     box-shadow: 0 0 10px rgba(255, 204, 68, 0.2);
   }
+
   50% {
     box-shadow: 0 0 30px rgba(255, 204, 68, 0.4);
   }
@@ -1005,6 +1001,7 @@ p {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -1164,6 +1161,7 @@ p {
     font-size: 0.6rem;
   }
 }
+
 /* ========== MODAL JAVASCRIPT PURO ========== */
 .modal-overlay {
   display: none;
@@ -1257,6 +1255,7 @@ p {
     opacity: 0;
     transform: scale(0.9) translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -1265,4 +1264,156 @@ p {
 
 .modal-overlay.active .modal-dialog {
   animation: modalFadeIn 0.3s ease forwards;
+}
+
+/* ========== IMPRESSÃO DOS PLANOS DE AULA ========== */
+@media print {
+
+  /* Esconde elementos que atrapalham a impressão */
+  .cabecalho-robotico,
+  .menu-robomestre,
+  .footer-robotico,
+  #btnImprimirPlanos,
+  .btn-print,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Força a expansão de todos os accordions */
+  .accordion-collapse {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
+  /* Remove bordas e fundos escuros para economia de tinta */
+  body.bg-robotica {
+    background: white !important;
+  }
+
+  .bg-robocard,
+  .semana-card-completo,
+  .accordion-body {
+    background: white !important;
+    color: black !important;
+    border-color: #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .accordion-item {
+    border: 1px solid #ccc !important;
+    margin-bottom: 10px !important;
+    page-break-inside: avoid;
+  }
+
+  .accordion-header {
+    background: #f0f0f0 !important;
+  }
+
+  .accordion-button {
+    background: #e0e0e0 !important;
+    color: #000 !important;
+    font-size: 12pt !important;
+    border: none !important;
+  }
+
+  .accordion-button::after {
+    display: none !important;
+  }
+
+  /* Ajuste de cores e contrastes para impressão */
+  .semana-card-completo h5 {
+    color: #2c3e2b !important;
+    border-left-color: #2c3e2b !important;
+  }
+
+  .tabela-criterios-semana,
+  .table-robotica {
+    background: white !important;
+    color: black !important;
+  }
+
+  .tabela-criterios-semana thead,
+  .table-robotica thead {
+    background: #333 !important;
+    color: white !important;
+  }
+
+  .tabela-criterios-semana td,
+  .table-robotica td {
+    color: black !important;
+    border-color: #aaa !important;
+  }
+
+  .minuto-item {
+    border-left-color: #2c3e2b !important;
+    background: #f9f9f9 !important;
+  }
+
+  .minuto-tempo {
+    background: #ddd !important;
+    color: #000 !important;
+  }
+
+  .minuto-descricao {
+    color: #000 !important;
+  }
+
+  .frase-do-dia {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    border: 1px solid #999 !important;
+  }
+
+  .material-badge {
+    background: #eee !important;
+    color: #000 !important;
+    border-left-color: #666 !important;
+  }
+
+  .badge-projeto {
+    background: #777 !important;
+    color: white !important;
+  }
+
+  .projeto-header {
+    background: #eee !important;
+    border-left-color: #2c3e2b !important;
+  }
+
+  .projeto-header h2 {
+    color: #000 !important;
+  }
+
+  .check-concluido {
+    display: none !important;
+  }
+
+  /* Ajuste de tamanhos */
+  .accordion-body {
+    padding: 10px !important;
+  }
+
+  .semana-card-completo {
+    padding: 12px !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 10px !important;
+  }
+
+  /* Quebra de páginas */
+  .accordion-item {
+    page-break-inside: avoid;
+  }
+
+  .accordion-item:not(:last-child) {
+    page-break-after: auto;
+  }
 }
