@@ -1,23 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>🤖 3º Ano - Bimestre 2: A Dança do Loop + Variáveis</title>
+  <title>🤖 3º Ano – 2º Bimestre: A Dança do Loop</title>
   <!-- Bootstrap 5 + ícones + fontes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap"
     rel="stylesheet" />
-  <!-- CSS unificado do bimestre -->
+  <!-- CSS principal do bimestre -->
   <link rel="stylesheet" href="css/a3bim2.css" />
 </head>
 
 <body class="bg-robotica">
 
-  <!-- ==================== CABEÇALHO (modelo_cabecalho.html) ==================== -->
+  <!-- ========== CABEÇALHO ========== -->
   <header class="cabecalho-robotico cabecalho-rebelde">
     <div class="container">
       <div class="row align-items-center justify-content-between g-2">
@@ -31,7 +31,7 @@
             <span class="parafuso-esquerda">⬤</span>
           </h1>
           <div class="subtitulo-chiclete">
-            ⚡ 2º BIMESTRE: A DANÇA DO LOOP – REPETIÇÃO É PODER! ⚡<br />
+            ⚡ 2º BIMESTRE: A DANÇA DO LOOP – REPETIR ATÉ A DIRETORA APARECER ⚡<br />
             <span class="selo-sucata mt-2 d-inline-block">APROVADO PELO MINISTÉRIO DO SE-ENTÃO-SENÃO</span>
           </div>
         </div>
@@ -43,84 +43,78 @@
     </div>
   </header>
 
-  <!-- MENU GLASSMORPHISM (conforme modelo_menu_bim.html) -->
-    <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <a class="navbar-brand d-lg-none" href="#">
-          <i class="bi bi-robot"></i> 3º Ano
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navRoboBim"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navRoboBim">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html"
-                ><i class="bi bi-house-door-fill"></i> Principal</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a3index.html"
-                ><i class="bi bi-1-circle-fill"></i> 3º ano</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a3bim1.html"
-                ><i class="bi bi-1-circle-fill"></i> 1º bimestre</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="a3bim2.html"
-                ><i class="bi bi-2-circle-fill"></i> 2º bimestre</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a3bim3.html"
-                ><i class="bi bi-3-circle-fill"></i> 3º bimestre</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="a3bim4.html"
-                ><i class="bi bi-4-circle-fill"></i> 4º bimestre</a
-              >
-            </li>
-          </ul>
-        </div>
+  <!-- ========== MENU ========== -->
+  <nav class="menu-robomestre navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="a3index.html"><i class="bi bi-robot"></i> 3º Ano</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRoboBim">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navRoboBim">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="a3index.html"><i class="bi bi-1-circle-fill"></i> 3º ano</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="a3bim1.html"><i class="bi bi-1-circle-fill"></i> 1º
+              Bimestre</a></li>
+          <li class="nav-item"><a class="nav-link active" href="a3bim2.html"><i class="bi bi-2-circle-fill"></i> 2º
+              Bimestre</a></li>
+          <li class="nav-item"><a class="nav-link" href="a3bim3.html"><i class="bi bi-3-circle-fill"></i> 3º
+              Bimestre</a></li>
+          <li class="nav-item"><a class="nav-link" href="a3bim4.html"><i class="bi bi-4-circle-fill"></i> 4º
+              Bimestre</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
+  <!-- ========== CONTEÚDO PRINCIPAL ========== -->
   <main class="container my-4">
-    <!-- ==================== CARTA DE ABERTURA ==================== -->
+
+    <!-- =================================================== -->
+    <!-- SEÇÃO 1: CARTA DE ABERTURA DO BIMESTRE               -->
+    <!-- =================================================== -->
     <section id="carta-abertura" class="mb-5">
       <div class="projeto-header">
         <h2><i class="bi bi-envelope-paper-fill"></i> 🧙‍♂️ CARTA DE ABERTURA DO BIMESTRE</h2>
-        <div class="badge-projeto">Leia com um apito na boca e um capacete de papelão na cabeça</div>
+        <div class="badge-projeto">Leia com um apito na boca, um capacete de papelão e a voz de um apresentador de circo
+          que perdeu a vergonha</div>
       </div>
       <div class="bg-robocard p-4 rounded-4 carta-container">
-        <p class="carta-texto">"PRESTEM ATENÇÃO, SERES HUMANOS DE OITO ANOS DE IDADE!</p>
-        <p class="carta-texto">Vocês estão prestes a entrar na MATRIX. Só que sem tomar remédio amargo, sem usar óculos
-          escuros dentro de casa e com MUITO MAIS GRITO!</p>
-        <p class="carta-texto">Hoje vocês vão aprender o comando mais PODEROSO da programação: o LOOP! E não, não é
-          macarrão embora macarrão também seja gostoso. LOOP É REPETIÇÃO! LOOP É PODER! LOOP É VOCÊ FAZER A MESMA COISA
-          VÁRIAS VEZES SEM ENLOUQUECER (ou enlouquecendo de um jeito divertido).</p>
-        <p class="carta-texto fw-bold">Regra de ouro deste bimestre: se você não ouvir pelo menos um aluno gritando
-          "ACHEI O BUG!" em todas as aulas, você não está sendo barulhento o suficiente. Se a diretora não aparecer na
-          porta perguntando "o que é esse escândalo?", você não fez direito.</p>
-        <p class="carta-texto">Agora respira fundo, coloca uma música que tenha batida repetitiva (lo-fi hip hop, techno
-          dos anos 90 ou qualquer coisa que faça você querer dançar sem motivo) e vamos nessa! 🎧🤖💥</p>
-        <p class="carta-texto">--- Seu guia no caos programático"</p>
+        <p class="carta-texto">
+          "PRESTEM ATENÇÃO, SERES HUMANOS DE OITO ANOS DE IDADE!
+        </p>
+        <p class="carta-texto">
+          Vocês estão prestes a entrar na MATRIX. Só que sem tomar remédio amargo, sem usar óculos escuros dentro de
+          casa e com MUITO MAIS GRITO!
+        </p>
+        <p class="carta-texto">
+          Hoje vocês vão aprender o comando mais PODEROSO da programação: o LOOP! E não, não é macarrão embora macarrão
+          também seja gostoso. LOOP É REPETIÇÃO! LOOP É PODER! LOOP É VOCÊ FAZER A MESMA COISA VÁRIAS VEZES SEM
+          ENLOUQUECER (ou enlouquecendo de um jeito divertido).
+        </p>
+        <p class="carta-texto">
+          Regra de ouro deste bimestre: se você não ouvir pelo menos um aluno gritando "ACHEI O BUG!" em todas as aulas,
+          você não está sendo barulhento o suficiente. Se a diretora não aparecer na porta perguntando "o que é esse
+          escândalo?", você não fez direito.
+        </p>
+        <p class="carta-texto">
+          Agora respira fundo, coloca uma música que tenha batida repetitiva (lo-fi hip hop, techno dos anos 90 ou
+          qualquer coisa que faça você querer dançar sem motivo) e vamos nessa! 🎧🤖💥
+        </p>
+        <p class="carta-texto fw-bold">Seu guia no caos programático</p>
       </div>
     </section>
 
-    <!-- ==================== MAPEAMENTO BIMESTRE ==================== -->
+    <!-- =================================================== -->
+    <!-- SEÇÃO 2: MAPEAMENTO BIMESTRE                         -->
+    <!-- =================================================== -->
     <section id="mapeamento" class="mb-5">
       <div class="projeto-header">
-        <h2><i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 2 – A DANÇA DO LOOP</h2>
+        <h2><i class="bi bi-map-fill"></i> 🗺️ MAPEAMENTO BIMESTRE 1</h2>
         <div class="badge-projeto">RCP-PR · Programação desplugada com repetição (p.32-35)</div>
       </div>
       <div class="table-responsive">
@@ -137,75 +131,75 @@
           </thead>
           <tbody>
             <tr>
-              <td>CG4, CG5</td>
+              <td>CG4 (Linguagens digitais), CG5 (Pensamento computacional)</td>
               <td>1</td>
               <td>Loop Infinito: Vamos repetir até a diretora aparecer</td>
-              <td>EF03MA10, EF03MA11</td>
-              <td>EF03LP13</td>
+              <td>EF03MA10 (Regularidades), EF03MA11 (Repetição/Progressão)</td>
+              <td>EF03LP13 (Texto instrucional)</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>CG5</td>
+              <td>CG5 (Pensamento computacional)</td>
               <td>2</td>
               <td>Repetição é a mãe da paciência (e da depuração)</td>
-              <td>EF03MA10</td>
-              <td>EF03LP18</td>
+              <td>EF03MA10 (Regularidades)</td>
+              <td>EF03LP18 (Listas de ações)</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>CG4, CG5</td>
+              <td>CG4 (Linguagens digitais), CG5 (Pensamento computacional)</td>
               <td>3</td>
               <td>Coreografia do Robô: Se você erra, nós dançamos juntos</td>
-              <td>EF03MA10</td>
-              <td>EF03LP13</td>
+              <td>EF03MA10 (Regularidades)</td>
+              <td>EF03LP13 (Texto instrucional)</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>CG5, CG9</td>
+              <td>CG5 (Pensamento computacional), CG9 (Empatia)</td>
               <td>4</td>
               <td>Máquinas Humanas: A fábrica de repetição</td>
-              <td>EF03MA11</td>
-              <td>EF03LP13</td>
+              <td>EF03MA11 (Repetição)</td>
+              <td>EF03LP13 (Texto instrucional)</td>
               <td>-</td>
             </tr>
             <tr>
               <td>CG4, CG5</td>
               <td>5</td>
               <td>Robô do Chão: A invasão cartesiana</td>
-              <td>EF03MA22</td>
-              <td>EF03LP13</td>
+              <td>EF03MA22 (Localização)</td>
+              <td>EF03LP13 (Texto instrucional)</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>CG5</td>
+              <td>CG5 (Pensamento computacional)</td>
               <td>6</td>
               <td>Depuração no Grito: Caçada ao Loop Zumbi</td>
-              <td>EF03MA11</td>
-              <td>EF03LP18</td>
+              <td>EF03MA11 (Repetição/Progressão)</td>
+              <td>EF03LP18 (Listas de ações)</td>
               <td>-</td>
             </tr>
             <tr>
               <td>CG4, CG5</td>
               <td>7</td>
               <td>Mestre dos Magos: Tabuleiro das Repetições</td>
-              <td>EF03MA10</td>
-              <td>EF03LP18</td>
+              <td>EF03MA10 (Regularidades)</td>
+              <td>EF03LP18 (Listas de ações)</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>CG4, CG5</td>
+              <td>CG4 (Linguagens digitais), CG5</td>
               <td>8</td>
               <td>Cartão Musical: O Ritmo do Loop</td>
-              <td>EF03MA10</td>
-              <td>EF03LP13</td>
-              <td>EF03CI01</td>
+              <td>EF03MA10 (Regularidades)</td>
+              <td>EF03LP13 (Texto instrucional)</td>
+              <td>EF03CI01 (Produção de sons)</td>
             </tr>
             <tr>
-              <td>CG5</td>
+              <td>CG5 (Pensamento computacional)</td>
               <td>9</td>
               <td>Labirinto do Loop Infinito (Desafio Final)</td>
               <td>EF03MA10, EF03MA22</td>
-              <td>EF03LP18</td>
+              <td>EF03LP18 (Listas de ações)</td>
               <td>-</td>
             </tr>
             <tr>
@@ -213,7 +207,7 @@
               <td>10</td>
               <td>Loop e Memória: A Revisão do Mestre</td>
               <td>EF03MA10, EF03MA11</td>
-              <td>EF03LP13</td>
+              <td>EF03LP13 (Texto instrucional)</td>
               <td>-</td>
             </tr>
           </tbody>
@@ -221,10 +215,12 @@
       </div>
     </section>
 
-    <!-- ==================== PLANO SINTÉTICO ==================== -->
+    <!-- =================================================== -->
+    <!-- SEÇÃO 3: PLANO SINTÉTICO (Semanas 1 a 10)            -->
+    <!-- =================================================== -->
     <section id="plano-sintetico" class="mb-5">
       <div class="projeto-header">
-        <h2><i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 2 – PLANO SINTÉTICO (Semanas 1 a 10)</h2>
+        <h2><i class="bi bi-calendar-week-fill"></i> 📅 BIMESTRE 1 – PLANO SINTÉTICO (Semanas 1 a 10)</h2>
         <div class="badge-projeto">10 semanas de pura repetição criativa</div>
       </div>
       <div class="table-responsive">
@@ -303,20 +299,44 @@
       </div>
     </section>
 
-    <!-- ==================== PLANOS DE AULA DETALHADOS ==================== -->
-    <section id="aulas" class="mb-5">
+    <!-- =================================================== -->
+    <!-- SEÇÃO 4: PLANOS DE AULA DETALHADOS (ACCORDION)       -->
+    <!-- =================================================== -->
+    <section id="planos-aula" class="mb-5">
       <div class="projeto-header">
-        <h2><i class="bi bi-controller"></i> 🎒 PLANOS DE AULA DETALHADOS – BIMESTRE 2</h2>
+        <h2><i class="bi bi-book"></i> 📚 PLANOS DE AULA DETALHADOS – BIMESTRE 1</h2>
         <div class="badge-projeto">Prepare a bagunça organizada. Loop até a coordenação pedir pra parar!</div>
       </div>
+
+      <!-- Barra de progresso e botões de controle -->
+      <div class="row g-3 align-items-center mb-4">
+        <div class="col-md-6">
+          <div class="progress"
+            style="height: 30px; background-color: #1e2a1a; border-radius: 40px; border: 2px solid #ffb347;">
+            <div id="barraProgresso" class="progress-bar bg-warning" role="progressbar" style="width: 0%;"
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="10">0%</div>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <span class="text-muted small" id="progressoTexto">0/10</span>
+          <button id="expandirTodosBtn" class="btn btn-outline-warning btn-sm ms-2"><i class="bi bi-arrows-expand"></i>
+            Expandir</button>
+          <button id="recolherTodosBtn" class="btn btn-outline-secondary btn-sm ms-1"><i
+              class="bi bi-arrows-collapse"></i> Recolher</button>
+          <button id="imprimirPlanosBtn" class="btn btn-warning btn-sm ms-1"><i class="bi bi-printer"></i> Imprimir
+            planos</button>
+        </div>
+      </div>
+
       <div class="accordion" id="accordionAulas">
 
-        <!-- ==================== semana 11 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 11                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="1">
           <h2 class="accordion-header">
             <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#semana1">
-              🔄 semana 11 -- Loop Infinito: Vamos repetir até a diretora aparecer (e ela vai aparecer por causa do
-              barulho)
+              🔄 semana 11 – Loop Infinito: Vamos repetir até a diretora aparecer
             </button>
           </h2>
           <div id="semana1" class="accordion-collapse collapse show" data-bs-parent="#accordionAulas">
@@ -339,70 +359,21 @@
                 <p>Algoritmos, sequência lógica, comando de repetição <code>repita X vezes</code>.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10 (Regularidades), EF03MA11 (Repetição/Progressão)<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA10 (Regularidades), EF03MA11 (Repetição/Progressão)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais (O Kit do Caos Inicial)</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> 1 apito de juiz de futebol</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito</span>
                   <span class="material-badge"><i class="bi bi-bicycle"></i> 1 corda longa</span>
                   <span class="material-badge"><i class="bi bi-balloon-heart-fill"></i> 1 bexiga por aluno</span>
-                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Giz colorido (4 cores)</span>
+                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Giz colorido</span>
                   <span class="material-badge"><i class="bi bi-card-list"></i> Tiras de ação</span>
                   <span class="material-badge"><i class="bi bi-bug-fill"></i> Adesivos "Caçador de Bugs"</span>
                   <span class="material-badge"><i class="bi bi-robot"></i> Fantoche "Detetive Bugs"</span>
-                  <span class="material-badge"><i class="bi bi-soundwave"></i> Caixa de som para batida
-                    repetitiva</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-5 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"O CLICK BAIT DO LOOP"</strong> – Professor entra PULANDO em um pé só e GRITANDO: "Vou
-                    repetir isso 10 VEZES!" Pula contando 1,2,3,4... para no 4 fingindo cansaço. "Cansativo, né? Agora
-                    imagina um ROBÔ fazendo isso sem parar. Isso é um LOOP! É uma ação que se repete. Mas robô não
-                    cansa. Ele só obedece. Então se a gente mandar 'repita 1000 vezes', ele vai fazer. E vai ficar
-                    TORTO. Por isso a gente precisa ENSINAR certo." Escreve no quadro: LOOP = REPETIR AÇÕES.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">5-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"ROBÔS PUXA-SACO"</strong> – "Todo mundo em pé! Agora vocês são meus robôs de estimação."
-                    Comando 1: "Repita 3 vezes: levante o braço direito e grite 'AI'!" Alunos fazem. Professor conta
-                    1,2,3. Comando 2 (com erro proposital): "Repita 4 vezes: bata palma. 1,2,3..." para no 3. Alunos:
-                    "FALTOU UMA!" Professor: "ACHEI O BUG! Isso mesmo! Bug é um erro no comando. Quem achou primeiro
-                    ganha adesivo." Repete com 3 comandos diferentes.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-30 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"COLANDO A REPETIÇÃO"</strong> – Duplas recebem envelope com 8 tiras de ação (pular, girar,
-                    agachar, bater palma). Desafio: "Montem um algoritmo de 4 ações. Se tiver ações repetidas, usem
-                    'repita X vezes'." Professor mostra exemplo: SEM LOOP: pular, pular, pular, pular → COM LOOP:
-                    <code>repita 4 vezes: pular</code>. Duplas colam em folha, um lê, outro executa.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">30-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"DESAFIO DA BEXIGA TONTA"</strong> – Cada grupo (3 alunos) recebe 1 bexiga cheia. Desafio:
-                    escrever algoritmo de no máximo 6 linhas para mover a bexiga de um lado ao outro da mesa usando UM
-                    LOOP. Exemplo esperado: <code>repita 3 vezes: empurre a bexiga + espere 2 segundos</code>. Funções:
-                    1 leitor, 1 executor (move bexiga), 1 fiscal de bug. Se bexiga cair, depuram juntos.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"O RITUAL DO INSETO PREMIADO"</strong> – Roda de conversa no chão. Cada aluno completa em 5
-                    segundos: "Loop é repetir..." (ex: "pulo", "risada", "até cansar"). Professor entrega adesivo
-                    "APRENDIZ DE LOOP". Anúncio: "Semana que vem: LABIRINTO HUMANO. Tragam tênis confortáveis e vontade
-                    de se perder." Apito final: PIIIUUUU! Alunos gritam "LOOP!".
-                  </div>
+                  <span class="material-badge"><i class="bi bi-music-note"></i> Caixa de som</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -410,60 +381,98 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Executa os comandos corporais seguindo a contagem do loop sem errar</td>
                         <td>Execução Sincronizada</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Cria um algoritmo com pelo menos 1 loop no desafio da bexiga</td>
                         <td>Autoria</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Identifica um erro no algoritmo do colega e sugere correção gritando "ACHEI!"</td>
                         <td>Depuração Social</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (convertido em furos no Cartão Perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-5 min</span>
+                  <div class="minuto-descricao"><strong>"O CLICK BAIT DO LOOP"</strong> – Professor entra PULANDO em um
+                    pé só e GRITANDO: "Vou repetir isso 10 VEZES!" Pula contando 1,2,3,4… para no 4 fingindo cansaço.
+                    "Cansativo, né? Agora imagina um ROBÔ fazendo isso sem parar. Isso é um LOOP! É uma ação que se
+                    repete. Mas robô não cansa. Ele só obedece. Então se a gente mandar 'repita 1000 vezes', ele vai
+                    fazer. E vai ficar TORTO. Por isso a gente precisa ENSINAR certo." Escreve no quadro: LOOP = REPETIR
+                    AÇÕES.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">5-15 min</span>
+                  <div class="minuto-descricao"><strong>"ROBÔS PUXA-SACO"</strong> – "Todo mundo em pé! Agora vocês são
+                    meus robôs de estimação." Comando 1: "Repita 3 vezes: levante o braço direito e grite 'AI'!" Alunos
+                    fazem. Professor conta 1,2,3. Comando 2 (com erro proposital): "Repita 4 vezes: bata palma. 1,2,3…"
+                    para no 3. Alunos: "FALTOU UMA!" Professor: "ACHEI O BUG! Isso mesmo! Bug é um erro no comando. Quem
+                    achou primeiro ganha adesivo." Repete com 3 comandos diferentes.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">15-30 min</span>
+                  <div class="minuto-descricao"><strong>"COLANDO A REPETIÇÃO"</strong> – Duplas recebem envelope com 8
+                    tiras de ação (2 de cada: pular, girar, agachar, bater palma). Desafio: "Montem um algoritmo de 4
+                    ações. Se tiver ações repetidas, usem 'repita X vezes'." Professor mostra exemplo: SEM LOOP: pular,
+                    pular, pular, pular → COM LOOP: `repita 4 vezes: pular`. Duplas colam em folha, um lê, outro
+                    executa. Critério: Autoria.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-45 min</span>
+                  <div class="minuto-descricao"><strong>"DESAFIO DA BEXIGA TONTA"</strong> – Cada grupo (3 alunos)
+                    recebe 1 bexiga cheia. Desafio: escrever algoritmo de no máximo 6 linhas para mover a bexiga de um
+                    lado ao outro da mesa usando UM LOOP. Exemplo esperado: `repita 3 vezes: empurre a bexiga + espere 2
+                    segundos`. Funções: 1 leitor, 1 executor (move bexiga), 1 fiscal de bug. Se bexiga cair, depuram
+                    juntos. Critério: Execução Sincronizada.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao"><strong>"O RITUAL DO INSETO PREMIADO"</strong> – Roda de conversa no
+                    chão. Cada aluno completa em 5 segundos: "Loop é repetir…" (ex: "pulo", "risada", "até cansar").
+                    Professor entrega adesivo "APRENDIZ DE LOOP". Anúncio: "Semana que vem: LABIRINTO HUMANO. Tragam
+                    tênis confortáveis e vontade de se perder." Apito final: PIIIUUUU! Alunos gritam "LOOP!" e saem para
+                    o recreio.</div>
+                </div>
+
                 <h5>♿ Adaptações e Inclusão</h5>
                 <ul>
                   <li><strong>TEA:</strong> Use checklist visual com etapas (1. Ouvir, 2. Repetir, 3. Colar). Prefira
-                    ritmos musicais previsíveis. Permita abafador de ruído.</li>
-                  <li><strong>TDAH:</strong> Use timer de 5-7 minutos com sino estridente. Aluno que terminar primeiro
-                    vira "líder do loop". Recompensa imediata: adesivo a cada etapa.</li>
+                    ritmos musicais previsíveis. Permita abafador de ruído. Na caça ao tesouro, ofereça mapa
+                    simplificado.</li>
+                  <li><strong>TDAH:</strong> Use timer de 5-7 minutos para cada bloco com sino estridente. Aluno que
+                    terminar primeiro vira "líder do loop". Recompensa imediata: adesivo a cada etapa concluída.</li>
                   <li><strong>Deficiência Física:</strong> Aluno pode ser o "programador-mor" que dita comandos. No
                     labirinto, pode ser o "leitor do algoritmo" em vez de andar.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Loop é repetir pulo, loop é repetir risada, loop é repetir até cansar!"</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Loop é
+                    repetir pulo, loop é repetir risada, loop é repetir até cansar!"</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 12 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 12                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="2">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana2">
-              🧭 semana 12 -- Repetição é a mãe da paciência (e da loucura): Labirinto humano com loop
+              🧭 semana 12 – Repetição é a mãe da paciência (e da loucura): Labirinto humano com loop
             </button>
           </h2>
           <div id="semana2" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -486,61 +495,20 @@
                 <p>Padrões, sequências, algoritmo de navegação com <code>repita</code>.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10 (Regularidades)<br>
-                  Língua Portuguesa: EF03LP18 (Listas de ações)<br>
-                  Competências RCP-PR: CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA10 (Regularidades)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP18 (Listas de ações)<br>
+                  <strong>Competências RCP-PR:</strong> CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-bar-chart-steps"></i> Giz colorido (várias cores)</span>
-                  <span class="material-badge"><i class="bi bi-eye-slash-fill"></i> Venda para olhos (1 por
-                    grupo)</span>
+                  <span class="material-badge"><i class="bi bi-bar-chart-steps"></i> Giz colorido</span>
+                  <span class="material-badge"><i class="bi bi-eye-slash-fill"></i> Venda para olhos</span>
                   <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de comando (setas, números,
                     repita)</span>
-                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro com barulho de tic-tac</span>
-                  <span class="material-badge"><i class="bi bi-trophy-fill"></i> Adesivos "Mestre do Labirinto"</span>
+                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito</span>
                   <span class="material-badge"><i class="bi bi-robot"></i> Fantoche "Detetive Bugs"</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"A MÚSICA DO LOOP (VERSÃO PERCUSSÃO CORPORAL)"</strong> – Professor comanda ritmos: "Repita
-                    4 vezes: bata palma" → alunos batem. "Repita 3 vezes: bata pé direito" → alunos batem. "Repita 2
-                    vezes: bata na coxa e grite 'LOOP'". Pergunta: "O que se repete em todas?" (a batida, o movimento, o
-                    som). "Isso é um PADRÃO! Sequências que se repetem. E nós vamos usar padrões para ANDAR EM
-                    LABIRINTOS."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"O FANTOUCHE DETETIVE E AS SEQUÊNCIAS MALUCAS"</strong> – Fantoche "Detetive Bugs" mostra
-                    sequências no quadro: 🔴🔵🔴🔵🔴? (🔴); ⬆️➡️⬆️➡️⬆️? (➡️); 1,3,5,7,? (9). Alunos explicam o padrão em
-                    voz alta.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"LABIRINTO HUMANO"</strong> – Professor desenha 3 labirintos com giz no chão (2x2m cada).
-                    Grupos de 4: 1 robô (vendado), 1 programador (dá comandos SÓ com <code>repita</code>), 1 leitor de
-                    código, 1 observador de bugs. Algoritmo padrão entregue:
-                    <code>repita 2 vezes: ande 1 passo, vire à direita; repita 1 vez: ande 2 passos; repita 3 vezes: ande 1 passo, vire à esquerda</code>.
-                    Testam e depuram.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"DESAFIO DO QUADRADO (E DO PENTÁGONO MALUCO)"</strong> – Cada aluno recebe papel
-                    quadriculado. Desafio: "Escrevam um algoritmo para desenhar um QUADRADO usando 'repita 4 vezes'."
-                    Exemplo: <code>repita 4 vezes: ande 2 quadradinhos, vire 90 graus</code>. Pergunta explosiva: "E se
-                    fosse 5 vezes? O que desenhamos?" (Pentágono!). Quem terminar tenta pentágono (virar 72 graus). Roda
-                    final: "Qual foi o maior bug que vocês encontraram hoje?" Anúncio: "Semana que vem: VAMOS DANÇAR
-                    COMO ROBÔS!"
-                  </div>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -548,33 +516,62 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Acerta a sequência lógica dos cartões do fantoche (mínimo 3 de 5)</td>
                         <td>Identificação de Padrões</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Robô (aluno vendado) chega ao fim do labirinto com no máximo 1 erro</td>
                         <td>Precisão na Navegação</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Desenha o quadrado corretamente usando a lógica do loop no papel</td>
                         <td>Desenho Geométrico</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"A MÚSICA DO LOOP (VERSÃO PERCUSSÃO CORPORAL)"</strong> –
+                    Professor comanda ritmos: "Repita 4 vezes: bata palma" → alunos batem. "Repita 3 vezes: bata pé
+                    direito" → alunos batem. "Repita 2 vezes: bata na coxa e grite 'LOOP'". Pergunta: "O que se repete
+                    em todas?" (a batida, o movimento, o som). "Isso é um PADRÃO! Sequências que se repetem. E nós vamos
+                    usar padrões para ANDAR EM LABIRINTOS."</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"O FANTOUCHE DETETIVE E AS SEQUÊNCIAS MALUCAS"</strong> –
+                    Fantoche "Detetive Bugs" mostra sequências no quadro: 🔴🔵🔴🔵🔴? (🔴); ⬆️➡️⬆️➡️⬆️? (➡️); 1,3,5,7,?
+                    (9). Alunos explicam o padrão em voz alta. Critério: Identificação de Padrões.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"LABIRINTO HUMANO"</strong> – Professor desenha 3 labirintos com
+                    giz no chão (2x2m cada). Grupos de 4: 1 robô (vendado), 1 programador (dá comandos SÓ com `repita`),
+                    1 leitor de código, 1 observador de bugs. Algoritmo padrão entregue: `repita 2 vezes: ande 1 passo,
+                    vire à direita; repita 1 vez: ande 2 passos; repita 3 vezes: ande 1 passo, vire à esquerda`. Testam
+                    e depuram. Critério: Precisão na Navegação.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"DESAFIO DO QUADRADO (E DO PENTÁGONO MALUCO)"</strong> – Cada
+                    aluno recebe papel quadriculado. Desafio: "Escrevam um algoritmo para desenhar um QUADRADO usando
+                    'repita 4 vezes'." Exemplo: `repita 4 vezes: ande 2 quadradinhos, vire 90 graus`. Pergunta
+                    explosiva: "E se fosse 5 vezes? O que desenhamos?" (Pentágono!). Quem terminar tenta pentágono
+                    (virar 72 graus). Roda final: "Qual foi o maior bug que vocês encontraram hoje?" Anúncio: "Semana
+                    que vem: VAMOS DANÇAR COMO ROBÔS!"</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -587,21 +584,20 @@
                     desenho, use carimbo de formas geométricas.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Errei direita, esquerda, mas acertei a vontade de tentar. Loop é recomeçar sem desistir."</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Errei
+                    direita, esquerda, mas acertei a vontade de tentar. Loop é recomeçar sem desistir."</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 13 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 13                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="3">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana3">
-              💃 semana 13 -- Coreografia do Robô: Se você erra, nós dançamos juntos
+              💃 semana 13 – Coreografia do Robô: Se você erra, nós dançamos juntos
             </button>
           </h2>
           <div id="semana3" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -624,57 +620,17 @@
                 <p>Algoritmo de dança, loop aninhado (simples), sequência coreográfica.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10 (Regularidades)<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA10 (Regularidades)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-music-note-beamed"></i> Caixa de som com batidas
-                    repetitivas (techno, lo-fi)</span>
-                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões grandes de chão (setas, números,
-                    repita)</span>
-                  <span class="material-badge"><i class="bi bi-palette"></i> Fita adesiva colorida para marcar
-                    posições</span>
-                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Papel e caneta para escrever os
-                    algoritmos</span>
-                  <span class="material-badge"><i class="bi bi-stars"></i> Adesivos "Robô Dançarino"</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"AQUECIMENTO DO ROBÔ DANÇARINO"</strong> – Professor: "Robôs, liguem seus motores!" (alunos
-                    fingem ligar botão na testa). "Repita 3 vezes: balance o braço esquerdo e grite 'DING'!" "Repita 3
-                    vezes: balance o braço direito e grite 'DONG'!" "Repita 2 vezes: faça um agachamento e grite
-                    'LOOP'!" Todos suando e rindo.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"CRIANDO A DANÇA DO GRUPO"</strong> – Grupos de 4 criam coreografia de 4 movimentos usando
-                    LOOP. Exemplo: <code>repita 3 vezes: pular, bater palma; repita 2 vezes: girar, agachar</code>.
-                    Escrevem o ALGORITMO DA DANÇA em folha grande. Ensaiam (5 minutos de gritaria organizada).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"BATALHA DE DANÇA DOS ROBÔS"</strong> – Cada grupo apresenta sua dança. Os outros grupos são
-                    "depuradores": precisam gritar "ACHEI O BUG!" se alguém errar o passo. Se errar, o grupo para,
-                    corrige o algoritmo na hora e recomeça. Professor toca música alta.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"RODA DO PASSO ERRADO"</strong> – Cada grupo compartilha: "Qual foi o movimento mais difícil
-                    de sincronizar?" Professor relaciona com BUGS DE COORDENAÇÃO (loop com contagem errada). Anúncio:
-                    "Semana que vem: VAMOS CONSTRUIR UMA TORRE COM ALGORITMO COLETIVO. Tragam copos plásticos (pelo
-                    menos 10 por grupo)."
-                  </div>
+                  <span class="material-badge"><i class="bi bi-music-note-beamed"></i> Caixa de som</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões de movimento</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Fita adesiva colorida</span>
+                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Papel e caneta</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -682,33 +638,59 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Grupo cria uma sequência de 3 movimentos diferentes com loop</td>
                         <td>Criação Coreográfica</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Escreve o algoritmo da dança em papel (mínimo 1 loop)</td>
                         <td>Tradução para Algoritmo</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Grupo executa a dança sincronizada com no máximo 1 erro</td>
                         <td>Execução em Grupo</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"AQUECIMENTO DO ROBÔ DANÇARINO"</strong> – Professor: "Robôs,
+                    liguem seus motores!" (alunos fingem ligar botão na testa). "Repita 3 vezes: balance o braço
+                    esquerdo e grite 'DING'!" "Repita 3 vezes: balance o braço direito e grite 'DONG'!" "Repita 2 vezes:
+                    faça um agachamento e grite 'LOOP'!" Todos suando e rindo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"CRIANDO A DANÇA DO GRUPO"</strong> – Grupos de 4. Cada grupo
+                    cria coreografia de 4 movimentos usando LOOP. Exemplo: `repita 3 vezes: pular, bater palma; repita 2
+                    vezes: girar, agachar`. Escrevem o ALGORITMO DA DANÇA em folha grande. Ensaiam (5 minutos de
+                    gritaria organizada). Critérios: Criação Coreográfica + Tradução para Algoritmo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"BATALHA DE DANÇA DOS ROBÔS"</strong> – Cada grupo apresenta sua
+                    dança. Os outros grupos são "depuradores": precisam gritar "ACHEI O BUG!" se alguém errar o passo.
+                    Se errar, o grupo para, corrige o algoritmo na hora e recomeça. Professor toca música alta.
+                    Critério: Execução em Grupo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"RODA DO PASSO ERRADO"</strong> – Cada grupo compartilha: "Qual
+                    foi o movimento mais difícil de sincronizar?" Professor relaciona com BUGS DE COORDENAÇÃO (loop com
+                    contagem errada). Anúncio: "Semana que vem: VAMOS CONSTRUIR UMA TORRE COM ALGORITMO COLETIVO. Tragam
+                    copos plásticos (pelo menos 10 por grupo)."</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -721,20 +703,20 @@
                     cabeça apenas, ou ser o "maestro" que dita os comandos.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Se você erra, nós dançamos juntos. Loop é a coreografia da persistência."</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Se você
+                    erra, nós dançamos juntos. Loop é a coreografia da persistência."</em></div>
               </div>
             </div>
           </div>
         </div>
-        <!-- ==================== semana 14 ==================== -->
+
+        <!-- =================================================== -->
+        <!-- semana 14                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="4">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana4">
-              🏗️ semana 14 -- Máquinas Humanas: A fábrica de repetição (Torre de copos no escuro)
+              🏗️ semana 14 – Máquinas Humanas: A fábrica de repetição (Torre de copos no escuro)
             </button>
           </h2>
           <div id="semana4" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -757,55 +739,18 @@
                 <p>Cooperação, algoritmo de construção, loop como organização de tarefa, sequência de ações.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA11 (Repetição/Progressão)<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG5 (Pensamento computacional), CG9 (Empatia e cooperação)</p>
+                <p><strong>Matemática:</strong> EF03MA11 (Repetição/Progressão)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG5 (Pensamento computacional), CG9 (Empatia e cooperação)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-cup-straw"></i> 10 copos plásticos por grupo
-                    (descartáveis de 200ml)</span>
-                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Vendas para os olhos (ou olhos
-                    fechados)</span>
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Algoritmo impresso em cartaz para todos
-                    seguirem</span>
+                  <span class="material-badge"><i class="bi bi-cup-straw"></i> 10 copos plásticos por grupo</span>
+                  <span class="material-badge"><i class="bi bi-eye-slash"></i> Vendas para os olhos</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Algoritmo impresso</span>
                   <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro</span>
-                  <span class="material-badge"><i class="bi bi-ruler"></i> Fita métrica para medir torres</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"DEMONSTRAÇÃO: A FÁBRICA HUMANA"</strong> – Professor mostra algoritmo para torre de 3
-                    andares: <code>repita 3 vezes: coloque 2 copos lado a lado, coloque 1 copo em cima (no meio)</code>.
-                    Faz uma torre rapidamente. "Isso é uma MÁQUINA HUMANA. Cada pessoa faz uma parte. Se todo mundo
-                    seguir o mesmo algoritmo, a torre fica igual."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"CONSTRUÇÃO COM ALGORITMO FIXO"</strong> – Todos os grupos recebem o MESMO algoritmo:
-                    <code>repita 5 vezes: 1. cada pessoa coloca 2 copos no chão (base); 2. grupo coloca 1 copo em cima (centralizado); 3. todos gritam "ANDAR!"</code>.
-                    Grupos executam. Professor observa quem pula etapa.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"DESAFIO NO ESCURO (VENDADOS)"</strong> – Agora, o robô que constrói está VENDADO. O
-                    programador dá comandos de VOZ seguindo o algoritmo. Exemplo: "repita 3 vezes: pegue copo, coloque
-                    na esquerda". Se a torre cair, grupo grita "BUG!", para, revisa o comando e continua.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"EXPOSIÇÃO DAS TORRES"</strong> – Cada grupo posiciona sua torre em uma mesa. Professor tira
-                    foto. Votação: "TORRE MAIS ALTA", "TORRE MAIS TORTA (BUG FÍSICO)". Anúncio: "Semana que vem: ROBÔ DO
-                    CHÃO! Vamos usar coordenadas como um tapete de xadrez gigante."
-                  </div>
+                  <span class="material-badge"><i class="bi bi-rulers"></i> Fita métrica</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -813,33 +758,59 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Grupo segue o algoritmo sem pular etapas</td>
                         <td>Seguir Algoritmo</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Torre construída tem pelo menos 5 andares e não cai em 10 segundos</td>
                         <td>Eficiência da Torre</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Grupo identifica e corrige um erro no algoritmo durante a construção</td>
                         <td>Depuração Coletiva</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"DEMONSTRAÇÃO: A FÁBRICA HUMANA"</strong> – Professor mostra
+                    algoritmo para torre de 3 andares: `repita 3 vezes: coloque 2 copos lado a lado, coloque 1 copo em
+                    cima (no meio)`. Faz uma torre rapidamente. "Isso é uma MÁQUINA HUMANA. Cada pessoa faz uma parte.
+                    Se todo mundo seguir o mesmo algoritmo, a torre fica igual."</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"CONSTRUÇÃO COM ALGORITMO FIXO"</strong> – Todos os grupos
+                    recebem o MESMO algoritmo: `repita 5 vezes: 1. cada pessoa coloca 2 copos no chão (base); 2. grupo
+                    coloca 1 copo em cima (centralizado); 3. todos gritam "ANDAR!"`. Grupos executam. Professor observa
+                    quem pula etapa. Critério: Seguir Algoritmo.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"DESAFIO NO ESCURO (VENDADOS)"</strong> – Agora, o robô que
+                    constrói está VENDADO. O programador dá comandos de VOZ seguindo o algoritmo. Exemplo: "repita 3
+                    vezes: pegue copo, coloque na esquerda". Se a torre cair, grupo grita "BUG!", para, revisa o comando
+                    e continua. Critérios: Eficiência da Torre + Depuração Coletiva.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"EXPOSIÇÃO DAS TORRES"</strong> – Cada grupo posiciona sua torre
+                    em uma mesa. Professor tira foto. Votação: "TORRE MAIS ALTA", "TORRE MAIS TORTA (BUG FÍSICO)".
+                    Anúncio: "Semana que vem: ROBÔ DO CHÃO! Vamos usar coordenadas como um tapete de xadrez gigante."
+                  </div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -851,22 +822,20 @@
                     (separar por cores/tamanhos).</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Meu robô caiu 7 vezes. Na oitava, ele ficou em pé. Eu também. Loop é resiliência
-                    programada."</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Meu robô
+                    caiu 7 vezes. Na oitava, ele ficou em pé. Eu também. Loop é resiliência programada."</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 15 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 15                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="5">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana5">
-              🗺️ semana 15 -- Robô do Chão: A invasão cartesiana (Tapete Quadriculado)
+              🗺️ semana 15 – Robô do Chão: A invasão cartesiana (Tapete quadriculado)
             </button>
           </h2>
           <div id="semana5" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -889,59 +858,19 @@
                 <p>Coordenadas cartesianas simplificadas, grid, algoritmo de navegação com <code>repita</code>.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA22 (Localização e representação espacial)<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA22 (Localização e representação espacial)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Tapete quadriculado desenhado com
-                    giz no chão (6x6)</span>
-                  <span class="material-badge"><i class="bi bi-gem"></i> Objetos para coletar: bolinhas, tampinhas,
-                    adesivos</span>
-                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartões de comando (setas, repita,
-                    números)</span>
-                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Papel quadriculado para cada
-                    aluno</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"O TAPETE DO PODER"</strong> – Professor desenha grid 6x6 no chão. Marca coordenadas:
-                    números nas colunas (1 a 6), letras nas linhas (A a F) ou apenas números. "Isso é o mapa do tesouro.
-                    Cada quadrado é uma posição. O robô só anda de quadrado em quadrado." Pergunta: "Para ir de (1,1)
-                    até (3,1), quantos passos?" (2 para frente).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"TREINAMENTO DE COORDENADAS"</strong> – Cada aluno recebe um mapa pequeno (papel
-                    quadriculado) com um X em (3,2). Desafio: escrever algoritmo para chegar ao X usando
-                    <code>repita</code>. Exemplo:
-                    <code>repita 2 vezes: ande para frente; repita 1 vez: vire à direita, ande 1</code>. Trocam mapas
-                    entre duplas. Um executa no chão pisando nos quadrados, outro lê.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"CAÇA ÀS TAMPINHAS NO GRID"</strong> – Professor espalha 5 tampinhas coloridas em posições
-                    fixas (ex: (2,3), (4,1), (5,5)). Grupos escrevem algoritmo para coletar as 3 primeiras (ou todas).
-                    Devem usar loop: <code>repita 3 vezes: ande até a tampinha, pegue, volte ao início</code>. Robô
-                    humano anda no grid. Se pisar fora → BUG! Depuram na hora.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"FOTO DO GRID E LIÇÃO DE CASA"</strong> – Professor tira foto de cada grupo com seu caminho
-                    desenhado no chão. Lição de casa: "Desenhe um grid em casa e crie um labirinto para seu familiar
-                    resolver usando 'repita'." Anúncio: "Semana que vem: DEPURAÇÃO NO GRITO! Vamos caçar LOOP ZUMBI
-                    (infinito) e LOOP NANICO (pequeno demais)."
-                  </div>
+                  <span class="material-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Tapete quadriculado (giz no
+                    chão)</span>
+                  <span class="material-badge"><i class="bi bi-gem"></i> Objetos para coletar (tampinhas,
+                    bolinhas)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de comando</span>
+                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Papel quadriculado</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -949,33 +878,61 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Localiza corretamente 3 posições no grid (papel ou oral)</td>
-                        <td>Leitura de Mapa</td>
                         <td>0-2 pts</td>
+                        <td>Localiza corretamente 3 posições no grid</td>
+                        <td>Leitura de Mapa</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Escreve algoritmo com loop que coleta pelo menos 2 objetos</td>
                         <td>Algoritmo de Coleta</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Robô (aluno) percorre o caminho sem pisar fora das células (máx 1 erro)</td>
                         <td>Execução Robótica</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"O TAPETE DO PODER"</strong> – Professor desenha grid 6x6 no
+                    chão. Marca coordenadas: números nas colunas (1 a 6), letras nas linhas (A a F) ou apenas números.
+                    "Isso é o mapa do tesouro. Cada quadrado é uma posição. O robô só anda de quadrado em quadrado."
+                    Pergunta: "Para ir de (1,1) até (3,1), quantos passos?" (2 para frente).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"TREINAMENTO DE COORDENADAS"</strong> – Cada aluno recebe um
+                    mapa pequeno (papel quadriculado) com um X em (3,2). Desafio: escrever algoritmo para chegar ao X
+                    usando `repita`. Exemplo: `repita 2 vezes: ande para frente; repita 1 vez: vire à direita, ande 1`.
+                    Trocam mapas entre duplas. Um executa no chão pisando nos quadrados, outro lê. Critérios: Leitura de
+                    Mapa + Algoritmo de Coleta.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"CAÇA ÀS TAMPINHAS NO GRID"</strong> – Professor espalha 5
+                    tampinhas coloridas em posições fixas (ex: (2,3), (4,1), (5,5)). Grupos escrevem algoritmo para
+                    coletar as 3 primeiras (ou todas). Devem usar loop: `repita 3 vezes: ande até a tampinha, pegue,
+                    volte ao início`. Robô humano anda no grid. Se pisar fora → BUG! Depuram na hora. Critério: Execução
+                    Robótica.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"FOTO DO GRID E LIÇÃO DE CASA"</strong> – Professor tira foto de
+                    cada grupo com seu caminho desenhado no chão. Lição de casa: "Desenhe um grid em casa e crie um
+                    labirinto para seu familiar resolver usando 'repita'." Anúncio: "Semana que vem: DEPURAÇÃO NO GRITO!
+                    Vamos caçar LOOP ZUMBI (infinito) e LOOP NANICO (pequeno demais)."</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -986,21 +943,20 @@
                     tapete adaptado.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"O caminho até o tesouro é feito de repetições. Quem otimiza o loop chega primeiro."</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"O caminho
+                    até o tesouro é feito de repetições. Quem otimiza o loop chega primeiro."</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 16 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 16                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="6">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana6">
-              🐛 semana 16 -- Depuração no Grito: Caçada ao Loop Zumbi (e Nanico, e Gigante)
+              🐛 semana 16 – Depuração no Grito: Caçada ao Loop Zumbi (e Nanico, e Gigante)
             </button>
           </h2>
           <div id="semana6" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -1024,61 +980,18 @@
                 <p>Tipos de bug de loop, classificação, depuração, correção de algoritmos.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA11 (Repetição/Progressão)<br>
-                  Língua Portuguesa: EF03LP18 (Listas de ações)<br>
-                  Competências RCP-PR: CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA11 (Repetição/Progressão)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP18 (Listas de ações)<br>
+                  <strong>Competências RCP-PR:</strong> CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-text"></i> Algoritmos impressos (10 versões
-                    diferentes, cada uma com 1 bug específico)</span>
-                  <span class="material-badge"><i class="bi bi-search"></i> Lupa de brinquedo (1 por aluno ou
-                    dupla)</span>
-                  <span class="material-badge"><i class="bi bi-postcard"></i> Cartolina com os 3 tipos de loop afixada
-                    na parede (com desenhos)</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Algoritmos impressos (10 versões)</span>
+                  <span class="material-badge"><i class="bi bi-search"></i> Lupa de brinquedo</span>
+                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartazes dos 3 tipos de loop</span>
                   <span class="material-badge"><i class="bi bi-bug-fill"></i> Adesivos "Caçador de Bug"</span>
-                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro digital</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"OS 3 LOOP MONSTROS"</strong> – Professor apresenta cartazes:<br>
-                    LOOP NANICO: "Repita 3 vezes para desenhar um quadrado" (precisava de 4) → falta 1 lado.<br>
-                    LOOP GIGANTE: "Repita 10 vezes para pentear o cabelo" → vai ficar careca!<br>
-                    LOOP ZUMBI (INFINITO): "Repita até você cansar" → robô nunca para.<br>
-                    Cada tipo tem um desenho: nanico (coisa pequena), gigante (coisa enorme), zumbi (esqueleto
-                    dançante).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"PRONTUÁRIO DO DETETIVE"</strong> – Cada aluno recebe uma folha com 5 algoritmos.<br>
-                    Exemplo 1: <code>repita 4 vezes: pular</code> (para pular 4 vezes) → NENHUM BUG.<br>
-                    Exemplo 2: <code>repita 3 vezes: bater palma</code> (mas precisava de 5) → LOOP NANICO.<br>
-                    Exemplo 3: <code>repita até 10: pular; pular = pular - 1</code> (nunca chega a 10) → LOOP ZUMBI.<br>
-                    Alunos circulam o tipo e escrevem a correção.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"JOGO DO CRONÔMETRO: BUG MAIS RÁPIDO"</strong> – Professor projeta 1 algoritmo bugado no
-                    quadro. Cada dupla tem 30 segundos para discutir e escrever o tipo e a correção. Ao final de 30
-                    segundos, todos gritam a resposta juntos (ou batem na mesa). Quem acertar primeiro ganha adesivo. 5
-                    rodadas. Dupla com mais acertos vira "MESTRE DA DEPURAÇÃO RÁPIDA".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"ARQUIVO DE BUGS"</strong> – Cada dupla cria um algoritmo COM UM BUG (nanico, gigante ou
-                    zumbi) e escreve em uma ficha. Trocam com outra dupla. A outra dupla precisa classificar e corrigir.
-                    Colam as fichas em um mural "ARQUIVO DE BUGS DO 3º ANO". Anúncio: "Semana que vem: Vamos criar um
-                    JOGO DE TABULEIRO com loops!"
-                  </div>
+                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -1086,32 +999,62 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>日电Encontra o bug em pelo menos 3 dos 5 algoritmos da folha</td>
-                        <td>Identificação de Bugs</td>
+                      <tr>
                         <td>0-2 pts</td>
+                        <td>Encontra o bug em pelo menos 3 dos 5 algoritmos da folha</td>
+                        <td>Identificação de Bugs</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Classifica corretamente o bug (nanico, gigante, zumbi)</td>
                         <td>Classificação Correta</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Grita "ACHEI O BUG!" antes do colega (no jogo do cronômetro)</td>
                         <td>Grito de Guerra</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"OS 3 LOOP MONSTROS"</strong> – Professor apresenta cartazes:
+                    LOOP NANICO: "Repita 3 vezes para desenhar um quadrado" (precisava de 4) → falta 1 lado. LOOP
+                    GIGANTE: "Repita 10 vezes para pentear o cabelo" → vai ficar careca! LOOP ZUMBI (INFINITO): "Repita
+                    até você cansar" → robô nunca para. Cada tipo tem um desenho: nanico (coisa pequena), gigante (coisa
+                    enorme), zumbi (esqueleto dançante).</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"PRONTUÁRIO DO DETETIVE"</strong> – Cada aluno recebe uma folha
+                    com 5 algoritmos. Exemplo 1: `repita 4 vezes: pular` (para pular 4 vezes) → NENHUM BUG. Exemplo 2:
+                    `repita 3 vezes: bater palma` (mas precisava de 5) → LOOP NANICO. Exemplo 3: `repita até 10: pular;
+                    pular = pular - 1` (nunca chega a 10) → LOOP ZUMBI. Alunos circulam o tipo e escrevem a correção.
+                    Critérios: Identificação de Bugs + Classificação Correta.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"JOGO DO CRONÔMETRO: BUG MAIS RÁPIDO"</strong> – Professor
+                    projeta 1 algoritmo bugado no quadro. Cada dupla tem 30 segundos para discutir e escrever o tipo e a
+                    correção. Ao final de 30 segundos, todos gritam a resposta juntos (ou batem na mesa). Quem acertar
+                    primeiro ganha adesivo. 5 rodadas. Dupla com mais acertos vira "MESTRE DA DEPURAÇÃO RÁPIDA".
+                    Critério: Grito de Guerra.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"ARQUIVO DE BUGS"</strong> – Cada dupla cria um algoritmo COM UM
+                    BUG (nanico, gigante ou zumbi) e escreve em uma ficha. Trocam com outra dupla. A outra dupla precisa
+                    classificar e corrigir. Colam as fichas em um mural "ARQUIVO DE BUGS DO 3º ANO". Anúncio: "Semana
+                    que vem: Vamos criar um JOGO DE TABULEIRO com loops!"</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -1123,22 +1066,21 @@
                     classificar os bugs.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Errar é o primeiro comando. Acertar é o segundo. Tentar é o algoritmo inteiro. Grite ACHEI e
-                    recomece!"</em>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Errar é o
+                    primeiro comando. Acertar é o segundo. Tentar é o algoritmo inteiro. Grite ACHEI e recomece!"</em>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 17 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 17                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="7">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana7">
-              🎲 semana 17 -- Mestre dos Magos: Tabuleiro das Repetições (Jogo de tabuleiro autoral)
+              🎲 semana 17 – Mestre dos Magos: Tabuleiro das Repetições (Jogo de tabuleiro autoral)
             </button>
           </h2>
           <div id="semana7" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -1161,55 +1103,17 @@
                 <p>Jogo de tabuleiro com loops, regras cooperativas, design de jogo.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10 (Regularidades)<br>
-                  Língua Portuguesa: EF03LP18 (Listas de ações)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA10 (Regularidades)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP18 (Listas de ações)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-grid"></i> Cartolina ou papel pardo (base do
-                    tabuleiro)</span>
-                  <span class="material-badge"><i class="bi bi-palette"></i> Canetinhas coloridas, lápis de cor</span>
-                  <span class="material-badge"><i class="bi bi-dice-6-fill"></i> Dados (1 por grupo)</span>
-                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões de comando (recortes)</span>
-                  <span class="material-badge"><i class="bi bi-circle"></i> Botões ou tampinhas (marcadores)</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"INSPIRAÇÃO: JOGOS QUE SE REPETEM"</strong> – Professor mostra exemplos: Banco Imobiliário
-                    (dar a volta no tabuleiro é um loop!), Jogo da Trilha (repetir passos). "Hoje vocês vão criar um
-                    jogo onde as casas mandam os jogadores REPETIREM ações." Exemplo de casa: "Loop 2x: volte 1 casa" ou
-                    "Repita 3x: troque de lugar com o colega à direita".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-30 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"MÃO NA MASSA: CONSTRUÇÃO DO TABULEIRO"</strong> – Grupos de 3. Cada grupo recebe cartolina.
-                    Desenham caminho com 10-15 casas. Em 3 casas, escrevem comandos com loop: "Repita 2x: avance 1",
-                    "Repita 3x: fique de molho (pule 1 rodada)", "Repita até tirar 5 no dado: jogue de novo". Escrevem
-                    as regras no verso.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">30-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"TESTE E DEPURAÇÃO"</strong> – Grupos trocam de jogos. Um grupo joga o jogo do outro. O
-                    grupo autor observa: "As casas de loop estão funcionando? As regras estão claras?" Se algo não
-                    funcionar, depuram: "Falta explicar o que acontece se cair na mesma casa duas vezes".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"EXPOSIÇÃO E VOTAÇÃO"</strong> – Jogos expostos nas mesas. Cada grupo apresenta seu jogo em
-                    1 minuto. Votação: "JOGO MAIS DIVERTIDO", "LOOP MAIS CRIATIVO", "MELHOR ILUSTRAÇÃO". Anúncio:
-                    "Semana que vem: Vamos fazer MÚSICA com loops! Tragam objetos que façam barulho (colher, panela,
-                    garrafa com arroz)."
-                  </div>
+                  <span class="material-badge"><i class="bi bi-grid"></i> Cartolina ou papel pardo</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Canetinhas, lápis de cor</span>
+                  <span class="material-badge"><i class="bi bi-dice-6-fill"></i> Dados</span>
+                  <span class="material-badge"><i class="bi bi-people-fill"></i> Marcadores (botões, tampinhas)</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -1217,33 +1121,60 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Tabuleiro tem pelo menos 10 casas, com 3 casas de comando loop</th>
-                        <td>Criação do Tabuleiro</td>
                         <td>0-2 pts</td>
+                        <td>Tabuleiro tem pelo menos 10 casas, com 3 casas de comando loop</td>
+                        <td>Criação do Tabuleiro</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Escreve as regras do jogo em linguagem compreensível (mínimo 3 regras)</td>
                         <td>Regras Claras</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Jogo é testado por outro grupo e ajustado com base no feedback</td>
                         <td>Teste e Depuração</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"INSPIRAÇÃO: JOGOS QUE SE REPETEM"</strong> – Professor mostra
+                    exemplos: Banco Imobiliário (dar a volta no tabuleiro é um loop!), Jogo da Trilha (repetir passos).
+                    "Hoje vocês vão criar um jogo onde as casas mandam os jogadores REPETIREM ações." Exemplo de casa:
+                    "Loop 2x: volte 1 casa" ou "Repita 3x: troque de lugar com o colega à direita".</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-30 min</span>
+                  <div class="minuto-descricao"><strong>"MÃO NA MASSA: CONSTRUÇÃO DO TABULEIRO"</strong> – Grupos de 3.
+                    Cada grupo recebe cartolina. Desenham caminho com 10-15 casas. Em 3 casas, escrevem comandos com
+                    loop: "Repita 2x: avance 1", "Repita 3x: fique de molho (pule 1 rodada)", "Repita até tirar 5 no
+                    dado: jogue de novo". Escrevem as regras no verso. Critérios: Criação do Tabuleiro + Regras Claras.
+                  </div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-45 min</span>
+                  <div class="minuto-descricao"><strong>"TESTE E DEPURAÇÃO"</strong> – Grupos trocam de jogos. Um grupo
+                    joga o jogo do outro. O grupo autor observa: "As casas de loop estão funcionando? As regras estão
+                    claras?" Se algo não funcionar, depuram: "Falta explicar o que acontece se cair na mesma casa duas
+                    vezes". Critério: Teste e Depuração.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao"><strong>"EXPOSIÇÃO E VOTAÇÃO"</strong> – Jogos expostos nas mesas. Cada
+                    grupo apresenta seu jogo em 1 minuto. Votação: "JOGO MAIS DIVERTIDO", "LOOP MAIS CRIATIVO", "MELHOR
+                    ILUSTRAÇÃO". Anúncio: "Semana que vem: Vamos fazer MÚSICA com loops! Tragam objetos que façam
+                    barulho (colher, panela, garrafa com arroz)."</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -1254,22 +1185,21 @@
                     carimbos.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"No tabuleiro da vida, o loop é a volta que a gente dá pra aprender mais. E às vezes pra cair na
-                    mesma armadilha... mas com estilo!"</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"No
+                    tabuleiro da vida, o loop é a volta que a gente dá pra aprender mais. E às vezes pra cair na mesma
+                    armadilha... mas com estilo!"</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 18 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 18                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="8">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana8">
-              🎵 semana 18 -- Cartão Musical: O Ritmo do Loop (Instrumentos de sucata e partitura)
+              🎵 semana 18 – Cartão Musical: O Ritmo do Loop (Instrumentos de sucata e partitura)
             </button>
           </h2>
           <div id="semana8" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -1292,57 +1222,19 @@
                 <p>Ritmo, repetição, partitura de comandos, produção sonora.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Ciências: EF03CI01 (Produção de sons por diferentes materiais)<br>
-                  Matemática: EF03MA10 (Regularidades)<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional)</p>
+                <p><strong>Ciências:</strong> EF03CI01 (Produção de sons por diferentes materiais)<br>
+                  <strong>Matemática:</strong> EF03MA10 (Regularidades)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-recycle"></i> Objetos sonoros: garrafas PET com arroz,
-                    latas, tampas de panela, colheres de pau</span>
-                  <span class="material-badge"><i class="bi bi-pencil-fill"></i> Papel e caneta para a
-                    "partitura-loop"</span>
-                  <span class="material-badge"><i class="bi bi-mic"></i> (Opcional) Aplicativo de piano online ou
-                    Scratch Jr</span>
-                  <span class="material-badge"><i class="bi bi-tag"></i> Fita adesiva para etiquetar os
-                    instrumentos</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"BATIDA DO ROBÔ (Demonstração Rítmica)"</strong> – Professor cria ritmo com palmas: "PALMA,
-                    PALMA, PÁU (pé), PALMA". "Agora repita esse ritmo 4 vezes. Isso é um LOOP MUSICAL!" Mostra partitura
-                    no quadro: <code>repita 4 vezes: bater palma, bater palma, bater pé, bater palma</code>. Executa com
-                    a turma. Parece uma música!
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-25 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"CONSTRUÇÃO DOS INSTRUMENTOS DE SUCATA"</strong> – Cada grupo recebe materiais variados.
-                    Desafio: construir 2 instrumentos diferentes (ex: chocalho de garrafa, tambor de lata). Testam os
-                    sons: grave, agudo, longo, curto. Dão nome aos instrumentos.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">25-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"COMPOSIÇÃO DA PARTITURA-LOOP"</strong> – Cada grupo inventa um ritmo de 4 tempos. Escreve a
-                    partitura usando comandos: <code>repita 3 vezes: chocalho (1x), tambor (2x), silêncio (1x)</code>.
-                    Ensaiam (5 minutos de barulho organizado - professor cronometra).
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"BANDA DO LOOP"</strong> – Cada grupo apresenta sua música. Turma avalia: "O loop está
-                    claro? O ritmo é repetitivo (e isso é bom)?" Gravação em vídeo opcional para enviar às famílias.
-                    Anúncio: "Semana que vem: DESAFIO FINAL DO BIMESTRE! Labirinto do Loop Infinito. Tragam toda a
-                    experiência de vocês."
-                  </div>
+                  <span class="material-badge"><i class="bi bi-recycle"></i> Garrafas PET, latas, potes</span>
+                  <span class="material-badge"><i class="bi bi-dropbox"></i> Grãos (arroz, feijão)</span>
+                  <span class="material-badge"><i class="bi bi-palette"></i> Tinta colorida</span>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Cartões de ritmo</span>
+                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Papel e caneta</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -1350,33 +1242,59 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Cria um instrumento que produz pelo menos 2 sons diferentes</td>
                         <td>Construção do Instrumento</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Escreve uma partitura-loop com 3 repetições de um padrão rítmico</td>
                         <td>Composição com Loop</td>
-                        <td>0-2 pts</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Apresenta a música para a turma com ritmo constante (sem travamentos)</td>
                         <td>Apresentação Musical</td>
-                        <td>0-1 pt</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"BATIDA DO ROBÔ (Demonstração Rítmica)"</strong> – Professor
+                    cria ritmo com palmas: "PALMA, PALMA, PÁU (pé), PALMA". "Agora repita esse ritmo 4 vezes. Isso é um
+                    LOOP MUSICAL!" Mostra partitura no quadro: `repita 4 vezes: bater palma, bater palma, bater pé,
+                    bater palma`. Executa com a turma. Parece uma música!</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-25 min</span>
+                  <div class="minuto-descricao"><strong>"CONSTRUÇÃO DOS INSTRUMENTOS DE SUCATA"</strong> – Cada grupo
+                    recebe materiais variados. Desafio: construir 2 instrumentos diferentes (ex: chocalho de garrafa,
+                    tambor de lata). Testam os sons: grave, agudo, longo, curto. Dão nome aos instrumentos. Critério:
+                    Construção do Instrumento.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">25-40 min</span>
+                  <div class="minuto-descricao"><strong>"COMPOSIÇÃO DA PARTITURA-LOOP"</strong> – Cada grupo inventa um
+                    ritmo de 4 tempos. Escreve a partitura usando comandos: `repita 3 vezes: chocalho (1x), tambor (2x),
+                    silêncio (1x)`. Ensaiam (5 minutos de barulho organizado - professor cronometra). Critério:
+                    Composição com Loop.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"BANDA DO LOOP"</strong> – Cada grupo apresenta sua música.
+                    Turma avalia: "O loop está claro? O ritmo é repetitivo (e isso é bom)?" Gravação em vídeo opcional
+                    para enviar às famílias. Anúncio: "Semana que vem: DESAFIO FINAL DO BIMESTRE! Labirinto do Loop
+                    Infinito. Tragam toda a experiência de vocês."</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -1388,22 +1306,20 @@
                     Instrumentos adaptados com alças.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"Na música e no código, o segredo é saber repetir no ritmo certo. Loop é a batida do
-                    algoritmo."</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"Na música
+                    e no código, o segredo é saber repetir no ritmo certo. Loop é a batida do algoritmo."</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 19 ==================== -->
+        <!-- =================================================== -->
+        <!-- semana 19                                             -->
+        <!-- =================================================== -->
         <div class="accordion-item" data-semana="9">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana9">
-              🏆 semana 19 -- Labirinto do Loop Infinito (Desafio Final do Bimestre)
+              🏆 semana 19 – Labirinto do Loop Infinito (Desafio Final do Bimestre)
             </button>
           </h2>
           <div id="semana9" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -1426,57 +1342,18 @@
                 <p>Integração de loops, labirinto com obstáculos, otimização de código.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10 (Regularidades), EF03MA22 (Localização)<br>
-                  Língua Portuguesa: EF03LP18 (Listas de ações)<br>
-                  Competências RCP-PR: CG5 (Pensamento computacional)</p>
+                <p><strong>Matemática:</strong> EF03MA10 (Regularidades), EF03MA22 (Localização)<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP18 (Listas de ações)<br>
+                  <strong>Competências RCP-PR:</strong> CG5 (Pensamento computacional)
+                </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-diagram-3"></i> Labirinto grande desenhado no chão com
-                    giz (2 versões: fácil e difícil)</span>
-                  <span class="material-badge"><i class="bi bi-card-heading"></i> Cartões de comando (setas, repita,
-                    números)</span>
-                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro e apito</span>
-                  <span class="material-badge"><i class="bi bi-trophy-fill"></i> Certificados "Mestre do Loop" (já
-                    preparados)</span>
-                  <span class="material-badge"><i class="bi bi-box"></i> Cones e obstáculos (caixas, cadeiras)</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-10 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"APRESENTAÇÃO DO LABIRINTO"</strong> – Professor desenha labirinto fácil (cerca de 10
-                    passos). "O robô começa no círculo, termina no quadrado. Só pode usar comandos com 'repita'. Nada de
-                    'ande 1 passo' solto, tem que estar dentro de loop." Mostra exemplo ruim:
-                    <code>ande 1, ande 1, ande 1, ande 1</code> → "Pode? PODE, mas é burro. Vocês são espertos. Usem
-                    loop."
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">10-30 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"RESOLUÇÃO DO LABIRINTO"</strong> – Grupos de 3. Cada grupo recebe folha com labirinto
-                    desenhado (mini mapa). Escrevem algoritmo. Testam com robô humano (vendado ou não) no labirinto do
-                    chão. Se o robô errar (pisar fora, bater na parede), grupo tem 1 minuto para DEPURAR antes de tentar
-                    de novo.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">30-40 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"LABIRINTO NÍVEL HARD (DESAFIO EXTRA)"</strong> – Grupos que já terminaram o fácil tentam
-                    labirinto difícil (com obstáculos, mais curvas). Quem terminar os dois ganha "SUPER MESTRE DO LOOP".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">40-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"FECHAMENTO E ANÚNCIO DO CERTIFICADO"</strong> – Roda de conversa: "Qual foi a maior
-                    dificuldade? O que o loop facilitou?" Professor anuncia: "Semana que vem é a REVISÃO DO BIMESTRE.
-                    Teremos JOGO DA MEMÓRIA e entrega dos CERTIFICADOS 'MESTRE DO LOOP'." Todos batem palmas. Apito
-                    final.
-                  </div>
+                  <span class="material-badge"><i class="bi bi-diagram-3"></i> Labirinto desenhado no chão</span>
+                  <span class="material-badge"><i class="bi bi-card-text"></i> Cartões de comando</span>
+                  <span class="material-badge"><i class="bi bi-stopwatch"></i> Cronômetro</span>
+                  <span class="material-badge"><i class="bi bi-megaphone-fill"></i> Apito</span>
+                  <span class="material-badge"><i class="bi bi-trophy-fill"></i> Certificados "Mestre do Loop"</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -1484,33 +1361,60 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Algoritmo leva o robô ao fim do labirinto (fácil ou difícil)</td>日起Eficácia do Algoritmo
-                        </th>
-                        <td>0-2 pts</th>
+                        <td>0-2 pts</td>
+                        <td>Algoritmo leva o robô ao fim do labirinto (fácil ou difícil)</td>
+                        <td>Eficácia do Algoritmo</td>
                       </tr>
                       <tr>
+                        <td>0-2 pts</td>
                         <td>Usa pelo menos 2 loops diferentes (ex: um para andar, um para girar)</td>
-                        <td>Uso Criativo de Loop</th>
-                        <td>0-2 pts</th>
+                        <td>Uso Criativo de Loop</td>
                       </tr>
                       <tr>
+                        <td>0-1 pt</td>
                         <td>Corrige o algoritmo em menos de 1 minuto após um erro</td>
-                        <td>Depuração Rápida</th>
-                        <td>0-1 pt</th>
+                        <td>Depuração Rápida</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></td>
+                        <td colspan="2"><strong>Total</strong></td>
                         <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-10 min</span>
+                  <div class="minuto-descricao"><strong>"APRESENTAÇÃO DO LABIRINTO"</strong> – Professor desenha
+                    labirinto fácil (cerca de 10 passos). "O robô começa no círculo, termina no quadrado. Só pode usar
+                    comandos com 'repita'. Nada de 'ande 1 passo' solto, tem que estar dentro de loop." Mostra exemplo
+                    ruim: `ande 1, ande 1, ande 1, ande 1` → "Pode? PODE, mas é burro. Vocês são espertos. Usem loop."
+                  </div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">10-30 min</span>
+                  <div class="minuto-descricao"><strong>"RESOLUÇÃO DO LABIRINTO"</strong> – Grupos de 3. Cada grupo
+                    recebe folha com labirinto desenhado (mini mapa). Escrevem algoritmo. Testam com robô humano
+                    (vendado ou não) no labirinto do chão. Se o robô errar (pisar fora, bater na parede), grupo tem 1
+                    minuto para DEPURAR antes de tentar de novo. Critérios: Eficácia do Algoritmo + Uso Criativo de
+                    Loop.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-40 min</span>
+                  <div class="minuto-descricao"><strong>"LABIRINTO NÍVEL HARD (DESAFIO EXTRA)"</strong> – Grupos que já
+                    terminaram o fácil tentam labirinto difícil (com obstáculos, mais curvas). Quem terminar os dois
+                    ganha "SUPER MESTRE DO LOOP". Critério: Depuração Rápida.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">40-50 min</span>
+                  <div class="minuto-descricao"><strong>"FECHAMENTO E ANÚNCIO DO CERTIFICADO"</strong> – Roda de
+                    conversa: "Qual foi a maior dificuldade? O que o loop facilitou?" Professor anuncia: "Semana que vem
+                    é a REVISÃO DO BIMESTRE. Teremos JOGO DA MEMÓRIA e entrega dos CERTIFICADOS 'MESTRE DO LOOP'." Todos
+                    batem palmas. Apito final.</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -1521,22 +1425,21 @@
                     humano.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia:</strong>
-                  <em>"O labirinto é grande, mas o loop é infinito como a nossa vontade de acertar. E quando erramos...
-                    a gente depura e recomeça!"</em>
-                </div>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia:</strong> <em>"O
+                    labirinto é grande, mas o loop é infinito como a nossa vontade de acertar. E quando erramos... a
+                    gente depura e recomeça!"</em></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ==================== semana 20 ==================== -->
-        <div class="accordion-item" data-semana="20">
+        <!-- =================================================== -->
+        <!-- semana 20                                            -->
+        <!-- =================================================== -->
+        <div class="accordion-item" data-semana="10">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana20">
-              🧠 semana 20 -- Loop e Memória: A Revisão do Mestre (Jogo da Memória e Certificados)
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#semana10">
+              🧠 semana 20 – Loop e Memória: A Revisão do Mestre (Jogo da memória e certificados)
             </button>
           </h2>
           <div id="semana10" class="accordion-collapse collapse" data-bs-parent="#accordionAulas">
@@ -1559,61 +1462,18 @@
                 <p>Revisão gamificada, autoavaliação, celebração.</p>
 
                 <h5>📋 Habilidades BNCC e RCP-PR</h5>
-                <p>Matemática: EF03MA10, EF03MA11<br>
-                  Língua Portuguesa: EF03LP13 (Texto instrucional)<br>
-                  Competências RCP-PR: CG4 (Linguagens digitais), CG5 (Pensamento computacional), CG9 (Autoconhecimento)
+                <p><strong>Matemática:</strong> EF03MA10, EF03MA11<br>
+                  <strong>Língua Portuguesa:</strong> EF03LP13 (Texto instrucional)<br>
+                  <strong>Competências RCP-PR:</strong> CG4 (Linguagens digitais), CG5 (Pensamento computacional), CG9
+                  (Autoconhecimento)
                 </p>
 
                 <h5>🧰 Materiais</h5>
                 <div class="materiais-container">
-                  <span class="material-badge"><i class="bi bi-card-list"></i> Jogo da memória impresso (16 cartas: 8
-                    pares de algoritmo/ação)</span>
-                  <span class="material-badge"><i class="bi bi-award-fill"></i> Certificados "Mestre do Loop" (modelo
-                    abaixo)</span>
-                  <span class="material-badge"><i class="bi bi-qr-code"></i> Cartão Perfurado do Programador (com furos
-                    acumulados durante o bimestre)</span>
-                  <span class="material-badge"><i class="bi bi-candy-cane"></i> Balas ou adesivos (prêmios
-                    simbólicos)</span>
-                  <span class="material-badge"><i class="bi bi-journal-bookmark-fill"></i> Ficha de autoavaliação
-                    "Diário do Robô Aventureiro"</span>
-                </div>
-
-                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">0-15 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"JOGO DA MEMÓRIA DOS ALGORITMOS"</strong> – Cada dupla recebe 16 cartas viradas para baixo.
-                    8 cartas com ALGORITMOS (ex: <code>repita 4 vezes: pular</code>), 8 com AÇÕES (desenho de alguém
-                    pulando 4 vezes). Objetivo: encontrar os pares. Quem acertar mais pares em 10 minutos ganha adesivo
-                    "Memória de Robô".
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">15-30 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"FICHA DE AUTOAVALIAÇÃO"</strong> – Cada aluno recebe "DIÁRIO DO ROBÔ AVENTUREIRO".
-                    Perguntas: 1) O que é um loop? (desenho ou frase). 2) Qual foi o bug mais engraçado? 3) De 0 a 5,
-                    quanto gostou de programar com o corpo? 4) O que quer aprender no próximo bimestre? Professor
-                    circula, ajuda quem precisa.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">30-45 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"CERIMÔNIA DO CERTIFICADO"</strong> – Professor chama aluno por aluno. Entrega do
-                    CERTIFICADO "MESTRE DO LOOP NÍVEL 1". Frase para cada: "Fulano, você é oficialmente um MESTRE DO
-                    LOOP. Nunca se esqueça: repetir não é chato quando você sabe o que está fazendo." Turma bate palmas
-                    a cada entrega. Foto coletiva.
-                  </div>
-                </div>
-                <div class="minuto-item">
-                  <span class="minuto-tempo">45-50 min</span>
-                  <div class="minuto-descricao">
-                    <strong>"O QUE VEM POR AÍ (SPOILER DO BIMESTRE 2)"</strong> – Professor: "No bimestre 2, vamos
-                    aprender VARIÁVEIS. Sabe o que é? É O BOLSO MÁGICO DO ROBÔ. Ele vai guardar números que mudam. E
-                    vamos usar CHOCOLATE de verdade." Alunos vibram. "Tragam prendedores de roupa e régua. Vamos
-                    construir um placar que se move." Apito final. Grito coletivo: "LOOP, LOOP, LOOP, VAMOS REPETIR!"
-                  </div>
+                  <span class="material-badge"><i class="bi bi-card-list"></i> Jogo da memória (16 cartas)</span>
+                  <span class="material-badge"><i class="bi bi-trophy-fill"></i> Certificados "Mestre do Loop"</span>
+                  <span class="material-badge"><i class="bi bi-stars"></i> Adesivos</span>
+                  <span class="material-badge"><i class="bi bi-pencil-square"></i> Ficha de autoavaliação</span>
                 </div>
 
                 <h5>📊 Critérios Operacionais de Avaliação</h5>
@@ -1621,33 +1481,60 @@
                   <table class="table tabela-criterios-semana">
                     <thead>
                       <tr>
+                        <th>Pontuação</th>
                         <th>Descritor</th>
                         <th>Critério</th>
-                        <th>Pontuação</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Encontra pelo menos 4 pares corretos no jogo da memória</th>
-                        <td>Jogo da Memória</th>
-                        <td>0-2 pts</th>
+                        <td>0-2 pts</td>
+                        <td>Encontra pelo menos 4 pares corretos no jogo da memória</td>
+                        <td>Jogo da Memória</td>
                       </tr>
                       <tr>
-                        <td>Preenche a ficha "O que aprendi sobre loop" com respostas coerentes</th>
-                        <td>Autoavaliação</th>
-                        <td>0-2 pts</th>
+                        <td>0-2 pts</td>
+                        <td>Preenche a ficha "O que aprendi sobre loop" com respostas coerentes</td>
+                        <td>Autoavaliação</td>
                       </tr>
                       <tr>
-                        <td>Participa da roda de reflexão final contando 1 aprendizado</th>
-                        <td>Participação</th>
-                        <td>0-1 pt</th>
+                        <td>0-1 pt</td>
+                        <td>Participa da roda de reflexão final contando 1 aprendizado</td>
+                        <td>Participação</td>
                       </tr>
                       <tr>
-                        <td colspan="2"><strong>Total (furos no cartão perfurado)</strong></th>
-                        <td><strong>0-5 pts</strong></th>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>0-5 pts</strong></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
+                <div class="minuto-item"><span class="minuto-tempo">0-15 min</span>
+                  <div class="minuto-descricao"><strong>"JOGO DA MEMÓRIA DOS ALGORITMOS"</strong> – Cada dupla recebe 16
+                    cartas viradas para baixo. 8 cartas com ALGORITMOS (ex: `repita 4 vezes: pular`), 8 com AÇÕES
+                    (desenho de alguém pulando 4 vezes). Objetivo: encontrar os pares. Quem acertar mais pares em 10
+                    minutos ganha adesivo "Memória de Robô". Critério: Jogo da Memória.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">15-30 min</span>
+                  <div class="minuto-descricao"><strong>"FICHA DE AUTOAVALIAÇÃO – DIÁRIO DO ROBÔ AVENTUREIRO"</strong> –
+                    Cada aluno recebe ficha. Perguntas: 1) O que é um loop? (desenho ou frase). 2) Qual foi o bug mais
+                    engraçado? 3) De 0 a 5, quanto gostou de programar com o corpo? 4) O que quer aprender no próximo
+                    bimestre? Professor circula, ajuda quem precisa. Critério: Autoavaliação.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">30-45 min</span>
+                  <div class="minuto-descricao"><strong>"CERIMÔNIA DO CERTIFICADO"</strong> – Professor chama aluno por
+                    aluno. Entrega do CERTIFICADO "MESTRE DO LOOP NÍVEL 1". Frase para cada: "Fulano, você é
+                    oficialmente um MESTRE DO LOOP. Nunca se esqueça: repetir não é chato quando você sabe o que está
+                    fazendo." Turma bate palmas a cada entrega. Foto coletiva.</div>
+                </div>
+                <div class="minuto-item"><span class="minuto-tempo">45-50 min</span>
+                  <div class="minuto-descricao"><strong>"O QUE VEM POR AÍ (SPOILER DO BIMESTRE 2)"</strong> – Professor:
+                    "No bimestre 2, vamos aprender VARIÁVEIS. Sabe o que é? É O BOLSO MÁGICO DO ROBÔ. Ele vai guardar
+                    números que mudam. E vamos usar CHOCOLATE de verdade." Alunos vibram. "Tragam prendedores de roupa e
+                    régua. Vamos construir um placar que se move." Apito final. Grito coletivo: "LOOP, LOOP, LOOP, VAMOS
+                    REPETIR!"</div>
                 </div>
 
                 <h5>♿ Adaptações e Inclusão</h5>
@@ -1659,9 +1546,7 @@
                     com resposta oral gravada.</li>
                 </ul>
 
-                <div class="frase-do-dia">
-                  <i class="bi bi-chat-quote"></i>
-                  <strong>Frase do dia (Última!):</strong>
+                <div class="frase-do-dia"><i class="bi bi-chat-quote"></i> <strong>Frase do dia (Última!):</strong>
                   <em>"Loop não é macarrão! Loop é repetição! Loop é poder! E agora vocês são Mestres do Loop!"</em>
                 </div>
               </div>
@@ -1669,50 +1554,210 @@
           </div>
         </div>
 
+      </div> <!-- fim accordion -->
+    </section>
+
+    <!-- =================================================== -->
+    <!-- SEÇÃO 5: JOGO DO BIMESTRE – LOOP DASH 3000           -->
+    <!-- =================================================== -->
+    <section id="jogo-bimestre" class="mb-5">
+      <div class="projeto-header">
+        <h2><i class="bi bi-joystick"></i> 🎮 JOGO DO BIMESTRE – LOOP DASH 3000</h2>
+        <div class="badge-projeto">A Corrida dos Comandos Repetidos – Monte seu algoritmo com cartões!</div>
+      </div>
+
+      <!-- Descrição do jogo -->
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h4><i class="bi bi-info-circle-fill"></i> LOOP DASH 3000 – A CORRIDA DOS COMANDOS REPETIDOS</h4>
+        <p><strong>🤖 Contexto:</strong> Loop Dash é um jogo onde você controla um robozinho que só pode se mover usando
+          comandos de <strong class="text-warning">REPITA</strong>. O objetivo é chegar ao final da pista usando o MENOR
+          número de cartões possível!</p>
+        <p><strong>🎯 Público-alvo:</strong> Alunos do 3º ano (individual ou duplas)</p>
+        <p><strong>💡 Conceito estrela:</strong> Loop como otimização de código (menos cartões = mais eficiência)</p>
+
+        <h5 class="mt-3">📜 Regras do Jogo (Versão CARTOONS – sem digitar!):</h5>
+        <ol>
+          <li><strong>🏁 Pista de 3 fases:</strong> RETA → ZIGUE-ZAGUE → OBSTÁCULOS</li>
+          <li><strong>🎴 Monte seu algoritmo:</strong> Clique nos cartões de comando para construir a sequência</li>
+          <li><strong>🔁 Regra de ouro:</strong> Use o cartão <strong class="text-success">REPITA</strong> para repetir
+            ações – NADA de comandos soltos!</li>
+          <li><strong>🏆 Pontuação:</strong> Quem usar MENOS cartões vence! (Menos linhas = mais pontos)</li>
+          <li><strong>🐛 Bug e penalidade:</strong> Se o robô bater num obstáculo, você tem que DEPURAR (trocar cartões)
+          </li>
+          <li><strong>🌟 Bônus criativo:</strong> Usar um REPITA dentro de outro = título <strong>"Mestre do
+              Loopception"</strong> + estrela dourada!</li>
+        </ol>
+      </div>
+
+      <!-- Área do Jogo Loop Dash - Versão Cartões -->
+      <div class="simulador-comandos p-4 rounded-4 text-center"
+        style="background: linear-gradient(135deg, #0d1f0b, #1a2b17); border: 2px solid #ffb347;">
+        <h3 class="text-warning">🤖 LOOP DASH – MONTE SEU ALGORITMO COM CARTOES! 🃏</h3>
+
+        <!-- Indicador de Fase -->
+        <div class="mb-4">
+          <div class="btn-group flex-wrap" role="group">
+            <button type="button" class="btn btn-phase fase1-btn ativo" data-fase="1">🏁 FASE 1: RETA <span
+                class="badge bg-success">FÁCIL</span></button>
+            <button type="button" class="btn btn-phase fase2-btn" data-fase="2">🔄 FASE 2: ZIGUE-ZAGUE <span
+                class="badge bg-warning text-dark">MÉDIO</span></button>
+            <button type="button" class="btn btn-phase fase3-btn" data-fase="3">🧱 FASE 3: OBSTÁCULOS <span
+                class="badge bg-danger">DIFÍCIL</span></button>
+          </div>
+        </div>
+
+        <!-- Visualização da Pista -->
+        <div class="loopdash-pista-visual mb-4">
+          <div class="pista-label"><i class="bi bi-map-fill"></i> PISTA ATUAL: <span id="faseNomeAtual"
+              class="text-warning">RETA</span> <span id="faseIconeAtual">🏁</span></div>
+          <div id="loopdashGrid" class="loopdash-grid"></div>
+        </div>
+
+        <!-- Estatísticas do Jogo -->
+        <div class="row mt-3 justify-content-center g-2">
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-label">CARTOES USADOS</div>
+              <div class="stat-value" id="loopdashCartoes">0</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-label">MELHOR MARCA</div>
+              <div class="stat-value" id="loopdashMelhor">--</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">🤖</div>
+              <div class="stat-label">STATUS</div>
+              <div class="stat-value" id="loopdashStatus">PRONTO</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-label">BÔNUS</div>
+              <div class="stat-value" id="loopdashBonus">---</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÁREA DE MONTAGEM DO ALGORITMO -->
+        <div class="algoritmo-builder mt-4">
+          <div class="builder-header">
+            <i class="bi bi-grid-3x3-gap-fill"></i> SEU ALGORITMO (clique nos cartões abaixo)
+            <button class="btn-clear-algoritmo" id="btnLimparAlgoritmo"><i class="bi bi-trash3-fill"></i> LIMPAR
+              TUDO</button>
+          </div>
+          <div id="algoritmoMontado" class="algoritmo-montado">
+            <div class="placeholder-algoritmo" id="placeholderAlgoritmo">🃏 Clique nos cartões abaixo para montar seu
+              algoritmo...</div>
+          </div>
+        </div>
+
+        <!-- PRATELEIRA DE CARTOES DE COMANDO -->
+        <div class="cartoes-prateleira mt-4">
+          <div class="cartoes-header">
+            <i class="bi bi-card-list"></i> CARTOES DE COMANDO (clique para adicionar)
+            <span class="regra-destaque">🔁 REGRA DE OURO: Use REPITA para repetir ações!</span>
+          </div>
+          <div class="cartoes-grid" id="cartoesGrid">
+            <div class="cartao-comando" data-comando="ande1">
+              <div class="cartao-icone">🚶</div>
+              <div class="cartao-texto">ANDE 1</div>
+              <div class="cartao-desc">1 passo pra frente</div>
+            </div>
+            <div class="cartao-comando" data-comando="ande2">
+              <div class="cartao-icone">🏃</div>
+              <div class="cartao-texto">ANDE 2</div>
+              <div class="cartao-desc">2 passos pra frente</div>
+            </div>
+            <div class="cartao-comando" data-comando="vireDireita">
+              <div class="cartao-icone">▶️</div>
+              <div class="cartao-texto">VIRE DIREITA</div>
+              <div class="cartao-desc">90° pra direita</div>
+            </div>
+            <div class="cartao-comando" data-comando="vireEsquerda">
+              <div class="cartao-icone">◀️</div>
+              <div class="cartao-texto">VIRE ESQUERDA</div>
+              <div class="cartao-desc">90° pra esquerda</div>
+            </div>
+            <div class="cartao-comando cartao-especial" data-comando="repita">
+              <div class="cartao-icone">🔄</div>
+              <div class="cartao-texto">REPITA</div>
+              <div class="cartao-desc">Repetir ações (clique e depois adicione comandos dentro)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel de Controles -->
+        <div class="botoes-painel mt-4">
+          <button class="btn-executar" id="btnExecutarLoopDash"><i class="bi bi-play-fill"></i> EXECUTAR ROBÔ!</button>
+          <button class="btn-resetar" id="btnResetLoopDash"><i class="bi bi-arrow-repeat"></i> REINICIAR ROBÔ</button>
+          <button class="btn-dica" id="btnDicaLoopDash"><i class="bi bi-lightbulb-fill"></i> DICA MALUCA</button>
+          <button class="btn-exemplo" id="btnExemploLoopDash"><i class="bi bi-stars"></i> ALGORITMO EXEMPLO</button>
+        </div>
+
+        <!-- Mensagem do Jogo -->
+        <div id="loopdashMensagem" class="mensagem-jogo mt-3"><i class="bi bi-robot"></i> <span>🏁 Selecione uma fase e
+            monte seu algoritmo clicando nos cartões! Lembre-se: use REPITA para repetir ações!</span></div>
+
+        <!-- Recordes por Fase -->
+        <div class="recordes-painel mt-4">
+          <div class="recordes-header"><i class="bi bi-trophy-fill"></i> RECORDES DE CADA FASE (menos cartões = melhor!)
+          </div>
+          <div class="recordes-grid">
+            <div class="recorde-card fase1-recorde">
+              <div class="recorde-fase">🏁 FASE 1 - RETA</div>
+              <div class="recorde-valor" id="recordeFase1">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+            <div class="recorde-card fase2-recorde">
+              <div class="recorde-fase">🔄 FASE 2 - ZIGUE-ZAGUE</div>
+              <div class="recorde-valor" id="recordeFase2">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+            <div class="recorde-card fase3-recorde">
+              <div class="recorde-fase">🧱 FASE 3 - OBSTÁCULOS</div>
+              <div class="recorde-valor" id="recordeFase3">---</div>
+              <div class="recorde-unidade">cartões</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="legenda-pista mt-3">
+          <span class="legenda-item"><span class="badge-robot">🤖</span> ROBÔ</span>
+          <span class="legenda-item"><span class="badge-flag">🏁</span> CHEGADA</span>
+          <span class="legenda-item"><span class="badge-path">⬜</span> PISTA</span>
+          <span class="legenda-item"><span class="badge-obstacle">🧱</span> OBSTÁCULO</span>
+          <span class="legenda-item"><span class="badge-loop">🔄</span> REPITA (loop)</span>
+        </div>
       </div>
     </section>
 
-<!-- ==================== JOGO DO BIMESTRE (NOVO) ==================== -->
-<section id="jogo-danca-robo" class="mb-5">
-  <div class="projeto-header">
-    <h2><i class="bi bi-joystick"></i> 🕺 JOGO DO BIMESTRE 2: ROBÔ DANÇARINO</h2>
-    <div class="badge-projeto">Monte coreografias com LOOP + VARIÁVEL!</div>
-  </div>
-  
-  <div class="bg-robocard p-4 rounded-4">
-    <div class="row g-3 mb-3">
-      <div class="col-md-8">
-        <p><strong>🤖 Contexto:</strong> Você é um coreógrafo de robôs! O robô precisa dançar uma coreografia perfeita. 
-        Use <strong class="text-warning">LOOP</strong> para repetir movimentos e 
-        <strong class="text-info">VARIÁVEIS</strong> para contar passos. Quanto menos cartões usar, melhor!</p>
-      </div>
-      <div class="col-md-4 text-end">
-        <span class="badge bg-warning text-dark p-2">🎯 Objetivo: Acertar a coreografia!</span>
-      </div>
-    </div>
-    
-    <div class="simulador-comandos p-4 rounded-4" id="dancaRoboGame">
-      <!-- O jogo será renderizado aqui via JS -->
-      <div class="alert alert-warning">Carregando jogo...</div>
-    </div>
-  </div>
-</section>
-
-    <!-- ==================== CERTIFICADO (modelo_certificado.html) ==================== -->
-    <section id="certificacao" class="mb-5">
+    <!-- =================================================== -->
+    <!-- SEÇÃO 6: CERTIFICADO                                 -->
+    <!-- =================================================== -->
+    <section id="certificado" class="mb-5">
       <div class="bg-robocard p-4 rounded-4 shadow-lg">
         <div class="text-center mb-4">
-          <h3><i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE CONCLUSÃO - 3º ANO - BIMESTRE 2</h3>
+          <h3><i class="bi bi-award-fill text-warning"></i> 🏆 CERTIFICADO DE CONCLUSÃO – 3º ANO</h3>
           <p class="lead">"MESTRE DO LOOP, VARIÁVEL E DEPURAÇÃO"</p>
         </div>
+
         <div class="row g-4 align-items-start">
+          <!-- Pré-visualização -->
           <div class="col-lg-6">
             <div class="certificado-preview p-3 text-center">
               <div class="certificado-modelo p-4" id="previewCertificado">
                 <h3>🤖 CERTIFICADO ROBÔMESTRES</h3>
                 <p>Certificamos que</p>
                 <strong id="previewNomeAluno" class="nome-aluno-destaque">[NOME DO ALUNO]</strong>
-                <p>concluiu com êxito o <strong>3º ANO - ROBÓTICA EDUCACIONAL - BIMESTRE 2</strong><br>
+                <p>concluiu com êxito o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>
                   Dominando os conceitos de:<br>
                   🔁 <strong>LOOP</strong> (repetição inteligente)<br>
                   📦 <strong>VARIÁVEL</strong> (o bolso mágico do robô)<br>
@@ -1727,6 +1772,8 @@
               <p class="text-muted mt-2 small"><i class="bi bi-eye"></i> Visualização ao selecionar aluno</p>
             </div>
           </div>
+
+          <!-- Cadastro e impressão -->
           <div class="col-lg-6">
             <div class="cadastro-alunos p-4 bg-dark rounded-4 shadow">
               <h4><i class="bi bi-person-plus-fill"></i> Cadastro de Alunos</h4>
@@ -1741,38 +1788,43 @@
                 </div>
               </div>
               <div class="mt-4">
-                <h5>📋 Lista de Programadores <span id="contadorAlunos" class="badge bg-warning text-dark">0</span>
-                </h5>
-                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height: 220px; overflow-y: auto">
-                </ul>
+                <h5>📋 Lista de Programadores <span id="contadorAlunos" class="badge bg-warning text-dark">0</span></h5>
+                <ul id="listaAlunos" class="lista-alunos list-unstyled" style="max-height:220px; overflow-y:auto;"></ul>
               </div>
               <div class="mt-3 d-flex gap-2 flex-wrap">
-                <button id="btnImprimirCertificados" class="btn-robotico-ano2" disabled><i class="bi bi-printer"></i>
-                  IMPRIMIR TODOS (6 POR FOLHA)</button>
-                <button id="btnPreviewAluno" class="btn-outline-warning" disabled><i class="bi bi-eye"></i>
+                <button id="btnImprimirCertificados" class="btn btn-robotico-ano2" disabled><i
+                    class="bi bi-printer"></i> IMPRIMIR TODOS (6 POR FOLHA)</button>
+                <button id="btnPreviewAluno" class="btn btn-outline-warning" disabled><i class="bi bi-eye"></i>
                   Pré-visualizar</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="alert alert-info mt-4 mb-0 small"><i class="bi bi-info-circle-fill"></i> <strong>Dica de
-            impressão:</strong> Os certificados serão gerados em uma nova janela com layout otimizado para A4 (3x2 =
-          6
-          certificados por folha).</div>
+
+        <!-- Dica de impressão -->
+        <div class="alert alert-info mt-4 mb-0 small" role="alert">
+          <i class="bi bi-info-circle-fill"></i> <strong>Dica de impressão:</strong> Os certificados serão gerados em
+          uma nova janela com layout otimizado para A4 (3x2 = 6 certificados por folha). As cores serão preservadas na
+          impressão. Utilize papel sulfite A4 e configure para "Colorido" e "Margens padrão".
+        </div>
       </div>
     </section>
 
-    <!-- ==================== FECHAMENTO DO BIMESTRE (com rubrica e referências) ==================== -->
+    <!-- =================================================== -->
+    <!-- SEÇÃO 7: FECHAMENTO DO BIMESTRE                      -->
+    <!-- =================================================== -->
     <section id="fechamento" class="mb-5">
       <div class="projeto-header">
-        <h2><i class="bi bi-check2-circle"></i> 📊 FECHAMENTO DO BIMESTRE – RUBRICA E REFLEXÃO</h2>
-        <div class="badge-projeto">Avaliação e celebração dos Mestres do Loop</div>
+        <h2><i class="bi bi-flag-fill"></i> 🏁 FECHAMENTO DO BIMESTRE 1</h2>
+        <div class="badge-projeto">Celebração, rubrica e próximos passos</div>
       </div>
-      <div class="bg-robocard p-4 rounded-4">
-        <h5 class="text-warning">📋 RUBRICA DE AVALIAÇÃO DO BIMESTRE 2</h5>
+
+      <!-- Rubrica de Avaliação -->
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h5>📋 RUBRICA DE AVALIAÇÃO DO BIMESTRE 1</h5>
         <div class="table-responsive">
           <table class="table table-robotica table-bordered">
-            <thead>
+            <thead class="table-dark">
               <tr>
                 <th>Descritor Geral</th>
                 <th>Nível</th>
@@ -1793,72 +1845,135 @@
                 <td>35-44</td>
               </tr>
               <tr>
-                <td>Compreendeu o conceito básico de loop, mas ainda precisa de apoio para depuração e criação
-                  autoral.
+                <td>Compreendeu o conceito básico de loop, mas ainda precisa de apoio para depuração e criação autoral.
                 </td>
                 <td>Aprendiz do Loop</td>
                 <td>25-34</td>
               </tr>
               <tr>
-                <td>Apresenta dificuldades com o conceito de repetição. Necessita de reforço em atividades futuras.
-                </td>
+                <td>Apresenta dificuldades com o conceito de repetição. Necessita de reforço em atividades futuras.</td>
                 <td>Bug Vivo</td>
                 <td>0-24</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <h5 class="text-warning mt-4">✅ ORIENTAÇÕES PARA ADAPTAÇÕES E INCLUSÃO</h5>
-        <p><strong>TEA:</strong> Use rotinas visuais previsíveis, evite excesso de estímulos sonoros, ofereça opção
-          de
-          participar com fones ou à distância.<br>
-          <strong>TDAH:</strong> Divida atividades em blocos curtos de 5-7 minutos, use recompensas imediatas
-          (adesivos
-          a cada etapa), timer visual.<br>
-          <strong>Deficiência Física (motora):</strong> Ofereça funções alternativas: programador, leitor, fiscal,
-          maestro. Use robôs de chão (BeeBot) em vez de deslocamento humano.<br>
-          <strong>Deficiência Visual:</strong> Use texturas no chão (fita adesiva, EVA) para delimitar células.
-          Descreva
-          comandos verbalmente com mais detalhes.<br>
-          <strong>Deficiência Auditiva:</strong> Use sinais visuais (bandeiras, luzes, cartões) no lugar de apitos e
-          gritos. Escreva todos os comandos no quadro.<br>
-          <strong>Altas Habilidades:</strong> Ofereça desafios extras: loops aninhados, otimização de código,
-          criação de
-          tutorial em vídeo.
-        </p>
-        <h5 class="text-warning mt-4">📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)</h5>
-        <p>BRASIL. Ministério da Educação. <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC, 2018.<br>
-          PARANÁ. Secretaria de Estado da Educação. <strong>Referencial Curricular do Paraná: Ensino Fundamental
-            Anos
+      </div>
+
+      <!-- Música Oficial do Loop -->
+      <div class="bg-robocard p-4 rounded-4 mb-4">
+        <h5>🎵 MÚSICA OFICIAL DO LOOP (Cante com a melodia de "Atirei o Pau no Gato")</h5>
+        <div class="p-3" style="background: #0a0f08; border-radius: 20px; border-left: 6px solid #ffb347;">
+          <p><strong>Refrão:</strong><br>
+            Loop, loop, loop, vamos repetir!<br>
+            Pula, corre, bate palma, sem nunca parar!<br>
+            Se o robô errar, a gente vai depurar,<br>
+            Com um loop e um sorriso, a gente vai acertar!</p>
+          <p><strong>Estrofe:</strong><br>
+            Com o corpo eu aprendi, repetir é legal<br>
+            Repita 4 vezes, vira um ritual<br>
+            Andar, girar, pular, gritar<br>
+            Programar é arte, é só começar!</p>
+        </div>
+      </div>
+
+      <!-- Orientações para Adaptações e Inclusão (Exemplos Práticos) -->
+      <div class="bg-robocard p-4 rounded-4">
+        <h5>✅ ORIENTAÇÕES PARA ADAPTAÇÕES E INCLUSÃO (EXEMPLOS PRÁTICOS)</h5>
+        <div class="table-responsive">
+          <table class="table table-robotica table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Exemplo Prático na Aula</th>
+                <th>Necessidade</th>
+                <th>Estratégia Geral</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Na semana 113 (dança), o aluno pode ser o "juiz de bugs" em vez de dançar. Ele segura uma placa com
+                  "ACHEI O BUG!" e levanta quando vê erro.</td>
+                <td>TEA (Transtorno do Espectro Autista)</td>
+                <td>Use rotinas visuais previsíveis, evite excesso de estímulos sonoros, ofereça opção de participar com
+                  fones ou à distância.</td>
+              </tr>
+              <tr>
+                <td>Na semana 116 (depuração), cada algoritmo resolvido rende um adesivo na hora. Timer de 30 segundos
+                  para cada rodada do jogo do cronômetro.</td>
+                <td>TDAH (Déficit de Atenção)</td>
+                <td>Divida atividades em blocos curtos de 5-7 minutos, use recompensas imediatas (adesivos a cada
+                  etapa), timer visual.</td>
+              </tr>
+              <tr>
+                <td>Na semana 115 (grid), o aluno com limitação motora controla o robô BeeBot com botões grandes. Os
+                  colegas programam os comandos.</td>
+                <td>Deficiência Física (motora)</td>
+                <td>Ofereça funções alternativas: programador, leitor, fiscal, maestro. Use robôs de chão (BeeBot) em
+                  vez de deslocamento humano.</td>
+              </tr>
+              <tr>
+                <td>Na semana 112 (labirinto), o aluno vendado já tem experiência. Use cordas no chão para guiar o
+                  toque.
+                  Algoritmo em braile ou áudio.</td>
+                <td>Deficiência Visual</td>
+                <td>Use texturas no chão (fita adesiva, EVA) para delimitar células. Descreva comandos verbalmente com
+                  mais detalhes.</td>
+              </tr>
+              <tr>
+                <td>Na semana 111 (abertura), em vez de apito, professor acende uma luz ou levanta bandeira vermelha.
+                  Alunos podem gritar "ACHEI!" de forma visual com placa.</td>
+                <td>Deficiência Auditiva</td>
+                <td>Use sinais visuais (bandeiras, luzes, cartões) no lugar de apitos e gritos. Escreva todos os
+                  comandos no quadro.</td>
+              </tr>
+              <tr>
+                <td>Na semana 119 (labirinto difícil), o aluno que termina rápido cria uma versão com 3 loops aninhados
+                  e
+                  ensina os colegas.</td>
+                <td>Altas Habilidades</td>
+                <td>Ofereça desafios extras: loops aninhados, otimização de código, criação de tutorial em vídeo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Referências Bibliográficas -->
+      <div class="bg-robocard p-4 rounded-4 mt-4 small">
+        <h5><i class="bi bi-book"></i> 📚 REFERÊNCIAS BIBLIOGRÁFICAS (ABNT)</h5>
+        <p>
+          BRASIL. Ministério da Educação. <strong>Base Nacional Comum Curricular</strong>. Brasília: MEC, 2018.<br>
+          PARANÁ. Secretaria de Estado da Educação. <strong>Referencial Curricular do Paraná: Ensino Fundamental Anos
             Iniciais</strong>. Curitiba: SEED/PR, 2018.<br>
           RESNICK, M. <strong>Jardim de Infância para a Vida Toda: Como a Programação e a Criatividade Transformam a
             Educação</strong>. Porto Alegre: Penso, 2020.<br>
-          WING, J. M. Pensamento Computacional: Um Conceito Fundamental para o Século XXI. <strong>Revista
-            Brasileira de
+          WING, J. M. Pensamento Computacional: Um Conceito Fundamental para o Século XXI. <strong>Revista Brasileira de
             Computação</strong>, Porto Alegre, v. 12, n. 2, p. 10-14, 2017.<br>
-          BERS, M. U. <strong>Beyond Computer Literacy: Supporting Children's Learning in Robotics</strong>. [S.l.]:
-          MIT
+          BERS, M. U. <strong>Beyond Computer Literacy: Supporting Children's Learning in Robotics</strong>. [S.l.]: MIT
           Press, 2022.<br>
           PAPERT, S. <strong>Mindstorms: Crianças, Computadores e Aprendizagem</strong>. Porto Alegre: Artmed, 2008.
         </p>
       </div>
     </section>
+
   </main>
 
-  <!-- ==================== RODAPÉ (modelo_rodape.html) ==================== -->
+  <!-- =================================================== -->
+  <!-- RODAPÉ                                               -->
+  <!-- =================================================== -->
   <footer class="footer-robotico footer-rebelde">
     <div class="container">
       <div class="row align-items-center mb-3">
         <div class="col-md-6 mb-3 mb-md-0">
           <div class="d-flex justify-content-center justify-content-md-start">
             <img src="imagens/logo_rb.png" alt="Rodrigo Barbosa" class="footer-logo"
-              onerror="this.src='https://placehold.co/80x80?text=RB'" />
+              onerror="this.src = 'https://placehold.co/80x80?text=RB'" />
           </div>
         </div>
         <div class="col-md-6">
           <div class="d-flex justify-content-center justify-content-md-end">
             <img src="imagens/logo_gn.png" alt="Gisele Nunes" class="footer-logo"
-              onerror="this.src='https://placehold.co/80x80?text=GN'" />
+              onerror="this.src = 'https://placehold.co/80x80?text=GN'" />
           </div>
         </div>
       </div>
@@ -1884,6 +1999,7 @@
     </div>
   </footer>
 
+  <!-- Scripts (Bootstrap e os módulos JS) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/a3bim2.js"></script>
 </body>
