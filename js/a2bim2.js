@@ -2177,7 +2177,7 @@
       };
       this.mostrarMensagem(
         dicas[this.faseAtual] ||
-          "💡 Tente usar o cartão REPITA para repetir movimentos e economizar cartões!",
+        "💡 Tente usar o cartão REPITA para repetir movimentos e economizar cartões!",
         "info",
       );
     },
@@ -2222,7 +2222,7 @@
       if (saved) {
         try {
           this.recordes = JSON.parse(saved);
-        } catch (e) {}
+        } catch (e) { }
       }
     },
 
@@ -2664,4 +2664,77 @@
 
   // Iniciar
   carregarPergunta();
+})();
+
+// ==================================================
+// FUNÇÃO PARA IMPRIMIR OS PLANOS DE AULA (ACCORDION)
+// ==================================================
+(function () {
+  "use strict";
+
+  function imprimirPlanos() {
+    const secao = document.getElementById('aulas');
+    if (!secao) {
+      alert('Seção de planos de aula não encontrada.');
+      return;
+    }
+
+    // Clona o conteúdo para não alterar a página
+    const conteudo = secao.cloneNode(true);
+    // Remove checkboxes e botões de impressão do clone
+    const botoes = conteudo.querySelectorAll('.btn-print-planos, #btnImprimirPlanos, .check-concluido');
+    botoes.forEach(el => el.remove());
+
+    // Abre uma nova janela para impressão
+    const win = window.open('', '_blank', 'width=900,height=700,toolbar=yes,scrollbars=yes');
+    if (!win) {
+      alert('Permita pop-ups para imprimir os planos.');
+      return;
+    }
+
+    win.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Planos de Aula - 2º Ano - 2º Bimestre</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/a2bim2.css">
+        <style>
+          /* Estilos específicos para impressão */
+          body { background: white; padding: 20px; }
+          .accordion-collapse { display: block !important; height: auto !important; }
+          .accordion-button::after { display: none !important; }
+          .accordion-button { background: #2c3e2b !important; color: #ffb347 !important; }
+          .accordion-body { background: #0d1f0b !important; }
+          .check-concluido { display: none !important; }
+          .semana-card-completo { page-break-inside: avoid; }
+          .btn-print-planos, #btnImprimirPlanos { display: none !important; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          ${conteudo.innerHTML}
+        </div>
+        <script>
+          window.onload = function() {
+            setTimeout(function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            }, 300);
+          };
+        <\/script>
+      </body>
+      </html>
+    `);
+    win.document.close();
+  }
+
+  // Aguarda o DOM e associa ao botão
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('btnImprimirPlanos');
+    if (btn) {
+      btn.addEventListener('click', imprimirPlanos);
+    }
+  });
 })();

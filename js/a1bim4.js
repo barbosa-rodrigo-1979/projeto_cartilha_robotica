@@ -1,7 +1,7 @@
 // ==================================================
 // a1bim4.js - Lógica consolidada para o 1º Ano - Bimestre 4
 // Funcionalidades: cabeçalho, planos de aula (checkboxes),
-// jogo do bimestre (Robô Artista), certificado, rodapé
+// jogo do bimestre (Robô Artista), certificado, rodapé, impressão
 // ==================================================
 
 (function () {
@@ -70,7 +70,6 @@
       });
     },
   };
-
   // ========== 2. PLANOS DE AULA (checkboxes e progresso) ==========
   const PlanosAulaModule = {
     STORAGE_KEY: "planoAula_Concluidas_1ano_bim4",
@@ -102,7 +101,7 @@
           if (semana && concluidas.hasOwnProperty(semana))
             cb.checked = concluidas[semana];
         });
-      } catch (e) { }
+      } catch (e) { /* ignora erro de parsing */ }
     },
 
     configurarEventos() {
@@ -111,7 +110,6 @@
       });
     },
   };
-
   // ========== 3. JOGO DO BIMESTRE (Robô Artista) ==========
   (function () {
     let pilhaOK = true;
@@ -191,6 +189,7 @@
         detail: { incremento: 1, mensagem: mensagem },
       });
       document.dispatchEvent(event);
+      // Fallback caso o módulo de cabeçalho não esteja disponível
       if (
         window.CabecalhoModule &&
         typeof window.CabecalhoModule.incrementarBugs === "function"
@@ -321,7 +320,6 @@
       init();
     }
   })();
-
   // ========== 4. CERTIFICADO ==========
   (function () {
     const CertificadoModule = {
@@ -541,7 +539,7 @@
     }
   })();
 
-  // ========== 5. MENU: DESTAQUE DA PÁGINA ATIVA (modelo_menu_bim.js) ==========
+  // ========== 5. MENU: DESTAQUE DA PÁGINA ATIVA ==========
   function highlightCurrentPage() {
     const currentPath = window.location.pathname.split("/").pop() || "a1index.html";
     const navLinks = document.querySelectorAll(".menu-robomestre .nav-link");
@@ -576,17 +574,178 @@
     }
   }
 
+  // ========== 6. FUNÇÃO DE IMPRESSÃO DO ACCORDION ==========
+  function imprimirAccordion() {
+    const accordion = document.getElementById('accordionAulas');
+    if (!accordion) {
+      alert('Nenhum plano de aula encontrado para imprimir.');
+      return;
+    }
+
+    // Abre todos os painéis para impressão
+    const allCollapses = accordion.querySelectorAll('.accordion-collapse');
+    allCollapses.forEach(c => c.classList.add('show'));
+
+    // Clona o conteúdo para não interferir na página atual
+    const conteudo = accordion.innerHTML;
+
+    // Obtém os estilos da página (apenas o link do CSS principal)
+    const estilos = document.querySelector('link[rel="stylesheet"]')?.outerHTML || '';
+
+    const win = window.open('', '_blank', 'width=800,height=600');
+    if (!win) {
+      alert('Permita pop-ups para imprimir os planos.');
+      return;
+    }
+
+    win.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Planos de Aula - 1º Ano - Bimestre 4</title>
+          ${estilos}
+          <style>
+            /* Estilos específicos para impressão */
+            body {
+              background: white !important;
+              padding: 20px;
+              color: #000 !important;
+            }
+            .no-print {
+              display: none !important;
+            }
+            .accordion-button {
+              display: none !important;
+            }
+            .accordion-collapse {
+              display: block !important;
+              visibility: visible !important;
+              height: auto !important;
+            }
+            .accordion-item {
+              box-shadow: none !important;
+              border: 1px solid #ccc;
+              margin-bottom: 10px;
+              page-break-inside: avoid;
+            }
+            .check-concluido {
+              display: none !important;
+            }
+            .semana-card-completo {
+              background: #f9f9f9 !important;
+              color: #000 !important;
+            }
+            .semana-card-completo h5 {
+              color: #b8860b !important;
+            }
+            .minuto-item {
+              background: #f0f0f0 !important;
+            }
+            .minuto-tempo {
+              background: #ddd !important;
+              color: #000 !important;
+            }
+            .minuto-descricao {
+              color: #000 !important;
+            }
+            .tabela-criterios-semana td {
+              color: #000 !important;
+            }
+            .frase-do-dia {
+              background: #f5f5dc !important;
+              color: #000 !important;
+              border-color: #b8860b !important;
+            }
+            .material-badge {
+              background: #e0e0e0 !important;
+              color: #000 !important;
+              border-left-color: #b8860b !important;
+            }
+            .table-robotica {
+              background: #fff !important;
+              color: #000 !important;
+            }
+            .table-robotica th {
+              background: #eee !important;
+              color: #000 !important;
+            }
+            .table-robotica td {
+              color: #000 !important;
+            }
+            .btn-print-accordion {
+              display: none !important;
+            }
+            .accordion-body {
+              background: #fff !important;
+              border-top-color: #b8860b !important;
+            }
+            .accordion-header {
+              background: #eee !important;
+            }
+            .accordion-button {
+              background: #ddd !important;
+              color: #000 !important;
+            }
+            .accordion-button:not(.collapsed) {
+              background: #ccc !important;
+              color: #000 !important;
+            }
+            .badge-projeto {
+              background: #b8860b !important;
+              color: #fff !important;
+            }
+            .projeto-header {
+              background: #eee !important;
+              border-left-color: #b8860b !important;
+            }
+            .projeto-header h2 {
+              color: #b8860b !important;
+            }
+            .bg-robocard {
+              background: #fff !important;
+              border-color: #b8860b !important;
+            }
+            .carta-texto {
+              color: #000 !important;
+            }
+            .text-muted {
+              color: #555 !important;
+            }
+            .accordion-item {
+              page-break-inside: avoid;
+            }
+          </style>
+        </head>
+        <body>
+          <h1 style="text-align:center; color:#b8860b;">📚 Planos de Aula - 1º Ano - Bimestre 4</h1>
+          <div class="accordion" id="accordionAulas">${conteudo}</div>
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+              }, 500);
+            };
+          <\/script>
+        </body>
+      </html>
+    `);
+    win.document.close();
+  }
+
   // ========== INICIALIZAÇÃO GERAL ==========
   document.addEventListener("DOMContentLoaded", () => {
     CabecalhoModule.init();
     PlanosAulaModule.init();
-    // O jogo já se autoinicializou via IIFE, então não chamamos novamente.
-    // CertificadoModule já foi inicializado via seu próprio DOMContentLoaded, mas para evitar duplicidade,
-    // vamos garantir que não seja chamado duas vezes. Como ele já tem seu próprio listener, não precisamos chamar aqui.
-    // No entanto, para manter a ordem e não quebrar nada, vamos apenas adicionar as funções do menu.
     highlightCurrentPage();
     consoleWelcome();
     initTooltips();
+
+    // Vincula botão de impressão do accordion
+    const btnPrint = document.querySelector('.btn-print-accordion');
+    if (btnPrint) {
+      btnPrint.addEventListener('click', imprimirAccordion);
+    }
 
     // Botão de reset de bugs (opcional via console)
     window.resetBugs = () =>

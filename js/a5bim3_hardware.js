@@ -600,6 +600,7 @@
     PlanosAulaModule.init();
     CertificadoModule.init();
     RodapeModule.init();
+    ImpressaoModule.init();
   }
 
   if (document.readyState === "loading") {
@@ -616,3 +617,289 @@
   window.CertificadoModule = CertificadoModule;
   window.RodapeModule = RodapeModule;
 })();
+
+// ============================================================
+// MÓDULO: IMPRESSÃO DO ACCORDION (PLANOS DE AULA) - VERSÃO CORRIGIDA
+// ============================================================
+const ImpressaoModule = {
+  init() {
+    const btn = document.getElementById('imprimirAccordionBtn');
+    if (btn) {
+      btn.addEventListener('click', () => this.imprimirAccordion());
+      console.log('🖨️ [ImpressaoModule] Botão de impressão configurado.');
+    } else {
+      console.warn('⚠️ [ImpressaoModule] Botão #imprimirAccordionBtn não encontrado.');
+    }
+  },
+
+  imprimirAccordion() {
+    const accordion = document.getElementById('accordionAulas');
+    if (!accordion) {
+      alert('🤖 Nenhum plano de aula encontrado para imprimir.');
+      return;
+    }
+
+    // Clona o accordion para não mexer no DOM atual
+    const conteudo = accordion.cloneNode(true);
+
+    // Remove checkboxes e outros elementos interativos
+    const checkboxes = conteudo.querySelectorAll('.semana-check, .check-concluido');
+    checkboxes.forEach(el => el.remove());
+
+    // Remove botões de ação
+    const botoesAcao = conteudo.querySelectorAll('.btn, .accordion-button');
+    botoesAcao.forEach(btn => {
+      btn.removeAttribute('data-bs-toggle');
+      btn.removeAttribute('data-bs-target');
+      btn.classList.remove('accordion-button', 'collapsed');
+      btn.style.cursor = 'default';
+      btn.style.pointerEvents = 'none';
+    });
+
+    // Abre todos os painéis
+    const collapses = conteudo.querySelectorAll('.accordion-collapse');
+    collapses.forEach(col => {
+      col.classList.add('show');
+      col.classList.remove('collapse');
+    });
+
+    // Remove atributos de acessibilidade do accordion
+    const headers = conteudo.querySelectorAll('.accordion-header');
+    headers.forEach(h => {
+      h.removeAttribute('data-bs-toggle');
+      h.removeAttribute('data-bs-target');
+    });
+
+    // ============================================================
+    // CSS EMBUTIDO – CORRIGIDO PARA GARANTIR LEGIBILIDADE
+    // ============================================================
+    const estilos = `
+        <style>
+          /* Reset e base */
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1e2a1a;
+            padding: 20px;
+            line-height: 1.5;
+          }
+          .container { max-width: 1200px; margin: 0 auto; }
+
+          /* Accordion item */
+          .accordion-item {
+            margin-bottom: 20px;
+            border: 1px solid #4a7c3f;
+            border-radius: 16px;
+            overflow: hidden;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            background: #ffffff;
+          }
+
+          /* Cabeçalho da semana */
+          .accordion-header {
+            background: #2c3e2b;
+            color: #ffb347;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+          }
+
+          /* Corpo do accordion */
+          .accordion-body {
+            padding: 20px;
+            background: #f9faf5;
+            color: #1e2a1a;
+          }
+
+          /* Card principal da semana */
+          .semana-card-completo {
+            background: #f0f3ec;
+            border-radius: 12px;
+            padding: 16px;
+            color: #1e2a1a;
+          }
+
+          /* Garantia de texto escuro em todos os parágrafos, listas e divs */
+          .semana-card-completo p,
+          .semana-card-completo li,
+          .semana-card-completo ul,
+          .semana-card-completo div:not(.materiais-container):not(.minuto-item),
+          .semana-card-completo span,
+          .semana-card-completo strong,
+          .semana-card-completo em {
+            color: #1e2a1a;
+          }
+
+          /* Títulos (h5) */
+          .semana-card-completo h5 {
+            color: #2c3e2b;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            border-left: 4px solid #ffb347;
+            padding-left: 12px;
+          }
+          .semana-card-completo h5:first-of-type { margin-top: 0; }
+
+          /* Listas e parágrafos */
+          .semana-card-completo ul,
+          .semana-card-completo p {
+            margin-bottom: 12px;
+          }
+
+          /* Badges de materiais */
+          .materiais-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+          }
+          .material-badge {
+            background: #dce6d6;
+            padding: 4px 12px;
+            border-radius: 30px;
+            border-left: 2px solid #ffb347;
+            font-size: 0.8rem;
+            color: #1e2a1a;
+          }
+
+          /* Itens do minuto a minuto */
+          .minuto-item {
+            display: flex;
+            margin-bottom: 10px;
+            background: #e6eee0;
+            border-radius: 12px;
+            border-left: 4px solid #ffb347;
+            color: #1e2a1a;
+          }
+          .minuto-tempo {
+            background: #2c3e2b;
+            color: #ffb347;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-family: monospace;
+            min-width: 100px;
+            text-align: center;
+          }
+          .minuto-descricao {
+            padding: 8px 16px;
+            flex: 1;
+            color: #1e2a1a;
+          }
+
+          /* Frase do dia */
+          .frase-do-dia {
+            background: #e6eee0;
+            border: 1px dashed #ffb347;
+            padding: 10px 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            font-style: italic;
+            text-align: center;
+            color: #1e2a1a;
+          }
+
+          /* Tabelas de critérios */
+          .tabela-criterios-semana {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+          }
+          .tabela-criterios-semana th,
+          .tabela-criterios-semana td {
+            border: 1px solid #4a7c3f;
+            padding: 6px 10px;
+            text-align: left;
+            color: #1e2a1a;
+          }
+          .tabela-criterios-semana th {
+            background: #2c3e2b;
+            color: #ffb347;
+          }
+
+          /* Blocos de código */
+          pre {
+            background: #1e2a1a;
+            color: #e9f5db;
+            padding: 12px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          }
+          /* Código inline */
+          code {
+            background: #dce6d6;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: #1e2a1a;
+          }
+          /* Código dentro de pre (bloco) – herda cores do pre */
+          pre code {
+            background: transparent;
+            padding: 0;
+            color: #e9f5db;
+          }
+
+          /* Ocultar elementos interativos */
+          .check-concluido { display: none; }
+          .accordion-button { display: none; }
+          .btn, button { display: none; }
+
+          /* Linha horizontal */
+          hr { margin: 16px 0; border-color: #4a7c3f; }
+
+          /* Ajustes para impressão */
+          @media print {
+            body { padding: 0; }
+            .accordion-item { page-break-inside: avoid; break-inside: avoid; }
+          }
+        </style>
+      `;
+
+    const htmlImpressao = `
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Planos de Aula - 5º Ano - 3º Bimestre - Hardware</title>
+          ${estilos}
+        </head>
+        <body>
+          <div class="container">
+            <h1 style="font-family: 'Press Start 2P', cursive; font-size: 1.2rem; color: #2c3e2b; text-align: center; margin-bottom: 30px;">
+              🧩 PLANOS DE AULA – 5º ANO – 3º BIMESTRE – HARDWARE
+            </h1>
+            ${conteudo.innerHTML}
+          </div>
+          <script>
+            window.onload = function() {
+              // Descomente a linha abaixo para imprimir automaticamente:
+              // window.print();
+            };
+          <\/script>
+        </body>
+        </html>
+      `;
+
+    // Abre nova janela
+    const win = window.open('', '_blank', 'width=1000,height=800,scrollbars=yes');
+    if (win) {
+      win.document.write(htmlImpressao);
+      win.document.close();
+      win.onload = function () {
+        win.focus();
+        // Descomente abaixo para impressão automática:
+        // win.print();
+      };
+    } else {
+      alert('⚠️ Permita pop-ups para visualizar a impressão dos planos de aula.');
+    }
+  }
+};

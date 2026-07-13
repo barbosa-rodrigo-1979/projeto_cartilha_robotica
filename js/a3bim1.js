@@ -233,16 +233,16 @@
           </div>
           <div class="seletor-loop-grid">
             ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-              .map(function (n) {
-                return (
-                  '<button class="seletor-loop-numero" data-vezes="' +
-                  n +
-                  '">' +
-                  n +
-                  "</button>"
-                );
-              })
-              .join("")}
+          .map(function (n) {
+            return (
+              '<button class="seletor-loop-numero" data-vezes="' +
+              n +
+              '">' +
+              n +
+              "</button>"
+            );
+          })
+          .join("")}
           </div>
           <div class="seletor-loop-footer">
             <span class="text-muted small">Clique em um número para criar o loop</span>
@@ -1158,3 +1158,100 @@
 
   window.addEventListener("hashchange", highlightCurrentPage);
 })();
+
+// ========== MÓDULO IMPRESSÃO DOS PLANOS ==========
+const ImpressaoPlanosModule = {
+  lock: false,
+
+  init() {
+    const btn = document.getElementById('btnImprimirPlanos');
+    if (!btn) return;
+    btn.addEventListener('click', this.imprimirPlanos.bind(this));
+  },
+
+  imprimirPlanos() {
+    if (this.lock) return;
+    this.lock = true;
+
+    // Busca todos os accordions que precisam ser expandidos
+    const accordions = document.querySelectorAll('#planos .accordion-collapse');
+    const toggles = document.querySelectorAll('#planos .accordion-button');
+
+    // Guarda o estado atual de cada accordion (se está colapsado ou não)
+    const estados = [];
+    accordions.forEach((coll, index) => {
+      const isShown = coll.classList.contains('show');
+      estados.push(isShown);
+    });
+
+    // Abre todos os accordions usando a API do Bootstrap
+    toggles.forEach((btn, index) => {
+      const coll = accordions[index];
+      if (coll && !coll.classList.contains('show')) {
+        const bsCollapse = bootstrap.Collapse.getInstance(coll);
+        if (bsCollapse) {
+          bsCollapse.show();
+        } else {
+          // Fallback: usa a classe 'show' diretamente
+          coll.classList.add('show');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+    });
+
+    // Aguarda um pequeno delay para garantir que os accordions estejam abertos
+    setTimeout(() => {
+      window.print();
+
+      // Após a impressão, restaura o estado original
+      const afterPrint = () => {
+        toggles.forEach((btn, index) => {
+          const coll = accordions[index];
+          if (coll) {
+            if (!estados[index]) {
+              // Se antes estava fechado, fecha novamente
+              const bsCollapse = bootstrap.Collapse.getInstance(coll);
+              if (bsCollapse) {
+                bsCollapse.hide();
+              } else {
+                coll.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+              }
+            }
+          }
+        });
+        this.lock = false;
+        window.removeEventListener('afterprint', afterPrint);
+      };
+
+      window.addEventListener('afterprint', afterPrint);
+
+      // Fallback: se o evento afterprint não for suportado, restaura após 5 segundos
+      setTimeout(() => {
+        if (this.lock) {
+          // Tenta restaurar de qualquer forma
+          toggles.forEach((btn, index) => {
+            const coll = accordions[index];
+            if (coll && !estados[index]) {
+              const bsCollapse = bootstrap.Collapse.getInstance(coll);
+              if (bsCollapse) {
+                bsCollapse.hide();
+              } else {
+                coll.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+              }
+            }
+          });
+          this.lock = false;
+          window.removeEventListener('afterprint', afterPrint);
+        }
+      }, 5000);
+    }, 300);
+  }
+};
+
+// Inicialização no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function () {
+  // ... (código existente)
+  ImpressaoPlanosModule.init();
+});

@@ -1,1405 +1,1274 @@
-// ============================================================
-// 🚀 a3bim2.js - 3º ANO - BIMESTRE 2
-// ============================================================
-// 📦 MÓDULOS:
-//   1. GameLoopDance  - Jogo do Robô Dançarino
-//   2. Certificado    - Sistema de certificados
-//   3. MenuHighlight  - Destaque do menu
-// ============================================================
+// ==================================================
+// a3bim2.js – JavaScript completo para o 3º Ano – 2º Bimestre
+// Funcionalidades: accordion, progresso, jogo Loop Dash,
+// certificados, impressão e interatividade geral.
+// ==================================================
 
 (function () {
   "use strict";
 
-  // ================================================================
-  // 🎮 MÓDULO 1: GAME LOOP DANCE - O COREOGRAFO DE ROBÔS
-  // ================================================================
-  const GameLoopDance = {
-    // ---------- ESTADO ----------
-    faseAtual: 1,
-    algoritmo: [],
-    posicaoRobo: { x: 2, y: 2, direcao: 0 },
-    variaveis: { X: 1, Y: 2, Z: 0 },
-    movimentosExecutados: [],
-    acertos: 0,
-    totalPassos: 0,
-    estaExecutando: false,
-    recordes: { 1: null, 2: null, 3: null, 4: null },
-    passosSequencia: [],
-    inicializado: false,
+  // ==================================================
+  // 1. MÓDULO DE PLANOS DE AULA (Accordion + Progresso)
+  // ==================================================
+  const PlanosModule = {
+    STORAGE_KEY: "a3bim2_progresso",
+    totalSemanas: 10,
+    checkboxes: [],
+    barraProgresso: null,
+    progressoTexto: null,
 
-    // ---------- COREOGRAFIAS ----------
-    coreografias: {
+    init() {
+      this.checkboxes = document.querySelectorAll(".semana-check");
+      this.barraProgresso = document.getElementById("barraProgresso");
+      this.progressoTexto = document.getElementById("progressoTexto");
+
+      if (!this.checkboxes.length) return;
+
+      this.carregarProgresso();
+      this.configurarEventos();
+      this.atualizarBarra();
+
+      // Botões expandir/recolher
+      const expandirBtn = document.getElementById("expandirTodosBtn");
+      const recolherBtn = document.getElementById("recolherTodosBtn");
+
+      if (expandirBtn) {
+        expandirBtn.addEventListener("click", () => this.expandirTodos());
+      }
+      if (recolherBtn) {
+        recolherBtn.addEventListener("click", () => this.recolherTodos());
+      }
+
+      // Botão imprimir planos
+      const imprimirBtn = document.getElementById("imprimirPlanosBtn");
+      if (imprimirBtn) {
+        imprimirBtn.addEventListener("click", () => this.imprimirPlanos());
+      }
+
+      console.log("📚 PlanosModule inicializado");
+    },
+
+    carregarProgresso() {
+      const salvo = localStorage.getItem(this.STORAGE_KEY);
+      if (salvo) {
+        try {
+          const dados = JSON.parse(salvo);
+          this.checkboxes.forEach((cb) => {
+            const semana = cb.dataset.semana;
+            if (semana && dados[semana] !== undefined) {
+              cb.checked = dados[semana];
+            }
+          });
+        } catch (e) {
+          console.warn("Erro ao carregar progresso:", e);
+        }
+      }
+    },
+
+    salvarProgresso() {
+      const dados = {};
+      this.checkboxes.forEach((cb) => {
+        const semana = cb.dataset.semana;
+        if (semana) dados[semana] = cb.checked;
+      });
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(dados));
+      this.atualizarBarra();
+    },
+
+    atualizarBarra() {
+      let marcados = 0;
+      this.checkboxes.forEach((cb) => {
+        if (cb.checked) marcados++;
+      });
+      const percentual = (marcados / this.totalSemanas) * 100;
+      if (this.barraProgresso) {
+        this.barraProgresso.style.width = percentual + "%";
+        this.barraProgresso.textContent = Math.round(percentual) + "%";
+        this.barraProgresso.setAttribute("aria-valuenow", marcados);
+      }
+      if (this.progressoTexto) {
+        this.progressoTexto.textContent = marcados + "/" + this.totalSemanas;
+      }
+    },
+
+    configurarEventos() {
+      this.checkboxes.forEach((cb) => {
+        cb.addEventListener("change", () => {
+          this.salvarProgresso();
+          const semana = cb.dataset.semana || "?";
+          const acao = cb.checked ? "✅ Concluída" : "⏳ Reaberta";
+          this.mostrarToast(acao + " Semana " + semana, cb.checked ? "success" : "warning");
+        });
+      });
+    },
+
+    expandirTodos() {
+      document.querySelectorAll("#accordionAulas .accordion-collapse").forEach((el) => {
+        if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+          try {
+            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(el);
+            bsCollapse.show();
+          } catch (e) {
+            el.classList.add("show");
+          }
+        } else {
+          el.classList.add("show");
+        }
+      });
+      this.mostrarToast("📖 Todos os planos expandidos!", "info");
+    },
+
+    recolherTodos() {
+      document.querySelectorAll("#accordionAulas .accordion-collapse").forEach((el) => {
+        if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+          try {
+            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(el);
+            bsCollapse.hide();
+          } catch (e) {
+            el.classList.remove("show");
+          }
+        } else {
+          el.classList.remove("show");
+        }
+      });
+      this.mostrarToast("📕 Todos os planos recolhidos!", "info");
+    },
+
+    imprimirPlanos() {
+      // Seleciona apenas o conteúdo dos accordions
+      const accordion = document.getElementById("accordionAulas");
+      if (!accordion) return;
+
+      // Pega o conteúdo expandido (ou todo) e prepara para impressão
+      const conteudo = accordion.innerHTML;
+      const titulo = document.querySelector("#planos-aula .projeto-header")?.innerHTML || "";
+
+      const janela = window.open("", "_blank", "width=1024,height=800,toolbar=yes,scrollbars=yes");
+      if (!janela) {
+        alert("⚠️ Permita pop-ups para imprimir os planos.");
+        return;
+      }
+
+      janela.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Planos de Aula - 3º Ano - 2º Bimestre</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+          <link rel="stylesheet" href="a3bim2.css" />
+          <style>
+            body { background: white; padding: 20px; color: #1e2a1a; }
+            .accordion-button { display: none; }
+            .accordion-collapse { display: block !important; }
+            .accordion-item { border: 1px solid #4a7c3f; margin-bottom: 16px; border-radius: 12px; }
+            .accordion-body { background: white !important; color: #1e2a1a !important; }
+            .semana-card-completo { background: #f9f9f9 !important; }
+            .projeto-header { background: #f0f0f0 !important; border-left-color: #4a7c3f !important; }
+            .projeto-header h2 { color: #4a7c3f !important; }
+            .badge-projeto { background: #ffb347 !important; color: white !important; }
+            .check-concluido { display: none; }
+            .btn { display: none; }
+            .table-robotica, .tabela-criterios-semana { background: white !important; }
+            .table-robotica th, .table-robotica td,
+            .tabela-criterios-semana th, .tabela-criterios-semana td {
+              color: #1e2a1a !important;
+              border-color: #aaa !important;
+            }
+            .frase-do-dia { background: #f0f0f0 !important; border-color: #4a7c3f !important; color: #1e2a1a !important; }
+            .minuto-item { background: #f9f9f9 !important; border-left-color: #4a7c3f !important; }
+            .minuto-tempo { background: #e0e0e0 !important; color: #1e2a1a !important; }
+            .minuto-descricao { color: #1e2a1a !important; }
+            .materiais-container .material-badge { color: #1e2a1a !important; background: #e0e0e0 !important; }
+            code { background: #eee; color: #c0392b; padding: 2px 6px; border-radius: 6px; }
+            @media print { .accordion-button { display: none !important; } }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="projeto-header" style="margin-bottom:20px;">${titulo}</div>
+            ${conteudo}
+          </div>
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+                setTimeout(function() { window.close(); }, 500);
+              }, 300);
+            };
+          <\/script>
+        </body>
+        </html>
+      `);
+      janela.document.close();
+    },
+
+    mostrarToast(mensagem, tipo) {
+      let container = document.querySelector(".toast-container-custom");
+      if (!container) {
+        container = document.createElement("div");
+        container.className = "toast-container-custom";
+        container.style.cssText =
+          "position:fixed; bottom:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:8px;";
+        document.body.appendChild(container);
+      }
+      const id = "toast_" + Date.now();
+      const bgColor = tipo === "success" ? "#2ecc71" : tipo === "warning" ? "#f39c12" : "#3498db";
+      const toast = document.createElement("div");
+      toast.id = id;
+      toast.style.cssText = `
+        background: #1e2a1a;
+        border-left: 4px solid ${bgColor};
+        border-radius: 12px;
+        padding: 12px 20px;
+        color: #e9f5db;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        animation: slideInRight 0.3s ease-out;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      `;
+      toast.innerHTML = `
+        <i class="bi ${tipo === "success" ? "bi-check-circle-fill" : tipo === "warning" ? "bi-exclamation-triangle-fill" : "bi-info-circle-fill"}" style="color:${bgColor};"></i>
+        <span>${mensagem}</span>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.animation = "fadeOutRight 0.3s ease-out";
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  };
+
+  // ==================================================
+  // 2. MÓDULO DO JOGO LOOP DASH 3000
+  // ==================================================
+  const LoopDashModule = {
+    faseAtual: 1,
+    cartoesAlgoritmo: [],
+    posicaoRobo: { x: 0, y: 0, direcao: 1 },
+    recordes: { 1: null, 2: null, 3: null },
+    loopsExecutados: 0,
+    bugsEncontrados: 0,
+    executando: false,
+
+    pistas: {
       1: {
-        nome: "A MÚSICA DO ROBÔ",
-        icone: "🎵",
-        dica: "💡 Use X para contar os passos!",
-        passos: ["👣", "👣", "👣", "👣", "🔄"],
-        grid: [
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "🤖", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⭐", "⬜"],
-        ],
-        inicio: { x: 2, y: 2 },
-        variaveisSugeridas: { X: 4 },
-        movimentoEsperado: ["👣", "👣", "👣", "👣", "🔄"],
+        nome: "RETA 🏁",
+        grid: [["🚶", "⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "🏁"]],
+        inicio: { x: 0, y: 0 },
+        tamanho: { linhas: 1, colunas: 8 },
       },
       2: {
-        nome: "A DANÇA DO LOOP",
-        icone: "🔄",
-        dica: "💡 Use REPETIR 3x: PASSO, PASSO, GIRO",
-        passos: ["👣", "👣", "🔄", "👣", "👣", "🔄", "👣", "👣", "🔄"],
+        nome: "ZIGUE-ZAGUE 🔄",
         grid: [
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "🤖", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⭐"],
+          ["🚶", "⬜", "⬜", "⬜", "🏁"],
+          ["⬜", "🧱", "⬜", "🧱", "⬜"],
+          ["⬜", "⬜", "⬜", "⬜", "⬜"],
+          ["⬜", "🧱", "⬜", "🧱", "⬜"],
+          ["⬜", "⬜", "⬜", "⬜", "⬜"],
         ],
-        inicio: { x: 2, y: 2 },
-        variaveisSugeridas: { X: 3, Y: 2 },
-        movimentoEsperado: [
-          "👣",
-          "👣",
-          "🔄",
-          "👣",
-          "👣",
-          "🔄",
-          "👣",
-          "👣",
-          "🔄",
-        ],
+        inicio: { x: 0, y: 0 },
+        tamanho: { linhas: 5, colunas: 5 },
       },
       3: {
-        nome: "VARIAÇÃO NO COMPASSO",
-        icone: "🎶",
-        dica: "💡 Use dois loops: REPETIR 3x (PASSO, GIRO) e REPETIR 2x PASSO",
-        passos: ["👣", "🔄", "👣", "🔄", "👣", "👣", "👣", "🔄", "👣", "🔄"],
+        nome: "OBSTÁCULOS 🧱",
         grid: [
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "🤖", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜", "⭐"],
+          ["🚶", "⬜", "🧱", "⬜", "⬜", "🏁"],
+          ["⬜", "🧱", "⬜", "🧱", "⬜", "⬜"],
+          ["⬜", "⬜", "⬜", "🧱", "⬜", "⬜"],
+          ["🧱", "⬜", "🧱", "⬜", "⬜", "⬜"],
+          ["⬜", "⬜", "⬜", "⬜", "🧱", "⬜"],
+          ["⬜", "🧱", "⬜", "⬜", "⬜", "⬜"],
         ],
-        inicio: { x: 2, y: 2 },
-        variaveisSugeridas: { X: 3, Y: 2 },
-        movimentoEsperado: [
-          "👣",
-          "🔄",
-          "👣",
-          "🔄",
-          "👣",
-          "👣",
-          "👣",
-          "🔄",
-          "👣",
-          "🔄",
-        ],
-      },
-      4: {
-        nome: "DEPURAÇÃO NA PISTA",
-        icone: "🐛",
-        dica: "💡 O algoritmo está ERRADO! Encontre o BUG!",
-        passos: ["👣", "👣", "👣", "👣", "🔄", "👣"],
-        grid: [
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "🤖", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⬜", "⬜"],
-          ["⬜", "⬜", "⬜", "⬜", "⭐", "⬜"],
-        ],
-        inicio: { x: 2, y: 2 },
-        variaveisSugeridas: { X: 4 },
-        movimentoEsperado: ["👣", "👣", "👣", "👣", "🔄", "👣"],
-        algoritmoBugado: [
-          { tipo: "PASSO" },
-          { tipo: "PASSO" },
-          { tipo: "PASSO" },
-          { tipo: "PASSO" },
-          { tipo: "GIRO" },
-          // FALTA UM PASSO AQUI!
-        ],
+        inicio: { x: 0, y: 0 },
+        tamanho: { linhas: 6, colunas: 6 },
       },
     },
 
-    // ---------- ELEMENTOS DOM ----------
-    el: {},
+    elementos: {
+      grid: null,
+      cartoesUsados: null,
+      melhorMarca: null,
+      status: null,
+      bonus: null,
+      algoritmoMontado: null,
+      mensagem: null,
+      recordeFase1: null,
+      recordeFase2: null,
+      recordeFase3: null,
+      faseNomeAtual: null,
+      faseIconeAtual: null,
+    },
 
-    // ================================================================
-    // 🚀 INICIALIZAÇÃO
-    // ================================================================
     init() {
-      if (this.inicializado) return;
-      const container = document.getElementById("dancaRoboGame");
-      if (!container) return;
+      // Verifica se o jogo está presente na página
+      if (!document.getElementById("loopdashGrid")) {
+        console.log("⏳ LoopDashModule: jogo não encontrado, ignorando.");
+        return;
+      }
 
-      this.renderizar(container);
+      console.log("🎮 LoopDashModule: iniciando...");
+
       this.carregarRecordes();
       this.capturarElementos();
       this.configurarEventos();
       this.carregarFase(1);
-      this.inicializado = true;
-      console.log("🕺 GameLoopDance inicializado!");
-    },
 
-    // ================================================================
-    // 🏗️ RENDERIZAÇÃO DA UI
-    // ================================================================
-    renderizar(container) {
-      container.innerHTML = `
-        <div class="game-header mb-4">
-          <div class="btn-group flex-wrap gap-2" role="group">
-            ${[1, 2, 3, 4]
-              .map(
-                (f) => `
-              <button class="btn-fase btn-fase-${f}" data-fase="${f}">
-                ${this.coreografias[f].icone} FASE ${f}
-                <span class="badge ${f === 1 ? "bg-success" : f === 2 ? "bg-warning text-dark" : f === 3 ? "bg-primary" : "bg-danger"}">
-                  ${["INICIANTE", "INTERMEDIÁRIO", "AVANÇADO", "MESTRE"][f - 1]}
-                </span>
-              </button>
-            `,
-              )
-              .join("")}
-          </div>
-        </div>
-
-        <div class="row g-4">
-          <!-- COLUDA ESQUERDA: PALCO -->
-          <div class="col-lg-7">
-            <div class="game-palco bg-robocard p-3 rounded-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-warning text-dark" id="faseNomeDisplay">🎵 A MÚSICA DO ROBÔ</span>
-                <span class="badge bg-info" id="statusDisplay">PRONTO</span>
-              </div>
-
-              <!-- GRID -->
-              <div id="palcoGrid" class="danca-grid"></div>
-
-              <!-- COREOGRAFIA -->
-              <div class="coreografia-display mt-3 p-3 rounded-3">
-                <div class="d-flex align-items-center gap-2 mb-2">
-                  <span class="text-warning">🎵 COREOGRAFIA:</span>
-                  <span id="coreografiaPassos" class="passos-display">👣 👣 👣 👣 🔄</span>
-                </div>
-                <div class="progress" style="height: 8px;">
-                  <div id="progressoCoreografia" class="progress-bar bg-warning" style="width: 0%;"></div>
-                </div>
-                <div class="d-flex justify-content-between mt-1">
-                  <small class="text-muted">Passos: <span id="passosAtuais">0</span>/<span id="totalPassos">5</span></small>
-                  <small class="text-muted">Acertos: <span id="acertosDisplay">0</span></small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- COLUNA DIREITA: CONTROLES -->
-          <div class="col-lg-5">
-            <!-- VARIÁVEIS -->
-            <div class="game-variaveis bg-robocard p-3 rounded-4 mb-3">
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="text-warning">📦 VARIÁVEIS:</span>
-                <button class="btn-sm btn-outline-warning" id="btnAddVariavel">+ Adicionar</button>
-              </div>
-              <div id="variaveisDisplay" class="d-flex flex-wrap gap-2"></div>
-            </div>
-
-            <!-- COMANDOS -->
-            <div class="game-comandos bg-robocard p-3 rounded-4 mb-3">
-              <div class="text-warning mb-2">🔧 COMANDOS (clique para adicionar):</div>
-              <div class="d-flex flex-wrap gap-2">
-                <button class="cmd-btn cmd-passo" data-comando="PASSO">👣 PASSO</button>
-                <button class="cmd-btn cmd-giro" data-comando="GIRO">🔄 GIRO</button>
-                <button class="cmd-btn cmd-loop" data-comando="REPETIR">🔁 REPETIR</button>
-                <button class="cmd-btn cmd-variavel" data-comando="VARIAVEL">🔢 VARIÁVEL</button>
-                <button class="cmd-btn cmd-bug" data-comando="BUG">🐛 BUG</button>
-              </div>
-            </div>
-
-            <!-- ALGORITMO -->
-            <div class="game-algoritmo bg-robocard p-3 rounded-4 mb-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="text-warning">📝 SEU ALGORITMO:</span>
-                <button class="btn-sm btn-danger" id="btnLimparAlgoritmo">🗑️ LIMPAR</button>
-              </div>
-              <div id="algoritmoMontado" class="algoritmo-container"></div>
-              <div class="d-flex gap-2 mt-2">
-                <span class="badge bg-secondary">Cartões: <span id="contadorCartoes">0</span></span>
-                <span class="badge bg-secondary">Loops: <span id="contadorLoops">0</span></span>
-              </div>
-            </div>
-
-            <!-- AÇÕES -->
-            <div class="game-acoes d-flex flex-wrap gap-2">
-              <button class="btn-executar" id="btnExecutarDanca">▶ EXECUTAR DANÇA!</button>
-              <button class="btn-resetar" id="btnResetDanca">🔄 RESETAR</button>
-              <button class="btn-dica" id="btnDicaDanca">💡 DICA</button>
-              <button class="btn-depurar" id="btnDepurarDanca">🔍 DEPURAR</button>
-            </div>
-
-            <!-- MENSAGEM -->
-            <div id="dancaMensagem" class="mensagem-jogo mt-3 p-2 rounded-3">
-              <span>🏁 Selecione uma fase e monte seu algoritmo!</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- RECORDES -->
-        <div class="game-recordes mt-4">
-          <div class="text-warning mb-2">🏆 RECORDES (menos cartões = melhor!)</div>
-          <div class="d-flex flex-wrap gap-3">
-            ${[1, 2, 3, 4]
-              .map(
-                (f) => `
-              <div class="recorde-card">
-                <span>${this.coreografias[f].icone} FASE ${f}:</span>
-                <strong id="recordeFase${f}">---</strong> cartões
-              </div>
-            `,
-              )
-              .join("")}
-          </div>
-        </div>
-
-        <div class="legenda-pista mt-3 d-flex flex-wrap gap-3">
-          <span class="legenda-item">🤖 ROBÔ</span>
-          <span class="legenda-item">⭐ CHEGADA</span>
-          <span class="legenda-item">⬜ PISTA</span>
-          <span class="legenda-item">🔄 GIRO</span>
-          <span class="legenda-item">🔢 VARIÁVEL</span>
-        </div>
-      `;
-    },
-
-    // ================================================================
-    // 🔍 CAPTURA DE ELEMENTOS
-    // ================================================================
-    capturarElementos() {
-      this.el = {
-        palco: document.getElementById("palcoGrid"),
-        algoritmo: document.getElementById("algoritmoMontado"),
-        cartoes: document.getElementById("contadorCartoes"),
-        passos: document.getElementById("passosAtuais"),
-        acertos: document.getElementById("acertosDisplay"),
-        status: document.getElementById("statusDisplay"),
-        mensagem: document.getElementById("dancaMensagem"),
-        faseNome: document.getElementById("faseNomeDisplay"),
-        recordes: {
-          1: document.getElementById("recordeFase1"),
-          2: document.getElementById("recordeFase2"),
-          3: document.getElementById("recordeFase3"),
-          4: document.getElementById("recordeFase4"),
-        },
-        variaveis: document.getElementById("variaveisDisplay"),
-        coreografia: document.getElementById("coreografiaPassos"),
-        progresso: document.getElementById("progressoCoreografia"),
-        totalPassos: document.getElementById("totalPassos"),
-        loops: document.getElementById("contadorLoops"),
-        btnExecutar: document.getElementById("btnExecutarDanca"),
-        btnReset: document.getElementById("btnResetDanca"),
-        btnDica: document.getElementById("btnDicaDanca"),
-        btnDepurar: document.getElementById("btnDepurarDanca"),
-        btnLimpar: document.getElementById("btnLimparAlgoritmo"),
-        btnVariavel: document.getElementById("btnAddVariavel"),
-      };
-    },
-
-    // ================================================================
-    // 🎯 EVENTOS
-    // ================================================================
-    configurarEventos() {
-      // Fases
-      document.querySelectorAll(".btn-fase").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          this.carregarFase(parseInt(btn.dataset.fase));
-        });
-      });
-
-      // Comandos
-      document.querySelectorAll(".cmd-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          this.adicionarComando(btn.dataset.comando);
-        });
-      });
-
-      // Ações
-      this.el.btnExecutar?.addEventListener("click", () => this.executar());
-      this.el.btnReset?.addEventListener("click", () => this.resetar());
-      this.el.btnDica?.addEventListener("click", () => this.mostrarDica());
-      this.el.btnDepurar?.addEventListener("click", () => this.depurar());
-      this.el.btnLimpar?.addEventListener("click", () =>
-        this.limparAlgoritmo(),
-      );
-      this.el.btnVariavel?.addEventListener("click", () =>
-        this.adicionarComando("VARIAVEL"),
-      );
-    },
-
-    // ================================================================
-    // 📦 RECORDES
-    // ================================================================
-    carregarRecordes() {
-      try {
-        const saved = localStorage.getItem("danca_robo_recordes_ano3");
-        if (saved) this.recordes = JSON.parse(saved);
-      } catch (e) {
-        /* ignora */
+      // Botão de reset global
+      const btnReset = document.getElementById("btnResetLoopDash");
+      if (btnReset) {
+        btnReset.addEventListener("click", () => this.resetarRobo());
       }
+
+      console.log("✅ LoopDashModule pronto!");
     },
 
-    salvarRecordes() {
-      localStorage.setItem(
-        "danca_robo_recordes_ano3",
-        JSON.stringify(this.recordes),
-      );
+    capturarElementos() {
+      this.elementos.grid = document.getElementById("loopdashGrid");
+      this.elementos.cartoesUsados = document.getElementById("loopdashCartoes");
+      this.elementos.melhorMarca = document.getElementById("loopdashMelhor");
+      this.elementos.status = document.getElementById("loopdashStatus");
+      this.elementos.bonus = document.getElementById("loopdashBonus");
+      this.elementos.algoritmoMontado = document.getElementById("algoritmoMontado");
+      this.elementos.mensagem = document.getElementById("loopdashMensagem");
+      this.elementos.recordeFase1 = document.getElementById("recordeFase1");
+      this.elementos.recordeFase2 = document.getElementById("recordeFase2");
+      this.elementos.recordeFase3 = document.getElementById("recordeFase3");
+      this.elementos.faseNomeAtual = document.getElementById("faseNomeAtual");
+      this.elementos.faseIconeAtual = document.getElementById("faseIconeAtual");
     },
 
-    // ================================================================
-    // 🎬 CARREGAR FASE
-    // ================================================================
     carregarFase(fase) {
       this.faseAtual = fase;
-      this.algoritmo = [];
-      this.movimentosExecutados = [];
-      this.acertos = 0;
-      this.estaExecutando = false;
+      this.limparAlgoritmo();
+      this.resetarRobo();
 
-      const coreo = this.coreografias[fase];
-      this.passosSequencia = coreo.passos;
-      this.totalPassos = coreo.passos.length;
-      this.posicaoRobo = { ...coreo.inicio, direcao: 0 };
-
-      // Resetar variáveis
-      this.variaveis = { X: 1, Y: 2, Z: 0 };
-      if (coreo.variaveisSugeridas) {
-        Object.assign(this.variaveis, coreo.variaveisSugeridas);
-      }
-
-      // Carregar bug da fase 4
-      if (fase === 4 && coreo.algoritmoBugado) {
-        this.algoritmo = coreo.algoritmoBugado.map((c) => ({ ...c }));
-      }
-
-      // Atualizar UI
-      this.atualizarUI();
-      this.desenharGrid();
-      this.atualizarRecordes();
-      this.atualizarVariaveis();
-      this.atualizarCoreografia();
-      this.renderizarAlgoritmo();
-      this.atualizarContadores();
-
-      // Destacar fase
-      document.querySelectorAll(".btn-fase").forEach((btn) => {
-        btn.classList.toggle("ativo", parseInt(btn.dataset.fase) === fase);
+      // Botões de fase
+      document.querySelectorAll(".btn-phase").forEach((btn) => {
+        btn.classList.remove("ativo");
+        if (parseInt(btn.dataset.fase) === fase) btn.classList.add("ativo");
       });
 
-      this.atualizarStatus("PRONTO", "info");
-      this.mostrarMensagem(
-        `🎵 FASE ${fase}: ${coreo.nome} selecionada!`,
-        "info",
-      );
+      const pista = this.pistas[fase];
+      if (this.elementos.faseNomeAtual) {
+        this.elementos.faseNomeAtual.textContent = pista.nome;
+      }
+      const icones = { 1: "🏁", 2: "🔄", 3: "🧱" };
+      if (this.elementos.faseIconeAtual) {
+        this.elementos.faseIconeAtual.textContent = icones[fase];
+      }
+
+      this.desenharGrid();
+      this.atualizarRecordeDisplay();
+      this.mostrarMensagem(`🏁 FASE ${fase}: ${pista.nome} selecionada! Monte seu algoritmo.`, "info");
     },
 
-    // ================================================================
-    // 🎨 DESENHAR GRID
-    // ================================================================
     desenharGrid() {
-      const coreo = this.coreografias[this.faseAtual];
-      const grid = coreo.grid;
-      const palco = this.el.palco;
-      if (!palco) return;
+      const pista = this.pistas[this.faseAtual];
+      if (!this.elementos.grid) return;
 
-      palco.style.display = "grid";
-      palco.style.gridTemplateColumns = `repeat(${grid[0].length}, 1fr)`;
-      palco.innerHTML = "";
+      this.elementos.grid.className = `loopdash-grid fase${this.faseAtual}`;
+      this.elementos.grid.innerHTML = "";
 
-      for (let l = 0; l < grid.length; l++) {
-        for (let c = 0; c < grid[l].length; c++) {
-          const cell = document.createElement("div");
-          cell.className = "danca-cell";
+      for (let l = 0; l < pista.tamanho.linhas; l++) {
+        for (let c = 0; c < pista.tamanho.colunas; c++) {
+          const celula = pista.grid[l]?.[c] || "⬜";
+          const cellDiv = document.createElement("div");
+          cellDiv.className = "loopdash-cell";
+
+          if (celula === "🧱") cellDiv.classList.add("wall");
+          else if (celula === "🏁") cellDiv.classList.add("target");
 
           if (this.posicaoRobo.x === l && this.posicaoRobo.y === c) {
-            cell.classList.add("robo");
-            cell.textContent = "🤖";
-            const setas = ["⬆️", "➡️", "⬇️", "⬅️"];
-            cell.dataset.direcao = setas[this.posicaoRobo.direcao];
-          } else if (grid[l][c] === "⭐") {
-            cell.classList.add("chegada");
-            cell.textContent = "⭐";
-          } else if (grid[l][c] === "🧱") {
-            cell.classList.add("obstaculo");
-            cell.textContent = "🧱";
-          } else {
-            cell.classList.add("pista");
-            cell.textContent = "⬜";
+            cellDiv.classList.add("robot");
+          } else if (celula === "⬜" || celula === "🚶") {
+            cellDiv.classList.add("path");
           }
 
-          palco.appendChild(cell);
+          this.elementos.grid.appendChild(cellDiv);
         }
       }
     },
 
-    // ================================================================
-    // 📝 ADICIONAR COMANDO (SISTEMA INTUITIVO)
-    // ================================================================
-    adicionarComando(tipo) {
-      if (this.estaExecutando) return;
+    resetarRobo() {
+      const pista = this.pistas[this.faseAtual];
+      this.posicaoRobo = { x: pista.inicio.x, y: pista.inicio.y, direcao: 1 };
+      this.desenharGrid();
+      if (this.elementos.status) {
+        this.elementos.status.textContent = "PRONTO";
+        this.elementos.status.classList.remove("text-danger");
+      }
+      this.executando = false;
+    },
 
-      // ----- VARIÁVEL: Seletor visual -----
-      if (tipo === "VARIAVEL") {
-        this.mostrarSeletorVariavel();
-        return;
+    // ---- CONSTRUTOR DE ALGORITMO ----
+    adicionarCartao(comando) {
+      let cartaoObj = { comando: comando, filhos: [], contador: 3 };
+
+      if (comando === "repita") {
+        cartaoObj.filhos = [];
+        cartaoObj.contador = 3;
       }
 
-      // ----- REPETIR: Seletor visual -----
-      if (tipo === "REPETIR") {
-        this.mostrarSeletorLoop();
-        return;
-      }
-
-      // ----- PASSO / GIRO / BUG -----
-      // Tenta adicionar ao último loop aberto
-      const ultimoLoop = this.encontrarUltimoLoopAberto();
-      if (ultimoLoop) {
-        ultimoLoop.comandos.push({ tipo });
-        this.mostrarMensagem(`✅ ${tipo} adicionado ao loop!`, "success");
-      } else {
-        this.algoritmo.push({ tipo });
-        this.mostrarMensagem(`✅ ${tipo} adicionado!`, "success");
-      }
-
+      this.cartoesAlgoritmo.push(cartaoObj);
       this.renderizarAlgoritmo();
-      this.atualizarContadores();
+      this.atualizarContadorCartoes();
+      this.mostrarMensagem(`➕ Cartão "${this.getNomeComando(comando)}" adicionado!`, "info");
     },
 
-    // ----- SELETOR VISUAL: VARIÁVEL -----
-    mostrarSeletorVariavel() {
-      this.removerSeletores();
-
-      const container = this.el.algoritmo;
-      if (!container) return;
-
-      const opcoes = [
-        { var: "X", valor: 1, cor: "#3498db" },
-        { var: "X", valor: 2, cor: "#3498db" },
-        { var: "X", valor: 3, cor: "#3498db" },
-        { var: "Y", valor: 1, cor: "#9b59b6" },
-        { var: "Y", valor: 2, cor: "#9b59b6" },
-        { var: "Z", valor: 0, cor: "#1abc9c" },
-      ];
-
-      const seletor = this.criarSeletor(
-        "variavel",
-        "📦 ESCOLHA UMA VARIÁVEL:",
-        opcoes.map((o) => ({
-          label: `🔢 ${o.var} = ${o.valor}`,
-          cor: o.cor,
-          onClick: () => {
-            this.variaveis[o.var] = o.valor;
-            this.atualizarVariaveis();
-            this.removerSeletores();
-            this.mostrarMensagem(
-              `📦 ${o.var} = ${o.valor} definida!`,
-              "success",
-            );
-          },
-        })),
-      );
-
-      container.prepend(seletor);
+    getNomeComando(comando) {
+      const nomes = {
+        ande1: "ANDE 1",
+        ande2: "ANDE 2",
+        vireDireita: "VIRE DIREITA",
+        vireEsquerda: "VIRE ESQUERDA",
+        repita: "REPITA",
+      };
+      return nomes[comando] || comando;
     },
 
-    // ----- SELETOR VISUAL: LOOP -----
-    mostrarSeletorLoop() {
-      this.removerSeletores();
-
-      const container = this.el.algoritmo;
-      if (!container) return;
-
-      const opcoes = [2, 3, 4, 5].map((v) => ({
-        label: `🔁 ${v} VEZES`,
-        cor: "#f39c12",
-        onClick: () => {
-          const loop = {
-            tipo: "REPETIR",
-            vezes: v,
-            comandos: [],
-            _aberto: true,
-          };
-          this.algoritmo.push(loop);
-          this.removerSeletores();
-          this.renderizarAlgoritmo();
-          this.atualizarContadores();
-          this.mostrarMensagem(
-            `🔁 Loop criado! Adicione PASSO ou GIRO dentro dele.`,
-            "success",
-          );
-          this.destacarUltimoLoop();
-        },
-      }));
-
-      const seletor = this.criarSeletor(
-        "loop",
-        "🔁 QUANTAS VEZES REPETIR?",
-        opcoes,
-      );
-      container.prepend(seletor);
+    getIconeComando(comando) {
+      const icones = {
+        ande1: "🚶",
+        ande2: "🏃",
+        vireDireita: "▶️",
+        vireEsquerda: "◀️",
+        repita: "🔄",
+      };
+      return icones[comando] || "❓";
     },
 
-    // ----- SELETOR: COMANDO DENTRO DO LOOP -----
-    mostrarSeletorComandoLoop(loopIdx) {
-      this.removerSeletores();
+    renderizarAlgoritmo() {
+      if (!this.elementos.algoritmoMontado) return;
+      this.elementos.algoritmoMontado.innerHTML = "";
 
-      const container = this.el.algoritmo;
-      if (!container) return;
+      if (this.cartoesAlgoritmo.length === 0) {
+        this.elementos.algoritmoMontado.innerHTML =
+          '<div class="placeholder-algoritmo">🃏 Clique nos cartões abaixo para montar seu algoritmo...</div>';
+        return;
+      }
 
-      const loop = this.algoritmo[loopIdx];
-      if (!loop || loop.tipo !== "REPETIR") return;
-
-      const opcoes = [
-        {
-          label: "👣 PASSO",
-          cor: "#4a7c3f",
-          onClick: () => {
-            loop.comandos.push({ tipo: "PASSO" });
-            this.removerSeletores();
-            this.renderizarAlgoritmo();
-            this.atualizarContadores();
-            this.mostrarMensagem(`👣 PASSO adicionado ao loop!`, "success");
-            if (loop.comandos.length >= loop.vezes) {
-              this.mostrarMensagem(
-                `🎉 Loop completo! ${loop.vezes} comandos!`,
-                "success",
-              );
-            }
-          },
-        },
-        {
-          label: "🔄 GIRO",
-          cor: "#f39c12",
-          onClick: () => {
-            loop.comandos.push({ tipo: "GIRO" });
-            this.removerSeletores();
-            this.renderizarAlgoritmo();
-            this.atualizarContadores();
-            this.mostrarMensagem(`🔄 GIRO adicionado ao loop!`, "success");
-            if (loop.comandos.length >= loop.vezes) {
-              this.mostrarMensagem(
-                `🎉 Loop completo! ${loop.vezes} comandos!`,
-                "success",
-              );
-            }
-          },
-        },
-      ];
-
-      const seletor = this.criarSeletor(
-        "comando-loop",
-        `➕ ADICIONAR AO LOOP (${loop.comandos.length}/${loop.vezes}):`,
-        opcoes,
-        true, // menor
-      );
-
-      container.appendChild(seletor);
+      this.cartoesAlgoritmo.forEach((cartao, idx) => {
+        const div = this.criarCartaoElemento(cartao, idx, false);
+        this.elementos.algoritmoMontado.appendChild(div);
+      });
     },
 
-    // ----- UTILITÁRIO: CRIAR SELETOR -----
-    criarSeletor(tipo, titulo, opcoes, pequeno = false) {
+    criarCartaoElemento(cartao, idx, isFilho) {
       const div = document.createElement("div");
-      div.className = `seletor seletor-${tipo}`;
-      div.style.cssText = `
-        background: ${tipo === "loop" ? "rgba(243, 156, 18, 0.1)" : tipo === "variavel" ? "rgba(52, 152, 219, 0.1)" : "rgba(255, 180, 71, 0.1)"};
-        border: 2px solid ${tipo === "loop" ? "#f39c12" : tipo === "variavel" ? "#3498db" : "#f39c12"};
-        border-radius: 16px;
-        padding: ${pequeno ? "8px 12px" : "16px"};
-        margin: ${pequeno ? "4px 0 4px 20px" : "8px 0"};
-        animation: comandoEntrar 0.3s ease-out;
-      `;
+      div.className = "cartao-montado";
 
-      div.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <span style="color: ${tipo === "loop" ? "#f39c12" : tipo === "variavel" ? "#85c1e9" : "#f39c12"}; font-weight: bold; font-size: ${pequeno ? "0.8rem" : "0.9rem"};">
-            ${titulo}
-          </span>
-          ${opcoes
-            .map(
-              (o) => `
-            <button class="seletor-opcao" style="
-              background: #2c3e2b;
-              border: 2px solid ${o.cor};
-              border-radius: 40px;
-              padding: ${pequeno ? "4px 14px" : "8px 20px"};
-              color: ${o.cor};
-              font-weight: bold;
-              font-size: ${pequeno ? "0.75rem" : "0.9rem"};
-              cursor: pointer;
-              transition: all 0.2s ease;
-            ">${o.label}</button>
-          `,
-            )
-            .join("")}
-          <button class="seletor-cancelar" style="
-            background: none;
-            border: none;
-            color: #e74c3c;
-            font-size: 0.7rem;
-            cursor: pointer;
-            padding: 4px 10px;
-          ">✖️ cancelar</button>
-        </div>
-        ${!pequeno ? `<div style="margin-top: 6px; font-size: 0.65rem; color: #666;">💡 Clique em um botão para escolher</div>` : ""}
-      `;
+      if (cartao.comando === "repita") {
+        div.classList.add("repita-container");
 
-      // Eventos dos botões
-      div.querySelectorAll(".seletor-opcao").forEach((btn, i) => {
-        btn.addEventListener("click", opcoes[i].onClick);
-        btn.addEventListener("mouseenter", () => {
-          btn.style.transform = "scale(1.05)";
-          btn.style.boxShadow = `0 0 20px ${opcoes[i].cor}33`;
+        const header = document.createElement("div");
+        header.className = "repita-header";
+        header.innerHTML = `
+          <span class="cartao-icone">🔄</span>
+          <span class="cartao-texto">REPITA</span>
+          <input type="number" class="repita-contador-input" value="${cartao.contador}" min="1" max="10" style="width:55px; border-radius:20px; text-align:center;">
+          <span class="cartao-texto">vezes</span>
+          <span class="cartao-remove" data-idx="${idx}" data-is-filho="${isFilho}">✖️</span>
+        `;
+
+        const filhosDiv = document.createElement("div");
+        filhosDiv.className = "repita-filhos";
+
+        const btnAddFilho = document.createElement("button");
+        btnAddFilho.innerHTML = "+ adicionar comando";
+        btnAddFilho.style.cssText =
+          "background:#ffb347; border:none; border-radius:20px; padding:4px 8px; font-size:0.7rem; cursor:pointer; margin-bottom:8px;";
+        btnAddFilho.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.mostrarSelecaoComandoParaRepita(cartao);
         });
-        btn.addEventListener("mouseleave", () => {
-          btn.style.transform = "scale(1)";
-          btn.style.boxShadow = "none";
-        });
-      });
 
-      div.querySelector(".seletor-cancelar").addEventListener("click", () => {
-        this.removerSeletores();
-        this.mostrarMensagem("❌ Cancelado!", "info");
-      });
+        filhosDiv.appendChild(btnAddFilho);
+
+        if (cartao.filhos && cartao.filhos.length > 0) {
+          cartao.filhos.forEach((filho, fIdx) => {
+            const filhoDiv = this.criarCartaoElemento(filho, fIdx, true);
+            filhosDiv.appendChild(filhoDiv);
+          });
+        }
+
+        div.appendChild(header);
+        div.appendChild(filhosDiv);
+
+        const inputContador = header.querySelector(".repita-contador-input");
+        if (inputContador) {
+          inputContador.addEventListener("change", (e) => {
+            cartao.contador = parseInt(e.target.value) || 3;
+            this.atualizarContadorCartoes();
+          });
+        }
+      } else {
+        div.innerHTML = `
+          <span class="cartao-icone">${this.getIconeComando(cartao.comando)}</span>
+          <span class="cartao-texto">${this.getNomeComando(cartao.comando)}</span>
+          <span class="cartao-remove" data-idx="${idx}" data-is-filho="${isFilho}">✖️</span>
+        `;
+      }
+
+      const removeBtn = div.querySelector(".cartao-remove");
+      if (removeBtn) {
+        removeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const idxRemover = parseInt(removeBtn.dataset.idx);
+          const isFilhoRemover = removeBtn.dataset.isFilho === "true";
+          this.removerCartao(idxRemover, isFilhoRemover);
+        });
+      }
 
       return div;
     },
 
-    // ----- UTILITÁRIO: REMOVER SELETORES -----
-    removerSeletores() {
-      const container = this.el.algoritmo;
-      if (!container) return;
-      container.querySelectorAll(".seletor").forEach((el) => el.remove());
-    },
+    mostrarSelecaoComandoParaRepita(cartaoRepita) {
+      const comandos = [
+        { comando: "ande1", nome: "ANDE 1", icone: "🚶" },
+        { comando: "ande2", nome: "ANDE 2", icone: "🏃" },
+        { comando: "vireDireita", nome: "VIRE DIREITA", icone: "▶️" },
+        { comando: "vireEsquerda", nome: "VIRE ESQUERDA", icone: "◀️" },
+      ];
 
-    // ----- UTILITÁRIO: ENCONTRAR ÚLTIMO LOOP ABERTO -----
-    encontrarUltimoLoopAberto() {
-      for (let i = this.algoritmo.length - 1; i >= 0; i--) {
-        if (this.algoritmo[i].tipo === "REPETIR" && this.algoritmo[i]._aberto) {
-          return this.algoritmo[i];
-        }
-      }
-      return null;
-    },
+      let modalHtml = `
+        <div id="modalComando" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; z-index:9999;">
+          <div style="background:#1e2a1a; padding:24px; border-radius:24px; border:3px solid #ffb347; max-width:400px;">
+            <h3 style="color:#ffb347;">🔄 Adicionar comando ao REPITA</h3>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin:20px 0;">
+      `;
 
-    // ----- DESTACAR ÚLTIMO LOOP -----
-    destacarUltimoLoop() {
-      setTimeout(() => {
-        const container = this.el.algoritmo;
-        if (!container) return;
-        const loops = container.querySelectorAll(".loop-container");
-        if (loops.length > 0) {
-          const ultimo = loops[loops.length - 1];
-          ultimo.style.border = "3px solid #ffcc44";
-          ultimo.style.boxShadow = "0 0 30px rgba(255, 204, 68, 0.3)";
-          setTimeout(() => {
-            ultimo.style.border = "";
-            ultimo.style.boxShadow = "";
-          }, 2000);
-        }
-      }, 100);
-    },
-
-    // ================================================================
-    // 🖥️ RENDERIZAR ALGORITMO
-    // ================================================================
-    renderizarAlgoritmo() {
-      const container = this.el.algoritmo;
-      if (!container) return;
-
-      this.removerSeletores();
-
-      if (this.algoritmo.length === 0) {
-        container.innerHTML = `
-          <div class="placeholder-algoritmo">
-            🃏 Clique nos comandos para montar seu algoritmo...
-          </div>
+      comandos.forEach((cmd) => {
+        modalHtml += `
+          <button class="btn-selecionar-cmd" data-comando="${cmd.comando}" style="background:#2c3e2b; border:2px solid #4a7c3f; border-radius:16px; padding:12px; cursor:pointer;">
+            <div style="font-size:2rem;">${cmd.icone}</div>
+            <div style="color:#ffb347;">${cmd.nome}</div>
+          </button>
         `;
-        return;
-      }
-
-      container.innerHTML = "";
-
-      this.algoritmo.forEach((comando, idx) => {
-        if (comando.tipo === "REPETIR") {
-          const div = document.createElement("div");
-          div.className = "loop-container";
-          div.style.cssText = `
-            background: linear-gradient(135deg, #1a2b17, #0d1f0b);
-            border: 2px solid #f39c12;
-            border-radius: 16px;
-            padding: 12px;
-            margin: 6px 0;
-            width: 100%;
-          `;
-
-          const estaAberto = comando._aberto || false;
-
-          div.innerHTML = `
-            <div class="loop-header" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-              <span style="font-size:1.4rem;">🔁</span>
-              <span style="color:#f39c12;font-weight:bold;font-size:1rem;background:rgba(0,0,0,0.3);padding:4px 14px;border-radius:20px;">
-                REPETIR ${comando.vezes} VEZES
-              </span>
-              <span style="font-size:0.7rem;color:${estaAberto ? "#2ecc71" : "#666"};background:${estaAberto ? "rgba(46,204,113,0.2)" : "rgba(0,0,0,0.3)"};padding:2px 12px;border-radius:20px;">
-                ${estaAberto ? "🟢 ABERTO" : "🔒 FECHADO"}
-              </span>
-              <button class="btn-toggle-loop" data-indice="${idx}" style="background:none;border:1px solid #f39c12;border-radius:20px;color:#f39c12;padding:2px 12px;font-size:0.7rem;cursor:pointer;">
-                ${estaAberto ? "🔒 FECHAR" : "🔓 ABRIR"}
-              </button>
-              <button class="btn-remove-loop" data-indice="${idx}" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:1rem;margin-left:auto;">✖️</button>
-            </div>
-            <div class="loop-comandos" style="display:flex;flex-wrap:wrap;gap:6px;padding-left:20px;border-left:3px dashed #f39c12;min-height:${estaAberto ? "40px" : "0"};">
-              ${
-                comando.comandos && comando.comandos.length > 0
-                  ? comando.comandos
-                      .map(
-                        (cmd, cidx) => `
-                  <div class="sub-comando" style="background:linear-gradient(135deg,#2c3e2b,#1a2b17);border-radius:12px;padding:4px 12px;display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;border-left:3px solid #f39c12;">
-                    <span>${this.getIcone(cmd.tipo)} ${cmd.tipo}</span>
-                    <button class="btn-remove-sub" data-loop="${idx}" data-indice="${cidx}" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:0.7rem;padding:0 4px;">✖️</button>
-                  </div>
-                `,
-                      )
-                      .join("")
-                  : estaAberto
-                    ? `<span style="color:#666;font-size:0.8rem;padding:8px;">👆 Clique em PASSO ou GIRO para adicionar!</span>`
-                    : `<span style="color:#444;font-size:0.7rem;padding:4px 0;">🔒 Fechado</span>`
-              }
-              ${
-                estaAberto
-                  ? `<button class="btn-add-dentro-loop" data-loop="${idx}" style="background:rgba(255,180,71,0.15);border:2px dashed #f39c12;border-radius:12px;color:#f39c12;padding:6px 14px;font-size:0.75rem;cursor:pointer;width:100%;margin-top:4px;">➕ ADICIONAR DENTRO DO LOOP</button>`
-                  : ""
-              }
-            </div>
-          `;
-
-          // Eventos
-          div
-            .querySelector(".btn-toggle-loop")
-            .addEventListener("click", () => {
-              comando._aberto = !comando._aberto;
-              this.renderizarAlgoritmo();
-            });
-
-          div
-            .querySelector(".btn-remove-loop")
-            .addEventListener("click", () => {
-              this.algoritmo.splice(idx, 1);
-              this.renderizarAlgoritmo();
-              this.atualizarContadores();
-              this.mostrarMensagem("🗑️ Loop removido!", "info");
-            });
-
-          div.querySelectorAll(".btn-remove-sub").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const loop = this.algoritmo[parseInt(btn.dataset.loop)];
-              if (loop && loop.tipo === "REPETIR") {
-                loop.comandos.splice(parseInt(btn.dataset.indice), 1);
-                this.renderizarAlgoritmo();
-                this.atualizarContadores();
-                this.mostrarMensagem("🗑️ Comando removido do loop!", "info");
-              }
-            });
-          });
-
-          const addBtn = div.querySelector(".btn-add-dentro-loop");
-          if (addBtn) {
-            addBtn.addEventListener("click", () => {
-              this.mostrarSeletorComandoLoop(parseInt(addBtn.dataset.loop));
-            });
-          }
-
-          container.appendChild(div);
-        } else {
-          // Comando simples
-          const div = document.createElement("div");
-          const cores = { PASSO: "#4a7c3f", GIRO: "#f39c12", BUG: "#e74c3c" };
-          const cor = cores[comando.tipo] || "#666";
-          div.className = "comando-simples";
-          div.style.cssText = `
-            background: linear-gradient(135deg, #2c3e2b, #1a2b17);
-            border-radius: 12px;
-            padding: 6px 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            border-left: 4px solid ${cor};
-            margin: 2px 4px;
-            animation: comandoEntrar 0.3s ease-out;
-          `;
-          div.innerHTML = `
-            <span>${this.getIcone(comando.tipo)} ${comando.tipo}</span>
-            <button class="btn-remove-simples" data-indice="${idx}" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:0.8rem;padding:0 4px;">✖️</button>
-          `;
-          div
-            .querySelector(".btn-remove-simples")
-            .addEventListener("click", () => {
-              this.algoritmo.splice(idx, 1);
-              this.renderizarAlgoritmo();
-              this.atualizarContadores();
-              this.mostrarMensagem("🗑️ Comando removido!", "info");
-            });
-          container.appendChild(div);
-        }
       });
-    },
 
-    // ================================================================
-    // 🎯 GET ÍCONE
-    // ================================================================
-    getIcone(tipo) {
-      const icones = {
-        PASSO: "👣",
-        GIRO: "🔄",
-        REPETIR: "🔁",
-        VARIAVEL: "🔢",
-        BUG: "🐛",
-      };
-      return icones[tipo] || "❓";
-    },
+      modalHtml += `
+            </div>
+            <button id="btnFecharModal" style="background:#e74c3c; border:none; border-radius:40px; padding:8px 20px; color:white; cursor:pointer;">FECHAR</button>
+          </div>
+        </div>
+      `;
 
-    // ================================================================
-    // 📊 CONTADORES
-    // ================================================================
-    atualizarContadores() {
-      const stats = this.contarComandos(this.algoritmo);
-      if (this.el.cartoes) this.el.cartoes.textContent = stats.total;
-      if (this.el.loops) this.el.loops.textContent = stats.loops;
-    },
+      document.body.insertAdjacentHTML("beforeend", modalHtml);
+      const modal = document.getElementById("modalComando");
 
-    contarComandos(arr) {
-      let total = 0,
-        loops = 0;
-      for (const item of arr) {
-        total++;
-        if (item.tipo === "REPETIR") {
-          loops++;
-          if (item.comandos) {
-            const sub = this.contarComandos(item.comandos);
-            total += sub.total;
-            loops += sub.loops;
-          }
-        }
-      }
-      return { total, loops };
-    },
+      document.querySelectorAll(".btn-selecionar-cmd").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const comando = btn.dataset.comando;
+          cartaoRepita.filhos.push({ comando: comando, filhos: [] });
+          this.renderizarAlgoritmo();
+          if (modal) modal.remove();
+          this.atualizarContadorCartoes();
+          this.mostrarMensagem(`➕ Comando adicionado dentro do REPITA!`, "success");
+        });
+      });
 
-    // ================================================================
-    // 🎬 EXECUTAR
-    // ================================================================
-    async executar() {
-      if (this.estaExecutando) return;
-      if (this.algoritmo.length === 0) {
-        this.mostrarMensagem("⚠️ Monte um algoritmo primeiro!", "erro");
-        return;
-      }
-
-      this.estaExecutando = true;
-      this.movimentosExecutados = [];
-      this.acertos = 0;
-
-      const coreo = this.coreografias[this.faseAtual];
-      this.posicaoRobo = { ...coreo.inicio, direcao: 0 };
-      this.desenharGrid();
-      this.atualizarStatus("EXECUTANDO...", "warning");
-      this.mostrarMensagem("🕺 Executando coreografia...", "info");
-
-      let erro = false;
-      for (const comando of this.algoritmo) {
-        const ok = await this.executarComando(comando);
-        if (!ok) {
-          erro = true;
-          break;
-        }
-        await this.delay(300);
-        this.desenharGrid();
-        this.atualizarUI();
-      }
-
-      this.estaExecutando = false;
-
-      if (!erro) {
-        const esperados = coreo.passos;
-        const executados = this.movimentosExecutados;
-        let acertos = 0;
-        for (
-          let i = 0;
-          i < Math.min(executados.length, esperados.length);
-          i++
-        ) {
-          if (executados[i] === esperados[i]) acertos++;
-        }
-        this.acertos = acertos;
-        this.atualizarUI();
-
-        const pct = (acertos / esperados.length) * 100;
-        if (pct === 100) {
-          const total = parseInt(this.el.cartoes.textContent);
-          if (
-            !this.recordes[this.faseAtual] ||
-            total < this.recordes[this.faseAtual]
-          ) {
-            this.recordes[this.faseAtual] = total;
-            this.salvarRecordes();
-            this.atualizarRecordes();
-            this.mostrarMensagem(
-              `🎉 NOVO RECORDE! ${total} cartões!`,
-              "success",
-            );
-          } else {
-            this.mostrarMensagem(
-              `🎉 PERFEITO! ${acertos}/${esperados.length} acertos!`,
-              "success",
-            );
-          }
-          this.atualizarStatus("🌟 PERFEITO!", "success");
-        } else if (pct >= 80) {
-          this.mostrarMensagem(
-            `💃 QUASE LÁ! ${acertos}/${esperados.length}`,
-            "warning",
-          );
-          this.atualizarStatus("💃 QUASE LÁ!", "warning");
-        } else {
-          this.mostrarMensagem(
-            `🐛 AINDA TEM BUGS! ${acertos}/${esperados.length}`,
-            "erro",
-          );
-          this.atualizarStatus("🐛 COM BUGS", "danger");
-        }
-      } else {
-        this.atualizarStatus("💥 BUG!", "danger");
+      const btnFechar = document.getElementById("btnFecharModal");
+      if (btnFechar) {
+        btnFechar.addEventListener("click", () => {
+          if (modal) modal.remove();
+        });
       }
     },
 
-    async executarComando(comando) {
-      const coreo = this.coreografias[this.faseAtual];
-
-      if (comando.tipo === "REPETIR") {
-        for (let i = 0; i < (comando.vezes || 3); i++) {
-          for (const cmd of comando.comandos || []) {
-            const ok = await this.executarComando(cmd);
-            if (!ok) return false;
-            await this.delay(200);
-            this.desenharGrid();
-            this.atualizarUI();
-          }
-        }
-        return true;
+    removerCartao(idx, isFilho) {
+      if (!isFilho && this.cartoesAlgoritmo[idx]) {
+        this.cartoesAlgoritmo.splice(idx, 1);
       }
-
-      if (comando.tipo === "PASSO") {
-        let nx = this.posicaoRobo.x,
-          ny = this.posicaoRobo.y;
-        const d = this.posicaoRobo.direcao;
-        if (d === 0) nx--;
-        else if (d === 1) ny++;
-        else if (d === 2) nx++;
-        else if (d === 3) ny--;
-
-        if (
-          nx < 0 ||
-          nx >= coreo.grid.length ||
-          ny < 0 ||
-          ny >= coreo.grid[0].length
-        ) {
-          this.mostrarMensagem("🚫 Robô saiu da pista!", "erro");
-          return false;
-        }
-        if (coreo.grid[nx][ny] === "🧱") {
-          this.mostrarMensagem("🧱 Bateu no obstáculo!", "erro");
-          return false;
-        }
-
-        this.posicaoRobo.x = nx;
-        this.posicaoRobo.y = ny;
-        this.movimentosExecutados.push("👣");
-        return true;
-      }
-
-      if (comando.tipo === "GIRO") {
-        this.posicaoRobo.direcao = (this.posicaoRobo.direcao + 1) % 4;
-        this.movimentosExecutados.push("🔄");
-        return true;
-      }
-
-      if (comando.tipo === "BUG") {
-        this.mostrarMensagem("🐛 BUG! Robô girou errado!", "erro");
-        return false;
-      }
-
-      return true;
-    },
-
-    // ================================================================
-    // 🔄 RESETAR
-    // ================================================================
-    resetar() {
-      const coreo = this.coreografias[this.faseAtual];
-      this.posicaoRobo = { ...coreo.inicio, direcao: 0 };
-      this.movimentosExecutados = [];
-      this.acertos = 0;
-      this.desenharGrid();
-      this.atualizarUI();
-      this.atualizarStatus("PRONTO", "info");
-      this.mostrarMensagem("🔄 Robô resetado!", "info");
-    },
-
-    // ================================================================
-    // 💡 DICA
-    // ================================================================
-    mostrarDica() {
-      const coreo = this.coreografias[this.faseAtual];
-      this.mostrarMensagem(
-        coreo.dica || "💡 Use loops para repetir passos!",
-        "info",
-      );
-    },
-
-    // ================================================================
-    // 🔍 DEPURAR
-    // ================================================================
-    depurar() {
-      if (this.faseAtual !== 4) {
-        this.mostrarMensagem("🔍 Depuração só na FASE 4!", "info");
-        return;
-      }
-
-      const esperado = this.coreografias[4].movimentoEsperado;
-      let passos = [];
-      const extrair = (arr) => {
-        for (const item of arr) {
-          if (item.tipo === "PASSO") passos.push("👣");
-          else if (item.tipo === "GIRO") passos.push("🔄");
-          else if (item.tipo === "REPETIR" && item.comandos) {
-            for (let i = 0; i < (item.vezes || 3); i++) extrair(item.comandos);
-          }
-        }
-      };
-      extrair(this.algoritmo);
-
-      const bugs = [];
-      for (let i = 0; i < Math.max(esperado.length, passos.length); i++) {
-        if (i >= esperado.length)
-          bugs.push(`Passo ${i + 1}: Sobrando "${passos[i]}"`);
-        else if (i >= passos.length)
-          bugs.push(`Passo ${i + 1}: Faltando "${esperado[i]}"`);
-        else if (passos[i] !== esperado[i]) {
-          bugs.push(
-            `Passo ${i + 1}: Esperado "${esperado[i]}", encontrado "${passos[i]}"`,
-          );
-        }
-      }
-
-      if (bugs.length === 0) {
-        this.mostrarMensagem("🔍 Nenhum bug! Algoritmo correto! 🎉", "success");
-      } else {
-        this.mostrarMensagem(
-          `🐛 ${bugs.length} bug(s):\n${bugs.join("\n")}`,
-          "erro",
-        );
-      }
-    },
-
-    // ================================================================
-    // 🧹 LIMPAR ALGORITMO
-    // ================================================================
-    limparAlgoritmo() {
-      this.algoritmo = [];
       this.renderizarAlgoritmo();
-      this.atualizarContadores();
-      this.mostrarMensagem("🧹 Algoritmo limpo!", "info");
+      this.atualizarContadorCartoes();
+      this.mostrarMensagem(`🗑️ Cartão removido!`, "info");
     },
 
-    // ================================================================
-    // 📊 ATUALIZAR UI
-    // ================================================================
-    atualizarUI() {
-      if (this.el.passos)
-        this.el.passos.textContent = this.movimentosExecutados.length;
-      if (this.el.acertos) this.el.acertos.textContent = this.acertos;
-      if (this.el.progresso) {
-        const pct =
-          this.totalPassos > 0
-            ? (this.movimentosExecutados.length / this.totalPassos) * 100
-            : 0;
-        this.el.progresso.style.width = `${Math.min(pct, 100)}%`;
-      }
-      if (this.el.totalPassos)
-        this.el.totalPassos.textContent = this.totalPassos;
+    limparAlgoritmo() {
+      this.cartoesAlgoritmo = [];
+      this.renderizarAlgoritmo();
+      this.atualizarContadorCartoes();
+      this.mostrarMensagem(`🧹 Algoritmo limpo!`, "info");
     },
 
-    atualizarStatus(texto, tipo) {
-      if (!this.el.status) return;
-      this.el.status.textContent = texto;
-      const cores = {
-        success: "bg-success",
-        danger: "bg-danger",
-        warning: "bg-warning text-dark",
-        info: "bg-info",
+    atualizarContadorCartoes() {
+      const contarCartoes = (arr) => {
+        let total = 0;
+        for (const item of arr) {
+          total++;
+          if (item.comando === "repita" && item.filhos) {
+            total += contarCartoes(item.filhos);
+          }
+        }
+        return total;
       };
-      this.el.status.className = `badge ${cores[tipo] || "bg-info"}`;
-    },
 
-    atualizarVariaveis() {
-      const container = this.el.variaveis;
-      if (!container) return;
-      container.innerHTML = "";
-      for (const [key, value] of Object.entries(this.variaveis)) {
-        const badge = document.createElement("span");
-        badge.className = "variavel-badge";
-        badge.textContent = `${key} = ${value}`;
-        container.appendChild(badge);
+      const total = contarCartoes(this.cartoesAlgoritmo);
+      if (this.elementos.cartoesUsados) {
+        this.elementos.cartoesUsados.textContent = total;
       }
-    },
 
-    atualizarCoreografia() {
-      const coreo = this.coreografias[this.faseAtual];
-      if (this.el.coreografia)
-        this.el.coreografia.textContent = coreo.passos.join(" ");
-      if (this.el.faseNome)
-        this.el.faseNome.textContent = `${coreo.icone} ${coreo.nome}`;
-    },
-
-    atualizarRecordes() {
-      for (const [fase, el] of Object.entries(this.el.recordes)) {
-        if (el) el.textContent = this.recordes[fase] || "---";
-      }
-    },
-
-    mostrarMensagem(texto, tipo) {
-      if (!this.el.mensagem) return;
-      this.el.mensagem.innerHTML = `<span>${texto}</span>`;
-      const cores = {
-        erro: "#e74c3c",
-        success: "#2ecc71",
-        warning: "#f39c12",
-        info: "var(--robot-gold)",
+      // Verifica loopception (loop aninhado)
+      let temLoopAninhado = false;
+      const verificarLoopAninhado = (arr) => {
+        for (const item of arr) {
+          if (item.comando === "repita" && item.filhos && item.filhos.length > 0) {
+            for (const filho of item.filhos) {
+              if (filho.comando === "repita") temLoopAninhado = true;
+            }
+            verificarLoopAninhado(item.filhos);
+          }
+        }
       };
-      this.el.mensagem.style.borderLeft = `4px solid ${cores[tipo] || cores.info}`;
-      this.el.mensagem.style.color = cores[tipo] || "var(--robot-text)";
+      verificarLoopAninhado(this.cartoesAlgoritmo);
+      if (this.elementos.bonus) {
+        this.elementos.bonus.textContent = temLoopAninhado ? "⭐ LOOPCEPTION! ⭐" : "---";
+      }
+    },
+
+    // ---- EXECUÇÃO DO ALGORITMO ----
+    async executarAlgoritmo() {
+      if (this.executando) return;
+      if (this.cartoesAlgoritmo.length === 0) {
+        this.mostrarMensagem("⚠️ Você precisa montar um algoritmo primeiro!", "erro");
+        return;
+      }
+
+      this.executando = true;
+      this.resetarRobo();
+      this.mostrarMensagem("🤖 Executando algoritmo... 🏃", "info");
+      if (this.elementos.status) this.elementos.status.textContent = "EXECUTANDO...";
+
+      let sucesso = true;
+      let explicacaoErro = "";
+
+      try {
+        for (const comando of this.cartoesAlgoritmo) {
+          const resultado = await this.executarComando(comando);
+          if (!resultado.sucesso) {
+            sucesso = false;
+            explicacaoErro = resultado.erro;
+            break;
+          }
+        }
+      } catch (err) {
+        sucesso = false;
+        explicacaoErro = err.message;
+      }
+
+      const chegou = this.verificarChegada();
+      this.executando = false;
+
+      if (sucesso && chegou) {
+        const totalCartoes = parseInt(this.elementos.cartoesUsados?.textContent || "0");
+        const recordeAtual = this.recordes[this.faseAtual];
+
+        if (!recordeAtual || totalCartoes < recordeAtual) {
+          this.recordes[this.faseAtual] = totalCartoes;
+          this.salvarRecordes();
+          this.atualizarRecordeDisplay();
+          this.mostrarMensagem(
+            `🎉 PARABÉNS! Completou a FASE ${this.faseAtual} com ${totalCartoes} cartões! NOVO RECORDE! 🏆`,
+            "success"
+          );
+        } else {
+          this.mostrarMensagem(`🎉 PARABÉNS! Completou a FASE ${this.faseAtual} com ${totalCartoes} cartões!`, "success");
+        }
+
+        this.loopsExecutados++;
+        if (this.elementos.status) this.elementos.status.textContent = "VITÓRIA! 🏆";
+        // Dispara evento de vitória (para contadores globais, se houver)
+        document.dispatchEvent(new CustomEvent("robo:vitoria"));
+      } else {
+        this.bugsEncontrados++;
+        this.mostrarMensagem(
+          `🐛 BUG ENCONTRADO! ${explicacaoErro || "O robô não conseguiu completar o percurso."} Use DICA para melhorar.`,
+          "erro"
+        );
+        if (this.elementos.status) {
+          this.elementos.status.textContent = "BUGOU! 💥";
+          this.elementos.status.classList.add("text-danger");
+        }
+        // Dispara evento de bug
+        document.dispatchEvent(new CustomEvent("robo:bug", { detail: { incremento: 1, mensagem: "Bug no Loop Dash" } }));
+      }
+    },
+
+    async executarComando(comandoObj) {
+      const comando = comandoObj.comando;
+
+      if (comando === "repita") {
+        const vezes = comandoObj.contador || 3;
+        for (let i = 0; i < vezes; i++) {
+          for (const filho of comandoObj.filhos || []) {
+            const resultado = await this.executarComando(filho);
+            if (!resultado.sucesso) return resultado;
+            await this.delay(250);
+            this.desenharGrid();
+          }
+        }
+        return { sucesso: true };
+      }
+
+      const pista = this.pistas[this.faseAtual];
+      let novoX = this.posicaoRobo.x;
+      let novoY = this.posicaoRobo.y;
+
+      switch (comando) {
+        case "ande1":
+          if (this.posicaoRobo.direcao === 0) novoX--;
+          else if (this.posicaoRobo.direcao === 1) novoY++;
+          else if (this.posicaoRobo.direcao === 2) novoX++;
+          else if (this.posicaoRobo.direcao === 3) novoY--;
+          break;
+        case "ande2":
+          if (this.posicaoRobo.direcao === 0) novoX -= 2;
+          else if (this.posicaoRobo.direcao === 1) novoY += 2;
+          else if (this.posicaoRobo.direcao === 2) novoX += 2;
+          else if (this.posicaoRobo.direcao === 3) novoY -= 2;
+          break;
+        case "vireDireita":
+          this.posicaoRobo.direcao = (this.posicaoRobo.direcao + 1) % 4;
+          return { sucesso: true };
+        case "vireEsquerda":
+          this.posicaoRobo.direcao = (this.posicaoRobo.direcao - 1 + 4) % 4;
+          return { sucesso: true };
+        default:
+          return { sucesso: false, erro: `Comando desconhecido: ${comando}` };
+      }
+
+      // Valida movimento
+      if (novoX < 0 || novoX >= pista.tamanho.linhas || novoY < 0 || novoY >= pista.tamanho.colunas) {
+        return { sucesso: false, erro: "O robô tentou sair da pista! Use comandos menores." };
+      }
+
+      if (pista.grid[novoX]?.[novoY] === "🧱") {
+        return { sucesso: false, erro: "O robô bateu em um obstáculo! 🧱 Desvie dele." };
+      }
+
+      this.posicaoRobo.x = novoX;
+      this.posicaoRobo.y = novoY;
+      await this.delay(250);
+      this.desenharGrid();
+
+      return { sucesso: true };
+    },
+
+    verificarChegada() {
+      const pista = this.pistas[this.faseAtual];
+      return pista.grid[this.posicaoRobo.x]?.[this.posicaoRobo.y] === "🏁";
     },
 
     delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     },
-  };
 
-  // ================================================================
-  // 🏆 MÓDULO 2: CERTIFICADOS
-  // ================================================================
-  const CertificadoModule = {
-    alunos: [],
-    STORAGE_KEY: "robozada_certificados_ano3_bim2",
-
-    init() {
-      const input = document.getElementById("nomeAluno");
-      if (!input) return;
-
-      this.carregar();
-      this.atualizarLista();
-
-      document
-        .getElementById("btnAdicionar")
-        ?.addEventListener("click", () => this.adicionar());
-      document
-        .getElementById("btnImprimirCertificados")
-        ?.addEventListener("click", () => this.imprimirTodos());
-      document
-        .getElementById("btnPreviewAluno")
-        ?.addEventListener("click", () => this.preview());
-      document.getElementById("previewData").textContent =
-        new Date().toLocaleDateString("pt-BR");
-      input.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") this.adicionar();
-      });
+    // ---- DICAS E EXEMPLOS ----
+    mostrarDica() {
+      const dicas = {
+        1: "💡 DICA FASE 1: Use um único REPITA 7 vezes com ANDE 1 para percorrer toda a reta!",
+        2: "💡 DICA FASE 2: Use REPITA dentro de REPITA para fazer o zigue-zague! Ex: REPITA 2 vezes { ANDE 2, VIRE DIREITA, ANDE 2, VIRE ESQUERDA }",
+        3: "💡 DICA FASE 3: Planeje o caminho para desviar dos obstáculos. Use REPITA para repetir padrões de movimento!",
+      };
+      this.mostrarMensagem(dicas[this.faseAtual] || "💡 Tente usar o cartão REPITA para repetir movimentos!", "info");
     },
 
-    carregar() {
-      try {
-        const saved = localStorage.getItem(this.STORAGE_KEY);
-        this.alunos = saved
-          ? JSON.parse(saved)
-          : ["ANA BEATRIZ SANTOS", "LUCAS MARTINS FERREIRA"];
-      } catch {
-        this.alunos = [];
+    carregarExemplo() {
+      this.limparAlgoritmo();
+
+      if (this.faseAtual === 1) {
+        this.cartoesAlgoritmo.push({
+          comando: "repita",
+          contador: 7,
+          filhos: [{ comando: "ande1", filhos: [] }],
+        });
+      } else if (this.faseAtual === 2) {
+        this.cartoesAlgoritmo.push({
+          comando: "repita",
+          contador: 2,
+          filhos: [
+            { comando: "ande2", filhos: [] },
+            { comando: "vireDireita", filhos: [] },
+            { comando: "ande2", filhos: [] },
+            { comando: "vireEsquerda", filhos: [] },
+          ],
+        });
+      } else {
+        this.cartoesAlgoritmo.push(
+          { comando: "ande1", filhos: [] },
+          { comando: "vireDireita", filhos: [] },
+          { comando: "ande1", filhos: [] }
+        );
+      }
+
+      this.renderizarAlgoritmo();
+      this.atualizarContadorCartoes();
+      this.mostrarMensagem(`📋 Exemplo carregado para a FASE ${this.faseAtual}!`, "success");
+    },
+
+    // ---- RECORDES ----
+    carregarRecordes() {
+      const saved = localStorage.getItem("loopdash_recordes_a3bim2");
+      if (saved) {
+        try {
+          this.recordes = JSON.parse(saved);
+        } catch (e) { }
       }
     },
 
-    salvar() {
+    salvarRecordes() {
+      localStorage.setItem("loopdash_recordes_a3bim2", JSON.stringify(this.recordes));
+    },
+
+    atualizarRecordeDisplay() {
+      if (this.elementos.recordeFase1) {
+        this.elementos.recordeFase1.textContent = this.recordes[1] || "---";
+      }
+      if (this.elementos.recordeFase2) {
+        this.elementos.recordeFase2.textContent = this.recordes[2] || "---";
+      }
+      if (this.elementos.recordeFase3) {
+        this.elementos.recordeFase3.textContent = this.recordes[3] || "---";
+      }
+
+      const valores = [this.recordes[1], this.recordes[2], this.recordes[3]].filter((v) => v !== null);
+      const melhor = valores.length > 0 ? Math.min(...valores) : "--";
+      if (this.elementos.melhorMarca) {
+        this.elementos.melhorMarca.textContent = melhor;
+      }
+    },
+
+    mostrarMensagem(texto, tipo) {
+      if (!this.elementos.mensagem) return;
+      this.elementos.mensagem.innerHTML = `<i class="bi bi-robot"></i> ${texto}`;
+      this.elementos.mensagem.className = `mensagem-jogo ${tipo === "erro" ? "erro" : tipo === "success" ? "sucesso" : ""}`;
+      if (tipo !== "erro") {
+        setTimeout(() => {
+          if (this.elementos.mensagem) {
+            this.elementos.mensagem.className = "mensagem-jogo";
+          }
+        }, 4000);
+      }
+    },
+
+    configurarEventos() {
+      // Botões de fase
+      document.querySelectorAll(".btn-phase").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const fase = parseInt(btn.dataset.fase);
+          if (fase) this.carregarFase(fase);
+        });
+      });
+
+      // Cartões de comando
+      document.querySelectorAll(".cartao-comando").forEach((cartao) => {
+        cartao.addEventListener("click", () => {
+          const comando = cartao.dataset.comando;
+          this.adicionarCartao(comando);
+        });
+      });
+
+      // Botão limpar
+      const btnLimpar = document.getElementById("btnLimparAlgoritmo");
+      if (btnLimpar) {
+        btnLimpar.addEventListener("click", () => this.limparAlgoritmo());
+      }
+
+      // Botão executar
+      const btnExecutar = document.getElementById("btnExecutarLoopDash");
+      if (btnExecutar) {
+        btnExecutar.addEventListener("click", () => this.executarAlgoritmo());
+      }
+
+      // Botão dica
+      const btnDica = document.getElementById("btnDicaLoopDash");
+      if (btnDica) {
+        btnDica.addEventListener("click", () => this.mostrarDica());
+      }
+
+      // Botão exemplo
+      const btnExemplo = document.getElementById("btnExemploLoopDash");
+      if (btnExemplo) {
+        btnExemplo.addEventListener("click", () => this.carregarExemplo());
+      }
+    },
+  };
+
+  // ==================================================
+  // 3. MÓDULO DE CERTIFICADOS
+  // ==================================================
+  const CertificadoModule = {
+    alunos: [],
+    STORAGE_KEY: "a3bim2_certificados",
+
+    elementos: {
+      inputNome: null,
+      btnAdicionar: null,
+      listaAlunos: null,
+      contadorAlunos: null,
+      btnImprimirTodos: null,
+      btnPreviewAluno: null,
+      previewNome: null,
+      previewData: null,
+    },
+
+    init() {
+      if (!document.getElementById("listaAlunos") && !document.querySelector(".cadastro-alunos")) {
+        console.log("⏳ CertificadoModule: não encontrado, ignorando.");
+        return;
+      }
+
+      console.log("🎓 CertificadoModule: inicializando...");
+      this.carregarElementos();
+      this.carregarAlunos();
+      this.atualizarLista();
+      this.configurarEventos();
+      this.atualizarPreviewData();
+      this.atualizarEstadoBotoes();
+      console.log("✅ CertificadoModule pronto!");
+    },
+
+    carregarElementos() {
+      this.elementos.inputNome = document.getElementById("nomeAluno");
+      this.elementos.btnAdicionar = document.getElementById("btnAdicionar");
+      this.elementos.listaAlunos = document.getElementById("listaAlunos");
+      this.elementos.contadorAlunos = document.getElementById("contadorAlunos");
+      this.elementos.btnImprimirTodos = document.getElementById("btnImprimirCertificados");
+      this.elementos.btnPreviewAluno = document.getElementById("btnPreviewAluno");
+      this.elementos.previewNome = document.getElementById("previewNomeAluno");
+      this.elementos.previewData = document.getElementById("previewData");
+    },
+
+    carregarAlunos() {
+      const salvos = localStorage.getItem(this.STORAGE_KEY);
+      if (salvos) {
+        try {
+          this.alunos = JSON.parse(salvos);
+        } catch (e) {
+          this.alunos = [];
+        }
+      }
+      if (!this.alunos || this.alunos.length === 0) {
+        this.alunos = ["ANA BEATRIZ SANTOS", "LUCAS MARTINS FERREIRA", "MARIA CLARA SILVA"];
+        this.salvarAlunos();
+      }
+    },
+
+    salvarAlunos() {
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.alunos));
     },
 
-    adicionar() {
-      let nome = document.getElementById("nomeAluno").value.trim();
-      if (!nome) return alert("Digite um nome!");
-      nome = nome.toUpperCase();
-      if (this.alunos.includes(nome)) return alert("Aluno já cadastrado!");
-      this.alunos.push(nome);
-      this.salvar();
-      this.atualizarLista();
-      document.getElementById("nomeAluno").value = "";
-    },
-
-    remover(idx) {
-      if (confirm(`Remover ${this.alunos[idx]}?`)) {
-        this.alunos.splice(idx, 1);
-        this.salvar();
-        this.atualizarLista();
+    atualizarPreviewData() {
+      if (this.elementos.previewData) {
+        const hoje = new Date().toLocaleDateString("pt-BR");
+        this.elementos.previewData.textContent = hoje;
       }
     },
 
-    selecionarPreview(nome) {
-      document.getElementById("previewNomeAluno").textContent = nome;
-      document.getElementById("btnPreviewAluno").disabled = false;
+    atualizarEstadoBotoes() {
+      if (this.elementos.btnImprimirTodos) {
+        this.elementos.btnImprimirTodos.disabled = this.alunos.length === 0;
+      }
+      if (this.elementos.btnPreviewAluno) {
+        const nome = this.elementos.previewNome?.textContent || "";
+        this.elementos.btnPreviewAluno.disabled = nome === "[NOME DO ALUNO]" || nome === "";
+      }
+    },
+
+    adicionarAluno() {
+      const input = this.elementos.inputNome;
+      if (!input) return;
+      let nome = input.value.trim();
+      if (!nome) {
+        alert("🤖 Digite o nome do aluno(a) primeiro!");
+        return;
+      }
+      nome = nome.toUpperCase().replace(/\s+/g, " ").trim();
+      if (this.alunos.includes(nome)) {
+        alert("⚠️ Este aluno já está na lista!");
+        return;
+      }
+      this.alunos.push(nome);
+      this.salvarAlunos();
+      this.atualizarLista();
+      input.value = "";
+      input.focus();
+      this.atualizarEstadoBotoes();
+    },
+
+    removerAluno(index) {
+      if (confirm(`Remover ${this.alunos[index]} da lista?`)) {
+        const nomeRemovido = this.alunos[index];
+        this.alunos.splice(index, 1);
+        this.salvarAlunos();
+        this.atualizarLista();
+        if (this.elementos.previewNome && this.elementos.previewNome.textContent === nomeRemovido) {
+          this.elementos.previewNome.textContent = "[NOME DO ALUNO]";
+        }
+        this.atualizarEstadoBotoes();
+      }
+    },
+
+    selecionarAlunoPreview(nome) {
+      if (this.elementos.previewNome) {
+        this.elementos.previewNome.textContent = nome;
+      }
+      this.atualizarEstadoBotoes();
     },
 
     atualizarLista() {
-      const ul = document.getElementById("listaAlunos");
-      const cont = document.getElementById("contadorAlunos");
-      if (!ul) return;
+      const listaUl = this.elementos.listaAlunos;
+      const contadorSpan = this.elementos.contadorAlunos;
+      if (!listaUl) return;
 
-      ul.innerHTML = "";
-      this.alunos.forEach((a, i) => {
+      if (this.alunos.length === 0) {
+        listaUl.innerHTML = '<li class="text-muted text-center">Nenhum aluno cadastrado ainda 🤖</li>';
+        if (contadorSpan) contadorSpan.textContent = "0";
+        return;
+      }
+
+      listaUl.innerHTML = "";
+      this.alunos.forEach((aluno, idx) => {
         const li = document.createElement("li");
+        li.className = "d-flex justify-content-between align-items-center";
         li.innerHTML = `
-          <span><i class="bi bi-robot"></i> ${a}</span>
-          <div>
-            <button class="btn-selecionar btn btn-sm btn-outline-warning me-1" data-nome="${a}"><i class="bi bi-eye"></i></button>
-            <button class="btn-remover btn btn-sm btn-danger" data-idx="${i}"><i class="bi bi-trash"></i></button>
+          <span><i class="bi bi-robot"></i> ${this.escapeHtml(aluno)}</span>
+          <div class="btn-group gap-1">
+            <button class="btn-selecionar-aluno btn btn-sm btn-outline-warning" data-nome="${this.escapeHtml(aluno)}">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="btn-remover-aluno btn btn-sm btn-danger" data-index="${idx}">
+              <i class="bi bi-trash"></i>
+            </button>
           </div>
         `;
-        ul.appendChild(li);
+        listaUl.appendChild(li);
       });
 
-      ul.querySelectorAll(".btn-selecionar").forEach((b) => {
-        b.addEventListener("click", () =>
-          this.selecionarPreview(b.dataset.nome),
-        );
-      });
-      ul.querySelectorAll(".btn-remover").forEach((b) => {
-        b.addEventListener("click", () =>
-          this.remover(parseInt(b.dataset.idx)),
-        );
+      // Eventos para os botões da lista
+      listaUl.querySelectorAll(".btn-selecionar-aluno").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const nome = btn.dataset.nome;
+          if (nome) this.selecionarAlunoPreview(nome);
+        });
       });
 
-      if (cont) cont.textContent = this.alunos.length;
-      const btn = document.getElementById("btnImprimirCertificados");
-      if (btn) btn.disabled = this.alunos.length === 0;
+      listaUl.querySelectorAll(".btn-remover-aluno").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.dataset.index);
+          if (!isNaN(idx)) this.removerAluno(idx);
+        });
+      });
+
+      if (contadorSpan) contadorSpan.textContent = this.alunos.length;
     },
 
-    gerarHTML(nome, individual = true) {
+    gerarCertificadoUnico(nome) {
       const data = new Date().toLocaleDateString("pt-BR");
-      return `
-        <div style="
-          border: 3px solid #ffb347;
-          border-radius: 48px 24px;
-          padding: 20px 30px;
-          text-align: center;
-          background: #fffef7;
-          max-width: ${individual ? "500px" : "100%"};
-          margin: 0 auto;
-          font-family: 'Courier New', monospace;
-        ">
-          <h3 style="color:#ffb347;font-size:0.9rem;margin-bottom:10px;">🏆 CERTIFICADO DE MESTRE DO LOOP</h3>
-          <p style="margin:5px 0;">Certificamos que</p>
-          <strong style="font-size:22px;display:block;background:#fff0cc;padding:10px;border-radius:40px;margin:10px 0;">
-            ${this.escapeHtml(nome)}
-          </strong>
-          <p style="margin:5px 0;">concluiu o BIMESTRE 2 de Robótica Educacional<br>
-          Dominando <strong>LOOP</strong>, <strong>VARIÁVEL</strong> e <strong>DEPURAÇÃO</strong></p>
-          <hr style="border-color:#ffb347;margin:15px 0;">
-          <p style="margin:5px 0;">RobôMestres do Paraná • ${data}</p>
-          <p style="font-style:italic;margin:5px 0;">"Loop não é macarrão!"</p>
-        </div>
-      `;
+      const html = this._gerarHtmlCertificado(nome, data);
+      const win = window.open("", "_blank", "width=900,height=700,toolbar=yes,scrollbars=yes");
+      if (win) {
+        win.document.write(html);
+        win.document.close();
+      } else {
+        alert("⚠️ Permita pop-ups para visualizar/ imprimir o certificado.");
+      }
     },
 
-    imprimirTodos() {
-      if (this.alunos.length === 0) return alert("Nenhum aluno cadastrado!");
-      const html = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Certificados em Lote</title>
-          <style>
-            body { background: #e0e0e0; padding: 20px; }
-            .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            @media print {
-              @page { size: A4; margin: 1cm; }
-              body { background: white; padding: 0; }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="print-grid">
-            ${this.alunos.map((a) => this.gerarHTML(a, false)).join("")}
+    _gerarHtmlCertificado(nome, data) {
+      return `<!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Certificado - ${this.escapeHtml(nome)}</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: 'Courier New', monospace; background: #e0e0e0; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+          .preview-container { max-width: 800px; width: 100%; margin: 0 auto; }
+          .preview-actions { text-align: center; margin-bottom: 20px; position: sticky; top: 10px; z-index: 100; }
+          .btn-print, .btn-close { background: #ffb347; border: none; border-radius: 40px; padding: 10px 24px; font-weight: bold; cursor: pointer; margin: 0 8px; }
+          .btn-close { background: #555; color: white; }
+          .certificado { border: 3px solid #ffb347; border-radius: 48px 24px 48px 24px; padding: 30px; text-align: center; background: #fffef7; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+          .certificado h3 { color: #ffb347; font-family: 'Press Start 2P', cursive; font-size: 0.9rem; margin-bottom: 20px; }
+          .certificado p { color: #4a6e2c; margin: 10px 0; }
+          .certificado strong.nome { font-size: 22px; display: block; margin: 15px 0; color: #2c5e1f; background: #fff0cc; padding: 12px; border-radius: 40px; }
+          .certificado hr { margin: 20px 0; border: 1px solid #ffb347; }
+          @media print { body { background: white; } .preview-actions { display: none; } @page { size: A4; margin: 1.5cm; } }
+        </style>
+      </head>
+      <body>
+        <div class="preview-container">
+          <div class="preview-actions">
+            <button class="btn-print" onclick="window.print();">🖨️ IMPRIMIR</button>
+            <button class="btn-close" onclick="window.close();">✖️ FECHAR</button>
           </div>
-          <script>
-            window.print();
-            setTimeout(() => window.close(), 1000);
-          <\/script>
-        </body>
-        </html>
-      `;
-      const win = window.open("", "_blank");
-      win.document.write(html);
-      win.document.close();
+          <div class="certificado">
+            <h3>🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>
+            <p>Certificamos que</p>
+            <strong class="nome">${this.escapeHtml(nome)}</strong>
+            <p>concluiu com êxito o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>
+            🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>
+            <hr>
+            <p>RobôMestres do Paraná • ${data}</p>
+            <p style="font-size:11px; font-style:italic;">"Loop não é macarrão! Variável não é coisa de velho!"</p>
+            <div style="margin-top:10px;">🤖 Ass: Robô Zé 3.0</div>
+          </div>
+        </div>
+        <script>window.onbeforeprint = function() { document.body.style.printColorAdjust = "exact"; };<\/script>
+      </body>
+      </html>`;
     },
 
-    preview() {
-      const nome = document.getElementById("previewNomeAluno").textContent;
-      if (!nome || nome === "[NOME DO ALUNO]")
-        return alert("Selecione um aluno!");
-      const html = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Certificado ${nome}</title>
-          <style>
-            body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0e0e0; margin: 0; }
-          </style>
-        </head>
-        <body>
-          ${this.gerarHTML(nome, true)}
-          <script>
-            window.print();
-            setTimeout(() => window.close(), 1000);
-          <\/script>
-        </body>
-        </html>
-      `;
-      const win = window.open("", "_blank");
-      win.document.write(html);
-      win.document.close();
+    imprimirTodosCertificados() {
+      if (this.alunos.length === 0) {
+        alert("🤖 Nenhum aluno cadastrado! Adicione nomes antes de imprimir.");
+        return;
+      }
+
+      const dataAtual = new Date().toLocaleDateString("pt-BR");
+      let cardsHTML = "";
+      this.alunos.forEach((aluno) => {
+        cardsHTML += `
+          <div class="certificado-impressao" style="border:3px solid #ffb347; border-radius:48px 24px 48px 24px; padding:20px; text-align:center; background:#fffef7; break-inside:avoid; page-break-inside:avoid;">
+            <h3 style="color:#ffb347; font-family:'Press Start 2P',cursive; font-size:0.7rem;">🏆 CERTIFICADO DE MESTRE DO LOOP - NÍVEL 3</h3>
+            <p style="color:#4a6e2c;">Certificamos que</p>
+            <strong style="font-size:1rem; display:block; margin:10px 0; color:#2c5e1f; background:#fff0cc; padding:6px; border-radius:40px;">${this.escapeHtml(aluno)}</strong>
+            <p style="color:#4a6e2c;">concluiu o <strong>3º ANO - ROBÓTICA EDUCACIONAL</strong><br>
+            🔁 LOOP | 📦 VARIÁVEL | 🐛 DEPURAÇÃO | 🤖 PROJETO AUTORAL</p>
+            <hr style="margin:12px 0; border:1px solid #ffb347;">
+            <p style="font-size:0.65rem; color:#6b8c5c;">RobôMestres do Paraná • ${dataAtual}</p>
+            <p style="font-size:0.6rem; color:#b4621a; font-style:italic;">"Loop não é macarrão! Variável não é coisa de velho!"</p>
+            <div style="font-size:0.55rem; margin-top:8px;">🤖 Ass: Robô Zé 3.0</div>
+          </div>
+        `;
+      });
+
+      const htmlLote = `<!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Certificados RobôMestres - 3º Ano</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: 'Courier New', monospace; background: white; padding: 20px; }
+          .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+          @media print {
+            body { padding: 0; margin: 0; }
+            .print-grid { gap: 15px; }
+            @page { size: A4; margin: 0.8cm; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="print-grid">${cardsHTML}</div>
+        <script>
+          window.onload = function() {
+            setTimeout(function() { window.print(); setTimeout(function() { window.close(); }, 500); }, 200);
+          };
+        <\/script>
+      </body>
+      </html>`;
+
+      const win = window.open("", "_blank", "width=1000,height=800");
+      if (win) {
+        win.document.write(htmlLote);
+        win.document.close();
+      } else {
+        alert("⚠️ Permita pop-ups para gerar os certificados em lote.");
+      }
     },
 
-    escapeHtml(t) {
-      return t.replace(
-        /[&<>]/g,
-        (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[m] || m,
-      );
+    previewAlunoSelecionado() {
+      const nome = this.elementos.previewNome?.textContent || "";
+      if (!nome || nome === "[NOME DO ALUNO]") {
+        alert("⚠️ Selecione um aluno na lista primeiro!");
+        return;
+      }
+      this.gerarCertificadoUnico(nome);
+    },
+
+    escapeHtml(texto) {
+      if (!texto) return "";
+      return texto.replace(/[&<>]/g, function (m) {
+        if (m === "&") return "&amp;";
+        if (m === "<") return "&lt;";
+        if (m === ">") return "&gt;";
+        return m;
+      });
+    },
+
+    configurarEventos() {
+      if (this.elementos.btnAdicionar) {
+        this.elementos.btnAdicionar.addEventListener("click", () => this.adicionarAluno());
+      }
+      if (this.elementos.inputNome) {
+        this.elementos.inputNome.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") this.adicionarAluno();
+        });
+      }
+      if (this.elementos.btnImprimirTodos) {
+        this.elementos.btnImprimirTodos.addEventListener("click", () => this.imprimirTodosCertificados());
+      }
+      if (this.elementos.btnPreviewAluno) {
+        this.elementos.btnPreviewAluno.addEventListener("click", () => this.previewAlunoSelecionado());
+      }
     },
   };
 
-  // ================================================================
-  // 🚀 INICIALIZAÇÃO
-  // ================================================================
-  document.addEventListener("DOMContentLoaded", function () {
-    GameLoopDance.init();
+  // ==================================================
+  // 4. INICIALIZAÇÃO GERAL
+  // ==================================================
+
+  // Adiciona keyframes de animação para os toasts (caso não existam)
+  const styleAnim = document.createElement("style");
+  styleAnim.textContent = `
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fadeOutRight {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(styleAnim);
+
+  // Inicializa módulos quando o DOM estiver pronto
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      PlanosModule.init();
+      LoopDashModule.init();
+      CertificadoModule.init();
+
+      // Botão de voltar ao topo (fixo)
+      const btnTopo = document.querySelector(".btn-topo-robotico");
+      if (btnTopo) {
+        btnTopo.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            btnTopo.classList.add("visible");
+          } else {
+            btnTopo.classList.remove("visible");
+          }
+        });
+      }
+
+      console.log("🚀 Todos os módulos inicializados!");
+    });
+  } else {
+    PlanosModule.init();
+    LoopDashModule.init();
     CertificadoModule.init();
-    console.log("🚀 a3bim2.js: Todos os módulos inicializados!");
-  });
+  }
+
+  // Expor módulos globalmente para depuração
+  window.PlanosModule = PlanosModule;
+  window.LoopDashModule = LoopDashModule;
+  window.CertificadoModule = CertificadoModule;
+
 })();

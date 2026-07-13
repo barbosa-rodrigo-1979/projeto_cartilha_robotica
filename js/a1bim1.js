@@ -89,7 +89,6 @@
       previewNome: null,
       previewData: null,
     },
-
     // ========== INICIALIZAÇÃO ==========
     init() {
       if (this.inicializado) return;
@@ -111,7 +110,8 @@
     // ========== CAPTURA DE ELEMENTOS ==========
     capturarElementos() {
       // Cabeçalho
-      this.elementos.contadorBugs = document.getElementById("contadorBugsHeader");
+      this.elementos.contadorBugs =
+        document.getElementById("contadorBugsHeader");
       this.elementos.relatorioBugs = document.getElementById("relatorioBugs");
 
       // Jogo
@@ -120,7 +120,8 @@
       this.elementos.melhorMarca = document.getElementById("loopdashMelhor");
       this.elementos.status = document.getElementById("loopdashStatus");
       this.elementos.bonus = document.getElementById("loopdashBonus");
-      this.elementos.algoritmoMontado = document.getElementById("algoritmoMontado");
+      this.elementos.algoritmoMontado =
+        document.getElementById("algoritmoMontado");
       this.elementos.mensagem = document.getElementById("loopdashMensagem");
       this.elementos.recordeFase1 = document.getElementById("recordeFase1");
       this.elementos.recordeFase2 = document.getElementById("recordeFase2");
@@ -138,12 +139,14 @@
       this.elementos.btnAdicionar = document.getElementById("btnAdicionar");
       this.elementos.listaAlunos = document.getElementById("listaAlunos");
       this.elementos.contadorAlunos = document.getElementById("contadorAlunos");
-      this.elementos.btnImprimirTodos = document.getElementById("btnImprimirCertificados");
-      this.elementos.btnPreviewAluno = document.getElementById("btnPreviewAluno");
+      this.elementos.btnImprimirTodos = document.getElementById(
+        "btnImprimirCertificados",
+      );
+      this.elementos.btnPreviewAluno =
+        document.getElementById("btnPreviewAluno");
       this.elementos.previewNome = document.getElementById("previewNomeAluno");
       this.elementos.previewData = document.getElementById("previewData");
     },
-
     // ========== CABEÇALHO ==========
     configurarCabecalho() {
       let contadorBugs = this.carregarContadorBugs();
@@ -162,7 +165,7 @@
     salvarContadorBugs(valor) {
       try {
         localStorage.setItem("cabecalho_contador_bugs", valor.toString());
-      } catch (e) { }
+      } catch (e) {}
     },
 
     atualizarDisplayContador(valor) {
@@ -184,7 +187,8 @@
 
     animarContador() {
       if (this.elementos.contadorBugs) {
-        this.elementos.contadorBugs.style.animation = "piscaLed 0.3s ease-in-out";
+        this.elementos.contadorBugs.style.animation =
+          "piscaLed 0.3s ease-in-out";
         setTimeout(() => {
           if (this.elementos.contadorBugs) {
             this.elementos.contadorBugs.style.animation = "";
@@ -192,7 +196,6 @@
         }, 300);
       }
     },
-
     // ========== PLANOS DE AULA ==========
     configurarPlanosAula() {
       this.carregarProgressoPlanos();
@@ -212,7 +215,7 @@
               cb.checked = concluidas[semana];
             }
           });
-        } catch (e) { }
+        } catch (e) {}
       }
       this.atualizarBarraProgresso();
     },
@@ -239,7 +242,8 @@
 
       if (this.elementos.barraProgresso) {
         this.elementos.barraProgresso.style.width = percentual + "%";
-        this.elementos.barraProgresso.textContent = Math.round(percentual) + "%";
+        this.elementos.barraProgresso.textContent =
+          Math.round(percentual) + "%";
       }
       if (this.elementos.progressoTexto) {
         this.elementos.progressoTexto.textContent = `${marcados}/${total}`;
@@ -252,25 +256,29 @@
 
       if (expandirBtn) {
         expandirBtn.addEventListener("click", () => {
-          document.querySelectorAll("#accordionAulas .accordion-collapse").forEach((collapse) => {
-            if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
-              bootstrap.Collapse.getOrCreateInstance(collapse).show();
-            } else {
-              collapse.classList.add("show");
-            }
-          });
+          document
+            .querySelectorAll("#accordionAulas .accordion-collapse")
+            .forEach((collapse) => {
+              if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+                bootstrap.Collapse.getOrCreateInstance(collapse).show();
+              } else {
+                collapse.classList.add("show");
+              }
+            });
         });
       }
 
       if (recolherBtn) {
         recolherBtn.addEventListener("click", () => {
-          document.querySelectorAll("#accordionAulas .accordion-collapse").forEach((collapse) => {
-            if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
-              bootstrap.Collapse.getOrCreateInstance(collapse).hide();
-            } else {
-              collapse.classList.remove("show");
-            }
-          });
+          document
+            .querySelectorAll("#accordionAulas .accordion-collapse")
+            .forEach((collapse) => {
+              if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+                bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+              } else {
+                collapse.classList.remove("show");
+              }
+            });
         });
       }
     },
@@ -281,7 +289,10 @@
           this.salvarProgressoPlanos();
           const semana = cb.getAttribute("data-semana");
           const acao = cb.checked ? "✅ Concluída!" : "⏳ Reaberta!";
-          this.mostrarToast(`${acao} Semana ${semana}`, cb.checked ? "success" : "warning");
+          this.mostrarToast(
+            `${acao} Semana ${semana}`,
+            cb.checked ? "success" : "warning",
+          );
         });
       });
     },
@@ -299,7 +310,6 @@
         });
       });
     },
-
     // ========== JOGO LOOP DASH ==========
     configurarJogo() {
       this.carregarRecordes();
@@ -312,12 +322,15 @@
       if (saved) {
         try {
           this.recordes = JSON.parse(saved);
-        } catch (e) { }
+        } catch (e) {}
       }
     },
 
     salvarRecordes() {
-      localStorage.setItem("loopdash_recordes_ano1", JSON.stringify(this.recordes));
+      localStorage.setItem(
+        "loopdash_recordes_ano1",
+        JSON.stringify(this.recordes),
+      );
     },
 
     carregarFase(fase) {
@@ -344,7 +357,10 @@
       this.atualizarRecordeDisplay();
       this.renderizarAlgoritmo();
       this.atualizarContadorCartoes();
-      this.mostrarMensagem(`🏁 FASE ${fase}: ${this.pistas[fase].nome} selecionada!`, "info");
+      this.mostrarMensagem(
+        `🏁 FASE ${fase}: ${this.pistas[fase].nome} selecionada!`,
+        "info",
+      );
     },
 
     resetarRobo() {
@@ -424,7 +440,6 @@
       };
       return icones[comando] || "❓";
     },
-
     renderizarAlgoritmo() {
       if (!this.elementos.algoritmoMontado) return;
 
@@ -464,7 +479,8 @@
 
         const btnAddFilho = document.createElement("button");
         btnAddFilho.innerHTML = "+ adicionar comando";
-        btnAddFilho.style.cssText = "background:#ffb347; border:none; border-radius:20px; padding:4px 8px; font-size:0.7rem; cursor:pointer; margin-bottom:8px;";
+        btnAddFilho.style.cssText =
+          "background:#ffb347; border:none; border-radius:20px; padding:4px 8px; font-size:0.7rem; cursor:pointer; margin-bottom:8px;";
         btnAddFilho.addEventListener("click", (e) => {
           e.stopPropagation();
           this.mostrarSelecaoComandoParaRepita(cartao);
@@ -502,7 +518,8 @@
         removeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           const idxRemover = parseInt(removeBtn.getAttribute("data-idx"));
-          const isFilhoRemover = removeBtn.getAttribute("data-is-filho") === "true";
+          const isFilhoRemover =
+            removeBtn.getAttribute("data-is-filho") === "true";
           this.removerCartao(idxRemover, isFilhoRemover);
         });
       }
@@ -594,16 +611,19 @@
         this.elementos.cartoesUsados.textContent = total;
       }
     },
-
     async executarAlgoritmo() {
       if (this.cartoesAlgoritmo.length === 0) {
-        this.mostrarMensagem("⚠️ Você precisa montar um algoritmo primeiro!", "erro");
+        this.mostrarMensagem(
+          "⚠️ Você precisa montar um algoritmo primeiro!",
+          "erro",
+        );
         return;
       }
 
       this.resetarRobo();
       this.mostrarMensagem("🤖 Executando algoritmo... 🏃", "info");
-      if (this.elementos.status) this.elementos.status.textContent = "EXECUTANDO...";
+      if (this.elementos.status)
+        this.elementos.status.textContent = "EXECUTANDO...";
 
       let sucesso = true;
       let explicacaoErro = "";
@@ -625,7 +645,9 @@
       const chegou = this.verificarChegada();
 
       if (sucesso && chegou) {
-        const totalCartoes = parseInt(this.elementos.cartoesUsados?.textContent || "0");
+        const totalCartoes = parseInt(
+          this.elementos.cartoesUsados?.textContent || "0",
+        );
         const recordeAtual = this.recordes[this.faseAtual];
 
         if (!recordeAtual || totalCartoes < recordeAtual) {
@@ -634,15 +656,22 @@
           this.atualizarRecordeDisplay();
           this.mostrarMensagem(`🎉 PARABÉNS! NOVO RECORDE! 🏆`, "success");
         } else {
-          this.mostrarMensagem(`🎉 PARABÉNS! Completou a FASE ${this.faseAtual}!`, "success");
+          this.mostrarMensagem(
+            `🎉 PARABÉNS! Completou a FASE ${this.faseAtual}!`,
+            "success",
+          );
         }
 
         this.loopsExecutados++;
-        if (this.elementos.status) this.elementos.status.textContent = "VITÓRIA! 🏆";
+        if (this.elementos.status)
+          this.elementos.status.textContent = "VITÓRIA! 🏆";
       } else {
         this.bugsEncontrados++;
         this.incrementarBugs(1);
-        this.mostrarMensagem(`🐛 BUG ENCONTRADO! ${explicacaoErro || "O robô não conseguiu completar o percurso."}`, "erro");
+        this.mostrarMensagem(
+          `🐛 BUG ENCONTRADO! ${explicacaoErro || "O robô não conseguiu completar o percurso."}`,
+          "erro",
+        );
         if (this.elementos.status) {
           this.elementos.status.textContent = "BUGOU! 💥";
           this.elementos.status.classList.add("text-danger");
@@ -693,7 +722,12 @@
           return { sucesso: false, erro: `Comando desconhecido: ${comando}` };
       }
 
-      if (novoX < 0 || novoX >= pista.tamanho.linhas || novoY < 0 || novoY >= pista.tamanho.colunas) {
+      if (
+        novoX < 0 ||
+        novoX >= pista.tamanho.linhas ||
+        novoY < 0 ||
+        novoY >= pista.tamanho.colunas
+      ) {
         return { sucesso: false, erro: "O robô tentou sair da pista!" };
       }
 
@@ -769,7 +803,11 @@
         this.elementos.recordeFase3.textContent = this.recordes[3] || "---";
       }
 
-      const valores = [this.recordes[1], this.recordes[2], this.recordes[3]].filter(v => v !== null);
+      const valores = [
+        this.recordes[1],
+        this.recordes[2],
+        this.recordes[3],
+      ].filter((v) => v !== null);
       const melhor = valores.length > 0 ? Math.min(...valores) : "--";
 
       if (this.elementos.melhorMarca) {
@@ -815,12 +853,14 @@
       const btnDica = document.getElementById("btnDicaLoopDash");
       const btnExemplo = document.getElementById("btnExemploLoopDash");
 
-      if (btnExecutar) btnExecutar.addEventListener("click", () => this.executarAlgoritmo());
-      if (btnReset) btnReset.addEventListener("click", () => this.resetarRobo());
+      if (btnExecutar)
+        btnExecutar.addEventListener("click", () => this.executarAlgoritmo());
+      if (btnReset)
+        btnReset.addEventListener("click", () => this.resetarRobo());
       if (btnDica) btnDica.addEventListener("click", () => this.mostrarDica());
-      if (btnExemplo) btnExemplo.addEventListener("click", () => this.carregarExemplo());
+      if (btnExemplo)
+        btnExemplo.addEventListener("click", () => this.carregarExemplo());
     },
-
     // ========== CERTIFICADO ==========
     configurarCertificado() {
       this.carregarAlunosDoStorage();
@@ -840,7 +880,11 @@
         }
       }
       if (this.alunos.length === 0) {
-        this.alunos = ["ANA BEATRIZ SANTOS", "LUCAS MARTINS FERREIRA", "MARIA CLARA SILVA"];
+        this.alunos = [
+          "ANA BEATRIZ SANTOS",
+          "LUCAS MARTINS FERREIRA",
+          "MARIA CLARA SILVA",
+        ];
         this.salvarAlunos();
       }
     },
@@ -881,7 +925,10 @@
         this.salvarAlunos();
         this.atualizarListaAlunos();
 
-        if (this.elementos.previewNome && this.elementos.previewNome.textContent === this.alunos[index]) {
+        if (
+          this.elementos.previewNome &&
+          this.elementos.previewNome.textContent === this.alunos[index]
+        ) {
           this.elementos.previewNome.textContent = "[NOME DO ALUNO]";
         }
         this.atualizarEstadoBotoes();
@@ -902,7 +949,8 @@
       if (!listaUl) return;
 
       if (this.alunos.length === 0) {
-        listaUl.innerHTML = '<li class="text-muted text-center">Nenhum aluno cadastrado ainda 🤖</li>';
+        listaUl.innerHTML =
+          '<li class="text-muted text-center">Nenhum aluno cadastrado ainda 🤖</li>';
         if (contadorSpan) contadorSpan.textContent = "0";
         return;
       }
@@ -946,7 +994,11 @@
       const dataAtual = new Date().toLocaleDateString("pt-BR");
       const html = this.gerarHtmlCertificado(nomeAluno, dataAtual);
 
-      const win = window.open("", "_blank", "width=900,height=700,toolbar=yes,scrollbars=yes");
+      const win = window.open(
+        "",
+        "_blank",
+        "width=900,height=700,toolbar=yes,scrollbars=yes",
+      );
       if (win) {
         win.document.write(html);
         win.document.close();
@@ -1081,13 +1133,16 @@
       }
       if (this.elementos.btnPreviewAluno) {
         const nomePreview = this.elementos.previewNome?.textContent || "";
-        this.elementos.btnPreviewAluno.disabled = nomePreview === "[NOME DO ALUNO]" || nomePreview === "";
+        this.elementos.btnPreviewAluno.disabled =
+          nomePreview === "[NOME DO ALUNO]" || nomePreview === "";
       }
     },
 
     configurarEventosCertificado() {
       if (this.elementos.btnAdicionar) {
-        this.elementos.btnAdicionar.addEventListener("click", () => this.adicionarAluno());
+        this.elementos.btnAdicionar.addEventListener("click", () =>
+          this.adicionarAluno(),
+        );
       }
 
       if (this.elementos.inputNome) {
@@ -1097,11 +1152,285 @@
       }
 
       if (this.elementos.btnImprimirTodos) {
-        this.elementos.btnImprimirTodos.addEventListener("click", () => this.imprimirTodosCertificados());
+        this.elementos.btnImprimirTodos.addEventListener("click", () =>
+          this.imprimirTodosCertificados(),
+        );
       }
 
       if (this.elementos.btnPreviewAluno) {
-        this.elementos.btnPreviewAluno.addEventListener("click", () => this.previewAlunoSelecionado());
+        this.elementos.btnPreviewAluno.addEventListener("click", () =>
+          this.previewAlunoSelecionado(),
+        );
+      }
+    },
+    // ========== IMPRESSÃO DOS PLANOS DE AULA ==========
+    imprimirPlanosDeAula() {
+      const accordion = document.querySelector("#accordionAulas");
+      if (!accordion) {
+        alert("⚠️ Nenhum plano de aula encontrado para imprimir!");
+        return;
+      }
+
+      const titulo =
+        document.querySelector("#aulas .projeto-header h2")?.textContent ||
+        "Planos de Aula - 1º Bimestre";
+      const cloneAccordion = accordion.cloneNode(true);
+
+      // Remove os checkboxes
+      cloneAccordion.querySelectorAll(".semana-check").forEach((cb) => {
+        cb.closest(".check-concluido")?.remove();
+      });
+
+      // Expande tudo para impressão
+      cloneAccordion.querySelectorAll(".accordion-collapse").forEach((el) => {
+        el.classList.add("show");
+        el.classList.remove("collapse");
+        el.style.display = "block";
+        el.removeAttribute("data-bs-parent");
+      });
+
+      // Remove atributos de toggle
+      cloneAccordion.querySelectorAll(".accordion-button").forEach((btn) => {
+        btn.removeAttribute("data-bs-toggle");
+        btn.removeAttribute("data-bs-target");
+        btn.classList.add("expanded-print");
+      });
+
+      const dataAtual = new Date().toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Planos de Aula - 1º Bimestre - Robótica</title>
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+              font-family: 'Inter', 'Chakra Petch', 'Courier New', monospace;
+              background: white;
+              color: #1e2a1a;
+              padding: 40px 30px;
+              line-height: 1.5;
+            }
+            .print-header {
+              text-align: center;
+              border-bottom: 4px solid #ffb347;
+              padding-bottom: 20px;
+              margin-bottom: 30px;
+            }
+            .print-header h1 {
+              font-family: 'Press Start 2P', cursive;
+              font-size: 1.4rem;
+              color: #1e2a1a;
+              letter-spacing: 1px;
+            }
+            .print-header .sub {
+              color: #4a7c3f;
+              font-size: 0.9rem;
+              margin-top: 8px;
+            }
+            .print-header .data {
+              color: #666;
+              font-size: 0.8rem;
+              margin-top: 4px;
+            }
+            .print-footer {
+              text-align: center;
+              border-top: 2px solid #ddd;
+              padding-top: 20px;
+              margin-top: 40px;
+              font-size: 0.8rem;
+              color: #666;
+            }
+            .accordion-item-print {
+              background: #f8f5f0;
+              border: 2px solid #4a7c3f;
+              border-radius: 16px;
+              margin-bottom: 20px;
+              overflow: hidden;
+              page-break-inside: avoid;
+            }
+            .accordion-item-print .accordion-header-print {
+              background: #2c3e2b;
+              color: #ffb347;
+              padding: 14px 20px;
+              font-family: 'Chakra Petch', monospace;
+              font-weight: 700;
+              font-size: 1rem;
+              border-bottom: 2px solid #ffb347;
+            }
+            .accordion-item-print .accordion-body-print {
+              padding: 20px;
+              background: white;
+            }
+            .accordion-item-print .accordion-body-print h5 {
+              color: #ffb347;
+              margin-top: 16px;
+              margin-bottom: 8px;
+              font-size: 0.95rem;
+              border-left: 4px solid #ffb347;
+              padding-left: 12px;
+            }
+            .accordion-item-print .accordion-body-print h5:first-of-type {
+              margin-top: 0;
+            }
+            .accordion-item-print .accordion-body-print p,
+            .accordion-item-print .accordion-body-print li {
+              color: #1e2a1a;
+              font-size: 0.9rem;
+            }
+            .accordion-item-print .accordion-body-print ul {
+              padding-left: 20px;
+            }
+            .materiais-container-print {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-bottom: 12px;
+            }
+            .material-badge-print {
+              background: #2c3e2b;
+              color: #e9f5db;
+              padding: 4px 12px;
+              border-radius: 40px;
+              font-size: 0.75rem;
+              display: inline-block;
+            }
+            .minuto-item-print {
+              display: flex;
+              margin-bottom: 10px;
+              background: #f0f0e8;
+              border-radius: 12px;
+              overflow: hidden;
+              border-left: 4px solid #ffb347;
+            }
+            .minuto-tempo-print {
+              background: #2c3e2b;
+              color: #ffb347;
+              padding: 8px 14px;
+              font-weight: bold;
+              font-size: 0.7rem;
+              min-width: 80px;
+              text-align: center;
+              font-family: 'Courier New', monospace;
+            }
+            .minuto-descricao-print {
+              padding: 8px 14px;
+              flex: 1;
+              font-size: 0.85rem;
+            }
+            .frase-do-dia-print {
+              background: #fff0cc;
+              border-radius: 16px;
+              padding: 12px 20px;
+              margin-top: 16px;
+              text-align: center;
+              font-style: italic;
+              border: 1px dashed #ffb347;
+            }
+            .tabela-criterios-print {
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 0.8rem;
+              margin-bottom: 12px;
+            }
+            .tabela-criterios-print th {
+              background: #2c3e2b;
+              color: #ffb347;
+              padding: 8px 10px;
+              text-align: center;
+              border: 1px solid #4a7c3f;
+            }
+            .tabela-criterios-print td {
+              padding: 6px 10px;
+              border: 1px solid #4a7c3f;
+              text-align: center;
+              background: white;
+            }
+            .semana-check-print {
+              float: right;
+              color: #4a7c3f;
+              font-size: 0.7rem;
+              background: #e8f0e0;
+              padding: 2px 12px;
+              border-radius: 20px;
+            }
+            .btn-print-action {
+              display: block;
+              margin: 20px auto;
+              padding: 12px 40px;
+              background: #ffb347;
+              border: none;
+              border-radius: 60px;
+              font-size: 1rem;
+              font-weight: bold;
+              cursor: pointer;
+              color: #1e2a1a;
+              font-family: 'Chakra Petch', monospace;
+            }
+            .btn-print-action:hover {
+              background: #ff8c00;
+            }
+            @media print {
+              body { padding: 20px; }
+              .no-print { display: none !important; }
+              .accordion-item-print { page-break-inside: avoid; }
+              .accordion-item-print .accordion-body-print { background: white !important; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="print-header">
+            <h1>🤖 PLANOS DE AULA - 1º BIMESTRE</h1>
+            <div class="sub">ROBÓTICA EDUCACIONAL - 1º ANO</div>
+            <div class="sub" style="color: #ffb347; font-weight: bold;">"A Dança dos Comandos"</div>
+            <div class="data">📅 Gerado em: ${dataAtual}</div>
+          </div>
+
+          ${cloneAccordion.innerHTML
+            .replace(/accordion-item/g, "accordion-item-print")
+            .replace(/accordion-header/g, "accordion-header-print")
+            .replace(/accordion-body/g, "accordion-body-print")
+            .replace(/materiais-container/g, "materiais-container-print")
+            .replace(/material-badge/g, "material-badge-print")
+            .replace(/minuto-item/g, "minuto-item-print")
+            .replace(/minuto-tempo/g, "minuto-tempo-print")
+            .replace(/minuto-descricao/g, "minuto-descricao-print")
+            .replace(/frase-do-dia/g, "frase-do-dia-print")
+            .replace(/tabela-criterios-semana/g, "tabela-criterios-print")}
+
+          <div class="print-footer">
+            <p>📚 Referências: BNCC (BRASIL, 2018) · RCP-PR (SEED/PR, 2018) · CIEB (2019)</p>
+            <p>🤖 "Loop não é macarrão! Loop é repetição! Loop é poder!"</p>
+          </div>
+
+          <button class="btn-print-action no-print" onclick="window.print()">
+            🖨️ IMPRIMIR / SALVAR COMO PDF
+          </button>
+
+          <script>
+            // Auto-abrir a impressão (descomente para ativar)
+            // setTimeout(window.print, 500);
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      const win = window.open(
+        "",
+        "_blank",
+        "width=1000,height=800,scrollbars=yes",
+      );
+      if (win) {
+        win.document.write(html);
+        win.document.close();
+      } else {
+        alert("⚠️ Permita pop-ups para imprimir os planos de aula.");
       }
     },
 
@@ -1122,7 +1451,12 @@
       }
 
       const toastId = "toast_" + Date.now();
-      const bgColor = tipo === "success" ? "#2ecc71" : tipo === "warning" ? "#f39c12" : "#3498db";
+      const bgColor =
+        tipo === "success"
+          ? "#2ecc71"
+          : tipo === "warning"
+            ? "#f39c12"
+            : "#3498db";
 
       const toastHtml = `
         <div id="${toastId}" class="custom-toast" style="
@@ -1154,7 +1488,6 @@
         }
       }, 3000);
     },
-
     // ========== EVENTOS GLOBAIS ==========
     configurarEventosGlobais() {
       const style = document.createElement("style");
@@ -1174,6 +1507,14 @@
         .badge-projeto { display: inline-block; }
       `;
       document.head.appendChild(style);
+
+      // Botão de impressão dos planos de aula
+      const btnImprimirAulas = document.getElementById("btnImprimirAulas");
+      if (btnImprimirAulas) {
+        btnImprimirAulas.addEventListener("click", () =>
+          this.imprimirPlanosDeAula(),
+        );
+      }
     },
 
     escapeHtml(texto) {
@@ -1192,7 +1533,10 @@
   };
 
   // Registra no controlador
-  if (window.Controlador && typeof window.Controlador.registrarModulo === "function") {
+  if (
+    window.Controlador &&
+    typeof window.Controlador.registrarModulo === "function"
+  ) {
     window.Controlador.registrarModulo("a1bim1", A1Bim1Module);
   }
 

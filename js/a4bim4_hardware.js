@@ -61,13 +61,14 @@
     },
   };
 
+
   // ==================================================
   // MÓDULO: Planos de Aula (modelo_planos_aula.js)
   // ==================================================
   const PlanosAulaModule = {
     inicializado: false,
     STORAGE_KEY: "planoAula_Concluidas_4ano_hardware",
-    totalSemanas: 10,
+    totalSemanas: 0,
     elementos: {
       checkboxes: null,
       barraProgresso: null,
@@ -75,16 +76,16 @@
       expandirBtn: null,
       recolherBtn: null,
       accordionContainer: null,
+      btnImprimir: null,
     },
 
+    // -------- INICIALIZAÇÃO --------
     init() {
       if (this.inicializado) return;
 
-      // Verifica se está na página correta
-      if (!document.getElementById("accordionAulas")) {
-        console.log(
-          "⏳ PlanosAulaModule: accordion não encontrado, ignorando...",
-        );
+      const accordion = document.getElementById("accordionAulas");
+      if (!accordion) {
+        console.log("⏳ PlanosAulaModule: accordion não encontrado, ignorando...");
         return;
       }
 
@@ -95,36 +96,62 @@
       this.configurarEfeitosHover();
       this.inicializado = true;
       this.dispararEvento("planosAula:pronto");
-      console.log(
-        "✅ [PlanosAulaModule] Pronto! Total de semanas:",
-        this.totalSemanas,
-      );
+      console.log("✅ [PlanosAulaModule] Pronto! Total de semanas:", this.totalSemanas);
     },
 
+    // -------- CAPTURA DE ELEMENTOS --------
     capturarElementos() {
       this.elementos.checkboxes = document.querySelectorAll(".semana-check");
       this.elementos.barraProgresso = document.getElementById("barraProgresso");
       this.elementos.progressoTexto = document.getElementById("progressoTexto");
       this.elementos.expandirBtn = document.getElementById("expandirTodosBtn");
       this.elementos.recolherBtn = document.getElementById("recolherTodosBtn");
-      this.elementos.accordionContainer =
-        document.getElementById("accordionAulas");
+      this.elementos.accordionContainer = document.getElementById("accordionAulas");
+      this.elementos.btnImprimir = document.getElementById("btnImprimirPlanos");
 
       if (this.elementos.checkboxes.length > 0) {
         this.totalSemanas = this.elementos.checkboxes.length;
       }
     },
 
+    // -------- CONFIGURAÇÃO DE EVENTOS --------
+    configurarEventos() {
+      // Checkboxes
+      this.elementos.checkboxes.forEach((cb) => {
+        cb.addEventListener("change", (e) => this.handleCheckboxChange(e));
+      });
+
+      // Expandir todos
+      if (this.elementos.expandirBtn) {
+        this.elementos.expandirBtn.addEventListener("click", () => this.expandirTodos());
+      }
+
+      // Recolher todos
+      if (this.elementos.recolherBtn) {
+        this.elementos.recolherBtn.addEventListener("click", () => this.recolherTodos());
+      }
+
+      // Botão de impressão
+      if (this.elementos.btnImprimir) {
+        this.elementos.btnImprimir.addEventListener("click", () => this.imprimirPlanos());
+      }
+
+      // Atalho para reset (Ctrl+Shift+R)
+      document.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === "R") {
+          e.preventDefault();
+          this.resetarProgresso();
+        }
+      });
+    },
+
+    // -------- PERSISTÊNCIA DE PROGRESSO --------
     salvarProgresso() {
       const concluidas = {};
       this.elementos.checkboxes.forEach((cb) => {
-        const semana = cb.getAttribute("data-semana");
-        if (semana) {
-          concluidas[semana] = cb.checked;
-        } else {
-          const index = Array.from(this.elementos.checkboxes).indexOf(cb);
-          concluidas[`semana_${index + 1}`] = cb.checked;
-        }
+        const semana = cb.getAttribute("data-semana") ||
+          `semana_${Array.from(this.elementos.checkboxes).indexOf(cb) + 1}`;
+        concluidas[semana] = cb.checked;
       });
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(concluidas));
       this.dispararEvento("planosAula:progressoSalvo", {
@@ -163,16 +190,15 @@
       return marcados;
     },
 
+    // -------- BARRA DE PROGRESSO --------
     atualizarBarraProgresso() {
       const marcados = this.getTotalMarcados();
-      const percentual =
-        this.totalSemanas > 0 ? (marcados / this.totalSemanas) * 100 : 0;
+      const percentual = this.totalSemanas > 0 ? (marcados / this.totalSemanas) * 100 : 0;
 
       if (this.elementos.barraProgresso) {
         this.elementos.barraProgresso.style.width = percentual + "%";
         this.elementos.barraProgresso.setAttribute("aria-valuenow", marcados);
-        this.elementos.barraProgresso.textContent =
-          Math.round(percentual) + "%";
+        this.elementos.barraProgresso.textContent = Math.round(percentual) + "%";
       }
       if (this.elementos.progressoTexto) {
         this.elementos.progressoTexto.textContent = `${marcados}/${this.totalSemanas}`;
@@ -184,10 +210,9 @@
       });
     },
 
+    // -------- EXPANDIR / RECOLHER --------
     expandirTodos() {
-      const collapses = document.querySelectorAll(
-        "#accordionAulas .accordion-collapse",
-      );
+      const collapses = document.querySelectorAll("#accordionAulas .accordion-collapse");
       collapses.forEach((collapse) => {
         if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
           try {
@@ -204,9 +229,7 @@
     },
 
     recolherTodos() {
-      const collapses = document.querySelectorAll(
-        "#accordionAulas .accordion-collapse",
-      );
+      const collapses = document.querySelectorAll("#accordionAulas .accordion-collapse");
       collapses.forEach((collapse) => {
         if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
           try {
@@ -222,20 +245,59 @@
       this.mostrarToast("📕 Todos os planos de aula recolhidos!", "info");
     },
 
+    // ==================================================
+    // 🖨️ FUNÇÃO DE IMPRESSÃO DOS PLANOS (NOVO)
+    // ==================================================
+    imprimirPlanos() {
+      // 1. Expande todos os collapses (garante que todo o conteúdo fique visível)
+      const collapses = document.querySelectorAll("#accordionAulas .accordion-collapse");
+      collapses.forEach((collapse) => {
+        if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+          try {
+            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
+            bsCollapse.show();
+          } catch (e) {
+            collapse.classList.add("show");
+          }
+        } else {
+          collapse.classList.add("show");
+        }
+      });
+
+      // 2. Aguarda um breve momento para a expansão ser aplicada
+      setTimeout(() => {
+        window.print();
+      }, 300);
+
+      // 3. (Opcional) Feedback visual
+      this.mostrarToast("🖨️ Preparando os planos para impressão...", "info");
+    },
+
+    // -------- CHECKBOX --------
     handleCheckboxChange(e) {
       const cb = e.target;
       this.salvarProgresso();
       this.atualizarBarraProgresso();
-      const semana =
-        cb.getAttribute("data-semana") ||
+      const semana = cb.getAttribute("data-semana") ||
         `semana_${Array.from(this.elementos.checkboxes).indexOf(cb) + 1}`;
       const acao = cb.checked ? "✅ Concluída!" : "⏳ Reaberta!";
-      this.mostrarToast(
-        `${acao} Semana ${semana}`,
-        cb.checked ? "success" : "warning",
-      );
+      this.mostrarToast(`${acao} Semana ${semana}`, cb.checked ? "success" : "warning");
     },
 
+    // -------- RESET --------
+    resetarProgresso() {
+      if (confirm("⚠️ ATENÇÃO! Isso irá marcar TODAS as aulas como NÃO concluídas. Deseja continuar?")) {
+        this.elementos.checkboxes.forEach((cb) => {
+          cb.checked = false;
+        });
+        this.salvarProgresso();
+        this.atualizarBarraProgresso();
+        this.mostrarToast("🔄 Progresso resetado! Todas as aulas foram marcadas como pendentes.", "warning");
+        this.dispararEvento("planosAula:progressoResetado");
+      }
+    },
+
+    // -------- HOVER NOS CARDS --------
     configurarEfeitosHover() {
       const cards = document.querySelectorAll(".accordion-item");
       cards.forEach((card) => {
@@ -251,47 +313,43 @@
       });
     },
 
+    // -------- TOAST --------
     mostrarToast(mensagem, tipo = "info") {
       let toastContainer = document.querySelector(".toast-container-custom");
       if (!toastContainer) {
         toastContainer = document.createElement("div");
         toastContainer.className = "toast-container-custom";
         toastContainer.style.cssText = `
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          z-index: 9999;
-        `;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+      `;
         document.body.appendChild(toastContainer);
       }
 
       const toastId = "toast_" + Date.now();
-      const bgColor =
-        tipo === "success"
-          ? "#2ecc71"
-          : tipo === "warning"
-            ? "#f39c12"
-            : "#3498db";
+      const bgColor = tipo === "success" ? "#2ecc71" : tipo === "warning" ? "#f39c12" : "#3498db";
 
       const toastHtml = `
-        <div id="${toastId}" class="custom-toast" style="
-          background: #1e2a1a;
-          border-left: 4px solid ${bgColor};
-          border-radius: 12px;
-          padding: 12px 20px;
-          margin-bottom: 10px;
-          color: #e9f5db;
-          font-size: 0.85rem;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-          animation: slideInRight 0.3s ease-out;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        ">
-          <i class="bi ${tipo === "success" ? "bi-check-circle-fill" : tipo === "warning" ? "bi-exclamation-triangle-fill" : "bi-info-circle-fill"}" style="color: ${bgColor};"></i>
-          <span>${mensagem}</span>
-        </div>
-      `;
+      <div id="${toastId}" class="custom-toast" style="
+        background: #1e2a1a;
+        border-left: 4px solid ${bgColor};
+        border-radius: 12px;
+        padding: 12px 20px;
+        margin-bottom: 10px;
+        color: #e9f5db;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        animation: slideInRight 0.3s ease-out;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      ">
+        <i class="bi ${tipo === "success" ? "bi-check-circle-fill" : tipo === "warning" ? "bi-exclamation-triangle-fill" : "bi-info-circle-fill"}" style="color: ${bgColor};"></i>
+        <span>${mensagem}</span>
+      </div>
+    `;
       toastContainer.insertAdjacentHTML("beforeend", toastHtml);
 
       setTimeout(() => {
@@ -303,57 +361,15 @@
       }, 3000);
     },
 
-    resetarProgresso() {
-      if (
-        confirm(
-          "⚠️ ATENÇÃO! Isso irá marcar TODAS as aulas como NÃO concluídas. Deseja continuar?",
-        )
-      ) {
-        this.elementos.checkboxes.forEach((cb) => {
-          cb.checked = false;
-        });
-        this.salvarProgresso();
-        this.atualizarBarraProgresso();
-        this.mostrarToast(
-          "🔄 Progresso resetado! Todas as aulas foram marcadas como pendentes.",
-          "warning",
-        );
-        this.dispararEvento("planosAula:progressoResetado");
-      }
-    },
-
+    // -------- UTILITÁRIOS --------
     getEstatisticas() {
       const marcados = this.getTotalMarcados();
       return {
         total: this.totalSemanas,
         concluidas: marcados,
         pendentes: this.totalSemanas - marcados,
-        percentual:
-          this.totalSemanas > 0 ? (marcados / this.totalSemanas) * 100 : 0,
+        percentual: this.totalSemanas > 0 ? (marcados / this.totalSemanas) * 100 : 0,
       };
-    },
-
-    configurarEventos() {
-      if (this.elementos.expandirBtn) {
-        this.elementos.expandirBtn.addEventListener("click", () =>
-          this.expandirTodos(),
-        );
-      }
-      if (this.elementos.recolherBtn) {
-        this.elementos.recolherBtn.addEventListener("click", () =>
-          this.recolherTodos(),
-        );
-      }
-      this.elementos.checkboxes.forEach((cb) => {
-        cb.addEventListener("change", (e) => this.handleCheckboxChange(e));
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.ctrlKey && e.shiftKey && e.key === "R") {
-          e.preventDefault();
-          this.resetarProgresso();
-        }
-      });
     },
 
     dispararEvento(nome, detalhes = {}) {
@@ -1137,3 +1153,4 @@
     }
   }, 60000);
 })();
+

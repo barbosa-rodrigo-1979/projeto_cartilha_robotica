@@ -1,5 +1,5 @@
 // ==================================================
-// a2index.js Módulo completo para o 2º ANO
+// a2index.js – Módulo completo para o 2º ANO
 // Gerencia: cabeçalho, menu, rodapé e certificado
 // ==================================================
 

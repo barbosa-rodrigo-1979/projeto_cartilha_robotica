@@ -50,6 +50,7 @@
       this.elementos.barraProgresso = document.getElementById("barraProgresso");
       this.elementos.progressoTexto = document.getElementById("progressoTexto");
       this.elementos.accordionContainer = document.getElementById("accordionAulas");
+      this.elementos.btnImprimir = document.getElementById("btnImprimirAulas");
 
       if (this.elementos.checkboxes.length === 0) {
         this.elementos.checkboxes = document.querySelectorAll("input[type='checkbox'].semana-check, input.check-concluido");
@@ -127,6 +128,38 @@
         total: this.totalSemanas,
         percentual: percentual
       });
+    },
+
+    // ================================================
+    // IMPRESSÃO DOS PLANOS DE AULA - FUNÇÃO COMPLETA
+    // ================================================
+    imprimirPlanos: function () {
+      console.log("🖨️ [PlanosAulaModule] Preparando para imprimir todos os planos...");
+
+      // 1. Verifica se o accordion existe
+      if (!this.elementos.accordionContainer) {
+        console.warn("⚠️ Accordion não encontrado. Nada para imprimir.");
+        return;
+      }
+
+      // 2. Expande todos os painéis para garantir que o conteúdo completo apareça no preview
+      // Usa o método já existente no módulo, que trata Bootstrap e fallback
+      this.expandirTodos();
+
+      // 3. Salva uma referência do escopo para usar dentro do setTimeout
+      var self = this;
+
+      // 4. Delay de 400ms para garantir que o DOM seja atualizado antes da impressão
+      setTimeout(function () {
+        // 5. Abre a janela de impressão do navegador
+        window.print();
+
+        // 6. (Opcional) Recolhe todos os painéis após a impressão.
+        // Descomente a linha abaixo se quiser que os painéis voltem a ficar recolhidos.
+        // self.recolherTodos();
+
+        console.log("✅ [PlanosAulaModule] Impressão finalizada (ou diálogo aberto).");
+      }, 400);
     },
 
     expandirTodos: function () {
@@ -249,6 +282,13 @@
 
       if (this.elementos.recolherBtn) {
         this.elementos.recolherBtn.addEventListener("click", function () { this.recolherTodos(); }.bind(this));
+      }
+
+      // 🔽 NOVO EVENTO PARA O BOTÃO DE IMPRIMIR
+      if (this.elementos.btnImprimir) {
+        this.elementos.btnImprimir.addEventListener("click", function () {
+          this.imprimirPlanos();
+        }.bind(this));
       }
 
       this.elementos.checkboxes.forEach(function (cb) {

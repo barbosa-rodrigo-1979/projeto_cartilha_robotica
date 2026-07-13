@@ -27,7 +27,7 @@
       if (this.inicializado) return;
       if (!document.getElementById("accordionAulas")) {
         console.log(
-          "⏳ PlanosAulaModule: accordion não encontrado, ignorando...",
+          "⏳ PlanosAulaModule: accordion não encontrado, ignorando..."
         );
         return;
       }
@@ -52,7 +52,7 @@
 
       if (this.elementos.checkboxes.length === 0) {
         this.elementos.checkboxes = document.querySelectorAll(
-          "input[type='checkbox'].semana-check, input.check-concluido",
+          "input[type='checkbox'].semana-check, input.check-concluido"
         );
       }
 
@@ -124,7 +124,7 @@
 
     expandirTodos() {
       const collapses = document.querySelectorAll(
-        "#accordionAulas .accordion-collapse",
+        "#accordionAulas .accordion-collapse"
       );
       collapses.forEach((collapse) => {
         if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
@@ -143,7 +143,7 @@
 
     recolherTodos() {
       const collapses = document.querySelectorAll(
-        "#accordionAulas .accordion-collapse",
+        "#accordionAulas .accordion-collapse"
       );
       collapses.forEach((collapse) => {
         if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
@@ -172,7 +172,7 @@
       const acao = cb.checked ? "✅ Concluída!" : "⏳ Reaberta!";
       this.mostrarToast(
         `${acao} Semana ${semana}`,
-        cb.checked ? "success" : "warning",
+        cb.checked ? "success" : "warning"
       );
     },
 
@@ -248,7 +248,7 @@
     resetarProgresso() {
       if (
         confirm(
-          "⚠️ ATENÇÃO! Isso irá marcar TODAS as aulas como NÃO concluídas. Deseja continuar?",
+          "⚠️ ATENÇÃO! Isso irá marcar TODAS as aulas como NÃO concluídas. Deseja continuar?"
         )
       ) {
         this.elementos.checkboxes.forEach((cb) => {
@@ -258,7 +258,7 @@
         this.atualizarBarraProgresso();
         this.mostrarToast(
           "🔄 Progresso resetado! Todas as aulas foram marcadas como pendentes.",
-          "warning",
+          "warning"
         );
         console.log("🔄 Progresso resetado!");
       }
@@ -275,18 +275,23 @@
       };
     },
 
+    // ========== NOVO MÉTODO PARA IMPRESSÃO ==========
+    imprimirPlanos() {
+      window.print();
+    },
+
     configurarEventos() {
       // Evento para expandir todos
       if (this.elementos.expandirBtn) {
         this.elementos.expandirBtn.addEventListener("click", () =>
-          this.expandirTodos(),
+          this.expandirTodos()
         );
       }
 
       // Evento para recolher todos
       if (this.elementos.recolherBtn) {
         this.elementos.recolherBtn.addEventListener("click", () =>
-          this.recolherTodos(),
+          this.recolherTodos()
         );
       }
 
@@ -302,6 +307,12 @@
           this.resetarProgresso();
         }
       });
+
+      // ========== NOVO: evento para o botão de imprimir ==========
+      const imprimirBtn = document.getElementById("imprimirPlanosBtn");
+      if (imprimirBtn) {
+        imprimirBtn.addEventListener("click", () => this.imprimirPlanos());
+      }
     },
 
     dispararEvento(nome, detalhes = {}) {
@@ -335,7 +346,7 @@
         !document.querySelector(".cadastro-alunos")
       ) {
         console.log(
-          "⏳ CertificadoModule: página não identificada, ignorando...",
+          "⏳ CertificadoModule: página não identificada, ignorando..."
         );
         return;
       }
@@ -357,7 +368,7 @@
       this.elementos.listaAlunos = document.getElementById("listaAlunos");
       this.elementos.contadorAlunos = document.getElementById("contadorAlunos");
       this.elementos.btnImprimirTodos = document.getElementById(
-        "btnImprimirCertificados",
+        "btnImprimirCertificados"
       );
       this.elementos.btnPreviewAluno =
         document.getElementById("btnPreviewAluno");
@@ -505,7 +516,7 @@
       const win = window.open(
         "",
         "_blank",
-        "width=900,height=700,toolbar=yes,scrollbars=yes",
+        "width=900,height=700,toolbar=yes,scrollbars=yes"
       );
       if (win) {
         win.document.write(html);
@@ -641,7 +652,7 @@
     configurarEventos() {
       if (this.elementos.btnAdicionar) {
         this.elementos.btnAdicionar.addEventListener("click", () =>
-          this.adicionarAluno(),
+          this.adicionarAluno()
         );
       }
       if (this.elementos.inputNome) {
@@ -651,12 +662,12 @@
       }
       if (this.elementos.btnImprimirTodos) {
         this.elementos.btnImprimirTodos.addEventListener("click", () =>
-          this.imprimirTodosCertificados(),
+          this.imprimirTodosCertificados()
         );
       }
       if (this.elementos.btnPreviewAluno) {
         this.elementos.btnPreviewAluno.addEventListener("click", () =>
-          this.previewAlunoSelecionado(),
+          this.previewAlunoSelecionado()
         );
       }
     },
@@ -693,7 +704,7 @@
       try {
         localStorage.setItem(
           "cabecalho_contador_bugs",
-          this.contadorBugs.toString(),
+          this.contadorBugs.toString()
         );
       } catch (e) {
         console.warn("[CABEÇALHO] Não foi possível salvar o contador", e);
@@ -770,10 +781,10 @@
     configurarEventos() {
       document.addEventListener("robo:bug", () => this.atualizarRelatorio());
       document.addEventListener("robo:resetBugs", () =>
-        this.atualizarRelatorio(),
+        this.atualizarRelatorio()
       );
       document.addEventListener("cabecalho:contador_atualizado", () =>
-        this.atualizarRelatorio(),
+        this.atualizarRelatorio()
       );
     },
 
@@ -843,3 +854,4 @@
     console.log("✅ [GERAL] Todos os módulos inicializados com sucesso!");
   });
 })();
+

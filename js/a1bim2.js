@@ -1,7 +1,7 @@
 // ==================================================
 // a1bim2.js – LÓGICA UNIFICADA DO BIMESTRE 2
 // 1º ANO | MISSÃO: MEDIR, CLASSIFICAR E NÃO BUGAR!
-// Módulos: Jogo Medidor Maluco, Certificado, Planos de Aula, Cabeçalho, Rodapé, Apresentação
+// Módulos: Jogo Medidor Maluco, Certificado, Planos de Aula, Cabeçalho, Rodapé, Apresentação, Impressão
 // ==================================================
 
 (function () {
@@ -285,7 +285,6 @@
       }
     },
   };
-
   // ------------------------------------------------------------------
   // 2. CERTIFICADO (cadastro, lista, pré-visualização, impressão)
   // ------------------------------------------------------------------
@@ -527,7 +526,6 @@
         : "";
     },
   };
-
   // ------------------------------------------------------------------
   // 3. PLANOS DE AULA (checkboxes, progresso)
   // ------------------------------------------------------------------
@@ -786,6 +784,353 @@
   };
 
   // ------------------------------------------------------------------
+  // 6. IMPRESSÃO DOS PLANOS DE AULA
+  // ------------------------------------------------------------------
+  const ImprimirPlanosModule = {
+    init() {
+      const btn = document.getElementById("btnImprimirPlanos");
+      if (btn) {
+        btn.addEventListener("click", () => this.imprimirPlanos());
+      }
+    },
+
+    imprimirPlanos() {
+      // Coleta todos os accordion-items
+      const items = document.querySelectorAll(
+        "#accordionAulas .accordion-item",
+      );
+      if (!items.length) {
+        alert("Nenhum plano de aula encontrado para imprimir.");
+        return;
+      }
+
+      // Constrói o HTML para impressão
+      let conteudoHTML = "";
+      items.forEach((item) => {
+        // Clone para não alterar o DOM original
+        const clone = item.cloneNode(true);
+
+        // Remove os checkboxes (marcar como concluído)
+        const checkboxes = clone.querySelectorAll(".check-concluido");
+        checkboxes.forEach((cb) => cb.remove());
+
+        // Expande o collapse para mostrar todo o conteúdo
+        const collapse = clone.querySelector(".accordion-collapse");
+        if (collapse) {
+          collapse.classList.add("show");
+          collapse.style.display = "block";
+        }
+
+        // Remove atributos de data-bs-parent para não quebrar o accordion
+        const collapseDiv = clone.querySelector(".accordion-collapse");
+        if (collapseDiv) {
+          collapseDiv.removeAttribute("data-bs-parent");
+        }
+
+        // Remove botões de toggle (accordion-button)
+        const button = clone.querySelector(".accordion-button");
+        if (button) {
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-target");
+          button.removeAttribute("aria-expanded");
+          button.removeAttribute("aria-controls");
+          // Mantém o texto do botão como título
+          const header = clone.querySelector(".accordion-header");
+          if (header) {
+            // Substitui o botão por um título h3
+            const titulo = document.createElement("h3");
+            titulo.className = "accordion-titulo-print";
+            titulo.innerHTML = button.innerHTML;
+            header.replaceChild(titulo, button);
+          }
+        }
+
+        // Adiciona ao conteúdo
+        conteudoHTML += clone.outerHTML;
+      });
+
+      // Cria o documento para impressão
+      const win = window.open(
+        "",
+        "_blank",
+        "width=1024,height=800,scrollbars=yes,toolbar=yes",
+      );
+      if (!win) {
+        alert(
+          "⚠️ Permita pop-ups para visualizar/ imprimir os planos de aula.",
+        );
+        return;
+      }
+
+      // Estilos para a impressão
+      const estilos = `
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Inter', 'Chakra Petch', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          .cabecalho-print {
+            text-align: center;
+            border-bottom: 3px solid #ffb347;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+          }
+          .cabecalho-print h1 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.4rem;
+            color: #1e2a1a;
+            margin-bottom: 10px;
+          }
+          .cabecalho-print p {
+            color: #555;
+            font-size: 0.9rem;
+          }
+          .accordion-print-item {
+            border: 1px solid #ddd;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            page-break-inside: avoid;
+          }
+          .accordion-print-item .accordion-header-print {
+            background: #2c3e2b;
+            padding: 14px 24px;
+            color: #ffb347;
+            font-family: 'Chakra Petch', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 2px solid #ffb347;
+          }
+          .accordion-print-item .accordion-body-print {
+            padding: 20px 24px;
+            background: #f8f8f5;
+          }
+          .accordion-body-print h5 {
+            color: #2c3e2b;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            border-left: 4px solid #ffb347;
+            padding-left: 12px;
+          }
+          .accordion-body-print h5:first-child {
+            margin-top: 0;
+          }
+          .accordion-body-print p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: #1a1a1a;
+          }
+          .accordion-body-print ul {
+            padding-left: 24px;
+            margin-bottom: 12px;
+          }
+          .accordion-body-print ul li {
+            margin-bottom: 4px;
+            color: #1a1a1a;
+          }
+          .materiais-container-print {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+          }
+          .materiais-container-print .material-badge-print {
+            background: #e9e9e9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border-left: 3px solid #ffb347;
+          }
+          .minuto-item-print {
+            display: flex;
+            margin-bottom: 10px;
+            border-left: 4px solid #ffb347;
+            background: #f0f0ed;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .minuto-tempo-print {
+            background: #2c3e2b;
+            padding: 8px 14px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            min-width: 100px;
+            text-align: center;
+            color: #ffb347;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .minuto-descricao-print {
+            padding: 8px 14px;
+            flex: 1;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+          }
+          .frase-do-dia-print {
+            background: #e9e9e9;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-top: 16px;
+            text-align: center;
+            border: 1px dashed #ffb347;
+            color: #1a1a1a;
+            font-style: italic;
+          }
+          .tabela-criterios-print {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+          }
+          .tabela-criterios-print th,
+          .tabela-criterios-print td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: center;
+          }
+          .tabela-criterios-print th {
+            background: #2c3e2b;
+            color: #ffb347;
+          }
+          .tabela-criterios-print td {
+            background: #f8f8f5;
+          }
+          .btn-acoes-print {
+            text-align: center;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            padding: 12px 0;
+            border-bottom: 2px solid #ffb347;
+          }
+          .btn-print {
+            background: #ffb347;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            margin: 0 8px;
+          }
+          .btn-print:hover {
+            background: #ff8c00;
+            color: white;
+          }
+          .btn-fechar-print {
+            background: #555;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            margin: 0 8px;
+            color: white;
+          }
+          .btn-fechar-print:hover {
+            background: #333;
+          }
+          @media print {
+            body { padding: 15px; }
+            .btn-acoes-print { display: none; }
+            .accordion-print-item { break-inside: avoid; page-break-inside: avoid; }
+          }
+          @media (max-width: 768px) {
+            .minuto-item-print { flex-direction: column; }
+            .minuto-tempo-print { min-width: auto; }
+          }
+        </style>
+      `;
+
+      // Monta o HTML completo
+      const htmlCompleto = `
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Planos de Aula - 1º Ano - BIMESTRE 2</title>
+          ${estilos}
+        </head>
+        <body>
+          <div class="btn-acoes-print">
+            <button class="btn-print" onclick="window.print()">🖨️ IMPRIMIR</button>
+            <button class="btn-fechar-print" onclick="window.close()">✖️ FECHAR</button>
+            <span style="font-size:0.8rem; margin-left:20px; color:#555;">Clique em IMPRIMIR ou use Ctrl+P</span>
+          </div>
+
+          <div class="cabecalho-print">
+            <h1>🤖 1º ANO – ROBÓTICA EDUCACIONAL</h1>
+            <h2 style="font-family:'Chakra Petch',monospace; color:#2c3e2b; font-size:1.2rem; margin-top:10px;">BIMESTRE 2: MISSÃO: MEDIR, CLASSIFICAR E NÃO BUGAR!</h2>
+            <p style="margin-top:8px;">Planos de aula – Semanas 11 a 20</p>
+          </div>
+
+          <div id="accordion-print">
+            ${conteudoHTML}
+          </div>
+
+          <div style="text-align:center; margin-top:30px; padding-top:20px; border-top:2px solid #ddd; font-size:0.7rem; color:#888;">
+            Documento gerado automaticamente • Robótica no Ensino Fundamental I
+          </div>
+
+          <script>
+            // Corrige classes para impressão após o DOM carregar
+            document.addEventListener('DOMContentLoaded', function() {
+              // Renomeia classes para evitar conflitos com estilos da página original
+              document.querySelectorAll('.accordion-item').forEach(el => {
+                el.className = 'accordion-print-item';
+              });
+              document.querySelectorAll('.accordion-header').forEach(el => {
+                el.className = 'accordion-header-print';
+              });
+              document.querySelectorAll('.accordion-body').forEach(el => {
+                el.className = 'accordion-body-print';
+              });
+              document.querySelectorAll('.minuto-item').forEach(el => {
+                el.className = 'minuto-item-print';
+              });
+              document.querySelectorAll('.minuto-tempo').forEach(el => {
+                el.className = 'minuto-tempo-print';
+              });
+              document.querySelectorAll('.minuto-descricao').forEach(el => {
+                el.className = 'minuto-descricao-print';
+              });
+              document.querySelectorAll('.materiais-container').forEach(el => {
+                el.className = 'materiais-container-print';
+              });
+              document.querySelectorAll('.material-badge').forEach(el => {
+                el.className = 'material-badge-print';
+              });
+              document.querySelectorAll('.tabela-criterios-semana').forEach(el => {
+                el.className = 'tabela-criterios-print';
+              });
+              document.querySelectorAll('.frase-do-dia').forEach(el => {
+                el.className = 'frase-do-dia-print';
+              });
+            });
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      win.document.write(htmlCompleto);
+      win.document.close();
+    },
+  };
+
+  // ------------------------------------------------------------------
   // INICIALIZAÇÃO GERAL
   // ------------------------------------------------------------------
   function initAll() {
@@ -796,6 +1141,7 @@
         PlanosAulaModule.init();
         CabecalhoModule.init();
         ApresentacaoModule.init();
+        ImprimirPlanosModule.init();
       });
     } else {
       MedidorMaluco.init();
@@ -803,6 +1149,7 @@
       PlanosAulaModule.init();
       CabecalhoModule.init();
       ApresentacaoModule.init();
+      ImprimirPlanosModule.init();
     }
   }
 
@@ -821,6 +1168,7 @@
   window.PlanosAulaModule = PlanosAulaModule;
   window.CabecalhoModule = CabecalhoModule;
   window.ApresentacaoModule = ApresentacaoModule;
+  window.ImprimirPlanosModule = ImprimirPlanosModule;
 
   initAll();
 })();

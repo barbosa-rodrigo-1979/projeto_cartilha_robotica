@@ -25,7 +25,7 @@
   try {
     const salvo = localStorage.getItem("cabecalho_contador_bugs");
     if (salvo !== null) contadorBugs = parseInt(salvo);
-  } catch (e) {}
+  } catch (e) { }
   atualizarContadorBugs();
 
   // --------------------------------------------------------------
@@ -76,7 +76,7 @@
         checkboxes.forEach((cb) => {
           if (concluidas[cb.dataset.semana]) cb.checked = true;
         });
-      } catch (e) {}
+      } catch (e) { }
     }
     atualizarProgresso();
   }
@@ -1053,3 +1053,106 @@
 
   window.incrementarBug = incrementarBug;
 })();
+
+// ==================================================
+// FUNÇÃO COMPLETA: IMPRESSÃO DOS PLANOS DE AULA
+// ==================================================
+
+/**
+ * Expande todos os accordions da seção de aulas e inicia a impressão.
+ * Utiliza a API do Bootstrap se disponível, senão faz fallback manual.
+ */
+function imprimirPlanosDeAula() {
+  // 1. Verifica se há accordions para expandir
+  const accordions = document.querySelectorAll('#accordionAulas .accordion-collapse');
+  if (!accordions.length) {
+    console.warn('Nenhum accordion encontrado para imprimir.');
+    return;
+  }
+
+  // 2. Expande todos os accordions
+  let expandedCount = 0;
+  accordions.forEach(collapse => {
+    try {
+      // Tenta usar a API do Bootstrap (se disponível)
+      if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+        const bsCollapse = bootstrap.Collapse.getInstance(collapse) || new bootstrap.Collapse(collapse, { toggle: false });
+        if (!bsCollapse._isShown()) {
+          bsCollapse.show();
+          expandedCount++;
+        }
+      } else {
+        // Fallback para quando Bootstrap não está carregado
+        if (!collapse.classList.contains('show')) {
+          collapse.classList.remove('collapse');
+          collapse.classList.add('show');
+          collapse.style.display = 'block';
+          expandedCount++;
+        }
+      }
+    } catch (e) {
+      console.warn('Erro ao expandir accordion:', e);
+      // Fallback manual em caso de erro
+      if (!collapse.classList.contains('show')) {
+        collapse.classList.remove('collapse');
+        collapse.classList.add('show');
+        collapse.style.display = 'block';
+        expandedCount++;
+      }
+    }
+  });
+
+  // 3. Atualiza os botões dos accordions (visualmente)
+  document.querySelectorAll('#accordionAulas .accordion-button').forEach(btn => {
+    btn.classList.add('collapsed');
+    btn.setAttribute('aria-expanded', 'true');
+  });
+
+  console.log(`✅ ${expandedCount} accordions expandidos para impressão.`);
+
+  // 4. Aguarda um pequeno delay para garantir que a renderização seja concluída
+  setTimeout(() => {
+    try {
+      window.print();
+    } catch (e) {
+      console.error('Erro ao acionar impressão:', e);
+      alert('Não foi possível iniciar a impressão. Tente novamente ou use Ctrl+P.');
+    } finally {
+      // Opcional: recolher novamente após a impressão (ou deixar expandido)
+      // Descomente as linhas abaixo se quiser recolher após imprimir:
+      // accordions.forEach(collapse => {
+      //   if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+      //     const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+      //     if (bsCollapse) bsCollapse.hide();
+      //   } else {
+      //     collapse.classList.remove('show');
+      //     collapse.classList.add('collapse');
+      //     collapse.style.display = '';
+      //   }
+      // });
+      // document.querySelectorAll('#accordionAulas .accordion-button').forEach(btn => {
+      //   btn.classList.add('collapsed');
+      //   btn.setAttribute('aria-expanded', 'false');
+      // });
+    }
+  }, 400); // tempo suficiente para animações
+}
+
+// --------------------------------------------------------------
+// ASSOCIAÇÃO DO BOTÃO DE IMPRESSÃO (dentro do DOMContentLoaded)
+// --------------------------------------------------------------
+// Adicione este bloco DENTRO do seu DOMContentLoaded existente,
+// ou substitua o trecho antigo por este.
+
+document.addEventListener('DOMContentLoaded', function () {
+  // ... seu código existente (initPlanosAula, initCertificado, initJogo) ...
+
+  // Botão de impressão
+  const btnImprimir = document.getElementById('btnImprimirPlanos');
+  if (btnImprimir) {
+    btnImprimir.addEventListener('click', imprimirPlanosDeAula);
+    console.log('🖨️ Botão de impressão dos planos ativado.');
+  } else {
+    console.warn('⚠️ Botão #btnImprimirPlanos não encontrado no DOM.');
+  }
+});

@@ -470,7 +470,7 @@
 // semana21.js – JavaScript para a Semana 21
 // Gerencia o checkbox de conclusão e armazenamento local
 // ==================================================
-(function() {
+(function () {
   const STORAGE_KEY = "semana21_concluida";
   const checkbox = document.querySelector(".semana-check[data-semana='21']");
   const barraProgresso = document.getElementById("barraProgresso");
@@ -532,3 +532,98 @@
   }
   console.log("🐞 [Semana21] Pronto! Lupa e checklist ativados.");
 })();
+3
+// --------------------------------------------------
+// 9. MÓDULO IMPRESSÃO PLANOS (a3bim3)
+// --------------------------------------------------
+const ImpressaoPlanosModule = {
+  init() {
+    const btn = document.getElementById('btnImprimirPlanos');
+    if (!btn) return;
+    btn.addEventListener('click', () => this.imprimirPlanos());
+  },
+  imprimirPlanos() {
+    const accordion = document.getElementById('accordionAulas');
+    if (!accordion) {
+      alert('🤖 Nenhum plano de aula encontrado para imprimir.');
+      return;
+    }
+
+    // Clona o accordion para não interferir na página atual
+    const conteudo = accordion.cloneNode(true);
+    // Remove checkboxes e botões de interação do clone
+    const checkboxes = conteudo.querySelectorAll('.semana-check, .check-concluido');
+    checkboxes.forEach(el => el.remove());
+
+    // Monta a página de impressão
+    const titulo = document.querySelector('.projeto-header h2')?.innerHTML || 'Planos de Aula - 3º Bimestre';
+    const html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Planos de Aula - 3º Bimestre</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+          <style>
+            body { background: #fff; padding: 2rem; font-family: 'Inter', sans-serif; }
+            .accordion-button { background: #f0f0f0 !important; color: #000 !important; }
+            .accordion-body { background: #fff !important; color: #000 !important; }
+            .semana-card-completo { background: #fafafa !important; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; }
+            .projeto-header { background: #e9e9e9; padding: 0.5rem 1rem; border-left: 6px solid #ffb347; margin-bottom: 1.5rem; }
+            .projeto-header h2 { color: #1e2a1a; }
+            .badge-projeto { background: #ffb347; color: #1e2a1a; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem; }
+            .table-robotica { background: #fff; border: 1px solid #ccc; }
+            .table-robotica th { background: #e9e9e9; }
+            .minuto-item { background: #f5f5f5; border-left: 4px solid #ffb347; margin-bottom: 0.5rem; display: flex; }
+            .minuto-tempo { background: #ddd; padding: 0.3rem 1rem; font-weight: bold; min-width: 100px; }
+            .minuto-descricao { padding: 0.3rem 1rem; }
+            .materiais-container { display: flex; flex-wrap: wrap; gap: 8px; }
+            .material-badge { background: #eee; padding: 0.2rem 0.8rem; border-radius: 20px; border-left: 2px solid #ffb347; }
+            .frase-do-dia { background: #f5f5f5; border: 1px dashed #ffb347; padding: 0.5rem 1rem; border-radius: 8px; margin-top: 1rem; }
+            .check-concluido, .btn-bug, .btn-bugs-reset, #btnImprimirPlanos { display: none !important; }
+            .accordion-collapse { display: block !important; height: auto !important; }
+            .accordion-button::after { display: none !important; }
+            .accordion-item { border: 1px solid #ddd; margin-bottom: 0.5rem; }
+            @media print {
+              body { padding: 0.5cm; }
+              .accordion-item { page-break-inside: avoid; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="projeto-header d-flex justify-content-between align-items-center">
+              <h2>${titulo}</h2>
+              <span class="badge-projeto">Impressão gerada em ${new Date().toLocaleDateString()}</span>
+            </div>
+            ${conteudo.outerHTML}
+          </div>
+          <script>
+            window.onload = function() {
+              // Abre todos os painéis para garantir visibilidade
+              document.querySelectorAll('.accordion-collapse').forEach(el => {
+                el.classList.add('show');
+                el.style.display = 'block';
+              });
+              // Dispara impressão automaticamente após carregar
+              setTimeout(() => { window.print(); }, 500);
+            };
+          <\/script>
+        </body>
+      </html>
+    `;
+
+    const win = window.open('', '_blank', 'width=1024,height=800');
+    if (win) {
+      win.document.write(html);
+      win.document.close();
+    } else {
+      alert('⚠️ Permita pop-ups para visualizar a impressão.');
+    }
+  }
+};
+
+// Inicializa o módulo de impressão
+ImpressaoPlanosModule.init();
+

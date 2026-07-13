@@ -50,7 +50,6 @@
       });
     },
   };
-
   // ==================================================
   // 2. MÓDULO DOS PLANOS DE AULA
   // ==================================================
@@ -149,7 +148,6 @@
       });
     },
   };
-
   // ==================================================
   // 3. MÓDULO DO CERTIFICADO
   // ==================================================
@@ -496,17 +494,870 @@
       }
     },
   };
+  // ==================================================
+  // 4. MÓDULO DO JOGO LOOP DASH
+  // ==================================================
+  const LoopDashModule = {
+    inicializado: false,
+    bugsEncontrados: 0,
 
+    // Configurações do jogo
+    fases: {
+      1: { nome: "Fase 1 - Iniciante", grid: 8, linhas: 8, colunas: 8 },
+      2: { nome: "Fase 2 - Intermediário", grid: 5, linhas: 5, colunas: 5 },
+      3: { nome: "Fase 3 - Avançado", grid: 6, linhas: 6, colunas: 6 }
+    },
+    faseAtual: 1,
+    gridData: [],
+    posicaoRobo: { linha: 0, coluna: 0 },
+    posicaoAlvo: { linha: 0, coluna: 0 },
+    paredes: [],
+    caminhoPercorrido: [],
+    emExecucao: false,
 
+    elementos: {
+      gridContainer: null,
+      mensagem: null,
+      contadorBugs: null,
+      btnExecutar: null,
+      btnResetar: null,
+      btnDica: null,
+      btnExemplo: null,
+      btnFase1: null,
+      btnFase2: null,
+      btnFase3: null,
+      algoritmoMontado: null,
+      cartoesPrateleira: null,
+      recordesFase1: null,
+      recordesFase2: null,
+      recordesFase3: null
+    },
+
+    init() {
+      if (this.inicializado) return;
+      // Verifica se o container do jogo existe
+      if (!document.querySelector(".loopdash-grid")) {
+        console.log("⏳ LoopDashModule: jogo não encontrado na página");
+        return;
+      }
+
+      console.log("🎮 [LoopDashModule] Inicializando...");
+      this.carregarElementos();
+      this.configurarEventos();
+      this.inicializarFase(1);
+      this.carregarRecordes();
+      this.inicializado = true;
+    },
+
+    carregarElementos() {
+      this.elementos.gridContainer = document.querySelector(".loopdash-grid");
+      this.elementos.mensagem = document.getElementById("mensagemJogo");
+      this.elementos.contadorBugs = document.getElementById("contadorBugs");
+      this.elementos.btnExecutar = document.getElementById("btnExecutar");
+      this.elementos.btnResetar = document.getElementById("btnResetar");
+      this.elementos.btnDica = document.getElementById("btnDica");
+      this.elementos.btnExemplo = document.getElementById("btnExemplo");
+      this.elementos.btnFase1 = document.getElementById("btnFase1");
+      this.elementos.btnFase2 = document.getElementById("btnFase2");
+      this.elementos.btnFase3 = document.getElementById("btnFase3");
+      this.elementos.algoritmoMontado = document.getElementById("algoritmoMontado");
+      this.elementos.cartoesPrateleira = document.querySelector(".cartoes-grid");
+      this.elementos.recordesFase1 = document.getElementById("recordeFase1");
+      this.elementos.recordesFase2 = document.getElementById("recordeFase2");
+      this.elementos.recordesFase3 = document.getElementById("recordeFase3");
+    },
+
+    configurarEventos() {
+      // Botões de fase
+      if (this.elementos.btnFase1) {
+        this.elementos.btnFase1.addEventListener("click", () => this.inicializarFase(1));
+      }
+      if (this.elementos.btnFase2) {
+        this.elementos.btnFase2.addEventListener("click", () => this.inicializarFase(2));
+      }
+      if (this.elementos.btnFase3) {
+        this.elementos.btnFase3.addEventListener("click", () => this.inicializarFase(3));
+      }
+
+      // Botões de controle
+      if (this.elementos.btnExecutar) {
+        this.elementos.btnExecutar.addEventListener("click", () => this.executarAlgoritmo());
+      }
+      if (this.elementos.btnResetar) {
+        this.elementos.btnResetar.addEventListener("click", () => this.resetarJogo());
+      }
+      if (this.elementos.btnDica) {
+        this.elementos.btnDica.addEventListener("click", () => this.mostrarDica());
+      }
+      if (this.elementos.btnExemplo) {
+        this.elementos.btnExemplo.addEventListener("click", () => this.carregarExemplo());
+      }
+
+      // Clique nos cartões de comando (arrastar para montar algoritmo)
+      document.querySelectorAll(".cartao-comando").forEach((cartao) => {
+        cartao.addEventListener("click", () => this.adicionarComando(cartao));
+      });
+
+      // Clique para remover comandos do algoritmo montado
+      if (this.elementos.algoritmoMontado) {
+        this.elementos.algoritmoMontado.addEventListener("click", (e) => {
+          const remover = e.target.closest(".cartao-remove");
+          if (remover) {
+            const cartao = remover.closest(".cartao-montado");
+            if (cartao) {
+              cartao.remove();
+              this.atualizarContadoresGlobais();
+            }
+          }
+        });
+      }
+    },
+
+    inicializarFase(numero) {
+      this.faseAtual = numero;
+      const config = this.fases[numero];
+      if (!config) return;
+
+      // Atualiza botões ativos
+      document.querySelectorAll(".btn-phase").forEach((btn) => {
+        btn.classList.remove("ativo");
+      });
+      const btnAtivo = document.getElementById(`btnFase${numero}`);
+      if (btnAtivo) btnAtivo.classList.add("ativo");
+
+      // Atualiza grid
+      this.gridData = [];
+      const gridEl = this.elementos.gridContainer;
+      if (!gridEl) return;
+
+      // Limpa grid
+      gridEl.innerHTML = "";
+      gridEl.className = `loopdash-grid fase${numero}`;
+
+      // Gera mapa aleatório
+      this.gerarMapa(numero);
+
+      // Desenha grid
+      for (let i = 0; i < config.linhas; i++) {
+        this.gridData[i] = [];
+        for (let j = 0; j < config.colunas; j++) {
+          const cell = document.createElement("div");
+          cell.className = "loopdash-cell";
+          cell.dataset.linha = i;
+          cell.dataset.coluna = j;
+          gridEl.appendChild(cell);
+          this.gridData[i][j] = { tipo: "vazio", elemento: cell };
+        }
+      }
+
+      // Coloca robô e alvo
+      this.posicaoRobo = { linha: 0, coluna: 0 };
+      this.posicaoAlvo = { linha: config.linhas - 1, coluna: config.colunas - 1 };
+      this.paredes = [];
+
+      // Define paredes aleatórias
+      const numParedes = Math.floor((config.linhas * config.colunas) * 0.15);
+      let paredesColocadas = 0;
+      while (paredesColocadas < numParedes) {
+        const linha = Math.floor(Math.random() * config.linhas);
+        const coluna = Math.floor(Math.random() * config.colunas);
+        // Não colocar parede na posição do robô ou alvo
+        if ((linha === 0 && coluna === 0) || (linha === config.linhas - 1 && coluna === config.colunas - 1)) continue;
+        if (this.gridData[linha][coluna].tipo === "vazio") {
+          this.gridData[linha][coluna].tipo = "parede";
+          this.paredes.push({ linha, coluna });
+          const cell = this.gridData[linha][coluna].elemento;
+          cell.className = "loopdash-cell wall";
+          paredesColocadas++;
+        }
+      }
+
+      // Posiciona robô e alvo
+      this.atualizarCelulaRobo();
+      this.atualizarCelulaAlvo();
+
+      // Limpa algoritmo montado
+      if (this.elementos.algoritmoMontado) {
+        this.elementos.algoritmoMontado.innerHTML = `<div class="placeholder-algoritmo">🧩 Arraste os comandos para montar seu algoritmo...</div>`;
+      }
+
+      // Mensagem
+      this.mostrarMensagem(`🎯 ${config.nome} - Leve o robô até a bandeira!`, "info");
+
+      // Reseta caminho percorrido
+      this.caminhoPercorrido = [];
+      this.emExecucao = false;
+
+      this.atualizarContadoresGlobais();
+    },
+
+    gerarMapa(numero) {
+      // Função auxiliar para gerar mapa aleatório (já feito acima)
+      // Mantida para compatibilidade
+    },
+
+    atualizarCelulaRobo() {
+      // Remove classe robot de todas
+      document.querySelectorAll(".loopdash-cell.robot").forEach(el => el.classList.remove("robot"));
+      const cell = this.gridData[this.posicaoRobo.linha]?.[this.posicaoRobo.coluna]?.elemento;
+      if (cell) {
+        cell.classList.add("robot");
+      }
+    },
+
+    atualizarCelulaAlvo() {
+      // Remove classe target de todas
+      document.querySelectorAll(".loopdash-cell.target").forEach(el => el.classList.remove("target"));
+      const cell = this.gridData[this.posicaoAlvo.linha]?.[this.posicaoAlvo.coluna]?.elemento;
+      if (cell) {
+        cell.classList.add("target");
+      }
+    },
+
+    adicionarComando(cartao) {
+      if (this.emExecucao) {
+        this.mostrarMensagem("⏳ Aguarde a execução terminar!", "warning");
+        return;
+      }
+
+      const comando = cartao.dataset.comando;
+      const icone = cartao.querySelector(".cartao-icone")?.textContent || "⬆️";
+      const texto = cartao.querySelector(".cartao-texto")?.textContent || comando;
+
+      const container = this.elementos.algoritmoMontado;
+      if (!container) return;
+
+      // Remove placeholder se existir
+      const placeholder = container.querySelector(".placeholder-algoritmo");
+      if (placeholder) placeholder.remove();
+
+      // Cria cartão montado
+      const div = document.createElement("div");
+      div.className = "cartao-montado";
+      div.dataset.comando = comando;
+      div.innerHTML = `
+        <span>${icone}</span>
+        <span>${texto}</span>
+        <span class="cartao-remove">✕</span>
+      `;
+      container.appendChild(div);
+
+      // Scroll para o final
+      container.scrollTop = container.scrollHeight;
+
+      this.atualizarContadoresGlobais();
+    },
+
+    executarAlgoritmo() {
+      if (this.emExecucao) return;
+
+      const container = this.elementos.algoritmoMontado;
+      if (!container) return;
+
+      const comandos = container.querySelectorAll(".cartao-montado");
+      if (comandos.length === 0) {
+        this.mostrarMensagem("⚠️ Monte um algoritmo primeiro!", "warning");
+        return;
+      }
+
+      // Reinicia posição do robô
+      this.posicaoRobo = { linha: 0, coluna: 0 };
+      this.atualizarCelulaRobo();
+      this.caminhoPercorrido = [];
+      this.emExecucao = true;
+
+      // Executa passo a passo
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index >= comandos.length) {
+          clearInterval(interval);
+          this.emExecucao = false;
+          this.verificarVitoria();
+          return;
+        }
+
+        const comando = comandos[index].dataset.comando;
+        const movido = this.executarComando(comando);
+        if (!movido) {
+          // Se bateu na parede ou saiu do grid, para a execução
+          clearInterval(interval);
+          this.emExecucao = false;
+          this.mostrarMensagem("💥 O robô bateu em uma parede! Tente outro caminho.", "erro");
+          this.dispararBug();
+          return;
+        }
+
+        index++;
+      }, 500);
+    },
+
+    executarComando(comando) {
+      let novaLinha = this.posicaoRobo.linha;
+      let novaColuna = this.posicaoRobo.coluna;
+
+      switch (comando) {
+        case "cima": novaLinha--; break;
+        case "baixo": novaLinha++; break;
+        case "esquerda": novaColuna--; break;
+        case "direita": novaColuna++; break;
+        default: return false;
+      }
+
+      // Verifica limites
+      const config = this.fases[this.faseAtual];
+      if (novaLinha < 0 || novaLinha >= config.linhas || novaColuna < 0 || novaColuna >= config.colunas) {
+        return false;
+      }
+
+      // Verifica parede
+      if (this.gridData[novaLinha][novaColuna].tipo === "parede") {
+        return false;
+      }
+
+      // Move robô
+      this.posicaoRobo = { linha: novaLinha, coluna: novaColuna };
+      this.atualizarCelulaRobo();
+      this.caminhoPercorrido.push({ linha: novaLinha, coluna: novaColuna });
+
+      // Verifica se chegou ao alvo
+      if (novaLinha === this.posicaoAlvo.linha && novaColuna === this.posicaoAlvo.coluna) {
+        // Será verificado depois
+      }
+
+      return true;
+    },
+
+    verificarVitoria() {
+      if (this.posicaoRobo.linha === this.posicaoAlvo.linha && this.posicaoRobo.coluna === this.posicaoAlvo.coluna) {
+        this.mostrarMensagem("🎉 Parabéns! Você levou o robô até a bandeira!", "sucesso");
+        // Conta como bug? Não, é sucesso.
+        this.salvarRecorde();
+      } else {
+        this.mostrarMensagem("😅 O robô não chegou ao destino. Tente novamente!", "erro");
+        this.dispararBug();
+      }
+    },
+
+    dispararBug() {
+      this.bugsEncontrados++;
+      this.atualizarContadoresGlobais();
+      // Dispara evento para outros módulos
+      document.dispatchEvent(new CustomEvent("robo:bug", { detail: { incremento: 1 } }));
+    },
+
+    resetarJogo() {
+      if (this.emExecucao) return;
+      this.posicaoRobo = { linha: 0, coluna: 0 };
+      this.atualizarCelulaRobo();
+      this.caminhoPercorrido = [];
+      this.mostrarMensagem("🔄 Jogo resetado!", "info");
+      // Limpa algoritmo?
+      if (this.elementos.algoritmoMontado) {
+        this.elementos.algoritmoMontado.innerHTML = `<div class="placeholder-algoritmo">🧩 Arraste os comandos para montar seu algoritmo...</div>`;
+      }
+    },
+
+    mostrarDica() {
+      const dicas = {
+        1: "💡 Tente usar 'direita' e 'baixo' para chegar ao alvo!",
+        2: "💡 Cuidado com as paredes! Planeje seu caminho.",
+        3: "💡 Use loops para repetir movimentos e economizar comandos!"
+      };
+      this.mostrarMensagem(dicas[this.faseAtual] || "💡 Tente encontrar o caminho mais curto!", "info");
+    },
+
+    carregarExemplo() {
+      if (this.emExecucao) return;
+      // Limpa algoritmo e insere exemplo básico
+      const container = this.elementos.algoritmoMontado;
+      if (!container) return;
+      container.innerHTML = "";
+
+      const exemplo = this.faseAtual === 1 ? ["direita", "direita", "baixo", "baixo"] :
+        this.faseAtual === 2 ? ["direita", "baixo", "direita", "baixo", "direita"] :
+          ["baixo", "baixo", "direita", "direita", "baixo", "direita"];
+
+      exemplo.forEach(cmd => {
+        const cartao = document.createElement("div");
+        cartao.className = "cartao-montado";
+        const icones = { cima: "⬆️", baixo: "⬇️", esquerda: "⬅️", direita: "➡️" };
+        const textos = { cima: "Cima", baixo: "Baixo", esquerda: "Esquerda", direita: "Direita" };
+        cartao.dataset.comando = cmd;
+        cartao.innerHTML = `
+          <span>${icones[cmd] || "⬆️"}</span>
+          <span>${textos[cmd] || cmd}</span>
+          <span class="cartao-remove">✕</span>
+        `;
+        container.appendChild(cartao);
+      });
+
+      this.mostrarMensagem("📋 Exemplo carregado! Clique em Executar.", "info");
+      this.atualizarContadoresGlobais();
+    },
+
+    mostrarMensagem(texto, tipo = "info") {
+      const msg = this.elementos.mensagem;
+      if (!msg) return;
+      msg.textContent = texto;
+      msg.className = "mensagem-jogo";
+      if (tipo === "sucesso") msg.classList.add("sucesso");
+      if (tipo === "erro") msg.classList.add("erro");
+      if (tipo === "warning") msg.classList.add("warning");
+    },
+
+    salvarRecorde() {
+      const chave = `recorde_fase${this.faseAtual}`;
+      const passos = this.caminhoPercorrido.length;
+      const recordeAtual = parseInt(localStorage.getItem(chave) || "999");
+      if (passos < recordeAtual) {
+        localStorage.setItem(chave, passos.toString());
+        this.mostrarMensagem(`🏆 Novo recorde! ${passos} passos!`, "sucesso");
+        this.carregarRecordes();
+      }
+    },
+
+    carregarRecordes() {
+      for (let f = 1; f <= 3; f++) {
+        const chave = `recorde_fase${f}`;
+        const recorde = localStorage.getItem(chave);
+        const el = document.getElementById(`recordeFase${f}`);
+        if (el) {
+          el.textContent = recorde ? `${recorde} passos` : "—";
+        }
+      }
+    },
+
+    atualizarContadoresGlobais() {
+      // Atualiza contador de bugs no rodapé
+      const footerBug = document.getElementById("relatorioBugsFooter");
+      if (footerBug) {
+        footerBug.textContent = this.bugsEncontrados;
+      }
+      // Atualiza contador no jogo se existir
+      if (this.elementos.contadorBugs) {
+        this.elementos.contadorBugs.textContent = this.bugsEncontrados;
+      }
+    }
+  };
+  // ==================================================
+  // 5. MÓDULO DE IMPRESSÃO DO ACCORDION (FUNÇÃO COMPLETA)
+  // ==================================================
+  const ImpressaoModule = (function () {
+    "use strict";
+
+    // Referência ao botão e ao accordion
+    let btnImprimir = null;
+    let accordion = null;
+
+    // Constrói o HTML da nova janela com estilos e conteúdo
+    function construirHtmlParaImpressao(clone) {
+      const titulo = 'Planos de Aula - 4º Ano - 1º Bimestre (Hardware)';
+      const bootstrapCSS = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css';
+      const fontes = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap';
+
+      return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${titulo}</title>
+  <link rel="stylesheet" href="${bootstrapCSS}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="${fontes}" rel="stylesheet">
+  <style>
+    /* Reset e base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Chakra Petch', sans-serif;
+      background: #e9f5db;
+      padding: 20px;
+    }
+    .container-print {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-family: 'Press Start 2P', cursive;
+      color: #ffb347;
+      text-align: center;
+      border-bottom: 3px solid #ffb347;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      font-size: 1.4rem;
+    }
+    h1 small {
+      font-size: 0.6rem;
+      display: block;
+      color: #6b8c5c;
+      margin-top: 8px;
+    }
+    /* Estilos dos accordions */
+    .accordion-item {
+      background: #f8f9fa;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid #4a7c3f;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .accordion-header {
+      background: #627454;
+    }
+    .accordion-button {
+      background: #627454 !important;
+      color: #ffb347 !important;
+      font-weight: bold;
+      font-family: 'Chakra Petch', monospace;
+      border: none;
+      padding: 16px 20px;
+      font-size: 1rem;
+      width: 100%;
+      text-align: left;
+      cursor: default;
+    }
+    .accordion-button::after {
+      display: none; /* remove a seta */
+    }
+    .accordion-body {
+      background: #0d1f0b;
+      color: #ebf0eb;
+      padding: 20px;
+    }
+    .semana-card-completo {
+      background: #505e45;
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .semana-card-completo h5 {
+      color: #ffb347;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      border-left: 4px solid #ffb347;
+      padding-left: 12px;
+    }
+    .semana-card-completo h5:first-of-type {
+      margin-top: 0;
+    }
+    .semana-card-completo ul, .semana-card-completo p {
+      margin-bottom: 12px;
+      line-height: 1.5;
+      color: #ebf0eb;
+    }
+    .semana-card-completo li {
+      color: #ebf0eb;
+    }
+    .check-concluido {
+      display: none !important;
+    }
+    .minuto-item {
+      display: flex;
+      margin-bottom: 10px;
+      background: #0a0f08;
+      border-radius: 16px;
+      overflow: hidden;
+      border-left: 4px solid #ffb347;
+    }
+    .minuto-tempo {
+      background: #2c3e2b;
+      padding: 10px 16px;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      min-width: 100px;
+      text-align: center;
+      color: #ffb347;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .minuto-descricao {
+      padding: 10px 16px;
+      flex: 1;
+      line-height: 1.4;
+      color: #ebf0eb;
+    }
+    .frase-do-dia {
+      background: #2c3e2b;
+      border-radius: 16px;
+      padding: 12px 20px;
+      margin-top: 16px;
+      text-align: center;
+      border: 1px dashed #ffb347;
+      color: #ebf0eb;
+      font-style: italic;
+    }
+    .frase-do-dia i {
+      color: #ffb347;
+      margin-right: 8px;
+    }
+    .materiais-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .material-badge {
+      background: #2c3e2b;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-left: 2px solid #ffb347;
+      color: #ebf0eb;
+    }
+    .material-badge i {
+      font-size: 0.9rem;
+    }
+    .table-robotica {
+      background: #1e2a1a;
+      border-radius: 16px;
+      overflow: hidden;
+      color: #ebf0eb;
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+    .table-robotica th {
+      background: #2c3e2b;
+      color: #ffb347;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .table-robotica td {
+      padding: 10px 12px;
+      border-top: 1px solid #4a7c3f;
+      color: #ebf0eb;
+    }
+    .table-robotica tbody tr:hover {
+      background: #1e2a1a;
+    }
+    .codigo-container {
+      background: #0a0f08;
+      border-radius: 16px;
+      padding: 16px;
+      margin: 12px 0;
+      border: 1px solid #4a7c3f;
+      overflow-x: auto;
+    }
+    .codigo-container pre {
+      margin: 0;
+      color: #ebf0eb;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .tabela-criterios-semana {
+      background: #0a0f08;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .tabela-criterios-semana thead {
+      background: #2c3e2b;
+      color: #ffb347;
+    }
+    .tabela-criterios-semana th, .tabela-criterios-semana td {
+      padding: 8px 12px;
+      border-color: #4a7c3f;
+      vertical-align: middle;
+    }
+    .rodape-impressao {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #6b8c5c;
+      border-top: 2px dashed #ffb347;
+      padding-top: 20px;
+    }
+
+    /* Regras para impressão */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0.5cm;
+      }
+      .container-print {
+        box-shadow: none !important;
+        padding: 10px;
+        border-radius: 0;
+        background: white !important;
+      }
+      h1 {
+        color: #ffb347 !important;
+        border-bottom-color: #ffb347 !important;
+      }
+      .accordion-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 12px;
+        border: 1px solid #4a7c3f;
+      }
+      .accordion-button {
+        background: #627454 !important;
+        color: #ffb347 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .accordion-body {
+        background: #0d1f0b !important;
+        color: #ebf0eb !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .semana-card-completo {
+        background: #505e45 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .minuto-item {
+        break-inside: avoid;
+      }
+      .table-robotica {
+        background: #1e2a1a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .table-robotica th {
+        background: #2c3e2b !important;
+        color: #ffb347 !important;
+      }
+      .codigo-container {
+        background: #0a0f08 !important;
+        border-color: #4a7c3f !important;
+      }
+      .frase-do-dia {
+        background: #2c3e2b !important;
+        border-color: #ffb347 !important;
+      }
+      .material-badge {
+        background: #2c3e2b !important;
+        border-left-color: #ffb347 !important;
+      }
+      .tabela-criterios-semana thead {
+        background: #2c3e2b !important;
+        color: #ffb347 !important;
+      }
+      .minuto-tempo {
+        background: #2c3e2b !important;
+        color: #ffb347 !important;
+      }
+      /* Remove elementos desnecessários */
+      .btn-robotico-ano2, .check-concluido, .accordion-button::after {
+        display: none !important;
+      }
+      .rodape-impressao {
+        color: #6b8c5c !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-print">
+    <h1>🤖 Planos de Aula Detalhados<br><small>4º Ano – 1º Bimestre (Hardware)</small></h1>
+    ${clone.outerHTML}
+    <div class="rodape-impressao">
+      Documento gerado automaticamente – RobôMestres do Paraná
+    </div>
+  </div>
+  <script>
+    // Aguarda o carregamento e dispara a impressão automaticamente
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        window.print();
+        // Opcional: fechar a janela após a impressão (comentado para permitir revisão)
+        // window.close();
+      }, 500);
+    });
+  <\/script>
+</body>
+</html>`;
+    }
+
+    // Prepara o clone do accordion para impressão
+    function prepararClone(accordionOriginal) {
+      // Clona o nó inteiro
+      const clone = accordionOriginal.cloneNode(true);
+
+      // Remove checkboxes e labels de "concluída"
+      const elementosRemover = clone.querySelectorAll('.semana-check, .check-concluido');
+      elementosRemover.forEach(el => el.remove());
+
+      // Abre todos os painéis (remove classes de colapso)
+      const botoes = clone.querySelectorAll('.accordion-button');
+      botoes.forEach(btn => {
+        btn.classList.remove('collapsed');
+        btn.setAttribute('aria-expanded', 'true');
+      });
+
+      const colapsos = clone.querySelectorAll('.accordion-collapse');
+      colapsos.forEach(col => {
+        col.classList.add('show');
+        col.classList.remove('collapse');
+      });
+
+      return clone;
+    }
+
+    // Função principal de impressão
+    function imprimirAccordion() {
+      if (!accordion) {
+        alert('🤖 Nenhum plano de aula encontrado para imprimir.');
+        return;
+      }
+
+      // Prepara o clone com todos os painéis abertos e sem checkboxes
+      const clone = prepararClone(accordion);
+
+      // Constrói o HTML final
+      const htmlCompleto = construirHtmlParaImpressao(clone);
+
+      // Abre uma nova janela
+      const win = window.open('', '_blank', 'width=1000,height=800,scrollbars=yes,menubar=yes');
+      if (win) {
+        win.document.write(htmlCompleto);
+        win.document.close();
+      } else {
+        alert('⚠️ Permita pop-ups para imprimir os planos de aula.');
+      }
+    }
+
+    // Inicialização do módulo
+    function init() {
+      btnImprimir = document.getElementById('btnImprimirPlanos');
+      accordion = document.getElementById('accordionAulas');
+
+      if (btnImprimir && accordion) {
+        btnImprimir.addEventListener('click', imprimirAccordion);
+        console.log('🖨️ [ImpressaoModule] Botão de impressão do accordion ativado.');
+      } else {
+        console.log('⏳ [ImpressaoModule] Elementos não encontrados (página sem accordion).');
+      }
+    }
+
+    // Retorna a API pública
+    return {
+      init: init,
+      imprimir: imprimirAccordion   // expõe para possíveis chamadas externas
+    };
+  })();
 
   // ==================================================
-  // 5. INICIALIZAÇÃO DE TODOS OS MÓDULOS
+  // 6. INICIALIZAÇÃO DE TODOS OS MÓDULOS
   // ==================================================
   function initAll() {
     MenuModule.init();
     PlanosAulaModule.init();
     CertificadoModule.init();
     LoopDashModule.init();
+    ImpressaoModule.init();   // <-- Módulo de impressão do accordion
 
     // Sincroniza contador de bugs entre módulos
     document.addEventListener("robo:bug", (e) => {
@@ -526,7 +1377,7 @@
   }
 
   // ==================================================
-  // 6. ADICIONA ANIMAÇÕES CSS DINAMICAMENTE (se necessário)
+  // 7. ADICIONA ANIMAÇÕES CSS DINAMICAMENTE
   // ==================================================
   const style = document.createElement("style");
   style.textContent = `
@@ -603,12 +1454,13 @@
   document.head.appendChild(style);
 
   // ==================================================
-  // 7. EXPOSIÇÃO DOS MÓDULOS GLOBALMENTE
+  // 8. EXPOSIÇÃO DOS MÓDULOS GLOBALMENTE
   // ==================================================
   window.MenuModule = MenuModule;
   window.PlanosAulaModule = PlanosAulaModule;
   window.CertificadoModule = CertificadoModule;
   window.LoopDashModule = LoopDashModule;
+  window.ImpressaoModule = ImpressaoModule;
 
   console.log(
     "✅ [a4bim1_hardware.js] Todos os módulos carregados com sucesso!",

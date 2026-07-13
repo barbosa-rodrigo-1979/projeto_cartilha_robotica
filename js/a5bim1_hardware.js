@@ -144,6 +144,8 @@
       this.mostrarToast("📕 Todos os planos de aula recolhidos!", "info");
     },
 
+
+
     handleCheckboxChange(e) {
       const cb = e.target;
       this.salvarProgresso();
@@ -649,3 +651,167 @@
   console.log("%c🔁 Funções, Lógica e Micro:bit - A Revolução dos Parafusos Pensantes!", "color: #9bbc7b;");
 
 })();
+
+// ============================================================
+// função independente para imprimir planos de aula (accordion)
+// ============================================================
+
+/**
+ * Função principal de impressão dos planos de aula.
+ * @param {string} containerId - ID do elemento que contém os itens do accordion.
+ * @param {boolean} apenasSelecionadas - Se true, imprime apenas as aulas marcadas como concluídas.
+ */
+function imprimirPlanosAula(containerId = "accordionAulas", apenasSelecionadas = false) {
+  // 1. Obtém o container
+  const container = document.getElementById(containerId);
+  if (!container) {
+    alert("🤖 Container de planos de aula não encontrado.");
+    return;
+  }
+
+  // 2. Seleciona todos os itens do accordion
+  const itens = container.querySelectorAll(".accordion-item");
+  if (itens.length === 0) {
+    alert("🤖 Nenhum plano de aula encontrado.");
+    return;
+  }
+
+  // 3. Filtra os itens conforme a opção
+  let itensParaImprimir = [];
+  itens.forEach((item) => {
+    const checkbox = item.querySelector(".semana-check");
+    const isChecked = checkbox ? checkbox.checked : false;
+    if (!apenasSelecionadas || (apenasSelecionadas && isChecked)) {
+      itensParaImprimir.push(item);
+    }
+  });
+
+  if (itensParaImprimir.length === 0) {
+    alert("🤖 Nenhuma aula selecionada. Marque pelo menos uma como concluída.");
+    return;
+  }
+
+  // 4. Coleta informações para o cabeçalho
+  const headerEl = document.querySelector("#aulas .projeto-header h2");
+  const titulo = headerEl ? headerEl.innerHTML : "Planos de Aula - 5º Ano";
+  const subtituloEl = document.querySelector("#aulas .badge-projeto");
+  const subtitulo = subtituloEl ? subtituloEl.textContent : "Funções, Lógica e Micro:bit";
+
+  const agora = new Date();
+  const dataStr = agora.toLocaleDateString("pt-BR");
+  const horaStr = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+  // 5. Gera o HTML de cada item
+  let conteudoHTML = "";
+  itensParaImprimir.forEach((item, index) => {
+    const clone = item.cloneNode(true);
+
+    // Remove elementos interativos
+    clone.querySelectorAll(".semana-check, .check-concluido, .d-flex .btn, .accordion-button").forEach(el => el.remove());
+
+    // Expande o collapse
+    const collapse = clone.querySelector(".accordion-collapse");
+    if (collapse) {
+      collapse.classList.add("show");
+      collapse.style.display = "block";
+    }
+
+    // Converte o cabeçalho (botão) em texto
+    const headerBtn = clone.querySelector(".accordion-header .accordion-button");
+    if (headerBtn) {
+      const span = document.createElement("span");
+      span.className = "accordion-header-text";
+      span.innerHTML = headerBtn.innerHTML;
+      headerBtn.parentNode.replaceChild(span, headerBtn);
+    }
+
+    // Adiciona numeração
+    const header = clone.querySelector(".accordion-header");
+    if (header) {
+      const num = document.createElement("span");
+      num.className = "badge bg-secondary me-2";
+      num.textContent = `${index + 1}/${itensParaImprimir.length}`;
+      header.prepend(num);
+    }
+
+    conteudoHTML += clone.outerHTML;
+  });
+
+  // 6. Monta a página de impressão
+  const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planos de Aula - Impressão</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: white; color: #1e2a1a; padding: 20px; line-height: 1.5; }
+    .print-container { max-width: 1100px; margin: 0 auto; }
+    .print-header { border-bottom: 3px solid #ffb347; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .print-header h1 { font-family: 'Press Start 2P', cursive; font-size: 1.2rem; color: #2c3e2b; margin: 0; }
+    .print-header .badge { font-size: 0.8rem; background: #ffb347; color: #1e2a1a; }
+    .print-header .data-hora { font-size: 0.8rem; color: #6c7a7a; }
+    .accordion-item { border: 1px solid #ccc; border-radius: 12px; margin-bottom: 20px; page-break-inside: avoid; }
+    .accordion-header { background: #f5f5f5; padding: 12px 16px; border-bottom: 1px solid #ddd; border-radius: 12px 12px 0 0; display: flex; align-items: center; gap: 10px; }
+    .accordion-header-text { font-weight: bold; font-size: 1rem; font-family: 'Chakra Petch', monospace; color: #2c3e2b; }
+    .accordion-body { padding: 16px; background: white; }
+    .semana-card-completo { padding: 8px; }
+    .semana-card-completo h5 { color: #2c3e2b; margin-top: 16px; margin-bottom: 8px; font-weight: 700; border-left: 4px solid #ffb347; padding-left: 12px; }
+    .semana-card-completo ul, .semana-card-completo p { margin-bottom: 12px; }
+    .materiais-container { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .material-badge { background: #f0f0f0; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; border-left: 2px solid #ffb347; display: inline-flex; align-items: center; gap: 4px; }
+    .minuto-item { display: flex; margin-bottom: 10px; background: #f9f9f9; border-radius: 12px; overflow: hidden; border-left: 4px solid #ffb347; }
+    .minuto-tempo { background: #e9e9e9; padding: 6px 12px; font-weight: bold; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; min-width: 90px; text-align: center; color: #2c3e2b; }
+    .minuto-descricao { padding: 6px 12px; flex: 1; }
+    .frase-do-dia { background: #f5f5f5; border-radius: 12px; padding: 8px 16px; margin-top: 16px; text-align: center; font-style: italic; border: 1px dashed #ffb347; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 8px; white-space: pre-wrap; word-break: break-word; border-left: 4px solid #ffb347; }
+    code { font-family: 'Courier New', monospace; font-size: 0.85rem; }
+    .table-robotica { border-collapse: collapse; width: 100%; margin-bottom: 12px; }
+    .table-robotica th, .table-robotica td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; font-size: 0.85rem; }
+    .table-robotica th { background: #f0f0f0; font-weight: bold; }
+    .badge-projeto { background: #e74c3c; color: white; padding: 2px 10px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
+    .print-footer { margin-top: 30px; border-top: 2px solid #ccc; padding-top: 10px; text-align: center; font-size: 0.7rem; color: #6c7a7a; }
+    .btn, .progress-container, .check-concluido, .d-flex.gap-2, .navbar, .cabecalho-robotico, footer { display: none !important; }
+    @media print { body { padding: 0.5cm; margin: 0; } .accordion-item { page-break-inside: avoid; } }
+    @media (max-width: 600px) { .minuto-item { flex-direction: column; } .minuto-tempo { min-width: auto; text-align: left; } }
+  </style>
+</head>
+<body>
+  <div class="print-container">
+    <div class="print-header">
+      <div>
+        <h1>${titulo}</h1>
+        <span class="badge">${subtitulo}</span>
+      </div>
+      <div class="data-hora">
+        <i class="bi bi-calendar"></i> ${dataStr} &nbsp;|&nbsp; <i class="bi bi-clock"></i> ${horaStr}
+        <br><span class="badge bg-secondary">${itensParaImprimir.length} aula(s)</span>
+      </div>
+    </div>
+    ${conteudoHTML}
+    <div class="print-footer">
+      <i class="bi bi-robot"></i> Robótica Educacional - 5º Ano | Gerado em ${dataStr} às ${horaStr}
+    </div>
+  </div>
+  <script>
+    window.onload = function() {
+      setTimeout(function() { window.print(); }, 300);
+    };
+  <\/script>
+</body>
+</html>`;
+
+  // 7. Abre a janela
+  const win = window.open("", "_blank", "width=1024,height=800,toolbar=no,menubar=no,scrollbars=yes");
+  if (win) {
+    win.document.write(html);
+    win.document.close();
+  } else {
+    alert("⚠️ Permita pop-ups para imprimir.");
+  }
+}
