@@ -1802,8 +1802,12 @@ basic.pause(5000)      // 5 segundos
                     ">
 // ==============================================================
 // PROJETO: SEMÁFORO SONORO COM MODO NOTURNO
-// DESCRIÇÃO: Adiciona um modo onde o LED amarelo pisca,
-// controlado pelo botão A.
+// DESCRIÇÃO: 
+//   Este projeto simula um semáforo com três LEDs (vermelho, amarelo e verde)
+//   e sons associados a cada estado. Além disso, possui um "Modo Noturno"
+//   que, quando ativado pelo botão A, faz o LED amarelo piscar continuamente,
+//   simulando um semáforo em operação reduzida durante a madrugada.
+// 
 // AUTOR: Equipe Robô na Veia
 // VERSÃO: 2.0 (com Modo Noturno)
 // ==============================================================
@@ -1812,24 +1816,35 @@ basic.pause(5000)      // 5 segundos
 // 1. VARIÁVEIS GLOBAIS
 // ==============================================================
 
-let ledVermelho = 0 // LED vermelho no pino P0
-let ledAmarelo = 1 // LED amarelo no pino P1
-let ledVerde = 2 // LED verde no pino P2
+// Cada LED está conectado a um pino digital do micro:bit.
+// Atribuímos os números dos pinos a nomes simbólicos para facilitar a leitura.
+let ledVermelho = 0   // LED vermelho no pino P0 (pino digital 0)
+let ledAmarelo = 1    // LED amarelo no pino P1 (pino digital 1)
+let ledVerde = 2      // LED verde no pino P2 (pino digital 2)
 
-// Variável para controlar o modo noturno
-// true = modo noturno ativado, false = modo normal
+// Variável booleana (verdadeiro/falso) que controla o modo noturno.
+// Inicialmente, o modo noturno está desativado (false).
+// Quando o usuário pressionar o botão A, esta variável será invertida.
 let modoNoturno = false
 
 // ==============================================================
 // 2. FUNÇÃO PARA ACENDER UM LED ESPECÍFICO
 // ==============================================================
 
+// Esta função recebe um número de pino (0, 1 ou 2) e acende o LED
+// correspondente, garantindo que todos os outros LEDs estejam apagados.
+// Isso evita que dois LEDs fiquem acesos ao mesmo tempo.
 function acenderLED(pino: number) {
-  // Desliga todos os LEDs
+  // Desliga todos os LEDs escrevendo 0 (nível baixo) em cada pino.
+  // O comando pins.digitalWritePin(pino, valor) controla o pino:
+  //   - valor 0 = desligado (0 volts)
+  //   - valor 1 = ligado (3,3 volts)
   pins.digitalWritePin(DigitalPin.P0, 0)
   pins.digitalWritePin(DigitalPin.P1, 0)
   pins.digitalWritePin(DigitalPin.P2, 0)
-  // Liga o LED no pino especificado
+
+  // Liga o LED no pino especificado (escreve 1 no pino desejado).
+  // Como os outros estão em 0, apenas este LED acende.
   pins.digitalWritePin(pino, 1)
 }
 
@@ -1837,7 +1852,12 @@ function acenderLED(pino: number) {
 // 3. FUNÇÃO PARA TOCAR UM SOM
 // ==============================================================
 
+// Esta função gera um tom (beep) com uma frequência e duração determinadas.
+// O micro:bit possui um alto-falante ou saída para fones de ouvido.
+// A frequência é medida em Hertz (Hz) e a duração em milissegundos (ms).
 function tocarSom(frequencia: number, duracao: number) {
+  // A função playTone da biblioteca 'music' reproduz um tom puro.
+  // Exemplo: 523 Hz é a nota Dó (agudo), 262 Hz é Dó grave.
   music.playTone(frequencia, duracao)
 }
 
@@ -1845,7 +1865,10 @@ function tocarSom(frequencia: number, duracao: number) {
 // 4. FUNÇÃO PARA APAGAR TODOS OS LEDs
 // ==============================================================
 
+// Função simples que desliga todos os LEDs simultaneamente.
+// Útil para o modo noturno, onde o LED amarelo pisca (liga/desliga).
 function apagarTodosLEDs() {
+  // Escreve 0 em todos os pinos, desligando todos os LEDs.
   pins.digitalWritePin(DigitalPin.P0, 0)
   pins.digitalWritePin(DigitalPin.P1, 0)
   pins.digitalWritePin(DigitalPin.P2, 0)
@@ -1855,61 +1878,86 @@ function apagarTodosLEDs() {
 // 5. BOTÃO A: ATIVA/DESATIVA O MODO NOTURNO
 // ==============================================================
 
-// O botão A do micro:bit é usado como interruptor do Modo Noturno
-// Cada vez que é pressionado, o modo é invertido (ligado/desligado)
+// O micro:bit possui dois botões: A e B. Aqui usamos o botão A como
+// um interruptor para o modo noturno.
+// A função 'input.onButtonPressed' é executada sempre que o botão é pressionado.
 input.onButtonPressed(Button.A, function () {
-  // Inverte o estado da variável modoNoturno
-  // !modoNoturno significa "negação do valor atual"
+  // Inverte o valor da variável modoNoturno:
+  //   - Se era false, passa para true (ativa o modo noturno)
+  //   - Se era true, passa para false (desativa o modo noturno)
+  // O operador '!' (negação lógica) inverte o valor booleano.
   modoNoturno = !modoNoturno
 
-  // Feedback visual para o usuário
+  // Feedback visual para o usuário: mostra um ícone na matriz de LEDs
+  // do micro:bit para indicar qual modo foi ativado.
   if (modoNoturno) {
-    // Mostra um "V" (check) na matriz de LEDs = modo noturno ATIVADO
+    // Se o modo noturno foi ATIVADO, exibe um "V" (check) – símbolo de "SIM".
+    // IconNames.Yes é um ícone pré-definido que representa um "V".
     basic.showIcon(IconNames.Yes)
   } else {
-    // Mostra um "X" (não) na matriz de LEDs = modo noturno DESATIVADO
+    // Se o modo noturno foi DESATIVADO, exibe um "X" – símbolo de "NÃO".
     basic.showIcon(IconNames.No)
   }
-  basic.pause(500) // Mostra o ícone por 0,5 segundos
-  basic.clearScreen() // Limpa a matriz de LEDs
+
+  // Aguarda 500 milissegundos (0,5 segundo) para que o usuário veja o ícone.
+  basic.pause(500)
+
+  // Limpa a matriz de LEDs (apaga todos os pixels) para não ficar poluído.
+  basic.clearScreen()
 })
 
 // ==============================================================
 // 6. LOOP PRINCIPAL
 // ==============================================================
 
+// O bloco 'basic.forever' executa o código dentro dele repetidamente,
+// indefinidamente, enquanto o micro:bit estiver ligado.
+// É o "loop principal" do programa.
 basic.forever(function () {
   // VERIFICAÇÃO: Estamos no Modo Noturno?
+  // A variável modoNoturno define qual comportamento o semáforo terá.
   if (modoNoturno) {
     // ---------- MODO NOTURNO: LED AMARELO PISCANDO ----------
-    // O semáforo fica apenas com o LED amarelo piscando
-    // Acende o LED amarelo
+    // Neste modo, o semáforo não segue a sequência normal.
+    // Apenas o LED amarelo fica piscando (alternando ligado/desligado)
+    // para indicar que o trânsito está em operação reduzida.
+
+    // Acende o LED amarelo (pino P1) chamando a função acenderLED
     acenderLED(ledAmarelo)
-    // Espera 500ms (meio segundo)
+
+    // Pausa de 500 ms (meio segundo) – tempo que o LED fica aceso.
     basic.pause(500)
-    // Apaga todos os LEDs
+
+    // Apaga todos os LEDs (incluindo o amarelo).
     apagarTodosLEDs()
-    // Espera 500ms
+
+    // Pausa de 500 ms – tempo que o LED fica apagado.
     basic.pause(500)
-    // O loop repete: acende - apaga - acende - apaga
-    // Criando o efeito de pisca-pisca
+
+    // O loop se repete: acende -> espera -> apaga -> espera -> ...
+    // Isso gera um efeito de pisca-pisca contínuo.
   } else {
     // ---------- MODO NORMAL: SEMÁFORO ----------
-    // Funcionamento normal do semáforo (verde - amarelo - vermelho)
-    // Sinal VERDE
-    acenderLED(ledVerde)
-    tocarSom(523, 200) // Nota Dó (agudo)
-    basic.pause(5000) // 5 segundos
+    // Funcionamento padrão de um semáforo com três tempos:
+    // Verde (5s) -> Amarelo (2s) -> Vermelho (5s) -> (volta ao verde)
 
-    // Sinal AMARELO
-    acenderLED(ledAmarelo)
-    tocarSom(392, 200) // Nota Sol (médio)
-    basic.pause(2000) // 2 segundos
+    // Sinal VERDE: permite a passagem dos veículos.
+    acenderLED(ledVerde)        // Acende o LED verde (pino P2)
+    tocarSom(523, 200)          // Reproduz a nota Dó (frequência 523 Hz) por 200 ms
+    basic.pause(5000)           // Mantém o verde aceso por 5 segundos
 
-    // Sinal VERMELHO
-    acenderLED(ledVermelho)
-    tocarSom(262, 300) // Nota Dó baixo (grave)
-    basic.pause(5000) // 5 segundos
+    // Sinal AMARELO: atenção, preparar para parar.
+    acenderLED(ledAmarelo)      // Acende o LED amarelo (pino P1)
+    tocarSom(392, 200)          // Nota Sol (frequência 392 Hz) por 200 ms
+    basic.pause(2000)           // Mantém o amarelo aceso por 2 segundos
+
+    // Sinal VERMELHO: parada obrigatória.
+    acenderLED(ledVermelho)     // Acende o LED vermelho (pino P0)
+    tocarSom(262, 300)          // Nota Dó grave (frequência 262 Hz) por 300 ms
+    basic.pause(5000)           // Mantém o vermelho aceso por 5 segundos
+
+    // Após o vermelho, o loop recomeça e o verde é aceso novamente.
+    // A sequência se repete eternamente.
   }
 })
 
@@ -1917,10 +1965,16 @@ basic.forever(function () {
 // 7. INÍCIO COM MENSAGEM
 // ==============================================================
 
-// Quando o micro:bit é ligado, mostra uma mensagem de boas-vindas
-basic.showString("SEMAFORO")
-basic.pause(500)
-basic.clearScreen()</pre>
+// O bloco 'basic.showString' é executado apenas uma vez, quando o micro:bit
+// é ligado ou reiniciado. Mostra uma mensagem de boas-vindas na matriz de LEDs.
+basic.showString("SEMAFORO")   // Exibe a palavra "SEMAFORO" rolando os caracteres
+basic.pause(500)               // Pequena pausa após a mensagem
+basic.clearScreen()            // Limpa a matriz para iniciar o programa principal
+
+// ==============================================================
+// FIM DO CÓDIGO
+// ==============================================================
+</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2452,13 +2506,17 @@ basic.clearScreen()</pre>
 
 // A variável 'calibracao' armazena o valor de referência do sensor
 // Este valor é lido quando a pessoa está em estado "neutro"
+// Inicialmente zero, será atualizada pela função calibrar()
 let calibracao = 0
 
 // A variável 'limiar' define o que é considerado "verdade" ou "mentira"
-// Quanto menor o limiar, mais sensível o detector
+// Quanto menor o limiar, mais sensível o detector (detecta variações pequenas)
+// O valor 80 é um valor empírico que funciona bem na prática
 let limiar = 80
 
 // Flag para indicar se o sensor foi calibrado
+// Usamos um booleano para controlar se a calibração já foi feita
+// Inicialmente false, pois ainda não calibramos
 let calibrado = false
 
 // ==============================================================
@@ -2472,23 +2530,36 @@ Deve ser chamada quando a pessoa está em estado "neutro"
 */
 function calibrar() {
   // Lê o valor do sensor no pino P0 (0 a 1023)
-  // Quanto maior o contato da pele, maior o valor
+  // A função analogReadPin() retorna um valor inteiro de 0 a 1023,
+  // que representa a tensão no pino (0V a 3.3V). No caso do sensor
+  // capacitivo, quanto maior a área de contato da pele (ou umidade),
+  // maior a capacitância e, consequentemente, maior o valor lido.
   calibracao = pins.analogReadPin(AnalogPin.P0)
 
-  // Marca que o sensor foi calibrado
+  // Marca que o sensor foi calibrado, alterando a flag para true
+  // Isso permitirá que a função detectarMentira() funcione corretamente
   calibrado = true
 
   // Acende o LED de calibração (P2) para indicar que está pronto
+  // O pino P2 é configurado como saída digital. Colocamos em nível ALTO (1)
+  // para acender um LED externo (se conectado) ou podemos usar o LED interno
+  // da placa, mas aqui usamos um pino genérico para sinalização externa.
   pins.digitalWritePin(DigitalPin.P2, 1)
 
-  // Mostra um "V" (check) na matriz de LEDs
+  // Mostra um "V" (check) na matriz de LEDs para indicar calibração bem-sucedida
+  // A função showIcon() exibe um ícone pré-definido na matriz 5x5
   basic.showIcon(IconNames.Yes)
+  // Aguarda 500 milissegundos para que o usuário veja o ícone
   basic.pause(500)
+  // Limpa a tela (matriz de LEDs) apagando todos os LEDs
   basic.clearScreen()
 
   // Mostra o valor calibrado no display (opcional)
+  // Concatenação com string vazia para converter número em string
   basic.showString("" + calibracao)
+  // Pausa para leitura do valor exibido
   basic.pause(500)
+  // Limpa a tela novamente
   basic.clearScreen()
 }
 
@@ -2503,19 +2574,26 @@ Se a diferença for grande, considera-se "mentira".
 */
 function detectarMentira() {
   // Verifica se o sensor foi calibrado
+  // Se a flag calibrado for false, significa que a calibração ainda não foi feita
   if (!calibrado) {
-    // Se não foi calibrado, pede para calibrar
+    // Se não foi calibrado, pede para calibrar exibindo a mensagem "CALIBRE"
     basic.showString("CALIBRE")
+    // Pausa para leitura da mensagem
     basic.pause(500)
+    // Limpa a tela e sai da função (return)
     basic.clearScreen()
     return
   }
 
-  // Lê o valor atual do sensor
+  // Lê o valor atual do sensor no pino P0
+  // Este valor representa a resposta do sensor no momento da leitura
   let valorAtual = pins.analogReadPin(AnalogPin.P0)
 
   // Calcula a diferença entre o valor atual e o valor calibrado
   // Usamos Math.abs() para obter o valor absoluto (ignora o sinal)
+  // Ou seja, se valorAtual for maior ou menor que calibracao, a diferença será positiva
+  // Isso é importante porque a variação pode ser para mais ou para menos,
+  // mas queremos apenas a magnitude da mudança.
   let diferenca = Math.abs(valorAtual - calibracao)
 
   // ==========================================================
@@ -2523,34 +2601,45 @@ function detectarMentira() {
   // ==========================================================
 
   // Se a diferença for maior que o limiar, é "mentira"
+  // O limiar é um valor de tolerância: se a variação for pequena, consideramos verdade;
+  // se for grande, consideramos mentira.
   if (diferenca > limiar) {
     // ---------- MENTIRA! ----------
     // Feedback: X vermelho + som grave
-    // Mostra um "X" na matriz de LEDs (vermelho)
+    // Mostra um "X" na matriz de LEDs (vermelho) - ícone de "não"
     basic.showIcon(IconNames.No)
 
     // Toca um som grave (frequência baixa) para indicar mentira
+    // A função playTone() gera um tom com a frequência especificada (em Hz)
+    // e duração em milissegundos. 200 Hz é um som grave e "pesado".
     music.playTone(200, 500)
 
     // Pisca o LED de calibração (P2) para indicar que algo está errado
+    // Loop para piscar 3 vezes
     for (let i = 0; i < 3; i++) {
+      // Apaga o LED (nível baixo)
       pins.digitalWritePin(DigitalPin.P2, 0)
+      // Aguarda 100 ms
       basic.pause(100)
+      // Acende o LED (nível alto)
       pins.digitalWritePin(DigitalPin.P2, 1)
+      // Aguarda 100 ms
       basic.pause(100)
     }
 
     // Mostra o valor da diferença no display (opcional)
+    // Útil para depuração e para o usuário ver o quanto variou
     basic.showString("D:" + diferenca)
     basic.pause(500)
     basic.clearScreen()
   } else {
     // ---------- VERDADE! ----------
     // Feedback: V (check) + som agudo
-    // Mostra um "V" (check) na matriz de LEDs (verde)
+    // Mostra um "V" (check) na matriz de LEDs (verde) - ícone de "sim"
     basic.showIcon(IconNames.Yes)
 
     // Toca um som agudo (frequência alta) para indicar verdade
+    // 800 Hz é um som mais agudo e "alegre"
     music.playTone(800, 500)
 
     // Mostra o valor da diferença no display (opcional)
@@ -2559,6 +2648,7 @@ function detectarMentira() {
     basic.clearScreen()
   }
 
+  // Pequena pausa antes de limpar a tela completamente
   basic.pause(1000)
   basic.clearScreen()
 }
@@ -2571,10 +2661,15 @@ function detectarMentira() {
 Função que reseta a calibração, permitindo calibrar para outra pessoa.
 */
 function resetarCalibracao() {
+  // Muda a flag para false, indicando que o sensor não está mais calibrado
   calibrado = false
+  // Apaga o LED de calibração (P2) para indicar que a calibração foi perdida
   pins.digitalWritePin(DigitalPin.P2, 0)
+  // Exibe a mensagem "RESET" na matriz
   basic.showString("RESET")
+  // Pausa para visualização
   basic.pause(500)
+  // Limpa a tela
   basic.clearScreen()
 }
 
@@ -2588,18 +2683,22 @@ Quanto menor o limiar, mais sensível (mais "mentiras" são detectadas).
 */
 function ajustarLimiar(direcao: number) {
   // direcao: 1 = aumentar (menos sensível), -1 = diminuir (mais sensível)
+  // Multiplicamos direcao por 10 para fazer ajustes de 10 em 10
   limiar = limiar + (direcao * 10)
 
   // Garante que o limiar não fique negativo ou muito alto
+  // Definimos limites mínimo de 10 e máximo de 200 para evitar valores extremos
   if (limiar < 10) {
     limiar = 10
   } else if (limiar > 200) {
     limiar = 200
   }
 
-  // Mostra o novo limiar na matriz de LEDs
+  // Mostra o novo limiar na matriz de LEDs para o usuário saber o valor atual
   basic.showString("L:" + limiar)
+  // Pausa para leitura
   basic.pause(500)
+  // Limpa a tela
   basic.clearScreen()
 }
 
@@ -2609,17 +2708,20 @@ function ajustarLimiar(direcao: number) {
 
 // Botão A: Calibrar o sensor
 // O usuário deve estar em estado "neutro" e tocar o sensor
+// Quando o botão A for pressionado, chama a função calibrar()
 input.onButtonPressed(Button.A, function () {
   calibrar()
 })
 
 // Botão B: Detectar mentira
 // O usuário toca o sensor e o micro:bit decide se é verdade ou mentira
+// Quando o botão B for pressionado, chama a função detectarMentira()
 input.onButtonPressed(Button.B, function () {
   detectarMentira()
 })
 
 // Botão A+B: Resetar a calibração
+// Quando ambos os botões forem pressionados simultaneamente, reseta a calibração
 input.onButtonPressed(Button.AB, function () {
   resetarCalibracao()
 })
@@ -2628,23 +2730,35 @@ input.onButtonPressed(Button.AB, function () {
 // 7. INICIALIZAÇÃO
 // ==============================================================
 
-// Quando o micro:bit é ligado, mostra uma mensagem de boas-vindas
+// Quando o micro:bit é ligado (ou reiniciado), o bloco "on start" é executado
+// Mostra uma mensagem de boas-vindas na matriz de LEDs
 basic.showString("DETECTOR")
+// Pausa para leitura
 basic.pause(500)
+// Limpa a tela
 basic.clearScreen()
 
-// Mostra instruções para o usuário
+// Mostra instruções para o usuário: como calibrar
 basic.showString("A=CALIBRAR")
+// Pausa para leitura
 basic.pause(1000)
+// Limpa a tela
 basic.clearScreen()
 
+// Mostra instruções para o usuário: como detectar
 basic.showString("B=DETECTAR")
+// Pausa para leitura
 basic.pause(1000)
+// Limpa a tela
 basic.clearScreen()
 
+// Mostra instruções para o usuário: como resetar
 basic.showString("AB=RESET")
+// Pausa para leitura
 basic.pause(1000)
-basic.clearScreen()</pre>
+// Limpa a tela
+basic.clearScreen()
+</pre>
 
                 <p>
                   <strong>Explicação do Código em Blocos (para alunos
@@ -3214,40 +3328,118 @@ basic.clearScreen()</pre>
 // DESCRIÇÃO: Controla LEDs para indicar se o estande está aberto
 // AUTOR: Equipe Robô na Veia
 // ==============================================================
+// 
+// Este programa é destinado ao micro:bit e utiliza a plataforma MakeCode.
+// O objetivo é simular a sinalização de um estande (ex: em uma feira)
+// utilizando dois LEDs externos (verde e vermelho) conectados aos pinos
+// P1 e P3, respectivamente. Quando o estande está aberto, o LED verde
+// acende e o vermelho apaga, e a matriz de LEDs do micro:bit exibe um
+// ícone de "sim" (checkmark). Quando fechado, o LED vermelho acende,
+// o verde apaga e a matriz exibe um ícone de "não" (X). Os botões A e B
+// permitem alternar entre os estados, e um tom sonoro é reproduzido
+// para feedback auditivo.
+// 
+// Hardware necessário:
+// - Micro:bit
+// - Dois LEDs com resistores adequados conectados aos pinos P1 (verde) e P3 (vermelho)
+// - (Opcional) Alto-falante ou buzzer no pino 0 (padrão para music.playTone)
+//
+// ==============================================================
 
+// Declaração da variável global que armazena o estado atual do estande.
+// 'true' significa aberto, 'false' significa fechado.
+// Inicializamos com 'true' (aberto) mas depois será redefinida.
 let estandeAberto = true
 
+// ==============================================================
+// FUNÇÃO: atualizarSinalizacao()
+// DESCRIÇÃO: Atualiza os LEDs externos e a matriz de LEDs do micro:bit
+// com base no estado atual (estandeAberto).
+// Esta função é chamada sempre que o estado muda.
+// ==============================================================
 function atualizarSinalizacao() {
+  // Verifica se o estande está aberto
   if (estandeAberto) {
-    // ESTANDE ABERTO: LED VERDE ACESO
-    pins.digitalWritePin(DigitalPin.P1, 1) // Verde
+    // === ESTANDE ABERTO ===
+    // Acende o LED verde conectado ao pino P1 (nível lógico alto = 1)
+    // O pino P1 é configurado como saída digital.
+    pins.digitalWritePin(DigitalPin.P1, 1) // Verde aceso
+    // Apaga o LED vermelho conectado ao pino P3 (nível lógico baixo = 0)
     pins.digitalWritePin(DigitalPin.P3, 0) // Vermelho apagado
+    // Exibe na matriz de LEDs do micro:bit um ícone de "sim" (checkmark)
+    // A função showIcon() exibe o ícone por padrão por 1500ms, mas como
+    // não há pause, ele fica visível até que outro ícone seja exibido ou a tela limpa.
     basic.showIcon(IconNames.Yes)
   } else {
-    // ESTANDE FECHADO: LED VERMELHO ACESO
+    // === ESTANDE FECHADO ===
+    // Apaga o LED verde (pino P1)
     pins.digitalWritePin(DigitalPin.P1, 0) // Verde apagado
-    pins.digitalWritePin(DigitalPin.P3, 1) // Vermelho
+    // Acende o LED vermelho (pino P3)
+    pins.digitalWritePin(DigitalPin.P3, 1) // Vermelho aceso
+    // Exibe na matriz de LEDs um ícone de "não" (X)
     basic.showIcon(IconNames.No)
   }
+  // Nota: A função não retorna nenhum valor; apenas atualiza os dispositivos de saída.
 }
 
+// ==============================================================
+// EVENTO: Botão A pressionado
+// DESCRIÇÃO: Quando o botão A é pressionado, o estande é aberto.
+// ==============================================================
 input.onButtonPressed(Button.A, function () {
+  // Altera a variável global para 'true' (aberto)
   estandeAberto = true
+  // Chama a função que atualiza a sinalização (LEDs e ícone)
   atualizarSinalizacao()
+  // Reproduz um tom de 800 Hz por 200 milissegundos no alto-falante/buzzer
+  // O pino padrão para áudio no micro:bit é o pino 0.
   music.playTone(800, 200)
 })
 
+// ==============================================================
+// EVENTO: Botão B pressionado
+// DESCRIÇÃO: Quando o botão B é pressionado, o estande é fechado.
+// ==============================================================
 input.onButtonPressed(Button.B, function () {
+  // Altera a variável global para 'false' (fechado)
   estandeAberto = false
+  // Chama a função que atualiza a sinalização
   atualizarSinalizacao()
+  // Reproduz um tom de 300 Hz por 200 ms (tom mais grave para indicar fechamento)
   music.playTone(300, 200)
 })
 
+// ==============================================================
+// INICIALIZAÇÃO DO PROGRAMA
+// O código abaixo é executado quando o micro:bit é ligado ou reiniciado.
+// ==============================================================
+
+// Garantimos que o estado inicial seja 'true' (aberto) – redundante, pois já foi
+// definido no início, mas reforça a inicialização.
 estandeAberto = true
+// Chama a função para configurar os LEDs e o ícone conforme o estado inicial.
 atualizarSinalizacao()
+
+// Exibe a palavra "FEIRA" na matriz de LEDs, uma letra por vez, com rolamento.
+// A função showString() exibe uma mensagem de texto na tela, percorrendo
+// caracteres e com um atraso padrão de 150ms entre eles.
 basic.showString("FEIRA")
+
+// Pausa a execução por 500 milissegundos (meio segundo) para que a mensagem
+// "FEIRA" seja completamente exibida e visualizada antes de limpar a tela.
 basic.pause(500)
-basic.clearScreen()</pre>
+
+// Limpa a tela (matriz de LEDs) para remover qualquer resíduo da mensagem.
+// Após isso, a tela mostrará apenas o ícone definido pela última chamada de
+// showIcon() (que foi executada em atualizarSinalizacao()).
+basic.clearScreen()
+
+// ==============================================================
+// FIM DO PROGRAMA
+// A partir daqui, o micro:bit fica em loop aguardando eventos (botões)
+// e mantendo a sinalização atualizada.
+// ==============================================================
+</pre>
 
                 <h5>
                   ⏱️ Detalhamento Minuto a Minuto (Modelo para 2 horas de
@@ -4026,25 +4218,50 @@ basic.clearScreen()</pre>
 // 1. VARIÁVEIS GLOBAIS
 // ==============================================================
 
-let calibracao = 0 // Valor de referência do sensor
-let limiar = 80 // Limiar para considerar "mentira"
-let calibrado = false // Flag para indicar se o sensor foi calibrado
+// Variável que armazenará o valor de referência lido do sensor
+// durante a calibração. Esse valor será usado como base para
+// comparar as leituras futuras.
+let calibracao = 0
+
+// Limiar (ou sensibilidade) que define o quanto a leitura atual
+// pode se desviar do valor de calibração para considerarmos uma
+// "mentira". Quanto menor o valor, mais sensível será o detector.
+let limiar = 80
+
+// Flag booleana que indica se o processo de calibração já foi
+// realizado. Inicia como 'false' (não calibrado) e muda para
+// 'true' após a calibração.
+let calibrado = false
 
 // ==============================================================
 // 2. FUNÇÃO DE CALIBRAÇÃO
 // ==============================================================
 
+// Esta função deve ser executada para definir o valor de referência
+// do sensor. Ela lê o pino analógico P0 e armazena esse valor.
 function calibrar() {
-  // Lê o valor do sensor no pino P0
+  // Lê o valor analógico (0 a 1023) do sensor conectado ao pino P0
+  // e armazena na variável global 'calibracao'.
   calibracao = pins.analogReadPin(AnalogPin.P0)
+
+  // Muda a flag 'calibrado' para 'true', indicando que a calibração
+  // foi concluída com sucesso.
   calibrado = true
 
-  // Acende o LED de calibração (P2)
+  // Acende o LED de calibração conectado ao pino digital P2.
+  // Esse LED serve como indicador visual de que a calibração
+  // está ativa e o sistema pronto para detectar mentiras.
   pins.digitalWritePin(DigitalPin.P2, 1)
 
-  // Mostra um ícone para indicar que a calibração foi concluída
+  // Exibe um ícone de "sim" (check) na matriz de LEDs do micro:bit
+  // para confirmar visualmente que a calibração foi bem-sucedida.
   basic.showIcon(IconNames.Yes)
+
+  // Aguarda 500 milissegundos (meio segundo) para que o usuário
+  // possa ver o ícone e o LED aceso.
   basic.pause(500)
+
+  // Limpa a tela (matriz de LEDs), apagando o ícone exibido.
   basic.clearScreen()
 }
 
@@ -4052,39 +4269,77 @@ function calibrar() {
 // 3. FUNÇÃO PARA "DETECTAR MENTIRA"
 // ==============================================================
 
+// Esta é a função principal que compara a leitura atual com a
+// calibração e decide se é "verdade" ou "mentira".
 function detectarMentira() {
-  // Verifica se o sensor foi calibrado
+  // Primeiro, verifica se o sensor já foi calibrado.
+  // Se 'calibrado' for 'false', o sistema ainda não tem um valor
+  // de referência, então não pode fazer a detecção.
   if (!calibrado) {
+    // Mostra a palavra "CALIBRE" na matriz de LEDs, pedindo que
+    // o usuário pressione o botão A para calibrar.
     basic.showString("CALIBRE")
+
+    // Pausa por 500 ms para a mensagem ser lida.
     basic.pause(500)
+
+    // Limpa a tela após a pausa.
     basic.clearScreen()
+
+    // Sai da função imediatamente, sem tentar detectar.
     return
   }
 
-  // Lê o valor atual do sensor
+  // Lê o valor atual do sensor no pino P0 (analógico).
   let valorAtual = pins.analogReadPin(AnalogPin.P0)
+
+  // Calcula a diferença absoluta entre o valor atual e o valor
+  // de calibração. Quanto maior essa diferença, maior a variação
+  // detectada pelo sensor.
   let diferenca = Math.abs(valorAtual - calibracao)
 
-  // Lógica de decisão
+  // Lógica de decisão: se a diferença ultrapassar o limiar,
+  // consideramos que é uma "mentira"; caso contrário, "verdade".
   if (diferenca > limiar) {
     // ---------- MENTIRA! ----------
+
+    // Exibe o ícone de "não" (X) na matriz de LEDs para indicar
+    // que foi detectada uma mentira.
     basic.showIcon(IconNames.No)
+
+    // Toca um som grave (frequência 200 Hz) por 500 ms para
+    // reforçar a indicação sonora de mentira.
     music.playTone(200, 500)
 
-    // Pisca o LED de calibração (indicando que algo está errado)
+    // Pisca o LED de calibração (P2) três vezes de forma rápida
+    // para chamar a atenção e indicar visualmente o evento.
     for (let i = 0; i < 3; i++) {
+      // Apaga o LED (0 = desligado).
       pins.digitalWritePin(DigitalPin.P2, 0)
+      // Pausa 100 ms para o LED ficar apagado.
       basic.pause(100)
+      // Acende o LED (1 = ligado).
       pins.digitalWritePin(DigitalPin.P2, 1)
+      // Pausa 100 ms para o LED ficar aceso.
       basic.pause(100)
     }
   } else {
     // ---------- VERDADE! ----------
+
+    // Exibe o ícone de "sim" (check) para indicar que a leitura
+    // está dentro do esperado, ou seja, "verdade".
     basic.showIcon(IconNames.Yes)
+
+    // Toca um som agudo (frequência 800 Hz) por 500 ms para
+    // indicar que a resposta foi verdadeira.
     music.playTone(800, 500)
   }
 
+  // Aguarda 1 segundo (1000 ms) para que o ícone e o som sejam
+  // percebidos antes de limpar a tela.
   basic.pause(1000)
+
+  // Limpa a tela da matriz de LEDs, preparando para a próxima leitura.
   basic.clearScreen()
 }
 
@@ -4092,11 +4347,24 @@ function detectarMentira() {
 // 4. FUNÇÃO PARA RESETAR A CALIBRAÇÃO
 // ==============================================================
 
+// Esta função permite reiniciar o processo de calibração,
+// desligando o LED de calibração e resetando a flag.
 function resetarCalibracao() {
+  // Muda a flag 'calibrado' para 'false', indicando que o sistema
+  // não está mais calibrado. A próxima detecção exigirá nova calibração.
   calibrado = false
+
+  // Desliga o LED de calibração (P2) – coloca em nível baixo (0).
   pins.digitalWritePin(DigitalPin.P2, 0)
+
+  // Mostra a palavra "RESET" na matriz de LEDs para informar que
+  // a calibração foi resetada.
   basic.showString("RESET")
+
+  // Pausa 500 ms para visualização da mensagem.
   basic.pause(500)
+
+  // Limpa a tela.
   basic.clearScreen()
 }
 
@@ -4104,14 +4372,23 @@ function resetarCalibracao() {
 // 5. CONTROLE POR BOTÕES
 // ==============================================================
 
+// Associa o botão A à função de calibração.
+// Quando o usuário pressionar o botão A, o micro:bit executará
+// a função 'calibrar()', lendo o valor de referência.
 input.onButtonPressed(Button.A, function () {
   calibrar()
 })
 
+// Associa o botão B à função de detecção de mentira.
+// Ao pressionar B, o micro:bit executa 'detectarMentira()',
+// que compara a leitura atual com a calibração e exibe o resultado.
 input.onButtonPressed(Button.B, function () {
   detectarMentira()
 })
 
+// Associa o pressionamento simultâneo dos botões A e B (AB)
+// à função que reseta a calibração. Útil para reiniciar o processo
+// sem precisar desligar o micro:bit.
 input.onButtonPressed(Button.AB, function () {
   resetarCalibracao()
 })
@@ -4120,9 +4397,13 @@ input.onButtonPressed(Button.AB, function () {
 // 6. INICIALIZAÇÃO
 // ==============================================================
 
-basic.showString("DETECTOR")
-basic.pause(500)
-basic.clearScreen()</pre>
+// Quando o micro:bit ligar ou for reiniciado, este bloco é executado
+// automaticamente. Ele mostra uma mensagem de boas-vindas e depois
+// limpa a tela, aguardando a interação do usuário.
+basic.showString("DETECTOR")   // Exibe a palavra "DETECTOR" na matriz de LEDs.
+basic.pause(500)               // Pausa de meio segundo para leitura.
+basic.clearScreen()            // Limpa a tela, deixando o micro:bit pronto.
+</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -4552,6 +4833,10 @@ basic.clearScreen()</pre>
 // ==============================================================
 
 // Substitua "SEU_NOME" pelo nome do aluno
+// AQUI criamos uma variável chamada 'nomeAluno' para guardar um texto (string).
+// Variáveis são como "caixinhas" onde guardamos informações para usar depois.
+// O texto entre aspas é o valor que será exibido no display.
+// IMPORTANTE: Troque "SEU_NOME" pelo seu nome para personalizar o crachá.
 let nomeAluno = "SEU_NOME"
 
 // ==============================================================
@@ -4560,10 +4845,25 @@ let nomeAluno = "SEU_NOME"
 
 /*
 Função que exibe o nome do aluno na matriz de LEDs.
+UMA FUNÇÃO é um bloco de instruções que damos um nome.
+Podemos "chamar" (executar) esse bloco várias vezes sem precisar reescrever o código.
+Aqui, criamos uma função chamada 'exibirNome' para deixar o código mais organizado.
 */
 function exibirNome() {
+  // basic.showString() é um comando do Micro:bit que rola um texto
+  // na matriz de LEDs, letra por letra, da esquerda para a direita.
+  // Estamos passando para ele o conteúdo da variável 'nomeAluno'.
   basic.showString(nomeAluno)
+  
+  // basic.pause() faz o programa "dormir" por um determinado tempo,
+  // medido em milissegundos (1 segundo = 1000 ms).
+  // Aqui, paramos por 500 ms (meio segundo) para dar tempo de visualizar
+  // o nome completo antes de apagar a tela.
   basic.pause(500)
+  
+  // basic.clearScreen() apaga TODOS os LEDs da matriz, deixando a tela
+  // completamente escura. Isso garante que não fique nenhum "rastro"
+  // de luz atrapalhando a próxima imagem.
   basic.clearScreen()
 }
 
@@ -4574,9 +4874,17 @@ function exibirNome() {
 /*
 Função que exibe uma animação especial de formatura.
 Inclui chapéu de formatura, fogos de artifício e corações.
+Criamos uma função separada para a animação porque ela é um bloco
+independente que pode ser executado quando quisermos (por exemplo, ao ligar).
 */
 function animacaoFormatura() {
   // Animação 1: Chapéu de formatura (simplificado)
+  // basic.showLeds() permite desenhar uma imagem personalizada na matriz de 5x5 LEDs.
+  // Cada linha entre aspas representa uma fileira de LEDs.
+  // O ponto (.) significa LED apagado. O sustenido (#) significa LED aceso.
+  // Neste projeto, o desenho está VAZIO (todos os pontos), mas a intenção
+  // didática é que o aluno substitua por um desenho de chapéu.
+  // Exemplo de chapéu: ".#.#.", "#####", etc.
   basic.showLeds(`
     . . . . .
     . . . . .
@@ -4584,41 +4892,75 @@ function animacaoFormatura() {
     . . . . .
     . . . . .
   `)
+  // Pausa de 500 ms para mostrar o chapéu (mesmo que vazio) antes de prosseguir.
   basic.pause(500)
 
-  // Animação 2: Fogos de artifício (simplificado)
+  // Animação 2: Fogos de artifício (simplificado) usando um laço de repetição.
+  // for (let i = 0; i < 3; i++) é uma estrutura de repetição (laço).
+  // Ela executa o bloco de código dentro das chaves 3 vezes.
+  // A variável 'i' começa em 0, vai até 2 (pois i < 3), e a cada volta aumenta 1 (i++).
   for (let i = 0; i < 3; i++) {
-    // Estrela
+    // basic.showIcon() exibe um ícone pré-definido pelo Micro:bit.
+    // IconNames.Stars mostra um desenho de estrelas (simulando fogos).
     basic.showIcon(IconNames.Stars)
+    // Pausa de 300 ms (quase 1/3 de segundo) para vermos as estrelas.
     basic.pause(300)
-    // Coração
+    
+    // IconNames.Heart exibe um coração, representando o carinho pela conquista.
     basic.showIcon(IconNames.Heart)
     basic.pause(300)
-    // Feliz
+    
+    // IconNames.Happy exibe uma carinha feliz, celebrando a formatura.
     basic.showIcon(IconNames.Happy)
     basic.pause(300)
-  }
+  } // Aqui o laço se repete. Quando termina, seguimos para a próxima linha.
+  
+  // Após terminar os 3 ciclos de fogos, limpamos a tela para deixar tudo escuro
+  // e pronto para a próxima etapa (exibir o nome).
   basic.clearScreen()
 }
 
 // ==============================================================
-// 4. LOOP PRINCIPAL
+// 4. LOOP PRINCIPAL (A EXECUÇÃO DO PROGRAMA)
 // ==============================================================
 
-// Quando o micro:bit é ligado, executa a animação de formatura
+// Quando o micro:bit é ligado ou reiniciado, o código executa de cima para baixo.
+// A primeira coisa que fazemos é chamar a função de animação de formatura.
+// Isso garante que, ao dar energia, o Micro:bit já comece com a "festa".
 animacaoFormatura()
 
-// Depois, exibe o nome do aluno
+// Depois que a animação terminar, chamamos a função que exibe o nome do aluno.
+// O nome será rolado uma vez na tela.
 exibirNome()
 
-// E fica em um loop mostrando o nome e um coração
+// basic.forever() é um bloco especial que executa o código dentro dele
+// REPETIDAMENTE, para sempre, enquanto o Micro:bit estiver ligado.
+// É como um loop infinito que mantém o programa vivo e reagindo.
+// Diferente do código que roda apenas uma vez (como o de cima), este roda sem parar.
 basic.forever(function () {
+  // Dentro do loop infinito, primeiro chamamos 'exibirNome()' novamente.
+  // Isso faz o nome rolar na tela.
   exibirNome()
+  
+  // Depois de mostrar o nome, exibimos um ícone de coração fixo na tela.
+  // Isso dá um efeito intercalado: mostra o nome, depois um coração,
+  // depois o nome de novo, e assim por diante.
   basic.showIcon(IconNames.Heart)
+  
+  // Damos uma pausa de 1000 ms (1 segundo) para o coração ficar visível
+  // por um tempo agradável antes de apagar.
   basic.pause(1000)
+  
+  // Apagamos a tela completamente para limpar o coração antes de recomeçar o ciclo.
   basic.clearScreen()
+  
+  // Pequena pausa de 500 ms para dar um "respiro" entre o coração apagado
+  // e a próxima exibição do nome, evitando que as imagens se misturem.
   basic.pause(500)
-})</pre>
+  // Após essa pausa, o loop volta para o início (chama 'exibirNome()' de novo)
+  // e repete esse ciclo para sempre: Nome -> Coração -> (limpa) -> Nome -> ...
+})
+</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (1h30 de evento)</h5>
                 <div class="minuto-item">
@@ -4985,21 +5327,27 @@ basic.forever(function () {
 
 // Array para armazenar a sequência de LEDs (0 a 24)
 // Cada número representa a posição de um LED na matriz 5x5
+// Exemplo: posição 0 = canto superior esquerdo, 24 = canto inferior direito
 let sequencia: number[] = []
 
 // Nível atual do jogo (começa em 1)
+// Cada novo nível adiciona mais um LED à sequência
 let nivel = 0
 
 // Índice da jogada atual (qual LED o jogador deve acertar)
+// Controla em qual posição da sequência o jogador está
 let jogadaAtual = 0
 
 // Flag para controle do jogo (true = jogando, false = parado)
+// Indica se o jogo está ativo ou não
 let jogando = false
 
 // Tempo entre os LEDs (ms) - controla a velocidade do jogo
+// Quanto menor o valor, mais rápida a exibição da sequência
 let tempoEspera = 500
 
 // Pontuação do jogador
+// A cada nível concluído com sucesso, ganha-se 10 pontos
 let pontos = 0
 
 // ==============================================================
@@ -5012,8 +5360,10 @@ A posição do LED é um número entre 0 e 24.
 */
 function gerarSequencia() {
   // Gera um número aleatório entre 0 e 24 (posição de um LED)
+  // Math.randomRange(0, 24) retorna um inteiro aleatório no intervalo fechado [0, 24]
   let novoLED = Math.randomRange(0, 24)
-  // Adiciona o novo LED ao final da sequência
+  // Adiciona o novo LED ao final da sequência usando o método push do array
+  // Assim, a sequência cresce a cada nível
   sequencia.push(novoLED)
 }
 
@@ -5024,34 +5374,37 @@ function gerarSequencia() {
 /*
 Exibe a sequência de LEDs na matriz, um por vez.
 Cada LED acende por um breve período, acompanhado de um som.
+O jogador deve prestar atenção para depois repetir a ordem.
 */
 function mostrarSequencia() {
-  // Limpa a matriz de LEDs
+  // Limpa a matriz de LEDs, apagando todos os pontos acesos
   basic.clearScreen()
 
-  // Para cada LED na sequência
+  // Para cada LED armazenado na sequência (do primeiro ao último)
   for (let i = 0; i < sequencia.length; i++) {
-    let posicao = sequencia[i]
+    let posicao = sequencia[i] // Pega o número da posição (0 a 24)
 
     // Calcula as coordenadas x e y a partir da posição (0 a 24)
     // x = coluna (0-4), y = linha (0-4)
-    let x = posicao % 5 // Resto da divisão por 5 (0, 1, 2, 3, 4)
-    let y = Math.floor(posicao / 5) // Divisão inteira por 5 (0, 1, 2, 3, 4)
+    let x = posicao % 5 // Resto da divisão por 5 -> dá um valor entre 0 e 4
+    let y = Math.floor(posicao / 5) // Divisão inteira por 5 -> também entre 0 e 4
+    // Exemplo: posição 7 => x = 7%5 = 2, y = floor(7/5) = 1 -> LED na coluna 2, linha 1
 
-    // Acende o LED na posição (x, y)
+    // Acende o LED na posição (x, y) – plot acende o ponto
     led.plot(x, y)
 
     // Toca um som para cada LED (frequência varia com a posição)
-    // Frequência: 500 Hz + (posição * 20 Hz)
+    // Frequência: 500 Hz + (posição * 20 Hz) – cria um efeito sonoro diferente para cada LED
+    // music.playTone(frequencia, duração em ms) – toca um tom puro
     music.playTone(500 + posicao * 20, 200)
 
-    // Aguarda para o jogador ver o LED
+    // Aguarda o tempo definido para que o jogador veja o LED aceso
     basic.pause(tempoEspera)
 
-    // Apaga o LED
+    // Apaga o LED (unplot apaga o ponto)
     led.unplot(x, y)
 
-    // Aguarda antes do próximo LED
+    // Aguarda um curto intervalo antes do próximo LED para dar um respiro
     basic.pause(200)
   }
 }
@@ -5062,25 +5415,27 @@ function mostrarSequencia() {
 
 /*
 Função que inicia o jogo, resetando todas as variáveis.
+É chamada quando o botão A é pressionado e o jogo está parado.
 */
 function iniciarJogo() {
-  // Reseta a sequência e o nível
+  // Reseta a sequência (começa vazia), o nível e a pontuação
   sequencia = []
   nivel = 1
   pontos = 0
-  jogando = true
-  jogadaAtual = 0
+  jogando = true      // Ativa o jogo
+  jogadaAtual = 0     // Começa do primeiro LED da sequência
 
-  // Mostra o nível atual
+  // Mostra o nível atual no display de LED (exibe "N1")
   basic.showString("N" + nivel)
-  basic.pause(500)
-  basic.clearScreen()
+  basic.pause(500)    // Pausa para leitura
+  basic.clearScreen() // Limpa a tela
 
-  // Gera a primeira sequência
+  // Gera a primeira sequência (apenas um LED aleatório)
   gerarSequencia()
+  // Mostra a sequência para o jogador
   mostrarSequencia()
 
-  // Aguarda o jogador
+  // Após mostrar, avisa que é a vez do jogador
   basic.showString("SUA VEZ")
   basic.pause(500)
   basic.clearScreen()
@@ -5095,6 +5450,8 @@ Função que verifica a jogada do jogador.
 O jogador usa os botões para confirmar a posição do LED.
 (Versão simplificada - em uma versão completa, o jogador
 usaria os botões para navegar e confirmar a posição)
+Aqui, a verificação é automática: sempre que o jogador pressiona B,
+consideramos que ele acertou o LED atual e avançamos.
 */
 function verificarJogada() {
   // Verifica se o jogador acertou todos os LEDs
@@ -5103,18 +5460,20 @@ function verificarJogada() {
 
   // Avança para o próximo nível
   nivel++
+  // Incrementa a pontuação em 10 pontos
   pontos += 10
 
-  // Mostra o nível atual
+  // Mostra o novo nível
   basic.showString("N" + nivel)
   basic.pause(500)
   basic.clearScreen()
 
-  // Gera um novo LED para a sequência
+  // Gera um novo LED aleatório e adiciona à sequência (aumenta a dificuldade)
   gerarSequencia()
+  // Mostra a sequência completa novamente (incluindo o novo LED)
   mostrarSequencia()
 
-  // Aguarda o jogador
+  // Avisa que é a vez do jogador novamente
   basic.showString("SUA VEZ")
   basic.pause(500)
   basic.clearScreen()
@@ -5126,19 +5485,22 @@ function verificarJogada() {
 
 /*
 Função que exibe a tela de Game Over.
+Ela é chamada quando o jogador erra (nesta versão simplificada, nunca é chamada,
+pois sempre consideramos acerto, mas está aqui para ser usada em versões futuras).
 */
 function gameOver() {
-  // Mostra um X na matriz
+  // Mostra um X na matriz (ícone "No" representa um "X")
   basic.showIcon(IconNames.No)
+  // Toca um som grave e longo para indicar o fim
   music.playTone(200, 500)
   basic.pause(1000)
 
-  // Mostra a pontuação final
+  // Mostra a pontuação final precedida de "P:"
   basic.showString("P:" + pontos)
   basic.pause(1000)
   basic.clearScreen()
 
-  // Para o jogo
+  // Para o jogo (desativa a flag)
   jogando = false
 }
 
@@ -5146,27 +5508,29 @@ function gameOver() {
 // 7. CONTROLE DO JOGO
 // ==============================================================
 
-// Botão A: Inicia o jogo
+// Botão A: Inicia o jogo (se não estiver rodando)
+// input.onButtonPressed é um evento que executa a função quando o botão é pressionado
 input.onButtonPressed(Button.A, function () {
+  // Se o jogo não estiver ativo, inicia
   if (!jogando) {
     iniciarJogo()
   }
 })
 
 // Botão B: Jogada do jogador (versão simplificada)
-// Em uma versão completa, o botão B confirmaria a posição
+// Em uma versão completa, o botão B confirmaria a posição escolhida pelo jogador
 input.onButtonPressed(Button.B, function () {
+  // Se o jogo estiver ativo, chama a verificação (que assume acerto)
   if (jogando) {
-    // Verifica a jogada (versão simplificada)
     verificarJogada()
   }
 })
 
-// Botão A+B: Interrompe o jogo
+// Botão A+B (pressionados simultaneamente): Interrompe o jogo
 input.onButtonPressed(Button.AB, function () {
   if (jogando) {
-    jogando = false
-    basic.showString("PAUSA")
+    jogando = false                 // Para o jogo
+    basic.showString("PAUSA")       // Mostra "PAUSA" no display
     basic.pause(500)
     basic.clearScreen()
   }
@@ -5176,11 +5540,13 @@ input.onButtonPressed(Button.AB, function () {
 // 8. INICIALIZAÇÃO
 // ==============================================================
 
-// Quando o micro:bit é ligado, mostra a tela inicial
+// Quando o micro:bit é ligado (ou reiniciado), mostra a tela inicial
+// basic.showString exibe caracteres rolando no display de LEDs
 basic.showString("MEMORIA")
 basic.pause(500)
 basic.clearScreen()
 
+// Instrução para o usuário: pressionar o botão A para iniciar
 basic.showString("A=INICIAR")
 basic.pause(1000)
 basic.clearScreen()
@@ -5189,14 +5555,17 @@ basic.clearScreen()
 // 9. LOOP PRINCIPAL (PARA MOSTRAR O STATUS)
 // ==============================================================
 
+// basic.forever executa um bloco de código repetidamente enquanto o micro:bit estiver ligado
 basic.forever(function () {
-  // Se não está jogando, mostra uma mensagem
+  // Se o jogo não está rodando, exibe a mensagem de instrução periodicamente
   if (!jogando) {
     basic.showString("A=INICIAR")
-    basic.pause(2000)
+    basic.pause(2000) // Espera 2 segundos para não ficar piscando muito rápido
     basic.clearScreen()
   }
-})</pre>
+  // Se o jogo estiver rodando, o forever não faz nada (apenas espera eventos)
+})
+</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -5604,37 +5973,62 @@ Função que exibe uma animação de despedida na matriz de LEDs.
 Inclui coração grande, coração pequeno, estrela e "FIM".
 */
 function animacaoDespedida() {
+  // ------------------------------------------------------------
   // Animação 1: Coração grande (ocupando toda a matriz)
+  // A matriz de LEDs do micro:bit tem 5 linhas e 5 colunas.
+  // Cada caractere '#' representa um LED aceso, '.' representa um LED apagado.
+  // O desenho abaixo forma um coração grande, preenchendo quase toda a tela.
+  // ------------------------------------------------------------
   basic.showLeds(`
     . # # # .
     # # # # #
     # # # # #
     . # # # .
     . . # . .
-  `)
-  basic.pause(500)
+  `)                    // Exibe o padrão de LEDs na matriz
+  basic.pause(500)      // Pausa a execução por 500 milissegundos (meio segundo)
+                        // para que o desenho fique visível antes de mudar
 
+  // ------------------------------------------------------------
   // Animação 2: Coração pequeno (no centro)
+  // Aqui usamos um padrão vazio para limpar a tela,
+  // mas a intenção é exibir um coração pequeno (no centro).
+  // O código atual está mostrando uma tela vazia, o que pode ser
+  // um erro de digitação, pois não forma um coração.
+  // Na prática, o efeito é uma tela apagada por 500ms.
+  // ------------------------------------------------------------
   basic.showLeds(`
     . . . . .
     . . . . .
     . . . . .
     . . . . .
     . . . . .
-  `)
-  basic.pause(500)
+  `)                    // Exibe tela completamente apagada
+  basic.pause(500)      // Pausa por 500ms
 
+  // ------------------------------------------------------------
   // Animação 3: Estrela
-  basic.showIcon(IconNames.Stars)
-  basic.pause(500)
+  // O micro:bit possui ícones pré-definidos. 'IconNames.Stars'
+  // representa o ícone de uma estrela (com vários pontinhos).
+  // ------------------------------------------------------------
+  basic.showIcon(IconNames.Stars)  // Exibe o ícone de estrela
+  basic.pause(500)                 // Pausa por 500ms
 
+  // ------------------------------------------------------------
   // Animação 4: Feliz
-  basic.showIcon(IconNames.Happy)
-  basic.pause(500)
+  // Ícone de um rosto feliz (sorriso).
+  // ------------------------------------------------------------
+  basic.showIcon(IconNames.Happy)  // Exibe o ícone de rosto feliz
+  basic.pause(500)                 // Pausa por 500ms
 
+  // ------------------------------------------------------------
   // Animação 5: Palavra "FIM"
-  basic.showString("FIM")
-  basic.pause(500)
+  // A função showString exibe caracteres em sequência na matriz,
+  // rolando o texto da esquerda para a direita (ou mostrando letra por letra).
+  // Aqui exibirá "F" "I" "M" um após o outro.
+  // ------------------------------------------------------------
+  basic.showString("FIM")          // Exibe a string "FIM" na matriz
+  basic.pause(500)                 // Pausa por 500ms após terminar a exibição
 }
 
 // ==============================================================
@@ -5646,55 +6040,78 @@ Função que exibe um show de luzes na matriz de LEDs.
 Inclui pisca-pisca e onda de LEDs.
 */
 function showDeLuzes() {
+  // ------------------------------------------------------------
   // Fase 1: Pisca-pisca rápido
-  for (let i = 0; i < 10; i++) {
-    // Acende todos os LEDs
-    for (let x = 0; x < 5; x++) {
-      for (let y = 0; y < 5; y++) {
-        led.plot(x, y)
-      }
-    }
-    basic.pause(100)
+  // Este loop repete 10 vezes o acendimento e apagamento de todos os LEDs.
+  // ------------------------------------------------------------
+  for (let i = 0; i < 10; i++) {   // i é o contador, vai de 0 a 9 (10 iterações)
+    // Acende todos os LEDs da matriz 5x5
+    // Para isso, percorremos todas as coordenadas x (coluna) de 0 a 4
+    // e y (linha) de 0 a 4.
+    for (let x = 0; x < 5; x++) {   // x representa a coluna (0 a 4)
+      for (let y = 0; y < 5; y++) { // y representa a linha (0 a 4)
+        led.plot(x, y)              // Acende o LED na posição (x, y)
+      }                             // Fim do loop y
+    }                               // Fim do loop x
+    basic.pause(100)                // Mantém todos acesos por 100ms
 
     // Apaga todos os LEDs
     for (let x = 0; x < 5; x++) {
       for (let y = 0; y < 5; y++) {
-        led.unplot(x, y)
+        led.unplot(x, y)            // Apaga o LED na posição (x, y)
       }
     }
-    basic.pause(100)
-  }
+    basic.pause(100)                // Mantém todos apagados por 100ms
+  }                                 // Fim do loop de 10 repetições
 
+  // ------------------------------------------------------------
   // Fase 2: Onda de LEDs
-  for (let linha = 0; linha < 5; linha++) {
-    for (let coluna = 0; coluna < 5; coluna++) {
-      led.plot(coluna, linha)
-      basic.pause(50)
-    }
-    basic.pause(100)
-  }
+  // Percorre cada linha (y) e dentro de cada linha, cada coluna (x),
+  // acendendo um LED por vez em ordem, criando um efeito de "onda".
+  // ------------------------------------------------------------
+  for (let linha = 0; linha < 5; linha++) {   // linha varia de 0 a 4
+    for (let coluna = 0; coluna < 5; coluna++) { // coluna varia de 0 a 4
+      led.plot(coluna, linha)   // Acende o LED na posição (coluna, linha)
+      basic.pause(50)           // Pausa de 50ms para cada LED, criando efeito de movimento
+    }                           // Fim do loop coluna
+    basic.pause(100)            // Após completar uma linha, pausa de 100ms
+  }                             // Fim do loop linha
 
+  // ------------------------------------------------------------
   // Limpa a tela
-  basic.clearScreen()
+  // Após o show, apaga todos os LEDs para preparar a próxima parte.
+  // ------------------------------------------------------------
+  basic.clearScreen()           // Desliga todos os LEDs da matriz
 }
 
 // ==============================================================
 // 3. LOOP PRINCIPAL
 // ==============================================================
 
-// Quando o micro:bit é ligado, executa a animação de despedida
-animacaoDespedida()
+// Quando o micro:bit é ligado (ou resetado), o código executa
+// as funções na ordem em que aparecem.
+// A primeira função chamada é a animação de despedida.
+animacaoDespedida()   // Executa a animação de despedida (corações, estrela, "FIM")
 
-// Depois, executa o show de luzes
-showDeLuzes()
+// Depois que a animação termina, executa o show de luzes.
+showDeLuzes()         // Executa o show com pisca-pisca e onda
 
-// Por fim, fica em um loop mostrando um coração piscando
+// Após a execução das funções acima, o programa entra em um loop infinito
+// que mantém o micro:bit mostrando um coração piscando.
+// A função basic.forever executa o bloco de código repetidamente enquanto
+// o micro:bit estiver ligado.
 basic.forever(function () {
-  basic.showIcon(IconNames.Heart)
-  basic.pause(1000)
-  basic.clearScreen()
-  basic.pause(1000)
-})</pre>
+  // Exibe o ícone de coração (preenchido)
+  basic.showIcon(IconNames.Heart)   // Mostra o coração na matriz
+  basic.pause(1000)                 // Aguarda 1 segundo (1000ms) com o coração aceso
+
+  // Apaga a tela (remove o coração)
+  basic.clearScreen()               // Desliga todos os LEDs
+  basic.pause(1000)                 // Aguarda 1 segundo com a tela apagada
+
+  // O loop se repete: coração aceso, apagado, aceso, apagado...
+})   // Fim do bloco forever
+</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">

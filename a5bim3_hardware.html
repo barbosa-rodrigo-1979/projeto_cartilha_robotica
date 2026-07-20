@@ -783,34 +783,70 @@ basic.forever(function () {
                 </p>
 
                 <h5>💻 Código a Ser Desenvolvido</h5>
-                <pre><code>// ============================================================
+                <pre><code>//===========================================================
 // PROGRAMA: SIMULADOR DE ESTADOS DO ROBÔ - VERSÃO 1.0
 // FUNÇÃO: Simular os estados do robô (Monitorando / Alerta)
 // usando botões como gatilhos.
 // AUTORES: [Nome da equipe]
 // DATA: [Data]
 // ============================================================
+// COMENTÁRIO DIDÁTICO GERAL:
+// Este programa implementa uma Máquina de Estados Finitos (MEF)
+// com 3 estados: NORMAL, ALERTA e RESOLVIDO. O usuário interage
+// com os botões A, B e AB para simular a detecção e resolução
+// de um problema, recebendo feedback visual (LEDs) e sonoro.
+// É um projeto base para ensinar lógica de programação, eventos
+// e tomada de decisão no micro:bit.
 
 // ============================================================
 // 1. DEFINIÇÃO DOS ESTADOS (CONSTANTES)
 // ============================================================
+// COMENTÁRIO DIDÁTICO:
+// Constantes são nomes fáceis de lembrar que substituem números
+// mágicos. Elas facilitam a leitura do código, pois ao invés de
+// lembrar que "0" significa normal, usamos "ESTADO_NORMAL".
+// Quando o micro:bit for desligado e ligado, essas constantes
+// estarão sempre disponíveis.
+
 // Usamos números para representar os estados
-const ESTADO_NORMAL = 0
-const ESTADO_ALERTA = 1
-const ESTADO_RESOLVIDO = 2
+const ESTADO_NORMAL = 0   // Estado 0: Robô em monitoramento tranquilo (modo normal)
+const ESTADO_ALERTA = 1   // Estado 1: Robô detectou um problema (alarme disparado)
+const ESTADO_RESOLVIDO = 2 // Estado 2: Problema foi solucionado (aguardando reset)
 
 // ============================================================
 // 2. VARIÁVEIS GLOBAIS
 // ============================================================
+// COMENTÁRIO DIDÁTICO:
+// Variáveis globais são "caixas" que guardam informações durante
+// toda a execução do programa. Diferente das constantes, seu
+// valor pode mudar a qualquer momento. Inicializamos ela com o
+// estado normal para o robô começar sempre de forma segura.
+
 // Armazena o estado atual do robô (começa em NORMAL)
 let estadoAtual = ESTADO_NORMAL
 
 // ============================================================
 // 3. FUNÇÕES DE ATUALIZAÇÃO DA TELA (SAÍDAS)
 // ============================================================
+// COMENTÁRIO DIDÁTICO:
+// Uma função é um bloco de código que executamos quando
+// precisamos. Ela organiza o programa e evita repetições.
+// Esta função específica é a "coração" da interface com o usuário,
+// pois ela decide o que mostrar na matriz de LEDs e o que tocar
+// no alto-falante com base no estado atual do robô.
+
 // Função para atualizar a matriz de LEDs baseado no estado
 function atualizarDisplay() {
+  // Verifica se o estado atual é o NORMAL (0)
   if (estadoAtual == ESTADO_NORMAL) {
+    // COMENTÁRIO DIDÁTICO:
+    // images.createImage() cria um desenho de 5x5 LEDs usando
+    // uma string com 5 linhas. Cada "." significa LED apagado.
+    // O código original coloca todos os pontos (criando uma tela
+    // vazia). Na prática, o ideal seria desenhar um rosto feliz,
+    // mas manteremos o código original intacto, apenas comentando
+    // que a intenção didática aqui é representar um rosto feliz.
+
     // Mostra um rosto feliz (monitorando)
     let feliz = images.createImage(`
       . . . . .
@@ -819,8 +855,19 @@ function atualizarDisplay() {
       . . . . .
       . . . . .
     `)
+    // COMENTÁRIO DIDÁTICO:
+    // .showImage(0) exibe a imagem criada. O número 0 indica o
+    // "offset" (índice) caso houvesse várias imagens na variável,
+    // mas aqui temos apenas uma, então usamos 0 para mostrá-la.
     feliz.showImage(0)
   } else if (estadoAtual == ESTADO_ALERTA) {
+    // COMENTÁRIO DIDÁTICO:
+    // Se o estado for ALERTA (1), entramos neste bloco.
+    // A intenção é mostrar um "X" vermelho, mas novamente a
+    // imagem está vazia no código original. Aprendemos aqui que
+    // a estrutura condicional (else if) permite testar múltiplas
+    // possibilidades de forma encadeada.
+
     // Mostra um "X" vermelho (alarme disparado)
     let alerta = images.createImage(`
       . . . . .
@@ -830,9 +877,21 @@ function atualizarDisplay() {
       . . . . .
     `)
     alerta.showImage(0)
+
+    // COMENTÁRIO DIDÁTICO:
+    // music.playTone() gera um som no alto-falante.
+    // O número 523 é a frequência em Hertz (nota Dó central).
+    // music.beat(BeatFraction.Whole) define a duração como uma
+    // semibreve (tempo inteiro). Isso simula um alarme sonoro
+    // para chamar a atenção do usuário.
     // Toca um som de alarme (se conectado)
     music.playTone(523, music.beat(BeatFraction.Whole))
   } else if (estadoAtual == ESTADO_RESOLVIDO) {
+    // COMENTÁRIO DIDÁTICO:
+    // Última condição: se for RESOLVIDO (2). A intenção é mostrar
+    // um símbolo de "check" (visto) para indicar que o problema
+    // foi resolvido com sucesso.
+
     // Mostra um check (problema resolvido)
     let check = images.createImage(`
       . . . . .
@@ -842,6 +901,11 @@ function atualizarDisplay() {
       . . . . .
     `)
     check.showImage(0)
+
+    // COMENTÁRIO DIDÁTICO:
+    // Aqui tocamos uma nota mais aguda (880 Hz = nota Lá) e com
+    // metade da duração (Half), indicando um "bipe" de confirmação
+    // mais curto e alegre que o alarme.
     music.playTone(880, music.beat(BeatFraction.Half))
   }
 }
@@ -849,15 +913,35 @@ function atualizarDisplay() {
 // ============================================================
 // 4. TRANSIÇÕES DE ESTADO (GATILHOS)
 // ============================================================
+// COMENTÁRIO DIDÁTICO:
+// Transições são as mudanças de um estado para outro.
+// No micro:bit, usamos "eventos" (input.onButtonPressed) para
+// detectar quando um botão é pressionado. Cada botão tem uma
+// função específica para mudar o estado, seguindo a lógica:
+// NORMAL -> ALERTA (Apertar A)
+// ALERTA -> RESOLVIDO (Apertar B)
+// QUALQUER -> NORMAL (Apertar A+B)
+
 // Botão A: Simula a detecção do problema -> Vai para ALERTA
+// COMENTÁRIO DIDÁTICO:
+// Este evento dispara quando o botão A for pressionado.
+// A condição "if" garante que só mudamos para ALERTA se o robô
+// estiver no estado NORMAL. Isso evita transições inválidas,
+// por exemplo, não podemos disparar um alarme se ele já está
+// em alerta ou resolvido.
 input.onButtonPressed(Button.A, function () {
   if (estadoAtual == ESTADO_NORMAL) {
-    estadoAtual = ESTADO_ALERTA
-    atualizarDisplay()
+    estadoAtual = ESTADO_ALERTA // Atualiza a variável global
+    atualizarDisplay()          // Chama a função para atualizar LEDs e som
   }
 })
 
 // Botão B: Simula a solução do problema -> Vai para RESOLVIDO
+// COMENTÁRIO DIDÁTICO:
+// Quando o botão B é pressionado, verificamos se o estado atual
+// é ALERTA. Se for, significa que o problema foi resolvido,
+// então avançamos para RESOLVIDO. Se o robô estiver em NORMAL,
+// pressionar B não faz nada (o problema nem foi detectado ainda).
 input.onButtonPressed(Button.B, function () {
   if (estadoAtual == ESTADO_ALERTA) {
     estadoAtual = ESTADO_RESOLVIDO
@@ -866,6 +950,13 @@ input.onButtonPressed(Button.B, function () {
 })
 
 // Botão A+B: Reseta o sistema -> Volta para NORMAL
+// COMENTÁRIO DIDÁTICO:
+// Este é o botão de "reset" universal. Não importa se o robô
+// está em ALERTA ou RESOLVIDO, ao pressionar A e B juntos,
+// o estado sempre volta para NORMAL. Isso é útil para reiniciar
+// a simulação sem precisar desligar o micro:bit. Note que não
+// usamos "if" aqui justamente para permitir o reset a qualquer
+// momento, ensinando que nem toda transição precisa de condição.
 input.onButtonPressed(Button.AB, function () {
   estadoAtual = ESTADO_NORMAL
   atualizarDisplay()
@@ -874,10 +965,34 @@ input.onButtonPressed(Button.AB, function () {
 // ============================================================
 // 5. PROGRAMA PRINCIPAL
 // ============================================================
+// COMENTÁRIO DIDÁTICO:
+// O "programa principal" é o código que roda quando o micro:bit
+// é ligado. Ele executa uma vez no início (setup) e depois fica
+// esperando os eventos dos botões (loop infinito gerenciado pelo
+// sistema do MakeCode).
+
 // Inicialização: mostra o estado normal e uma saudação
+// COMENTÁRIO DIDÁTICO:
+// basic.showIcon() exibe um ícone pré-definido na matriz de LEDs.
+// IconNames.Heart mostra um coração, que serve como uma mensagem
+// de "Olá, estou ligado!" para o usuário.
+
 basic.showIcon(IconNames.Heart)
+
+// COMENTÁRIO DIDÁTICO:
+// basic.pause(1000) faz o micro:bit esperar por 1000 milissegundos
+// (ou seja, 1 segundo). Isso garante que o coração fique visível
+// por tempo suficiente antes de mostrar o estado inicial.
 basic.pause(1000)
-atualizarDisplay()</code></pre>
+
+// COMENTÁRIO DIDÁTICO:
+// Por fim, chamamos a função atualizarDisplay() para que a tela
+// mostre o estado atual (que definimos como NORMAL lá no início).
+// Se não chamássemos esta função, a tela ficaria mostrando o
+// coração para sempre. Este é o passo que sincroniza a interface
+// com a lógica do programa.
+atualizarDisplay()
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -1181,25 +1296,70 @@ atualizarDisplay()</code></pre>
 // AUTORES: [Nome da equipe]
 // DATA: [Data]
 // ============================================================
+// 
+// DIDÁTICA GERAL:
+// O micro:bit possui pinos de entrada/saída (GPIO). O pino P0
+// será configurado como entrada digital. O "sensor" é um pedaço
+// de papel alumínio conectado ao pino P0. Quando você toca no
+// alumínio com o dedo, seu corpo conduz uma pequena corrente
+// que leva o pino para o nível lógico 0 (GND). Quando solta,
+// o pino volta para o nível 1 (VCC), pois o micro:bit tem um
+// resistor interno de "pull-up" que mantém o pino em nível alto
+// quando não está conectado a nada.
+// 
+// IMPORTANTE: O código NÃO será alterado, apenas comentado.
+// Portanto, mesmo que haja pequenas imperfeições (como a matriz
+// de LEDs vazia), os comentários explicarão o comportamento real.
+// ============================================================
 
 // ============================================================
 // 1. DEFINIÇÃO DO PINO (CONSTANTE)
 // ============================================================
+// A palavra-chave 'const' cria uma variável que não pode ser
+// modificada depois. É uma boa prática para valores fixos.
+// 'DigitalPin.P0' é uma constante predefinida no MakeCode que
+// representa o pino físico P0 da placa micro:bit.
+// ATALHO: Se você mudar o fio para P1 ou P2, basta alterar aqui.
 const PINO_TOQUE = DigitalPin.P0 // Onde está ligado o fio do alumínio
 
 // ============================================================
 // 2. VARIÁVEIS
 // ============================================================
+// 'let' declara variáveis que podem mudar durante a execução.
+// 'estadoLido' armazena o valor que acabamos de ler do pino.
+// 0 (ZERO) significa que o pino está em nível BAIXO, ou seja,
+// o dedo está tocando no alumínio (sensor pressionado).
+// 1 (UM) significa nível ALTO, ou seja, o dedo está solto.
 let estadoLido = 0 // 0 = pressionado, 1 = solto
-let ultimoEstado = 1 // para comparar mudanças (filtro)
+
+// 'ultimoEstado' guarda o estado anterior da leitura. Isso é
+// usado para comparar com o estado atual e só atualizar a matriz
+// de LEDs quando houver mudança. Isso evita que o programa fique
+// "piscando" a matriz toda hora, economizando processamento e
+// tornando a resposta mais estável (um simples filtro de borda).
+let ultimoEstado = 1 // Inicialmente consideramos que está solto
 
 // ============================================================
 // 3. FUNÇÃO PARA ATUALIZAR A MATRIZ
 // ============================================================
-// Essa função desenha um "rosto" diferente dependendo do estado
+// Uma função é um bloco de código que executa uma tarefa específica.
+// Aqui, 'atualizarMatriz' recebe um número (estado) e desenha
+// algo na tela de 5x5 LEDs. O parâmetro 'estado' é do tipo 'number'.
+// 
+// OBSERVAÇÃO DIDÁTICA: O código original cria imagens vazias
+// (apenas pontos). Isso foi feito para simplificar, mas na prática
+// a função só acende ou apaga o LED central (linha 2, coluna 2).
+// Vamos comentar esse comportamento real para que você entenda
+// exatamente o que acontece.
 function atualizarMatriz(estado: number) {
+  // Condição: se o estado for 0 (dedo pressionando o alumínio)...
   if (estado == 0) {
     // Sensor pressionado -> Mostra um "X" (alerta)
+    // A intenção do programador era criar um desenho de "X" na matriz.
+    // Porém, a imagem foi definida com todos os pontos apagados ('.').
+    // Portanto, esta imagem NÃO ACENDE NENHUM LED. Ela é apenas um
+    // objeto vazio. O comando 'alert.showImage(0)' exibe essa imagem
+    // vazia, ou seja, apaga toda a matriz de LEDs.
     let alerta = images.createImage(`
       . . . . .
       . . . . .
@@ -1207,11 +1367,21 @@ function atualizarMatriz(estado: number) {
       . . . . .
       . . . . .
     `)
-    alerta.showImage(0)
+    alerta.showImage(0) // Exibe a imagem vazia (apaga tudo)
+
     // Acende o LED central também como reforço
+    // Este comando é o que realmente acende um LED. 'led.plot(2, 2)'
+    // acende o LED localizado na linha 2, coluna 2 (lembre-se: a
+    // contagem começa do 0). Portanto, mesmo que a imagem esteja
+    // vazia, este comando garante que o LED do centro fique aceso
+    // quando o sensor for pressionado. Na prática, o "rosto de alerta"
+    // é apenas o LED central aceso.
     led.plot(2, 2)
   } else {
     // Sensor solto -> Mostra um "rosto feliz" (tudo bem)
+    // Novamente, a imagem é criada com todos os pontos apagados.
+    // Isso representa um "rosto feliz" apenas na intenção do código,
+    // mas visualmente é uma tela vazia.
     let normal = images.createImage(`
       . . . . .
       . . . . .
@@ -1219,37 +1389,118 @@ function atualizarMatriz(estado: number) {
       . . . . .
       . . . . .
     `)
-    normal.showImage(0)
+    normal.showImage(0) // Exibe a imagem vazia (apaga tudo)
+
     // Apaga o LED central
+    // 'led.unplot(2, 2)' desliga o LED central. Portanto, quando o
+    // sensor está solto, o LED central fica apagado. Isso faz com que
+    // o "rosto feliz" seja, na prática, uma tela completamente apagada.
     led.unplot(2, 2)
   }
+  // RESUMO DO COMPORTAMENTO REAL:
+  // - Se pressionado: LED central ACESO.
+  // - Se solto: LED central APAGADO.
+  // Apesar das imagens vazias, a função cumpre o papel de sinalizar
+  // o estado, mesmo que de forma bem simples. Em projetos futuros,
+  // você pode substituir as imagens vazias por desenhos como
+  // "X" e ":)" para ficar mais visível.
 }
 
 // ============================================================
 // 4. PROGRAMA PRINCIPAL (LOOP INFINITO)
 // ============================================================
 // 4.1. Inicialização: mostra coração e aguarda
+// 'basic.showIcon' exibe um ícone pré-definido na matriz de LEDs.
+// IconNames.Heart é o desenho de um coração. Isso serve como
+// indicador visual de que o programa iniciou corretamente.
 basic.showIcon(IconNames.Heart)
+// 'basic.pause(1000)' faz o micro:bit esperar por 1000 milissegundos
+// (ou seja, 1 segundo). Isso dá tempo para o usuário ver o coração
+// antes de o programa começar a ler o sensor.
 basic.pause(1000)
 
 // 4.2. Loop principal (roda para sempre)
+// 'basic.forever' é uma função especial do MakeCode que executa
+// o bloco de código repetidamente, indefinidamente, enquanto o
+// micro:bit estiver ligado. É o coração do programa, onde a
+// leitura do sensor acontece continuamente.
 basic.forever(function () {
   // Lê o valor do pino P0 (0 ou 1)
+  // 'pins.digitalReadPin(PINO_TOQUE)' lê o sinal digital do pino.
+  // O micro:bit mede a tensão no pino: se for próxima de 3V (nível
+  // alto), retorna 1; se for próxima de 0V (nível baixo), retorna 0.
+  // O resultado é armazenado na variável 'estadoLido'.
   estadoLido = pins.digitalReadPin(PINO_TOQUE)
   
   // Só atualiza a matriz se o estado mudou (evita piscar toda hora)
+  // Esta é uma técnica de programação chamada "detecção de borda".
+  // Comparamos o valor que acabamos de ler ('estadoLido') com o
+  // valor anterior ('ultimoEstado'). Se forem diferentes, significa
+  // que o usuário acabou de tocar OU acabou de soltar o alumínio.
+  // Só então executamos as ações de resposta.
   if (estadoLido != ultimoEstado) {
+    // Atualiza a variável de "último estado" com o valor atual.
+    // Isso garante que, na próxima iteração do loop, a comparação
+    // seja feita com o valor correto.
     ultimoEstado = estadoLido
+    // Chama a função que desenha na matriz de LEDs, passando o
+    // novo estado lido (0 ou 1).
     atualizarMatriz(estadoLido)
+
     // Se foi pressionado, toca um som curto (bip)
+    // 'estadoLido == 0' significa que o dedo está tocando o alumínio.
+    // Se for verdade, o micro:bit gera um tom de áudio.
+    // 'music.playTone(523, music.beat(BeatFraction.Quarter))'
+    // - 523 é a frequência em Hertz (nota Dó4).
+    // - music.beat(BeatFraction.Quarter) define a duração como
+    //   uma semínima (1/4 do tempo de um compasso padrão).
+    // Isso dá um feedback sonoro imediato ao toque, muito útil em
+    // projetos interativos.
     if (estadoLido == 0) {
       music.playTone(523, music.beat(BeatFraction.Quarter))
     }
   }
   
   // Pequena pausa para não sobrecarregar o processador
+  // O loop 'forever' roda muito rápido (milhares de vezes por segundo).
+  // 'basic.pause(50)' insere um atraso de 50 milissegundos (0,05s)
+  // entre cada leitura. Isso é suficiente para economizar bateria e
+  // evitar leituras instáveis (debounce), sem perder a capacidade de
+  // detectar toques rápidos. Se você quiser uma resposta mais rápida,
+  // pode diminuir esse valor, mas 50ms é um bom equilíbrio.
   basic.pause(50)
-})</code></pre>
+})
+
+// ============================================================
+// FIM DO PROGRAMA
+// ============================================================
+// Resumo do fluxo completo:
+// 1. Ao ligar, mostra um coração e espera 1 segundo.
+// 2. Entra em um loop eterno.
+// 3. Lê o pino P0 a cada 50ms.
+// 4. Se o valor mudar (de 0 para 1 ou de 1 para 0):
+//    a) Atualiza a matriz: LED central aceso (pressionado) ou apagado (solto).
+//    b) Se foi pressionado (0), emite um bip sonoro.
+// 5. O estado anterior é sempre guardado para a próxima comparação.
+// 
+// IMPORTANTE - MONTAGEM FÍSICA:
+// - Conecte um fio jumper no pino P0 do micro:bit.
+// - A outra ponta do fio deve estar presa a um pedaço de papel alumínio.
+// - Quando você tocar o alumínio com o dedo, o corpo humano fecha um
+//   circuito fraco com o GND (terra), fazendo o pino ir para 0.
+// - Quando soltar, o resistor interno de pull-up (cerca de 13kΩ)
+//   faz o pino voltar para 1 (nível alto).
+// - ATENÇÃO: Não use tensões externas, apenas o toque direto.
+// 
+// EXTENSÃO DIDÁTICA - O QUE VOCÊ PODE MELHORAR (sem alterar o código atual):
+// - Trocar as imagens vazias por desenhos de "X" e ":)":
+//   Ex: `images.createImage("#.#.#")` etc.
+// - Adicionar mais ações, como enviar dados via rádio ou Bluetooth.
+// - Usar a variável 'estadoLido' para controlar um servo motor.
+// 
+// Divirta-se aprendendo com o micro:bit!
+// ============================================================
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -1555,35 +1806,74 @@ basic.forever(function () {
 // ============================================================
 // 1. CONFIGURAÇÃO DOS PINOS
 // ============================================================
+
+// Define uma constante chamada PINO_TOQUE que armazena o pino digital P0.
+// Esse pino será usado para conectar o sensor de toque (botão ou placa condutiva).
+// A palavra-chave 'const' indica que o valor não muda durante a execução.
 const PINO_TOQUE = DigitalPin.P0
+
+// Define uma constante chamada PINO_BUZZER que armazena o pino digital P1.
+// Esse pino será usado para conectar o buzzer (alto-falante) que emitirá o alarme.
 const PINO_BUZZER = DigitalPin.P1
 
 // ============================================================
 // 2. VARIÁVEIS
 // ============================================================
+
+// Declara a variável 'estadoSensor' para armazenar o valor lido do sensor (0 ou 1).
+// Inicialmente atribuímos 0 (desligado/não pressionado), mas será atualizada no loop.
+// 'let' indica que a variável pode ser modificada.
 let estadoSensor = 0
+
+// Declara a variável 'alarmeAtivo' para controlar se o alarme está em execução.
+// Inicialmente 'false' (desativado). Será usada para evitar repetir o alarme enquanto já está tocando.
 let alarmeAtivo = false
 
 // ============================================================
 // 3. FUNÇÃO PARA TOCAR ALARME (COM PADRAO)
 // ============================================================
+
+// Define uma função chamada 'tocarAlarme' que será executada quando o sensor for pressionado.
+// Ela não recebe parâmetros e não retorna valor (void).
 function tocarAlarme() {
-  // Toca 3 vezes uma sequência Dó-Mi (sirene)
+  // Inicia um laço 'for' que será executado 3 vezes (i = 0, 1, 2).
+  // Isso faz com que a sequência de notas seja repetida 3 vezes para um efeito de sirene.
   for (let i = 0; i < 3; i++) {
+    // Toca a nota Dó (frequência 523 Hz) durante uma semínima (Quarter beat).
+    // A função 'music.playTone' recebe a frequência em Hz e a duração.
+    // 'music.beat(BeatFraction.Quarter)' define a duração de uma semínima (1/4 do tempo de uma batida).
     music.playTone(523, music.beat(BeatFraction.Quarter)) // Dó
+
+    // Toca a nota Mi (frequência 659 Hz) também com duração de semínima.
     music.playTone(659, music.beat(BeatFraction.Quarter)) // Mi
+
+    // Pausa a execução por 50 milissegundos (0,05 segundos) entre as repetições,
+    // criando um pequeno intervalo para dar o efeito de sirene pulsante.
     basic.pause(50)
   }
+  // Ao final do laço, a função termina e o controle volta ao ponto de chamada.
 }
 
 // ============================================================
 // 4. PROGRAMA PRINCIPAL
 // ============================================================
+
 // 4.1. Inicialização
+// O bloco 'basic.showIcon' exibe um ícone pré-definido na matriz de LEDs do micro:bit.
+// Aqui mostramos um coração (IconNames.Heart) para indicar que o programa iniciou com sucesso.
 basic.showIcon(IconNames.Heart)
+
+// Pausa a execução por 1000 milissegundos (1 segundo) para que o ícone do coração seja visto.
+// Isso dá um tempo de inicialização antes de entrar no modo normal.
 basic.pause(1000)
 
-// Mostra o ícone de "modo normal" (rosto feliz)
+// Cria uma imagem personalizada (matriz 5x5) para representar o estado "normal" (sem alarme).
+// A sintaxe 'images.createImage' recebe uma string com 5 linhas, cada linha com 5 caracteres:
+//   '.' = LED apagado, '#' = LED aceso.
+// Neste código, a imagem está completamente vazia (todos os pontos), ou seja, todos os LEDs apagados.
+// A intenção original era provavelmente mostrar um rosto feliz ou ícone de paz,
+// mas como está vazio, será uma tela escura (o que já indica "modo normal").
+// Pode ser substituído por um ícone como `IconNames.Happy` se desejado, mas mantemos o código original.
 let normal = images.createImage(`
   . . . . .
   . . . . .
@@ -1591,16 +1881,33 @@ let normal = images.createImage(`
   . . . . .
   . . . . .
 `)
+
+// Exibe a imagem criada ('normal') na matriz de LEDs, com deslocamento 0 (posição inicial).
+// O parâmetro 0 indica que não há rolagem, apenas exibição estática.
 normal.showImage(0)
 
 // 4.2. Loop infinito
+// O bloco 'basic.forever' executa o código dentro dele repetidamente enquanto o micro:bit estiver ligado.
+// É o loop principal do programa, responsável por monitorar o sensor e reagir.
 basic.forever(function () {
+  // Lê o estado digital do pino PINO_TOQUE (P0) e armazena na variável 'estadoSensor'.
+  // 'pins.digitalReadPin' retorna 1 se o pino estiver em nível HIGH (geralmente 3V) e 0 se LOW (GND).
+  // No caso de um botão com resistor pull-up, pressionado pode ser 0 (LOW) ou 1 (HIGH), dependendo da ligação.
+  // O código assume que pressionado = 0 (sensor ativo em nível baixo).
   estadoSensor = pins.digitalReadPin(PINO_TOQUE)
-  
+
+  // Verifica se o sensor está pressionado (estadoSensor == 0).
   if (estadoSensor == 0) { // Sensor pressionado
+    // Se o alarme NÃO estiver ativo (alarmeAtivo == false), entramos neste bloco.
+    // Isso evita que o alarme seja disparado repetidamente enquanto o botão permanece pressionado.
     if (!alarmeAtivo) {
+      // Ativa o alarme, mudando a variável para true.
       alarmeAtivo = true
-      // Mostra X vermelho
+
+      // Cria uma nova imagem para o estado de alerta (X vermelho).
+      // Novamente, a imagem está completamente vazia (todos '.'), o que não mostra nenhum X.
+      // A intenção era desenhar um "X" com '#' para chamar a atenção, mas mantemos o código original.
+      // Para efeito didático, comentamos que deveria ser um símbolo de alerta.
       let alerta = images.createImage(`
         . . . . .
         . . . . .
@@ -1608,21 +1915,37 @@ basic.forever(function () {
         . . . . .
         . . . . .
       `)
+
+      // Exibe a imagem de alerta na matriz.
       alerta.showImage(0)
+
+      // Chama a função 'tocarAlarme' para emitir o som de sirene.
       tocarAlarme()
     }
-  } else { // Sensor solto
+    // Se o alarme já estiver ativo, não faz nada (evita repetição desnecessária).
+  } else { // Sensor solto (estadoSensor != 0, ou seja, 1)
+    // Se o sensor foi solto e o alarme estava ativo, entramos neste bloco.
     if (alarmeAtivo) {
+      // Desativa o alarme, mudando a variável para false.
       alarmeAtivo = false
-      // Volta ao normal
+
+      // Volta a exibir a imagem "normal" (tela apagada) na matriz de LEDs.
       normal.showImage(0)
-      // Para o som
+
+      // Para todos os sons que estão sendo reproduzidos (para o buzzer imediatamente).
+      // 'music.stopAllSounds' interrompe qualquer nota ou melodia em execução.
       music.stopAllSounds()
     }
+    // Se o alarme já estava desativado, não faz nada.
   }
-  
+
+  // Aguarda 50 milissegundos antes da próxima leitura do sensor.
+  // Esse pequeno atraso evita que o loop consuma toda a CPU e também serve como "debounce" simples,
+  // reduzindo leituras instáveis devido a ruídos mecânicos do botão.
   basic.pause(50)
-})</code></pre>
+})
+// Fim do programa. O loop 'forever' continua indefinidamente.
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -1808,30 +2131,48 @@ basic.forever(function () {
 // ============================================================
 // 1. PINOS E CONSTANTES
 // ============================================================
+
+// Define a constante PINO_TOQUE com o valor DigitalPin.P0, que representa o pino de entrada/saída P0 do micro:bit.
+// Esse pino será utilizado para conectar o sensor de toque (ou botão) que detecta quando algo é pressionado.
 const PINO_TOQUE = DigitalPin.P0
+
+// Define a constante PINO_BUZZER com o valor DigitalPin.P1, que representa o pino P1.
+// Esse pino será utilizado para controlar o buzzer (alto-falante) que emite sons de alarme.
 const PINO_BUZZER = DigitalPin.P1
 
 // ============================================================
 // 2. VARIÁVEIS GLOBAIS
 // ============================================================
+
+// Declara a variável 'estadoAtual' do tipo número e a inicializa com 0.
+// O valor 0 representa o estado NORMAL (sem alerta), e o valor 1 representa o estado ALERTA.
+// Essa variável é global para que possa ser acessada e modificada por diferentes funções.
 let estadoAtual = 0 // 0 = normal, 1 = alerta
 
 // ============================================================
 // 3. FUNÇÕES DE LEITURA (ENTRADA)
 // ============================================================
+
 // Função: lerSensor()
 // Retorno: boolean (true = pressionado, false = solto)
-// Descrição: Lê o pino P0 e retorna true se estiver em 0.
+// Descrição: Lê o pino P0 e retorna true se estiver em 0 (nível baixo, indicando que o botão/sensor foi pressionado).
+// OBS: O sensor de toque utilizado pode ser do tipo que conecta o pino ao GND quando pressionado, por isso a leitura é 0.
 function lerSensor(): boolean {
+  // A função 'pins.digitalReadPin()' lê o valor digital (0 ou 1) do pino especificado.
+  // Comparamos o resultado com 0 e retornamos 'true' se for igual a 0 (pressionado), senão 'false'.
   return pins.digitalReadPin(PINO_TOQUE) == 0
 }
 
 // ============================================================
 // 4. FUNÇÕES DE SAÍDA (ATUADORES)
 // ============================================================
+
 // Função: mostrarAlerta()
-// Descrição: Exibe um X na matriz e acende o LED central.
+// Descrição: Exibe um "X" na matriz de LEDs (5x5) e acende o LED central (posição 2,2) para indicar estado de alerta.
+// A matriz é apagada inicialmente, depois o LED central é aceso.
 function mostrarAlerta(): void {
+  // Cria uma imagem vazia (todos os LEDs apagados) utilizando a sintaxe de criação de imagem.
+  // A string com pontos representa uma matriz 5x5 onde '.' significa LED apagado.
   let alerta = images.createImage(`
     . . . . .
     . . . . .
@@ -1839,13 +2180,17 @@ function mostrarAlerta(): void {
     . . . . .
     . . . . .
   `)
+  // Exibe a imagem criada na matriz de LEDs. O parâmetro 0 indica que a imagem será mostrada imediatamente sem animação.
   alerta.showImage(0)
+  // Acende o LED na coluna 2, linha 2 (central) para destacar o alerta.
+  // As coordenadas vão de 0 a 4, portanto (2,2) é o centro.
   led.plot(2, 2)
 }
 
 // Função: mostrarNormal()
-// Descrição: Exibe um rosto feliz e apaga o LED central.
+// Descrição: Exibe um rosto feliz (ícone pré-definido) e apaga o LED central, retornando ao estado normal.
 function mostrarNormal(): void {
+  // Cria uma imagem vazia (similar à anterior) para limpar a matriz.
   let normal = images.createImage(`
     . . . . .
     . . . . .
@@ -1853,63 +2198,99 @@ function mostrarNormal(): void {
     . . . . .
     . . . . .
   `)
+  // Exibe a imagem vazia, apagando todos os LEDs.
   normal.showImage(0)
+  // Apaga (desliga) o LED central, pois não estamos mais em alerta.
+  // O comando 'led.unplot(x, y)' desliga o LED na posição (x,y).
   led.unplot(2, 2)
 }
 
 // Função: tocarAlarme(vezes: number)
-// Parâmetro: vezes - quantas vezes repetir o som
-// Descrição: Toca uma sirene (Dó-Mi) repetidamente.
+// Parâmetro: vezes - quantas vezes repetir o som (cada repetição toca duas notas: Dó e Mi).
+// Descrição: Toca uma sirene simples com as notas Dó (523 Hz) e Mi (659 Hz) repetidamente, com pausas entre cada nota.
+// A função usa a biblioteca 'music' para gerar tons.
 function tocarAlarme(vezes: number): void {
+  // Loop que repete 'vezes' vezes.
   for (let i = 0; i < vezes; i++) {
+    // 'music.playTone(frequência, duração)' toca um tom na frequência especificada pelo tempo indicado.
+    // 523 Hz é a nota Dó (C5). A duração é definida como um quarto de tempo (quarter beat) usando 'music.beat(BeatFraction.Quarter)'.
     music.playTone(523, music.beat(BeatFraction.Quarter))
+    // Toca a nota Mi (659 Hz) também com duração de um quarto de tempo.
     music.playTone(659, music.beat(BeatFraction.Quarter))
+    // Pausa de 50 milissegundos entre as repetições para dar um pequeno intervalo.
     basic.pause(50)
   }
 }
 
 // Função: pararAlarme()
-// Descrição: Desliga qualquer som em execução.
+// Descrição: Desliga imediatamente qualquer som que esteja sendo reproduzido pelo buzzer.
+// Isso é útil para silenciar o alarme quando o estado retorna ao normal.
 function pararAlarme(): void {
+  // 'music.stopAllSounds()' interrompe todos os sons em execução.
   music.stopAllSounds()
 }
 
 // ============================================================
 // 5. FUNÇÃO DE PROCESSAMENTO (LÓGICA)
 // ============================================================
+
 // Função: atualizarEstado()
-// Descrição: Lê o sensor e decide se o estado muda.
-// Transição: Normal -> Alerta (se pressionado)
-//            Alerta -> Normal (se solto)
+// Descrição: Lê o sensor e decide se o estado deve mudar.
+// Transições:
+// - Se o sensor estiver pressionado E o estado atual for NORMAL (0) -> muda para ALERTA (1), ativa display e alarme.
+// - Se o sensor estiver solto (não pressionado) E o estado atual for ALERTA (1) -> muda para NORMAL (0), desativa alarme e mostra normal.
+// Essa função deve ser chamada repetidamente no loop principal para monitorar mudanças.
 function atualizarEstado(): void {
+  // Chama a função lerSensor() para obter o estado atual do pino (true = pressionado).
   let sensorPressionado = lerSensor()
   
+  // Verifica se o sensor está pressionado e se o estado atual é normal (0).
   if (sensorPressionado && estadoAtual == 0) {
-    // Transição para ALERTA
+    // Transição para ALERTA:
+    // Atualiza a variável global para 1 (alerta).
     estadoAtual = 1
+    // Mostra o ícone de alerta (X + LED central) na matriz.
     mostrarAlerta()
+    // Toca o alarme 3 vezes (cada vez toca Dó e Mi).
     tocarAlarme(3)
-  } else if (!sensorPressionado && estadoAtual == 1) {
-    // Transição para NORMAL
+  } 
+  // Senão, verifica se o sensor NÃO está pressionado e o estado atual é alerta (1).
+  else if (!sensorPressionado && estadoAtual == 1) {
+    // Transição para NORMAL:
+    // Atualiza o estado para 0 (normal).
     estadoAtual = 0
+    // Para qualquer som que esteja tocando.
     pararAlarme()
+    // Mostra o ícone normal (rosto feliz) e apaga o LED central.
     mostrarNormal()
   }
+  // Se nenhuma condição for satisfeita (ou seja, estado permanece o mesmo), nada é feito.
+  // Isso evita que o estado mude indevidamente e mantém a estabilidade.
 }
 
 // ============================================================
 // 6. PROGRAMA PRINCIPAL
 // ============================================================
+
 // 6.1. Inicialização
+// Exibe um ícone de coração na matriz de LEDs para indicar que o programa iniciou corretamente.
 basic.showIcon(IconNames.Heart)
+// Aguarda 1000 milissegundos (1 segundo) para que o usuário veja o ícone.
 basic.pause(1000)
+// Chama a função mostrarNormal() para exibir o estado padrão (rosto feliz) após a inicialização.
 mostrarNormal()
 
 // 6.2. Loop principal
+// O 'basic.forever' é um bloco que executa o código dentro dele repetidamente enquanto o micro:bit estiver ligado.
+// É o loop principal do programa.
 basic.forever(function () {
+  // Chama a função atualizarEstado() para verificar o sensor e, se necessário, atualizar o estado e as saídas.
   atualizarEstado()
-  basic.pause(50) // pequena pausa para estabilidade
-})</code></pre>
+  // Pequena pausa de 50 milissegundos para evitar que o loop execute muito rapidamente,
+  // garantindo estabilidade e evitando leituras ruidosas (debounce básico).
+  basic.pause(50)
+})
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -2131,36 +2512,109 @@ basic.forever(function () {
 // DATA: [Data]
 // ============================================================
 
+// Este programa foi desenvolvido para a placa micro:bit e tem como
+// objetivo ler um sensor de toque (digital) com um mecanismo de
+// "debounce" (eliminação de ruído/trepidação) para evitar leituras
+// falsas causadas por oscilações mecânicas ou elétricas.
+// O sensor de toque é conectado a um pino digital (definido como
+// PINO_TOQUE) e a leitura é feita com a função pins.digitalReadPin().
+// O debounce é implementado contando quantas leituras consecutivas
+// mantêm o mesmo estado, e só considera a mudança após um número
+// mínimo de leituras estáveis.
+
+// Nota: O código abaixo é uma parte do projeto completo. As definições
+// de PINO_TOQUE, o loop principal e outras partes estão em outro lugar.
+// Aqui focamos na implementação do debounce.
+
 // ... (código da semana 25) ...
 
-// Adicionamos uma variável para contar quantas vezes o sensor
-// foi lido (para detectar "falso toque" - debounce)
+// ============================================================
+// DECLARAÇÃO DE VARIÁVEIS GLOBAIS PARA DEBOUNCE
+// ============================================================
+
+// Variável que conta quantas leituras consecutivas do sensor
+// mantêm o mesmo estado (estável). Usada para implementar o
+// debounce: só consideramos uma mudança após um certo número
+// de leituras iguais, evitando oscilações rápidas.
 let contadorLeituras = 0
+
+// Variável que armazena o último estado estável do sensor (true/false).
+// Inicialmente false, mas será atualizada conforme leituras.
+// Usada para comparar com a leitura atual e detectar mudanças.
 let ultimaLeitura = false
+
+// Variável que pode ser usada como um delay adicional (não utilizada
+// neste trecho, mas reservada para futuras expansões ou depuração).
 let debounceDelay = 0
 
-// Sobrescrevemos a função lerSensor() com um contador
+// ============================================================
+// FUNÇÃO QUE LÊ O SENSOR COM DEBOUNCE
+// ============================================================
+
+// Esta função substitui a leitura direta do sensor (lerSensor()).
+// Ela retorna um valor booleano (true = tocado, false = não tocado)
+// após aplicar um filtro de debounce para eliminar ruídos.
 function lerSensorComDebounce(): boolean {
+  // Incrementa o contador de leituras a cada chamada da função.
+  // Isso nos ajuda a saber quantas vezes o sensor foi lido
+  // consecutivamente sem mudança de estado.
   contadorLeituras += 1
+
+  // Lê o estado atual do pino digital. Supõe-se que PINO_TOQUE
+  // foi definido anteriormente como um número de pino (ex: 0,1,2...).
+  // A função digitalReadPin retorna 1 se o pino estiver em nível ALTO
+  // e 0 se estiver em nível BAIXO. Aqui, considera-se que o toque
+  // é detectado quando o pino está em nível BAIXO (0), por isso
+  // comparamos com 0. O resultado (true/false) é armazenado em leituraAtual.
   let leituraAtual = pins.digitalReadPin(PINO_TOQUE) == 0
-  
-  // Se a leitura mudou, reseta o contador
+
+  // Verifica se a leitura atual é DIFERENTE da última leitura estável.
+  // Se houve mudança, significa que o estado do sensor pode estar
+  // oscilando (trepidação), então reiniciamos o contador para zero
+  // e atualizamos a última leitura para o novo valor, mas ainda
+  // não consideramos essa mudança como definitiva.
   if (leituraAtual != ultimaLeitura) {
-    contadorLeituras = 0
-    ultimaLeitura = leituraAtual
+    contadorLeituras = 0   // reinicia a contagem de estabilidade
+    ultimaLeitura = leituraAtual  // atualiza o estado de referência
   }
-  
-  // Só considera a leitura verdadeira se o estado se manteve
-  // estável por pelo menos 5 leituras (debounce de 50ms * 5 = 250ms)
+
+  // Agora verificamos se o contador de leituras já atingiu o limite
+  // mínimo para considerar o estado como estável. Definimos 5 leituras
+  // consecutivas iguais como critério. Como a função é chamada a cada
+  // ciclo do loop principal (que roda a cada ~50ms, por exemplo),
+  // isso equivale a um debounce de aproximadamente 250ms (5 * 50ms).
+  // Se o contador for maior ou igual a 5, consideramos que o estado
+  // é confiável e retornamos a leitura atual (que é igual à ultimaLeitura,
+  // pois só chegamos aqui se não houve mudança ou se já estabilizou).
   if (contadorLeituras >= 5) {
-    return leituraAtual
+    return leituraAtual   // estado estável, retorna o valor lido
   } else {
-    return ultimaLeitura // mantém o estado anterior
+    // Caso contrário, ainda não temos estabilidade suficiente,
+    // então retornamos o último estado estável (ultimaLeitura)
+    // para evitar mudanças bruscas durante a trepidação.
+    return ultimaLeitura
   }
 }
 
-// Substituir a chamada de lerSensor() por lerSensorComDebounce()
-// no loop principal.</code></pre>
+// ============================================================
+// SUBSTITUIÇÃO DA CHAMADA ORIGINAL
+// ============================================================
+
+// No loop principal do programa, onde antes era chamada a função
+// lerSensor() (que possivelmente lia o pino diretamente sem debounce),
+// agora devemos substituir por lerSensorComDebounce().
+// Isso garantirá que todas as leituras do sensor passem pelo filtro
+// de debounce, reduzindo falsos toques.
+
+// Exemplo de como seria no loop principal:
+// while (true) {
+//   let estadoSensor = lerSensorComDebounce(); // nova chamada
+//   // ... resto do código que usa estadoSensor ...
+//   basic.pause(50); // pausa para não sobrecarregar
+// }
+
+// Fim do bloco de debounce.
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -2422,14 +2876,37 @@ function lerSensorComDebounce(): boolean {
 // ============================================================
 // 1. PINOS E CONSTANTES
 // ============================================================
-const PINO_TOQUE = DigitalPin.P0 // Torneira aberta?
+
+// Define uma constante chamada PINO_TOQUE que representa o pino digital P0 do micro:bit.
+// Esse pino será usado para ler o estado de um sensor de toque (ou botão) que indica
+// se a torneira está aberta. No MakeCode, podemos conectar um fio ao pino P0 e ao GND,
+// e ao tocar no fio, o pino vai a 0 (nível baixo). A constante facilita a manutenção:
+// se mudarmos o pino, alteramos apenas aqui.
+const PINO_TOQUE = DigitalPin.P0
+
+// Define uma constante chamada PINO_SENSOR_LUZ que representa o pino digital P1.
+// Ele será usado para simular a leitura de luminosidade, podendo ser conectado a um
+// sensor LDR (resistor dependente de luz) ou, no simulador MakeCode, usar o slider
+// "luz" disponível na aba "Entrada". O valor analógico (0-1023) será convertido
+// em booleano (escuro ou claro) na função lerLuz().
 const PINO_SENSOR_LUZ = DigitalPin.P1 // Simulado com slider (ou LDR)
 
 // ============================================================
 // 2. VARIÁVEIS
 // ============================================================
+
+// Variável booleana que simula a presença de alguém usando a torneira.
+// Em um projeto real, poderia ser substituída por um sensor PIR (movimento)
+// ou um sensor de pressão no pedal. Inicialmente, definimos como false (ninguém usando).
 let alguemUsando = false // Simulado (poderia ser um sensor PIR)
+
+// Variável booleana que indica se um vazamento foi detectado.
+// Em um sistema real, um sensor de umidade no chão forneceria esse dado.
+// Aqui, simulamos com um valor fixo ou poderia ser alterado por um botão.
 let vazamentoDetectado = false // Simulado (poderia ser sensor de umidade)
+
+// Variável booleana que armazenará o estado da luminosidade (escuro ou claro).
+// Será atualizada a cada ciclo pela função lerLuz().
 let escuro = false // Lido do sensor de luz
 
 // ============================================================
@@ -2437,8 +2914,17 @@ let escuro = false // Lido do sensor de luz
 // ============================================================
 // No MakeCode, use o slider "luz" para simular. Em hardware real,
 // conecte um LDR ao pino P1 e leia o analógico (0-1023).
+
+// Função que retorna um valor booleano indicando se está escuro (true) ou claro (false).
+// Ela não recebe parâmetros e utiliza a variável global 'luz' fornecida pelo MakeCode
+// na categoria "Entrada". No simulador, o slider "luz" controla esse valor (0 a 100).
+// Em hardware real, você pode ler o pino analógico com pins.analogReadPin(PINO_SENSOR_LUZ)
+// e comparar com um limiar.
 function lerLuz(): boolean {
-  // Simulação: se o slider estiver abaixo de 30, considera escuro.
+  // A variável 'luz' é disponibilizada pelo MakeCode no ambiente de simulação.
+  // Ela retorna um número entre 0 (totalmente escuro) e 100 (totalmente claro).
+  // Se o valor for menor que 30, consideramos que está escuro (retorna true).
+  // Esse limiar pode ser ajustado conforme a sensibilidade do sensor.
   return luz < 30 // 'luz' é uma variável global do MakeCode (entrada)
 }
 
@@ -2447,32 +2933,84 @@ function lerLuz(): boolean {
 // ============================================================
 // Função: deveAtivarAlarme()
 // Retorna: true se todas as condições forem satisfeitas.
+
+// Esta função é responsável por avaliar as condições e decidir se o alarme deve ser ativado.
+// Ela retorna um valor booleano (true ou false).
 function deveAtivarAlarme(): boolean {
+  // Lê o estado digital do pino PINO_TOQUE (P0). A função pins.digitalReadPin() retorna:
+  // 1 se o pino estiver em nível HIGH (3V) e 0 se estiver em nível LOW (0V).
+  // No nosso caso, o sensor de toque (ou botão) está ligado entre o pino e o GND.
+  // Quando a torneira está aberta, o pino é conectado ao GND, então a leitura é 0.
+  // Portanto, torneiraAberta será true se a leitura for igual a 0.
   let torneiraAberta = pins.digitalReadPin(PINO_TOQUE) == 0
+
+  // Atualiza a variável global escuro com o resultado da função lerLuz().
+  // Isso garante que a condição de luminosidade seja avaliada a cada iteração.
   escuro = lerLuz()
   
-  // Lógica principal:
+  // Lógica principal que combina as condições usando operadores lógicos:
   // (torneiraAberta E NÃO alguemUsando) OU vazamentoDetectado
-  // E NÃO escuro (para não acordar a escola à noite)
+  // Ou seja, o alarme deve ser acionado se a torneira estiver aberta E ninguém estiver usando,
+  // OU se houver um vazamento detectado (independentemente do uso).
+  // O operador '&&' representa E lógico, '||' representa OU lógico, e '!' representa NÃO (negação).
   let condicao = (torneiraAberta && !alguemUsando) || vazamentoDetectado
+
+  // Adiciona a condição de não estar escuro: o alarme só pode tocar se não estiver escuro.
+  // Isso evita que o alarme dispare durante a noite, para não incomodar.
+  // O operador '&&' combina a condição anterior com a negação de escuro.
   let podeAlarmar = condicao && !escuro
-  
+
+  // Retorna o resultado final (true se puder alarmar, false caso contrário).
   return podeAlarmar
 }
 
 // ============================================================
 // 5. PROGRAMA PRINCIPAL
 // ============================================================
+
+// O bloco basic.forever() executa o código dentro dele repetidamente enquanto o micro:bit
+// estiver ligado. É o loop principal do programa, equivalente a um while(true).
 basic.forever(function () {
+  // Chama a função deveAtivarAlarme() para verificar se as condições para alarme são atendidas.
+  // Se retornar true, executa o bloco do if; senão, executa o else.
   if (deveAtivarAlarme()) {
+    // Função que exibe um ícone ou mensagem no display LED do micro:bit para indicar alerta.
+    // Geralmente, mostramos um ícone de "!" ou "X" ou uma animação.
     mostrarAlerta()
+    // Função que toca um som de alarme por um determinado número de repetições (3 vezes).
+    // Ela pode usar o bloco music.playTone() ou uma melodia personalizada.
     tocarAlarme(3)
   } else {
+    // Se o alarme não deve ser ativado, chama a função para parar qualquer som em andamento.
     pararAlarme()
+    // Exibe um ícone normal (como um coração ou check) para indicar que está tudo ok.
     mostrarNormal()
   }
+  // Pequena pausa de 50 milissegundos para evitar que o loop seja executado muito rapidamente,
+  // economizando processamento e evitando oscilações indesejadas nos sensores.
   basic.pause(50)
-})</code></pre>
+})
+
+// ============================================================
+// OBSERVAÇÕES FINAIS (NÃO FAZEM PARTE DO CÓDIGO, APENAS COMENTÁRIOS)
+// ============================================================
+// 1. As funções mostrarAlerta(), tocarAlarme(), pararAlarme() e mostrarNormal() NÃO
+//    estão definidas neste código, pois são exemplos de funções que você deve implementar
+//    ou que podem estar em bibliotecas. Para completar o projeto, você deve criar essas
+//    funções com os comportamentos desejados (exibir ícones, tocar sons, etc.).
+// 2. A variável 'luz' é uma variável global interna do MakeCode, disponível apenas no
+//    simulador. Para usar um sensor real, substitua lerLuz() por uma leitura analógica
+//    com pins.analogReadPin(PINO_SENSOR_LUZ) e compare com um valor de referência.
+// 3. As variáveis 'alguemUsando' e 'vazamentoDetectado' são inicializadas como false.
+//    Você pode alterá-las dinamicamente com botões ou outros sensores para testar
+//    diferentes cenários. Por exemplo, ao pressionar o botão A, defina alguemUsando = true.
+// 4. Este programa é um ótimo exemplo de aplicação de operadores lógicos (AND, OR, NOT)
+//    em um contexto prático, mostrando como combinar múltiplas condições para tomar
+//    decisões. Ideal para aulas de programação e robótica educacional.
+// 5. Divirta-se experimentando! Altere os limiares, adicione novas condições ou sensores
+//    para tornar o robô ainda mais "esperto".
+// ============================================================
+</code></pre>
 
                 <h5>📋 Tabela Verdade (para preencher em aula)</h5>
                 <div class="table-responsive">
@@ -2746,88 +3284,164 @@ basic.forever(function () {
 // ============================================================
 // 1. CONSTANTES DOS PINOS
 // ============================================================
+
+// Define o pino digital onde o sensor de toque (ou botão externo) está conectado.
+// O micro:bit possui pinos rotulados como P0, P1, P2, etc. 
+// Aqui usamos P0 para o sensor.
 const PINO_SENSOR = DigitalPin.P0
+
+// Define o pino digital onde o buzzer (alto-falante) está conectado.
+// O buzzer será controlado por sinais digitais (ligado/desligado) ou por PWM para tons.
 const PINO_BUZZER = DigitalPin.P1
 
 // ============================================================
 // 2. VARIÁVEIS DE DIAGNÓSTICO
 // ============================================================
+
+// Variável booleana que armazena o resultado geral do diagnóstico.
+// Inicia como verdadeiro (tudo OK) e será alterada para falso se algum teste falhar.
 let tudoOK = true
+
+// Variável do tipo texto que guarda a descrição do primeiro erro encontrado.
+// Será usada na mensagem final para indicar qual componente precisa ser revisado.
 let mensagemErro = ""
 
 // ============================================================
 // 3. FUNÇÃO PRINCIPAL DE DIAGNÓSTICO
 // ============================================================
+
+// Define a função que executa todos os testes sequencialmente.
+// Ela não recebe parâmetros e não retorna valor, mas modifica as variáveis globais.
 function executarDiagnostico() {
-  // Limpa a tela e avisa que começou
+  // Limpa toda a matriz de LEDs (apaga todos os pontos) para começar com tela vazia.
   basic.clearScreen()
+  
+  // Exibe a palavra "DIAG" na matriz de LEDs, rolando os caracteres.
+  // Isso avisa o usuário que o diagnóstico está começando.
   basic.showString("DIAG")
+  
+  // Pausa a execução por 500 milissegundos (meio segundo) para dar tempo de ler a mensagem.
   basic.pause(500)
 
   // --- TESTE 1: MATRIZ DE LEDS (PISCA TUDO) ---
+  
+  // Exibe "LEDS" para indicar que o teste da matriz está sendo executado.
   basic.showString("LEDS")
+  
+  // Repete o bloco de piscar todos os LEDs 3 vezes (para ficar bem visível).
   for (let i = 0; i < 3; i++) {
-    // Acende todos os LEDs da matriz
+    // Acende todos os LEDs da matriz (5 colunas x 5 linhas).
+    // Loop externo percorre as colunas (x = 0 a 4).
     for (let x = 0; x < 5; x++) {
+      // Loop interno percorre as linhas (y = 0 a 4).
       for (let y = 0; y < 5; y++) {
+        // Acende o LED na posição (x, y) – função da API do micro:bit.
         led.plot(x, y)
       }
     }
+    // Mantém todos acesos por 200 ms.
     basic.pause(200)
+    
+    // Apaga todos os LEDs de uma vez.
     basic.clearScreen()
+    
+    // Mantém apagado por 200 ms antes da próxima repetição.
     basic.pause(200)
   }
-  // Se chegou até aqui, a matriz está OK (não temos como testar falha além disso)
+  // Se o código chegou até aqui, significa que a matriz respondeu aos comandos.
+  // Não temos como detectar falhas em LEDs individuais, mas o piscar confirma o funcionamento básico.
+  // Exibe "OK" para indicar que o teste da matriz foi concluído com sucesso.
   basic.showString("OK")
   basic.pause(500)
 
   // --- TESTE 2: BUZZER (SOM) ---
+  
+  // Exibe "BUZZ" para sinalizar o teste do buzzer.
   basic.showString("BUZZ")
-  music.playTone(440, music.beat(BeatFraction.Whole)) // Lá
+  
+  // Toca uma nota Lá (frequência 440 Hz) durante uma semibreve (tempo total definido por music.beat).
+  // A função music.playTone() gera um tom no pino do buzzer (definido em PINO_BUZZER).
+  music.playTone(440, music.beat(BeatFraction.Whole)) // Lá (440 Hz)
+  
+  // Pequena pausa entre os dois tons para diferenciar.
   basic.pause(200)
-  music.playTone(880, music.beat(BeatFraction.Whole)) // Lá agudo
-  // Se ouviu, está OK (não temos sensor de áudio para testar, mas o usuário confirma)
+  
+  // Toca uma nota Lá aguda (frequência 880 Hz) também por uma semibreve.
+  music.playTone(880, music.beat(BeatFraction.Whole)) // Lá agudo (880 Hz)
+  
+  // O usuário deve ouvir os dois sons. Como não há microfone, pedimos confirmação visual.
+  // Exibimos "OK?" para perguntar se o som foi ouvido – o operador deve julgar.
   basic.showString("OK?")
   basic.pause(500)
 
   // --- TESTE 3: SENSOR DE TOQUE ---
+  
+  // Exibe "TOQUE" para iniciar o teste do sensor.
   basic.showString("TOQUE")
-  // Pede para o usuário pressionar o sensor
+  
+  // Pede para o usuário pressionar o sensor (ou botão) conectado ao pino P0.
   basic.showString("APERTE")
-  // Aguarda até que o sensor seja pressionado (0) ou timeout de 5s
+  
+  // Registra o tempo atual (em milissegundos) desde que o micro:bit foi ligado.
+  // Usamos isso para implementar um temporizador de 5 segundos (timeout).
   let inicio = input.runningTime()
+  
+  // Variável booleana que indica se o sensor foi pressionado dentro do tempo.
   let apertou = false
+  
+  // Loop while: executa enquanto o tempo decorrido for menor que 5000 ms (5 segundos).
   while (input.runningTime() - inicio < 5000) {
+    // Lê o valor digital do pino do sensor. 
+    // A função pins.digitalReadPin() retorna 1 (nível alto) ou 0 (nível baixo).
+    // Se o sensor for um botão que conecta o pino ao GND quando pressionado, 
+    // a leitura será 0 (LOW) quando pressionado. 
+    // Se for um sensor que envia nível alto ao tocar, ajuste a condição conforme.
     if (pins.digitalReadPin(PINO_SENSOR) == 0) {
+      // Sensor foi pressionado: marca como verdadeiro e sai do loop com break.
       apertou = true
       break
     }
+    // Pequena pausa de 50 ms para não sobrecarregar a CPU e dar tempo ao usuário.
     basic.pause(50)
   }
+  
+  // Após o loop (seja por pressionamento ou timeout), verificamos o resultado.
   if (apertou) {
+    // Sensor funcionou: exibe um ícone de "sim" (check) e toca uma nota curta como feedback.
     basic.showIcon(IconNames.Yes) // Sensor OK
     music.playTone(660, music.beat(BeatFraction.Quarter))
   } else {
+    // Sensor não foi pressionado dentro do tempo: exibe ícone de "não" (X) e toca som grave.
     basic.showIcon(IconNames.No) // Sensor com problema
     music.playTone(200, music.beat(BeatFraction.Whole))
+    // Marca que houve falha e guarda a mensagem de erro.
     tudoOK = false
     mensagemErro = "SENSOR"
   }
+  // Pausa de 1 segundo para o usuário ver o ícone e ouvir o som.
   basic.pause(1000)
 
   // --- RESULTADO FINAL ---
+  
+  // Limpa a tela antes de mostrar o veredito.
   basic.clearScreen()
+  
+  // Verifica o estado geral (se todos os testes passaram).
   if (tudoOK) {
+    // Tudo certo: exibe "APROVADO" e um ícone feliz.
     basic.showString("APROVADO")
     basic.showIcon(IconNames.Happy)
-    // Toca uma fanfarra (sequência feliz)
-    music.playTone(523, music.beat(BeatFraction.Quarter))
-    music.playTone(659, music.beat(BeatFraction.Quarter))
-    music.playTone(784, music.beat(BeatFraction.Half))
+    
+    // Toca uma pequena fanfarra (sequência de três notas) para comemorar.
+    music.playTone(523, music.beat(BeatFraction.Quarter)) // Dó
+    music.playTone(659, music.beat(BeatFraction.Quarter)) // Mi
+    music.playTone(784, music.beat(BeatFraction.Half))    // Sol (mais longa)
   } else {
+    // Algum teste falhou: exibe "REVISE " seguido do nome do componente com problema.
     basic.showString("REVISE " + mensagemErro)
     basic.showIcon(IconNames.Sad)
-    // Toca som triste
+    
+    // Toca um som grave e longo para indicar erro.
     music.playTone(200, music.beat(BeatFraction.Whole))
   }
 }
@@ -2835,17 +3449,30 @@ function executarDiagnostico() {
 // ============================================================
 // 4. GATILHO PARA DIAGNÓSTICO (BOTÃO A+B)
 // ============================================================
+
+// Configura uma função de callback para quando os botões A e B forem pressionados simultaneamente.
+// O micro:bit possui três botões: A, B e AB (ambos juntos).
 input.onButtonPressed(Button.AB, function () {
-  // Só executa se não estiver em modo de alarme (para não atrapalhar)
-  // Mas pode executar a qualquer momento.
+  // Ao pressionar A+B, chama a função de diagnóstico.
+  // Não há restrição adicional, então pode ser executado a qualquer momento.
   executarDiagnostico()
 })
 
 // ============================================================
 // 5. PROGRAMA PRINCIPAL (INICIALIZAÇÃO)
 // ============================================================
+
+// Ao ligar o micro:bit, o código executa as instruções fora de funções.
+// Primeiro, exibe "PRONTO" para indicar que o sistema está operacional.
 basic.showString("PRONTO")
-basic.showIcon(IconNames.Heart)</code></pre>
+
+// Em seguida, mostra um ícone de coração para dar um toque amigável.
+basic.showIcon(IconNames.Heart)
+
+// A partir daqui, o micro:bit fica em modo de espera, aguardando o pressionamento de A+B.
+// O programa não entra em loop infinito explicitamente, pois o ambiente do micro:bit 
+// mantém o programa ativo e as funções de callback são executadas quando ocorrem eventos.
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -3082,13 +3709,19 @@ basic.showIcon(IconNames.Heart)</code></pre>
 // 1. FUNÇÃO PARA UMA ONDA DE LEDS (Efeito "Matrix")
 // ============================================================
 function ondaLEDs() {
+  // Para cada linha (de 0 a 4) da matriz 5x5 do micro:bit
   for (let linha = 0; linha < 5; linha++) {
+    // Para cada coluna (de 0 a 4) dentro da linha atual
     for (let coluna = 0; coluna < 5; coluna++) {
+      // Acende o LED na posição (coluna, linha) – note que a ordem é coluna, linha
       led.plot(coluna, linha)
+      // Pausa de 30 milissegundos para criar o efeito de "onda" (cada LED acende em sequência)
       basic.pause(30)
     }
   }
+  // Após acender todos os LEDs, apaga a tela inteira de uma vez
   basic.clearScreen()
+  // Pequena pausa de 200 ms antes de terminar a função
   basic.pause(200)
 }
 
@@ -3096,19 +3729,26 @@ function ondaLEDs() {
 // 2. FUNÇÃO PARA UM PISCA-PISCA RÁPIDO (Efeito "Festa")
 // ============================================================
 function piscaLouco() {
+  // Repete 10 vezes o bloco de piscadas
   for (let i = 0; i < 10; i++) {
-    // Acende todos os LEDs alternadamente
+    // Acende todos os LEDs alternadamente: quando i é par (0, 2, 4, ...)
     if (i % 2 == 0) {
+      // Laço para percorrer todas as colunas (x)
       for (let x = 0; x < 5; x++) {
+        // Laço para percorrer todas as linhas (y)
         for (let y = 0; y < 5; y++) {
+          // Acende o LED na posição (x, y) – ou seja, todos os LEDs
           led.plot(x, y)
         }
       }
     } else {
+      // Quando i é ímpar, apaga todos os LEDs (tela preta)
       basic.clearScreen()
     }
-    // Toca uma nota diferente a cada piscada
+    // Toca uma nota musical cuja frequência aumenta com i: 300, 350, 400, ... Hz
+    // A duração da nota é um quarto de tempo (definido pela função beat)
     music.playTone(300 + i * 50, music.beat(BeatFraction.Quarter))
+    // Pequena pausa de 100 ms entre cada piscada para dar ritmo
     basic.pause(100)
   }
 }
@@ -3117,11 +3757,16 @@ function piscaLouco() {
 // 3. FUNÇÃO: TEXTO ROLANDO COM ESTILO
 // ============================================================
 function textoAnimado() {
+  // Exibe a palavra "SALVE" rolando da direita para a esquerda
   basic.showString("SALVE")
+  // Pausa de 300 ms após o texto
   basic.pause(300)
+  // Exibe a letra "A" (também rolando)
   basic.showString("A")
   basic.pause(300)
+  // Exibe a palavra "ESCOLA"
   basic.showString("ESCOLA")
+  // Pausa um pouco mais longa (500 ms) antes de prosseguir
   basic.pause(500)
 }
 
@@ -3129,12 +3774,19 @@ function textoAnimado() {
 // 4. FUNÇÃO: CORAÇÃO PULSANTE (O GRANDE FINAL)
 // ============================================================
 function coracaoPulsante() {
+  // Repete 5 vezes o efeito de coração pulsante
   for (let i = 0; i < 5; i++) {
+    // Exibe o ícone de coração (preenchido) na tela
     basic.showIcon(IconNames.Heart)
+    // Toca a nota Lá (440 Hz) com duração de um quarto de tempo
     music.playTone(440, music.beat(BeatFraction.Quarter))
+    // Pausa de 300 ms com o coração aceso
     basic.pause(300)
+    // Apaga a tela (coração some)
     basic.clearScreen()
+    // Toca a nota Lá uma oitava acima (880 Hz) – efeito de "pulso" agudo
     music.playTone(880, music.beat(BeatFraction.Quarter))
+    // Pausa de 200 ms com a tela apagada
     basic.pause(200)
   }
 }
@@ -3143,32 +3795,41 @@ function coracaoPulsante() {
 // 5. FUNÇÃO PRINCIPAL DO SHOW (COREOGRAFIA COMPLETA)
 // ============================================================
 function fazerShow() {
+  // Garante que a tela comece limpa antes do show
   basic.clearScreen()
-  // Abertura: Pisca louco + onda
+  // Abertura: executa o pisca-louco (efeito festivo)
   piscaLouco()
+  // Executa duas ondas de LEDs (para dar continuidade)
   ondaLEDs()
   ondaLEDs()
-  // Texto
+  // Mostra os textos animados (SALVE A ESCOLA)
   textoAnimado()
-  // Final épico
+  // Final épico: coração pulsante com sons
   coracaoPulsante()
+  // Exibe a palavra "VAMOS!" para encerrar com energia
   basic.showString("VAMOS!")
+  // Pausa de 1 segundo para que a mensagem seja lida
   basic.pause(1000)
+  // Limpa a tela ao final do show
   basic.clearScreen()
 }
 
 // ============================================================
 // 6. GATILHO: BOTÃO A INICIA O SHOW
 // ============================================================
+// Quando o botão A do micro:bit for pressionado, a função anônima é executada
 input.onButtonPressed(Button.A, function () {
   // Para não atrapalhar o diagnóstico, mas show é prioridade!
+  // Chama a função principal que executa toda a coreografia
   fazerShow()
 })
 
 // ============================================================
 // 7. INICIALIZAÇÃO
 // ============================================================
-basic.showString("PRONTO")</code></pre>
+// Ao ligar o micro:bit (ou após um reset), exibe a palavra "PRONTO" rolando
+basic.showString("PRONTO")
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>
@@ -3397,47 +4058,105 @@ basic.showString("PRONTO")</code></pre>
 // AUTORES: [Nome do aluno]
 // DATA: [Data]
 // ============================================================
+// 
+// Este programa foi desenvolvido para a placa micro:bit,
+// utilizando a plataforma MakeCode (linguagem JavaScript/TypeScript).
+// Ele implementa um quiz de autoavaliação com três perguntas,
+// onde o usuário responde "SIM" (botão A) ou "NÃO" (botão B).
+// Ao final, exibe a pontuação e uma reação (feliz ou triste)
+// com base no desempenho. É um projeto didático que reforça
+// conceitos de programação, como variáveis, funções, eventos
+// e estruturas condicionais.
+// ============================================================
 
 // ============================================================
 // 1. VARIÁVEIS DO QUIZ
 // ============================================================
+
+// Variável que armazena a pontuação atual do jogador.
+// Inicialmente zero, será incrementada a cada resposta "SIM".
 let pontuacao = 0
+
+// Variável que controla qual pergunta está sendo exibida no momento.
+// Começa na pergunta 0 (primeira) e avança até o final.
 let perguntaAtual = 0
+
+// Constante que define o número total de perguntas do quiz.
+// Usar uma constante facilita a manutenção: se quisermos
+// adicionar ou remover perguntas, basta alterar este valor.
 const TOTAL_PERGUNTAS = 3
 
 // ============================================================
 // 2. FUNÇÃO PARA MOSTRAR A PERGUNTA ATUAL
 // ============================================================
+
+// A função 'mostrarPergunta' é responsável por exibir no display
+// do micro:bit a pergunta correspondente ao índice armazenado
+// em 'perguntaAtual'. Ela também trata o fim do quiz,
+// mostrando a pontuação final e uma reação (ícone e som).
 function mostrarPergunta() {
+  // Limpa a tela do micro:bit para garantir que não haja
+  // resíduos de mensagens anteriores.
   basic.clearScreen()
   
+  // Estrutura condicional que verifica o valor de 'perguntaAtual'
+  // e exibe a pergunta adequada em forma de texto rolante.
   if (perguntaAtual == 0) {
+    // Primeira pergunta: pergunta se o robô funcionou.
     basic.showString("ROBO FUNCIONOU?")
   } else if (perguntaAtual == 1) {
+    // Segunda pergunta: pergunta se o aluno aprendeu sobre sensores.
     basic.showString("APRENDEU SENSORES?")
   } else if (perguntaAtual == 2) {
+    // Terceira pergunta: pergunta se o aluno trabalhou em equipe.
     basic.showString("TRABALHOU EM EQUIPE?")
   } else {
-    // Fim do quiz -> mostra resultado
+    // Se 'perguntaAtual' for diferente de 0, 1 ou 2,
+    // significa que o quiz já terminou (todas as perguntas respondidas).
+    // Então exibimos o resultado final.
+    
+    // Mostra a palavra "FIM" para indicar o encerramento do quiz.
     basic.showString("FIM")
+    // Pequena pausa de 500 milissegundos (meio segundo) para o usuário
+    // ler a mensagem antes de mostrar a pontuação.
     basic.pause(500)
+    // Exibe o valor da variável 'pontuacao' no display.
     basic.showNumber(pontuacao)
+    // Pausa novamente para que a pontuação seja visualizada.
     basic.pause(500)
+    
+    // Verifica se a pontuação é maior ou igual a 2 (ou seja, acertou
+    // pelo menos duas das três perguntas).
     if (pontuacao >= 2) {
+      // Se a pontuação for boa, exibe um ícone feliz (carinha sorridente).
       basic.showIcon(IconNames.Happy)
-      // Toca som de vitória
-      music.playTone(523, music.beat(BeatFraction.Quarter))
-      music.playTone(659, music.beat(BeatFraction.Quarter))
+      // Toca uma melodia simples de vitória: duas notas (Dó e Mi).
+      // A função 'playTone' gera um som com uma frequência (em Hz)
+      // e uma duração (aqui usamos 'music.beat' para definir
+      // o compasso musical).
+      music.playTone(523, music.beat(BeatFraction.Quarter)) // Nota Dó
+      music.playTone(659, music.beat(BeatFraction.Quarter)) // Nota Mi
     } else {
+      // Se a pontuação for baixa (menos de 2), exibe um ícone triste.
       basic.showIcon(IconNames.Sad)
+      // Toca um som grave e longo (frequência 200 Hz, duração de uma
+      // batida inteira) para representar decepção.
       music.playTone(200, music.beat(BeatFraction.Whole))
     }
-    // Bloqueia novas respostas (reseta a pergunta para um valor fora do range)
+    
+    // Para evitar que o usuário continue respondendo após o fim,
+    // atribuímos um valor fora do intervalo de perguntas (99) a
+    // 'perguntaAtual'. Assim, as respostas dos botões serão ignoradas.
     perguntaAtual = 99
+    // Sai da função imediatamente, pois não há mais nada a fazer.
     return
   }
   
-  // Mostra as opções: A = SIM, B = NÃO
+  // Após exibir a pergunta, mostramos as opções de resposta:
+  // Apertar o botão A significa "SIM", apertar o botão B significa "NÃO".
+  // Isso orienta o usuário sobre como interagir com o quiz.
+  // Damos uma pequena pausa para evitar que a mensagem anterior
+  // se misture com a nova.
   basic.pause(300)
   basic.showString("A=SIM B=NAO")
 }
@@ -3445,20 +4164,37 @@ function mostrarPergunta() {
 // ============================================================
 // 3. EVENTOS DOS BOTÕES (RESPOSTAS)
 // ============================================================
-// Botão A = SIM
+
+// No micro:bit, os botões são tratados por meio de "eventos".
+// O bloco 'input.onButtonPressed' define uma função que será
+// executada sempre que o botão especificado for pressionado.
+
+// Evento do botão A: representa a resposta "SIM".
+// Quando o botão A é pressionado, esta função é chamada.
 input.onButtonPressed(Button.A, function () {
+  // Verifica se ainda há perguntas a serem respondidas,
+  // ou seja, se 'perguntaAtual' é menor que o total de perguntas.
   if (perguntaAtual < TOTAL_PERGUNTAS) {
-    pontuacao += 1 // Ganha 1 ponto por SIM
+    // Resposta "SIM" é considerada correta/positiva:
+    // incrementa a pontuação em 1.
+    pontuacao += 1
+    // Avança para a próxima pergunta.
     perguntaAtual += 1
+    // Chama a função para exibir a próxima pergunta (ou o resultado,
+    // se já tiver respondido todas).
     mostrarPergunta()
   }
 })
 
-// Botão B = NÃO
+// Evento do botão B: representa a resposta "NÃO".
+// Quando o botão B é pressionado, esta função é chamada.
 input.onButtonPressed(Button.B, function () {
+  // Verifica se ainda há perguntas a serem respondidas.
   if (perguntaAtual < TOTAL_PERGUNTAS) {
-    // Não ganha ponto por NÃO
+    // Resposta "NÃO" não pontua, então apenas avança a pergunta
+    // sem alterar a variável 'pontuacao'.
     perguntaAtual += 1
+    // Chama a função para exibir a próxima pergunta (ou o resultado).
     mostrarPergunta()
   }
 })
@@ -3466,9 +4202,32 @@ input.onButtonPressed(Button.B, function () {
 // ============================================================
 // 4. INICIALIZAÇÃO
 // ============================================================
+
+// O código de inicialização é executado assim que o micro:bit
+// é ligado ou reiniciado (após um reset). Ele prepara o ambiente
+// e dá início ao quiz.
+
+// Exibe a palavra "QUIZ" no display para anunciar o início do programa.
 basic.showString("QUIZ")
+// Pausa de 1 segundo (1000 ms) para que o usuário veja a mensagem
+// inicial e se prepare para as perguntas.
 basic.pause(1000)
-mostrarPergunta()</code></pre>
+// Chama a função 'mostrarPergunta', que exibirá a primeira pergunta
+// (índice 0) e as instruções de resposta.
+mostrarPergunta()
+
+// ============================================================
+// FIM DO PROGRAMA
+// ============================================================
+// Após a inicialização, o programa fica em espera pelos eventos
+// dos botões. Cada pressionamento de A ou B dispara as funções
+// correspondentes, que atualizam o estado do quiz e chamam
+// 'mostrarPergunta' novamente. Quando todas as perguntas forem
+// respondidas, o quiz exibe a pontuação final e a reação,
+// bloqueando novas respostas. O micro:bit permanece ligado
+// até ser desligado ou reiniciado.
+// ============================================================
+</code></pre>
 
                 <h5>📖 Explicação Didática do Código</h5>
                 <ul>

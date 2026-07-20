@@ -496,19 +496,96 @@ sempre
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+/*
+ * ======================================================================
+ * PROGRAMA: Controle de Estado com Botão A no Micro:bit
+ * ======================================================================
+ *
+ * OBJETIVO:
+ *   Este programa demonstra, de forma simples e didática, o uso de:
+ *   - Variáveis do tipo booleano (verdadeiro/falso)
+ *   - Eventos de pressionamento de botão
+ *   - Estruturas condicionais (if/else)
+ *   - Exibição de ícones na matriz de LEDs do micro:bit
+ *
+ * FUNCIONAMENTO:
+ *   1. Ao ligar o micro:bit, a variável "estado" é inicializada como falsa.
+ *   2. A matriz de LEDs exibe imediatamente um coração (ícone Heart).
+ *   3. Quando o botão A é pressionado:
+ *        - O valor de "estado" é invertido (se era true vira false, e vice‑versa).
+ *        - Se o novo valor for true, o display mostra um coração ❤️.
+ *        - Se for false, o display mostra um "X" (ícone No).
+ *   4. O estado pode ser utilizado futuramente para controlar outros
+ *      comportamentos (acionar motores, enviar dados, etc.).
+ *
+ * CONCEITOS ABORDADOS:
+ *   - Variáveis e tipos de dados (boolean)
+ *   - Operador lógico de negação (!)
+ *   - Eventos (callback) e funções anônimas
+ *   - Blocos condicionais (if / else)
+ *   - Biblioteca básica de exibição (basic)
+ *
+ * ======================================================================
+ */
+
+// ------------------------------------------------------------
+// 1. DECLARAÇÃO E INICIALIZAÇÃO DA VARIÁVEL DE ESTADO
+// ------------------------------------------------------------
+
+// A variável "estado" é do tipo booleano (só pode assumir true ou false).
+// Inicialmente, definimos como false (falso) – isso representa, por exemplo,
+// que o sistema está "desligado" ou que uma condição não foi atendida.
 let estado = false
 
+// ------------------------------------------------------------
+// 2. CONFIGURAÇÃO DO EVENTO DO BOTÃO A
+// ------------------------------------------------------------
+
+// A função input.onButtonPressed() registra um evento que será executado
+// sempre que o botão A for pressionado e, em seguida, liberado.
+// O primeiro parâmetro identifica qual botão (Button.A) e o segundo é
+// uma função (callback) que contém as ações a serem realizadas.
 input.onButtonPressed(Button.A, function () {
+    // ----------------------------------------------
+    // 2a. INVERSÃO DO ESTADO (lógica de "toggle")
+    // ----------------------------------------------
+
+    // O operador "!" (NOT) inverte o valor lógico da variável.
+    // Se "estado" for true, passa a false; se for false, passa a true.
+    // Essa técnica é comum para criar um "interruptor" (toggle).
     estado = !estado // NOT aplicado aqui! Inverte o estado
+
+    // ----------------------------------------------
+    // 2b. EXIBIÇÃO DO ÍCONE CONFORME O NOVO ESTADO
+    // ----------------------------------------------
+
+    // A estrutura if/else verifica o valor da variável "estado".
     if (estado) {
+        // Caso o estado seja verdadeiro (true), exibimos um coração.
+        // A função basic.showIcon() mostra um ícone pré‑definido na
+        // matriz de 5x5 LEDs do micro:bit.
         basic.showIcon(IconNames.Heart)
     } else {
+        // Caso o estado seja falso (false), exibimos um "X" (ícone No).
         basic.showIcon(IconNames.No)
     }
 })
 
+// ------------------------------------------------------------
+// 3. EXIBIÇÃO INICIAL (ao ligar o micro:bit)
+// ------------------------------------------------------------
+
+// Após toda a configuração, o programa executa esta linha uma única vez.
+// Ela mostra um coração na matriz de LEDs, fornecendo um feedback visual
+// imediato de que o programa está em execução.
+// Observe que, mesmo com "estado" sendo false, optamos por iniciar com
+// o coração – isso é uma escolha de projeto para indicar "pronto para uso".
 // Atualiza o display com o estado atual
-basic.showIcon(IconNames.Heart)</pre>
+basic.showIcon(IconNames.Heart)
+
+// ======================================================================
+// FIM DO PROGRAMA
+// ======================================================================</pre>
 
                 <p><strong>MicroPython - Código Completo:</strong></p>
                 <pre style="
@@ -517,24 +594,89 @@ basic.showIcon(IconNames.Heart)</pre>
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# =============================================================================
+# PROJETO DIDÁTICO: Inversor Lógico com Micro:bit
+# =============================================================================
+# Este programa demonstra o conceito de inversão lógica (operação NOT) de
+# forma visual e interativa. Ao pressionar o botão A, o estado de um LED
+# (representado por um ícone no display) é invertido: se estava aceso
+# (coração), apaga (X); se estava apagado (X), acende (coração).
+# 
+# O código é escrito em MicroPython para a placa micro:bit e é totalmente
+# compatível com o ambiente MakeCode (editor Python).
+# 
+# Estrutura:
+#   1. Importação da biblioteca micro:bit.
+#   2. Variável global que armazena o estado lógico (True/False).
+#   3. Função que inverte o estado e atualiza o display.
+#   4. Loop principal que verifica o botão A e mantém o programa rodando.
+# =============================================================================
+
+# Importa todas as funções e objetos da biblioteca padrão do micro:bit,
+# como display, button_a, Image, sleep, etc.
 from microbit import *
 
+# Variável global 'estado' que representa o estado do "LED" lógico.
+# Inicialmente definida como False (apagado / falso / 0).
+# Essa variável será usada para guardar o valor booleano que será invertido.
 estado = False  # Começa com o LED apagado
 
-# Função que aplica NOT visualmente
+# =============================================================================
+# Função: inverter_led()
+# =============================================================================
+# Esta função implementa a operação lógica NOT (negação) sobre a variável
+# 'estado' e reflete o resultado no display da micro:bit.
+# 
+# - A operação NOT transforma True em False e False em True.
+# - O display mostrará um coração (Image.HEART) quando estado for True,
+#   e um "X" (Image.NO) quando estado for False.
+# 
+# O uso da palavra-chave 'global' é necessário porque a função modifica
+# a variável 'estado' que foi definida fora dela. Sem isso, o Python
+# criaria uma variável local dentro da função, não alterando a global.
+# =============================================================================
 def inverter_led():
-    global estado
-    estado = not estado  # NOT em ação!
-    if estado:
-        display.show(Image.HEART)
-    else:
-        display.show(Image.NO)
+    global estado               # Declara que usaremos a variável global 'estado'
+    estado = not estado         # Aplica a operação NOT (inversão lógica)
+                                # Se era True, vira False; se era False, vira True.
 
-# Loop principal
+    # Atualiza o display de acordo com o novo estado:
+    if estado:                  # Se estado for True (equivalente a 'verdadeiro')
+        display.show(Image.HEART)   # Mostra um coração (LEDs acesos)
+    else:                       # Caso contrário (estado for False)
+        display.show(Image.NO)      # Mostra um "X" (LEDs apagados, exceto os do X)
+
+# =============================================================================
+# Loop Principal
+# =============================================================================
+# O programa entra em um loop infinito (while True) que mantém a micro:bit
+# ativa e verificando continuamente se o botão A foi pressionado.
+# 
+# A cada iteração:
+#   1. Verifica se o botão A foi pressionado e solto (was_pressed()).
+#   2. Se sim, chama a função inverter_led().
+#   3. Aguarda 100 milissegundos (0,1 segundo) antes de repetir.
+# 
+# O pequeno atraso (sleep) é importante para:
+#   - Evitar que o programa consuma toda a CPU desnecessariamente.
+#   - Garantir que o botão seja lido corretamente (debounce simples).
+#   - Dar tempo para o display atualizar e para o usuário ver o resultado.
+# =============================================================================
 while True:
+    # Verifica se o botão A foi pressionado (e já solto) desde a última
+    # verificação. Retorna True apenas uma vez por pressionamento,
+    # evitando múltiplas execuções enquanto o botão está segurado.
     if button_a.was_pressed():
-        inverter_led()
-    sleep(100)</pre>
+        inverter_led()          # Chama a função que inverte o estado e atualiza o display
+
+    # Pausa a execução por 100 milissegundos para suavizar o loop
+    # e evitar leituras muito rápidas e repetidas do botão.
+    sleep(100)
+
+# =============================================================================
+# Fim do programa – na prática, o loop infinito nunca termina.
+# Para interromper, basta desconectar a energia ou reiniciar a micro:bit.
+# =============================================================================</pre>
 
                 <p>
                   <strong>Versão Avançada com Sensor de Toque (Pino 0):</strong>
@@ -545,37 +687,107 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# ======================================================================
+# PROJETO DIDÁTICO: Micro:bit - Sensor de Toque e Botão com Feedback
+# ======================================================================
+# Este projeto demonstra o uso de:
+#   - Display LED (matriz 5x5)
+#   - Sensor de toque capacitivo no pino 0 (pin0)
+#   - Botão A para inversão de estado lógico
+#   - Uso de variáveis globais, funções e loop infinito
+#
+# Objetivo: 
+#   - Mostrar no display se o "estado" está ativo (YES) ou inativo (NO).
+#   - Enquanto o pino 0 NÃO estiver sendo tocado, exibe "ANDANDO" e uma seta.
+#   - Quando tocado, exibe uma caveira (SKULL).
+#   - O botão A inverte o estado lógico (True <-> False), atualizando o display.
+# ======================================================================
+
+# Importa todas as funções e constantes da biblioteca micro:bit
+# (necessário para usar display, sleep, pin0, button_a, etc.)
 from microbit import *
 
+# ----------------------------------------------------------------------
+# VARIÁVEIS GLOBAIS
+# ----------------------------------------------------------------------
+
+# 'estado' armazena um valor booleano (True ou False) que representa
+# uma condição lógica qualquer. O display mostra YES se True, NO se False.
+# Inicialmente definido como False.
 estado = False
+
+# 'tocando' indica se o pino 0 está sendo tocado (True) ou não (False).
+# Será atualizada dentro do loop principal; inicializamos com False.
 tocando = False
 
+# ----------------------------------------------------------------------
+# FUNÇÃO: atualizar_display()
+# ----------------------------------------------------------------------
+# Esta função atualiza a matriz de LEDs de acordo com o valor da variável
+# global 'estado'. Se estado for True, exibe um "check" (YES); se False,
+# exibe um "X" (NO).
+#
+# É necessário declarar 'global estado' para que a função possa LER o valor
+# da variável global (não estamos alterando, apenas lendo). No MicroPython,
+# quando uma função referencia uma variável global, devemos usar 'global'
+# para evitar criar uma variável local.
 def atualizar_display():
-    global estado
-    if estado:
-        display.show(Image.YES)
-    else:
-        display.show(Image.NO)
+    global estado          # Informa que usaremos a variável global 'estado'
+    if estado:              # Se estado for True (equivalente a estado == True)
+        display.show(Image.YES)   # Mostra o ícone de "sim" (check)
+    else:                   # Caso contrário (estado == False)
+        display.show(Image.NO)    # Mostra o ícone de "não" (X)
 
+# Chama a função imediatamente para exibir o estado inicial (False → NO)
 atualizar_display()
 
+# ----------------------------------------------------------------------
+# LOOP PRINCIPAL (executa indefinidamente)
+# ----------------------------------------------------------------------
 while True:
-    # Lê o sensor de toque no pino 0
+    # 1. LEITURA DO SENSOR DE TOQUE NO PINO 0
+    # O método pin0.is_touched() retorna True se o pino 0 estiver sendo
+    # tocado (capacitância alterada), False caso contrário.
+    # Atualiza a variável global 'tocando' com o resultado.
     tocando = pin0.is_touched()
     
-    # Aplica NOT: andar quando NÃO está tocando
+    # 2. COMPORTAMENTO BASEADO NO TOQUE (NEGAÇÃO LÓGICA)
+    # A lógica é: "andar quando NÃO está tocando".
+    # Ou seja, se NÃO estiver tocando (not tocando == True), executa a ação de "andar".
     if not tocando:
+        # Exibe a palavra "ANDANDO" rolando no display (scroll)
         display.scroll("ANDANDO")
+        # Em seguida, mostra uma seta apontando para a direita (indicando movimento)
         display.show(Image.ARROW_E)
+        # Pausa de 500 milissegundos (0,5 segundo) para dar tempo de visualizar
         sleep(500)
     else:
+        # Se estiver tocando (tocando == True), exibe uma caveira (SKULL)
         display.show(Image.SKULL)
+        # Pausa de 500 ms
         sleep(500)
     
-    # Inverte com botão A
+    # 3. VERIFICAÇÃO DO BOTÃO A (inversão de estado)
+    # O método button_a.was_pressed() retorna True se o botão A foi pressionado
+    # e solto desde a última verificação (evento de "pressionado").
+    # Isso evita que a inversão ocorra várias vezes enquanto o botão está segurado.
     if button_a.was_pressed():
+        # Inverte o valor booleano de 'estado': True vira False, False vira True.
         estado = not estado
-        atualizar_display()</pre>
+        # Atualiza o display para refletir o novo valor de 'estado'.
+        # Isso mantém o display sempre mostrando YES ou NO conforme o estado atual.
+        atualizar_display()
+    
+    # O loop recomeça imediatamente, lendo novamente o sensor e verificando o botão.
+    # Como usamos sleep(500) dentro do if, o loop pode esperar até 500 ms em cada
+    # iteração, mas a leitura do botão e do sensor ocorrem a cada iteração.
+
+# ======================================================================
+# FIM DO PROGRAMA
+# ======================================================================
+# O loop while True nunca termina; o programa só para se o micro:bit for
+# reiniciado ou se houver um erro.
+# ======================================================================</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -812,60 +1024,161 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+/*
+ * ===================================================================
+ * PROJETO:  Portas Lógicas no micro:bit - Aprendizado de Lógica Booleana
+ * AUTOR:    (nome do aluno/professor)
+ * DATA:     (data)
+ * DESCRIÇÃO:
+ *   Este programa demonstra o funcionamento de operadores lógicos (AND, OR, XOR)
+ *   utilizando os botões A e B do micro:bit como entradas binárias.
+ *   O estado de cada botão é representado por um LED nos cantos superiores:
+ *     - LED (0,0) aceso = botão A pressionado (verdadeiro)
+ *     - LED (4,0) aceso = botão B pressionado (verdadeiro)
+ *   O resultado da operação lógica é mostrado no centro da matriz (2,2):
+ *     - LED central aceso = resultado verdadeiro (Yes)
+ *     - LED central apagado = resultado falso (No)
+ *   Além disso, a função atualizarDisplay() exibe um ícone grande de "Yes" ou "No"
+ *   quando chamada, mas neste código ela não é utilizada (mantida para referência).
+ *
+ *   OBSERVAÇÃO: O código foi desenvolvido no ambiente MakeCode (TypeScript/JavaScript)
+ *   e é totalmente didático, com comentários linha a linha para facilitar o entendimento.
+ * ===================================================================
+ */
+
+// ----------------------- DECLARAÇÃO DE VARIÁVEIS GLOBAIS ------------------------
+
+// Variável que armazena o estado lógico do botão A (true = pressionado/ligado, false = solto/desligado)
 let A = false
+
+// Variável que armazena o estado lógico do botão B
 let B = false
+
+// Variável que armazena o resultado da operação lógica atual (ex: A AND B)
 let resultado = false
 
+// ----------------------- FUNÇÃO PARA EXIBIR ÍCONE DE RESULTADO (NÃO UTILIZADA) ---
+
+/**
+ * Função que atualiza o display com um ícone grande de "Yes" (sim) se o resultado
+ * for verdadeiro, ou "No" (não) se for falso.
+ * Ela não é chamada em nenhum lugar do programa principal, mas foi mantida
+ * para demonstrar uma alternativa de exibição.
+ */
 function atualizarDisplay() {
+    // Verifica se a variável 'resultado' é verdadeira
     if (resultado) {
+        // Se verdadeiro, mostra o ícone de "Yes" (um grande V) na matriz de LEDs
         basic.showIcon(IconNames.Yes)
     } else {
+        // Caso contrário, mostra o ícone de "No" (um grande X)
         basic.showIcon(IconNames.No)
     }
 }
 
+// ----------------------- EVENTOS DOS BOTÕES ------------------------------------
+
+/**
+ * Evento disparado quando o botão A é pressionado.
+ * Alterna o estado da variável 'A' (true ↔ false) e atualiza a exibição.
+ */
 input.onButtonPressed(Button.A, function () {
+    // Inverte o valor booleano de A (negação lógica)
     A = !A
+    // Chama a função que atualiza a matriz de LEDs com os novos estados
     mostrarStatus()
 })
 
+/**
+ * Evento disparado quando o botão B é pressionado.
+ * Alterna o estado da variável 'B' e atualiza a exibição.
+ */
 input.onButtonPressed(Button.B, function () {
+    // Inverte o valor booleano de B
     B = !B
+    // Atualiza a matriz de LEDs
     mostrarStatus()
 })
 
+// ----------------------- FUNÇÃO PRINCIPAL DE EXIBIÇÃO ---------------------------
+
+/**
+ * Função responsável por desenhar na matriz de LEDs os estados atuais de A, B e o
+ * resultado da operação lógica (atualmente AND). Ela é chamada sempre que um botão
+ * é pressionado e também no início do programa.
+ */
 function mostrarStatus() {
+    // Limpa completamente a matriz de LEDs (apaga todos os pontos)
     basic.clearScreen()
-    // Mostra A no canto superior esquerdo
+
+    // =================== EXIBIÇÃO DO ESTADO DE A (canto superior esquerdo) ======
+    // Se a variável A for verdadeira (botão A pressionado), acende o LED na posição (0,0)
     if (A) {
+        // led.plot(x, y) acende o LED na coluna x (0 a 4) e linha y (0 a 4)
         led.plot(0, 0)
     }
-    // Mostra B no canto superior direito
+    // Caso contrário, o LED permanece apagado (já foi limpo)
+
+    // =================== EXIBIÇÃO DO ESTADO DE B (canto superior direito) =======
+    // Se B for verdadeiro, acende o LED na posição (4,0)
     if (B) {
         led.plot(4, 0)
     }
-    // Calcula A AND B
+
+    // =================== CÁLCULO DA OPERAÇÃO LÓGICA AND =========================
+    // Atribui à variável 'resultado' o valor da operação lógica AND entre A e B.
+    // AND (&&) retorna true somente se AMBOS os operandos forem verdadeiros.
     resultado = A && B
-    // Mostra resultado no centro
+
+    // =================== EXIBIÇÃO DO RESULTADO (centro da matriz) ==============
+    // Se o resultado for verdadeiro, acende o LED central na posição (2,2)
     if (resultado) {
         led.plot(2, 2)
     }
+    // Se for falso, o LED central fica apagado (já foi limpo inicialmente)
 }
 
-// Funções para diferentes operadores
+// ----------------------- FUNÇÕES PARA OUTROS OPERADORES (EXPANSÃO FUTURA) ------
+
+/**
+ * Função que retorna o resultado da operação AND entre A e B.
+ * É uma versão encapsulada do cálculo, podendo ser usada em outras partes do código.
+ */
 function calcularAND() {
+    // Retorna true se ambos forem true, senão false
     return A && B
 }
 
+/**
+ * Função que retorna o resultado da operação OR entre A e B.
+ * OR (||) retorna true se PELO MENOS UM dos operandos for verdadeiro.
+ */
 function calcularOR() {
     return A || B
 }
 
+/**
+ * Função que retorna o resultado da operação XOR (ou exclusivo) entre A e B.
+ * XOR retorna true se OS ESTADOS FOREM DIFERENTES (um true e o outro false).
+ * A expressão (A || B) && !(A && B) garante isso:
+ *   - (A || B) é true se pelo menos um for true
+ *   - !(A && B) é true se NÃO ambos forem true
+ *   - Portanto, o resultado é true apenas quando um é true e o outro false.
+ */
 function calcularXOR() {
     return (A || B) && !(A && B)
 }
 
-mostrarStatus()</pre>
+// ----------------------- INICIALIZAÇÃO DO PROGRAMA -----------------------------
+
+// Chama a função mostrarStatus() uma vez no início para exibir o estado inicial
+// (A=false, B=false, resultado=false). Isso garante que a matriz de LEDs mostre
+// a situação correta assim que o micro:bit for ligado.
+mostrarStatus()
+
+// ===================================================================
+// FIM DO PROGRAMA
+// ===================================================================</pre>
 
                 <p>
                   <strong>Versão com os 3 Operadores (AND, OR, NOT) na Matriz -
@@ -877,64 +1190,146 @@ mostrarStatus()</pre>
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# =============================================================================
+# PROJETO: SIMULADOR DE PORTAS LÓGICAS NO micro:bit
+# =============================================================================
+# Este programa transforma o micro:bit em uma ferramenta didática para aprender
+# os principais operadores lógicos (AND, OR, XOR, NAND e NOR).
+#
+# Funcionamento:
+#   - Os botões A e B controlam as entradas lógicas A e B (alternam entre Falso e Verdadeiro).
+#   - O pino 0 (usado como toque) percorre os operadores lógicos disponíveis.
+#   - O display mostra:
+#        * Na primeira linha: indicadores visuais para A (coluna 0) e B (coluna 4).
+#        * Uma mensagem rolante com o nome do operador atual.
+#        * No centro da matriz de LEDs, um bloco de 2x2 (aceso) representa o resultado VERDADEIRO,
+#          ou um único ponto no centro (aceso) representa FALSO.
+#
+# Objetivo didático: visualizar como as portas lógicas processam duas entradas e produzem uma saída.
+# =============================================================================
+
+# Importa todas as funções da biblioteca padrão do micro:bit (display, botões, pinos, sleep, etc.)
 from microbit import *
 
-# Variáveis
+# =============================================================================
+# VARIÁVEIS GLOBAIS (estado do programa)
+# =============================================================================
+
+# A e B representam as duas entradas lógicas (False = 0, True = 1).
+# Inicialmente ambas são False (desligadas).
 A = False
 B = False
+
+# 'operador' define qual porta lógica será usada no momento.
+# Valores possíveis:
+#   0 -> AND
+#   1 -> OR
+#   2 -> XOR
+#   3 -> NAND
+#   4 -> NOR
+# Começamos com AND (0).
 operador = 0  # 0=AND, 1=OR, 2=XOR, 3=NAND, 4=NOR
 
+# =============================================================================
+# FUNÇÃO: desenhar_display()
+# =============================================================================
+# Esta função atualiza a matriz de LEDs do micro:bit com base no estado atual
+# das variáveis A, B e 'operador'. Ela é chamada sempre que alguma entrada ou
+# operador é modificado.
+# =============================================================================
+
 def desenhar_display():
+    # Limpa toda a matriz de LEDs (apaga todos os pontos).
     display.clear()
     
-    # Primeira linha: A e B
+    # -------------------- INDICADORES DAS ENTRADAS A e B --------------------
+    # Na primeira linha (y=0), usamos duas colunas:
+    #   - Coluna 0 (x=0) indica o valor de A.
+    #   - Coluna 4 (x=4) indica o valor de B.
+    # Quando a entrada é True (1), acendemos dois LEDs verticais (nas linhas 0 e 1)
+    # para formar uma "barra" e facilitar a visualização.
+
+    # Se A for True (verdadeiro), acende dois LEDs na coluna 0, linhas 0 e 1.
     if A:
-        display.set_pixel(0, 0, 9)
-        display.set_pixel(0, 1, 9)
+        display.set_pixel(0, 0, 9)   # Acende o LED superior esquerdo (intensidade máxima)
+        display.set_pixel(0, 1, 9)   # Acende o LED abaixo do anterior
+
+    # Se B for True (verdadeiro), acende dois LEDs na coluna 4, linhas 0 e 1.
     if B:
-        display.set_pixel(4, 0, 9)
-        display.set_pixel(4, 1, 9)
-    
-    # Mostra o operador atual
+        display.set_pixel(4, 0, 9)   # Acende o LED superior direito
+        display.set_pixel(4, 1, 9)   # Acende o LED abaixo
+
+    # -------------------- EXIBE O NOME DO OPERADOR ATUAL --------------------
+    # Criamos uma lista com os nomes dos 5 operadores.
+    # OBS: "OR " e "NOR " têm um espaço extra para que todos tenham 3 caracteres,
+    #      assim a rolagem fica mais uniforme.
     op_text = ["AND", "OR ", "XOR", "NAND", "NOR "]
+    # A função scroll() exibe o texto rolando pela matriz de LEDs.
+    # Escolhemos o nome correspondente ao índice 'operador'.
     display.scroll(op_text[operador])
-    
-    # Calcula e mostra resultado
+
+    # -------------------- CÁLCULO E EXIBIÇÃO DO RESULTADO --------------------
+    # Calcula a saída lógica com base no operador escolhido e nos valores de A e B.
+    # Inicialmente assumimos que o resultado é False (0).
     resultado = False
-    if operador == 0:  # AND
+
+    # Estrutura condicional que verifica o valor de 'operador' e aplica a operação correspondente.
+    if operador == 0:   # AND (E lógico): só é True se A E B forem True.
         resultado = A and B
-    elif operador == 1:  # OR
+    elif operador == 1: # OR (OU lógico): é True se A OU B (ou ambos) forem True.
         resultado = A or B
-    elif operador == 2:  # XOR
+    elif operador == 2: # XOR (OU exclusivo): é True quando A e B são diferentes.
+        # Expressão: (A ou B) e não (A e B)  -> garante que apenas um seja True.
         resultado = (A or B) and not (A and B)
-    elif operador == 3:  # NAND
+    elif operador == 3: # NAND (Negação do AND): é o inverso do AND.
         resultado = not (A and B)
-    elif operador == 4:  # NOR
+    elif operador == 4: # NOR (Negação do OR): é o inverso do OR.
         resultado = not (A or B)
-    
-    # Mostra resultado
+
+    # Agora exibimos o resultado no centro da matriz de LEDs.
+    # Usamos um desenho de 2x2 pixels para representar True (ligado) e um único
+    # ponto central para False (desligado). Isso facilita a distinção visual.
     if resultado:
+        # Resultado Verdadeiro -> acende um bloco 2x2 no centro da matriz (colunas 2 e 3, linhas 2 e 3).
         display.set_pixel(2, 2, 9)
         display.set_pixel(2, 3, 9)
         display.set_pixel(3, 2, 9)
         display.set_pixel(3, 3, 9)
     else:
-        display.set_pixel(2, 2, 0)
+        # Resultado Falso -> acende apenas um LED central (coluna 2, linha 2) com baixa intensidade? 
+        # Na verdade, o código original usa intensidade 0, ou seja, apaga o LED central.
+        # Isso mantém um ponto de referência para mostrar que está desligado.
+        display.set_pixel(2, 2, 0)   # Garante que o centro fique apagado quando resultado for False.
 
-# Loop principal
+# =============================================================================
+# LOOP PRINCIPAL (executa indefinidamente)
+# =============================================================================
+# O micro:bit fica monitorando constantemente os botões e o pino de toque.
+# Quando um evento ocorre, a função desenhar_display() é chamada para atualizar a tela.
+# =============================================================================
+
 while True:
+    # Verifica se o botão A foi pressionado e solto (was_pressed() retorna True apenas uma vez).
+    # Se sim, inverte o estado de A (False <-> True) e atualiza o display.
     if button_a.was_pressed():
-        A = not A
-        desenhar_display()
-    
+        A = not A          # Inverte o valor lógico de A
+        desenhar_display() # Redesenha toda a interface com o novo estado
+
+    # Verifica se o botão B foi pressionado e solto.
     if button_b.was_pressed():
-        B = not B
-        desenhar_display()
-    
+        B = not B          # Inverte o valor lógico de B
+        desenhar_display() # Atualiza o display
+
+    # Verifica se o pino 0 (P0) está sendo tocado (entrada capacitiva).
+    # O toque no pino 0 avança para o próximo operador lógico (circularmente).
     if pin0.is_touched():
+        # Incrementa o operador e usa o operador módulo (%) para garantir que fique entre 0 e 4.
+        # Exemplo: se operador=4, (4+1)%5 = 0, voltando ao primeiro.
         operador = (operador + 1) % 5
-        desenhar_display()
-    
+        desenhar_display() # Atualiza o display com o novo operador e resultado
+
+    # Pequena pausa de 100 milissegundos para evitar leituras repetidas muito rápidas
+    # e economizar processamento. Isso também reduz o consumo de bateria.
     sleep(100)</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
@@ -1102,126 +1497,214 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
-let pontuacao = 0
-let tentativas = 0
-let resposta = 0
-let numero1 = 0
-let numero2 = 0
-let acertou = false
+/*
+ * =====================================================================
+ * PROJETO: JOGO DA TABUADA - MICRO:BIT
+ * =====================================================================
+ * Descrição geral:
+ * Este programa implementa um jogo interativo de tabuada no micro:bit.
+ * O jogador deve responder a 5 perguntas de multiplicação (números entre 2 e 9).
+ * Cada acerto vale 10 pontos, cada erro dá até 3 tentativas.
+ * Ao final, uma mensagem de desempenho é exibida com base na pontuação.
+ * O código utiliza matriz de LEDs, botões A, B e AB para entrada.
+ * 
+ * Estrutura:
+ *   - Variáveis globais (pontuação, tentativas, números, etc.)
+ *   - Função sortearNumeros(): gera dois fatores aleatórios.
+ *   - Função fazerPergunta(): conduz uma rodada de pergunta.
+ *   - Função obterResposta(): captura a resposta do usuário via botões.
+ *   - Função mostrarFeedback(): exibe ícones de acerto/erro com animação.
+ *   - Função mostrarPlacar(): mostra pontuação e estrelas.
+ *   - Programa principal: inicialização, loop de 5 rodadas e resultado final.
+ * 
+ * Desenvolvido para fins didáticos no ambiente MakeCode.
+ * =====================================================================
+ */
 
+// ---------- VARIÁVEIS GLOBAIS ----------
+let pontuacao = 0      // Armazena a pontuação total do jogador (inicia em 0).
+let tentativas = 0     // Conta quantas tentativas o jogador já fez na pergunta atual (máx 3).
+let resposta = 0       // Variável auxiliar (não usada diretamente, mas reservada).
+let numero1 = 0        // Primeiro fator da multiplicação.
+let numero2 = 0        // Segundo fator da multiplicação.
+let acertou = false    // Indica se o jogador acertou a pergunta atual (true/false).
+
+// ---------- FUNÇÃO: sortearNumeros() ----------
+// Gera dois números aleatórios entre 2 e 9 (inclusive) e armazena em numero1 e numero2.
 function sortearNumeros() {
+    // Math.randomRange(2,9) retorna um inteiro aleatório no intervalo [2,9].
     numero1 = Math.randomRange(2, 9)
     numero2 = Math.randomRange(2, 9)
 }
 
+// ---------- FUNÇÃO: fazerPergunta() ----------
+// Conduz uma rodada de pergunta: sorteia números, mostra a pergunta, permite até 3 tentativas,
+// atualiza a pontuação e exibe feedback.
 function fazerPergunta() {
+    // 1) Sorteia novos números para a pergunta.
     sortearNumeros()
+    
+    // Calcula o resultado correto para comparação.
     let resultadoCorreto = numero1 * numero2
+    
+    // Reinicia as variáveis de controle para esta pergunta.
     tentativas = 0
     acertou = false
     
-    // Mostra a pergunta na matriz
+    // Exibe a pergunta na matriz de LEDs no formato "2x3=?".
+    // A função showString exibe caracteres em rolagem.
     basic.showString("" + numero1 + "x" + numero2 + "=?")
     
+    // Loop enquanto o jogador tiver tentativas (máx 3) e ainda não tiver acertado.
     while (tentativas < 3 && !acertou) {
+        // Chama a função que obtém a resposta do usuário via botões.
         let respostaDigitada = obterResposta()
+        
+        // Verifica se a resposta digitada é igual ao resultado correto.
         if (respostaDigitada == resultadoCorreto) {
-            acertou = true
-            pontuacao += 10
-            mostrarFeedback(true)
-            basic.showString("ACERTOU!")
+            // Acerto!
+            acertou = true                // Marca como acertado para sair do loop.
+            pontuacao += 10               // Incrementa a pontuação em 10 pontos.
+            mostrarFeedback(true)         // Exibe animação de acerto (coração).
+            basic.showString("ACERTOU!")  // Mensagem textual de confirmação.
         } else {
+            // Erro: incrementa o contador de tentativas.
             tentativas += 1
-            mostrarFeedback(false)
+            mostrarFeedback(false)        // Exibe animação de erro (X).
+            // Se ainda houver tentativas restantes, incentiva o jogador a tentar novamente.
             if (tentativas < 3) {
-                basic.showString("TENTE NOV")
+                basic.showString("TENTE NOV")  // "TENTE NOV" (abreviação para caber).
             }
         }
     }
     
+    // Após o loop (acertou ou esgotou tentativas), verifica se não acertou.
     if (!acertou) {
-        basic.showString("E " + resultadoCorreto)
+        // Mostra a resposta correta para o jogador aprender.
+        basic.showString("E " + resultadoCorreto)  // Ex: "E 6" (resultado).
+        // Penalidade: perde 5 pontos, mas apenas se tiver pelo menos 5 pontos.
         if (pontuacao >= 5) {
             pontuacao -= 5
         }
     }
 }
 
+// ---------- FUNÇÃO: obterResposta() ----------
+// Captura um número (0 a 99) digitado pelo usuário usando os botões A, B e AB.
+// Retorna o número confirmado.
 function obterResposta(): number {
-    let numero = 0
-    let confirmado = false
+    let numero = 0          // Número atual que está sendo ajustado.
+    let confirmado = false  // Flag que indica se o usuário confirmou com AB.
     
+    // Loop até que o usuário confirme a resposta.
     while (!confirmado) {
+        // Verifica se o botão A está pressionado (incrementa o número).
         if (input.buttonIsPressed(Button.A)) {
+            // Incrementa o número, mas não ultrapassa 99 (máximo permitido).
             numero = Math.min(numero + 1, 99)
-            basic.showNumber(numero)
-            basic.pause(200)
+            basic.showNumber(numero)  // Mostra o número atual na matriz.
+            basic.pause(200)          // Pequena pausa para evitar leituras múltiplas.
         }
+        // Verifica se o botão B está pressionado (decrementa o número).
         if (input.buttonIsPressed(Button.B)) {
+            // Decrementa o número, mas não fica abaixo de 0.
             numero = Math.max(numero - 1, 0)
             basic.showNumber(numero)
             basic.pause(200)
         }
+        // Verifica se os botões A e B são pressionados simultaneamente (confirmação).
         if (input.buttonIsPressed(Button.AB)) {
-            confirmado = true
+            confirmado = true   // Sai do loop após a confirmação.
         }
+        // Pequena pausa para não sobrecarregar o processamento.
         basic.pause(50)
     }
+    // Retorna o número confirmado.
     return numero
 }
 
+// ---------- FUNÇÃO: mostrarFeedback() ----------
+// Exibe uma animação visual (ícones) para indicar se o jogador acertou ou errou.
+// Parâmetro: acertou (booleano) - true para acerto, false para erro.
 function mostrarFeedback(acertou: boolean) {
     if (acertou) {
+        // Acerto: exibe um coração grande e depois alterna com coração pequeno 3 vezes.
         basic.showIcon(IconNames.Heart)
         for (let i = 0; i < 3; i++) {
-            basic.showIcon(IconNames.Heart)
+            basic.showIcon(IconNames.Heart)      // Coração cheio.
             basic.pause(200)
-            basic.showIcon(IconNames.SmallHeart)
+            basic.showIcon(IconNames.SmallHeart) // Coração pequeno.
             basic.pause(200)
         }
     } else {
+        // Erro: exibe um "X" (No) e pisca 3 vezes com pausa.
         basic.showIcon(IconNames.No)
         for (let i = 0; i < 3; i++) {
-            basic.showIcon(IconNames.No)
+            basic.showIcon(IconNames.No)   // Mostra o X.
             basic.pause(100)
-            basic.clearScreen()
+            basic.clearScreen()            // Limpa a tela (apaga o X).
             basic.pause(100)
         }
     }
 }
 
+// ---------- FUNÇÃO: mostrarPlacar() ----------
+// Exibe a pontuação atual e uma representação visual com estrelas (cada 10 pontos = 1 estrela).
 function mostrarPlacar() {
+    // Mostra a pontuação em texto rolante: "P:XX".
     basic.showString("P:" + pontuacao)
+    
+    // Calcula quantas estrelas devem ser exibidas (uma a cada 10 pontos, máximo 5).
     let estrelas = Math.floor(pontuacao / 10)
-    if (estrelas > 5) estrelas = 5
+    if (estrelas > 5) estrelas = 5   // Limita a 5 estrelas.
+    
+    // Limpa a tela e desenha as estrelas na linha central (y=2) da matriz 5x5.
     display.clear()
     for (let i = 0; i < estrelas; i++) {
-        display.set_pixel(i * 2, 2, 9)
+        // Cada estrela ocupa dois pixels horizontais (colunas i*2 e i*2+1) na linha y=2.
+        display.set_pixel(i * 2, 2, 9)      // Define brilho 9 (máximo) para o pixel.
         display.set_pixel(i * 2 + 1, 2, 9)
     }
+    // Mantém a exibição por 2 segundos para o jogador visualizar.
     basic.pause(2000)
 }
 
-// Programa principal
+// =====================================================================
+// PROGRAMA PRINCIPAL
+// =====================================================================
+
+// Exibe uma mensagem inicial "TABUADA" na matriz.
 basic.showString("TABUADA")
+
+// Define o número de rodadas (perguntas) a serem feitas.
 let rodadas = 5
+
+// Loop principal: executa uma rodada e mostra o placar a cada iteração.
 for (let i = 0; i < rodadas; i++) {
-    fazerPergunta()
-    mostrarPlacar()
-    basic.pause(1000)
+    fazerPergunta()      // Realiza uma pergunta completa.
+    mostrarPlacar()      // Exibe a pontuação atualizada.
+    basic.pause(1000)    // Pausa de 1 segundo antes da próxima rodada.
 }
 
+// Ao término das rodadas, exibe "FIM" e uma mensagem de desempenho.
 basic.showString("FIM")
+
+// Avalia a pontuação final e exibe uma mensagem motivacional.
 if (pontuacao >= 30) {
+    // Pontuação alta (30 ou mais): excelente!
     basic.showIcon(IconNames.Heart)
     basic.showString("MUITO BEM!")
 } else if (pontuacao >= 20) {
+    // Pontuação média (20 a 29): bom!
     basic.showIcon(IconNames.Happy)
     basic.showString("BOM!")
 } else {
+    // Pontuação baixa (menos de 20): precisa praticar.
     basic.showIcon(IconNames.Sad)
     basic.showString("PRATIQUE")
-}</pre>
+}
+
+// Fim do programa. O micro:bit ficará com a última mensagem exibida.</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -1383,77 +1866,222 @@ if (pontuacao >= 30) {
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+/*
+ * =====================================================================
+ * PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+ * =====================================================================
+ *
+ * Este código implementa um "medidor de luz" interativo com três modos:
+ *   - Modo NORMAL   : exibe barras luminosas proporcionais à intensidade da luz.
+ *   - Modo VAMPIRO  : simula um "vampiro" que se move no escuro e reage à luz.
+ *   - Modo CALIBRAÇÃO: ajusta o limiar de luz que separa claro/escuro.
+ *
+ * O programa é executado em loop infinito, reagindo aos botões A, B e AB.
+ * O conceito principal é a leitura do sensor de luz (usando a matriz de LEDs)
+ * e a tomada de decisões baseadas em um limiar ajustável.
+ *
+ * Todas as funções e variáveis estão documentadas linha a linha para
+ * facilitar o aprendizado de programação no micro:bit.
+ * =====================================================================
+ */
+
+// ---------------------------- VARIÁVEIS GLOBAIS ----------------------------
+
+/**
+ * `nivelLuz` armazena o último valor lido do sensor de luz.
+ * Não está sendo usado ativamente, mas mantido para possíveis expansões.
+ * A leitura é feita pela função `lerLuz()`.
+ */
 let nivelLuz = 0
+
+/**
+ * `limiar` é o valor de referência (0-255) que separa "escuro" de "claro".
+ * Valores abaixo do limiar são considerados escuros; acima, claros.
+ * O valor inicial 50 é um bom ponto de partida para ambientes internos.
+ */
 let limiar = 50
+
+/**
+ * `modo` determina o comportamento atual do programa:
+ *   0 = modo NORMAL      (mostra barras de luz)
+ *   1 = modo VAMPIRO     (comportamento inspirado em vampiros)
+ *   2 = modo CALIBRAÇÃO  (permite ajustar o limiar com os botões A e B)
+ * O modo é alternado pressionando os botões A e B simultaneamente (AB).
+ */
 let modo = 0 // 0=normal, 1=vampiro, 2=calibracao
 
+// ---------------------------- FUNÇÕES AUXILIARES ----------------------------
+
+/**
+ * `lerLuz()` - lê o nível de luz ambiente usando o sensor do micro:bit.
+ * O micro:bit utiliza a mesma matriz de LEDs (5x5) como sensor de luz,
+ * medindo a quantidade de luz que incide sobre os LEDs.
+ * Retorna um valor inteiro entre 0 (total escuro) e 255 (muito claro).
+ *
+ * @returns {number} - valor de luz (0 a 255)
+ */
 function lerLuz(): number {
-    // O micro:bit usa os LEDs da matriz para medir luz
-    // Retorna 0-255 (escuro-claro)
+    // A função `input.lightLevel()` é nativa do MakeCode e faz a leitura.
+    // O micro:bit desliga brevemente os LEDs para medir a luz ambiente,
+    // por isso não há necessidade de configuração adicional.
     return input.lightLevel()
 }
 
+/**
+ * `mostrarLuz()` - exibe barras verticais na matriz de 5x5 LEDs.
+ * A quantidade de barras é proporcional ao nível de luz lido.
+ * Quanto maior a luz, mais colunas (barras) são acesas.
+ * Cada barra ocupa uma coluna inteira (5 LEDs na vertical).
+ *
+ * Funcionamento:
+ *   1. Lê o valor de luz (0-255).
+ *   2. Mapeia esse valor para o intervalo 0-5 (número de barras).
+ *   3. Limpa a matriz (apaga todos os LEDs).
+ *   4. Para cada coluna de 0 até `barras-1`, acende todos os 5 LEDs da coluna.
+ */
 function mostrarLuz() {
+    // Lê o nível de luz atual e armazena na variável local `nivel`.
     let nivel = lerLuz()
+
+    // `Math.map(valor, deMin, deMax, paraMin, paraMax)` faz uma regra de três
+    // para converter o valor de luz (0-255) em número de barras (0-5).
+    // O resultado é um número com casas decimais, mas como usamos em um loop
+    // com `i < barras`, ele é truncado automaticamente para inteiro.
     let barras = Math.map(nivel, 0, 255, 0, 5)
+
+    // `display.clear()` apaga toda a matriz de LEDs (desliga todos os pixels).
     display.clear()
+
+    // Loop externo: percorre as colunas (eixo X) de 0 a `barras-1`.
+    // A variável `i` representa o índice da coluna (0 = esquerda, 4 = direita).
     for (let i = 0; i < barras; i++) {
+        // Loop interno: percorre as linhas (eixo Y) de 0 a 4 (5 linhas).
+        // A variável `j` representa o índice da linha (0 = topo, 4 = base).
         for (let j = 0; j < 5; j++) {
+            // `display.set_pixel(x, y, brilho)` acende um LED na posição (x, y).
+            // O brilho varia de 0 (apagado) a 9 (mais intenso).
+            // Aqui usamos 9 para acender com brilho máximo.
             display.set_pixel(i, j, 9)
         }
     }
 }
 
+/**
+ * `modoVampiro()` - simula o comportamento de um vampiro que:
+ *   - No escuro (luz < limiar): anda para a direita (seta) e pisca os olhos.
+ *   - Na luz (luz >= limiar): aparece uma caveira piscando (não anda).
+ * A ideia é ilustrar decisões baseadas no limiar de luz.
+ */
 function modoVampiro() {
+    // Lê o nível de luz atual.
     let luz = lerLuz()
+
+    // Verifica se a luz está ABAIXO do limiar (condição de escuro).
     if (luz < limiar) {
-        // ESCURO - anda
+        // ========== ESCURO: o vampiro anda ==========
+        // Exibe um ícone de seta para a direita (movimento).
+        // `IconNames.ArrowE` é uma constante pré-definida no MakeCode.
         basic.showIcon(IconNames.ArrowE)
+
+        // Aguarda 200 milissegundos (0,2 segundos) para dar tempo de ver a seta.
         basic.pause(200)
-        // Pisca os olhos (LEDs no canto superior)
+
+        // Pisca os "olhos" do vampiro: são os LEDs nos cantos superiores
+        // da matriz: posição (0,0) e (4,0). O piscar é repetido 3 vezes.
         for (let i = 0; i < 3; i++) {
+            // Acende o olho esquerdo (coluna 0, linha 0) com brilho 9.
             display.set_pixel(0, 0, 9)
+            // Acende o olho direito (coluna 4, linha 0) com brilho 9.
             display.set_pixel(4, 0, 9)
+            // Aguarda 100 ms com os olhos acesos.
             basic.pause(100)
+
+            // Apaga o olho esquerdo (brilho 0).
             display.set_pixel(0, 0, 0)
+            // Apaga o olho direito (brilho 0).
             display.set_pixel(4, 0, 0)
+            // Aguarda 100 ms com os olhos apagados.
             basic.pause(100)
         }
+
+        // Após piscar, exibe novamente a seta para indicar que continua andando.
         basic.showIcon(IconNames.ArrowE)
     } else {
-        // CLARO - não anda
+        // ========== CLARO: o vampiro não anda, mostra caveira piscando ==========
+        // Exibe o ícone de caveira (Skull) na matriz.
         basic.showIcon(IconNames.Skull)
+
+        // Faz a caveira piscar 5 vezes: alterna entre caveira e tela limpa.
         for (let i = 0; i < 5; i++) {
+            // Mostra a caveira novamente (já está visível, mas repetimos).
             basic.showIcon(IconNames.Skull)
+            // Aguarda 150 ms.
             basic.pause(150)
+            // Limpa a tela (apaga todos os LEDs).
             display.clear()
+            // Aguarda 150 ms.
             basic.pause(150)
         }
     }
 }
 
+/**
+ * `modoCalibracao()` - permite ajustar o limiar manualmente usando os botões.
+ *   - Exibe continuamente o valor atual de luz (número) na matriz.
+ *   - Botão A: aumenta o limiar em 5 unidades (até 255).
+ *   - Botão B: diminui o limiar em 5 unidades (até 0).
+ *   - Após cada ajuste, exibe o novo valor do limiar como texto "T:xx".
+ * Este modo é útil para encontrar o limiar ideal para o ambiente.
+ */
 function modoCalibracao() {
+    // Lê o nível de luz atual.
     let luz = lerLuz()
+
+    // Exibe o valor numérico da luz (0-255) na matriz de LEDs.
+    // O número é mostrado em dígitos rolantes (scroll) devido ao tamanho da matriz.
     basic.showNumber(luz)
+
+    // Verifica se o botão A está pressionado no momento.
     if (input.buttonIsPressed(Button.A)) {
+        // Aumenta o limiar em 5, mas não ultrapassa 255 (usando Math.min).
         limiar = Math.min(limiar + 5, 255)
+        // Exibe o novo limiar como uma string "T:" seguida do valor.
+        // Isso dá feedback imediato ao usuário.
         basic.showString("T:" + limiar)
+        // Pequena pausa para o texto ser lido antes de continuar.
         basic.pause(200)
     }
+
+    // Verifica se o botão B está pressionado no momento.
     if (input.buttonIsPressed(Button.B)) {
+        // Diminui o limiar em 5, mas não fica abaixo de 0 (usando Math.max).
         limiar = Math.max(limiar - 5, 0)
+        // Exibe o novo limiar.
         basic.showString("T:" + limiar)
         basic.pause(200)
     }
 }
 
-// Programa principal
+// ============================ PROGRAMA PRINCIPAL ============================
+
+// Ao iniciar, exibe a palavra "LUZ" rolando na matriz para indicar o propósito.
 basic.showString("LUZ")
+
+// Chama a função `mostrarLuz()` para exibir as barras iniciais (modo NORMAL).
 mostrarLuz()
 
+// Loop infinito: o micro:bit executa este bloco repetidamente até ser desligado.
+// Ele é responsável por:
+//   - Verificar se os botões AB foram pressionados (trocar modo).
+//   - Executar a função correspondente ao modo atual.
 while (true) {
+    // Verifica se os botões A e B estão sendo pressionados SIMULTANEAMENTE.
     if (input.buttonIsPressed(Button.AB)) {
+        // Incrementa o modo circularmente: 0 -> 1 -> 2 -> 0 -> ...
+        // O operador `%` (módulo) garante que o valor fique entre 0 e 2.
         modo = (modo + 1) % 3
+
+        // Exibe uma mensagem indicando o novo modo ativo.
         if (modo == 0) {
             basic.showString("NORMAL")
         } else if (modo == 1) {
@@ -1462,16 +2090,41 @@ while (true) {
             basic.showString("CALIBRA")
         }
     }
+
+    // Executa a ação correspondente ao modo atual.
     if (modo == 0) {
+        // Modo NORMAL: mostra barras de luz e aguarda 200 ms.
         mostrarLuz()
         basic.pause(200)
     } else if (modo == 1) {
+        // Modo VAMPIRO: executa a lógica do vampiro (sem pausa extra,
+        // pois a função já contém seus próprios delays).
         modoVampiro()
     } else {
+        // Modo CALIBRAÇÃO: executa a calibração e aguarda 100 ms.
         modoCalibracao()
         basic.pause(100)
     }
-}</pre>
+}
+
+/*
+ * =====================================================================
+ * FIM DO CÓDIGO
+ * =====================================================================
+ * Resumo dos conceitos abordados:
+ *   - Leitura do sensor de luz (input.lightLevel)
+ *   - Mapeamento de valores (Math.map)
+ *   - Controle da matriz de LEDs (display.set_pixel, display.clear)
+ *   - Uso de ícones e texto (basic.showIcon, basic.showString, basic.showNumber)
+ *   - Estruturas condicionais (if/else) e laços (for)
+ *   - Manipulação de variáveis globais e locais
+ *   - Interação com botões físicos (input.buttonIsPressed)
+ *   - Loop principal infinito (while)
+ *
+ * Este projeto é um excelente ponto de partida para aprender programação
+ * no micro:bit, combinando hardware e software de forma lúdica.
+ * =====================================================================
+ */</pre>
 
                 <p><strong>MicroPython - Versão Robô Noturno:</strong></p>
                 <pre style="
@@ -1480,68 +2133,178 @@ while (true) {
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# ====================================================================
+# PROJETO DIDÁTICO PARA MICRO:BIT - "ROBO NOTURNO"
+# ====================================================================
+# Este código implementa um sensor de luz com dois modos de operação:
+#   - Modo "normal": exibe barras proporcionais à intensidade luminosa.
+#   - Modo "vampiro": reage à luz como um vampiro (animações).
+#   - Modo "calibra": permite ajustar o limiar de sensibilidade.
+# Controles:
+#   - Botão A: ativa o modo normal.
+#   - Botão B: ativa o modo vampiro.
+#   - Pin0 (touch): entra no modo calibração.
+#   - No modo calibração, botão A aumenta o limiar, botão B diminui.
+# ====================================================================
+
+# Importa todas as funções e objetos da biblioteca micro:bit,
+# necessários para controlar a matriz de LEDs, botões, pinos, etc.
 from microbit import *
 
+# --------------------------------------------------------------------
+# VARIÁVEIS GLOBAIS
+# --------------------------------------------------------------------
+
+# 'limiar' é o valor de luminosidade (0 a 255) que define o ponto de
+# transição no modo vampiro: abaixo dele o vampiro "anda no escuro",
+# acima dele ele "grita com a luz". Inicializado com 50.
 limiar = 50
+
+# 'modo' guarda o estado atual do sistema. Pode ser "normal", "vampiro"
+# ou "calibra". Começa como "normal".
 modo = "normal"
 
+# --------------------------------------------------------------------
+# FUNÇÕES AUXILIARES
+# --------------------------------------------------------------------
+
 def ler_luz():
+    """
+    Lê o nível de luz ambiente usando o sensor de luz da matriz de LEDs.
+    O micro:bit possui um sensor que mede a luz refletida pelos LEDs
+    quando apagados. O valor retornado é um inteiro entre 0 (escuro) e
+    255 (muito claro).
+    """
     return display.read_light_level()
 
 def desenhar_barras(nivel):
+    """
+    Desenha na matriz de LEDs uma barra horizontal proporcional ao valor
+    'nivel' (0-255). O número de colunas acesas varia de 0 a 5.
+    Cada coluna é preenchida verticalmente com brilho máximo (9).
+    """
+    # Limpa a tela (apaga todos os LEDs)
     display.clear()
-    # Converte 0-255 para 0-5
+
+    # Converte o valor 0-255 para um número de barras (colunas) de 0 a 5.
+    # Exemplo: nivel=255 -> 5; nivel=128 -> 2 (arredondado para baixo).
     barras = int(nivel / 255 * 5)
+
+    # Para cada coluna (i) de 0 até barras-1, acende todos os 5 LEDs
+    # dessa coluna com brilho máximo (9).
     for i in range(barras):
         for j in range(5):
             display.set_pixel(i, j, 9)
 
 def modo_vampiro():
+    """
+    Comportamento do modo "vampiro": reage à luz medida.
+    - Se a luz estiver ABAIXO do limiar: o vampiro anda no escuro
+      (seta para a direita) e pisca os "olhos" (dois LEDs superiores
+      nos cantos).
+    - Se a luz estiver ACIMA do limiar: o vampiro grita com a luz,
+      mostrando uma caveira (SKULL) e depois apaga a tela.
+    """
+    # Lê o nível de luz atual
     luz = ler_luz()
+
+    # Verifica se está escuro (luz abaixo do limiar)
     if luz < limiar:
-        # Andando no escuro - animação
+        # "Andando no escuro" - exibe uma seta apontando para a direita
+        # (ARROW_E) por 200 ms, simulando movimento.
         display.show(Image.ARROW_E)
         sleep(200)
-        # Olhos brilhando
+
+        # "Olhos brilhando" - acende os LEDs nos cantos superiores
+        # (0,0) e (4,0) com brilho 9, por 300 ms.
         display.set_pixel(0, 0, 9)
         display.set_pixel(4, 0, 9)
         sleep(300)
+
+        # Apaga os olhos (coloca brilho 0) e espera 100 ms.
         display.set_pixel(0, 0, 0)
         display.set_pixel(4, 0, 0)
         sleep(100)
+
+        # Após essa sequência, a tela permanece apagada (pois não
+        # mostramos nada após o sleep(100)).
     else:
-        # Grita com a luz
+        # "Grita com a luz" - exibe o ícone de caveira por 500 ms,
+        # depois limpa a tela e espera mais 500 ms.
         display.show(Image.SKULL)
         sleep(500)
         display.clear()
         sleep(500)
 
+# --------------------------------------------------------------------
+# INICIALIZAÇÃO - MENSAGEM DE BOAS-VINDAS
+# --------------------------------------------------------------------
+
+# Rola o texto "ROBO NOTURNO" na matriz de LEDs, com efeito de
+# deslocamento (scroll), indicando que o programa foi iniciado.
 display.scroll("ROBO NOTURNO")
 
+# --------------------------------------------------------------------
+# LOOP PRINCIPAL (executado indefinidamente)
+# --------------------------------------------------------------------
+
 while True:
+    # Verifica se o botão A foi pressionado (e solto) desde a última
+    # leitura. Se sim, altera o modo para "normal" e exibe "NORMAL".
     if button_a.was_pressed():
         modo = "normal"
         display.scroll("NORMAL")
+
+    # Verifica se o botão B foi pressionado. Se sim, modo = "vampiro".
     if button_b.was_pressed():
         modo = "vampiro"
         display.scroll("VAMPIRO")
+
+    # Verifica se o pino 0 (touch) foi tocado (encostado com o dedo).
+    # Se sim, entra no modo calibração e exibe "CALIBRA" seguido do
+    # valor atual do limiar.
     if pin0.is_touched():
         modo = "calibra"
         display.scroll("CALIBRA " + str(limiar))
-    
+
+    # -----------------------------------------------------------------
+    # EXECUÇÃO DO MODO ATUAL
+    # -----------------------------------------------------------------
+
     if modo == "normal":
+        # Modo normal: lê a luz e desenha as barras proporcionais.
         desenhar_barras(ler_luz())
+
     elif modo == "vampiro":
+        # Modo vampiro: executa a reação descrita na função.
         modo_vampiro()
-    else:  # calibra
+
+    else:  # modo == "calibra"
+        # Modo calibração: exibe continuamente o valor da luz atual
+        # (rolagem do número) e permite ajustar o limiar com os botões.
+
+        # Lê o nível de luz e rola o valor numérico na tela.
         luz = ler_luz()
         display.scroll(str(luz))
+
+        # Se o botão A for pressionado, aumenta o limiar em 5,
+        # mas sem ultrapassar o valor máximo 255.
         if button_a.was_pressed():
             limiar = min(limiar + 5, 255)
+
+        # Se o botão B for pressionado, diminui o limiar em 5,
+        # mas sem ficar abaixo de 0.
         if button_b.was_pressed():
             limiar = max(limiar - 5, 0)
-    
-    sleep(100)</pre>
+
+    # Aguarda 100 ms antes de repetir o loop, para evitar que o
+    # processamento seja muito rápido e consuma muita energia,
+    # além de dar tempo para a leitura dos sensores e botões.
+    sleep(100)
+
+# ====================================================================
+# FIM DO CÓDIGO
+# ====================================================================</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -1737,60 +2500,196 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+/**
+ * ========================================================================
+ * PROJETO: MICRO:BIT – DETECTOR DE PALMAS COM REAÇÃO VISUAL
+ * ========================================================================
+ *
+ * Este programa foi desenvolvido para a placa micro:bit na plataforma MakeCode.
+ * Ele utiliza o microfone interno para detectar sons altos (como palmas) e,
+ * ao detectar um pico de som acima de um limiar, executa uma animação de
+ * ondas nos LEDs e exibe a mensagem "PALMA!". Simultaneamente, ele mostra
+ * em tempo real o nível de volume ambiente na matriz de LEDs, na forma de
+ * barras verticais.
+ *
+ * O projeto é didático e visa demonstrar:
+ *  - Leitura do sensor de som (input.soundLevel())
+ *  - Lógica de detecção de borda de subida (transição silêncio → som alto)
+ *  - Uso de matriz de LEDs 5x5 para animações e gráficos de barras
+ *  - Estrutura de loop principal com temporização
+ *  - Funções para organizar o código
+ *
+ * ========================================================================
+ */
+
+// ========================================================================
+// VARIÁVEIS GLOBAIS (configurações e estados)
+// ========================================================================
+
+/**
+ * limiarSom: valor inteiro que define o limite mínimo de intensidade sonora
+ * para considerar que um som foi detectado. O microfone retorna valores
+ * entre 0 (silêncio) e 255 (som muito alto). Um valor de 50 é razoável
+ * para detectar palmas em ambientes normais, mas pode ser ajustado conforme
+ * a sensibilidade desejada.
+ */
 let limiarSom = 50
+
+/**
+ * ultimoSom: armazena o último valor de som lido pelo microfone.
+ * É usado na função detectarPalma() para comparar com a leitura atual
+ * e assim identificar uma borda de subida (transição de silêncio para som alto).
+ * Inicialmente definido como 0 para garantir que a primeira leitura não seja
+ * interpretada como pico.
+ */
 let ultimoSom = 0
 
+// ========================================================================
+// FUNÇÃO: medirSom()
+// ========================================================================
+/**
+ * Retorna o nível de som captado pelo microfone do micro:bit.
+ * O valor é um número inteiro no intervalo de 0 a 255.
+ *  - 0  = silêncio absoluto
+ *  - 255 = som extremamente alto (grito ou palma bem próxima)
+ *
+ * @returns {number} Nível de som atual (0-255)
+ */
 function medirSom(): number {
-    // Retorna 0-255 (silêncio-grito)
+    // A função input.soundLevel() é fornecida pela API do MakeCode para o micro:bit V2.
+    // Ela acessa o microfone embutido e retorna o valor instantâneo.
     return input.soundLevel()
 }
 
+// ========================================================================
+// FUNÇÃO: detectarPalma()
+// ========================================================================
+/**
+ * Detecta se houve uma palma (ou outro som abrupto) baseado na variação do som.
+ * A lógica empregada é a de "borda de subida": considera-se uma detecção
+ * quando o som atual ultrapassa o limiar E o som anterior estava abaixo do limiar.
+ * Isso evita múltiplas detecções para um mesmo evento prolongado.
+ *
+ * @returns {boolean} true se uma palma foi detectada, false caso contrário.
+ */
 function detectarPalma(): boolean {
+    // Lê o nível de som atual através da função medirSom()
     let som = medirSom()
-    // Detecta pico de som
+
+    // Verifica se o som atual ultrapassou o limiar E se o som anterior estava abaixo.
+    // A condição 'ultimoSom < limiarSom' garante que estamos saindo de um estado de silêncio,
+    // caracterizando o início de um pico sonoro (borda de subida).
     if (som > limiarSom && ultimoSom < limiarSom) {
+        // Se a condição for verdadeira, atualizamos ultimoSom com o valor atual
+        // para evitar novas detecções enquanto o som permanecer alto.
         ultimoSom = som
+        // Retorna verdadeiro indicando que uma palma foi detectada.
         return true
     }
+
+    // Se não houve detecção, atualizamos ultimoSom com o valor atual para a próxima iteração.
     ultimoSom = som
+    // Retorna falso.
     return false
 }
 
-// Modos de reação
+// ========================================================================
+// FUNÇÃO: reagirPalma()
+// ========================================================================
+/**
+ * Executa uma animação visual na matriz de LEDs quando uma palma é detectada.
+ * A animação simula uma "onda" que se propaga horizontalmente da esquerda para a direita,
+ * acendendo colunas de LEDs com intensidade máxima (9 = brilho total).
+ * Ao final, a tela é limpa após um pequeno intervalo.
+ */
 function reagirPalma() {
-    // Efeito de onda na matriz
+    // Loop que percorre as colunas (índice i) da matriz 5x5, da esquerda (0) para a direita (4).
     for (let i = 0; i < 5; i++) {
+        // Acende o LED central da coluna i (linha 2, que é a terceira linha, pois índices vão de 0 a 4)
+        // com brilho máximo (9). A função display.set_pixel(x, y, brilho) define o estado de um LED.
         display.set_pixel(i, 2, 9)
+        // Pausa de 50 milissegundos para criar o efeito de movimento.
         basic.pause(50)
+
+        // Acende os LEDs acima e abaixo do central na mesma coluna (linhas 1 e 3),
+        // também com brilho máximo, expandindo a onda verticalmente.
         display.set_pixel(i, 1, 9)
         display.set_pixel(i, 3, 9)
+        // Nova pausa para manter a animação com ritmo.
         basic.pause(50)
     }
+
+    // Após a animação, aguarda 200 ms para que o padrão fique visível.
     basic.pause(200)
+    // Limpa todos os LEDs da matriz, apagando a animação.
     display.clear()
 }
 
+// ========================================================================
+// FUNÇÃO: mostrarVolume()
+// ========================================================================
+/**
+ * Exibe em tempo real o nível de volume atual na matriz de LEDs na forma de um gráfico
+ * de barras verticais. Cada coluna (da esquerda para a direita) representa uma faixa de
+ * intensidade sonora. Quanto mais alto o som, mais colunas são preenchidas.
+ * O valor lido (0-255) é mapeado para um número de barras (0 a 5) usando a função Math.map().
+ */
 function mostrarVolume() {
+    // Obtém o nível de som atual.
     let nivel = medirSom()
+
+    // Mapeia o valor de som (0-255) para o número de barras a serem exibidas (0 a 5).
+    // Math.map(valor, deInicio, deFim, paraInicio, paraFim) faz uma interpolação linear.
+    // Aqui, silêncio (0) → 0 barras, som máximo (255) → 5 barras (todas as colunas).
     let barras = Math.map(nivel, 0, 255, 0, 5)
+
+    // Limpa a matriz para desenhar o gráfico do zero a cada iteração.
     display.clear()
+
+    // Loop sobre as colunas (índice i) que serão acesas, de 0 até barras-1.
     for (let i = 0; i < barras; i++) {
+        // Para cada coluna i, acende todos os LEDs dessa coluna (linhas j de 0 a 4)
+        // com brilho máximo (9), formando uma barra vertical completa.
         for (let j = 0; j < 5; j++) {
             display.set_pixel(i, j, 9)
         }
     }
+    // Nota: As colunas não preenchidas permanecem apagadas, pois a tela foi limpa.
 }
 
-// Programa principal
+// ========================================================================
+// PROGRAMA PRINCIPAL
+// ========================================================================
+
+/**
+ * Exibe a palavra "SOM" na matriz de LEDs, rolando os caracteres,
+ * para indicar que o programa está iniciando e que o microfone será usado.
+ */
 basic.showString("SOM")
 
+/**
+ * Loop infinito – o coração do programa.
+ * A cada iteração:
+ *  1. Verifica se uma palma foi detectada (função detectarPalma).
+ *  2. Se sim, executa a reação (animação + mensagem).
+ *  3. Independentemente disso, atualiza o gráfico de barras de volume em tempo real.
+ *  4. Aguarda 50 ms para não sobrecarregar o processador e dar tempo para a visualização.
+ */
 while (true) {
+    // Chama a função de detecção. Se retornar true, houve uma palma.
     if (detectarPalma()) {
+        // Executa a animação de onda.
         reagirPalma()
+        // Exibe a mensagem "PALMA!" na matriz, rolando os caracteres.
         basic.showString("PALMA!")
     }
-    // Mostra volume em tempo real
+
+    // Atualiza a exibição do volume em tempo real (gráfico de barras).
+    // Isso ocorre a cada iteração, mesmo quando não há palma.
     mostrarVolume()
+
+    // Pequena pausa para controlar a velocidade do loop e evitar que o gráfico
+    // pisque muito rápido. 50 ms é suficiente para uma atualização suave.
     basic.pause(50)
 }</pre>
 
@@ -1801,23 +2700,72 @@ while (true) {
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# =============================================================================
+# PROJETO: ORQUESTRA INTERATIVA COM MICRO:BIT
+# =============================================================================
+# Descrição:
+#   Este programa transforma o micro:bit em um instrumento musical que reage
+#   a sons (palmas, gritos ou silêncio) e possui três modos de operação,
+#   selecionáveis pelos botões A, B e pelo toque no pino 0 (ou conector de
+#   borda). O projeto é didático e explora o microfone interno (V2) ou um
+#   sensor de som externo (V1), além de LEDS, música e interação com o usuário.
+#
+# Componentes utilizados:
+#   - Matriz de LED 5x5 (display)
+#   - Microfone (embutido no V2 ou externo no pino 0)
+#   - Alto-falante / fone de ouvido (através do pino 0 ou conector de áudio)
+#   - Botões A e B
+#   - Pino 0 (para sensor de som externo ou detecção por toque)
+#
+# Modos de operação:
+#   1. "palma"  : reage a palmas (ícone feliz + nota C4) e gritos (crânio + alarme)
+#   2. "visual" : exibe o nível de som como barras de LED (0 a 5)
+#   3. "silêncio": reage apenas ao silêncio (coração piscando)
+#
+# Controle:
+#   - Botão A → modo "palma"
+#   - Botão B → modo "visual"
+#   - Toque no pino 0 → modo "silêncio"
+# =============================================================================
+
+# Importa todas as funções da biblioteca microbit (para controlar LEDs, botões,
+# temporizações, etc.) e a biblioteca 'music' para tocar notas musicais.
 from microbit import *
 import music
 
+# -------------------- CONFIGURAÇÃO DOS LIMIARES --------------------
+# Limiar para detectar uma palma (nível de som acima deste valor)
 limiar_palma = 80
+# Limiar para detectar um grito (nível mais alto que uma palma)
 limiar_grito = 150
+# Modo inicial: "palma" (pode ser alterado pelos botões/toque)
 modo = "palma"
 
+# -------------------- FUNÇÃO PARA LER O SOM --------------------
 def ler_som():
-    # Micro:bit V2 tem microfone integrado
-    # Em V1, usar pino 0 com sensor de som externo
+    """
+    Retorna o nível de som captado pelo microfone.
+    - No micro:bit V2, usa o microfone interno (microphone.sound_level()).
+    - No V1 (sem microfone interno), lê o valor analógico do pino 0,
+      onde deve estar conectado um sensor de som externo.
+    O bloco try/except garante que o código funcione em ambas as versões.
+    """
+    # Tenta usar o microfone interno (disponível apenas no V2)
     try:
         return microphone.sound_level()
+    # Se falhar (V1 ou exceção), usa o pino 0 como entrada analógica
     except:
         return pin0.read_analog()  # Fallback para sensor externo
 
+# -------------------- FUNÇÃO PARA CLASSIFICAR O SOM --------------------
 def detectar_tipo_som():
-    nivel = ler_som()
+    """
+    Classifica o som captado em três categorias:
+    - "grito"   : nível acima do limiar_grito
+    - "palma"   : nível entre limiar_palma e limiar_grito (inclusive)
+    - "silêncio": nível abaixo ou igual a limiar_palma
+    """
+    nivel = ler_som()  # Obtém o valor atual do som
     if nivel > limiar_grito:
         return "grito"
     elif nivel > limiar_palma:
@@ -1825,60 +2773,89 @@ def detectar_tipo_som():
     else:
         return "silêncio"
 
+# -------------------- FUNÇÕES DE REAÇÃO A CADA TIPO --------------------
 def reagir_palma():
-    display.show(Image.HAPPY)
-    # Toca nota musical
-    music.play("C4:4")
-    sleep(200)
-    display.clear()
+    """Ação quando detectada uma palma: exibe rosto feliz e toca nota C4."""
+    display.show(Image.HAPPY)   # Mostra ícone de rosto feliz na matriz de LED
+    music.play("C4:4")          # Toca a nota C4 na 4ª oitava (duração 4 = semínima)
+    sleep(200)                  # Aguarda 200 ms para manter a exibição
+    display.clear()             # Limpa a tela (apaga todos os LEDs)
 
 def reagir_grito():
-    display.show(Image.SKULL)
-    # Toca alarme
+    """Ação quando detectado um grito: exibe caveira e toca um alarme (acorde)."""
+    display.show(Image.SKULL)   # Mostra ícone de caveira (SKULL)
+    # Toca uma sequência de notas: C5 (oitava 5), E5, G5, C6 (oitava 6)
+    # Cada nota tem duração 8 (colcheia) – forma um arpejo ascendente.
     music.play("C5:8 E5:8 G5:8 C6:8")
-    sleep(500)
+    sleep(500)                  # Mantém a exibição por meio segundo
     display.clear()
 
 def reagir_silencio():
-    display.show(Image.HEART)
-    sleep(100)
+    """Ação quando o modo é 'silêncio' e não há som: exibe coração piscando."""
+    display.show(Image.HEART)   # Mostra um coração
+    sleep(100)                  # Pisca rapidamente (100 ms)
     display.clear()
 
+# -------------------- INÍCIO DO PROGRAMA --------------------
+# Exibe a mensagem "ORQUESTRA" rolando na matriz de LED (uma letra por vez)
 display.scroll("ORQUESTRA")
 
+# -------------------- LOOP PRINCIPAL (executa para sempre) --------------------
 while True:
+    # Primeiro, classifica o som ambiente atual
     tipo = detectar_tipo_som()
     
+    # -------------------- EXECUÇÃO CONFORME O MODO ATIVO --------------------
     if modo == "palma":
+        # Modo "palma": reage a palmas e gritos
         if tipo == "palma":
             reagir_palma()
         elif tipo == "grito":
             reagir_grito()
+        # Se for silêncio, não faz nada (apenas aguarda)
+    
     elif modo == "visual":
-        # Mostra volume como barras
-        nivel = ler_som()
-        barras = int(nivel / 255 * 5)
-        display.clear()
+        # Modo "visual": exibe barras de nível de som (sem reações sonoras)
+        nivel = ler_som()                     # Lê o valor do som (0 a 255)
+        barras = int(nivel / 255 * 5)        # Converte para 0 a 5 barras
+        display.clear()                       # Limpa a tela antes de desenhar
+        # Desenha as barras: para cada coluna i (0..barras-1), acende toda a coluna
         for i in range(barras):
             for j in range(5):
-                display.set_pixel(i, j, 9)
-        sleep(50)
-    else:  # modo silêncio
+                display.set_pixel(i, j, 9)   # 9 = brilho máximo (0 a 9)
+        sleep(50)                            # Atualiza a cada 50 ms
+    
+    else:  # modo "silêncio" (qualquer valor diferente dos anteriores)
+        # Modo "silêncio": reage apenas quando não há som
         if tipo == "silêncio":
             reagir_silencio()
+        # Caso contrário (palma ou grito), não faz nada
     
-    # Mudar modo com botões
+    # -------------------- CONTROLE DE MODO (via botões e toque) --------------------
+    # Botão A pressionado → alterna para o modo "palma"
     if button_a.was_pressed():
         modo = "palma"
-        display.scroll("PALMA")
+        display.scroll("PALMA")   # Confirmação visual na tela
+    
+    # Botão B pressionado → alterna para o modo "visual"
     if button_b.was_pressed():
         modo = "visual"
         display.scroll("VISUAL")
+    
+    # Toque no pino 0 (usando a função is_touched()) → modo "silêncio"
+    # O pino 0 também é usado para leitura do sensor de som no V1,
+    # mas a função is_touched() detecta contato elétrico (com o dedo ou fio)
+    # sem conflito com a leitura analógica (pois é uma função separada).
     if pin0.is_touched():
         modo = "silêncio"
         display.scroll("SILENCIO")
     
-    sleep(100)</pre>
+    # Pequena pausa para evitar leituras muito rápidas e estabilizar o loop
+    sleep(100)
+
+# =============================================================================
+# FIM DO PROGRAMA
+# =============================================================================</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2055,107 +3032,288 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+/**
+ * =================================================================
+ * PROJETO DIDÁTICO: "ROBO PERDIDO" – Uma Aventura Interativa no micro:bit
+ * =================================================================
+ *
+ * Este programa transforma o micro:bit em um jogo de escolhas (como um "livro-jogo")
+ * onde o jogador controla as decisões do robô Z-9.
+ * 
+ * Conceitos trabalhados:
+ *  - Variáveis (armazenar escolhas)
+ *  - Funções (organizar cenas)
+ *  - Arrays (lista de imagens)
+ *  - Estruturas de repetição (while, for)
+ *  - Condicionais (if/else)
+ *  - Entrada por botões (A e B)
+ *  - Saída no display (LEDs)
+ *
+ * O jogo apresenta três finais diferentes, dependendo das escolhas do jogador.
+ * =================================================================
+ */
+
+// -----------------------------------------------------------------
+// VARIÁVEL GLOBAL
+// -----------------------------------------------------------------
+
+/**
+ * `escolha` armazena a decisão tomada na cena inicial:
+ *   0 = nenhuma escolha ainda (valor padrão)
+ *   1 = jogador pressionou A (quiser escolher)
+ *   2 = jogador pressionou B (quiser explorar)
+ * 
+ * Esta variável é acessada por todas as funções para decidir qual caminho seguir.
+ */
 let escolha = 0
 
+// -----------------------------------------------------------------
+// FUNÇÃO: mostrarPersonagem(icone)
+// -----------------------------------------------------------------
+
+/**
+ * Exibe no display uma imagem correspondente a um número (índice) passado.
+ * 
+ * @param icone - Número inteiro que indica qual imagem mostrar:
+ *                0 = Robô (representa o personagem principal)
+ *                1 = Coração (representa afeto, final feliz)
+ *                2 = Bloco (representa objeto encontrado)
+ *                3 = Vazio (representa perda ou tristeza)
+ * 
+ * A função cria um array com 4 imagens (cada uma definida por uma string de 5x5 pixels)
+ * e exibe a imagem na posição `icone` usando o método `.showImage()`.
+ */
 function mostrarPersonagem(icone: number) {
+    // Cria um array (lista) com 4 imagens.
+    // Cada imagem é criada com `images.createImage()` que recebe uma string.
+    // A string usa "0" para apagado e "1" para aceso, separando linhas por espaços.
+    // Exemplo: "00100" = linha com pixels: 0 0 1 0 0 (apagado, apagado, aceso, apagado, apagado)
     let imagens = [
-        images.createImage("00100 00100 00100 00100 00100"), // Robô
-        images.createImage("00100 01110 11111 01110 00100"), // Coração
-        images.createImage("11111 10001 10001 10001 11111"), // Bloco
-        images.createImage("00000 00000 00000 00000 00000")  // Vazio
+        images.createImage("00100 00100 00100 00100 00100"), // Índice 0: Robô (coluna central acesa)
+        images.createImage("00100 01110 11111 01110 00100"), // Índice 1: Coração (formato de coração)
+        images.createImage("11111 10001 10001 10001 11111"), // Índice 2: Bloco (borda quadrada)
+        images.createImage("00000 00000 00000 00000 00000")  // Índice 3: Vazio (tudo apagado)
     ]
+    // Pega a imagem na posição `icone` do array e a exibe no display.
+    // O método `.showImage()` mostra a imagem imediatamente na tela de LED.
     imagens[icone].showImage()
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaInicio()
+// -----------------------------------------------------------------
+
+/**
+ * Cena inicial da história.
+ * Exibe mensagens de texto e o robô, e aguarda o jogador pressionar A ou B.
+ * 
+ * - Se pressionar A: define `escolha = 1` e vai para a cena de escolher.
+ * - Se pressionar B: define `escolha = 2` e vai para a cena de explorar.
+ * 
+ * O loop `while (true)` fica em execução até que um botão seja pressionado.
+ */
 function cenaInicio() {
+    // Exibe a string "ROBO PERDIDO" rolando no display (rolagem automática).
     basic.showString("ROBO PERDIDO")
+    // Mostra a imagem do robô (índice 0) usando a função auxiliar.
     mostrarPersonagem(0) // Robô
+    // Mensagem narrativa: o robô Z-9 acorda e precisa decidir o que fazer.
     basic.showString("Z-9 acorda. O que fazer?")
+    // Oferece as opções: botão A para "ESCOLHER" e botão B para "EXPLORAR".
     basic.showString("A: ESCOLHER B: EXPLORAR")
     
+    // Loop infinito (while com condição verdadeira) para esperar a entrada do jogador.
     while (true) {
+        // Verifica se o botão A foi pressionado neste exato momento.
+        // `input.buttonIsPressed(Button.A)` retorna `true` se o botão estiver pressionado,
+        // `false` caso contrário. Como estamos em um loop rápido, ele detecta o pressionamento.
         if (input.buttonIsPressed(Button.A)) {
+            // Define a variável global `escolha` como 1 (caminho "ESCOLHER").
             escolha = 1
+            // Sai do loop com `break`, interrompendo a repetição e voltando para a função chamadora.
             break
         }
+        // Verifica se o botão B foi pressionado.
         if (input.buttonIsPressed(Button.B)) {
             escolha = 2
             break
         }
+        // Se nenhum botão for pressionado, o loop continua (repetindo a verificação).
+        // Isso cria um "congelamento" até que o jogador interaja.
     }
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaEscolher()
+// -----------------------------------------------------------------
+
+/**
+ * Cena do caminho "ESCOLHER" (quando o jogador pressionou A no início).
+ * O robô encontra uma peça? O jogador decide se SIM (A) ou NÃO (B).
+ * 
+ * - Se SIM (A): leva ao final feliz.
+ * - Se NÃO (B): leva ao final triste.
+ * 
+ * Esta função usa `return` para sair imediatamente após chamar a cena final,
+ * evitando que o código continue executando instruções posteriores.
+ */
 function cenaEscolher() {
+    // Texto narrativo: Z-9 encontra uma peça?
     basic.showString("Z-9 encontra peca?")
+    // Mostra o ícone de coração (índice 1) para representar a peça encontrada.
     mostrarPersonagem(1) // Coração
+    // Opções: A = SIM, B = NÃO.
     basic.showString("A: SIM B: NAO")
     
+    // Loop infinito para aguardar a escolha do jogador.
     while (true) {
         if (input.buttonIsPressed(Button.A)) {
+            // Se pressionar A, o robô diz "SIM" -> final feliz.
+            // Chama a função `cenaFinalFeliz()` e, após ela terminar, `return` encerra esta função.
             cenaFinalFeliz()
             return
         }
         if (input.buttonIsPressed(Button.B)) {
+            // Se pressionar B, o robô diz "NÃO" -> final triste.
             cenaFinalTriste()
             return
         }
     }
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaExplorar()
+// -----------------------------------------------------------------
+
+/**
+ * Cena do caminho "EXPLORAR" (quando o jogador pressionou B no início).
+ * O robô encontra um bloco misterioso. O jogador decide se PEGAR (A) ou IGNORAR (B).
+ * 
+ * - Se PEGAR (A): leva ao final surpresa.
+ * - Se IGNORAR (B): leva ao final triste.
+ */
 function cenaExplorar() {
+    // Texto: Z-9 encontra um BLOCO.
     basic.showString("Z-9 encontra BLOCO")
+    // Mostra o ícone de bloco (índice 2).
     mostrarPersonagem(2) // Bloco
+    // Opções: A = PEGAR, B = IGNORAR.
     basic.showString("A: PEGAR B: IGNORAR")
     
     while (true) {
         if (input.buttonIsPressed(Button.A)) {
+            // Se pressionar A, o robô pega o bloco -> final surpresa.
             cenaFinalSurpresa()
             return
         }
         if (input.buttonIsPressed(Button.B)) {
+            // Se pressionar B, ignora -> final triste.
             cenaFinalTriste()
             return
         }
     }
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaFinalFeliz()
+// -----------------------------------------------------------------
+
+/**
+ * Final Feliz: exibe mensagem "FINAL FELIZ", mostra o coração,
+ * e executa uma animação de pisca-pisca (5 vezes) com um padrão de pixels.
+ */
 function cenaFinalFeliz() {
+    // Mensagem de texto no display.
     basic.showString("FINAL FELIZ")
+    // Exibe o coração (índice 1) como símbolo de felicidade.
     mostrarPersonagem(1) // Coração
+    
+    // Loop que repete 5 vezes (i de 0 a 4).
     for (let i = 0; i < 5; i++) {
+        // `basic.showAnimation` recebe uma string com vários quadros (frames) separados por espaço.
+        // Cada quadro é uma imagem de 5x5 pixels. A animação troca os quadros a cada 100 ms.
+        // Padrão: "01010 10101 01010 10101 01010" - um xadrez que pisca.
         basic.showAnimation("01010 10101 01010 10101 01010", 100)
     }
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaFinalTriste()
+// -----------------------------------------------------------------
+
+/**
+ * Final Triste: exibe "FINAL TRISTE", mostra um ícone vazio (tudo apagado),
+ * e alterna entre o ícone de rosto triste e tela limpa 5 vezes, com pausas.
+ */
 function cenaFinalTriste() {
     basic.showString("FINAL TRISTE")
+    // Mostra o ícone vazio (índice 3) – tela apagada, simbolizando perda.
     mostrarPersonagem(3) // Vazio
+    
     for (let i = 0; i < 5; i++) {
+        // `basic.showIcon(IconNames.Sad)` exibe um ícone predefinido de rosto triste.
         basic.showIcon(IconNames.Sad)
+        // Pausa de 200 milissegundos (0,2 segundos) para que o ícone fique visível.
         basic.pause(200)
+        // `basic.clearScreen()` apaga todos os LEDs.
         basic.clearScreen()
+        // Pausa novamente para manter a tela apagada por um instante.
         basic.pause(200)
     }
 }
 
+// -----------------------------------------------------------------
+// FUNÇÃO: cenaFinalSurpresa()
+// -----------------------------------------------------------------
+
+/**
+ * Final Surpresa: exibe "FINAL SURPRESA" e alterna entre dois ícones de diamante
+ * (grande e pequeno) 5 vezes, criando um efeito de "brilho".
+ */
 function cenaFinalSurpresa() {
     basic.showString("FINAL SURPRESA")
+    // Repete 5 vezes.
     for (let i = 0; i < 5; i++) {
+        // Mostra o ícone de diamante grande (predefinido).
         basic.showIcon(IconNames.Diamond)
         basic.pause(200)
+        // Mostra o ícone de diamante pequeno.
         basic.showIcon(IconNames.SmallDiamond)
         basic.pause(200)
     }
 }
 
-// Programa principal
+// -----------------------------------------------------------------
+// PROGRAMA PRINCIPAL (entry point)
+// -----------------------------------------------------------------
+
+/**
+ * A execução começa por aqui quando o micro:bit é ligado ou reiniciado.
+ * 
+ * 1. Chama `cenaInicio()` – mostra a história inicial e aguarda a escolha A ou B,
+ *    que define o valor da variável global `escolha`.
+ * 2. Após `cenaInicio()` terminar (quando o loop é quebrado), o programa
+ *    verifica o valor de `escolha`:
+ *    - Se for 1 (botão A): chama `cenaEscolher()`.
+ *    - Caso contrário (se for 2, pois só há essas opções): chama `cenaExplorar()`.
+ * 3. Dentro de cada cena, o jogador faz novas escolhas que levam a um dos finais.
+ * 4. Após qualquer final, o programa exibe "FIM" e termina (não há mais instruções).
+ */
 cenaInicio()
+
+// Estrutura condicional que decide o próximo caminho baseado na escolha do usuário.
 if (escolha == 1) {
+    // Se escolha for 1, vai para a cena de escolher.
     cenaEscolher()
 } else {
+    // Senão (se for 2 ou qualquer outro valor, mas aqui só pode ser 2), vai para explorar.
     cenaExplorar()
 }
-basic.showString("FIM")</pre>
+
+// Após a execução das cenas finais, exibe "FIM" para indicar o término do jogo.
+basic.showString("FIM")
+
+// Fim do programa. O micro:bit fica ocioso.</pre>
 
                 <p>
                   <strong>MicroPython - História Interativa com mais
@@ -2167,75 +3325,165 @@ basic.showString("FIM")</pre>
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# =============================================================================
+# PROGRAMA: Jogo de Aventura Interativa para o Micro:bit
+# =============================================================================
+# Este programa cria uma pequena aventura com escolhas, usando os botões A e B.
+# O jogador começa com uma cena inicial, depois pode ir para a "Escola" ou para
+# "Explorar". Cada caminho leva a novas escolhas que determinam um final feliz
+# ou triste. O programa utiliza funções para organizar cada cena e exibe
+# animações e mensagens no display de LED do Micro:bit.
+# =============================================================================
+
+# Importa todas as funções da biblioteca "microbit", que permite controlar
+# os recursos do dispositivo (display, botões, temporização, etc.).
 from microbit import *
 
+# =============================================================================
+# FUNÇÃO: cena_inicio()
+# =============================================================================
+# Mostra a cena inicial: uma mensagem de boas-vindas, um ícone de robô e
+# as opções disponíveis. Aguarda o pressionamento do botão A ou B para
+# retornar a escolha do jogador.
+# =============================================================================
 def cena_inicio():
+    # Exibe a mensagem "Z-9 ACORDA" rolando no display (scroll).
     display.scroll("Z-9 ACORDA")
+    # Mostra o ícone de um robô (Image.ROBOT) no display de LED.
     display.show(Image.ROBOT)
+    # Pausa a execução por 1000 milissegundos (1 segundo) para que o jogador
+    # veja o ícone antes de passar para a próxima mensagem.
     sleep(1000)
+    # Rola a mensagem com as opções: botão A para Escola, B para Explorar.
     display.scroll("A: ESCOLA B: EXPLORAR")
     
+    # Loop infinito que só será interrompido quando um botão for pressionado.
     while True:
+        # Verifica se o botão A foi pressionado (e solto) desde a última
+        # verificação. Se sim, retorna a string "escola" para indicar a escolha.
         if button_a.was_pressed():
             return "escola"
+        # Verifica se o botão B foi pressionado. Se sim, retorna "explorar".
         if button_b.was_pressed():
             return "explorar"
+        # Se nenhum botão foi pressionado, o loop continua aguardando.
 
+# =============================================================================
+# FUNÇÃO: cena_escola()
+# =============================================================================
+# Cena da escola: exibe um coração e as opções "Estudar" (A) ou "Dormir" (B).
+# Aguarda a escolha do jogador e retorna a opção selecionada.
+# =============================================================================
 def cena_escola():
+    # Mostra o ícone de coração (Image.HEART) no display.
     display.show(Image.HEART)
+    # Pausa por 500 ms para que o coração seja visível.
     sleep(500)
+    # Rola a mensagem com as opções: A para Estudar, B para Dormir.
     display.scroll("A: ESTUDAR B: DORMIR")
     
+    # Loop infinito aguardando o pressionamento de um botão.
     while True:
         if button_a.was_pressed():
-            return "estudar"
+            return "estudar"      # Retorna "estudar" se o botão A for pressionado.
         if button_b.was_pressed():
-            return "dormir"
+            return "dormir"       # Retorna "dormir" se o botão B for pressionado.
 
+# =============================================================================
+# FUNÇÃO: cena_explorar()
+# =============================================================================
+# Cena de exploração: exibe um diamante e as opções "Floresta" (A) ou "Deserto" (B).
+# Aguarda a escolha do jogador e retorna a opção selecionada.
+# =============================================================================
 def cena_explorar():
+    # Mostra o ícone de diamante (Image.DIAMOND) no display.
     display.show(Image.DIAMOND)
+    # Pausa por 500 ms para que o diamante seja visível.
     sleep(500)
+    # Rola a mensagem com as opções: A para Floresta, B para Deserto.
     display.scroll("A: FLORESTA B: DESERTO")
     
     while True:
         if button_a.was_pressed():
-            return "floresta"
+            return "floresta"     # Retorna "floresta" se o botão A for pressionado.
         if button_b.was_pressed():
-            return "deserto"
+            return "deserto"      # Retorna "deserto" se o botão B for pressionado.
 
+# =============================================================================
+# FUNÇÃO: final_feliz(texto)
+# =============================================================================
+# Exibe um final feliz: mostra o texto recebido e uma animação alternando
+# entre os ícones HAPPY e HEART, repetida 5 vezes.
+# Parâmetro: texto - a mensagem a ser exibida (ex: "APROVADO!").
+# =============================================================================
 def final_feliz(texto):
+    # Rola a mensagem recebida como argumento.
     display.scroll(texto)
+    # Repete 5 vezes a animação de final feliz.
     for i in range(5):
+        # Mostra o ícone de rosto feliz (HAPPY).
         display.show(Image.HAPPY)
+        # Pausa por 200 ms.
         sleep(200)
+        # Mostra o ícone de coração (HEART).
         display.show(Image.HEART)
+        # Pausa por 200 ms.
         sleep(200)
 
+# =============================================================================
+# FUNÇÃO: final_triste(texto)
+# =============================================================================
+# Exibe um final triste: mostra o texto recebido e uma animação alternando
+# entre o ícone SAD e o display limpo, repetida 5 vezes.
+# Parâmetro: texto - a mensagem a ser exibida (ex: "REPROVADO...").
+# =============================================================================
 def final_triste(texto):
+    # Rola a mensagem recebida.
     display.scroll(texto)
+    # Repete 5 vezes a animação de final triste.
     for i in range(5):
+        # Mostra o ícone de rosto triste (SAD).
         display.show(Image.SAD)
+        # Pausa por 200 ms.
         sleep(200)
+        # Limpa o display (desliga todos os LEDs).
         display.clear()
+        # Pausa por 200 ms.
         sleep(200)
 
-# Programa principal
+# =============================================================================
+# PROGRAMA PRINCIPAL
+# =============================================================================
+# Inicia a aventura chamando a cena inicial e armazenando a primeira escolha
+# do jogador nas variável escolha1.
 escolha1 = cena_inicio()
 
+# Verifica qual foi a primeira escolha.
 if escolha1 == "escola":
+    # Se escolheu "escola", chama a cena da escola e guarda a segunda escolha.
     escolha2 = cena_escola()
+    # Verifica a segunda escolha.
     if escolha2 == "estudar":
+        # Se escolheu estudar, exibe final feliz com a mensagem "APROVADO!".
         final_feliz("APROVADO!")
     else:
+        # Senão (ou seja, escolheu dormir), exibe final triste com "REPROVADO...".
         final_triste("REPROVADO...")
 else:
+    # Se a primeira escolha foi "explorar", chama a cena de exploração.
     escolha2 = cena_explorar()
+    # Verifica a segunda escolha.
     if escolha2 == "floresta":
+        # Se escolheu floresta, final feliz com "TESOURO ENCONTRADO!".
         final_feliz("TESOURO ENCONTRADO!")
     else:
+        # Senão (deserto), final triste com "SE PERDEU NO DESERTO".
         final_triste("SE PERDEU NO DESERTO")
 
-display.scroll("FIM")</pre>
+# Após todos os finais, exibe a mensagem "FIM" rolando no display.
+display.scroll("FIM")
+# Fim do programa. O Micro:bit ficará ocioso (não há loop infinito no final,
+# mas o programa termina e o display mostra a última mensagem).</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2415,67 +3663,143 @@ display.scroll("FIM")</pre>
                       border-radius: 8px;
                       color: #ffb347;
                     ">
-// BUG 1: Precedência incorreta
-// INTENÇÃO: Permitir entrada se (idade >= 18 E tem_ingresso) OU (acompanhado)
-// BUG: Faltam parênteses
+/*******************************************
+ * PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+ * TEMA: OPERADORES LÓGICOS (&&, ||, !) e PRECEDÊNCIA
+ * 
+ * OBJETIVO: Mostrar na prática como pequenos erros de lógica 
+ * (parênteses, NOT mal aplicado, AND/OR trocados) alteram 
+ * completamente o comportamento do programa.
+ * 
+ * INSTRUÇÕES: Observe o LED Matrix do micro:bit para ver os 
+ * resultados (ícones "Yes"/"No" ou texto "VOU").
+ *******************************************/
 
+// ============================================================
+// BUG 1: PRECEDÊNCIA INCORRETA (Falta de Parênteses)
+// ============================================================
+
+// INTENÇÃO: Permitir entrada se (idade >= 18 E tem_ingresso) OU (acompanhado)
+// BUG: Faltam parênteses, fazendo o '&&' ser resolvido antes do '||', 
+// mas a intenção era agrupar a primeira condição inteira.
+
+// Declara e inicializa a variável 'idade' com o valor 16 (número inteiro).
 let idade = 16
+// Declara e inicializa a variável booleana 'tem_ingresso' como verdadeira (true).
 let tem_ingresso = true
+// Declara e inicializa a variável booleana 'acompanhado' como verdadeira (true).
 let acompanhado = true
 
-// CÓDIGO COM BUG:
+// --- CÓDIGO COM BUG (Proposital) ---
+// Início da estrutura condicional com erro.
+// ATENÇÃO: Sem parênteses, o JavaScript/TypeScript avalia o '&&' primeiro.
+// Portanto, esta linha é lida como: ((idade >= 18 && tem_ingresso) || acompanhado)
 if (idade >= 18 && tem_ingresso || acompanhado) {
-    basic.showIcon(IconNames.Yes) // Deve permitir
+    // Se a condição for verdadeira (no caso, como acompanhado = true, sempre será true),
+    // o micro:bit acende a matriz de LEDs exibindo o ícone de "SIM" (checkmark).
+    basic.showIcon(IconNames.Yes) // Deve permitir (mas com o bug, permite por qualquer motivo)
 } else {
+    // Caso a condição seja falsa (não ocorrerá aqui devido ao bug), exibe "NÃO" (X).
     basic.showIcon(IconNames.No) // Não deve permitir
 }
 
-// CORREÇÃO:
+// --- CORREÇÃO (Código correto) ---
+// Agora com os parênteses colocados estrategicamente.
+// A lógica agora é: Primeiro resolve (idade >= 18 E tem_ingresso). 
+// Depois, o resultado disso é comparado com (OU acompanhado).
 if ((idade >= 18 && tem_ingresso) || acompanhado) {
+    // CORRETO: Se a pessoa tem 18+ E ingresso, OU se está acompanhada, entra.
+    // No exemplo: 16 anos (falso) E ingresso(true) = falso. Porém, acompanhado(true) = verdadeiro.
+    // Resultado final = verdadeiro, exibe "Yes" (permitido porque está acompanhado).
     basic.showIcon(IconNames.Yes)
 } else {
+    // Só chegaria aqui se a pessoa fosse menor de idade, SEM ingresso E SEM acompanhante.
     basic.showIcon(IconNames.No)
 }
 
-// BUG 2: NOT mal aplicado
-// INTENÇÃO: Não quer ir se estiver chovendo E frio
-// BUG: NOT se aplica apenas a chuva
+// ============================================================
+// BUG 2: NOT MAL APLICADO (Operador de negação com escopo errado)
+// ============================================================
 
+// INTENÇÃO: Não quer ir se estiver chovendo E frio (ou seja, só vai se NÃO estiver (chovendo E frio)).
+// BUG: O NOT se aplica APENAS à variável 'chuva', e não à condição inteira.
+
+// Declara e inicializa a variável 'chuva' como verdadeira (está chovendo).
 let chuva = true
+// Declara e inicializa a variável 'frio' como verdadeira (está frio).
 let frio = true
 
-// CÓDIGO COM BUG:
+// --- CÓDIGO COM BUG (Proposital) ---
+// Início do 'if' com erro de escopo do '!'.
+// Por precedência, o '!' é resolvido primeiro, então isso é lido como: ((!chuva) && frio)
 if (!chuva && frio) {
     // Isso é equivalente a: (NOT chuva) AND frio
     // Mas a intenção era: NOT (chuva AND frio)
+    // No exemplo: chuva = true, então !chuva = false. false && frio(true) = false.
+    // Portanto, NÃO entra aqui, mas a intenção era que NÃO fosse sair mesmo (porque está chovendo e frio).
+    // O micro:bit percorre a matriz de LEDs mostrando a string "VOU" (um caractere por vez).
     basic.showString("VOU")
 }
 
-// CORREÇÃO:
+// --- CORREÇÃO (Código correto) ---
+// Agora com os parênteses envolvendo toda a condição que queremos negar.
+// Lógica: Primeiro resolve (chuva && frio). Se ambos forem true, o resultado interno é true.
+// O '!' externo inverte isso para false. Ou seja, SÓ VAI se NÃO estiver (chovendo E frio).
 if (!(chuva && frio)) {
+    // Como chuva=true e frio=true, (chuva && frio) = true. 
+    // !(true) = false. Portanto, NÃO entra aqui, indicando corretamente que não vamos sair.
+    // Se estivesse ensolarado OU quente, entraria e mostraria "VOU".
     basic.showString("VOU")
 }
 
-// BUG 3: AND/OR trocados
-// INTENÇÃO: Ligar se TEMPERATURA > 30 E umidade < 40
-// BUG: Usou OR em vez de AND
+// ============================================================
+// BUG 3: AND / OR TROCADOS (Operador lógico errado para a intenção)
+// ============================================================
 
+// INTENÇÃO: Ligar um sistema (ex: irrigação) se TEMPERATURA > 30 E umidade < 40.
+// BUG: Usou 'OR' (||) em vez de 'AND' (&&), fazendo o sistema ligar quando só uma condição é atendida.
+
+// Declara e inicializa a variável 'temperatura' com o valor 35 (graus Celsius).
 let temperatura = 35
+// Declara e inicializa a variável 'umidade' com o valor 50 (percentual de umidade relativa do ar).
 let umidade = 50
 
-// CÓDIGO COM BUG:
+// --- CÓDIGO COM BUG (Proposital) ---
+// Início do 'if' com o operador errado.
+// O símbolo '||' significa "OU". A condição é verdadeira se UMA das duas for verdadeira.
 if (temperatura > 30 || umidade < 40) {
+    // No exemplo: temperatura(35) > 30 é TRUE. umidade(50) < 40 é FALSE.
+    // TRUE || FALSE = TRUE. Portanto, entra aqui e liga o sistema.
+    // Isso é um BUG, pois a umidade está ALTA (50), mas o sistema ligou mesmo assim.
     basic.showIcon(IconNames.Yes) // Ligaria mesmo com umidade alta
 } else {
+    // Só cairia aqui se a temperatura fosse <= 30 E a umidade >= 40 ao mesmo tempo.
     basic.showIcon(IconNames.No)
 }
 
-// CORREÇÃO:
+// --- CORREÇÃO (Código correto) ---
+// Agora usando o operador '&&' (E) para exigir que AMBAS as condições sejam verdadeiras.
+// Lógica: Só liga se (temperatura > 30) E (umidade < 40) forem VERDADEIROS simultaneamente.
 if (temperatura > 30 && umidade < 40) {
+    // No exemplo: temperatura(35)>30 é TRUE, mas umidade(50)<40 é FALSE.
+    // TRUE && FALSE = FALSE. Portanto, NÃO entra aqui.
+    // Isso está correto, pois com umidade alta (50%), não devemos ligar o sistema.
     basic.showIcon(IconNames.Yes)
 } else {
+    // Corretamente cai aqui, exibindo "No" (X) para indicar que o sistema NÃO deve ligar.
     basic.showIcon(IconNames.No)
-}</pre>
+}
+
+// ============================================================
+// FIM DO PROJETO DIDÁTICO
+// ============================================================
+// Ao rodar este código no micro:bit, você verá no LED Matrix:
+// 1. Ícone "Yes" (do primeiro corrigido, pois está acompanhado).
+// 2. Nenhuma string "VOU" (pois a correção impede a saída na chuva e frio).
+// 3. Ícone "No" (pois a correção exige umidade baixa, que não é o caso).
+// Isso ajuda a visualizar fisicamente o impacto da lógica aplicada!
+
+</pre>
 
                 <p><strong>MicroPython - Lei de De Morgan Visual:</strong></p>
                 <pre style="
@@ -2484,64 +3808,165 @@ if (temperatura > 30 && umidade < 40) {
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# =============================================================================
+# PROJETO DIDÁTICO: LEIS DE DE MORGAN E DEPURAÇÃO DE BUGS LÓGICOS
+# Plataforma: micro:bit (BBC micro:bit)
+# Linguagem: MicroPython (compatível com MakeCode)
+# =============================================================================
+# Este programa demonstra dois conceitos fundamentais em lógica booleana:
+# 1. As Leis de De Morgan, que relacionam operações AND, OR e NOT.
+# 2. A importância dos parênteses em expressões lógicas (precedência de operadores).
+# 
+# Ao pressionar o botão A, o micro:bit testa as 4 combinações possíveis de duas
+# variáveis booleanas (A e B) e verifica a equivalência: NOT (A AND B) == (NOT A) OR (NOT B).
+# A cada teste, mostra na matriz de LEDs se a equivalência é verdadeira (YES) ou falsa (NO),
+# além de representar visualmente os valores de A, B e o resultado.
+# 
+# Ao pressionar o botão B, o micro:bit exibe um exemplo de código com um bug comum
+# (falta de parênteses) e a versão corrigida, mostrando a diferença no resultado.
+# 
+# O programa principal fica em loop infinito aguardando os pressionamentos dos botões.
+# =============================================================================
+
+# Importa todas as funções e objetos da biblioteca 'microbit', que permite controlar
+# os LEDs, botões, display, etc. O asterisco (*) significa "tudo".
 from microbit import *
 
+# =============================================================================
+# FUNÇÃO testar_de_morgan()
+# Objetivo: Verificar experimentalmente a Lei de De Morgan para duas variáveis.
+# A lei afirma que: NOT (A AND B) é equivalente a (NOT A) OR (NOT B).
+# A função percorre todas as 4 combinações de valores verdade (False/True) para A e B,
+# calcula ambos os lados da igualdade e compara os resultados.
+# Além disso, exibe no display do micro:bit uma representação visual:
+#   - Canto superior esquerdo (pixel (0,0)): valor de A (aceso se True)
+#   - Canto superior direito (pixel (4,0)): valor de B (aceso se True)
+#   - Centro (pixel (2,2)): resultado da equivalência (aceso se lado1 == lado2, ou seja, se a lei se confirma)
+# Também mostra uma mensagem "YES" ou "NO" na matriz de LEDs, indicando se a equivalência é verdadeira.
+# =============================================================================
 def testar_de_morgan():
-    # Testa as 4 combinações
+    # Lista de tuplas contendo todas as combinações possíveis de valores booleanos para A e B.
+    # Cada tupla é (A, B), onde A e B podem ser False ou True.
     combinacoes = [(False, False), (False, True), (True, False), (True, True)]
     
+    # Percorre cada par (A, B) da lista de combinações.
     for A, B in combinacoes:
-        # NOT (A AND B) = (NOT A) OR (NOT B)
+        # Aplica a Lei de De Morgan:
+        # lado1 = NOT (A AND B)  - negação da conjunção (E lógico)
         lado1 = not (A and B)
+        # lado2 = (NOT A) OR (NOT B) - disjunção (OU lógico) das negações
         lado2 = (not A) or (not B)
         
-        # Verifica equivalência
+        # Verifica se os dois lados são iguais (equivalência lógica).
+        # Se forem iguais, a lei se confirma para esta combinação.
         if lado1 == lado2:
+            # Exibe um ícone de "YES" (marca de verificação) na matriz de LEDs.
             display.show(Image.YES)
         else:
+            # Caso contrário, exibe "NO" (um "X" ou outro símbolo de negação).
             display.show(Image.NO)
         
+        # Exibe os valores de A e B como texto rolante (scroll) na matriz de LEDs.
+        # A função str() converte o booleano para string ("True" ou "False").
+        # Exemplo: "True False" ou "False True", etc.
         display.scroll(str(A) + " " + str(B))
+        # Pausa de 500 milissegundos (0,5 segundo) para que o usuário possa ler.
         sleep(500)
         
-        # Mostra na matriz
+        # Limpa a matriz de LEDs (apaga todos os pixels).
         display.clear()
-        if A: display.set_pixel(0, 0, 9)
-        if B: display.set_pixel(4, 0, 9)
-        if lado1: display.set_pixel(2, 2, 9)
+        # Se A for True, acende o pixel na posição (0,0) - canto superior esquerdo - com brilho máximo (9).
+        if A:
+            display.set_pixel(0, 0, 9)
+        # Se B for True, acende o pixel na posição (4,0) - canto superior direito - com brilho máximo.
+        if B:
+            display.set_pixel(4, 0, 9)
+        # Se lado1 (ou lado2, pois são iguais) for True, acende o pixel central (2,2) - brilho máximo.
+        # Isso indica que a equivalência é verdadeira (a lei foi satisfeita).
+        if lado1:
+            display.set_pixel(2, 2, 9)
+        # Pausa de 1 segundo para visualizar a representação gráfica.
         sleep(1000)
 
+# =============================================================================
+# FUNÇÃO depurar_bugs()
+# Objetivo: Mostrar um erro comum de lógica envolvendo a precedência de operadores
+# e como o uso de parênteses corrige o comportamento.
+# O exemplo simula a verificação de permissão para entrar em um evento:
+#   - A pessoa deve ter idade >= 18 E ter ingresso, OU estar acompanhada.
+#   - Sem parênteses, a expressão "idade >= 18 and tem_ingresso or acompanhado"
+#     é avaliada como "(idade >= 18 and tem_ingresso) or acompanhado" (devido à precedência
+#     do 'and' sobre o 'or', mas a dúvida é se a intenção era essa).
+#   - O bug apresentado usa a expressão sem parênteses, mas com uma lógica diferente
+#     (talvez a intenção fosse "(idade >= 18 and tem_ingresso) or acompanhado" mesmo,
+#     mas o código sem parênteses é ambíguo para iniciantes). Na verdade, o código
+#     "idade >= 18 and tem_ingresso or acompanhado" é interpretado como
+#     "(idade >= 18 and tem_ingresso) or acompanhado" devido à precedência.
+#     O exemplo mostra uma versão "com bug" e outra "corrigida", mas na prática
+#     ambas podem dar o mesmo resultado se a precedência for conhecida.
+#     O objetivo didático é destacar a importância dos parênteses para clareza e
+#     para evitar interpretações equivocadas.
+# =============================================================================
 def depurar_bugs():
-    # Mostra exemplo com bug e correção
+    # Exibe a palavra "BUG:" em scrolling para indicar que vamos mostrar um código com problema.
     display.scroll("BUG:")
     
-    idade = 16
-    tem_ingresso = True
-    acompanhado = True
+    # Define três variáveis para o exemplo:
+    idade = 16           # Menor de idade (False para idade >= 18)
+    tem_ingresso = True  # Possui ingresso
+    acompanhado = True   # Está acompanhado
     
-    # Código com bug
+    # Código com possível bug (falta de parênteses explícitos).
+    # A expressão é avaliada como: (idade >= 18 and tem_ingresso) or acompanhado
+    # pois 'and' tem precedência maior que 'or'.
+    # Neste caso, como acompanhado é True, o resultado será True,
+    # mesmo que a idade seja 16. O programador poderia ter a intenção de exigir
+    # que (idade >= 18 E tem_ingresso) OU acompanhado, mas sem parênteses
+    # a leitura pode ser confusa. O exemplo considera isso um "bug" de legibilidade.
     if idade >= 18 and tem_ingresso or acompanhado:
+        # Se a condição for verdadeira, mostra um ícone de "YES" (permitido).
         display.show(Image.YES)
     else:
+        # Senão, mostra "NO" (não permitido).
         display.show(Image.NO)
     
+    # Pausa de 1 segundo para visualizar o resultado.
     sleep(1000)
+    # Exibe "CORRECAO:" em scrolling para mostrar a versão corrigida.
     display.scroll("CORRECAO:")
     
-    # Código corrigido
+    # Código corrigido com parênteses explícitos, deixando clara a intenção:
+    # A condição verdadeira é: (idade >= 18 e tem ingresso) OU (estar acompanhado).
+    # Isso é exatamente o que a expressão anterior fazia, mas com parênteses
+    # a intenção fica mais clara e evita ambiguidades.
     if (idade >= 18 and tem_ingresso) or acompanhado:
         display.show(Image.YES)
     else:
         display.show(Image.NO)
     
+    # Pausa de 1 segundo antes de retornar ao loop principal.
     sleep(1000)
 
-# Programa principal
+# =============================================================================
+# PROGRAMA PRINCIPAL
+# Fica em loop infinito verificando se os botões foram pressionados.
+# Se o botão A for pressionado, executa a função testar_de_morgan().
+# Se o botão B for pressionado, executa a função depurar_bugs().
+# O loop tem uma pequena pausa (sleep(100)) para evitar uso excessivo da CPU.
+# =============================================================================
 while True:
+    # Verifica se o botão A foi pressionado (e não está sendo segurado).
+    # was_pressed() retorna True apenas uma vez após o pressionamento.
     if button_a.was_pressed():
-        testar_de_morgan()
+        testar_de_morgan()   # Chama a função que testa as leis de De Morgan.
+    
+    # Verifica se o botão B foi pressionado.
     if button_b.was_pressed():
-        depurar_bugs()
+        depurar_bugs()       # Chama a função que demonstra o bug de parênteses.
+    
+    # Aguarda 100 milissegundos (0,1 segundo) antes de repetir o loop.
+    # Isso evita que o micro:bit fique verificando os botões incessantemente,
+    # economizando energia e evitando travamentos.
     sleep(100)</pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
@@ -2716,54 +4141,139 @@ while True:
                       border-radius: 8px;
                       color: #ffb347;
                     ">
-// Função que desenha uma barra na matriz
+/**
+ * ====================================================================
+ * PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+ * ====================================================================
+ * Este programa desenha um gráfico de barras na matriz de LEDs 5x5 do
+ * micro:bit, a partir de um conjunto de dados (exemplo: preferências
+ * de sabores de pizza). O gráfico exibe eixos X (horizontal) e Y
+ * (vertical), com barras proporcionais aos valores.
+ *
+ * Conceitos abordados:
+ * - Uso de funções para organizar o código
+ * - Laços de repetição (for)
+ * - Arrays e iteração
+ * - Normalização de dados para escala
+ * - Controle da matriz de LEDs (display.set_pixel)
+ * - Brilho diferenciado para melhor visualização
+ *
+ * Estrutura do código:
+ * 1. Função desenharBarra(altura, x, cor)  → desenha uma barra vertical
+ * 2. Função desenharEixos()               → desenha os eixos X e Y
+ * 3. Função desenharGrafico(dados)        → orquestra todo o desenho
+ * 4. Dados de exemplo e chamada principal
+ * ====================================================================
+ */
+
+// --------------------------------------------------------------------
+// 1. Função que desenha uma única barra na matriz
+// --------------------------------------------------------------------
+// Parâmetros:
+//   altura: número de LEDs acesos verticalmente (0 a 5)
+//   x:      coluna onde a barra será desenhada (0 a 4)
+//   cor:    intensidade do brilho (0 = apagado, 9 = máximo)
+// --------------------------------------------------------------------
 function desenharBarra(altura: number, x: number, cor: number) {
-    // altura: 0-5, x: 0-4, cor: 0-9
+    // A matriz tem 5 linhas (y = 0 a 4) e 5 colunas (x = 0 a 4).
+    // O eixo Y é invertido: y=0 é a linha de cima, y=4 é a linha de baixo.
+    // Para que a barra cresça "para cima" a partir do eixo X (que está na linha 4),
+    // usamos (4 - y) para converter a coordenada.
+    // Este laço percorre as linhas de 0 até (altura - 1).
     for (let y = 0; y < altura; y++) {
+        // Acende o LED na coluna 'x' e na linha (4 - y) com a intensidade 'cor'.
+        // Exemplo: se altura=3, y=0 → linha 4, y=1 → linha 3, y=2 → linha 2.
+        // Assim a barra fica com base na linha 4 (eixo X) e cresce para cima.
         display.set_pixel(x, 4 - y, cor)
     }
 }
 
-// Função para desenhar eixos
+// --------------------------------------------------------------------
+// 2. Função que desenha os eixos cartesianos
+// --------------------------------------------------------------------
+// Desenha os eixos X (horizontal) e Y (vertical) na matriz,
+// usando uma cor de brilho médio (3) para não ofuscar as barras.
+// --------------------------------------------------------------------
 function desenharEixos() {
-    // Eixo X (horizontal)
+    // Eixo X (horizontal) – desenha uma linha na linha 4 (base da matriz)
+    // Percorre todas as colunas (x = 0 a 4) e acende o LED na linha 4
     for (let x = 0; x < 5; x++) {
-        display.set_pixel(x, 4, 3) // Cinza claro
+        display.set_pixel(x, 4, 3) // Cinza claro (brilho 3)
     }
-    // Eixo Y (vertical)
+    // Eixo Y (vertical) – desenha uma linha na coluna 0 (lado esquerdo)
+    // Percorre todas as linhas (y = 0 a 4) e acende o LED na coluna 0
     for (let y = 0; y < 5; y++) {
-        display.set_pixel(0, y, 3) // Cinza claro
+        display.set_pixel(0, y, 3) // Cinza claro (brilho 3)
     }
 }
 
-// Função principal do gráfico
+// --------------------------------------------------------------------
+// 3. Função principal que desenha o gráfico de barras
+// --------------------------------------------------------------------
+// Parâmetro:
+//   dados: array de números (ex: [12, 8, 5, 3]) – cada elemento
+//          representa o valor de uma categoria.
+// A função:
+//   - Limpa a tela
+//   - Encontra o valor máximo para normalizar as alturas
+//   - Desenha os eixos
+//   - Desenha as barras (até 4 categorias) com alturas proporcionais
+//     e cores/brilhos variados.
+// --------------------------------------------------------------------
 function desenharGrafico(dados: number[]) {
+    // Limpa toda a matriz de LEDs (apaga todos os pontos)
     display.clear()
     
-    // Encontra o máximo para normalizar
+    // --- Normalização dos dados ---
+    // Precisamos escalar os valores para que a maior barra ocupe toda a altura
+    // disponível (altura máxima = 4, pois o eixo X ocupa a linha 4).
+    // Primeiro, encontramos o valor máximo entre os dados.
     let maximo = 0
-    for (let valor of dados) {
+    for (let valor of dados) {  // Itera cada elemento do array
         if (valor > maximo) maximo = valor
     }
+    // Se todos os valores forem zero, evitamos divisão por zero definindo máximo = 1
     if (maximo == 0) maximo = 1
     
-    // Desenha eixos
+    // --- Desenha os eixos ---
     desenharEixos()
     
-    // Desenha barras
-    let cores = [9, 7, 5, 3, 1] // Brilho variado
+    // --- Desenha as barras ---
+    // Definimos uma paleta de cores (brilhos) para diferenciar as barras.
+    // Quanto maior o número, mais brilhante o LED.
+    let cores = [9, 7, 5, 3, 1] // Brilho variado (do mais intenso ao mais fraco)
+    
+    // O loop percorre os dados, mas limitamos a 4 categorias (índices 0 a 3)
+    // pois a matriz tem 5 colunas: a coluna 0 é usada para o eixo Y,
+    // então só temos 4 colunas disponíveis para as barras (colunas 1 a 4).
     for (let i = 0; i < dados.length && i < 4; i++) {
+        // Calcula a altura da barra: proporção do valor em relação ao máximo,
+        // multiplicado por 4 (altura máxima disponível) e arredondado para cima.
         let altura = Math.ceil(dados[i] / maximo * 4)
+        
+        // Escolhe a cor (brilho) da barra baseada no índice, repetindo a paleta
+        // se houver mais barras que cores (usamos o operador %).
         let cor = cores[i % cores.length]
+        
+        // Desenha a barra na coluna (i + 1) – pois a coluna 0 é reservada para o eixo Y.
         desenharBarra(altura, i + 1, cor)
     }
 }
 
-// Dados de exemplo
+// --------------------------------------------------------------------
+// 4. Dados de exemplo e execução do gráfico
+// --------------------------------------------------------------------
+// Aqui definimos um array com os valores para cada categoria.
+// Neste exemplo, representamos a preferência por sabores de pizza.
 let dadosPizza = [12, 8, 5, 3] // Sabores: mussarela, calabresa, portuguesa, quatro queijos
 
-// Mostra o gráfico
-desenharGrafico(dadosPizza)</pre>
+// Chamamos a função principal, passando os dados, para exibir o gráfico
+// na matriz de LEDs do micro:bit.
+desenharGrafico(dadosPizza)
+
+// ====================================================================
+// FIM DO PROGRAMA
+// ====================================================================</pre>
 
                 <p><strong>MicroPython - Gráfico com Animação:</strong></p>
                 <pre style="
@@ -2772,92 +4282,188 @@ desenharGrafico(dadosPizza)</pre>
                       border-radius: 8px;
                       color: #ffb347;
                     ">
+# ============================================================
+# PROJETO: GRÁFICO DE BARRAS INTERATIVO NO MICRO:BIT
+# Autores: (seus nomes aqui)
+# Descrição: Este programa utiliza a matriz de LEDs 5x5 do
+# micro:bit para exibir um gráfico de barras a partir de
+# dados coletados (por exemplo, preferências de uma turma).
+# Permite visualizar o gráfico estático, animar sua construção
+# e também inserir novos dados usando os botões A e B e o
+# pino de toque (pin0).
+# ============================================================
+
+# Importa todas as funções da biblioteca micro:bit, que
+# fornece acesso aos LEDs, botões, pinos, etc.
 from microbit import *
 
+# ============================================================
+# FUNÇÃO: desenhar_barra(altura, x, brilho=9)
+# Desenha uma barra vertical na coluna 'x' da matriz,
+# começando pela parte inferior (linha 4) e subindo até
+# a altura especificada (número de LEDs acesos).
+# Parâmetros:
+#   altura: número de LEDs acesos (0 a 5)
+#   x: coluna onde a barra será desenhada (0 a 4)
+#   brilho: intensidade do LED (0 a 9, padrão=9)
+# ============================================================
 def desenhar_barra(altura, x, brilho=9):
-    # Desenha uma barra vertical na matriz
+    # Laço para percorrer as linhas de 0 até altura-1
+    # (cada iteração acende um LED na coluna x)
     for y in range(altura):
+        # A matriz tem coordenadas (x, y) com y=0 no topo e y=4
+        # na base. Como queremos que a barra cresça para cima,
+        # usamos (4 - y) para que y=0 corresponda à base.
+        # Exemplo: altura=1 -> acende (x,4); altura=2 -> (x,3) e (x,4).
         display.set_pixel(x, 4 - y, brilho)
 
+# ============================================================
+# FUNÇÃO: desenhar_eixos()
+# Desenha os eixos X (horizontal) e Y (vertical) na matriz
+# para dar referência visual ao gráfico. O eixo X é a linha
+# inferior (y=4) e o eixo Y é a coluna esquerda (x=0).
+# Os eixos são desenhados com brilho baixo (2) para não
+# ofuscar as barras.
+# ============================================================
 def desenhar_eixos():
-    # Desenha eixos X e Y
+    # Eixo X: percorre as colunas 0 a 4 e acende o LED em (x,4)
     for x in range(5):
-        display.set_pixel(x, 4, 2)  # Eixo X
+        display.set_pixel(x, 4, 2)  # Linha inferior, brilho 2
+    # Eixo Y: percorre as linhas 0 a 4 e acende o LED em (0,y)
     for y in range(5):
-        display.set_pixel(0, y, 2)  # Eixo Y
+        display.set_pixel(0, y, 2)  # Coluna esquerda, brilho 2
 
+# ============================================================
+# FUNÇÃO: grafico_barras(dados)
+# Desenha um gráfico de barras estático com os valores
+# fornecidos na lista 'dados'. O gráfico suporta até 4 barras
+# (devido ao espaço após o eixo Y). Os dados são normalizados
+# para caberem na altura máxima de 5 LEDs.
+# Parâmetro:
+#   dados: lista de números inteiros positivos
+# ============================================================
 def grafico_barras(dados):
-    # Desenha gráfico de barras na matriz 5x5
-    # dados: lista de valores (máximo 4 barras)
+    # Limpa a matriz de LEDs antes de desenhar
     display.clear()
+    # Se a lista estiver vazia, não há o que desenhar
     if not dados:
         return
     
-    # Normaliza dados (0-5)
+    # Normaliza os dados: calcula o valor máximo para definir
+    # a escala. Se o máximo for zero, define como 1 para evitar
+    # divisão por zero.
     maximo = max(dados)
     if maximo == 0:
         maximo = 1
     
-    # Desenha eixos
+    # Desenha os eixos de referência
     desenhar_eixos()
     
-    # Desenha barras
-    cores = [9, 7, 5, 3]  # Brilho decrescente
+    # Lista de brilhos para diferenciar as barras (decrescente)
+    cores = [9, 7, 5, 3]  # 9 = mais brilhante, 3 = menos brilhante
+    
+    # Percorre os primeiros 4 valores da lista (limite de barras)
     for i in range(min(len(dados), 4)):
+        # Calcula a altura proporcional: valor atual / máximo * 4
+        # +1 garante que mesmo valores pequenos tenham pelo menos 1 LED aceso
         altura = int(dados[i] / maximo * 4) + 1
+        # Desenha a barra na coluna (i+1) para deixar a coluna 0 para o eixo Y
+        # Usa o brilho correspondente (cíclico se houver mais de 4)
         desenhar_barra(altura, i + 1, cores[i % len(cores)])
     
-    # Mostra valores no display
+    # Após desenhar o gráfico, exibe os valores numéricos no display
+    # (rolagem de texto) para que o usuário veja os números exatos.
     for i, valor in enumerate(dados[:4]):
-        display.scroll(str(valor))
-        sleep(500)
+        display.scroll(str(valor))  # Converte o valor para string e rola
+        sleep(500)                  # Pausa de 500 ms entre cada valor
 
+# ============================================================
+# FUNÇÃO: animar_construcao(dados)
+# Anima a construção do gráfico de barras, aumentando
+# gradativamente a altura de cada barra até o valor final.
+# Isso torna a visualização mais dinâmica e didática.
+# Parâmetro:
+#   dados: lista de números inteiros positivos
+# ============================================================
 def animar_construcao(dados):
-    # Anima a construção do gráfico
+    # Limpa a matriz antes de começar a animação
     display.clear()
+    # Obtém o valor máximo para normalização; se todos forem zero,
+    # define máximo = 1 para evitar divisão por zero
     maximo = max(dados) if max(dados) > 0 else 1
     
+    # Loop de construção: 5 passos (de 0 a 4), representando o
+    # crescimento da barra em 5 níveis de altura.
     for passo in range(5):
-        display.clear()
-        desenhar_eixos()
+        display.clear()           # Limpa a tela a cada passo
+        desenhar_eixos()          # Redesenha os eixos (fixos)
+        # Percorre as barras (máximo 4)
         for i in range(min(len(dados), 4)):
+            # Calcula a altura proporcional ao passo atual:
+            # (dados[i] / maximo) * (passo+1)
+            # O valor é truncado para inteiro, e limitado a 5.
             altura = int(dados[i] / maximo * (passo + 1))
             if altura > 5:
                 altura = 5
+            # Desenha a barra com brilho máximo (9) na coluna i+1
             desenhar_barra(altura, i + 1, 9)
+        # Aguarda 300 ms para o próximo passo, criando o efeito de animação
         sleep(300)
 
-# Dados coletados da turma
-dados = [12, 8, 5, 3]  # Preferências
+# ============================================================
+# DADOS INICIAIS (exemplo): preferências de uma turma
+# ============================================================
+dados = [12, 8, 5, 3]  # Cada número representa a contagem de votos para uma opção
 
-# Programa principal
+# ============================================================
+# PROGRAMA PRINCIPAL
+# Fica em loop infinito aguardando interações do usuário:
+#   - Botão A: ativa a animação de construção do gráfico
+#   - Botão B: exibe o gráfico estático (com valores rolados)
+#   - Toque no pino 0: entra no modo de inserção de novos dados
+# ============================================================
 while True:
+    # Verifica se o botão A foi pressionado (e liberado)
     if button_a.was_pressed():
-        animar_construcao(dados)
+        animar_construcao(dados)  # Mostra a construção animada
+
+    # Verifica se o botão B foi pressionado (e liberado)
     if button_b.was_pressed():
-        grafico_barras(dados)
+        grafico_barras(dados)     # Mostra o gráfico estático
+
+    # Verifica se o pino 0 está sendo tocado (capacitivo)
     if pin0.is_touched():
-        # Permite inserir novos dados
+        # Exibe mensagem "INSIRA:" para indicar que o usuário pode
+        # digitar novos valores.
         display.scroll("INSIRA:")
-        novos_dados = []
+        novos_dados = []          # Lista para armazenar os novos valores
         
+        # Loop para coletar 4 valores
         for i in range(4):
-            val = 0
+            val = 0               # Valor inicial para cada entrada
+            # Loop interno para ajustar o valor usando os botões A e B
             while True:
-                display.scroll(str(val))
+                display.scroll(str(val))  # Mostra o valor atual
+                # Se botão A pressionado, incrementa (até 20)
                 if button_a.was_pressed():
-                    val = min(val + 1, 20)
+                    val = min(val + 1, 20)  # Limita em 20
+                # Se botão B pressionado, decrementa (até 0)
                 if button_b.was_pressed():
-                    val = max(val - 1, 0)
+                    val = max(val - 1, 0)   # Não permite negativo
+                # Se o pino 0 for tocado novamente, confirma o valor
                 if pin0.is_touched():
-                    novos_dados.append(val)
-                    break
-                sleep(100)
+                    novos_dados.append(val)  # Adiciona à lista
+                    break                     # Sai do loop interno
+                sleep(100)  # Pequena pausa para evitar leituras repetidas rápidas
         
+        # Após coletar os 4 valores, atualiza a variável global 'dados'
         dados = novos_dados
+        # Mostra o gráfico com os novos dados
         grafico_barras(dados)
     
-    sleep(100)</pre>
+    # Pausa curta no final do loop para evitar uso excessivo da CPU
+    sleep(100)
+  </pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -3030,53 +4636,163 @@ while True:
                     ">
 from microbit import *
 
-# PROBLEMA: Desperdício de água no bebedouro
-# SOLUÇÃO: Robô que apita se a torneira ficar aberta por mais de 5 segundos
-# SENSORES: Botão (simula sensor de toque)
-# SAÍDAS: Matriz de LEDs (alarme visual)
+# =============================================================================
+# PROJETO: BEBEDOURO INTELIGENTE - ALARME CONTRA DESPERDÍCIO DE ÁGUA
+# =============================================================================
+# 
+# PROBLEMA: Em bebedouros públicos, muitas vezes as pessoas esquecem a torneira
+#           aberta, causando desperdício de água.
+# 
+# SOLUÇÃO: Um sistema de alarme que detecta se a torneira fica aberta por mais
+#           de 5 segundos e aciona um alerta visual (e sonoro, se houver buzzer).
+# 
+# SENSORES UTILIZADOS:
+#   - Pino 0 (pin0) configurado como sensor de toque capacitivo (simula a
+#     detecção de que a torneira está sendo segurada/aberta). No micro:bit,
+#     o toque no pino 0 (com um fio ou contato) indica que a torneira está
+#     aberta (mão no sensor). Quando o toque cessa, a torneira é fechada.
+# 
+# ATUADORES:
+#   - Matriz de LEDs 5x5 do micro:bit para exibir imagens e alertas visuais.
+#   - (Opcional) Poderia ser adicionado um buzzer no pino 1 para som, mas aqui
+#     usamos apenas a matriz para simplicidade didática.
+# 
+# LÓGICA DE FUNCIONAMENTO:
+#   1. O programa inicia mostrando a mensagem "BEBEDOURO" no display.
+#   2. Em loop infinito, verifica se o pino 0 está sendo tocado (torneira aberta).
+#   3. Quando a torneira é aberta, registra o momento exato (tempo_inicial)
+#      e mostra uma seta para a direita (ARROW_E) indicando que a água está
+#      saindo.
+#   4. Enquanto a torneira permanece aberta, o programa calcula o tempo
+#      decorrido. Se ultrapassar TEMPO_LIMITE (5 segundos), chama a função
+#      alarme().
+#   5. O alarme pisca um "X" (Image.NO) três vezes e, em seguida, exibe uma
+#      caveira (Image.SKULL) como alerta máximo.
+#   6. Quando o toque cessa (torneira fechada), a seta é substituída por um
+#      coração (Image.HEART) para indicar que a torneira foi fechada com
+#      sucesso e o sistema está pronto novamente.
+# 
+# OBSERVAÇÕES DIDÁTICAS:
+#   - O uso de variáveis globais (global) dentro de funções é necessário para
+#     modificar valores que persistem entre chamadas.
+#   - A função running_time() retorna o tempo em milissegundos desde o início
+#     do programa, permitindo medições precisas.
+#   - O sleep(100) no loop principal define a frequência de verificação (a cada
+#     100 ms), economizando energia e evitando uso excessivo da CPU.
+# =============================================================================
 
+# =============================================================================
+# CONSTANTES E VARIÁVEIS GLOBAIS
+# =============================================================================
+
+# Define o limite de tempo (em milissegundos) que a torneira pode ficar aberta
+# antes de disparar o alarme. 5000 ms = 5 segundos.
 TEMPO_LIMITE = 5000  # 5 segundos
+
+# Variável que armazenará o instante (em ms) em que a torneira foi aberta.
+# Será atualizada quando o toque for detectado pela primeira vez.
 tempo_inicial = 0
+
+# Flag booleana que indica se a torneira está aberta (True) ou fechada (False).
+# Controla o estado do sistema e evita repetir ações de abertura/fechamento.
 torneira_aberta = False
 
+# =============================================================================
+# DEFINIÇÃO DAS FUNÇÕES
+# =============================================================================
+
 def alarme():
-    # Ativa alarme visual na matriz
+    """
+    Função que ativa o alarme visual na matriz de LEDs.
+    Ela pisca três vezes um 'X' (Image.NO) e, em seguida, exibe uma caveira
+    (Image.SKULL) como alerta definitivo.
+    """
+    # Loop para piscar o símbolo de "não" (X) três vezes
     for i in range(3):
+        # Exibe a imagem de um 'X' (alerta visual forte)
         display.show(Image.NO)
+        # Aguarda 200 ms (0,2 segundos) para que a imagem seja visível
         sleep(200)
+        # Limpa a tela (apaga todos os LEDs)
         display.clear()
+        # Aguarda mais 200 ms para criar o efeito de pisca-pisca
         sleep(200)
+    # Após as três piscadas, mostra uma caveira (símbolo de perigo)
     display.show(Image.SKULL)
 
 def verificar_torneira():
+    """
+    Função que verifica o estado do sensor de toque no pino 0 e atualiza
+    as variáveis de estado e a exibição na matriz.
+    """
+    # Declara que as variáveis globais serão modificadas dentro desta função
     global torneira_aberta, tempo_inicial
-    # Simula sensor de toque no pino 0
+
+    # Simula sensor de toque no pino 0: se o pino estiver sendo tocado,
+    # significa que a torneira está aberta.
     if pin0.is_touched():
+        # Se a torneira estava fechada (torneira_aberta == False), significa
+        # que o toque acabou de começar (abertura da torneira).
         if not torneira_aberta:
-            # Torneira foi aberta
+            # Marca a torneira como aberta
             torneira_aberta = True
+            # Registra o instante atual (em ms) como o momento da abertura
             tempo_inicial = running_time()
+            # Mostra uma seta para a direita indicando que a água está fluindo
             display.show(Image.ARROW_E)
     else:
+        # Se o pino NÃO está sendo tocado, a torneira está fechada.
+        # Verifica se a torneira estava aberta (para evitar repetir a ação
+        # de fechamento a cada iteração).
         if torneira_aberta:
-            # Torneira foi fechada
+            # Atualiza o estado para fechada
             torneira_aberta = False
+            # Exibe um coração para indicar que a torneira foi fechada com
+            # sucesso e o sistema está pronto para nova detecção
             display.show(Image.HEART)
 
 def monitorar_tempo():
+    """
+    Função que verifica se o tempo de abertura da torneira excedeu o limite
+    e, em caso positivo, dispara o alarme.
+    """
+    # Declara que as variáveis globais serão acessadas (apenas leitura)
     global torneira_aberta, tempo_inicial
+
+    # Só faz sentido monitorar o tempo se a torneira estiver aberta
     if torneira_aberta:
+        # Obtém o tempo atual do sistema (em ms desde o início)
         tempo_corrente = running_time()
+        # Calcula a diferença entre o tempo atual e o tempo de abertura
+        # Se essa diferença ultrapassar o limite definido (TEMPO_LIMITE),
+        # significa que a torneira ficou aberta por tempo demais.
         if (tempo_corrente - tempo_inicial) > TEMPO_LIMITE:
+            # Chama a função de alarme para alertar visualmente
             alarme()
 
-# Programa principal
+# =============================================================================
+# PROGRAMA PRINCIPAL
+# =============================================================================
+
+# Exibe a mensagem "BEBEDOURO" rolando no display ao iniciar o programa.
+# Isso serve como identificação do projeto e confirma que o micro:bit está
+# funcionando corretamente.
 display.scroll("BEBEDOURO")
 
+# Loop infinito (while True) mantém o programa em execução contínua.
+# É o coração do sistema, onde as verificações são feitas repetidamente.
 while True:
+    # Chama a função que verifica o estado da torneira (aberta/fechada)
+    # e atualiza o display conforme necessário.
     verificar_torneira()
+    # Chama a função que verifica se o tempo de abertura excedeu o limite
+    # e, se for o caso, dispara o alarme.
     monitorar_tempo()
-    sleep(100)</pre>
+    # Pequena pausa de 100 ms (0,1 segundo) para evitar que o loop execute
+    # muito rapidamente, economizando energia e garantindo que o display
+    # tenha tempo de ser atualizado. A cada 100 ms o sistema reavalia o estado.
+    sleep(100)
+  </pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">

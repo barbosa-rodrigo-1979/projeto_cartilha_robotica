@@ -1035,48 +1035,94 @@ FIM</pre>
                         margin: 0;
                         font-size: 0.85rem;
                       ">
-// ============================================
-// TESTE DE HARDWARE SEMANA 33
-// Vamos verificar se os LEDs e o buzzer estão funcionando
-// ============================================
+// ============================================================
+// TESTE DE HARDWARE - SEMANA 33
+// Objetivo: Verificar se os LEDs externos (P0 e P1) e o Buzzer 
+// externo (P2) estão funcionando corretamente no seu robô.
+// ============================================================
 
-// PASSO 1: Teste do LED vermelho (pino 0)
-escrever digital pino 0 como 1  // Acende o LED vermelho
-pausar 1000 ms                   // Espera 1 segundo
-escrever digital pino 0 como 0   // Apaga o LED vermelho
-pausar 500 ms                    // Espera 0,5 segundo
+// ------------------------------------------------------------
+// PASSO 1: Teste do LED vermelho (conectado ao pino 0)
+// ------------------------------------------------------------
 
-// PASSO 2: Teste do LED verde (pino 1)
-escrever digital pino 1 como 1   // Acende o LED verde
-pausar 1000 ms
-escrever digital pino 1 como 0
-pausar 500 ms
+// 'digitalWritePin' envia tensão digital (0V ou 3.3V) para o pino.
+// '1' (HIGH) significa 3.3V -> acende o LED (ânodo no pino).
+pins.digitalWritePin(DigitalPin.P0, 1)
+// 'basic.pause' trava a execução por X milissegundos (ms).
+// 1000 ms = 1 segundo. Precisamos disso para enxergar o LED aceso.
+basic.pause(1000)
+// '0' (LOW) significa 0V (GND) -> apaga o LED.
+pins.digitalWritePin(DigitalPin.P0, 0)
+// Pausa de 500 ms (meio segundo) para dar um intervalo entre os testes.
+basic.pause(500)
 
-// PASSO 3: Teste do buzzer (pino 2)
-tocar som por 200 ms no pino 2   // Bip curto
-pausar 300 ms
-tocar som por 400 ms no pino 2   // Bip mais longo
+// ------------------------------------------------------------
+// PASSO 2: Teste do LED verde (conectado ao pino 1)
+// ------------------------------------------------------------
 
-// PASSO 4: Teste combinado tudo junto!
-escrever digital pino 0 como 1
-tocar som por 300 ms no pino 2
-pausar 500 ms
-escrever digital pino 0 como 0
+// Mesmo princípio do Passo 1, mas agora no pino 1 (LED verde).
+pins.digitalWritePin(DigitalPin.P1, 1)
+basic.pause(1000)
+pins.digitalWritePin(DigitalPin.P1, 0)
+basic.pause(500)
 
-escrever digital pino 1 como 1
-tocar som por 300 ms no pino 2
-pausar 500 ms
-escrever digital pino 1 como 0
+// ------------------------------------------------------------
+// PASSO 3: Teste do buzzer (conectado ao pino 2)
+// ------------------------------------------------------------
 
-// PASSO 5: Teste da matriz de LEDs (tela 5x5 do micro:bit)
-mostrar ícone coração           // Mostra um ❤️ na tela do micro:bit
-pausar 2000 ms
-limpar tela
+// ATENÇÃO: O buzzer precisa de um sinal PWM (onda quadrada) para vibrar e gerar som.
+// O comando 'analogPitch' gera essa onda na frequência que escolhermos.
 
-// ============================================
-// FIM DO TESTE
-// Se tudo funcionou, seu robô está VIVO! 🎉
-// ============================================</pre>
+// Primeiro, devemos dizer ao micro:bit qual pino será usado para o áudio.
+// Isso redireciona o sinal de áudio para o pino 2 (buzzer externo).
+pins.analogSetPitchPin(AnalogPin.P2)
+
+// 'analogPitch(frequência, duração)' - Frequência em Hertz (Hz).
+// 440 Hz é a nota musical Lá (A4). Duração de 200 ms (bip curto).
+pins.analogPitch(440, 200)
+basic.pause(300) // Pequeno silêncio entre os bipes.
+
+// 523 Hz é a nota Dó (C5). Duração de 400 ms (bip mais longo).
+// Isso prova que o buzzer responde a tons diferentes.
+pins.analogPitch(523, 400)
+
+// ------------------------------------------------------------
+// PASSO 4: Teste combinado (LEDs + Buzzer ao mesmo tempo)
+// ------------------------------------------------------------
+// Aqui simulamos um "alerta" visual e sonoro sincronizado.
+
+// --- LED Vermelho + Som ---
+pins.digitalWritePin(DigitalPin.P0, 1)  // Acende o vermelho
+pins.analogPitch(440, 300)              // Toca Lá por 300ms
+basic.pause(500)                        // Dá tempo de ver o LED aceso após o som
+pins.digitalWritePin(DigitalPin.P0, 0)  // Apaga o vermelho
+
+// --- LED Verde + Som ---
+pins.digitalWritePin(DigitalPin.P1, 1)  // Acende o verde
+pins.analogPitch(523, 300)              // Toca Dó por 300ms
+basic.pause(500)
+pins.digitalWritePin(DigitalPin.P1, 0)  // Apaga o verde
+
+// ------------------------------------------------------------
+// PASSO 5: Teste da matriz de LEDs (tela 5x5 interna do micro:bit)
+// ------------------------------------------------------------
+
+// O micro:bit possui 25 LEDs internos que formam uma tela.
+// 'showIcon' exibe um ícone pré-definido. 'IconNames.Heart' é o coração.
+basic.showIcon(IconNames.Heart)
+basic.pause(2000) // Mantém o coração na tela por 2 segundos.
+
+// 'clearScreen' apaga TODOS os 25 LEDs da matriz interna.
+// Importante para não ficar gastando bateria com a tela acesa.
+basic.clearScreen()
+
+// ============================================================
+// FIM DO TESTE DE HARDWARE
+// ============================================================
+// Se o LED vermelho piscou, o verde piscou, o buzzer tocou dois
+// tons diferentes e o coração apareceu na tela... PARABÉNS! 🎉
+// Seu robô está VIVO e pronto para a programação avançada!
+// ============================================================</pre>
                 </div>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto</h5>
@@ -1316,67 +1362,189 @@ limpar tela
 // PROJETO AUTORAL 4º ANO SEMANA 34
 // ESQUELETO DO CÓDIGO ALICERCE DO ROBÔ
 // ============================================
+// Este código é projetado para ser executado no micro:bit
+// através do editor MakeCode (JavaScript / TypeScript).
+// Ele serve como base para um projeto didático de robótica.
+// ============================================
 
+// ------------------------------------------------------------
 // PARTE 1: VARIÁVEIS GLOBAIS
+// ------------------------------------------------------------
+// Todas as variáveis são definidas aqui para serem acessíveis
+// em todo o programa (loop principal e eventos).
+// ------------------------------------------------------------
+
 let estado = 0
-// estado = 0: "modo espera" (tudo tranquilo)
-// estado = 1: "modo ativo" (robô fazendo algo)
-// estado = 2: "modo alerta" (robô avisando)
+// estado = 0: "modo espera" (tudo tranquilo, LED verde aceso)
+// estado = 1: "modo ativo" (robô executando uma ação personalizada)
+// estado = 2: "modo alerta" (robô emite aviso sonoro e visual)
 
 let contador = 0
-// contador guarda quantas vezes algo aconteceu
+// contador guarda quantas vezes o robô entrou no "modo ativo"
+// (ou qualquer outra contagem que o grupo desejar).
 
+// ------------------------------------------------------------
 // PARTE 2: LOOP PRINCIPAL (FOREVER)
-enquanto verdadeiro
+// ------------------------------------------------------------
+// O bloco 'basic.forever' executa o código repetidamente enquanto
+// o micro:bit estiver ligado. É o coração do programa.
+// ------------------------------------------------------------
 
+basic.forever(function () {
+    // --------------------------------------------------------
     // PASSO 1: LER OS SENSORES
-    let sensor1 = botão A está pressionado?
-    let sensor2 = botão B está pressionado?
+    // --------------------------------------------------------
+    // Neste projeto didático, usamos os botões A e B como
+    // sensores de entrada (substitutos de sensores reais,
+    // como de toque ou proximidade, para simular a lógica).
+    // --------------------------------------------------------
+    let sensor1 = input.buttonIsPressed(Button.A)
+    // sensor1 armazena 'true' (verdadeiro) se o botão A
+    // estiver pressionado no momento, ou 'false' (falso)
+    // caso contrário.
 
-    // PASSO 2: LÓGICA PRINCIPAL DO PROJETO
-    se (estado == 0) então
+    let sensor2 = input.buttonIsPressed(Button.B)
+    // sensor2 armazena 'true' se o botão B estiver pressionado,
+    // e 'false' caso contrário.
+
+    // --------------------------------------------------------
+    // PASSO 2: LÓGICA PRINCIPAL DO PROJETO (MÁQUINA DE ESTADOS)
+    // --------------------------------------------------------
+    // O robô funciona com base em três estados, formando uma
+    // máquina de estados simples. A transição entre estados
+    // acontece de acordo com as condições definidas abaixo.
+    // --------------------------------------------------------
+
+    if (estado == 0) {
         // -- MODO ESPERA --
-        escrever digital pino 0 como 0   // LED vermelho APAGADO
-        escrever digital pino 1 como 1   // LED verde ACESO
-        se (sensor1 == verdadeiro) então
+        // Neste modo, o robô está em repouso, aguardando um
+        // comando (pressionar o botão A) para iniciar a ação.
+        // O LED vermelho (pino 0) fica apagado e o LED verde
+        // (pino 1) fica aceso, indicando "pronto para ação".
+        // ----------------------------------------------------
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        // Apaga o LED vermelho conectado ao pino 0.
+        pins.digitalWritePin(DigitalPin.P1, 1)
+        // Acende o LED verde conectado ao pino 1.
+
+        if (sensor1 == true) {
+            // Se o botão A for pressionado, o robô sai do
+            // modo espera e entra no modo ativo.
             estado = 1
+            // Incrementa o contador para registrar quantas
+            // vezes a ação foi acionada.
             contador = contador + 1
-        fim se
-    senão se (estado == 1) então
+        }
+    } else if (estado == 1) {
         // -- MODO ATIVO --
-        // (cada grupo vai personalizar esta parte!)
-        repetir 3 vezes
-            escrever digital pino 0 como 1
-            pausar 200 ms
-            escrever digital pino 0 como 0
-            pausar 200 ms
-        fim repetir
+        // Neste modo, o robô executa a ação principal do
+        // projeto. A ação atual é um exemplo: piscar o LED
+        // vermelho 3 vezes. Cada grupo deve personalizar
+        // esta seção com sua própria lógica criativa!
+        // ----------------------------------------------------
+        for (let i = 0; i < 3; i++) {
+            // O laço 'for' repete o bloco interno 3 vezes.
+            pins.digitalWritePin(DigitalPin.P0, 1)
+            // Acende o LED vermelho.
+            basic.pause(200)
+            // Aguarda 200 milissegundos (0,2 segundos).
+            pins.digitalWritePin(DigitalPin.P0, 0)
+            // Apaga o LED vermelho.
+            basic.pause(200)
+            // Aguarda mais 200 milissegundos.
+        }
+        // Após executar a ação, o robô avança para o estado
+        // de alerta para sinalizar a conclusão.
         estado = 2
-    senão se (estado == 2) então
+    } else if (estado == 2) {
         // -- MODO ALERTA --
-        escrever digital pino 0 como 1
-        escrever digital pino 1 como 0
-        tocar som por 200 ms no pino 2
-        pausar 200 ms
-        mostrar string "OK!"
+        // Neste modo, o robô avisa que a ação foi concluída.
+        // Ele acende o LED vermelho, apaga o verde, emite um
+        // som e mostra uma mensagem no display.
+        // ----------------------------------------------------
+        pins.digitalWritePin(DigitalPin.P0, 1)
+        // Acende o LED vermelho (sinal de alerta).
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        // Apaga o LED verde.
+
+        // Configura o pino 2 para emitir som (tom).
+        // O comando abaixo define que o som será gerado no pino 2.
+        pins.analogSetPitchPin(AnalogPin.P2)
+        // Emite um tom de 440 Hz (nota Lá) por 200 milissegundos
+        // no pino 2, que geralmente é conectado a um buzzer ou alto-falante.
+        pins.analogPitch(440, 200)
+
+        basic.pause(200)
+        // Pequena pausa para separar o som da mensagem visual.
+
+        basic.showString("OK!")
+        // Exibe a mensagem "OK!" no display de LEDs do micro:bit,
+        // confirmando que a ação foi finalizada com sucesso.
+
+        // Após o alerta, o robô retorna ao modo espera,
+        // ficando novamente disponível para um novo acionamento.
         estado = 0
-    fim se
+    }
 
+    // --------------------------------------------------------
     // PASSO 3: PAUSA PARA ESTABILIDADE
-    pausar 100 ms
-fim enquanto
+    // --------------------------------------------------------
+    // Uma pequena pausa no final do loop evita que o programa
+    // consuma toda a capacidade de processamento e garante
+    // que as leituras dos sensores sejam estáveis.
+    // --------------------------------------------------------
+    basic.pause(100)
+    // Aguarda 100 milissegundos (0,1 segundo) antes de repetir.
+})
 
+// ------------------------------------------------------------
 // PARTE 3: EVENTOS DOS BOTÕES (CONCORRENTES)
-quando botão A for pressionado
-    contador = 0
-    mostrar string "0"
+// ------------------------------------------------------------
+// Além do loop principal, o micro:bit permite responder a
+// eventos específicos, como o pressionamento de botões.
+// Estes eventos ocorrem de forma "concorrente" (paralela)
+// ao loop principal, ou seja, podem ser acionados a qualquer
+// momento, independentemente do estado atual do robô.
+// ------------------------------------------------------------
 
-quando botão B for pressionado
-    mostrar número contador
+// Evento: Botão A pressionado
+// ---------------------------------
+// Quando o botão A é pressionado, o contador é zerado e
+// o display mostra o número 0, permitindo reiniciar a
+// contagem de acionamentos.
+input.onButtonPressed(Button.A, function () {
+    contador = 0
+    // Zera o contador global.
+    basic.showNumber(0)
+    // Exibe o número 0 no display para confirmar o reset.
+})
+
+// Evento: Botão B pressionado
+// ---------------------------------
+// Quando o botão B é pressionado, o valor atual do contador
+// é exibido no display. Isso permite ao usuário verificar
+// quantas vezes o robô foi acionado (entrou no modo ativo).
+input.onButtonPressed(Button.B, function () {
+    basic.showNumber(contador)
+    // Exibe o valor atual da variável 'contador' no display.
+})
 
 // ============================================
 // FIM DO ESQUELETO
 // Agora cada grupo vai personalizar com sua lógica específica!
+// ============================================
+// INSTRUÇÕES PARA PERSONALIZAÇÃO:
+// 1. A parte mais importante para modificar é a seção 
+//    "MODO ATIVO" dentro do 'basic.forever'.
+// 2. Os alunos podem substituir o laço 'for' por:
+//    - Movimentos do servo motor (servo write)
+//    - Emissão de sons diferentes (music.playTone)
+//    - Exibição de animações no display (basic.showAnimation)
+//    - Leituras de sensores externos (analog read)
+//    - Qualquer outra ação criativa com os atuadores.
+// 3. Lembre-se de ajustar os comentários para refletir
+//    as mudanças feitas pelo grupo.
+// 4. Divirtam-se explorando a robótica com o micro:bit!
 // ============================================</pre>
                 </div>
 
@@ -1601,112 +1769,148 @@ quando botão B for pressionado
                         margin: 0;
                         font-size: 0.75rem;
                       ">
-// ============================================
-// PROJETO AUTORAL 4º ANO SEMANA 35
-// ANINHAMENTO E CONCORRÊNCIA O CÉREBRO
-// ============================================
+// ============================================================
+// PROJETO AUTORAL – 4º ANO – SEMANA 35
+// ANINHAMENTO E CONCORRÊNCIA – O CÉREBRO DO ROBÔ
+// ============================================================
+// Este programa simula um robô vigilante que monitora uma "lixeira"
+// (representada pelo botão A). Ele reage a problemas, alterna entre
+// modos de operação e exibe estatísticas – tudo com eventos paralelos.
+// ============================================================
 
-// VARIÁVEIS GLOBAIS
-let cheia = falso
-// cheia = verdadeiro: "lixeira cheia" (ou problema detectado)
-// cheia = falso: "tudo normal"
+// ------------------- VARIÁVEIS GLOBAIS -----------------------
+// (acessíveis em todo o programa, inclusive nos eventos)
 
-let modo = 0
-// modo = 0: modo normal (robô vigilante)
-// modo = 1: modo pausa (robô tirando um cochilo)
+/** @type {boolean} - true = "lixeira cheia" (alerta), false = "normal" */
+let cheia = false;
 
-let alertas = 0
-// Conta quantas vezes o robô entrou em alerta
+/** @type {number} - 0 = modo normal (vigilante), 1 = modo pausa (cochilo) */
+let modo = 0;
 
-// LOOP PRINCIPAL COM ANINHAMENTO
-enquanto verdadeiro
+/** @type {number} - contador de quantas vezes o robô entrou em alerta */
+let alertas = 0;
 
-    // NÍVEL 1: Verifica o MODO
-    se (modo == 0) então
-        // -- MODO NORMAL: robô trabalhando --
+// ============================================================
+// LOOP PRINCIPAL – Roda para sempre, como o "coração" do robô
+// ============================================================
+basic.forever(function () {
+    // ---------- NÍVEL 1: Verifica o MODO de operação ----------
+    if (modo == 0) {
+        // ===== MODO NORMAL =====
+        // Robô trabalhando: monitora o sensor (botão A) e reage.
 
-        // NÍVEL 2: Verifica o SENSOR (botão A)
-        // ANINHAMENTO: um SE dentro de outro SE!
-        se (botão A está pressionado?) então
-            cheia = verdadeiro
-        senão
-            cheia = falso
-        fim se
+        // ---------- NÍVEL 2: Leitura do SENSOR (botão A) ----------
+        // ANINHAMENTO: primeiro "se" dentro do modo normal.
+        if (input.buttonIsPressed(Button.A)) {
+            // Se o botão A estiver pressionado, a lixeira está cheia.
+            cheia = true;
+        } else {
+            // Caso contrário, está vazia (normal).
+            cheia = false;
+        }
 
-        // NÍVEL 2: Verifica o estado da LIXEIRA
-        // ANINHAMENTO: outro SE dentro do mesmo nível
-        se (cheia == verdadeiro) então
-            // -- PROBLEMA DETECTADO! --
+        // ---------- NÍVEL 2: Verifica o ESTADO da lixeira ----------
+        // ANINHAMENTO: segundo "se" dentro do mesmo nível.
+        if (cheia == true) {
+            // ===== PROBLEMA DETECTADO! =====
+            // Ações de alerta – aninhamento ainda mais profundo.
 
-            // NÍVEL 3: Ações de ALERTA (aninhamento dentro do SE)
-            escrever digital pino 0 como 1   // Vermelho ACESO
-            escrever digital pino 1 como 0   // Verde APAGADO
+            // ---------- NÍVEL 3: Sinalização imediata ----------
+            // LED vermelho (pino 0) acende, LED verde (pino 1) apaga.
+            pins.digitalWritePin(DigitalPin.P0, 1);
+            pins.digitalWritePin(DigitalPin.P1, 0);
 
-            // NÍVEL 3: LOOP de alerta (aninhado!)
-            // Um loop DENTRO de um SE aninhamento total!
-            repetir 5 vezes
-                escrever digital pino 0 como 1
-                pausar 150 ms
-                escrever digital pino 0 como 0
-                pausar 150 ms
-                tocar som por 100 ms no pino 2
-                pausar 100 ms
-            fim repetir
+            // ---------- NÍVEL 3: LOOP de alerta (aninhado!) ----------
+            // Repetimos 5 vezes um padrão de pisca-pisca + som.
+            // Este é um exemplo de aninhamento de um loop dentro de um "se".
+            for (let i = 0; i < 5; i++) {
+                // Pisca o LED vermelho (pino 0)
+                pins.digitalWritePin(DigitalPin.P0, 1);
+                basic.pause(150);
+                pins.digitalWritePin(DigitalPin.P0, 0);
+                basic.pause(150);
+                // Emite um som agudo (frequência 440 Hz) no pino 2 por 100 ms
+                pins.analogSetPitchPin(AnalogPin.P2);   // define o pino P2 para gerar os tons
+                pins.analogPitch(440, 100);             // toca o som (sem o terceiro argumento)
+                basic.pause(100);
+            }
 
-            mostrar string "CHEIO!"
-            pausar 1000 ms
-            limpar tela
+            // Exibe mensagem de "CHEIO!" na matriz de LEDs
+            basic.showString("CHEIO!");
+            basic.pause(1000);
+            basic.clearScreen();
 
-            alertas = alertas + 1
-            cheia = falso
-        senão
-            // -- TUDO NORMAL --
-            escrever digital pino 0 como 0   // Vermelho APAGADO
-            escrever digital pino 1 como 1   // Verde ACESO
-            mostrar ícone feliz
-            pausar 500 ms
-            limpar tela
-        fim se
-    senão
-        // -- MODO PAUSA: robô desligado --
-        escrever digital pino 0 como 0
-        escrever digital pino 1 como 0
-        mostrar string "Z z Z"
-        pausar 1000 ms
-        limpar tela
-    fim se
+            // Incrementa o contador de alertas e reseta o estado da lixeira
+            alertas = alertas + 1;
+            cheia = false;   // após o alerta, volta ao normal
 
-    pausar 100 ms
-fim enquanto
+        } else {
+            // ===== TUDO NORMAL =====
+            // Sem problemas: LED vermelho apagado, verde aceso.
+            pins.digitalWritePin(DigitalPin.P0, 0);
+            pins.digitalWritePin(DigitalPin.P1, 1);
+            // Mostra um ícone feliz na tela
+            basic.showIcon(IconNames.Happy);
+            basic.pause(500);
+            basic.clearScreen();
+        }
 
-// EVENTOS CONCORRENTES (rodam ao mesmo tempo que o loop)
+    } else {
+        // ===== MODO PAUSA =====
+        // Robô "desligado": apenas exibe um "Z z Z" e mantém os LEDs apagados.
+        pins.digitalWritePin(DigitalPin.P0, 0);
+        pins.digitalWritePin(DigitalPin.P1, 0);
+        basic.showString("Z z Z");
+        basic.pause(1000);
+        basic.clearScreen();
+    }
 
-// EVENTO 1: Botão B alterna o modo (normal/pausa)
-// Este evento pode acontecer A QUALQUER MOMENTO
-quando botão B for pressionado
-    se (modo == 0) então
-        modo = 1
-        mostrar string "P"   // P de Pausa
-    senão
-        modo = 0
-        mostrar string "N"   // N de Normal
-    fim se
-    pausar 500 ms
-    limpar tela
+    // Pequena pausa no final de cada iteração para evitar processamento excessivo
+    basic.pause(100);
+});
 
-// EVENTO 2: Botão A + B juntos mostra estatísticas
-// Dois botões pressionados ao mesmo tempo = combinação secreta!
-quando botão A e B forem pressionados
-    mostrar número alertas
-    pausar 2000 ms
-    limpar tela
-    tocar som por 300 ms no pino 2
-    pausar 100 ms
-    tocar som por 300 ms no pino 2
+// ============================================================
+// EVENTOS CONCORRENTES – Rodam paralelamente ao loop principal
+// ============================================================
+// Eles podem disparar a qualquer momento, demonstrando o conceito
+// de concorrência (multitarefa) no micro:bit.
 
-// ============================================
-// FIM Seu robô agora é MULTITAREFA! 🧠
-// ============================================</pre>
+// ---------- EVENTO 1: Botão B alterna o modo (normal ↔ pausa) ----------
+input.onButtonPressed(Button.B, function () {
+    if (modo == 0) {
+        modo = 1;                         // muda para pausa
+        basic.showString("P");            // "P" de Pausa
+    } else {
+        modo = 0;                         // volta ao normal
+        basic.showString("N");            // "N" de Normal
+    }
+    basic.pause(500);
+    basic.clearScreen();
+});
+
+// ---------- EVENTO 2: Botões A+B juntos (combinação secreta!) ----------
+// Mostra as estatísticas (número de alertas) e toca um bipe duplo.
+input.onButtonPressed(Button.AB, function () {
+    // Exibe o valor atual do contador de alertas
+    basic.showNumber(alertas);
+    basic.pause(2000);
+    basic.clearScreen();
+    // Toca dois sons curtos no pino 2 para chamar a atenção
+    pins.analogSetPitchPin(AnalogPin.P2);   // define o pino P2 para gerar os tons
+    pins.analogPitch(440, 100);             // toca o som (sem o terceiro argumento)
+    basic.pause(100);
+    pins.analogSetPitchPin(AnalogPin.P2);   // define o pino P2 para gerar os tons
+    pins.analogPitch(440, 100);             // toca o som (sem o terceiro argumento)
+});
+
+// ============================================================
+// FIM – Seu robô agora é MULTITAREFA! 🧠
+// ============================================================
+// Este código demonstra:
+//   - Aninhamento: "se" dentro de "se", loop dentro de "se".
+//   - Concorrência: loop principal + eventos de botão rodando em paralelo.
+//   - Didática: variáveis com nomes claros, comentários extensos.
+// ============================================================</pre>
                 </div>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto</h5>
@@ -1937,33 +2141,222 @@ quando botão A e B forem pressionados
                         margin: 0;
                         font-size: 0.8rem;
                       ">
-// ============================================
-// AJUSTES COMUNS APÓS TESTES REAIS
-// ============================================
+/**
+ * ============================================================
+ * PROJETO DIDÁTICO – ALARME DE TANQUE CHEIO (com BUG e CORREÇÃO)
+ * ============================================================
+ * 
+ * OBJETIVO: Mostrar na prática o que é o efeito "debounce" 
+ *           (leitura falsa de botões) e como corrigi-lo.
+ * 
+ * CONTROLES:
+ *   - Botão A: Ativa o alarme (tanque cheio)
+ *   - Botão B: Desativa o alarme (tanque vazio)
+ * ============================================================
+ */
 
-// 1. Ajuste no tempo de pausa (muito rápido? muito lento?)
-// Antes: pausar 100 ms
-// Depois: pausar 200 ms (mais estável)
+// ============================================================
+// 1. CONFIGURAÇÕES (CONSTANTES)
+// ============================================================
 
-// 2. Adicionar "debounce" para evitar leituras falsas
-// (evitar que o botão seja lido várias vezes num único pressionamento)
-se (botão A está pressionado?) então
-    pausar 50 ms  // Debounce espera estabilizar
-    se (botão A está pressionado?) então
-        cheia = verdadeiro
-    fim se
-fim se
+// Define o tempo de espera (em milissegundos) para filtrar o 
+// ruído elétrico do botão. 50ms é suficiente para estabilizar.
+const TEMPO_DEBOUNCE = 50;
 
-// 3. Ajuste no número de repetições do alerta
-// Antes: repetir 5 vezes
-// Depois: repetir 3 vezes (menos cansativo para os ouvidos)
+// Define o intervalo (em ms) entre cada repetição do som do alarme.
+// Antes era 100, ajustamos para 200 para ficar mais estável.
+const TEMPO_PAUSA_ALERTA = 200;
 
-// 4. Ajuste no som (frequência diferente)
-// tocar som por 200 ms no pino 2 com frequência 440   // Dó
-// tocar som por 200 ms no pino 2 com frequência 523   // Dó mais agudo
+// Número de vezes que o alarme vai tocar. Antes era 5, 
+// reduzimos para 3 para não cansar o ouvido.
+const NUM_REPETICOES = 3;
 
-// 5. Adicionar feedback visual mais claro
-mostrar ícone xis   // Em vez de "CHEIO", um X vermelho (na matriz)</pre>
+// Frequência do som em Hertz (Hz). 523 Hz é a nota Dó agudo.
+// Antes usávamos 440 Hz (Dó médio), alteramos para ficar mais 
+// perceptível em ambientes ruidosos.
+const FREQUENCIA_SOM = 523;
+
+// Duração de cada "bip" do alarme em milissegundos.
+const DURACAO_SOM = 200;
+
+// ============================================================
+// 2. VARIÁVEL GLOBAL
+// ============================================================
+
+// Variável do tipo booleano (verdadeiro/falso) que guarda o 
+// estado do tanque. Começa como 'false' (vazio).
+let cheia: boolean = false;
+
+// ============================================================
+// 3. FUNÇÃO PARA DESENHAR O ÍCONE "X" (TANQUE CHEIO)
+// ============================================================
+
+// Cria uma função personalizada para mostrar um "X" na matriz.
+function desenharX() {
+    // Comando 'basic.showLeds' desenha uma imagem pixel a pixel.
+    // Cada string representa uma linha da matriz 5x5.
+    // "#" = LED aceso, "." = LED apagado.
+    basic.showLeds(`
+        # . . . #   
+        . # . # .   
+        . . # . .   
+        . # . # .   
+        # . . . #   
+    `);
+}
+
+// ============================================================
+// 4. FUNÇÃO PARA ATUALIZAR O DISPLAY
+// ============================================================
+
+function mostrarEstado() {
+    // Estrutura condicional 'se...senão'.
+    if (cheia) { // Se a variável 'cheia' for VERDADEIRA:
+        // Chama a função que desenha o X na matriz.
+        desenharX();
+    } else { // Senão (se for FALSA):
+        // Usa o ícone padrão "Yes" (um "check" / "visto") 
+        // para representar que o tanque está vazio.
+        basic.showIcon(IconNames.Yes);
+    }
+}
+
+// ============================================================
+// 5. FUNÇÃO DO ALARME (SOM + REPETIÇÃO)
+// ============================================================
+
+function dispararAlarme() {
+    // Estrutura de repetição 'for'. 
+    // 'let i = 0' começa do zero; enquanto 'i < 3', repete; 
+    // 'i++' aumenta 1 a cada volta.
+    for (let i = 0; i < NUM_REPETICOES; i++) {
+        // Toca um tom no alto-falante (pino 0) com a frequência 
+        // e duração definidas nas constantes.
+        music.playTone(FREQUENCIA_SOM, DURACAO_SOM);
+
+        // Pausa a execução por X milissegundos para dar um 
+        // espaçamento entre os bips.
+        basic.pause(TEMPO_PAUSA_ALERTA);
+    }
+    // Após tocar todos os bips, reforça o aviso visual 
+    // desenhando novamente o X.
+    desenharX();
+}
+
+// ============================================================
+// 6. LOOP PRINCIPAL (executado para sempre)
+// ============================================================
+
+// 'basic.forever' é o loop infinito do micro:bit. 
+// O código dentro dele roda repetidamente enquanto o aparelho 
+// estiver ligado.
+basic.forever(function () {
+
+    // --------------------------------------------------------
+    // BLOCO DO BOTÃO A (COM A CORREÇÃO DO DEBOUNCE)
+    // --------------------------------------------------------
+
+    // =========================================================
+    // ⚠️ ATENÇÃO: AQUI ESTÁ A DEMONSTRAÇÃO DO BUG!
+    // =========================================================
+    // Se você descomentar o trecho abaixo e comentar o trecho 
+    // com debounce, verá o problema:
+    /*
+    if (input.buttonIsPressed(Button.A)) {
+        cheia = true;
+        dispararAlarme();
+    }
+    */
+    // O código acima é o BUG: ele NÃO tem debounce. 
+    // Como o micro:bit é muito rápido, ele lê o botão várias 
+    // vezes em um único toque, disparando o alarme múltiplas 
+    // vezes sem parar.
+
+    // =========================================================
+    // ✅ CÓDIGO CORRETO (COM DEBOUNCE)
+    // =========================================================
+
+    // 'input.buttonIsPressed' verifica se o botão A está 
+    // pressionado fisicamente naquele exato instante.
+    if (input.buttonIsPressed(Button.A)) {
+
+        // PRIMEIRA ETAPA DO DEBOUNCE: 
+        // Pausa o programa por 50ms para dar tempo do contato 
+        // elétrico do botão se estabilizar (ignorar ruídos).
+        basic.pause(TEMPO_DEBOUNCE);
+
+        // SEGUNDA ETAPA DO DEBOUNCE:
+        // Verifica NOVAMENTE se o botão A ainda está pressionado.
+        // Se estiver, é porque é um clique verdadeiro (e não um 
+        // ruído elétrico).
+        if (input.buttonIsPressed(Button.A)) {
+
+            // Altera o estado da variável para VERDADEIRO.
+            cheia = true;
+
+            // Chama a função que toca o alarme.
+            dispararAlarme();
+
+            // Obs.: O display já é atualizado pela função 
+            // 'dispararAlarme' e pelo 'mostrarEstado' no final.
+        }
+    }
+
+    // --------------------------------------------------------
+    // BLOCO DO BOTÃO B (TAMBÉM COM DEBOUNCE)
+    // --------------------------------------------------------
+
+    // Verifica se o botão B está pressionado.
+    if (input.buttonIsPressed(Button.B)) {
+
+        // Pausa para estabilizar (debounce).
+        basic.pause(TEMPO_DEBOUNCE);
+
+        // Verifica novamente para confirmar o clique.
+        if (input.buttonIsPressed(Button.B)) {
+
+            // Altera o estado da variável para FALSO (tanque vazio).
+            cheia = false;
+
+            // Atualiza a matriz de LEDs para mostrar o ícone de "vazio".
+            mostrarEstado();
+        }
+    }
+
+    // --------------------------------------------------------
+    // PAUSA PARA ESTABILIDADE DO LOOP E ATUALIZAÇÃO DO DISPLAY
+    // --------------------------------------------------------
+
+    // Dá uma pequena pausa de 200ms no final do loop.
+    // Isso evita que o programa consuma toda a CPU do micro:bit 
+    // e estabiliza a exibição. Antes era 100ms, mas aumentamos 
+    // para 200ms após testes reais.
+    basic.pause(200);
+
+    // Chama a função que verifica o estado e desenha o ícone 
+    // correto (X ou check) na matriz. Isso garante que, se 
+    // nenhum botão for pressionado, o display continue mostrando 
+    // o estado atual sem piscar.
+    mostrarEstado();
+});
+
+// ============================================================
+// 7. COMO TESTAR O BUG (PARA ESTUDO)
+// ============================================================
+// 
+// PASSO 1: No código acima, localize o bloco do Botão A.
+// PASSO 2: Comente as linhas com 'basic.pause' e o segundo 'if' 
+//          (as linhas do debounce).
+// PASSO 3: Descomente o trecho do BUG (que está dentro do bloco 
+//          de comentário /* */).
+// PASSO 4: Carregue o código no micro:bit.
+// PASSO 5: Pressione o botão A UMA ÚNICA VEZ.
+//          Você verá que o alarme toca várias vezes seguidas ou 
+//          o display fica piscando. ISSO É O BUG!
+// PASSO 6: Reverta as alterações (reative o debounce e comente 
+//          o bug) para ver o funcionamento perfeito: um clique 
+//          = UM alarme.
+// ============================================================</pre>
                 </div>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto</h5>

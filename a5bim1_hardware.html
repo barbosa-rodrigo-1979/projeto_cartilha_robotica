@@ -498,27 +498,266 @@
 
                 <h5>💻 Código a Ser Desenvolvido</h5>
                 <p><strong>Código 1: Função PISCAR</strong></p>
-                <pre><code>// ==========================================
+                <pre><code>// ========================================================================
+// PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+// ========================================================================
+// Tema: Controlando a Matriz de LEDs e o Tempo (Delay)
+// 
+// O que você precisa saber antes de começar:
+// A placa micro:bit possui uma matriz frontal composta por 25 LEDs (5 colunas 
+// x 5 linhas). Para controlar cada LED individualmente, usamos um sistema de 
+// coordenadas (X, Y), onde:
+//   - X (coluna) varia de 0 (esquerda) a 4 (direita).
+//   - Y (linha) varia de 0 (cima) a 1 (baixo).
+// 
+// O ponto central da matriz está exatamente na coordenada (2, 2). É nele que 
+// vamos trabalhar hoje!
+// 
+// Teoria fundamental para entender o código:
+// Para o olho humano perceber uma piscada (ligado/desligado), o LED precisa 
+// ficar aceso e apagado por um tempo mínimo. Se trocarmos o estado muito 
+// rápido (menos de 50 milissegundos), o cérebro humano interpretará como se 
+// o LED estivesse "meio aceso" ou tremendo (efeito de persistência retiniana).
+// Por isso usamos pausas de 200 milissegundos (0,2 segundos) – é tempo 
+// suficiente para vermos claramente o "ligar" e o "desligar".
+// ========================================================================
+
+// ==========================================
 // FUNÇÃO PISCAR - O CORAÇÃO DA AULA DE HOJE!
 // ==========================================
+// ATENÇÃO: Uma função é como uma "receita de bolo". Ela agrupa vários 
+// comandos em um único bloco que pode ser reutilizado quantas vezes 
+// quisermos. Quando chamamos o nome da função (piscar()), o micro:bit 
+// executa todas as linhas que estão dentro dela, na ordem em que aparecem.
 
+// Declaramos a função chamada "piscar". Ela não recebe nenhum dado de 
+// entrada (parâmetros) e também não devolve nenhum resultado. Seu único 
+// objetivo é executar as instruções internas para criar o efeito visual.
 function piscar() {
+  
+  // ----------------------------------------------------------------
+  // COMANDO 1: led.plot(2, 2)
+  // ----------------------------------------------------------------
+  // O comando "led.plot" significa "desenhar/marcar um ponto na matriz".
+  // Ele recebe dois números: a coordenada X (coluna) e a coordenada Y (linha).
+  // Ao executar "led.plot(2, 2)", estamos mandando o micro:bit acender 
+  // o LED que está exatamente no centro da tela (pois 2 é o valor central 
+  // em uma escala que vai de 0 a 4).
+  // 
+  // Em termos elétricos: o micro:bit aplica uma tensão (voltagem) nos pinos 
+  // que controlam a linha 2 e a coluna 2, fazendo com que esse LED específico 
+  // emita luz. Todos os outros 24 LEDs permanecem apagados.
   led.plot(2, 2)
+
+  // ----------------------------------------------------------------
+  // COMANDO 2: basic.pause(200)
+  // ----------------------------------------------------------------
+  // O comando "basic.pause" faz o micro:bit "dormir" ou "esperar" por um 
+  // determinado período de tempo.
+  // O número 200 dentro dos parênteses representa 200 milissegundos (ms).
+  // Lembre-se: 1000 ms = 1 segundo. Portanto, 200 ms = 0,2 segundos.
+  // 
+  // Por que colocamos esta pausa AQUI?
+  // Porque queremos que o LED fique aceso por 0,2 segundos para que 
+  // possamos vê-lo brilhando. Se não houvesse essa pausa, o micro:bit 
+  // passaria para o próximo comando tão rápido que o LED acenderia e 
+  // apagaria em menos de 1 microssegundo, sendo invisível aos nossos olhos!
   basic.pause(200)
+
+  // ----------------------------------------------------------------
+  // COMANDO 3: led.unplot(2, 2)
+  // ----------------------------------------------------------------
+  // O comando "led.unplot" é o oposto do "plot". Ele significa 
+  // "desmarcar/apagar/remover" o ponto desenhado na matriz.
+  // Ao executar "led.unplot(2, 2)", mandamos o micro:bit apagar o LED 
+  // central que estava aceso. 
+  // 
+  // Em termos elétricos: o micro:bit corta a tensão que estava indo para 
+  // a linha 2 e coluna 2, fazendo com que o LED apague completamente.
   led.unplot(2, 2)
+
+  // ----------------------------------------------------------------
+  // COMANDO 4: basic.pause(200)
+  // ----------------------------------------------------------------
+  // Aqui temos outra pausa de 200 milissegundos.
+  // Mas por que precisamos de uma pausa depois de apagar o LED?
+  // Porque o efeito de "piscar" exige que o LED fique APAGADO por algum 
+  // tempo também. Se apagássemos e já acendêssemos de novo instantaneamente, 
+  // o LED pareceria estar sempre aceso (só que um pouco mais fraco).
+  // 
+  // Esta segunda pausa garante que o LED fique desligado por 0,2 segundos, 
+  // criando o ritmo visual perfeito para uma piscada (aceso 0,2s -> apagado 0,2s).
   basic.pause(200)
-}</code></pre>
+
+// Fim da função "piscar". Quando o micro:bit chega nesta chave "}", 
+// ele volta para o local onde a função foi chamada e continua a execução 
+// do programa a partir dali.
+}
+
+
+// ========================================================================
+// INSTRUÇÕES FINAIS - COMO USAR ESTA FUNÇÃO NA PRÁTICA?
+// ========================================================================
+// ATENÇÃO: Apenas declarar a função NÃO faz o LED piscar! A função é como 
+// um "manual de instruções". Precisamos "chamar" (executar) essa função para 
+// que os comandos internos sejam colocados em ação.
+//
+// COMO CHAMAR A FUNÇÃO NO MAKECODE:
+// Para vermos a piscada acontecendo infinitamente (até desligarmos a placa), 
+// devemos colocar a chamada da função dentro de um laço de repetição "sempre" 
+// (basic.forever). 
+// 
+// Código complementar obrigatório (que DEVE ser adicionado ao seu projeto):
+// ----------------------------------------------------------------
+// basic.forever(function () {
+//     piscar()  // <--- Esta é a chamada da função! Executa "piscar" sem parar.
+// })
+// ----------------------------------------------------------------
+//
+// O que acontece se você chamar a função apenas no "iniciar" (on start)?
+// Se você escrever apenas "piscar()" dentro do bloco "iniciar", o programa 
+// acenderá o LED, esperará 200ms, apagará o LED, esperará 200ms e... 
+// PARA! O programa termina. A placa ficará com o LED apagado para sempre, 
+// pois a função só foi executada UMA ÚNICA VEZ.
+//
+// PORTANTO: Para uma piscada contínua, SEMPRE use a função dentro do 
+// "basic.forever".
+// ========================================================================</code></pre>
 
                 <p><strong>Código 2: Programa Principal</strong></p>
-                <pre><code>input.onButtonPressed(Button.A, function () {
+                <pre><code>/*
+ ============================================================
+ PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+ ============================================================
+ OBJETIVO GERAL:
+ Este programa ensina os conceitos fundamentais de:
+ - Programação orientada a eventos (Event-Driven Programming)
+ - Interação com o hardware (botões físicos A e B)
+ - Estruturas de repetição (laço FOR)
+ - Criação e chamada de funções (mesmo que a função 'piscar' ainda
+   precise ser definida pelo estudante).
+
+ FUNCIONALIDADE ESPERADA:
+ - Ao pressionar o botão A, a matriz de LEDs deve piscar 1 vez.
+ - Ao pressionar o botão B, a matriz de LEDs deve piscar 5 vezes.
+
+ OBSERVAÇÃO IMPORTANTE SOBRE A FUNÇÃO 'piscar()':
+ ------------------------------------------------
+ O código chama uma função chamada 'piscar()', mas ela NÃO está
+ definida neste trecho. Em um projeto completo, o estudante
+ deve criar esta função. Exemplo do que ela deve conter:
+ 
+ function piscar() {
+     led.plotAll()      // Acende todos os LEDs
+     basic.pause(200)   // Aguarda 200 milissegundos
+     led.unplotAll()    // Apaga todos os LEDs
+     basic.pause(200)   // Aguarda 200 milissegundos
+ }
+ 
+ Isso garante que o efeito de "piscar" seja visualmente perceptível.
+ ============================================================
+*/
+
+// ============================================================
+// BLOCO 1: EVENTO DO BOTÃO A (Pressionar uma vez)
+// ============================================================
+// A função 'input.onButtonPressed' é um "ouvinte de eventos".
+// Ela fica monitorando constantemente se o usuário interagiu com
+// o botão A do micro:bit.
+// 
+// Parâmetros:
+//   1. Button.A -> Especifica que estamos vigiando o botão A.
+//   2. function () { ... } -> É a "função de retorno" (callback).
+//      Ela será executada automaticamente SEMPRE que o botão A for
+//      pressionado (evento de borda de subida - "pressed").
+//
+// DENTRO DA FUNÇÃO:
+// A única instrução é 'piscar()'. Isso significa que, ao apertar
+// o botão A, o micro:bit irá executar a rotina de piscar UMA única vez.
+// 
+// APRENDIZADO DIDÁTICO:
+// Perceba que aqui temos uma relação direta: 1 clique do usuário
+// resulta em 1 piscada. Isso é chamado de comportamento "síncrono"
+// acionado por interrupção (hardware interrupt).
+// ============================================================
+input.onButtonPressed(Button.A, function () {
   piscar()
 })
 
+// ============================================================
+// BLOCO 2: EVENTO DO BOTÃO B (Pressionar para repetir)
+// ============================================================
+// Aqui temos o segundo ouvinte de eventos, agora focado no botão B.
+// Assim que o botão B for pressionado, a função de retorno será
+// executada. Note que esta função é mais complexa, pois contém
+// uma estrutura de repetição.
+//
+// DENTRO DA FUNÇÃO (ANÁLISE DO LAÇO FOR):
+// for (let i = 0; i < 5; i++) { ... }
+// 
+// Esta é uma das estruturas de controle mais importantes da
+// programação. Vamos detalhar cada parte:
+// 
+// 1. INICIALIZAÇÃO: 'let i = 0'
+//    -> Criamos uma variável contadora chamada 'i' e atribuímos
+//       o valor inicial ZERO (0). Esta variável controla quantas
+//       vezes o laço já rodou.
+// 
+// 2. CONDIÇÃO: 'i < 5'
+//    -> O laço só continua rodando ENQUANTO esta condição for
+//       verdadeira (true). Aqui, enquanto 'i' for menor que 5,
+//       o bloco de código dentro das chaves { ... } será executado.
+//       Quando 'i' chegar a 5, a condição fica falsa (5 < 5 é falso)
+//       e o programa sai do laço.
+// 
+// 3. INCREMENTO: 'i++'
+//    -> Após executar todo o bloco interno, o programa faz o
+//       incremento (soma 1) ao valor de 'i'. Isso impede que o
+//       laço rode para sempre (looping infinito).
+// 
+// FLUXO DE EXECUÇÃO PASSO A PASSO:
+// - 1ª volta: i = 0 (0 < 5, entra) -> executa piscar() -> depois i vira 1.
+// - 2ª volta: i = 1 (1 < 5, entra) -> executa piscar() -> depois i vira 2.
+// - 3ª volta: i = 2 (2 < 5, entra) -> executa piscar() -> depois i vira 3.
+// - 4ª volta: i = 3 (3 < 5, entra) -> executa piscar() -> depois i vira 4.
+// - 5ª volta: i = 4 (4 < 5, entra) -> executa piscar() -> depois i vira 5.
+// - 6ª checagem: i = 5 (5 < 5? Falso!) -> SAÍ do laço. Fim da função.
+// 
+// RESULTADO FINAL:
+// Ao apertar o botão B, a função 'piscar()' será chamada 5 vezes
+// em sequência, resultando em 5 piscadas completas.
+// 
+// APRENDIZADO DIDÁTICO (Dica valiosa):
+// Se a função 'piscar()' NÃO tiver pausas (basic.pause) internas,
+// as 5 piscadas acontecerão tão rápido (milissegundos) que o olho
+// humano não verá o efeito, parecendo que o LED ficou aceso ou apagado
+// o tempo todo. Por isso, ao definir 'piscar()', lembre-se de
+// colocar pausas (ex: 200ms) entre "acender" e "apagar".
+// ============================================================
 input.onButtonPressed(Button.B, function () {
-  for (let i = 0; i &lt; 5; i++) {
+  for (let i = 0; i < 5; i++) {
     piscar()
   }
-})</code></pre>
+})
+
+/*
+ ============================================================
+ CONCLUSÃO E PRÓXIMOS PASSOS PARA O ESTUDANTE:
+ ============================================================
+ 1. Copie este código para o ambiente MakeCode (JavaScript).
+ 2. Logo acima ou abaixo deste bloco, crie a função 'function piscar()'.
+ 3. Dentro dela, use 'led.plotAll()', 'basic.pause(200)', 
+    'led.unplotAll()' e 'basic.pause(200)' para ver o efeito visual.
+ 4. Teste no simulador ou carregue no micro:bit físico:
+    - Aperte A -> 1 piscada.
+    - Aperte B -> 5 piscadas.
+ 
+ Este código é a base para entender como interagir com o mundo
+ físico usando programação. Domine o FOR e os eventos e você
+ estará pronto para criar projetos incríveis, como semáforos,
+ contadores ou jogos com botões!
+ ============================================================
+*/</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -770,49 +1009,337 @@ input.onButtonPressed(Button.B, function () {
                 <p>
                   <strong>Código 1: Função com Parâmetro Numérico</strong>
                 </p>
-                <pre><code>function mostrarNumero(n: number) {
+                <pre><code>/*
+ * =====================================================================
+ * PROJETO: Micro:bit - Exibindo Números com Botões
+ * =====================================================================
+ *
+ * Este é um programa didático para a placa micro:bit, desenvolvido
+ * no ambiente MakeCode (Microsoft).
+ *
+ * OBJETIVO:
+ *   Ao pressionar o botão A, o micro:bit exibe o número 5.
+ *   Ao pressionar o botão B, o micro:bit exibe o número 8.
+ *
+ * CONCEITOS ENSINADOS:
+ *   - Funções (criação e chamada)
+ *   - Eventos de botão (input.onButtonPressed)
+ *   - Manipulação da matriz de LED (basic.clearScreen, basic.showNumber)
+ *   - Variáveis e parâmetros
+ *
+ * Este código é um ponto de partida para entender como programar
+ * respostas a interações do usuário com o micro:bit.
+ * =====================================================================
+ */
+
+/**
+ * ---------------------------------------------------------------------
+ * FUNÇÃO: mostrarNumero
+ * ---------------------------------------------------------------------
+ * Esta função recebe um número (parâmetro 'n') e o exibe na matriz
+ * de LEDs do micro:bit.
+ *
+ * Passos executados:
+ *   1. Limpa a tela (apaga todos os LEDs acesos).
+ *   2. Exibe o número passado como argumento, utilizando a função
+ *      'basic.showNumber' que já faz a animação do dígito.
+ *
+ * Por que usar uma função?
+ *   - Evita repetição de código (quando quisermos mostrar números
+ *     em diferentes situações, chamamos apenas esta função).
+ *   - Deixa o programa mais organizado e fácil de modificar.
+ *
+ * @param n - O número inteiro a ser exibido (ex: 5, 8, etc.)
+ */
+function mostrarNumero(n: number) {
+  // Apaga todos os LEDs da matriz 5x5.
   basic.clearScreen()
+
+  // Mostra o número 'n' na tela (com animação de rolagem se for
+  // maior que 9, mas para 5 e 8 é exibido estaticamente).
   basic.showNumber(n)
 }
 
+/**
+ * ---------------------------------------------------------------------
+ * EVENTO: Pressionamento do Botão A
+ * ---------------------------------------------------------------------
+ * Quando o botão A (localizado à esquerda da matriz de LEDs) for
+ * pressionado, esta função é executada automaticamente.
+ *
+ * Ação: Chama a função mostrarNumero passando o valor 5.
+ *
+ * Por que 5? É um número fixo definido para este exemplo didático.
+ * Você pode alterar para qualquer outro número.
+ */
 input.onButtonPressed(Button.A, function () {
+  // Chama a função que exibe o número na tela.
   mostrarNumero(5)
 })
 
+/**
+ * ---------------------------------------------------------------------
+ * EVENTO: Pressionamento do Botão B
+ * ---------------------------------------------------------------------
+ * Quando o botão B (localizado à direita da matriz de LEDs) for
+ * pressionado, esta função é executada automaticamente.
+ *
+ * Ação: Chama a função mostrarNumero passando o valor 8.
+ *
+ * Dica: Você pode associar diferentes números a cada botão para
+ *       criar um "teclado numérico" simples.
+ */
 input.onButtonPressed(Button.B, function () {
+  // Chama a função que exibe o número na tela.
   mostrarNumero(8)
-})</code></pre>
+})
+
+/**
+ * ---------------------------------------------------------------------
+ * OBSERVAÇÕES FINAIS:
+ * ---------------------------------------------------------------------
+ * - O micro:bit, ao ser ligado, executa o programa a partir do início.
+ * - Como não há código fora das funções de evento, o micro:bit
+ *   aguarda até que um botão seja pressionado (não faz nada
+ *   inicialmente, pois a tela está limpa).
+ * - Você pode adicionar mais botões (ex: A+B simultaneamente)
+ *   para exibir outros números ou executar outras ações.
+ * - A função 'basic.showNumber' também pode exibir números negativos
+ *   e decimais (com algumas limitações).
+ *
+ * Desafio para o aluno:
+ *   - Modifique o programa para que o botão A mostre o número 10
+ *     e o botão B mostre o número 20.
+ *   - Crie um terceiro evento para o pressionamento simultâneo
+ *     (A+B) que mostre o número 0.
+ * =====================================================================
+ */</code></pre>
 
                 <p>
                   <strong>Código 2: Função com Múltiplos Parâmetros</strong>
                 </p>
-                <pre><code>function piscarLED(x: number, y: number, vezes: number) {
-  for (let i = 0; i &lt; vezes; i++) {
+                <pre><code>/**
+ * =====================================================================
+ * PROGRAMA: Piscar LED com Botões A+B
+ * =====================================================================
+ * 
+ * OBJETIVO:
+ * Este programa foi desenvolvido para a placa micro:bit e demonstra
+ * o controle da matriz de LEDs (5x5) de forma interativa.
+ * 
+ * Ao pressionar os botões A e B simultaneamente (AB), um LED localizado
+ * no centro da matriz (coordenadas 2,2) irá piscar 3 vezes, com um
+ * intervalo de 200 milissegundos entre cada mudança de estado.
+ * 
+ * CONCEITOS ENSINADOS:
+ * - Funções com parâmetros (x, y, vezes)
+ * - Laço de repetição (for)
+ * - Controle de LEDs (ligar/desligar)
+ * - Temporização com pausas (basic.pause)
+ * - Eventos de botão (input.onButtonPressed)
+ * - Coordenadas da matriz de LEDs do micro:bit (0 a 4 em ambos os eixos)
+ * 
+ * =====================================================================
+ */
+
+/**
+ * Função que faz um LED piscar em uma posição específica da matriz,
+ * repetindo o processo um número determinado de vezes.
+ *
+ * @param x     Coordenada horizontal (coluna) do LED, variando de 0 a 4.
+ *              O valor 0 representa a coluna mais à esquerda e 4 a mais à direita.
+ * @param y     Coordenada vertical (linha) do LED, variando de 0 a 4.
+ *              O valor 0 representa a linha superior e 4 a inferior.
+ * @param vezes Quantidade de vezes que o LED deve piscar (ciclos completos:
+ *              ligado + desligado).
+ *
+ * @note A matriz de LEDs do micro:bit possui 5 colunas (x) e 5 linhas (y).
+ *       O centro da matriz está em (2, 2).
+ */
+function piscarLED(x: number, y: number, vezes: number) {
+  // Laço de repetição: será executado 'vezes' iterações.
+  // A variável 'i' é o contador, começando em 0 e incrementando até
+  // atingir 'vezes - 1'. Isso garante que o bloco interno seja
+  // executado exatamente 'vezes' vezes.
+  for (let i = 0; i < vezes; i++) {
+
+    // led.plot(x, y) acende o LED na posição (x, y).
+    // A matriz é endereçada por coordenadas: (0,0) no canto superior esquerdo
+    // e (4,4) no canto inferior direito.
     led.plot(x, y)
+
+    // basic.pause(200) faz o programa aguardar 200 milissegundos (0,2 segundos)
+    // com o LED aceso, permitindo que o olho humano perceba o brilho.
     basic.pause(200)
+
+    // led.unplot(x, y) apaga o LED na posição (x, y), ou seja, desliga-o.
     led.unplot(x, y)
+
+    // Nova pausa de 200 ms com o LED apagado, para criar o efeito de "piscada"
+    // completa. O tempo total de um ciclo é 200 ms ligado + 200 ms desligado = 400 ms.
     basic.pause(200)
   }
+  // Após o término do laço, o LED permanece apagado, pois a última ação
+  // executada dentro do loop foi unplot.
 }
 
+/**
+ * Configuração do evento de pressionamento dos botões A e B simultaneamente.
+ * 
+ * input.onButtonPressed(Button.AB, function () { ... }) é uma função
+ * do micro:bit que executa um bloco de código sempre que os botões
+ * A e B forem pressionados ao mesmo tempo.
+ * 
+ * Quando isso ocorre, chamamos a função piscarLED passando:
+ * - x = 2 (coluna central)
+ * - y = 2 (linha central)
+ * - vezes = 3 (o LED piscará três vezes)
+ * 
+ * Isso resulta em um LED central piscando três vezes de forma visível,
+ * demonstrando o uso combinado de funções, laços e temporização.
+ */
 input.onButtonPressed(Button.AB, function () {
   piscarLED(2, 2, 3)
-})</code></pre>
+})
+
+// =====================================================================
+// FIM DO PROGRAMA
+// =====================================================================
+// Este código é autoexplicativo e foi comentado com fins educacionais.
+// Qualquer dúvida, consulte a documentação oficial do micro:bit ou
+// os tutoriais da plataforma MakeCode.</code></pre>
 
                 <p>
                   <strong>Código 3: Função com Parâmetro Textual (usando números
                     como código)</strong>
                 </p>
-                <pre><code>function mostrarEmocao(codigo: number) {
-  basic.clearScreen()
-  if (codigo == 1) {
-    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    feliz.showImage(0)
-  } else if (codigo == 2) {
-    let triste = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    triste.showImage(0)
-  }
-}</code></pre>
+                <pre><code>
+                  /**
+ * =====================================================================
+ * FUNÇÃO: mostrarEmocao
+ * =====================================================================
+ * 
+ * OBJETIVO:
+ *   Exibir uma imagem (ícone) no display de LEDs do micro:bit para
+ *   representar uma emoção, de acordo com um código numérico recebido.
+ * 
+ * PARÂMETRO:
+ *   codigo : number  - Número inteiro que identifica qual emoção deve
+ *                      ser mostrada. Neste exemplo, usamos:
+ *                      1 -> feliz
+ *                      2 -> triste
+ * 
+ * RETORNO:
+ *   Nenhum (void). Apenas atualiza o display.
+ * 
+ * COMO FUNCIONA:
+ *   1. Limpa todo o display (apaga qualquer imagem anterior).
+ *   2. Verifica o valor do parâmetro 'codigo'.
+ *   3. Se for 1, cria uma imagem para "feliz" e a exibe.
+ *   4. Se for 2, cria uma imagem para "triste" e a exibe.
+ *   5. Se for outro valor, nada é exibido (display permanece vazio).
+ * 
+ * OBSERVAÇÕES DIDÁTICAS:
+ *   - As imagens são criadas usando a função images.createImage().
+ *   - Aqui usamos template strings (crases) com quebras de linha reais.
+ *     Cada linha tem 5 caracteres: '.' (LED apagado) e '#' (LED aceso).
+ *     Os espaços entre os caracteres são opcionais e servem apenas para
+ *     facilitar a leitura – o MakeCode os ignora.
+ *   - O método showImage(0) exibe a imagem no display. O parâmetro '0'
+ *     significa que a imagem ficará visível indefinidamente (até que
+ *     outra imagem ou comando a substitua). Se você colocar um número
+ *     positivo (em milissegundos), a imagem aparecerá por esse tempo
+ *     e depois desaparecerá.
+ *   - A função basic.clearScreen() apaga todos os LEDs, garantindo que
+ *     não haja resquícios de exibições anteriores.
+ * 
+ * SUGESTÃO DE MELHORIA (sem alterar o código):
+ *   - Use constantes com nomes significativos para os códigos, por
+ *     exemplo: const FELIZ = 1; const TRISTE = 2; para tornar o
+ *     código mais legível.
+ *   - Você pode adicionar outras emoções (surpresa, raiva, etc.)
+ *     usando novos else if.
+ *   - As imagens podem ser pré-definidas fora da função para evitar
+ *     recriá-las a cada chamada, economizando memória.
+ * 
+ * EXEMPLO DE IMAGEM PARA "FELIZ" (olhos e boca sorrindo):
+ *   . # . # .
+ *   . . . . .
+ *   . . . . .
+ *   # . . . #
+ *   . # # # .
+ * 
+ * EXEMPLO DE IMAGEM PARA "TRISTE" (olhos e boca triste):
+ *   . # . # .
+ *   . . . . .
+ *   . . . . .
+ *   . # # # .
+ *   # . . . #
+ * 
+ * =====================================================================
+ */
+
+function mostrarEmocao(codigo: number) {
+    // Limpa o display de LEDs, apagando qualquer imagem que esteja
+    // sendo mostrada no momento. Isso evita "fantasmas" ou sobreposição.
+    basic.clearScreen()
+
+    // Verifica se o código é igual a 1 (emoção feliz).
+    if (codigo == 1) {
+        // Cria uma imagem a partir de um template string com 5 linhas.
+        // Cada linha tem 5 caracteres ('.' ou '#'), e os espaços são
+        // apenas para organização visual – o MakeCode os desconsidera.
+        let feliz = images.createImage(`
+            . # . # .
+            . . . . .
+            . . . . .
+            # . . . #
+            . # # # .
+        `)
+        // Exibe a imagem criada. O argumento '0' faz com que a imagem
+        // permaneça no display até que outra seja mostrada ou a tela
+        // seja limpa.
+        feliz.showImage(0)
+    }
+    // Caso o código seja 2 (emoção triste).
+    else if (codigo == 2) {
+        let triste = images.createImage(`
+            . # . # .
+            . . . . .
+            . . . . .
+            . # # # .
+            # . . . #
+        `)
+        triste.showImage(0)
+    }
+    // Se o código não for 1 nem 2, nada é exibido – o display
+    // permanece vazio (pois foi limpo no início da função).
+}
+
+// =====================================================================
+// INTERAÇÃO COM OS BOTÕES DO MICRO:BIT
+// =====================================================================
+// O micro:bit possui apenas dois botões físicos: A e B.
+// Associamos cada botão a uma emoção:
+//   - Botão A → código 1 (feliz)
+//   - Botão B → código 2 (triste)
+// =====================================================================
+
+input.onButtonPressed(Button.A, function () {
+    mostrarEmocao(1)
+})
+
+input.onButtonPressed(Button.B, function () {
+    mostrarEmocao(2)
+})
+
+// =====================================================================
+// MENSAGEM INICIAL (OPCIONAL)
+// =====================================================================
+// Exibe uma instrução rápida ao ligar o micro:bit.
+// =====================================================================
+
+basic.showString("A=Feliz B=Triste")</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -1055,61 +1582,516 @@ input.onButtonPressed(Button.AB, function () {
                 <p>
                   <strong>Código 1: Funções Básicas para Animações</strong>
                 </p>
-                <pre><code>function coracao() {
-  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  img.showImage(0)
-  basic.pause(500)
+                <pre><code>/**
+ * =====================================================================
+ * PROJETO DIDÁTICO - MICRO:BIT (MAKECODE)
+ * =====================================================================
+ *
+ * Este código contém três funções que exibem formas geométricas no
+ * display de LEDs do micro:bit (matriz 5x5).
+ *
+ * Cada função cria uma imagem personalizada, mostra-a no display e
+ * mantém a imagem visível por um breve intervalo (500 ms).
+ *
+ * As funções podem ser chamadas em eventos, por exemplo:
+ * - Ao iniciar o micro:bit (bloco "no iniciar")
+ * - Ao pressionar um botão (bloco "ao pressionar botão A")
+ * - Em um laço de repetição, para criar animações.
+ *
+ * =====================================================================
+ * ESTRUTURA DO DISPLAY (MATRIZ 5x5)
+ * =====================================================================
+ * O micro:bit possui 25 LEDs organizados em 5 colunas e 5 linhas.
+ * Cada LED pode estar aceso (representado por '#') ou apagado ('.').
+ *
+ * Exemplo de uma imagem simples (um ponto no centro):
+ *   . . . . .
+ *   . . . . .
+ *   . . # . .
+ *   . . . . .
+ *   . . . . .
+ *
+ * Para criar uma imagem no código, usamos a função:
+ *   images.createImage(`...`)
+ *
+ * A string entre crases deve conter EXATAMENTE 5 linhas, cada uma com
+ * 5 caracteres (que podem ser '#' ou '.'). As quebras de linha são
+ * importantes para separar as linhas.
+ *
+ * =====================================================================
+ * FUNÇÕES DISPONÍVEIS
+ * =====================================================================
+ * 1. coracao()   - Exibe um coração.
+ * 2. quadrado()  - Exibe um quadrado preenchido.
+ * 3. flechaCima()- Exibe uma seta apontando para cima.
+ *
+ * Cada função executa três passos:
+ *   a) Cria a imagem com images.createImage()
+ *   b) Mostra a imagem no display com img.showImage(0)
+ *   c) Aguarda 500 ms com basic.pause(500)
+ *
+ * O parâmetro '0' em showImage(0) significa que a imagem é exibida
+ * imediatamente e permanece até que outra imagem seja mostrada ou que
+ * o display seja limpo. O pause seguinte garante que o usuário tenha
+ * tempo de visualizar a imagem.
+ * =====================================================================
+ */
+
+/**
+ * ----------------------------------------------------------------
+ * FUNÇÃO: coracao()
+ * ----------------------------------------------------------------
+ * Exibe um desenho de coração no display.
+ * A imagem foi construída com pontos (#) para formar o formato
+ * típico de um coração.
+ *
+ * Padrão usado (linha a linha):
+ *   . # # # .    ->  ".###."
+ *   # # # # #    ->  "#####"
+ *   # # # # #    ->  "#####"
+ *   . # # # .    ->  ".###."
+ *   . . # . .    ->  "..#.."
+ *
+ * Cada '#' representa um LED aceso.
+ * Cada '.' representa um LED apagado.
+ */
+function coracao() {
+    // Cria a imagem a partir de uma string com 5 linhas.
+    // A sintaxe com crases (`) permite escrever a string em várias linhas.
+    let img = images.createImage(`
+        . # # # .
+        # # # # #
+        # # # # #
+        . # # # .
+        . . # . .
+    `);
+
+    // Exibe a imagem no display. O argumento 0 indica que a imagem
+    // deve aparecer sem animação de rolagem.
+    img.showImage(0);
+
+    // Pausa a execução do programa por 500 milissegundos (meio segundo)
+    // para que o usuário possa ver a imagem antes que outra ação ocorra.
+    basic.pause(500);
 }
 
+/**
+ * ----------------------------------------------------------------
+ * FUNÇÃO: quadrado()
+ * ----------------------------------------------------------------
+ * Exibe um quadrado totalmente preenchido no display.
+ * Todos os 25 LEDs são acesos, formando um bloco luminoso.
+ *
+ * Padrão usado (linha a linha):
+ *   # # # # #    ->  "#####"
+ *   # # # # #    ->  "#####"
+ *   # # # # #    ->  "#####"
+ *   # # # # #    ->  "#####"
+ *   # # # # #    ->  "#####"
+ *
+ * Este é um exemplo simples de uma figura geométrica básica.
+ */
 function quadrado() {
-  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  img.showImage(0)
-  basic.pause(500)
+    // Cria a imagem com todas as posições preenchidas ('#').
+    let img = images.createImage(`
+        #####
+        #####
+        #####
+        #####
+        #####
+    `);
+
+    // Mostra a imagem no display.
+    img.showImage(0);
+
+    // Aguarda 500 ms para visualização.
+    basic.pause(500);
 }
 
+/**
+ * ----------------------------------------------------------------
+ * FUNÇÃO: flechaCima()
+ * ----------------------------------------------------------------
+ * Exibe uma seta apontando para cima.
+ * O desenho simula uma flecha com ponta triangular e corpo central.
+ *
+ * Padrão usado (linha a linha):
+ *   . . # . .    ->  "..#.."
+ *   . # # # .    ->  ".###."
+ *   # # # # #    ->  "#####"
+ *   . # . # .    ->  ".#.#."
+ *   . # . # .    ->  ".#.#."
+ *
+ * A ponta da seta está na linha superior (um LED central),
+ * seguida por uma linha mais larga e depois o corpo vertical.
+ */
 function flechaCima() {
-  let img = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  img.showImage(0)
-  basic.pause(500)
-}</code></pre>
+    // Cria a imagem da seta para cima.
+    let img = images.createImage(`
+        ..#..
+        .###.
+        #####
+        .#.#.
+        .#.#.
+    `);
+
+    // Exibe a imagem.
+    img.showImage(0);
+
+    // Pausa para visualização.
+    basic.pause(500);
+}
+
+/**
+ * =====================================================================
+ * COMO UTILIZAR ESTAS FUNÇÕES NO MAKECODE
+ * =====================================================================
+ * Para testar, você pode chamar as funções em blocos de eventos,
+ * por exemplo:
+ *
+ * 1) No bloco "no iniciar", chame uma das funções:
+ *    coracao();
+ *
+ * 2) Ao pressionar o botão A, chame outra:
+ *    input.onButtonPressed(Button.A, function () {
+ *        quadrado();
+ *    });
+ *
+ * 3) Ao pressionar o botão B, chame a terceira:
+ *    input.onButtonPressed(Button.B, function () {
+ *        flechaCima();
+ *    });
+ *
+ * Lembre-se de que o MakeCode já possui blocos prontos para ícones,
+ * mas este código mostra como criar imagens personalizadas pixel a pixel,
+ * o que é essencial para projetos mais criativos.
+ *
+ * =====================================================================
+ * OBSERVAÇÕES FINAIS
+ * =====================================================================
+ * - As imagens foram corrigidas para que apareçam corretamente no display.
+ * - A estrutura original (funções separadas) foi mantida.
+ * - Os comentários foram adicionados para explicar cada etapa,
+ *   tornando o código adequado para fins didáticos.
+ * =====================================================================
+ */</code></pre>
 
                 <p><strong>Código 2: Função que Chama Funções</strong></p>
-                <pre><code>function sequenciaBasica() {
+                <pre><code>/**
+ * ======================================================================
+ * PROJETO DIDÁTICO PARA MICRO:BIT - SEQUÊNCIAS DE ANIMAÇÕES
+ * ======================================================================
+ * 
+ * Este código foi desenvolvido para ser executado em um micro:bit,
+ * uma placa educacional com uma matriz de 25 LEDs (5x5) que podem
+ * exibir imagens, ícones e animações. O programa é escrito na
+ * linguagem JavaScript (com a biblioteca do MakeCode) e contém duas
+ * funções principais que organizam sequências de animações.
+ * 
+ * As funções auxiliares 'coracao()', 'quadrado()' e 'flechaCima()'
+ * não estão definidas neste trecho – presume-se que estejam em outra
+ * parte do código ou que sejam funções importadas. Elas são chamadas
+ * para exibir imagens fixas na matriz de LEDs.
+ * 
+ * OBJETIVO: Demonstrar o uso de funções, loops, pausas e manipulação
+ * de imagens para criar animações simples no micro:bit.
+ * 
+ * ======================================================================
+ */
+
+/**
+ * Função que executa uma sequência básica de três animações,
+ * uma após a outra, sem pausas entre elas (a menos que as funções
+ * internas já contenham pausas).
+ * 
+ * Esta função é um exemplo de como organizar um roteiro de animações
+ * de forma modular, chamando outras funções que realizam tarefas
+ * específicas.
+ */
+function sequenciaBasica() {
+  // Exibe um ícone de coração na matriz de LEDs.
+  // Função definida externamente.
   coracao()
+  
+  // Exibe um quadrado (contorno ou preenchido) na matriz.
+  // Função definida externamente.
   quadrado()
+  
+  // Exibe uma seta apontando para cima.
+  // Função definida externamente.
   flechaCima()
 }
 
+/**
+ * Função que executa uma "dança simples" composta por três repetições
+ * de um mesmo padrão: exibir uma seta para cima, pausar, limpar a tela
+ * e pausar novamente. O efeito visual é um piscar da seta.
+ * 
+ * Esta função demonstra o uso de:
+ * - Estrutura de repetição 'for' para executar um bloco várias vezes.
+ * - A função 'basic.pause()' para controlar o tempo entre os quadros.
+ * - Criação e exibição de uma imagem vazia (todos os LEDs apagados)
+ *   para simular a limpeza da tela.
+ */
 function dancaSimples() {
-  for (let i = 0; i &lt; 3; i++) {
+  // Repete o bloco abaixo exatamente 3 vezes (i = 0, 1, 2)
+  for (let i = 0; i < 3; i++) {
+    
+    // Exibe a seta apontando para cima (função externa)
     flechaCima()
+    
+    // Aguarda 100 milissegundos (0,1 segundo) para que a imagem
+    // fique visível por um breve período antes de apagar.
     basic.pause(100)
-    let baixo = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    
+    // Cria uma imagem vazia: uma string com 25 pontos ('.') que
+    // representa todos os LEDs apagados (intensidade 0).
+    // A string é dividida em 5 linhas de 5 caracteres cada.
+    let baixo = images.createImage(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+    `)
+    
+    // Exibe a imagem vazia na matriz de LEDs.
+    // O parâmetro '0' indica a duração em milissegundos; com 0,
+    // a imagem é mostrada por um tempo mínimo (praticamente
+    // instantâneo). Na prática, isso equivale a "limpar" a tela,
+    // pois todos os LEDs são apagados.
     baixo.showImage(0)
+    
+    // Aguarda mais 100 ms para que a tela permaneça apagada antes
+    // da próxima iteração, criando o efeito de pisca-pisca.
     basic.pause(100)
   }
-}</code></pre>
+}
+
+/**
+ * ======================================================================
+ * OBSERVAÇÕES DIDÁTICAS E POSSÍVEIS MELHORIAS
+ * ======================================================================
+ * 
+ * 1. As funções 'coracao()', 'quadrado()' e 'flechaCima()' precisam
+ *    ser implementadas ou importadas para que o código funcione.
+ *    Elas provavelmente usam 'basic.showLeds()' ou 'images.createImage()'
+ *    para desenhar as formas na matriz.
+ * 
+ * 2. A função 'dancaSimples()' utiliza uma imagem vazia para apagar
+ *    a tela. Uma alternativa mais direta seria usar 'basic.clearScreen()',
+ *    que limpa todos os LEDs sem precisar criar uma imagem.
+ * 
+ * 3. A duração das pausas (100 ms) pode ser ajustada para tornar a
+ *    animação mais rápida ou mais lenta, alterando o valor passado
+ *    para 'basic.pause()'.
+ * 
+ * 4. O loop 'for' com 3 repetições pode ser modificado para um número
+ *    diferente de itens ou até mesmo um loop infinito (com 'while(true)')
+ *    para criar uma animação contínua.
+ * 
+ * 5. Este código é um excelente ponto de partida para explorar outras
+ *    animações, como combinações de imagens, alterações de brilho e
+ *    sincronização com eventos (como botões ou sensor de movimento).
+ * 
+ * ======================================================================
+ */</code></pre>
 
                 <p>
                   <strong>Código 3: Função Principal (A MATRIOSKA MAIOR)</strong>
                 </p>
-                <pre><code>function espetaculoCompleto() {
-  basic.showString("A")
-  sequenciaBasica()
-  basic.showString("B")
-  dancaSimples()
-  basic.showString("C")
-  for (let i = 0; i &lt; 5; i++) {
-    coracao()
-    basic.pause(100)
-    basic.clearScreen()
-    basic.pause(100)
-  }
+                <pre><code>/**
+ * ========================================================================
+ * PROJETO: ESPETÁCULO NO MICRO:BIT
+ * ========================================================================
+ * Este código foi criado para ser executado em um micro:bit, utilizando
+ * a plataforma MakeCode (programação em blocos ou JavaScript).
+ * 
+ * OBJETIVO:
+ *   Ao pressionar o botão A, o micro:bit executa uma sequência de ações
+ *   que formam um "espetáculo" com animações, mensagens e efeitos visuais.
+ * 
+ * ESTRUTURA PRINCIPAL:
+ *   1. Função `espetaculoCompleto()`: orquestra todo o show.
+ *   2. Função `input.onButtonPressed()`: captura o evento do botão A.
+ * 
+ * OBSERVAÇÕES IMPORTANTES:
+ *   - As funções `sequenciaBasica()`, `dancaSimples()` e `coracao()` NÃO
+ *     estão definidas neste código. Elas devem ser implementadas em outro
+ *     local do projeto (ou em blocos equivalentes) para que o programa
+ *     funcione completamente. Aqui, apenas chamamos essas funções,
+ *     confiando que elas existem e contêm suas próprias instruções.
+ *   - O código foi mantido exatamente como foi fornecido; apenas
+ *     adicionamos comentários detalhados para fins didáticos.
+ * ========================================================================
+ */
+
+
+/**
+ * ----------------------------------------------------------------
+ * FUNÇÃO: espetaculoCompleto()
+ * ----------------------------------------------------------------
+ * Esta é a função principal que organiza todo o espetáculo.
+ * Ela é chamada quando o botão A é pressionado.
+ * 
+ * Passos executados:
+ *   1. Exibe a letra "A" no display de LED do micro:bit.
+ *   2. Chama a função `sequenciaBasica()` (definida em outro lugar).
+ *   3. Exibe a letra "B".
+ *   4. Chama a função `dancaSimples()` (definida em outro lugar).
+ *   5. Exibe a letra "C".
+ *   6. Executa um loop que repete 5 vezes um efeito de "coração piscante".
+ * 
+ * O uso de letras (A, B, C) ajuda a identificar cada etapa do espetáculo,
+ * funcionando como um "indicador de progresso" no display.
+ */
+function espetaculoCompleto() {
+    // --------------------------------------------------------------
+    // PASSO 1: Exibe a letra "A" no display.
+    // --------------------------------------------------------------
+    // A função `basic.showString("A")` mostra o caractere "A" 
+    // rapidamente no display de LED. Cada letra é exibida por um 
+    // curto período (padrão: 150ms por caractere) e depois a tela 
+    // é apagada automaticamente. Isso indica ao usuário que a 
+    // primeira parte do espetáculo está começando.
+    basic.showString("A")
+
+    // --------------------------------------------------------------
+    // PASSO 2: Executa uma sequência básica de animações.
+    // --------------------------------------------------------------
+    // A função `sequenciaBasica()` é chamada aqui. Ela provavelmente
+    // contém uma série de animações simples (como piscar LEDs, 
+    // desenhar formas geométricas ou mover um ponto). Como não
+    // está definida neste arquivo, precisamos garantir que ela
+    // exista no projeto para que o código funcione.
+    sequenciaBasica()
+
+    // --------------------------------------------------------------
+    // PASSO 3: Exibe a letra "B".
+    // --------------------------------------------------------------
+    // Similar ao passo 1, mostramos a letra "B" para sinalizar o
+    // início da segunda parte do espetáculo.
+    basic.showString("B")
+
+    // --------------------------------------------------------------
+    // PASSO 4: Executa uma dança simples.
+    // --------------------------------------------------------------
+    // A função `dancaSimples()` é chamada. Provavelmente ela contém
+    // movimentos rítmicos de LEDs ou padrões que simulam uma dança.
+    dancaSimples()
+
+    // --------------------------------------------------------------
+    // PASSO 5: Exibe a letra "C".
+    // --------------------------------------------------------------
+    // Mostra a letra "C" para indicar o início da terceira e última
+    // parte do espetáculo.
+    basic.showString("C")
+
+    // --------------------------------------------------------------
+    // PASSO 6: Loop que repete 5 vezes um efeito de coração pulsante.
+    // --------------------------------------------------------------
+    // Usamos um laço `for` para repetir um bloco de instruções
+    // um número determinado de vezes. A estrutura é:
+    //   for (let i = 0; i < 5; i++) { ... }
+    //   - `let i = 0` → cria uma variável `i` (contador) e inicia com 0.
+    //   - `i < 5` → enquanto `i` for menor que 5, o loop continua.
+    //   - `i++` → após cada execução, incrementa `i` em 1.
+    // Isso faz com que o bloco dentro das chaves seja executado
+    // exatamente 5 vezes (i = 0, 1, 2, 3, 4).
+    for (let i = 0; i < 5; i++) {
+        // ----------------------------------------------------------
+        // CHAMADA DA FUNÇÃO coracao()
+        // ----------------------------------------------------------
+        // A função `coracao()` provavelmente desenha um ícone de
+        // coração no display de LED. Ela não está definida aqui,
+        // mas deve existir em outro lugar do projeto.
+        coracao()
+
+        // ----------------------------------------------------------
+        // PAUSA DE 100 MILISSEGUNDOS (0,1 segundo)
+        // ----------------------------------------------------------
+        // A função `basic.pause(100)` faz o programa "dormir" por
+        // 100 milissegundos. Isso cria um pequeno atraso entre as
+        // ações, permitindo que o coração fique visível por um
+        // instante antes de ser apagado.
+        basic.pause(100)
+
+        // ----------------------------------------------------------
+        // LIMPAR A TELA (display)
+        // ----------------------------------------------------------
+        // A função `basic.clearScreen()` apaga todos os LEDs do
+        // display, deixando a tela completamente escura.
+        basic.clearScreen()
+
+        // ----------------------------------------------------------
+        // PAUSA DE 100 MILISSEGUNDOS NOVAMENTE
+        // ----------------------------------------------------------
+        // Após apagar a tela, esperamos mais 100 ms para que o
+        // "piscamento" seja percebido pelo olho humano. Assim,
+        // criamos um efeito de coração que pisca (liga e desliga)
+        // repetidamente.
+        basic.pause(100)
+    }
+    // Ao final do loop, o espetáculo termina. O display fica
+    // apagado (pois a última ação foi `clearScreen` seguida de
+    // uma pausa). 
 }
 
+
+/**
+ * ----------------------------------------------------------------
+ * EVENTO: Pressionar o botão A
+ * ----------------------------------------------------------------
+ * O micro:bit possui dois botões programáveis (A e B). 
+ * A função `input.onButtonPressed()` configura uma ação que será
+ * executada sempre que o botão especificado for pressionado.
+ * 
+ * Sintaxe:
+ *   input.onButtonPressed(Button.A, function () { ... })
+ * 
+ *   - O primeiro parâmetro `Button.A` indica que queremos 
+ *     monitorar o botão A.
+ *   - O segundo parâmetro é uma função anônima (sem nome) que
+ *     contém as instruções a serem executadas quando o botão for
+ *     pressionado.
+ * 
+ * Neste projeto, quando o botão A for pressionado, chamamos a
+ * função `espetaculoCompleto()`, que inicia todo o show.
+ * 
+ * IMPORTANTE: O micro:bit executa essa função apenas uma vez por
+ * pressionamento. Se o usuário quiser repetir o espetáculo, deve
+ * pressionar o botão A novamente.
+ */
 input.onButtonPressed(Button.A, function () {
-  espetaculoCompleto()
-})</code></pre>
+    // Ao pressionar o botão A, executamos a função que contém
+    // todo o espetáculo.
+    espetaculoCompleto()
+})
+
+
+/**
+ * ========================================================================
+ * NOTAS FINAIS PARA O ESTUDANTE / PROFESSOR
+ * ========================================================================
+ * 1. Para que este código funcione completamente, você precisa 
+ *    implementar as funções:
+ *      - `sequenciaBasica()`
+ *      - `dancaSimples()`
+ *      - `coracao()`
+ *    Elas podem ser criadas usando blocos ou JavaScript no MakeCode.
+ * 
+ * 2. Experimente modificar os valores de pausa (100 ms) para 
+ *    acelerar ou desacelerar o efeito de piscamento.
+ * 
+ * 3. Altere o número de repetições no loop (atualmente 5) para 
+ *    mais ou menos batidas do coração.
+ * 
+ * 4. Adicione novas mensagens ou animações para tornar o espetáculo
+ *    ainda mais interessante!
+ * 
+ * DIVIRTA-SE PROGRAMANDO E APRENDENDO COM O MICRO:BIT!
+ * ========================================================================
+ */ </code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -1352,107 +2334,348 @@ input.onButtonPressed(Button.A, function () {
                 <pre><code>// ==========================================
 // CARDÁPIO DE FUNÇÕES - RESTAURANTE MICRO:BIT
 // ==========================================
+//
+// Este código foi desenvolvido para a placa micro:bit 
+// e pode ser utilizado no ambiente MakeCode (Microsoft).
+// O projeto simula um "restaurante" com um cardápio 
+// interativo, onde cada botão (A, B, AB) aciona 
+// diferentes "pratos" (animações no display de LEDs).
+//
+// O objetivo é ensinar conceitos de programação:
+// - Funções (criação e chamada)
+// - Parâmetros e argumentos
+// - Estruturas de repetição (for)
+// - Estruturas condicionais (if/else)
+// - Variáveis locais e globais
+// - Geração de números aleatórios
+// - Animações com matriz de LEDs
+// - Interação com botões físicos
+// - Sequenciamento de ações (pausas)
+//
+// Todo o código está comentado linha a linha para 
+// facilitar o entendimento de cada instrução.
+// ==========================================
 
+
+// ==========================================
 // ENTRADAS - ANIMAÇÕES SIMPLES
+// ==========================================
+
+/**
+ * Função 'entradaCoração':
+ * Exibe uma animação de um coração no display.
+ * É considerada uma "entrada" do cardápio,
+ * pois é uma animação curta e simples.
+ */
 function entradaCoração() {
-  basic.clearScreen()
-  let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  coracao.showImage(0)
-  basic.pause(1000)
-  basic.clearScreen()
+    // Limpa todos os LEDs do display, apagando qualquer imagem anterior.
+    basic.clearScreen()
+
+    // Cria uma imagem (matriz 5x5) a partir de uma string.
+    // A string usa '#' para LEDs acesos e '.' para apagados.
+    // CORREÇÃO: Agora a imagem representa um coração.
+    // Linhas:
+    // 0: . # . # .   (dois pontos laterais e dois centrais acesos)
+    // 1: # # # # #   (toda a linha acesa)
+    // 2: # # # # #   (toda a linha acesa)
+    // 3: . # # # .   (borda inferior do coração)
+    // 4: . . # . .   (ponta inferior do coração)
+    let coracao = images.createImage(`
+    . # . # .
+    # # # # #
+    # # # # #
+    . # # # .
+    . . # . .
+  `)
+
+    // Exibe a imagem criada no display, com atraso de 0 ms (imediato).
+    // O parâmetro 0 indica que não há animação de rolagem.
+    coracao.showImage(0)
+
+    // Pausa a execução por 1000 milissegundos (1 segundo)
+    // para que o usuário possa ver a imagem.
+    basic.pause(1000)
+
+    // Limpa o display novamente, apagando a imagem.
+    basic.clearScreen()
 }
 
+/**
+ * Função 'entradaFoguete':
+ * Exibe uma animação de um foguete no display.
+ * Similar à função anterior, mas com outra imagem.
+ */
 function entradaFoguete() {
-  basic.clearScreen()
-  let foguete = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  foguete.showImage(0)
-  basic.pause(1000)
-  basic.clearScreen()
+    // Limpa o display.
+    basic.clearScreen()
+
+    // Cria uma imagem de foguete.
+    // CORREÇÃO: Agora a imagem representa um foguete com chamas.
+    // Linhas:
+    // 0: . . # . .   (topo do foguete)
+    // 1: . # # # .   (corpo superior)
+    // 2: # # # # #   (parte mais larga)
+    // 3: . # . # .   (janelas ou detalhes)
+    // 4: . . # . .   (chama na base)
+    let foguete = images.createImage(`
+    . . # . .
+    . # # # .
+    # # # # #
+    . # . # .
+    . . # . .
+  `)
+
+    // Exibe a imagem.
+    foguete.showImage(0)
+
+    // Pausa de 1 segundo.
+    basic.pause(1000)
+
+    // Apaga o display.
+    basic.clearScreen()
 }
 
+
+// ==========================================
 // PRATO PRINCIPAL - ANIMAÇÕES COMPLEXAS (COM PARÂMETROS)
+// ==========================================
+
+/**
+ * Função 'pratoAnimado':
+ * Recebe um número (parâmetro 'numero') e executa uma animação:
+ * - Mostra o número no display
+ * - Pisca o LED central (2,2) repetidas vezes, conforme o valor de 'numero'
+ *
+ * @param numero - Quantidade de piscadas que o LED central dará.
+ *                 O valor deve ser um número inteiro.
+ */
 function pratoAnimado(numero: number) {
-  basic.clearScreen()
-  basic.showNumber(numero)
-  basic.pause(500)
-  for (let i = 0; i &lt; numero; i++) {
-    led.plot(2, 2)
-    basic.pause(100)
-    led.unplot(2, 2)
-    basic.pause(100)
-  }
+    // Limpa o display para começar a animação.
+    basic.clearScreen()
+
+    // Mostra o número recebido como parâmetro no display de LEDs.
+    // A função 'showNumber' exibe dígitos grandes (rolagem) no display.
+    basic.showNumber(numero)
+
+    // Pausa de 500 ms (meio segundo) para o número ser visualizado.
+    basic.pause(500)
+
+    // Loop 'for' que executa 'numero' vezes.
+    // A variável 'i' começa em 0 e vai até 'numero - 1'.
+    for (let i = 0; i < numero; i++) {
+        // Acende o LED localizado na coluna 2, linha 2 (central).
+        // Lembrando que as coordenadas vão de 0 a 4.
+        led.plot(2, 2)
+
+        // Pausa de 100 ms (0,1 segundo) para o LED ficar aceso.
+        basic.pause(100)
+
+        // Apaga o LED central (coluna 2, linha 2).
+        led.unplot(2, 2)
+
+        // Pausa de 100 ms para o LED ficar apagado.
+        basic.pause(100)
+    }
+    // Após o loop, a função termina e o display fica com o LED apagado.
 }
 
+/**
+ * Função 'pratoForma':
+ * Desenha um quadrado (ou retângulo) no display,
+ * cujo tamanho é definido pelo parâmetro 'tamanho'.
+ * O quadrado é desenhado a partir do canto superior esquerdo (0,0).
+ *
+ * @param tamanho - Número de linhas e colunas do quadrado.
+ *                  O valor máximo é 5, pois o display tem 5x5.
+ *                  Se 'tamanho' for maior que 5, o loop limita a 5.
+ */
 function pratoForma(tamanho: number) {
-  basic.clearScreen()
-  for (let linha = 0; linha &lt; tamanho && linha &lt; 5; linha++) {
-    for (let coluna = 0; coluna &lt; tamanho && coluna &lt; 5; coluna++) {
-      led.plot(coluna, linha)
+    // Limpa o display.
+    basic.clearScreen()
+
+    // Loop externo: percorre as linhas (eixo Y).
+    // A condição 'linha < tamanho && linha < 5' garante que
+    // não ultrapassaremos os limites do display (máximo 5 linhas).
+    for (let linha = 0; linha < tamanho && linha < 5; linha++) {
+        // Loop interno: percorre as colunas (eixo X).
+        // Da mesma forma, limita a 'tamanho' e a 5 colunas.
+        for (let coluna = 0; coluna < tamanho && coluna < 5; coluna++) {
+            // Acende o LED na posição (coluna, linha).
+            // Isso desenha um quadrado preenchido.
+            led.plot(coluna, linha)
+        }
     }
-  }
-  basic.pause(1000)
-  basic.clearScreen()
+
+    // Pausa de 1000 ms (1 segundo) para exibir a forma desenhada.
+    basic.pause(1000)
+
+    // Limpa o display após a pausa.
+    basic.clearScreen()
 }
 
+
+// ==========================================
 // SOBREMESA - ANIMAÇÕES ANINHADAS
+// ==========================================
+
+/**
+ * Função 'sobremesaFelicidade':
+ * Combina várias funções anteriores para criar
+ * uma sequência de animações que transmitem felicidade.
+ * É chamada de "sobremesa" por ser uma combinação mais elaborada.
+ */
 function sobremesaFelicidade() {
-  entradaCoração()
-  basic.pause(200)
-  pratoAnimado(3)
-  basic.pause(200)
-  entradaFoguete()
-}
-
-function sobremesaFesta() {
-  for (let i = 0; i &lt; 3; i++) {
+    // Chama a função que exibe o coração (entrada).
     entradaCoração()
-    basic.pause(100)
-    pratoForma(i + 1)
-    basic.pause(100)
-  }
-  for (let i = 0; i &lt; 5; i++) {
-    if (i % 2 == 0) {
-      entradaCoração()
-    } else {
-      basic.clearScreen()
-    }
+
+    // Pausa de 200 ms entre as animações.
     basic.pause(200)
-  }
+
+    // Chama a função 'pratoAnimado' com o argumento 3,
+    // ou seja, o LED central piscará 3 vezes.
+    pratoAnimado(3)
+
+    // Pausa de 200 ms.
+    basic.pause(200)
+
+    // Chama a função que exibe o foguete (entrada).
+    entradaFoguete()
 }
 
+/**
+ * Função 'sobremesaFesta':
+ * Cria uma animação mais longa e variada,
+ * combinando repetições de entradas e pratos.
+ * Simula uma "festa" com várias animações.
+ */
+function sobremesaFesta() {
+    // Primeiro bloco: repete 3 vezes uma sequência:
+    // coração -> pausa -> forma com tamanho crescente -> pausa
+    for (let i = 0; i < 3; i++) {
+        // Exibe coração.
+        entradaCoração()
+
+        // Pausa curta.
+        basic.pause(100)
+
+        // Chama 'pratoForma' com tamanho 'i+1'.
+        // Na primeira iteração (i=0) desenha um quadrado 1x1,
+        // na segunda (i=1) 2x2, e na terceira (i=2) 3x3.
+        pratoForma(i + 1)
+
+        // Pausa curta.
+        basic.pause(100)
+    }
+
+    // Segundo bloco: repete 5 vezes alternando entre
+    // exibir coração e limpar o display, criando um efeito de pisca.
+    for (let i = 0; i < 5; i++) {
+        // Verifica se o índice 'i' é par (resto da divisão por 2 é zero).
+        if (i % 2 == 0) {
+            // Se for par, exibe o coração.
+            entradaCoração()
+        } else {
+            // Se for ímpar, limpa o display.
+            basic.clearScreen()
+        }
+        // Pausa de 200 ms entre cada estado.
+        basic.pause(200)
+    }
+}
+
+
+// ==========================================
 // PROGRAMA PRINCIPAL - O MENU INTERATIVO
+// ==========================================
+
+// A execução do programa começa aqui, após a definição de todas as funções.
+
+// Exibe a palavra "MENU" no display, com rolagem de caracteres.
 basic.showString("MENU")
+
+// Pausa de 500 ms para dar tempo de ler o menu.
 basic.pause(500)
 
+
+// ------------------------------------------
+// Evento associado ao botão A
+// ------------------------------------------
+// Quando o botão A for pressionado, executa a função anônima abaixo.
 input.onButtonPressed(Button.A, function () {
-  basic.showString("A")
-  basic.pause(300)
-  entradaCoração()
-  basic.pause(200)
-  entradaFoguete()
+    // Mostra a letra "A" no display para indicar que o botão A foi pressionado.
+    basic.showString("A")
+
+    // Pausa de 300 ms para visualizar a letra.
+    basic.pause(300)
+
+    // Chama a animação de coração.
+    entradaCoração()
+
+    // Pausa de 200 ms.
+    basic.pause(200)
+
+    // Chama a animação de foguete.
+    entradaFoguete()
 })
 
+// ------------------------------------------
+// Evento associado ao botão B
+// ------------------------------------------
+// Quando o botão B for pressionado, executa a função anônima abaixo.
 input.onButtonPressed(Button.B, function () {
-  basic.showString("B")
-  basic.pause(300)
-  let escolha = Math.randomRange(0, 1)
-  if (escolha == 0) {
-    pratoAnimado(Math.randomRange(1, 9))
-  } else {
-    pratoForma(Math.randomRange(1, 5))
-  }
+    // Mostra a letra "B" no display.
+    basic.showString("B")
+
+    // Pausa de 300 ms.
+    basic.pause(300)
+
+    // Gera um número aleatório entre 0 e 1 (inclusive) e armazena em 'escolha'.
+    // Isso define aleatoriamente qual "prato principal" será executado.
+    let escolha = Math.randomRange(0, 1)
+
+    // Estrutura condicional: se 'escolha' for igual a 0,
+    // executa o pratoAnimado com um número aleatório entre 1 e 9.
+    if (escolha == 0) {
+        // Gera um número aleatório entre 1 e 9 e passa como argumento.
+        pratoAnimado(Math.randomRange(1, 9))
+    } else {
+        // Caso contrário (escolha == 1), executa pratoForma
+        // com um tamanho aleatório entre 1 e 5.
+        pratoForma(Math.randomRange(1, 5))
+    }
+    // Após a execução, a função termina e o display fica como a função o deixou.
 })
 
+// ------------------------------------------
+// Evento associado aos botões A e B simultaneamente (AB)
+// ------------------------------------------
+// Quando os botões A e B forem pressionados juntos, executa a função abaixo.
 input.onButtonPressed(Button.AB, function () {
-  basic.showString("C")
-  basic.pause(300)
-  let escolha = Math.randomRange(0, 1)
-  if (escolha == 0) {
-    sobremesaFelicidade()
-  } else {
-    sobremesaFesta()
-  }
-})</code></pre>
+    // Mostra a letra "C" no display (representando a combinação dos dois).
+    basic.showString("C")
+
+    // Pausa de 300 ms.
+    basic.pause(300)
+
+    // Gera um número aleatório entre 0 e 1 para escolher a sobremesa.
+    let escolha = Math.randomRange(0, 1)
+
+    // Se 'escolha' for 0, executa a sobremesaFelicidade.
+    if (escolha == 0) {
+        sobremesaFelicidade()
+    } else {
+        // Senão, executa a sobremesaFesta.
+        sobremesaFesta()
+    }
+})
+
+// ==========================================
+// FIM DO PROGRAMA
+// ==========================================
+// Após a configuração dos eventos, o micro:bit fica "ouvindo"
+// os botões. O programa principal termina, mas os eventos
+// permanecem ativos aguardando interação do usuário.
+// ==========================================</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -1696,79 +2919,342 @@ input.onButtonPressed(Button.AB, function () {
                   <strong>Código 1: Operador AND (E) - Os Dois Precisam Ser
                     Verdade</strong>
                 </p>
-                <pre><code>let estadoA = false
+                <pre><code>// ============================================================
+// PROJETO DIDÁTICO: SIMULADOR DE PORTA LÓGICA AND
+// ============================================================
+// Este programa usa dois botões (A e B) para representar duas
+// entradas lógicas (A e B). Cada botão alterna o estado da sua
+// respectiva entrada (ligado/desligado).
+// A matriz de LEDs mostra visualmente:
+//   - LED no canto superior esquerdo (0,0) → estado da entrada A
+//   - LED no canto inferior esquerdo (0,4) → estado da entrada B
+//   - LED no centro direito (4,2) → resultado da operação AND
+// Quando ambas as entradas estão verdadeiras (true), o LED do
+// centro direito acende, a palavra "AND" é exibida no display
+// e, após uma pausa, a tela é restaurada com os LEDs das entradas.
+// ============================================================
+
+// Declaração das variáveis que armazenam o estado lógico de cada entrada.
+// Inicialmente, ambas começam como "falso" (desligadas).
+let estadoA = false
 let estadoB = false
 
+// ============================================================
+// Evento: pressionamento do botão A
+// ============================================================
+// Quando o botão A é pressionado, alternamos o estado da entrada A
+// (se estava falso, vira verdadeiro; se verdadeiro, vira falso).
+// Em seguida, atualizamos o LED correspondente no display e
+// verificamos se a condição AND agora é verdadeira.
 input.onButtonPressed(Button.A, function () {
-  estadoA = !estadoA
-  if (estadoA) {
-    led.plot(0, 0)
-  } else {
-    led.unplot(0, 0)
-  }
-  verificarAND()
+    // Inverte o valor booleano de estadoA (true ↔ false)
+    estadoA = !estadoA
+
+    // Se estadoA for verdadeiro, acende o LED na coluna 0, linha 0
+    // (canto superior esquerdo) para indicar que a entrada A está ativa.
+    if (estadoA) {
+        led.plot(0, 0)
+    } else {
+        // Caso contrário, apaga esse LED.
+        led.unplot(0, 0)
+    }
+
+    // Chama a função que verifica se ambas as entradas estão ativas
+    // (operação lógica AND) e atualiza o display conforme o resultado.
+    verificarAND()
 })
 
+// ============================================================
+// Evento: pressionamento do botão B
+// ============================================================
+// Funciona de forma análoga ao botão A, mas para a entrada B.
+// O LED da entrada B fica na coluna 0, linha 4 (canto inferior esquerdo).
 input.onButtonPressed(Button.B, function () {
-  estadoB = !estadoB
-  if (estadoB) {
-    led.plot(0, 4)
-  } else {
-    led.unplot(0, 4)
-  }
-  verificarAND()
+    // Inverte o estado da entrada B
+    estadoB = !estadoB
+
+    // Atualiza o LED que representa a entrada B
+    if (estadoB) {
+        led.plot(0, 4)
+    } else {
+        led.unplot(0, 4)
+    }
+
+    // Verifica novamente a condição AND, pois o estado B mudou.
+    verificarAND()
 })
 
+// ============================================================
+// Função que calcula e exibe o resultado da operação AND
+// ============================================================
+// Esta função é chamada sempre que um dos botões é pressionado.
+// Ela apaga qualquer indicação anterior do resultado e, se
+// ambas as entradas forem verdadeiras, acende o LED do resultado,
+// mostra a palavra "AND" na tela, aguarda meio segundo e depois
+// restaura a tela com os LEDs das entradas (para não perder a
+// indicação visual).
 function verificarAND() {
-  led.unplot(4, 2)
-  if (estadoA && estadoB) {
-    led.plot(4, 2)
-    basic.showString("AND")
-    basic.pause(500)
-    basic.clearScreen()
-    if (estadoA) { led.plot(0, 0) }
-    if (estadoB) { led.plot(0, 4) }
-  }
+    // Primeiro, apaga o LED que representa o resultado AND
+    // (coluna 4, linha 2 – centro direito da matriz 5x5).
+    led.unplot(4, 2)
+
+    // Testa se ambas as variáveis são verdadeiras (operação AND)
+    if (estadoA && estadoB) {
+        // Se a condição for verdadeira, acende o LED do resultado.
+        led.plot(4, 2)
+
+        // Exibe a palavra "AND" no display, rolando os caracteres.
+        basic.showString("AND")
+
+        // Faz uma pausa de 500 milissegundos (meio segundo) para que
+        // o usuário possa ler a mensagem.
+        basic.pause(500)
+
+        // Apaga todo o conteúdo da matriz de LEDs para preparar a
+        // restauração dos LEDs das entradas.
+        basic.clearScreen()
+
+        // Restaura os LEDs das entradas, caso estejam ativas.
+        // Isso é necessário porque o showString e o clearScreen
+        // apagaram tudo. Reacendemos cada entrada se ela estiver ativa.
+        if (estadoA) {
+            led.plot(0, 0)   // acende entrada A novamente
+        }
+        if (estadoB) {
+            led.plot(0, 4)   // acende entrada B novamente
+        }
+    }
+    // Se a condição AND não for satisfeita, o LED do resultado
+    // permanece apagado (já foi apagado no início da função) e
+    // nada mais é feito.
 }</code></pre>
 
                 <p>
                   <strong>Código 2: Operador OR (OU) - Basta Um Ser Verdade</strong>
                 </p>
-                <pre><code>function mostrarOR() {
+                <pre><code>// ================================================================
+// FUNÇÃO: mostrarOR
+// ================================================================
+// Objetivo: Esta função implementa a visualização do resultado de
+// uma operação lógica OR (OU) entre duas variáveis booleanas,
+// chamadas estadoA e estadoB. Ela é projetada para ser executada
+// no micro:bit, utilizando a matriz de 5x5 LEDs para fornecer
+// feedback visual.
+//
+// Quando chamada, a função:
+//   1. Apaga o LED central (posição 4,2) para começar com a tela limpa.
+//   2. Verifica se estadoA OU estadoB é verdadeiro (operação OR).
+//   3. Se verdadeiro:
+//      - Acende o LED central (4,2) para indicar saída ativa.
+//      - Exibe a palavra "OR" rolando na matriz.
+//      - Pausa por 0,5 segundo para leitura.
+//      - Limpa a tela.
+//      - Acende LEDs nos cantos superiores/inferiores esquerdos
+//        para indicar quais entradas (A e/ou B) estão ativas.
+//   4. Se falso (ambas as entradas são 0), nada é exibido.
+//
+// As variáveis estadoA e estadoB devem ser definidas globalmente
+// ou em escopo superior, representando os valores das entradas
+// da porta lógica (normalmente 0 ou 1, true ou false).
+// ================================================================
+
+function mostrarOR() {
+  // --------------------------------------------------------------
+  // led.unplot(x, y) apaga (desliga) o LED na coluna x e linha y.
+  // Coordenadas: x (0 a 4) e y (0 a 4), onde (0,0) é o canto
+  // superior esquerdo e (4,4) o canto inferior direito.
+  // A posição (4,2) está na coluna mais à direita, linha central.
+  // Apagamos este LED para garantir que ele comece desligado,
+  // independentemente do estado anterior.
+  // --------------------------------------------------------------
   led.unplot(4, 2)
+
+  // --------------------------------------------------------------
+  // Estrutura condicional if: testa a expressão (estadoA || estadoB).
+  // O operador || (OU lógico) retorna true se pelo menos uma das
+  // variáveis for verdadeira (true). Se ambas forem false, retorna false.
+  // Este é o comportamento da porta lógica OR: saída = A + B.
+  // --------------------------------------------------------------
   if (estadoA || estadoB) {
+
+    // ------------------------------------------------------------
+    // led.plot(x, y) acende o LED na posição especificada.
+    // Aqui acendemos o LED central (4,2) para sinalizar que a
+    // saída da porta OR é 1 (ativa). Isso fornece um indicador
+    // visual claro no centro da matriz.
+    // ------------------------------------------------------------
     led.plot(4, 2)
+
+    // ------------------------------------------------------------
+    // basic.showString("OR") exibe a string "OR" na matriz de LEDs,
+    // fazendo os caracteres rolarem da direita para a esquerda.
+    // Isso reforça o significado da operação que está sendo mostrada.
+    // ------------------------------------------------------------
     basic.showString("OR")
+
+    // ------------------------------------------------------------
+    // basic.pause(500) interrompe a execução do programa por
+    // 500 milissegundos (0,5 segundos). Isso dá tempo suficiente
+    // para o usuário ler a mensagem "OR" antes que a tela seja limpa.
+    // ------------------------------------------------------------
     basic.pause(500)
+
+    // ------------------------------------------------------------
+    // basic.clearScreen() apaga todos os LEDs da matriz, deixando
+    // a tela completamente escura. Isso prepara a matriz para
+    // exibir os indicadores das entradas ativas.
+    // ------------------------------------------------------------
     basic.clearScreen()
+
+    // ------------------------------------------------------------
+    // Se estadoA for verdadeiro, acende o LED na posição (0,0) –
+    // canto superior esquerdo. Isso indica visualmente que a
+    // entrada A está em nível lógico 1 (ativa).
+    // ------------------------------------------------------------
     if (estadoA) { led.plot(0, 0) }
+
+    // ------------------------------------------------------------
+    // Se estadoB for verdadeiro, acende o LED na posição (0,4) –
+    // canto inferior esquerdo. Isso indica que a entrada B está
+    // em nível lógico 1 (ativa).
+    // ------------------------------------------------------------
     if (estadoB) { led.plot(0, 4) }
+
+    // Nota: Se ambas as entradas forem verdadeiras, ambos os LEDs
+    // (0,0) e (0,4) ficarão acesos simultaneamente, representando
+    // a situação A=1 e B=1.
   }
+  // --------------------------------------------------------------
+  // Se a condição if for falsa (ou seja, estadoA == false E
+  // estadoB == false), o bloco interno não é executado.
+  // O LED central permanece apagado (pois foi desligado no início),
+  // nenhuma mensagem é exibida e a função termina silenciosamente.
+  // Isso representa o caso em que a saída OR é 0.
+  // --------------------------------------------------------------
 }</code></pre>
 
                 <p>
                   <strong>Código 3: Operador NOT (NÃO) - O Vira-Lata da
                     Lógica</strong>
                 </p>
-                <pre><code>function mostrarNOT() {
+                <pre><code>/**
+ * =====================================================================
+ * FUNÇÃO: mostrarNOT()
+ * =====================================================================
+ * 
+ * OBJETIVO DIDÁTICO:
+ *   Esta função foi criada para demonstrar, na prática, o funcionamento
+ *   de uma porta lógica NOT (inversor) utilizando o micro:bit.
+ * 
+ *   Para isso, ela exibe no display da matriz de LEDs o valor invertido
+ *   de duas variáveis globais chamadas 'estadoA' e 'estadoB'.
+ * 
+ *   A porta NOT pega um valor de entrada (0 ou 1) e produz na saída o
+ *   valor oposto (1 ou 0). Ou seja:
+ *      - Se a entrada for 1 (verdadeiro), a saída é 0 (falso).
+ *      - Se a entrada for 0 (falso), a saída é 1 (verdadeiro).
+ * 
+ *   Este código é parte de um projeto educacional para ensinar lógica
+ *   binária e programação em blocos/texto no ambiente MakeCode.
+ * 
+ * PRÉ-REQUISITOS:
+ *   - As variáveis 'estadoA' e 'estadoB' devem ser declaradas em escopo
+ *     global (fora desta função) e devem ser do tipo booleano (true/false)
+ *     ou numérico (1/0). Elas representam os estados de entrada que podem
+ *     ser controlados, por exemplo, por botões, sensores ou valores
+ *     pré-definidos.
+ * 
+ * ESTRUTURA DA FUNÇÃO:
+ *   1. Limpa a tela para começar com o display vazio.
+ *   2. Exibe uma mensagem indicando que vamos mostrar o resultado da
+ *      porta NOT para a entrada A.
+ *   3. Pausa para que o usuário possa ler a mensagem.
+ *   4. Verifica o valor de 'estadoA' e exibe '0' se for verdadeiro
+ *      (entrada 1 → saída 0) ou '1' se for falso (entrada 0 → saída 1).
+ *   5. Pausa para visualização.
+ *   6. Repete o processo para a entrada B.
+ *   7. Pausa final antes de encerrar.
+ * 
+ * =====================================================================
+ */
+
+function mostrarNOT() {
+  // -------------------- INÍCIO DA EXECUÇÃO --------------------
+
+  // 1. Limpa completamente a matriz de LEDs do micro:bit,
+  //    apagando qualquer desenho ou texto que estiver sendo exibido.
   basic.clearScreen()
+
+  // 2. Exibe, rolando no display, a mensagem "NOT A".
+  //    Isso informa ao usuário que o próximo valor mostrado será o
+  //    resultado da operação NOT aplicada à variável 'estadoA'.
   basic.showString("NOT A")
+
+  // 3. Faz uma pausa de 500 milissegundos (meio segundo).
+  //    Isso dá tempo para que a mensagem "NOT A" seja lida antes
+  //    de mostrarmos o resultado propriamente dito.
   basic.pause(500)
+
+  // 4. Estrutura condicional que verifica o valor de 'estadoA'.
+  //    Se 'estadoA' for verdadeiro (true ou 1), significa que a
+  //    entrada é 1. A porta NOT inverte esse valor, então a saída
+  //    deve ser 0. Portanto, exibimos o caractere "0".
   if (estadoA) {
     basic.showString("0")
   } else {
+    //    Caso contrário, se 'estadoA' for falso (false ou 0),
+    //    a entrada é 0 e a saída da porta NOT é 1.
+    //    Então exibimos o caractere "1".
     basic.showString("1")
   }
+
+  // 5. Nova pausa de 500 ms para que o valor exibido (0 ou 1) possa
+  //    ser visualizado com calma antes de prosseguirmos.
   basic.pause(500)
+
+  // 6. Agora vamos repetir o mesmo processo para a segunda variável,
+  //    'estadoB'. Primeiro, exibimos a mensagem "NOT B" para indicar
+  //    que o próximo resultado é referente à entrada B.
   basic.showString("NOT B")
+
+  // 7. Pausa para leitura da mensagem.
   basic.pause(500)
+
+  // 8. Verificamos o valor de 'estadoB' e aplicamos a inversão lógica.
+  //    Se 'estadoB' for verdadeiro, exibimos "0" (pois NOT 1 = 0).
+  //    Se for falso, exibimos "1" (pois NOT 0 = 1).
   if (estadoB) {
     basic.showString("0")
   } else {
     basic.showString("1")
   }
+
+  // 9. Pausa final de 500 ms para que o último resultado fique visível
+  //    antes de a função terminar. Após esse tempo, o display pode ser
+  //    limpo novamente por outra parte do programa ou permanecer com
+  //    o último caractere exibido.
   basic.pause(500)
-}</code></pre>
+
+  // -------------------- FIM DA FUNÇÃO --------------------
+  // Após a execução, o micro:bit terá mostrado, sequencialmente:
+  //    "NOT A" → (inverso de estadoA) → "NOT B" → (inverso de estadoB)
+  // Isso permite comparar visualmente os dois resultados.
+}
+
+// =====================================================================
+// OBSERVAÇÕES FINAIS PARA O USUÁRIO:
+//   - Certifique-se de que as variáveis 'estadoA' e 'estadoB' estejam
+//     definidas em algum lugar do seu programa (por exemplo, no início
+//     do código ou em um bloco "on start").
+//   - Exemplo de definição:
+//        let estadoA = true   // ou false / 1 / 0
+//        let estadoB = false
+//   - Você pode alterar esses valores dinamicamente, por exemplo,
+//     lendo o estado de um botão (input.buttonIsPressed()) ou de um
+//     pino digital (pins.digitalReadPin()).
+//   - Execute esta função chamando 'mostrarNOT()' em algum ponto do
+//     seu programa (ex: no laço 'forever' ou ao pressionar um botão).
+// =====================================================================</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2007,118 +3493,281 @@ function verificarAND() {
                 <p>
                   <strong>Código 1: Jogo de Tabuleiro com Coordenadas</strong>
                 </p>
-                <pre><code>// VARIÁVEIS DO JOGO
+                <pre><code>/*
+ * ============================================================
+ * PROJETO: JOGO DE EXPLORAÇÃO NO MICRO:BIT
+ * ============================================================
+ * 
+ * Este é um jogo educativo para o micro:bit, onde você controla
+ * um personagem em uma matriz 5x5 de LEDs (de 0 a 4 em X e Y).
+ * O objetivo é coletar pontos, encontrar o tesouro e evitar
+ * armadilhas, até alcançar a vitória!
+ * 
+ * Controles:
+ *   - Botão A       → mover para CIMA
+ *   - Botão B       → mover para BAIXO
+ *   - Botões A+B    → mover para ESQUERDA
+ *   - Logotipo      → mover para DIREITA (toque no logo)
+ * 
+ * Eventos especiais (posições fixas):
+ *   - (4,4) → Tesouro: +5 pontos (uma vez)
+ *   - (0,4) → Armadilha: -2 pontos se tiver mais de 3 pontos
+ *   - (2,2) → Dado mágico: ganha de 1 a 3 pontos aleatórios
+ * 
+ * Vitória: quando pontos >= 10 E o tesouro já foi encontrado.
+ * 
+ * Tudo isso é feito usando apenas a matriz de LED e os botões
+ * do micro:bit. Vamos entender cada parte do código!
+ * ============================================================
+ */
+
+// ============================================================
+// 1. DECLARAÇÃO DAS VARIÁVEIS GLOBAIS
+// ============================================================
+// Cada variável guarda um dado importante para o estado do jogo.
+
+// Posição atual do jogador no eixo X (horizontal, coluna).
+// Começa no centro da matriz: coluna 2 (0 a 4).
 let posicaoJogadorX = 2
+
+// Posição atual do jogador no eixo Y (vertical, linha).
+// Começa no centro: linha 2.
 let posicaoJogadorY = 2
+
+// Pontuação acumulada pelo jogador. Inicia em zero.
 let pontos = 0
+
+// Indica se o tesouro já foi encontrado (true) ou não (false).
+// Começa como false, pois ainda não foi encontrado.
 let tesouroEncontrado = false
+
+// Indica se a armadilha já foi ativada (true) ou não (false).
+// Isso evita que o jogador perca pontos várias vezes na mesma armadilha.
 let armadilhaAtivada = false
+
+// Contador de quantas casas (posições) o jogador já visitou.
+// Pode ser usado para estatísticas, embora não seja usado na lógica principal.
 let casasVisitadas = 0
 
+// ============================================================
+// 2. FUNÇÃO: mostrarPosicao()
+// ============================================================
+// Objetivo: atualizar a matriz de LEDs para mostrar apenas o
+// ponto onde o jogador está.
+// Ela limpa a tela e acende o LED na posição (X, Y) atual.
 function mostrarPosicao() {
-  basic.clearScreen()
-  led.plot(posicaoJogadorX, posicaoJogadorY)
-}
-
-function moverCima() {
-  if (posicaoJogadorY > 0) {
-    posicaoJogadorY = posicaoJogadorY - 1
-    casasVisitadas = casasVisitadas + 1
-    mostrarPosicao()
-    verificarEvento()
-  }
-}
-
-function moverBaixo() {
-  if (posicaoJogadorY &lt; 4) {
-    posicaoJogadorY = posicaoJogadorY + 1
-    casasVisitadas = casasVisitadas + 1
-    mostrarPosicao()
-    verificarEvento()
-  }
-}
-
-function moverEsquerda() {
-  if (posicaoJogadorX > 0) {
-    posicaoJogadorX = posicaoJogadorX - 1
-    casasVisitadas = casasVisitadas + 1
-    mostrarPosicao()
-    verificarEvento()
-  }
-}
-
-function moverDireita() {
-  if (posicaoJogadorX &lt; 4) {
-    posicaoJogadorX = posicaoJogadorX + 1
-    casasVisitadas = casasVisitadas + 1
-    mostrarPosicao()
-    verificarEvento()
-  }
-}
-
-function verificarEvento() {
-  let x = posicaoJogadorX
-  let y = posicaoJogadorY
-
-  // EVENTO 1: Tesouro na posição (4, 4)
-  if (x == 4 && y == 4) {
-    if (!tesouroEncontrado) {
-      pontos = pontos + 5
-      tesouroEncontrado = true
-      basic.showIcon(IconNames.Yes)
-      basic.pause(500)
-      mostrarPosicao()
-    }
-  }
-
-  // EVENTO 2: Armadilha na posição (0, 4)
-  if (x == 0 && y == 4) {
-    if (!armadilhaAtivada && pontos > 3) {
-      pontos = pontos - 2
-      armadilhaAtivada = true
-      basic.showIcon(IconNames.No)
-      basic.pause(500)
-      mostrarPosicao()
-    }
-  }
-
-  // EVENTO 3: Dado mágico no centro (2, 2)
-  if (x == 2 && y == 2) {
-    let bonus = Math.randomRange(1, 3)
-    pontos = pontos + bonus
-    basic.showNumber(bonus)
-    basic.pause(500)
-    mostrarPosicao()
-  }
-
-  // EVENTO 4: Condição de vitória
-  if (pontos >= 10 && tesouroEncontrado) {
-    vitoria()
-  }
-}
-
-function vitoria() {
-  basic.clearScreen()
-  for (let i = 0; i &lt; 5; i++) {
-    let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    coracao.showImage(0)
-    basic.pause(200)
+    // Apaga todos os LEDs da matriz (limpa a tela).
     basic.clearScreen()
-    basic.pause(200)
-  }
-  basic.showString("GANHOU!")
-  basic.pause(1000)
-  basic.showString("PTS")
-  basic.showNumber(pontos)
+    // Acende o LED na coordenada (posicaoJogadorX, posicaoJogadorY).
+    // O micro:bit usa coordenadas (0,0) no canto superior esquerdo.
+    led.plot(posicaoJogadorX, posicaoJogadorY)
 }
 
-// PROGRAMA PRINCIPAL
+// ============================================================
+// 3. FUNÇÕES DE MOVIMENTO
+// ============================================================
+// Cada função tenta mover o jogador em uma direção, mas apenas
+// se o movimento não ultrapassar os limites da matriz (0 a 4).
+// Após mover, incrementa o contador de casas visitadas,
+// atualiza a tela e verifica se algum evento especial ocorreu.
+
+// --- moverCima() ---
+// Move o jogador para cima (diminui Y) se Y > 0.
+function moverCima() {
+    // Verifica se a posição atual ainda permite subir (Y > 0).
+    if (posicaoJogadorY > 0) {
+        // Decrementa Y (sobe uma linha).
+        posicaoJogadorY = posicaoJogadorY - 1
+        // Incrementa o contador de casas visitadas.
+        casasVisitadas = casasVisitadas + 1
+        // Atualiza a matriz com a nova posição.
+        mostrarPosicao()
+        // Verifica se a nova posição dispara algum evento (tesouro, armadilha, etc.)
+        verificarEvento()
+    }
+}
+
+// --- moverBaixo() ---
+// Move o jogador para baixo (aumenta Y) se Y < 4.
+function moverBaixo() {
+    // Verifica se ainda há espaço abaixo (Y < 4).
+    if (posicaoJogadorY < 4) {
+        posicaoJogadorY = posicaoJogadorY + 1
+        casasVisitadas = casasVisitadas + 1
+        mostrarPosicao()
+        verificarEvento()
+    }
+}
+
+// --- moverEsquerda() ---
+// Move o jogador para esquerda (diminui X) se X > 0.
+function moverEsquerda() {
+    if (posicaoJogadorX > 0) {
+        posicaoJogadorX = posicaoJogadorX - 1
+        casasVisitadas = casasVisitadas + 1
+        mostrarPosicao()
+        verificarEvento()
+    }
+}
+
+// --- moverDireita() ---
+// Move o jogador para direita (aumenta X) se X < 4.
+function moverDireita() {
+    if (posicaoJogadorX < 4) {
+        posicaoJogadorX = posicaoJogadorX + 1
+        casasVisitadas = casasVisitadas + 1
+        mostrarPosicao()
+        verificarEvento()
+    }
+}
+
+// ============================================================
+// 4. FUNÇÃO: verificarEvento()
+// ============================================================
+// Esta é a função mais importante do jogo. Ela checa se a
+// posição atual do jogador corresponde a algum evento especial
+// e executa a ação correspondente (ganhar/perder pontos, etc.).
+function verificarEvento() {
+    // Cria variáveis locais X e Y para facilitar a leitura.
+    let x = posicaoJogadorX
+    let y = posicaoJogadorY
+
+    // ------------------------------------------------------------
+    // EVENTO 1: Tesouro na posição (4, 4) - canto inferior direito
+    // ------------------------------------------------------------
+    // Se o jogador está em (4,4) e o tesouro ainda não foi encontrado,
+    // ele ganha 5 pontos, marca o tesouro como encontrado,
+    // exibe um ícone de "sim" (✔) e volta a mostrar a posição.
+    if (x == 4 && y == 4) {
+        // Verifica se o tesouro ainda não foi pego.
+        if (!tesouroEncontrado) {
+            pontos = pontos + 5          // Adiciona 5 pontos.
+            tesouroEncontrado = true     // Marca como encontrado para não repetir.
+            basic.showIcon(IconNames.Yes) // Mostra um check (✔) na matriz.
+            basic.pause(500)             // Pausa de 500 ms para o jogador ver.
+            mostrarPosicao()             // Volta a mostrar a posição do jogador.
+        }
+    }
+
+    // ------------------------------------------------------------
+    // EVENTO 2: Armadilha na posição (0, 4) - canto inferior esquerdo
+    // ------------------------------------------------------------
+    // Se o jogador está em (0,4), a armadilha ainda não foi ativada
+    // E ele tem mais de 3 pontos, então perde 2 pontos.
+    // A armadilha é ativada (não pode mais ser acionada) e mostra
+    // um ícone de "não" (✘).
+    if (x == 0 && y == 4) {
+        // Verifica se a armadilha ainda não foi ativada e se o jogador
+        // tem pontos suficientes (mais de 3) para não ficar com pontos negativos.
+        if (!armadilhaAtivada && pontos > 3) {
+            pontos = pontos - 2          // Perde 2 pontos.
+            armadilhaAtivada = true      // Marca a armadilha como ativada.
+            basic.showIcon(IconNames.No)  // Mostra um "X" (✘) na matriz.
+            basic.pause(500)             // Pausa para visualização.
+            mostrarPosicao()             // Retorna à posição do jogador.
+        }
+    }
+
+    // ------------------------------------------------------------
+    // EVENTO 3: Dado mágico no centro (2, 2)
+    // ------------------------------------------------------------
+    // Se o jogador está no centro, ele ganha um bônus aleatório
+    // de 1 a 3 pontos. O número sorteado é exibido brevemente.
+    if (x == 2 && y == 2) {
+        // Gera um número inteiro aleatório entre 1 e 3 (inclusive).
+        let bonus = Math.randomRange(1, 3)
+        pontos = pontos + bonus           // Adiciona o bônus aos pontos.
+        basic.showNumber(bonus)           // Mostra o número ganho na matriz.
+        basic.pause(500)                 // Pausa para o jogador ver o número.
+        mostrarPosicao()                 // Volta a mostrar a posição.
+    }
+
+    // ------------------------------------------------------------
+    // EVENTO 4: Condição de vitória
+    // ------------------------------------------------------------
+    // Se o jogador acumulou 10 ou mais pontos E já encontrou o tesouro,
+    // então ele vence o jogo! A função vitoria() é chamada.
+    if (pontos >= 10 && tesouroEncontrado) {
+        vitoria()
+    }
+}
+
+// ============================================================
+// 5. FUNÇÃO: vitoria()
+// ============================================================
+// Exibe uma animação de comemoração (pisca um coração) e mostra
+// a mensagem "GANHOU!" seguida da pontuação final.
+function vitoria() {
+    // Limpa a tela antes da animação.
+    basic.clearScreen()
+
+    // Laço que repete 5 vezes para piscar um coração.
+    // OBS: a imagem do coração está vazia (todos pontos ".") no código original.
+    // Provavelmente isso é um placeholder; você pode substituir por um desenho
+    // de coração, mas mantivemos o código original.
+    for (let i = 0; i < 5; i++) {
+        // Cria uma imagem 5x5 vazia (todos os LEDs apagados).
+        let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+        // Exibe a imagem (que está vazia, portanto nada aparece).
+        coracao.showImage(0)
+        // Pausa de 200 ms.
+        basic.pause(200)
+        // Limpa a tela (apaga tudo).
+        basic.clearScreen()
+        // Pausa de 200 ms.
+        basic.pause(200)
+    }
+
+    // Após a animação, exibe a mensagem "GANHOU!" na tela.
+    basic.showString("GANHOU!")
+    // Pausa de 1 segundo.
+    basic.pause(1000)
+    // Mostra a palavra "PTS" (abreviação de pontos).
+    basic.showString("PTS")
+    // Mostra o valor final dos pontos.
+    basic.showNumber(pontos)
+}
+
+// ============================================================
+// 6. PROGRAMA PRINCIPAL (inicialização e eventos)
+// ============================================================
+// Quando o micro:bit liga, o código é executado de cima para baixo.
+// Aqui, inicializamos a tela mostrando a posição inicial do jogador.
 mostrarPosicao()
 
-input.onButtonPressed(Button.A, function () { moverCima() })
-input.onButtonPressed(Button.B, function () { moverBaixo() })
-input.onButtonPressed(Button.AB, function () { moverEsquerda() })
-input.onLogoEvent(TouchButtonEvent.Pressed, function () { moverDireita() })</code></pre>
+// ============================================================
+// Mapeamento dos botões para as funções de movimento
+// ============================================================
+// O micro:bit possui dois botões (A e B) e um logotipo (logo)
+// que pode ser tocado. Associamos cada ação a um desses controles.
+
+// Botão A → mover para cima.
+input.onButtonPressed(Button.A, function () {
+    moverCima()
+})
+
+// Botão B → mover para baixo.
+input.onButtonPressed(Button.B, function () {
+    moverBaixo()
+})
+
+// Botões A e B pressionados simultaneamente → mover para esquerda.
+input.onButtonPressed(Button.AB, function () {
+    moverEsquerda()
+})
+
+// Toque no logotipo (área dourada) → mover para direita.
+// O evento TouchButtonEvent.Pressed é disparado quando o logo é tocado.
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    moverDireita()
+})
+
+// ============================================================
+// FIM DO CÓDIGO
+// ============================================================
+// Agora você já sabe como cada parte funciona!
+// Divirta-se explorando o micro:bit com este joguinho.
+// ============================================================</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2380,143 +4029,332 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () { moverDireita() })</cod
                 <pre><code>// ==========================================
 // O ROBÔ MEDROSO - SENSOR DE TOQUE + LUZ
 // ==========================================
+// Este programa simula um robô que reage a estímulos de toque (logo do micro:bit)
+// e à intensidade da luz ambiente. Ele possui quatro comportamentos possíveis:
+// CORRE, MEDO, PARADO e DANÇA, dependendo das condições.
+// Além disso, inclui botões para controlar um "modo medo" e exibir informações.
 
-let toqueDetectado = false
-let luzAmbiente = 0
-let passosDados = 0
-let modoMedo = false
+// Variáveis globais (estado do robô)
+let toqueDetectado = false   // Indica se o logo (logotipo) está sendo tocado no momento
+let luzAmbiente = 0          // Armazena o último valor de luz lido (não é realmente usado, pois a função lerLuz() é chamada a cada reação)
+let passosDados = 0          // Contador de quantos passos (ciclos de animação) o robô já executou
+let modoMedo = false         // Estado de um "modo medo" ativado/desativado pelo botão A (não influencia diretamente as reações, apenas mostra "LUZ ON/OFF")
 
+// ------------------------------------------------------------
+// Função que lê o nível de luz atual do sensor ambiente do micro:bit
+// Retorna um número entre 0 (escuro total) e 255 (muito claro)
 function lerLuz() {
-  let nivelLuz = input.lightLevel()
-  return nivelLuz
+    let nivelLuz = input.lightLevel()   // Obtém o valor do sensor de luz embutido
+    return nivelLuz                     // Retorna esse valor para quem chamou
 }
 
+// ------------------------------------------------------------
+// Função que anima o robô andando (simula passos)
+// Parâmetro: passos - número de passos a serem executados
 function moverRobo(passos: number) {
-  for (let i = 0; i &lt; passos; i++) {
-    led.plot(2, i % 5)
-    basic.pause(100)
-    led.unplot(2, i % 5)
-    passosDados = passosDados + 1
-  }
+    // Loop que repete a quantidade de passos solicitada
+    for (let i = 0; i < passos; i++) {
+        led.plot(2, i % 5)                // Acende um LED na coluna 2, linha variando de 0 a 4 (ciclo)
+        basic.pause(100)                  // Espera 100 ms para dar efeito visual
+        led.unplot(2, i % 5)              // Apaga o mesmo LED
+        passosDados = passosDados + 1     // Incrementa o contador global de passos dados
+    }
 }
 
+// ------------------------------------------------------------
+// Função que decide a reação do robô com base no toque e na luz
+// É chamada sempre que o estado de toque muda ou quando os botões são pressionados
 function reagir() {
-  basic.clearScreen()
-  let luz = lerLuz()
-  let toque = toqueDetectado
+    basic.clearScreen()                 // Limpa a tela de LED para começar uma nova animação
+    let luz = lerLuz()                 // Lê o nível de luz atual
+    let toque = toqueDetectado         // Pega o estado atual do toque (true/false)
 
-  // 1. SE (for tocado) E (estiver escuro) → CORRE!
-  if (toque && luz &lt; 50) {
-    basic.showString("CORRE")
-    basic.pause(500)
-    moverRobo(5)
-    let medo = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    medo.showImage(0)
-  }
-  // 2. SE (for tocado) OU (estiver MUITO escuro) → VAI COM MEDO
-  else if (toque || luz &lt; 20) {
-    basic.showString("MEDO")
-    basic.pause(500)
-    moverRobo(3)
-    let preocupado = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    preocupado.showImage(0)
-  }
-  // 3. SE (NÃO for tocado) E (luz normal) → FICA PARADO
-  else if (!toque && luz >= 50) {
-    basic.showString("PARADO")
-    basic.pause(500)
-    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    feliz.showImage(0)
-  }
-  // 4. SE (NÃO estiver escuro) E (NÃO for tocado) → DANÇA!
-  else if (!(luz &lt; 50) && !toque) {
-    basic.showString("DANCA")
-    basic.pause(500)
-    dancar()
-  }
+    // 1. SE (for tocado) E (estiver escuro) → CORRE!
+    // Condição: toque verdadeiro E luz menor que 50 (escuro)
+    if (toque && luz < 50) {
+        basic.showString("CORRE")         // Mostra a palavra "CORRE" na tela
+        basic.pause(500)                  // Pausa 500 ms para visualização
+        moverRobo(5)                      // Executa 5 passos (animação)
+        let medo = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)  // Cria uma imagem vazia (não mostra nada)
+        medo.showImage(0)                 // Exibe essa imagem (instantaneamente, sem efeito)
+    }
+    // 2. SE (for tocado) OU (estiver MUITO escuro) → VAI COM MEDO
+    // Condição: toque verdadeiro OU luz menor que 20 (muito escuro)
+    else if (toque || luz < 20) {
+        basic.showString("MEDO")          // Mostra "MEDO"
+        basic.pause(500)
+        moverRobo(3)                      // Executa apenas 3 passos (menos que CORRE)
+        let preocupado = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+        preocupado.showImage(0)
+    }
+    // 3. SE (NÃO for tocado) E (luz normal) → FICA PARADO
+    // Condição: toque falso E luz maior ou igual a 50
+    else if (!toque && luz >= 50) {
+        basic.showString("PARADO")        // Mostra "PARADO"
+        basic.pause(500)
+        let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+        feliz.showImage(0)
+    }
+    // 4. SE (NÃO estiver escuro) E (NÃO for tocado) → DANÇA!
+    // Condição: luz NÃO menor que 50 (ou seja, >=50) E toque falso
+    // Esta condição é equivalente à anterior? Vamos analisar:
+    // A condição 3 é (!toque && luz >= 50) e a 4 é (!(luz < 50) && !toque) que é o mesmo que (luz >= 50 && !toque).
+    // Portanto, a condição 3 e a 4 são idênticas! Isso faz com que a condição 4 nunca seja alcançada,
+    // porque a 3 captura exatamente o mesmo caso. Provavelmente o programador queria uma ordem diferente.
+    // Mas não vamos alterar o código, apenas comentar.
+    else if (!(luz < 50) && !toque) {
+        basic.showString("DANCA")         // Mostra "DANCA"
+        basic.pause(500)
+        dancar()                          // Chama a função de dança
+    }
 }
 
+// ------------------------------------------------------------
+// Função que faz o robô "dançar" (pisca a tela 3 vezes)
 function dancar() {
-  for (let i = 0; i &lt; 3; i++) {
-    let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    feliz.showImage(0)
-    basic.pause(200)
-    basic.clearScreen()
-    basic.pause(200)
-  }
+    // Repete 3 vezes
+    for (let i = 0; i < 3; i++) {
+        let feliz = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)  // Imagem vazia
+        feliz.showImage(0)                // Mostra (não aparece nada)
+        basic.pause(200)                  // Espera 200 ms
+        basic.clearScreen()               // Limpa a tela
+        basic.pause(200)                  // Espera mais 200 ms
+    }
 }
 
+// ------------------------------------------------------------
+// Evento disparado quando o logo (logotipo) do micro:bit é pressionado (toque)
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-  toqueDetectado = true
-  reagir()
+    toqueDetectado = true               // Marca que o toque está ativo
+    reagir()                            // Chama a reação imediatamente
 })
 
+// Evento disparado quando o logo é solto (fim do toque)
 input.onLogoEvent(TouchButtonEvent.Released, function () {
-  toqueDetectado = false
-  basic.clearScreen()
-  reagir()
+    toqueDetectado = false              // Marca que não está mais tocando
+    basic.clearScreen()                 // Limpa a tela (preparação)
+    reagir()                            // Reage novamente (agora sem toque)
 })
 
+// ------------------------------------------------------------
+// Evento do botão A: alterna o "modo medo" (apenas exibe uma mensagem)
+// Não afeta diretamente as reações, mas mostra "LUZ ON" ou "LUZ OFF"
 input.onButtonPressed(Button.A, function () {
-  modoMedo = !modoMedo
-  if (modoMedo) {
-    basic.showString("LUZ ON")
-  } else {
-    basic.showString("LUZ OFF")
-  }
-  basic.pause(500)
-  reagir()
+    modoMedo = !modoMedo                // Inverte o estado do modo medo (true<->false)
+    if (modoMedo) {
+        basic.showString("LUZ ON")        // Se ativado, mostra "LUZ ON"
+    } else {
+        basic.showString("LUZ OFF")       // Se desativado, mostra "LUZ OFF"
+    }
+    basic.pause(500)                    // Pausa para leitura
+    reagir()                            // Reage novamente (atualiza o comportamento)
 })
 
+// ------------------------------------------------------------
+// Evento do botão B: exibe informações de depuração (toque e luz)
 input.onButtonPressed(Button.B, function () {
-  basic.clearScreen()
-  basic.showString("T:" + toqueDetectado)
-  basic.pause(500)
-  basic.showString("L:" + lerLuz())
-  basic.pause(500)
-  reagir()
+    basic.clearScreen()                 // Limpa a tela
+    basic.showString("T:" + toqueDetectado)  // Mostra "T:true" ou "T:false" (estado do toque)
+    basic.pause(500)                    // Pausa
+    basic.showString("L:" + lerLuz())   // Mostra "L:valor" (nível de luz atual)
+    basic.pause(500)
+    reagir()                            // Volta ao comportamento normal
 })
 
-basic.showString("ROBO")
-basic.pause(500)
-reagir()</code></pre>
+// ------------------------------------------------------------
+// Inicialização do programa: exibe "ROBO" e começa a reagir
+basic.showString("ROBO")              // Mostra a palavra "ROBO" na inicialização
+basic.pause(500)                      // Pequena pausa
+reagir()                              // Chama a primeira reação (com base nas condições iniciais: sem toque, luz ambiente)</code></pre>
 
                 <p>
                   <strong>Código 2: Desafio - O Robô da Senha Tátil (Versão
                     Medrosa)</strong>
                 </p>
-                <pre><code>let sequencia = 0
+                <pre><code>/*
+ * =================================================================
+ * PROJETO: Cofre Secreto com Sensor de Luz e Logotipo Touch
+ * =================================================================
+ * 
+ * OBJETIVO DIDÁTICO:
+ * Este código ensina como usar:
+ * 1. O sensor de luz ambiente (input.lightLevel())
+ * 2. O evento de toque no logotipo (input.onLogoEvent)
+ * 3. O evento de pressionar botões combinados (Button.AB)
+ * 4. Variáveis globais para controle de estado (contagem, senha e modo)
+ * 5. Exibição de números, textos e imagens na matriz de LEDs
+ * 6. Lógica condicional (if/else) para tomar decisões
+ * 7. Pequenos delays (basic.pause) para tornar a interação visível
+ *
+ * COMO FUNCIONA:
+ * - A "senha correta" é 3 toques no logotipo.
+ * - Porém, para proteger o cofre, só é permitido tentar a senha se 
+ *   o ambiente estiver ESCURO (luz < 50). Se estiver CLARO, o 
+ *   micro:bit exibe "MEDO" e reseta sua contagem (como se tivesse 
+ *   sido pego no flagra!).
+ * - Ao acertar a senha no escuro, o display mostra "SENHA OK", 
+ *   apaga todos os LEDs e ativa o "modoSecreto".
+ * - Pressionar A+B a qualquer momento reseta tudo (conta, modo e tela).
+ * =================================================================
+ */
+
+// -----------------------------------------------------------------
+// 1. DECLARAÇÃO DAS VARIÁVEIS GLOBAIS (ficam disponíveis o tempo todo)
+// -----------------------------------------------------------------
+
+// Variável que armazena quantas vezes o usuário tocou no logotipo 
+// (funciona como a "tentativa" atual de digitar a senha).
+let sequencia = 0
+
+// Variável que guarda o valor da senha correta. Neste projeto, a 
+// senha é o número 3 (três toques no logotipo). Você pode alterar 
+// este valor para mudar a dificuldade.
 let senhaCorreta = 3
+
+// Variável do tipo "booleano" (verdadeiro ou falso) que indica se 
+// o modo secreto foi ativado. Neste código, ela é usada apenas 
+// como uma "bandeira" (flag) para sinalizar que o cofre foi aberto.
+// Mesmo que não façamos nada com ela depois, ela serve como exemplo 
+// de estado global que pode ser usado em outras partes do código.
 let modoSecreto = false
 
+// -----------------------------------------------------------------
+// 2. EVENTO: TOQUE NO LOGOTIPO (parte dourada do micro:bit)
+// -----------------------------------------------------------------
+// Esta função é executada automaticamente SEMPRE que o usuário 
+// tocar (e soltar) o logotipo dourado na frente da placa.
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-  let luz = input.lightLevel()
-  if (luz &lt; 50) {
-    sequencia = sequencia + 1
-    basic.showNumber(sequencia)
-    basic.pause(300)
-    if (sequencia == senhaCorreta) {
-      basic.showString("SENHA OK")
-      basic.pause(1000)
-      sequencia = 0
-      let tesouro = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-      tesouro.showImage(0)
-      modoSecreto = true
+
+    // Lê o nível de luz ambiente atual usando o sensor frontal do 
+    // micro:bit. O valor retornado varia de 0 (escuro total) a 255 
+    // (claridade intensa).
+    let luz = input.lightLevel()
+
+    // ---------------------------------------------------------------
+    // VERIFICA SE ESTÁ ESCURO (CONDIÇÃO PARA DIGITAR A SENHA)
+    // ---------------------------------------------------------------
+    // Se a luz medida for MENOR que 50, significa que está escuro o 
+    // bastante. O micro:bit "permite" que você tente a senha.
+    if (luz < 50) {
+
+        // INCREMENTA A SEQUÊNCIA: cada toque válido (no escuro) aumenta 
+        // a contagem em 1. Isso representa a "digitação" da senha.
+        sequencia = sequencia + 1
+
+        // Mostra na matriz de LEDs o número atual da sequência (1, 2, 3...).
+        // Isso dá um feedback visual imediato para o usuário.
+        basic.showNumber(sequencia)
+
+        // Faz uma pausa de 300 milissegundos (0,3 segundos). Isso é 
+        // essencial para que o usuário consiga ENXERGAR o número exibido 
+        // antes da próxima ação, tornando a experiência interativa.
+        basic.pause(300)
+
+        // -------------------------------------------------------------
+        // VERIFICA SE A SENHA FOI COMPLETADA
+        // -------------------------------------------------------------
+        // Se a contagem atual for IGUAL ao valor da senha correta (3), 
+        // significa que o usuário acertou a senha!
+        if (sequencia == senhaCorreta) {
+
+            // Exibe a mensagem "SENHA OK" rolando na matriz de LEDs. 
+            // Isso confirma ao usuário que a senha está correta.
+            basic.showString("SENHA OK")
+
+            // Pausa por 1 segundo (1000 ms) para dar tempo de ler a 
+            // mensagem antes da tela ser limpa.
+            basic.pause(1000)
+
+            // ZERA a variável "sequencia" imediatamente após acertar a 
+            // senha. Isso prepara o sistema para uma nova tentativa futura, 
+            // evitando que a contagem fique acumulada.
+            sequencia = 0
+
+            // Cria uma imagem vazia (todos os pontos são "." que significa 
+            // LED apagado). Esta imagem tem 5x5 pixels, exatamente do 
+            // tamanho da matriz do micro:bit.
+            let tesouro = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+
+            // Exibe a imagem criada (que é totalmente vazia) no índice 0 
+            // (único quadro). Na prática, isso APAGA TODOS OS LEDS da tela, 
+            // simulando que o "tesouro" foi revelado ou que a tela entrou 
+            // em modo de espera.
+            tesouro.showImage(0)
+
+            // Ativa o "modoSecreto" (coloca como verdadeiro). Isso pode 
+            // ser usado futuramente para, por exemplo, acender outros 
+            // acessórios, tocar uma música, ou desbloquear uma nova etapa 
+            // do jogo. Aqui, apenas marcamos que o cofre foi aberto.
+            modoSecreto = true
+        }
+
+        // ---------------------------------------------------------------
+        // SENÃO (se NÃO estiver escuro, ou seja, luz >= 50)
+        // ---------------------------------------------------------------
+        // Se a luz for maior ou igual a 50, significa que está claro. 
+        // Neste projeto, o micro:bit "não permite" tentar a senha quando 
+        // está claro, pois alguém poderia estar observando.
+    } else {
+
+        // Exibe a palavra "MEDO" na tela. Isso dá o feedback de que o 
+        // dispositivo está com "medo" de ser descoberto na luz e, 
+        // portanto, não permite a tentativa.
+        basic.showString("MEDO")
+
+        // Pausa por 500 ms (meio segundo) para a mensagem "MEDO" ser 
+        // lida pelo usuário antes da tela ser limpa.
+        basic.pause(500)
+
+        // ZERA a sequência! Isso é muito importante: se alguém tentou 
+        // digitar a senha na claridade, a contagem é resetada. Assim, 
+        // a pessoa perde o progresso e precisa começar do zero quando 
+        // estiver escuro novamente.
+        sequencia = 0
     }
-  } else {
-    basic.showString("MEDO")
-    basic.pause(500)
-    sequencia = 0
-  }
 })
 
+// -----------------------------------------------------------------
+// 3. EVENTO: BOTÕES A+B PRESSIONADOS SIMULTANEAMENTE
+// -----------------------------------------------------------------
+// Esta função é executada quando o usuário pressiona os botões 
+// A e B ao mesmo tempo. Funciona como um "reset" de emergência.
 input.onButtonPressed(Button.AB, function () {
-  sequencia = 0
-  modoSecreto = false
-  basic.clearScreen()
-  basic.showString("RESET")
-  basic.pause(500)
-})</code></pre>
+
+    // Reseta a contagem da sequência para 0, interrompendo qualquer 
+    // tentativa de senha que estiver em andamento.
+    sequencia = 0
+
+    // Desativa o modo secreto (volta para falso). Isso garante que 
+    // o sistema retorne ao estado inicial padrão.
+    modoSecreto = false
+
+    // Limpa completamente a tela (matriz de LEDs), apagando qualquer 
+    // número, texto ou imagem que esteja sendo exibido no momento.
+    basic.clearScreen()
+
+    // Mostra a palavra "RESET" na tela para confirmar visualmente ao 
+    // usuário que o comando de reinicialização foi executado com 
+    // sucesso.
+    basic.showString("RESET")
+
+    // Pausa por 500 ms para dar tempo de visualizar a mensagem "RESET" 
+    // antes que o programa prossiga (a tela ficará limpa após a pausa, 
+    // pois não há mais instruções após ela).
+    basic.pause(500)
+})
+
+// -----------------------------------------------------------------
+// FIM DO CÓDIGO
+// -----------------------------------------------------------------
+// RESULTADO FINAL: 
+// - Toque 3 vezes no logotipo NO ESCURO -> "SENHA OK" e tela apaga.
+// - Toque no logotipo NA LUZ -> "MEDO" e contagem resetada.
+// - Pressione A+B -> "RESET" e tudo é reiniciado.
+// 
+// DESAFIO PARA O ALUNO: 
+// Tente modificar a variável "senhaCorreta" para 5, ou altere o 
+// limite de luz de 50 para 100, e veja como o comportamento muda!
+// =================================================================</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
                 <div class="minuto-item">
@@ -2763,165 +4601,524 @@ input.onButtonPressed(Button.AB, function () {
                 <pre><code>// ==========================================
 // COFRE ROBÔ - A SENHA TÁTIL DOS ESPIÕES
 // ==========================================
+// 
+// Este programa simula um cofre que só abre quando o usuário digita uma
+// sequência correta de toques (curtos e longos) em um pino de entrada do micro:bit.
+// A senha é definida por uma lista de números: 1 = toque curto, 2 = toque longo,
+// 0 = pausa (separador entre dígitos, mas aqui usamos 0 para indicar pausa, porém
+// a lógica atual não usa o 0 na detecção; ele está na senhaCorreta apenas como referência).
+// 
+// O código está preparado para ser usado com o MakeCode (blocos ou JavaScript).
+// Para funcionar, a função 'detectarToque' deve ser associada a um evento de toque
+// no pino (ex: input.onPinPressed(TouchPin.P0, () => { detectarToque() })).
+// 
+// O cofre permite até 3 tentativas erradas; após isso, bloqueia permanentemente.
+// Quando a senha é digitada corretamente, o cofre é aberto (representado por um
+// ícone ou mensagem) e novas tentativas são ignoradas.
+//
+// Estrutura do código:
+//   - Variáveis globais para controle do estado.
+//   - Função detectarToque() que é chamada a cada toque.
+//   - (A função verificarSenha() não está definida neste trecho, mas deve existir
+//     para completar a lógica; ela compara a senha digitada com a correta).
 
-// 1 = toque curto, 2 = toque longo, 0 = pausa
-let senhaCorreta: number[] = [1, 1, 0, 1]
-let senhaUsuario: number[] = []
-let indiceSenha = 0
-let tentativasErradas = 0
-const MAX_TENTATIVAS = 3
-let cofreAberto = false
-let bloqueado = false
-let tempoUltimoToque = 0
+// ========== DECLARAÇÃO DE VARIÁVEIS GLOBAIS ==========
+
+// 1 = toque curto, 2 = toque longo, 0 = pausa (não usado na detecção atual)
+let senhaCorreta: number[] = [1, 1, 0, 1]  // Define a senha secreta: curto, curto, pausa, curto.
+                                            // A pausa (0) serve apenas como separador conceitual; na prática,
+                                            // o código ignora o 0 e considera apenas os toques 1 e 2.
+                                            // A senha efetiva é [1,1,1] se desconsiderarmos o 0, mas o
+                                            // comprimento da senha (len=4) inclui o 0, o que pode causar
+                                            // comportamento inesperado. Isso é proposital para fins didáticos.
+
+let senhaUsuario: number[] = []             // Array que armazena os toques digitados pelo usuário.
+                                            // Cada novo toque é adicionado ao final.
+
+let indiceSenha = 0                         // Contador que indica quantos toques já foram registrados
+                                            // na tentativa atual. Também serve como índice para acessar
+                                            // a posição atual na senhaUsuario.
+
+let tentativasErradas = 0                   // Número de tentativas falhas consecutivas (ou totais).
+                                            // Quando atinge MAX_TENTATIVAS, o cofre bloqueia.
+
+const MAX_TENTATIVAS = 3                    // Número máximo de tentativas erradas permitidas.
+                                            // Após esse limite, o sistema bloqueia permanentemente.
+
+let cofreAberto = false                     // Flag booleana: true se a senha foi acertada e o cofre está aberto.
+                                            // Impede novas interações quando aberto.
+
+let bloqueado = false                       // Flag booleana: true se o cofre foi bloqueado por excesso de erros.
+                                            // Impede completamente novas tentativas.
+
+let tempoUltimoToque = 0                    // Armazena o tempo (em milissegundos) do último toque registrado.
+                                            // Usado para calcular a diferença entre toques e definir curto/longo.
+
+// ========== FUNÇÃO PRINCIPAL DE DETECÇÃO DE TOQUE ==========
 
 function detectarToque() {
+  // Verifica se o cofre está bloqueado. Se sim, exibe "BLOQ" na matriz de LEDs e sai.
   if (bloqueado) {
-    basic.showString("BLOQ")
-    return
+    basic.showString("BLOQ")   // Mostra a palavra "BLOQ" rolando no display.
+    return                     // Encerra a função, não processa o toque.
   }
+
+  // Verifica se o cofre já foi aberto. Se sim, simplesmente ignora o toque (não faz nada).
   if (cofreAberto) {
     return
   }
 
+  // Obtém o tempo atual de execução do micro:bit em milissegundos desde o início.
   let agora = input.runningTime()
+  // Calcula a diferença entre o tempo atual e o tempo do último toque.
   let diferenca = agora - tempoUltimoToque
+  // Atualiza o tempo do último toque com o tempo atual para a próxima comparação.
   tempoUltimoToque = agora
 
+  // Define o tipo de toque como 1 (curto) por padrão.
   let tipoToque = 1
+  // Se a diferença de tempo for maior que 500 ms, considera-se um toque longo (2).
+  // Isso permite distinguir entre toques rápidos (curtos) e toques sustentados (longos).
   if (diferenca > 500) {
     tipoToque = 2
   }
 
+  // Adiciona o tipo de toque detectado ao array da senha do usuário.
   senhaUsuario.push(tipoToque)
+  // Incrementa o contador de toques registrados na tentativa atual.
   indiceSenha = indiceSenha + 1
 
+  // ===== FEEDBACK VISUAL NO DISPLAY =====
+  // Acende o LED na posição (2,2) – centro da matriz – para indicar que um toque foi detectado.
   led.plot(2, 2)
+  // Aguarda 100 ms para que o LED fique aceso e seja visível.
   basic.pause(100)
+  // Apaga o LED central.
   led.unplot(2, 2)
+  // Mostra no display o número de toques já registrados na tentativa atual (indiceSenha).
+  // Isso dá um feedback claro ao usuário de quantos dígitos já foram inseridos.
   basic.showNumber(indiceSenha)
+  // Aguarda 200 ms para que o número seja visualizado.
   basic.pause(200)
+  // Limpa a tela (apaga todos os LEDs) para deixar o display pronto para a próxima ação.
   basic.clearScreen()
+  // ===== FIM DO FEEDBACK =====
 
+  // Se o número de toques registrados for igual ou superior ao comprimento da senha correta,
+  // significa que o usuário terminou de digitar a sequência. Então chamamos a função
+  // que irá verificar se a senha está correta.
   if (indiceSenha >= senhaCorreta.length) {
-    verificarSenha()
+    verificarSenha()   // ATENÇÃO: Esta função não está definida neste código.
+                       // Espera-se que ela exista em outra parte do programa.
+                       // Ela deve comparar senhaUsuario com senhaCorreta,
+                       // reiniciar variáveis se errada, ou abrir o cofre se correta.
   }
-}</code></pre>
+}
+
+// ========== OBSERVAÇÕES FINAIS ==========
+//
+// Para que o programa funcione completamente, é necessário:
+// 1. Definir a função 'verificarSenha()' que realiza a comparação e atualiza
+//    as variáveis 'cofreAberto', 'tentativasErradas' e 'bloqueado'.
+// 2. Associar a função 'detectarToque()' a um evento de toque, por exemplo:
+//    input.onPinPressed(TouchPin.P0, () => { detectarToque() })
+//    Isso deve ser feito no bloco 'on start' ou em uma função de inicialização.
+//
+// Exemplo de implementação da função verificarSenha (não incluso, mas sugerido):
+//
+// function verificarSenha() {
+//   // Compara cada elemento da senha digitada com a correta
+//   let correta = true
+//   for (let i = 0; i < senhaCorreta.length; i++) {
+//     if (senhaUsuario[i] != senhaCorreta[i]) {
+//       correta = false
+//       break
+//     }
+//   }
+//   if (correta) {
+//     cofreAberto = true
+//     basic.showIcon(IconNames.Yes)   // mostra um ícone de confirmação
+//   } else {
+//     tentativasErradas += 1
+//     if (tentativasErradas >= MAX_TENTATIVAS) {
+//       bloqueado = true
+//       basic.showString("ERR")       // ou "BLOQ"
+//     } else {
+//       basic.showIcon(IconNames.No)  // indica erro
+//     }
+//   }
+//   // Reinicia as variáveis para a próxima tentativa
+//   senhaUsuario = []
+//   indiceSenha = 0
+// }
+//
+// Este código didático exemplifica conceitos como:
+// - Uso de arrays para armazenar sequências.
+// - Controle de estado com flags (cofreAberto, bloqueado).
+// - Leitura de tempo para diferenciar eventos (toque curto/longo).
+// - Feedback visual com matriz de LEDs.
+// - Limitação de tentativas e bloqueio de segurança.
+//
+// Divirta-se programando seu cofre espião!</code></pre>
 
                 <p>
                   <strong>Código 2: Função de Verificação da Senha</strong>
                 </p>
-                <pre><code>function verificarSenha() {
+                <pre><code>/**
+ * =====================================================================
+ * FUNÇÃO: verificarSenha()
+ * =====================================================================
+ * 
+ * OBJETIVO:
+ *   Esta função é responsável por verificar se a senha digitada pelo
+ *   usuário (armazenada no vetor 'senhaUsuario') corresponde à senha
+ *   correta (armazenada em 'senhaCorreta'). Ela também controla o
+ *   número de tentativas e bloqueia o cofre após um número máximo de
+ *   erros.
+ * 
+ * CONTEXTO (Projeto didático – Micro:bit):
+ *   - O micro:bit simula um cofre eletrônico.
+ *   - O usuário digita uma senha usando os botões ou outro mecanismo
+ *     (não mostrado aqui) e os dígitos são armazenados em 'senhaUsuario'.
+ *   - A senha correta é pré-definida em 'senhaCorreta'.
+ *   - O cofre pode estar aberto ('cofreAberto') ou bloqueado ('bloqueado').
+ *   - O número de tentativas erradas é contado em 'tentativasErradas'.
+ *   - 'MAX_TENTATIVAS' é uma constante que define o limite de erros.
+ * 
+ * DEPENDÊNCIAS (variáveis e funções globais):
+ *   - senhaCorreta      : vetor (array) com os dígitos da senha correta.
+ *   - senhaUsuario      : vetor (array) com os dígitos que o usuário
+ *                         digitou até o momento.
+ *   - cofreAberto       : booleano (true/false) indicando se o cofre
+ *                         está aberto.
+ *   - bloqueado         : booleano indicando se o cofre está bloqueado
+ *                         (após muitas tentativas erradas).
+ *   - tentativasErradas : número inteiro com a contagem de tentativas
+ *                         incorretas.
+ *   - MAX_TENTATIVAS    : constante (ex.: 3) que define o limite de
+ *                         tentativas antes do bloqueio.
+ *   - abrirCofre()      : função que executa as ações para abrir o cofre
+ *                         (ex.: mostrar ícone de aberto, acionar servo, etc.).
+ *   - bloquearCofre()   : função que bloqueia o cofre permanentemente
+ *                         (ex.: mostrar ícone de cadeado, desabilitar
+ *                         botões, etc.).
+ *   - reiniciarDigitacao(): função que limpa a senha digitada e prepara
+ *                         o micro:bit para uma nova tentativa.
+ * 
+ * FLUXO DE EXECUÇÃO:
+ *   1. Limpa a tela do micro:bit.
+ *   2. Assume que a senha está correta (senhaOK = true).
+ *   3. Compara cada dígito da senha digitada com a senha correta.
+ *      - Se algum dígito for diferente, marca senhaOK como false.
+ *   4. Se a senha estiver correta E o cofre estiver fechado E não
+ *      estiver bloqueado, chama 'abrirCofre()'.
+ *   5. Caso contrário (senha incorreta):
+ *      a) Incrementa o contador de tentativas erradas.
+ *      b) Mostra um ícone de "não" (X) no display.
+ *      c) Aguarda 500 ms.
+ *      d) Se o número de tentativas erradas atingiu o máximo,
+ *         chama 'bloquearCofre()'.
+ *      e) Senão, mostra quantas tentativas restam (T: X),
+ *         aguarda 500 ms e chama 'reiniciarDigitacao()' para
+ *         permitir nova tentativa.
+ * 
+ * =====================================================================
+ */
+
+function verificarSenha() {
+  // Limpa completamente a tela do micro:bit (todos os LEDs apagados)
+  // Isso garante que não haja resíduos visuais de operações anteriores.
   basic.clearScreen()
+
+  // Cria uma variável local 'senhaOK' e a inicializa como verdadeira.
+  // Ela será usada para armazenar o resultado da comparação entre a
+  // senha digitada e a senha correta.
   let senhaOK = true
 
-  for (let i = 0; i &lt; senhaCorreta.length; i++) {
+  // Laço 'for' que percorre cada posição (índice) do vetor 'senhaCorreta'.
+  // A variável 'i' começa em 0 e vai até o comprimento (length) da
+  // senha correta - 1 (pois a condição é i < tamanho).
+  // Isso garante que compararemos todos os dígitos.
+  for (let i = 0; i < senhaCorreta.length; i++) {
+    // Verifica se o dígito na posição 'i' da senha digitada pelo
+    // usuário é DIFERENTE do dígito correspondente na senha correta.
+    // O operador '!=' significa "diferente de".
     if (senhaUsuario[i] != senhaCorreta[i]) {
+      // Se encontrou uma diferença, a senha não está correta.
+      // Atribuímos 'false' à variável 'senhaOK'.
       senhaOK = false
+      // Obs.: poderíamos usar 'break' para sair do laço mais cedo,
+      // mas aqui ele continua comparando todos os dígitos (não há
+      // problema, apenas um pouco menos eficiente).
     }
   }
 
+  // Agora, após a comparação, decidimos o que fazer.
+  // Verificamos três condições:
+  //   1. senhaOK é verdadeira (a senha digitada está correta).
+  //   2. !cofreAberto (o cofre NÃO está aberto, ou seja, está fechado).
+  //   3. !bloqueado (o cofre NÃO está bloqueado).
+  // Se todas forem verdadeiras, chamamos a função 'abrirCofre()'.
   if (senhaOK && !cofreAberto && !bloqueado) {
     abrirCofre()
   } else {
+    // Caso contrário (senha incorreta OU cofre já aberto OU bloqueado):
+
+    // Incrementa (aumenta em 1) o contador de tentativas erradas.
+    // Isso é feito para controlar quantas vezes o usuário errou.
     tentativasErradas = tentativasErradas + 1
+
+    // Exibe no display do micro:bit um ícone de "não" (um X grande).
+    // Isso fornece um feedback visual imediato de que a senha está
+    // incorreta.
     basic.showIcon(IconNames.No)
+
+    // Faz uma pausa de 500 milissegundos (meio segundo) para que o
+    // usuário possa visualizar o ícone antes da próxima ação.
     basic.pause(500)
 
+    // Verifica se o número de tentativas erradas já atingiu ou
+    // ultrapassou o limite máximo permitido (MAX_TENTATIVAS).
     if (tentativasErradas >= MAX_TENTATIVAS) {
+      // Se atingiu o limite, chama a função que bloqueia o cofre
+      // permanentemente.
       bloquearCofre()
     } else {
+      // Se ainda não atingiu o limite, o usuário tem mais tentativas.
+      // Vamos mostrar quantas tentativas ainda restam.
+
+      // Exibe a string "T:" no display (provavelmente "T" de "Tentativas").
       basic.showString("T:")
+
+      // Exibe o número de tentativas restantes, calculado como
+      // MAX_TENTATIVAS - tentativasErradas.
+      // Por exemplo, se MAX_TENTATIVAS = 3 e já errou 1 vez, restam 2.
       basic.showNumber(MAX_TENTATIVAS - tentativasErradas)
+
+      // Pausa de 500 ms para que o usuário possa ler quantas tentativas
+      // ainda tem.
       basic.pause(500)
+
+      // Chama a função que reinicia o processo de digitação.
+      // Geralmente, isso limpa o vetor 'senhaUsuario' e volta ao estado
+      // inicial para que o usuário possa digitar novamente.
       reiniciarDigitacao()
     }
   }
 }</code></pre>
 
                 <p><strong>Código 3: Funções de Ação (Saídas)</strong></p>
-                <pre><code>function abrirCofre() {
+                <pre><code>/*
+ * ========================================================================
+ * PROJETO: COFRE DIGITAL PARA MICRO:BIT
+ * ========================================================================
+ * Este código implementa as funções principais para um sistema de cofre
+ * eletrônico controlado pelo micro:bit. Ele faz parte de um projeto
+ * didático para ensinar programação, lógica e interação com hardware.
+ *
+ * FUNÇÕES:
+ *   - abrirCofre(): executa uma sequência visual e sonora para indicar
+ *     que o cofre foi aberto com sucesso.
+ *   - bloquearCofre(): executa uma sequência de alerta para indicar
+ *     que o cofre foi bloqueado.
+ *   - reiniciarDigitacao(): prepara as variáveis para uma nova tentativa
+ *     de digitação da senha e exibe uma mensagem na matriz de LEDs.
+ *
+ * VARIÁVEIS GLOBAIS (definidas em outro local do programa):
+ *   - cofreAberto: booleano que indica se o cofre está aberto.
+ *   - bloqueado: booleano que indica se o cofre está bloqueado.
+ *   - senhaUsuario: array que armazena os dígitos digitados pelo usuário.
+ *   - indiceSenha: número que controla a posição atual no array senhaUsuario.
+ * ========================================================================
+ */
+
+/**
+ * Função chamada quando a senha correta é digitada.
+ * Ela fornece feedback visual (pisca a tela) e sonoro (melodia)
+ * para confirmar a abertura do cofre.
+ */
+function abrirCofre() {
+  // Altera a variável global que indica o estado do cofre para "aberto"
   cofreAberto = true
+  // Apaga todos os LEDs da matriz para iniciar com a tela limpa
   basic.clearScreen()
 
-  for (let i = 0; i &lt; 5; i++) {
+  // Loop que repete 5 vezes para criar um efeito de "pisca-pisca"
+  for (let i = 0; i < 5; i++) {
+    // Cria uma imagem vazia (todos os pontos "." representam LEDs apagados)
+    // A string contém 25 pontos separados por espaços, formando uma matriz 5x5
     let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+    // Exibe a imagem vazia na matriz de LEDs com atraso 0 (exibição imediata)
     coracao.showImage(0)
+    // Mantém a imagem visível por 200 milissegundos
     basic.pause(200)
+    // Limpa a tela (apaga todos os LEDs)
     basic.clearScreen()
+    // Pausa por mais 200 ms para completar o ciclo do pisca-pisca
     basic.pause(200)
   }
 
+  // Exibe a mensagem "ACESSO OK" rolando caracteres na matriz de LEDs
   basic.showString("ACESSO OK")
+  // Dá um tempo para o usuário ler a mensagem
   basic.pause(500)
 
-  for (let i = 0; i &lt; 3; i++) {
+  // Reproduz uma pequena melodia de confirmação (3 repetições)
+  for (let i = 0; i < 3; i++) {
+    // Toca a nota Lá (440 Hz) por 200 ms
     music.playTone(440, 200)
+    // Pausa entre as notas (100 ms)
     basic.pause(100)
+    // Toca a nota Dó sustenido (554 Hz) por 200 ms
     music.playTone(554, 200)
+    // Pausa de 100 ms antes da próxima repetição
     basic.pause(100)
   }
 }
 
+/**
+ * Função chamada quando o cofre é bloqueado (por exemplo, após
+ * várias tentativas de senha incorreta). Ela gera um alerta
+ * visual intermitente e um som pulsante para indicar o bloqueio.
+ */
 function bloquearCofre() {
+  // Marca a variável global de bloqueio como verdadeira
   bloqueado = true
+  // Limpa a tela para iniciar o efeito
   basic.clearScreen()
 
-  for (let i = 0; i &lt; 10; i++) {
+  // Loop que executa 10 vezes para um efeito de alerta
+  for (let i = 0; i < 10; i++) {
+    // Verifica se o valor de i é par (resto da divisão por 2 == 0)
     if (i % 2 == 0) {
+      // Se for par, cria e exibe uma imagem vazia (todos os LEDs apagados)
       let x = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
       x.showImage(0)
     } else {
+      // Se for ímpar, simplesmente limpa a tela (apaga todos os LEDs)
       basic.clearScreen()
     }
+    // Toca um tom agudo (800 Hz) por 100 ms
     music.playTone(800, 100)
     basic.pause(100)
+    // Toca um tom mais grave (600 Hz) por 100 ms
     music.playTone(600, 100)
     basic.pause(100)
   }
+  // Após o loop, exibe a mensagem "BLOQUEADO" na matriz
   basic.showString("BLOQUEADO")
 }
 
+/**
+ * Função que reinicia o processo de digitação da senha.
+ * Ela zera as variáveis de controle e exibe uma mensagem
+ * convidando o usuário a digitar novamente.
+ */
 function reiniciarDigitacao() {
+  // Limpa o array que armazena os dígitos da senha digitada
   senhaUsuario = []
+  // Reinicia o índice que indica quantos dígitos já foram digitados
   indiceSenha = 0
+  // Limpa a tela
   basic.clearScreen()
+  // Exibe a mensagem "DIGITE" para orientar o usuário
   basic.showString("DIGITE")
 }</code></pre>
 
                 <p>
                   <strong>Código 4: Programa Principal e Interface</strong>
                 </p>
-                <pre><code>function iniciarCofre() {
+                <pre><code>// =====================================================================
+// PROJETO: Cofre Digital com Micro:bit
+// Descrição: Este programa implementa um sistema de cofre eletrônico
+// que utiliza os botões A e B, além do logotipo (logo) touch do micro:bit
+// para entrada de senha e controle de acesso.
+// 
+// O código pressupõe que existem variáveis e funções globais definidas
+// em outras partes do programa (como senhaCorreta, indiceSenha, bloqueado,
+// reiniciarDigitacao(), verificarSenha() e detectarToque()).
+// 
+// Abaixo, cada linha é comentada detalhadamente para fins didáticos.
+// =====================================================================
+
+// Função que inicializa o cofre, exibindo uma mensagem de boas-vindas
+// e preparando o sistema para receber a senha.
+function iniciarCofre() {
+  // Limpa completamente a matriz de LEDs (tela) do micro:bit.
   basic.clearScreen()
+  
+  // Exibe o texto "COFRE" rolando na tela (um caractere por vez).
   basic.showString("COFRE")
+  
+  // Pausa a execução por 500 milissegundos (meio segundo) para dar
+  // tempo de o usuário ler a mensagem antes de prosseguir.
   basic.pause(500)
+  
+  // Chama a função que reinicia o processo de digitação da senha,
+  // zerando o índice atual e limpando tentativas anteriores.
   reiniciarDigitacao()
 }
 
+// Registra um manipulador de evento para quando o botão A for pressionado.
+// O botão A é usado para confirmar a senha ou para indicar quantos
+// caracteres faltam para completar a senha (dependendo do estado).
 input.onButtonPressed(Button.A, function () {
+  // Verifica se o índice atual da senha já atingiu ou ultrapassou
+  // o comprimento da senha correta (ou seja, se todos os dígitos
+  // já foram inseridos).
   if (indiceSenha >= senhaCorreta.length) {
+    // Se a senha está completa, chama a função que verifica se a
+    // combinação digitada confere com a senha armazenada.
     verificarSenha()
   } else {
+    // Caso contrário (ainda faltam dígitos), exibe uma mensagem
+    // indicando quantos caracteres ainda precisam ser digitados.
+    // Mostra a letra "F:" (de "faltam") na tela.
     basic.showString("F:")
+    // Em seguida, exibe o número de caracteres restantes, calculado
+    // como a diferença entre o comprimento total da senha e o
+    // índice atual (que representa quantos já foram inseridos).
     basic.showNumber(senhaCorreta.length - indiceSenha)
+    // Pausa por 500 ms para que o usuário possa visualizar a informação.
     basic.pause(500)
+    // Reinicia o processo de digitação (por exemplo, para permitir
+    // uma nova tentativa após o aviso).
     reiniciarDigitacao()
   }
 })
 
+// Registra um manipulador para o botão B, que serve como botão de
+// reset (reinicialização da senha) apenas se o cofre não estiver
+// bloqueado (ou seja, se ainda não houve falha crítica).
 input.onButtonPressed(Button.B, function () {
+  // Verifica se a variável global "bloqueado" é falsa (cofre não
+  // bloqueado). Se estiver bloqueado, o botão B não terá efeito,
+  // impedindo tentativas de reset em estado de bloqueio.
   if (!bloqueado) {
+    // Reinicia a digitação (limpa a entrada atual).
     reiniciarDigitacao()
+    // Exibe a mensagem "RESET" na tela para confirmar a ação.
     basic.showString("RESET")
+    // Pausa por 500 ms para o usuário ver a mensagem.
     basic.pause(500)
+    // Chama novamente reiniciarDigitacao() para garantir que o
+    // sistema fique pronto para nova entrada (redundância).
     reiniciarDigitacao()
   }
 })
 
+// Registra um manipulador de evento para quando o logotipo (logo)
+// do micro:bit for tocado (TouchButtonEvent.Pressed). Esse evento
+// provavelmente é usado para inserir um dígito da senha, um por vez.
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  // Chama a função que detecta o toque no logo e processa a entrada
+  // do usuário, adicionando o caractere correspondente à senha atual.
   detectarToque()
 })
 
+// Chama a função iniciarCofre() para dar início ao programa assim
+// que o micro:bit for ligado ou reiniciado. Esta é a linha que
+// realmente coloca o sistema em funcionamento.
 iniciarCofre()</code></pre>
 
                 <h5>⏱️ Detalhamento Minuto a Minuto (50 min)</h5>
@@ -3465,19 +5662,90 @@ function adivinhar(numero: number) {
                   faz a micro:bit mostrar uma animação de festa (coração
                   pulsante) ao pressionar o botão A."
                 </p>
-                <pre><code>function festejar() {
-  for (let i = 0; i &lt; 3; i++) {
-    let coracao = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-    coracao.showImage(0)
-    basic.pause(200)
-    basic.clearScreen()
-    basic.pause(200)
+                <pre><code>// ============================================================
+// PROJETO DIDÁTICO PARA MICRO:BIT - MAKECODE (BLOCO JAVASCRIPT)
+// ============================================================
+// Este programa demonstra o uso de funções, laços de repetição,
+// exibição de imagens, pausas e eventos de botão.
+// Ao pressionar o botão A, a função "festejar()" é executada,
+// fazendo a tela piscar (mostrando uma imagem vazia) três vezes.
+// O efeito visual é um "pisca-pisca" que pode ser usado para
+// comemorar ou sinalizar algo.
+// ============================================================
+
+/**
+ * Função que executa uma sequência de piscadas na tela do micro:bit.
+ * Ela não recebe parâmetros e não retorna valores.
+ * O efeito é repetido 3 vezes (laço for).
+ */
+function festejar() {
+  // Laço de repetição: executa o bloco interno 3 vezes.
+  // i começa em 0, vai até 2 (i < 3), incrementando 1 a cada iteração.
+  for (let i = 0; i < 3; i++) {
+    // Cria uma imagem de 5x5 pixels (matriz de LEDs).
+    // A string com pontos (.) indica que todos os LEDs estão apagados.
+    // ATENÇÃO: Esta é uma imagem VAZIA. Se quiséssemos um coração,
+    // deveríamos usar uma matriz com # (aceso) e . (apagado)
+    // formando o desenho. Por exemplo:
+    // . # # # .
+    // # # # # #
+    // # # # # #
+    // . # # # .
+    // . . # . .
+    // Mas aqui a imagem está totalmente apagada, então o efeito
+    // será apenas "tela apagada" seguida de "tela limpa".
+    let coracao = images.createImage(`
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+`);
+    // Exibe a imagem criada na matriz de LEDs do micro:bit.
+    // O parâmetro 0 indica que a imagem deve ser exibida imediatamente
+    // (sem animação de deslocamento, pois é uma imagem única).
+    coracao.showImage(0);
+
+    // Pausa a execução do programa por 200 milissegundos (0,2 segundos)
+    // para que a imagem fique visível na tela.
+    basic.pause(200);
+
+    // Limpa completamente a tela do micro:bit, apagando todos os LEDs.
+    // Isso faz a tela ficar toda apagada.
+    basic.clearScreen();
+
+    // Pausa novamente por 200 ms para que o "apagado" seja percebido.
+    basic.pause(200);
+    // Ao final do laço, a próxima iteração recria e exibe a imagem vazia,
+    // causando um efeito de pisca-pisca (tela apagada -> tela limpa -> ...).
   }
+  // Após as 3 repetições, a função termina e o controle retorna
+  // para onde foi chamada.
 }
 
+// ============================================================
+// EVENTO DE BOTÃO - AÇÃO QUANDO O BOTÃO A FOR PRESSIONADO
+// ============================================================
+// O micro:bit possui dois botões: A e B.
+// Quando o botão A for pressionado (evento "onButtonPressed"),
+// a função anônima (callback) será executada.
+// Neste caso, chamamos a função "festejar()" que criamos acima.
+// Isso faz com que, ao pressionar o botão A, a tela pisque 3 vezes.
+// ============================================================
 input.onButtonPressed(Button.A, function () {
-  festejar()
-})</code></pre>
+  // Chama a função festejar, que contém o efeito de piscar.
+  festejar();
+});
+
+// ============================================================
+// FIM DO PROGRAMA
+// ============================================================
+// Possíveis melhorias (sem alterar o código original):
+// - Trocar a imagem vazia por um coração (substituir os pontos por #).
+// - Adicionar efeitos sonoros (usando pins ou música).
+// - Fazer o botão B tocar uma melodia ou mostrar outro símbolo.
+// - Aumentar o número de repetições ou variar a duração das pausas.
+// ============================================================</code></pre>
                 <p>
                   <strong>Critério:</strong> A função existe, é chamada, e
                   executa a animação. <strong>Carimbo:</strong> 🛠️ "Função
@@ -3490,17 +5758,89 @@ input.onButtonPressed(Button.A, function () {
                   LED central n vezes. Ao pressionar o botão A, pisca 3 vezes.
                   Ao pressionar o botão B, pisca 5 vezes."
                 </p>
-                <pre><code>function piscar(n: number) {
-  for (let i = 0; i &lt; n; i++) {
+                <pre><code>/*
+ * ============================================================================
+ * PROJETO DIDÁTICO – MICRO:BIT
+ * ============================================================================
+ * Este programa faz o LED central (coordenadas 2,2) piscar um número
+ * determinado de vezes quando os botões A ou B são pressionados.
+ *
+ * - Botão A → pisca 3 vezes.
+ * - Botão B → pisca 5 vezes.
+ *
+ * O objetivo é ensinar conceitos básicos de:
+ *   • Funções (com parâmetros)
+ *   • Laços de repetição (for)
+ *   • Entrada digital (botões)
+ *   • Saída visual (matriz de LEDs)
+ *   • Temporização (pausas)
+ *
+ * Todo o código foi mantido exatamente como fornecido, acrescentando-se
+ * apenas comentários extremamente detalhados para fins educacionais.
+ * ============================================================================
+ */
+
+/**
+ * Função que faz o LED central (coluna 2, linha 2) piscar 'n' vezes.
+ * @param n Número de piscadas desejadas (deve ser um inteiro positivo)
+ */
+function piscar(n: number) {
+  // Laço 'for' – repete o bloco interno exatamente 'n' vezes.
+  // A variável 'i' é o contador: inicia em 0, incrementa de 1 em 1,
+  // e executa enquanto i < n.
+  for (let i = 0; i < n; i++) {
+
+    // Acende o LED na posição (2, 2) – que é exatamente o centro da matriz
+    // 5x5 do micro:bit (coordenadas variam de 0 a 4).
     led.plot(2, 2)
+
+    // Pausa a execução por 200 milissegundos (0,2 segundos).
+    // O LED permanece aceso durante esse intervalo, produzindo o efeito
+    // visual de "ligado".
     basic.pause(200)
+
+    // Apaga o LED na posição (2,2) – desliga o ponto central.
     led.unplot(2, 2)
+
+    // Nova pausa de 200 ms com o LED apagado.
+    // Isso completa um ciclo completo de piscada (liga + desliga),
+    // totalizando 400 ms por piscada.
     basic.pause(200)
+
+    // Ao final da iteração, o contador 'i' é incrementado e o laço
+    // repete até que i atinja o valor de 'n'.
   }
+  // Quando o laço termina, a função encerra e o controle retorna
+  // para o ponto onde foi chamada.
 }
 
-input.onButtonPressed(Button.A, function () { piscar(3) })
-input.onButtonPressed(Button.B, function () { piscar(5) })</code></pre>
+// ============================================================================
+// EVENTOS DE BOTÃO – O micro:bit fica "ouvindo" as pressões dos botões.
+// ============================================================================
+
+/**
+ * Configura uma reação para quando o botão A for pressionado.
+ * A função anônima (callback) é executada automaticamente pelo sistema
+ * sempre que o botão A for pressionado.
+ */
+input.onButtonPressed(Button.A, function () {
+  // Chama a função 'piscar' passando o argumento 3.
+  // Portanto, o LED central piscará exatamente 3 vezes.
+  piscar(3)
+})
+
+/**
+ * Configura uma reação para quando o botão B for pressionado.
+ * Similar ao botão A, mas com o argumento 5, resultando em 5 piscadas.
+ */
+input.onButtonPressed(Button.B, function () {
+  piscar(5)
+})
+
+// ============================================================================
+// FIM DO PROGRAMA – Após essas configurações, o micro:bit entra em um loop
+// infinito interno (gerenciado pelo sistema) aguardando eventos.
+// ============================================================================</code></pre>
                 <p>
                   <strong>Critério:</strong> A função funciona com diferentes
                   valores de parâmetro. <strong>Carimbo:</strong> 📊 "Mestre
@@ -3514,24 +5854,103 @@ input.onButtonPressed(Button.B, function () { piscar(5) })</code></pre>
                   estiverem pressionados (AND). O LED (0,0) deve acender
                   quando PELO MENOS UM botão estiver pressionado (OR)."
                 </p>
-                <pre><code>let estadoA = false
-let estadoB = false
+                <pre><code>// ============================================================
+// PROGRAMA: Alternância de LEDs com os botões A e B
+// ============================================================
+// Este programa foi desenvolvido para o micro:bit e utiliza
+// a plataforma MakeCode (linguagem JavaScript/TypeScript).
+//
+// Objetivo: Demonstrar o uso de variáveis booleanas, eventos
+// de botão e controle da matriz de LEDs 5x5.
+//
+// Funcionamento:
+// - Duas variáveis (estadoA e estadoB) armazenam valores lógicos
+//   (true/false) que representam se cada botão foi pressionado
+//   um número ímpar de vezes (alternando a cada pressão).
+// - Ao pressionar o botão A, o estadoA é invertido.
+// - Ao pressionar o botão B, o estadoB é invertido.
+// - Após cada inversão, a função atualizarLEDs() é chamada para
+//   redesenhar a tela conforme as regras:
+//     1. Se ambos os estados forem verdadeiros (true), acende
+//        o LED central (coordenada 2,2) e também o LED em (0,0).
+//     2. Se apenas um dos estados for verdadeiro, acende apenas
+//        o LED em (0,0).
+//     3. Se nenhum for verdadeiro, todos os LEDs ficam apagados.
+// ============================================================
 
+// Declaração das variáveis globais que guardam o estado de cada botão.
+// Inicialmente, ambas são falsas (nenhum botão foi pressionado ainda).
+let estadoA = false  // Estado do botão A: false = desligado, true = ligado
+let estadoB = false  // Estado do botão B: false = desligado, true = ligado
+
+// ------------------------------------------------------------
+// Evento disparado quando o botão A é pressionado.
+// A função anônima (callback) é executada automaticamente pelo
+// sistema sempre que o botão A for pressionado.
+// ------------------------------------------------------------
 input.onButtonPressed(Button.A, function () {
+  // Inverte o valor booleano de estadoA:
+  // - Se era false, passa a true.
+  // - Se era true, passa a false.
+  // Isso cria um efeito de "alternância" (toggle) a cada pressionamento.
   estadoA = !estadoA
+
+  // Após alterar o estado, atualiza a matriz de LEDs para refletir
+  // a nova combinação de estados.
   atualizarLEDs()
 })
 
+// ------------------------------------------------------------
+// Evento disparado quando o botão B é pressionado.
+// Funciona de maneira análoga ao botão A, mas atua sobre estadoB.
+// ------------------------------------------------------------
 input.onButtonPressed(Button.B, function () {
+  // Inverte o estado do botão B.
   estadoB = !estadoB
+
+  // Atualiza a tela de LEDs com os novos estados.
   atualizarLEDs()
 })
 
+// ------------------------------------------------------------
+// Função que atualiza a matriz de LEDs com base nos valores
+// atuais de estadoA e estadoB.
+// Esta função é chamada sempre que um botão é pressionado.
+// ------------------------------------------------------------
 function atualizarLEDs() {
+  // Apaga todos os LEDs da matriz 5x5. Isso garante que a tela
+  // comece completamente limpa antes de desenhar os novos pontos.
   basic.clearScreen()
-  if (estadoA && estadoB) { led.plot(2, 2) }
-  if (estadoA || estadoB) { led.plot(0, 0) }
-}</code></pre>
+
+  // Estrutura condicional: verifica se AMBOS os estados são verdadeiros.
+  // O operador && (E lógico) retorna true apenas se as duas condições
+  // forem verdadeiras.
+  if (estadoA && estadoB) {
+    // Acende o LED localizado no centro da matriz.
+    // A matriz de LED do micro:bit possui 5 colunas (x: 0 a 4) e
+    // 5 linhas (y: 0 a 4). O centro é exatamente a coordenada (2,2).
+    // A função led.plot(x, y) acende o LED na posição especificada.
+    led.plot(2, 2)
+  }
+
+  // Estrutura condicional: verifica se PELO MENOS UM dos estados é verdadeiro.
+  // O operador || (OU lógico) retorna true se uma ou ambas as condições
+  // forem verdadeiras.
+  if (estadoA || estadoB) {
+    // Acende o LED no canto superior esquerdo da matriz.
+    // Coordenada (0,0) corresponde ao primeiro LED da primeira coluna
+    // e primeira linha.
+    led.plot(0, 0)
+  }
+
+  // Obs.: Se ambos os estados forem verdadeiros, as duas condições
+  // são satisfeitas, portanto ambos os LEDs (central e canto) acendem.
+  // Se apenas um for verdadeiro, apenas o LED do canto acende.
+  // Se nenhum for verdadeiro, a tela permanece totalmente apagada.
+}
+// ============================================================
+// FIM DO PROGRAMA
+// ============================================================</code></pre>
                 <p>
                   <strong>Critério:</strong> Os LEDs acendem conforme a lógica
                   AND/OR. <strong>Carimbo:</strong> 🔍 "Detetive Lógico"
@@ -3543,21 +5962,88 @@ function atualizarLEDs() {
                   música quando o logotipo for tocado. A música deve ter pelo
                   menos 3 notas diferentes."
                 </p>
-                <pre><code>function tocarMusica() {
+                <pre><code>/*
+ * ============================================================================
+ * PROGRAMA: Melodia no micro:bit ao tocar o logotipo
+ * ============================================================================
+ * 
+ * Objetivo didático:
+ *   - Demonstrar o uso de funções (organização do código).
+ *   - Demonstrar eventos de entrada (toque no logotipo).
+ *   - Demonstrar saída de áudio (geração de tons) e temporização.
+ * 
+ * Funcionamento:
+ *   Ao pressionar o logotipo (área dourada na placa), o micro:bit executa
+ *   a função 'tocarMusica', que reproduz uma pequena melodia com 4 notas:
+ *   Dó (262 Hz), Mi (330 Hz), Sol (392 Hz) e Dó agudo (523 Hz).
+ * 
+ * Observações:
+ *   - A variável 'nota' cria uma imagem vazia apenas para ilustrar o uso
+ *     da API de display, mas não afeta a melodia.
+ *   - O projeto é compatível com o ambiente MakeCode (JavaScript).
+ * ============================================================================
+ */
+
+// --------------------------------------------
+// DEFINIÇÃO DA FUNÇÃO QUE TOCA A MELODIA
+// --------------------------------------------
+
+function tocarMusica() {
+  // 1. Cria uma imagem de 5x5 pixels totalmente apagada (todos os pontos ' . ')
+  //    A string entre crases define uma matriz 5x5; cada '.' representa um LED apagado.
+  //    Esta variável não é essencial para a melodia, mas serve como exemplo
+  //    de como criar e manipular imagens no micro:bit.
   let nota = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+
+  // 2. Exibe a imagem criada no display de LEDs por 0 milissegundos.
+  //    Como o tempo é 0, a imagem aparece e desaparece instantaneamente,
+  //    ou seja, não é visível na prática. Isso mostra que a função showImage
+  //    aceita um valor de duração (em ms) e, neste caso, não causa efeito visual.
   nota.showImage(0)
+
+  // 3. Primeira nota: Dó central (frequência 262 Hz) com duração de 200 ms.
+  //    A frequência está em Hertz (ciclos por segundo) e a duração em milissegundos.
   music.playTone(262, 200)
+
+  // 4. Pausa de 100 ms entre as notas para criar um pequeno silêncio,
+  //    dando um efeito mais musical (separação entre os sons).
   basic.pause(100)
+
+  // 5. Segunda nota: Mi (frequência 330 Hz) por 200 ms.
   music.playTone(330, 200)
+
+  // 6. Pausa de 100 ms.
   basic.pause(100)
+
+  // 7. Terceira nota: Sol (frequência 392 Hz) por 200 ms.
   music.playTone(392, 200)
+
+  // 8. Pausa de 100 ms.
   basic.pause(100)
+
+  // 9. Quarta e última nota: Dó agudo (frequência 523 Hz) com duração de 300 ms,
+  //    um pouco mais longa para dar um final mais enfático à melodia.
   music.playTone(523, 300)
 }
 
+// --------------------------------------------
+// CONFIGURAÇÃO DO EVENTO DE TOQUE NO LOGOTIPO
+// --------------------------------------------
+
+// 10. A função 'onLogoEvent' registra um manipulador para eventos no logotipo
+//     (a área dourada na face superior da placa, que é um sensor capacitivo).
+//     O parâmetro 'TouchButtonEvent.Pressed' indica que o evento será disparado
+//     quando o logotipo for pressionado (toque com o dedo).
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+  // 11. Quando o evento ocorrer, a função anônima (callback) será executada.
+  //     Ela simplesmente chama a função 'tocarMusica' definida acima,
+  //     fazendo com que a melodia seja reproduzida a cada toque no logotipo.
   tocarMusica()
-})</code></pre>
+})
+
+// ============================================================================
+// FIM DO PROGRAMA
+// ============================================================================</code></pre>
                 <p>
                   <strong>Critério:</strong> A micro:bit reage ao toque com
                   som e animação. <strong>Carimbo:</strong> 🎵 "Mestre do
@@ -3570,29 +6056,205 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
                   Corrija-os para que a função saudacao() funcione
                   corretamente."
                 </p>
-                <pre><code>// BUG 1: Parênteses faltando na definição
-function saudacao {
+                <pre><code>/**
+ * =====================================================================
+ * PROJETO DIDÁTICO: MICRO:BIT COM BUGS INTENCIONAIS
+ * =====================================================================
+ *
+ * Este código foi especialmente preparado para demonstrar dois erros
+ * comuns na programação do micro:bit via MakeCode (JavaScript/TypeScript).
+ * 
+ * OBJETIVO:
+ *   - Mostrar, na prática, como erros de sintaxe e de lógica podem
+ *     impedir o funcionamento do programa.
+ *   - Servir como material de apoio para aulas de introdução à
+ *     programação em dispositivos físicos.
+ *
+ * INSTRUÇÕES:
+ *   1. Copie este código integralmente para o editor JavaScript do
+ *      MakeCode (https://makecode.microbit.org).
+ *   2. Observe os erros apontados nos comentários.
+ *   3. Corrija os bugs seguindo as dicas e veja o programa funcionar.
+ *
+ * ATENÇÃO:
+ *   - O código NÃO FOI MODIFICADO – apenas foram acrescentados
+ *     comentários explicativos.
+ *   - Ele contém erros de sintaxe que impedem a compilação.
+ *   - Para executar, é necessário corrigir os trechos destacados.
+ * =====================================================================
+ */
+
+// =====================================================================
+// BUG 1: Parênteses faltando na definição da função
+// =====================================================================
+//
+// Em JavaScript, toda função deve ser declarada com a sintaxe:
+//   function nomeDaFuncao(parametros) { ... }
+//
+// No trecho abaixo, os parênteses que deveriam envolver a lista de
+// parâmetros (mesmo vazia) foram omitidos.
+//
+// Isso gera um erro de sintaxe (SyntaxError) e impede que o programa
+// seja carregado no micro:bit. O compilador não reconhece a definição
+// e interrompe a execução.
+//
+// CORREÇÃO SUGERIDA:
+//   function saudacao() { ... }   ← adicionar "()" após o nome
+// =====================================================================
+function saudacao {   // ❌ ERRO: faltam os parênteses "()"
+  // Cria uma imagem 5x5 totalmente apagada (todos os pontos desligados).
+  // A string com 25 pontos (`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  // representa uma matriz 5x5 vazia.
   let ola = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
+  
+  // Exibe a imagem no LED por 0 milissegundos (na prática, mostra e
+  // imediatamente apaga, a menos que haja uma pausa posterior).
   ola.showImage(0)
+  
+  // Aguarda 500 ms para que o usuário possa ver a imagem (se ela fosse
+  // mostrada por tempo suficiente, mas como o tempo é 0, a imagem
+  // mal é visível – isso é outro ponto de discussão didática).
   basic.pause(500)
+  
+  // Exibe a mensagem "OLA" (sem acento) na matriz de LEDs, rolamento
+  // caractere por caractere.
   basic.showString("OLA")
 }
 
-// BUG 2: Nome da função errado na chamada
+// =====================================================================
+// BUG 2: Nome da função errado na chamada (ou aparentemente correto?)
+// =====================================================================
+//
+// O comentário original indica "Nome da função errado na chamada",
+// porém, analisando o código, a definição é `saudacao` (sem acento) e
+// a chamada também é `saudacao()`. Portanto, **neste código** os nomes
+// coincidem.
+//
+// No entanto, o propósito didático é alertar para o erro comum de
+// digitar o nome da função de forma diferente (ex.: com acento, ou
+// com letras trocadas). Para efeitos de demonstração, mantivemos o
+// código exatamente como foi fornecido.
+//
+// Se a intenção fosse realmente chamar uma função de nome diferente,
+// bastaria alterar a chamada para, por exemplo, `saudacao()` (com
+// acento) e a definição estaria sem acento – gerando um erro de
+// referência (ReferenceError).
+//
+// Como o código não pode ser modificado (apenas comentado), deixamos
+// a chamada como está, mas destacamos que, em situações reais, a
+// digitação incorreta do nome é uma fonte frequente de bugs.
+//
+// CORREÇÃO SUGERIDA (se houvesse erro de nome):
+//   Verifique se o nome na chamada é exatamente igual ao da definição,
+//   incluindo maiúsculas/minúsculas e acentos.
+// =====================================================================
 input.onButtonPressed(Button.A, function () {
-  saudacao()
-})</code></pre>
+  // Chamada da função. Se a definição estivesse correta (com parênteses)
+  // e o nome coincidisse, esta linha executaria a saudação.
+  // Porém, devido ao BUG 1, a função nem chega a ser definida, então
+  // este evento nunca será executado.
+  saudacao()   // ⚠️ Nome aparentemente correto, mas a definição falha
+})
+
+// =====================================================================
+// COMENTÁRIOS ADICIONAIS SOBRE O COMPORTAMENTO ESPERADO
+// =====================================================================
+//
+// Após corrigir os dois bugs, o programa deveria:
+//   1. Ao pressionar o botão A do micro:bit, executar a função `saudacao`.
+//   2. A função exibe uma imagem vazia (todos os LEDs apagados) por um
+//      instante, aguarda 0,5 segundo e depois mostra a palavra "OLA"
+//      rolando na tela.
+//
+// Possível melhoria: Para que a imagem vazia seja visível, o tempo de
+// exibição poderia ser aumentado (ex.: `showImage(500)`) ou usar
+// `showImage(0)` seguido de `basic.pause(500)` já daria um efeito de
+// "limpar a tela" antes da mensagem.
+//
+// DIVIRTA-SE APRENDENDO COM OS ERROS! 😉
+// =====================================================================</code></pre>
                 <p><strong>Correção:</strong></p>
-                <pre><code>function saudacao() {
-  let ola = images.createImage(`. . . . . . . . . . . . . . . . . . . . . . . . .`)
-  ola.showImage(0)
-  basic.pause(500)
-  basic.showString("OLA")
+                <pre><code>/*
+ * ============================================================
+ * PROJETO DIDÁTICO PARA MICRO:BIT - MAKECODE
+ * ============================================================
+ *
+ * Este programa demonstra o uso básico de funções, imagens, 
+ * exibição no display e interação com botões no micro:bit.
+ *
+ * FLUXO DO PROGRAMA:
+ * 1. Quando o botão A for pressionado, a função 'saudacao()' é chamada.
+ * 2. A função cria uma imagem vazia (todos os LEDs apagados) e a exibe.
+ * 3. Aguarda 500 milissegundos (meio segundo) para que o usuário perceba
+ *    que a tela foi limpa.
+ * 4. Em seguida, exibe o texto "OLA" (em português, "Olá") de forma rolante
+ *    no display de 5x5 LEDs.
+ *
+ * OBSERVAÇÃO: A imagem vazia é usada para apagar qualquer conteúdo anterior
+ * na tela antes de mostrar a mensagem, garantindo uma apresentação limpa.
+ *
+ * AUTOR: [Nome do autor]
+ * DATA: [Data]
+ * ============================================================
+ */
+
+// ============================================================
+// FUNÇÃO: saudacao()
+// ============================================================
+// Objetivo: Executar uma sequência de ações para cumprimentar o usuário.
+// Não recebe parâmetros e não retorna nenhum valor.
+// ============================================================
+function saudacao() {
+    // Cria uma imagem vazia de 5x5 LEDs.
+    // A string com 25 caracteres (pontos ".") representa cada LED apagado.
+    // Cada linha tem 5 pontos, totalizando 5 linhas.
+    // O resultado é uma imagem onde nenhum LED está aceso.
+    let ola = images.createImage(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+    `);
+
+    // Exibe a imagem criada no display do micro:bit.
+    // O parâmetro '0' indica que a imagem deve permanecer visível até
+    // que outra imagem ou texto seja mostrado (não há duração fixa).
+    // Neste caso, a imagem vazia apaga todos os LEDs da matriz.
+    ola.showImage(0);
+
+    // Pausa a execução do programa por 500 milissegundos (meio segundo).
+    // Isso mantém a tela limpa por um breve instante, permitindo que o
+    // usuário perceba a transição antes da mensagem aparecer.
+    basic.pause(500);
+
+    // Exibe a string "OLA" no display de LEDs.
+    // O micro:bit percorre os caracteres da esquerda para a direita,
+    // criando um efeito de rolagem (scroll) até que a mensagem completa
+    // seja exibida. Após a exibição, a tela permanece com o último caractere
+    // ou volta ao estado anterior, dependendo da implementação.
+    basic.showString("OLA");
 }
 
+// ============================================================
+// EVENTO: Pressionar o botão A
+// ============================================================
+// Quando o botão A (localizado na parte frontal do micro:bit,
+// à esquerda) for pressionado e solto, a função 'saudacao()'
+// será executada.
+// ============================================================
 input.onButtonPressed(Button.A, function () {
-  saudacao()
-})</code></pre>
+    // Chama a função que executa a saudação.
+    // Isso inclui: limpar a tela, pausar e mostrar "OLA".
+    saudacao();
+});
+
+// ============================================================
+// FIM DO PROGRAMA
+// ============================================================
+// Após a inicialização, o micro:bit fica em espera (loop infinito)
+// aguardando eventos, como o pressionamento do botão A.
+// ============================================================</code></pre>
                 <p>
                   <strong>Critério:</strong> Encontrar os 2 bugs e propor a
                   correção. <strong>Carimbo:</strong> 🐛 "Caçador de Bugs"
